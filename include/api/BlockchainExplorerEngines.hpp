@@ -5,13 +5,6 @@
 #define DJINNI_GENERATED_BLOCKCHAINEXPLORERENGINES_HPP
 
 #include <string>
-#ifndef LIBCORE_EXPORT
-    #if defined(_MSC_VER) && _MSC_VER <= 1900
-       #include <libcore_export.h>
-    #else
-       #define LIBCORE_EXPORT
-    #endif
-#endif
 
 namespace ledger { namespace core { namespace api {
 
@@ -20,7 +13,7 @@ class BlockchainExplorerEngines {
 public:
     virtual ~BlockchainExplorerEngines() {}
 
-    static LIBCORE_EXPORT std::string const LEDGER_API;
+    static std::string const LEDGER_API;
 };
 
 } } }  // namespace ledger::core::api

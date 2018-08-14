@@ -5,13 +5,6 @@
 #define DJINNI_GENERATED_SYNCHRONIZATIONSTATUS_HPP
 
 #include <cstdint>
-#ifndef LIBCORE_EXPORT
-    #if defined(_MSC_VER) && _MSC_VER <= 1900
-       #include <libcore_export.h>
-    #else
-       #define LIBCORE_EXPORT
-    #endif
-#endif
 
 namespace ledger { namespace core { namespace api {
 
@@ -20,11 +13,11 @@ class SynchronizationStatus {
 public:
     virtual ~SynchronizationStatus() {}
 
-    static LIBCORE_EXPORT int32_t const STATUS_DONE;
+    static int32_t const STATUS_DONE;
 
-    static LIBCORE_EXPORT int32_t const STATUS_ERROR;
+    static int32_t const STATUS_ERROR;
 
-    static LIBCORE_EXPORT int32_t const STATUS_DONE_SYNCHRONIZE_NEXT_ACCOUNT;
+    static int32_t const STATUS_DONE_SYNCHRONIZE_NEXT_ACCOUNT;
 };
 
 } } }  // namespace ledger::core::api
