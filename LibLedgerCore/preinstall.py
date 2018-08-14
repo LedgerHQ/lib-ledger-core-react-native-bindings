@@ -2,6 +2,10 @@ import platform
 import urllib
 import os
 
+exit()
+
+# TODO: make s3 repo public
+
 libCoreVersion = "1.1.0"
 baseURL = "https://s3-eu-west-1.amazonaws.com/ledger-lib-ledger-core"
 filePath = ""
