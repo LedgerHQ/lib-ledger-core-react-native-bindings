@@ -29,21 +29,22 @@
 			},
 			# 'libraries': ['<!(pwd)/<@(run_path)/libledger-core.dylib'],
 			'libraries': [
-				'-L<(module_root_dir)/lib',
-				'-lledger-core'
+				# '-L<(module_root_dir)/lib',
+				'lib/libledger-core.dylib',
+				# '-lledger-core'
 			],
-			'xcode_settings': {
-				'GCC_ENABLE_CPP_EXCEPTIONS': 'YES',
-				'OTHER_CFLAGS': [
-					'-ObjC++',
-					'-std=c++14',
-				],
-				# 'OTHER_LDFLAGS': [
-				# 	'-framework IOKit',
-				# 	'-framework CoreFoundation',
-				# 	'-Xlinker -rpath -Xlinker @loader_path/'
-				# ],
-			},
+			# 'xcode_settings': {
+			# 	'GCC_ENABLE_CPP_EXCEPTIONS': 'YES',
+			# 	'OTHER_CFLAGS': [
+			# 		'-ObjC++',
+			# 		'-std=c++14',
+			# 	],
+			# 	# 'OTHER_LDFLAGS': [
+			# 	# 	'-framework IOKit',
+			# 	# 	'-framework CoreFoundation',
+			# 	# 	'-Xlinker -rpath -Xlinker @loader_path/'
+			# 	# ],
+			# },
 		},
   ],
 }
