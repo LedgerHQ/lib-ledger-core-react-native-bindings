@@ -38,11 +38,11 @@
 					'-ObjC++',
 					'-std=c++14',
 				],
-				'OTHER_LDFLAGS': [
-					'-framework IOKit',
-					'-framework CoreFoundation',
-					'-Xlinker -rpath -Xlinker @loader_path/'
-				],
+				# 'OTHER_LDFLAGS': [
+				# 	'-framework IOKit',
+				# 	'-framework CoreFoundation',
+				# 	'-Xlinker -rpath -Xlinker @loader_path/'
+				# ],
 			},
 		},
   ],

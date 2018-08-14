@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "../../objc/LGHttpUrlConnection.h"
+#import "../objc/LGHttpUrlConnection.h"
 
 @interface LGHttpUrlConnectionImpl : NSObject <LGHttpUrlConnection>
 @property(nonatomic, strong) NSData *data;

@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "../../objc/LGErrorCodeCallback.h"
+#import "../objc/LGErrorCodeCallback.h"
 
 @interface LGErrorCodeCallbackImpl : NSObject<LGErrorCodeCallback>
 @end

@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "../../objc/LGLogPrinter.h"
+#import "../objc/LGLogPrinter.h"
 #import "LGExecutionContextImpl.h"
 
 @interface LGLogPrinterImpl : NSObject<LGLogPrinter>

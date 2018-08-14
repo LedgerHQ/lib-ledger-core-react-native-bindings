@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-#import "../../objc/LGCurrencyCallback.h"
+#import "../objc/LGCurrencyCallback.h"
 
 @interface LGCurrencyCallbackImpl : NSObject<LGCurrencyCallback>
 

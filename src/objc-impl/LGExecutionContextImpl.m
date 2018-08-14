@@ -1,5 +1,5 @@
 #import "LGExecutionContextImpl.h"
-#import "../../objc/LGRunnable.h"
+#import "../objc/LGRunnable.h"
 
 @implementation LGExecutionContextImpl
 
@@ -11,7 +11,7 @@
         } else {
             self.queue = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0);
         }
-        
+
     }
     return self;
 }

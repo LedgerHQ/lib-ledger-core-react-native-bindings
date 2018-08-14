@@ -1,3 +1,6 @@
 [submodule "djinni"]
 	path = djinni
 	url = git@github.com:KhalilBellakrid/djinni.git
+[submodule "gyp"]
+	path = gyp
+	url = git@github.com:bnoordhuis/gyp.git
