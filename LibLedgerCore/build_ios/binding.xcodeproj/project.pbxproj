@@ -1378,7 +1378,10 @@
 					../src/objc,
 					"../djinni/support-lib/objc",
 				);
-				LIBRARY_SEARCH_PATHS = lib;
+				LIBRARY_SEARCH_PATHS = (
+					lib,
+					"$(SRCROOT)/lib",
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",
@@ -1422,7 +1425,10 @@
 					../src/objc,
 					"../djinni/support-lib/objc",
 				);
-				LIBRARY_SEARCH_PATHS = lib;
+				LIBRARY_SEARCH_PATHS = (
+					lib,
+					"$(SRCROOT)/lib",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-Wall",

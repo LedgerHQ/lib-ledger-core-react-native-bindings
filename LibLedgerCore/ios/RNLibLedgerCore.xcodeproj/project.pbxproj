@@ -105,7 +105,6 @@
 		8F5AC29721232BBE00CCF159 /* RCTCoreLGGetEthreumLikeWalletCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5AC23621232BBE00CCF159 /* RCTCoreLGGetEthreumLikeWalletCallback.m */; };
 		8F5AC29821232BBE00CCF159 /* RCTCoreLGBitcoinLikePreparedTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5AC23721232BBE00CCF159 /* RCTCoreLGBitcoinLikePreparedTransaction.m */; };
 		8FE62F5D212329BD006089C1 /* libledger-core-objc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA6ED992123295D008DE63D /* libledger-core-objc.a */; };
-		8FE62F5E212329D5006089C1 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA6ED7421232941008DE63D /* libReact.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -461,7 +460,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FE62F5E212329D5006089C1 /* libReact.a in Frameworks */,
 				8FE62F5D212329BD006089C1 /* libledger-core-objc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
