@@ -34,7 +34,7 @@ CFLAGS_C_Debug := \
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Debug := \
-	-std=gnu++1y \
+	-std=gnu++0x \
 	-stdlib=libc++ \
 	-fno-rtti \
 	-fno-exceptions \
@@ -55,10 +55,10 @@ CFLAGS_OBJCC_Debug := \
 	-fobjc-arc
 
 INCS_Debug := \
-	-I/Users/vdealmeida/.node-gyp/10.3.0/include/node \
-	-I/Users/vdealmeida/.node-gyp/10.3.0/src \
-	-I/Users/vdealmeida/.node-gyp/10.3.0/deps/uv/include \
-	-I/Users/vdealmeida/.node-gyp/10.3.0/deps/v8/include \
+	-I/Users/elkhalilbellakrid/.node-gyp/8.9.4/include/node \
+	-I/Users/elkhalilbellakrid/.node-gyp/8.9.4/src \
+	-I/Users/elkhalilbellakrid/.node-gyp/8.9.4/deps/uv/include \
+	-I/Users/elkhalilbellakrid/.node-gyp/8.9.4/deps/v8/include \
 	-I$(srcdir)/../djinni/support-lib/objc
 
 DEFS_Release := \
@@ -91,7 +91,7 @@ CFLAGS_C_Release := \
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Release := \
-	-std=gnu++1y \
+	-std=gnu++0x \
 	-stdlib=libc++ \
 	-fno-rtti \
 	-fno-exceptions \
@@ -112,10 +112,10 @@ CFLAGS_OBJCC_Release := \
 	-fobjc-arc
 
 INCS_Release := \
-	-I/Users/vdealmeida/.node-gyp/10.3.0/include/node \
-	-I/Users/vdealmeida/.node-gyp/10.3.0/src \
-	-I/Users/vdealmeida/.node-gyp/10.3.0/deps/uv/include \
-	-I/Users/vdealmeida/.node-gyp/10.3.0/deps/v8/include \
+	-I/Users/elkhalilbellakrid/.node-gyp/8.9.4/include/node \
+	-I/Users/elkhalilbellakrid/.node-gyp/8.9.4/src \
+	-I/Users/elkhalilbellakrid/.node-gyp/8.9.4/deps/uv/include \
+	-I/Users/elkhalilbellakrid/.node-gyp/8.9.4/deps/v8/include \
 	-I$(srcdir)/../djinni/support-lib/objc
 
 OBJS := \

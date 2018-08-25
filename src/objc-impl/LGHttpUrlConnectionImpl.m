@@ -46,7 +46,10 @@
 */
 - (nonnull LGHttpReadBodyResult *)readBody
 {
-    LGError *objcError = [[LGError alloc] initWithCode:(LGErrorCode)[self.error code] message:[self.error description]];
+    LGError *objcError = nil;
+    if (self.error) {
+        objcError = [[LGError alloc] initWithCode:(LGErrorCode)[self.error code] message:[self.error description]];
+    }
     LGHttpReadBodyResult *body = [[LGHttpReadBodyResult alloc] initWithError:objcError data:self.data];
     return body;
 }

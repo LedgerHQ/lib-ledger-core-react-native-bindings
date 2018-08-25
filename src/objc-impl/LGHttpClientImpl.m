@@ -20,7 +20,10 @@
 
     [[[NSURLSession sharedSession] dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         LGHttpUrlConnectionImpl *urlConnection = [[LGHttpUrlConnectionImpl alloc] initWithData:data url:response andError:error];
-        LGError *objcError = [[LGError alloc] initWithCode:(LGErrorCode)[error code] message:[error description]];
+        LGError *objcError = nil;
+        if (error) {
+            objcError = [[LGError alloc] initWithCode:(LGErrorCode)[error code] message:[error description]];
+        }
         [request complete:urlConnection error:objcError];
     }] resume];
 }
