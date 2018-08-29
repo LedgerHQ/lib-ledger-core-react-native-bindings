@@ -15,7 +15,7 @@
 			'sources': [
 				"<!@(python glob.py ../src/objc *.h *.m *.mm)",
 				"<!@(python glob.py ../src/objcpp *.h *.m *.mm)",
-				"<!@(python glob.py ../src/objc-impl *.h *.m *.mm)",
+                #"<!@(python glob.py ../src/objc-impl *.h *.m *.mm)",
 			],
             'include_dirs': [
 				"<@(core_library)/include",
