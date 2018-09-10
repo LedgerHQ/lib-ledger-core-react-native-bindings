@@ -4,24 +4,28 @@ This repository provides a xcodeproj which represents a react native binding to 
 ## Project Structure
 ```
 .
-├── include              # includes for Ledger Core Library
-├── src                  # bindings sources
-    ├── objc             # bindings objective-c (generated automatically)
-    ├── objc-cpp         # used by bindings objective-c (generated automatically)
-    ├── objc-impl        # implementations of platform specific interfaces
-    ├── react-native     # bindings react native (generated automatically)
-├── LibLedgerCore        # react native binding build scripts and artifacts
-    ├── binding.gyp      # clled during yarn phase, generates static libraries
-    ├── Makefile         # called during make phase, generates binding.xcodeproj
-    ├── build            # static libraries location
-    ├── build_ios        # binding.xcodeproj location
-    ├── ios              # contains react native binding xcodeproj
+├── include                 # includes for Ledger Core Library
+├── src                     # bindings sources
+    ├── objc                # bindings objective-c (generated automatically)
+    ├── objc-cpp            # used by bindings objective-c (generated automatically)
+    ├── objc-impl           # implementations of platform specific interfaces
+    ├── java                # used by bindings java (generated automatically)
+    ├── react-native-ios    # bindings react native ios (generated automatically)
+    ├── react-native-android# bindings react native android (generated automatically)
+
+├── LibLedgerCore           # react native binding build scripts and artifacts
+    ├── binding.gyp         # clled during yarn phase, generates static libraries
+    ├── Makefile            # called during make phase, generates binding.xcodeproj
+    ├── build               # static libraries location
+    ├── build_ios           # binding.xcodeproj location
+    ├── ios                 # contains react native ios binding (xcodeproj)
         ├── RNLibLedgerCore.xcodeproj
+    ├── android             # contains react native android binding (gradle)
 ```
 ## Clone project
 
 ```
-git clone --recurse-submodules https://github.com/valpinkman/lib-ledger-core-react-native-bindings.git
+git clone --recurse-submodules https://github.com/LedgerHQ/lib-ledger-core-react-native-bindings
 ```
 If you cloned this repository but without `--recurse-submodules` option, make sure to init all submodules by running:
 ```
@@ -122,7 +126,7 @@ createWalletInstance = async () => {
 
   const config = await CoreLGDynamicObject.newInstance();
 
-  //Instantiate wallet 
+  //Instantiate wallet
   console.log(" >>> createWallet");
   const wallet = await CoreLGWalletPool.createWallet(
     walletPoolInstance,

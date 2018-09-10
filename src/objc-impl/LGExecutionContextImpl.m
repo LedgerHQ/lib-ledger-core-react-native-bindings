@@ -2,7 +2,8 @@
 #import "../objc/LGRunnable.h"
 
 @implementation LGExecutionContextImpl
-
+@synthesize resolve = _resolve;
+@synthesize reject = _reject;
 - (instancetype)initContext:(BOOL)isSerialized {
     self = [super init];
     if (self) {

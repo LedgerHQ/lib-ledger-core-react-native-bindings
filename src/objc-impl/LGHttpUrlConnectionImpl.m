@@ -46,10 +46,23 @@
 */
 - (nonnull LGHttpReadBodyResult *)readBody
 {
+    
     LGError *objcError = nil;
     if (self.error) {
         objcError = [[LGError alloc] initWithCode:(LGErrorCode)[self.error code] message:[self.error description]];
     }
+    //LGHttpReadBodyResult *body = [[LGHttpReadBodyResult alloc] initWithError:objcError data:[self.data bytes]];
+    
+    NSError *error;
+    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:self.data options:0 error:&error];
+    //NSLog(@"=================================================");
+    //NSLog(@"%@", jsonDict);
+    //NSLog(@"=================================================");
+    NSString *jsonString = [NSString stringWithFormat:@"%@", jsonDict];
+    //NSLog(@"====================***************************=============================");
+    //NSLog(@"%@", jsonString);
+    //NSLog(@"====================***************************=============================");
+    
     LGHttpReadBodyResult *body = [[LGHttpReadBodyResult alloc] initWithError:objcError data:self.data];
     return body;
 }
