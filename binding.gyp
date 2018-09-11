@@ -1,8 +1,8 @@
 {
 	'variables': {
-		'core_library%': "..",
+		'core_library%': ".",
 		'run_path%': "lib",
-		'header_path%': "../src/objc",
+		'header_path%': "src/objc",
 	},
 	'targets': [
 		{
@@ -10,12 +10,12 @@
 			'type': 'static_library',
 			'conditions': [],
 			'dependencies': [
-				'../djinni/support-lib/support_lib.gyp:djinni_objc'
+				'djinni/support-lib/support_lib.gyp:djinni_objc'
 			],
 			'sources': [
-				"<!@(python glob.py ../src/objc *.h *.m *.mm)",
-				"<!@(python glob.py ../src/objcpp *.h *.m *.mm)",
-                #"<!@(python glob.py ../src/objc-impl *.h *.m *.mm)",
+				"<!@(python glob.py src/objc *.h *.m *.mm)",
+				"<!@(python glob.py src/objcpp *.h *.m *.mm)",
+        #"<!@(python glob.py src/objc-impl *.h *.m *.mm)",
 			],
             'include_dirs': [
 				"<@(core_library)/include",

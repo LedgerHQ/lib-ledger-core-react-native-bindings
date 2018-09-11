@@ -4,23 +4,21 @@ This repository provides a xcodeproj which represents a react native binding to 
 ## Project Structure
 ```
 .
-├── include                 # includes for Ledger Core Library
-├── src                     # bindings sources
-    ├── objc                # bindings objective-c (generated automatically)
-    ├── objc-cpp            # used by bindings objective-c (generated automatically)
-    ├── objc-impl           # implementations of platform specific interfaces
-    ├── java                # used by bindings java (generated automatically)
-    ├── react-native-ios    # bindings react native ios (generated automatically)
-    ├── react-native-android# bindings react native android (generated automatically)
-
-├── LibLedgerCore           # react native binding build scripts and artifacts
-    ├── binding.gyp         # clled during yarn phase, generates static libraries
-    ├── Makefile            # called during make phase, generates binding.xcodeproj
-    ├── build               # static libraries location
-    ├── build_ios           # binding.xcodeproj location
-    ├── ios                 # contains react native ios binding (xcodeproj)
-        ├── RNLibLedgerCore.xcodeproj
-    ├── android             # contains react native android binding (gradle)
+├── include                           # includes for Ledger Core Library
+└── src                               # bindings sources
+    ├── objc                          # bindings objective-c (generated automatically)
+    ├── objc-cpp                      # used by bindings objective-c (generated automatically)
+    ├── objc-impl                     # implementations of platform specific interfaces
+    ├── java                          # used by bindings java (generated automatically)
+    ├── react-native-ios              # bindings react native ios (generated automatically)
+    ├── react-native-android          # bindings react native android (generated automatically)
+    ├── binding.gyp                   # clled during yarn phase, generates static libraries
+    ├── Makefile                      # called during make phase, generates binding.xcodeproj
+    ├── build                         # static libraries location
+    ├── build_ios                     # binding.xcodeproj location
+    ├── ios                           # contains react native ios binding (xcodeproj)
+    │   └── RNLibLedgerCore.xcodeproj
+    └── android                       # contains react native android binding (gradle)
 ```
 ## Clone project
 
@@ -34,7 +32,7 @@ git submodule update --init
 ```
 ## Dependencies
 
-Under `LibLedgerCore` install all dependencies:
+Install all dependencies:
 ```
 yarn
 ```
