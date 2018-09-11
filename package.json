@@ -1,7 +1,13 @@
 {
   "name": "@ledgerhq/react-native-ledger-core",
-  "version": "0.0.1",
+  "description": "Ledger Core Library bindings for React Native",
+  "version": "0.1.0",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LedgerHQ/lib-ledger-core-node-bindings"
+  },
+  "main": "index.js",
   "scripts": {
     "preinstall": "python preinstall.py"
   },
