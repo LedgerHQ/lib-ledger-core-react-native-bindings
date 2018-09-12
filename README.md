@@ -4,21 +4,27 @@ This repository provides a xcodeproj which represents a react native binding to 
 ## Project Structure
 ```
 .
-├── include                           # includes for Ledger Core Library
-└── src                               # bindings sources
-    ├── objc                          # bindings objective-c (generated automatically)
-    ├── objc-cpp                      # used by bindings objective-c (generated automatically)
-    ├── objc-impl                     # implementations of platform specific interfaces
-    ├── java                          # used by bindings java (generated automatically)
-    ├── react-native-ios              # bindings react native ios (generated automatically)
-    ├── react-native-android          # bindings react native android (generated automatically)
-    ├── binding.gyp                   # clled during yarn phase, generates static libraries
-    ├── Makefile                      # called during make phase, generates binding.xcodeproj
-    ├── build                         # static libraries location
-    ├── build_ios                     # binding.xcodeproj location
-    ├── ios                           # contains react native ios binding (xcodeproj)
-    │   └── RNLibLedgerCore.xcodeproj
-    └── android                       # contains react native android binding (gradle)
+├── include                       # includes for Ledger Core
+├── binding.gyp                   # clled during yarn phase, generates static libraries
+├── Makefile                      # called during make phase, generates binding.xcodeproj
+├── build                         # static libraries location
+├── build_ios                     # binding.xcodeproj location
+├── support-lib                   # sources for djinni objc support
+├── ios                           # contains react native ios binding (xcodeproj)
+│   |── RNLibLedgerCore.xcodeproj
+│   └── Sources
+│   │   ├── objc                  # bindings objective-c (generated automatically)
+│   │   ├── objc-cpp              # used by bindings objective-c (generated automatically)
+│   │   ├── objc-impl             # implementations of platform specific interfaces
+│   │   ├── java                  # used by bindings java (generated automatically)
+│   │   └── react-native-ios      # bindings react native ios (generated automatically)
+│   └── Libraries                 # contains dynamic libraries (libledger-core.dylib)             
+│
+└── android                       # contains react native android binding (gradle)
+    │── src/main/java             
+    │    ├── co/ledger/core        # bindings java
+    │    └── com/ledger/reactnative# bindings react native
+    └── libs                       # contains shared libraries (libledger-core.so built with jni support)             
 ```
 ## Clone project
 
@@ -30,43 +36,58 @@ If you cloned this repository but without `--recurse-submodules` option, make su
 git submodule init
 git submodule update --init
 ```
-## Dependencies
+## Use React Native iOS binding
 
-Install all dependencies:
-```
-yarn
-```
-This will also build the objective-c binding static libraries that RN binding is using. Generated artifacts are under `build`
-
-## Create binding.xcodeproj
-
-To generate the xcodeproj that will be handling the objective-c binding part, run:
-```
-make
-```
-This will generate a `binding.xcodeproj` under `build_ios`.
-
-### Use React Native binding
-
-Once set as described above, to use this react native binding:
- - drag and drop `RNLibLedgerCore.xcodeproj` under your `Libraries`'s xcodeproj,
+ - add `RNLibLedgerCore.xcodeproj` under your `Libraries`'s xcodeproj,
  - add `RNLibLedgerCore` to your `Target Dependencies`'s xcodeproj section,
  - add `libRNLibLedgerCore.a` to your `Link Binary With Libraries`'s xcodeproj section,
- - add `libledger-core.dylib` (under `LibLedgerCore/lib`) to your `Frameworks`'s and `Embeded Binaries` xcodeproj sections,
+ - add `libledger-core.dylib` (under `ios/Libraries`) to your `Frameworks`'s and `Embeded Binaries` xcodeproj sections,
  - add dynamic library's path to `Library Search Paths` section: `$(SRCROOT)/PATH_TO_DYLIB`.
+
+
+## Use React Native Android binding
+
+  - include `react-native-ledger-core` in your app's gradle project, in `settings.gradle` add :
+    ```
+    include ':react-native-ledger-core'
+    project(':react-native-ledger-core').projectDir = new File(rootProject.projectDir, '../node_modules/@ledgerhq/react-native-ledger-core/android')
+    ```
+
+  - add `react-native-ledger-core` to your app module's dependencies, in `build.gradle` add :
+    ```
+    compile project(':react-native-ledger-core')
+    ```
+  - load shared library in your app, e.g. in your `MainApplication.java` add:
+  ```
+  static {
+    try {
+      System.loadLibrary("ledger-core");
+    } catch (UnsatisfiedLinkError e) {
+      System.err.println("ledger-core native library failed to load: " + e);
+      System.exit(1);
+    }
+  }
+  ```
+  - export package by adding `RCTCoreBindingPackage` to list of packages of your `MainApplication.java`
+
 
 ## Call binding from JS side
 
-Import native modules:
-```
-import { NativeModules } from "react-native";
-```
-Then you can access the native module :
-```
-NativeModules.ModuleName
-```
-Native Module's name is the one of corresponding react native binding interface's name which is located under `src/react-native`, for example to access native module of a wallet pool (src/react-native/RCTCoreLGWalletPool.h) you can call fron JS side: `NativeModules.CoreLGWalletPool`
-### Example
+   Import native modules:
+   ```
+   import { NativeModules } from "react-native";
+   ```
+   Then you can access the native module :
+   ```
+   NativeModules.ModuleName
+   ```
+### iOS
+   Native Module's name is the one of corresponding react native binding interface's name which is located under `ios/Sources/react-native-ios`, for example to access native module of a wallet pool (ios/Sources/react-native-ios/RCTCoreLGWalletPool.h) you can call from JS side: `NativeModules.CoreLGWalletPool`
+### Android
+  Same but classes are the ones located under `android/src/main/java/com/ledger/reactnative`, for example you can call from JS side: `NativeModules.CoreWalletPool`
+  (This will change later so modules will have same name)
+
+### Example (iOS)
 ```
 import { NativeModules } from "react-native";
 const {
