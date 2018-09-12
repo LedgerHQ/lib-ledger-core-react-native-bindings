@@ -11,7 +11,7 @@
   "scripts": {
     "preinstall": "python preinstall.py"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react-native": "0.55.4"
   },
   "devDependencies": {}
