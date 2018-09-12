@@ -1,6 +1,6 @@
 # React Native Binding for Ledger Core Library
 
-This repository provides a xcodeproj which represents a react native binding to [Ledger Core Library](https://github.com/LedgerHQ/lib-ledger-core)
+This repository provides a react native binding to [Ledger Core Library](https://github.com/LedgerHQ/lib-ledger-core)
 ## Project Structure
 ```
 .
@@ -26,16 +26,7 @@ This repository provides a xcodeproj which represents a react native binding to 
     │    └── com/ledger/reactnative# bindings react native
     └── libs                       # contains shared libraries (libledger-core.so built with jni support)             
 ```
-## Clone project
 
-```
-git clone --recurse-submodules https://github.com/LedgerHQ/lib-ledger-core-react-native-bindings
-```
-If you cloned this repository but without `--recurse-submodules` option, make sure to init all submodules by running:
-```
-git submodule init
-git submodule update --init
-```
 ## Use React Native iOS binding
 
  - add `RNLibLedgerCore.xcodeproj` under your `Libraries`'s xcodeproj,
