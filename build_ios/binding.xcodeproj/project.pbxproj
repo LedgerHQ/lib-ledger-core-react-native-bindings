@@ -90,7 +90,7 @@
 		AF3EF20156E4190EFA905AD2 /* LGBitcoinLikeOperator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 73E708CEAE459719CB82CA5A /* LGBitcoinLikeOperator.mm */; };
 		B2B07C27A20B0BD0D83E968B /* LGHttpReadBodyResult.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24521FAE427632A4F71E4DDF /* LGHttpReadBodyResult.mm */; };
 		B7BB1731803896DCFDB69CAB /* LGWalletListCallback+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13505A7D1B32ED5A76A8F05D /* LGWalletListCallback+Private.mm */; };
-		B9D858FC21480FC20007703A /* libdjinni_objc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D8589121480C6A0007703A /* libdjinni_objc.a */; };
+		B9D8594D2148E5DB0007703A /* libdjinni_objc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D859482148E5BE0007703A /* libdjinni_objc.a */; };
 		BAC39CE7DB8E7DAD8D95A3F1 /* LGBlock.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1EC23935F23B7279C6DA6D0C /* LGBlock.mm */; };
 		BD080C7FD06AD3E190B01510 /* LGLogger+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DEFB8BE6776C8E26C7384 /* LGLogger+Private.mm */; };
 		BF003C241AC26F5D4733D7A0 /* LGEventReceiver+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9FC49D36A2E44FF99287D8B /* LGEventReceiver+Private.mm */; };
@@ -134,32 +134,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B9D8588C21480C6A0007703A /* PBXContainerItemProxy */ = {
+		B9D859472148E5BE0007703A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B9D8588521480C6A0007703A /* support_lib.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DC658C749F521B13A5BDCBBC;
-			remoteInfo = djinni_jni;
-		};
-		B9D8588E21480C6A0007703A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B9D8588521480C6A0007703A /* support_lib.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 830C2426AC54ADA0794D7413;
-			remoteInfo = djinni_jni_main;
-		};
-		B9D8589021480C6A0007703A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B9D8588521480C6A0007703A /* support_lib.xcodeproj */;
+			containerPortal = B9D859432148E5BD0007703A /* support_lib.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 0C99AA4F95316AA552A79C55;
-			remoteInfo = djinni_objc;
-		};
-		B9D8589221480C780007703A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B9D8588521480C6A0007703A /* support_lib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D8395115E9C30FE491C2AC03;
 			remoteInfo = djinni_objc;
 		};
 /* End PBXContainerItemProxy section */
@@ -421,8 +400,7 @@
 		B8370405628B2C6983E3A6E9 /* LGHttpReadBodyResult+Private.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGHttpReadBodyResult+Private.mm"; sourceTree = "<group>"; };
 		B918E47ACD3D918733CB6FD9 /* LGBitcoinLikeExtendedPublicKey+Private.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGBitcoinLikeExtendedPublicKey+Private.mm"; sourceTree = "<group>"; };
 		B9A7AE98E340303D912B1D74 /* LGEthereumLikeWallet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGEthereumLikeWallet.h; sourceTree = "<group>"; };
-		B9D8588321480C280007703A /* djinni_objc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = djinni_objc.a; path = build/Release/djinni_objc.a; sourceTree = "<group>"; };
-		B9D8588521480C6A0007703A /* support_lib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = support_lib.xcodeproj; path = "djinni/support-lib/support_lib.xcodeproj"; sourceTree = "<group>"; };
+		B9D859432148E5BD0007703A /* support_lib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = support_lib.xcodeproj; path = "build_ios/support-lib/support_lib.xcodeproj"; sourceTree = "<group>"; };
 		B9DE47E4ED6BA1D34CE568B5 /* LGRoundingMode+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LGRoundingMode+Private.h"; sourceTree = "<group>"; };
 		BA919BEDAB614162AD8C83D5 /* LGSynchronizerEngines.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LGSynchronizerEngines.mm; sourceTree = "<group>"; };
 		BABBC03A7D7447E0C935347D /* LGSynchronizerEngines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSynchronizerEngines.h; sourceTree = "<group>"; };
@@ -518,7 +496,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9D858FC21480FC20007703A /* libdjinni_objc.a in Frameworks */,
+				B9D8594D2148E5DB0007703A /* libdjinni_objc.a in Frameworks */,
 				3FAD373DA9F38FE0CCE3C77B /* libledger-core.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,7 +516,7 @@
 		74FB431A6F457CFAA99DF565 = {
 			isa = PBXGroup;
 			children = (
-				B9D8587521480A440007703A /* Libraries */,
+				B9D859222148E3180007703A /* Libraries */,
 				F3DC3C149E559D45475AF4C1 /* Source */,
 				8E2C455CD2C3383F3F1A7AFE /* Frameworks */,
 				A7DBF76DB3225003EF7F84A4 /* Products */,
@@ -690,7 +668,6 @@
 		8E2C455CD2C3383F3F1A7AFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B9D8588321480C280007703A /* djinni_objc.a */,
 				EBD34304E6FA5CF33FFD1B14 /* libledger-core.dylib */,
 			);
 			name = Frameworks;
@@ -704,20 +681,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B9D8587521480A440007703A /* Libraries */ = {
+		B9D859222148E3180007703A /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				B9D8588521480C6A0007703A /* support_lib.xcodeproj */,
+				B9D859432148E5BD0007703A /* support_lib.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
 		};
-		B9D8588621480C6A0007703A /* Products */ = {
+		B9D859442148E5BD0007703A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B9D8588D21480C6A0007703A /* libdjinni_jni.a */,
-				B9D8588F21480C6A0007703A /* libdjinni_jni_main.a */,
-				B9D8589121480C6A0007703A /* libdjinni_objc.a */,
+				B9D859482148E5BE0007703A /* libdjinni_objc.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -958,7 +933,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B9D8589321480C780007703A /* PBXTargetDependency */,
 			);
 			name = "libledger-core-objc";
 			productName = "ledger-core-objc";
@@ -984,8 +958,8 @@
 			projectDirPath = ..;
 			projectReferences = (
 				{
-					ProductGroup = B9D8588621480C6A0007703A /* Products */;
-					ProjectRef = B9D8588521480C6A0007703A /* support_lib.xcodeproj */;
+					ProductGroup = B9D859442148E5BD0007703A /* Products */;
+					ProjectRef = B9D859432148E5BD0007703A /* support_lib.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -996,25 +970,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		B9D8588D21480C6A0007703A /* libdjinni_jni.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libdjinni_jni.a;
-			remoteRef = B9D8588C21480C6A0007703A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B9D8588F21480C6A0007703A /* libdjinni_jni_main.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libdjinni_jni_main.a;
-			remoteRef = B9D8588E21480C6A0007703A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B9D8589121480C6A0007703A /* libdjinni_objc.a */ = {
+		B9D859482148E5BE0007703A /* libdjinni_objc.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libdjinni_objc.a;
-			remoteRef = B9D8589021480C6A0007703A /* PBXContainerItemProxy */;
+			remoteRef = B9D859472148E5BE0007703A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1151,14 +1111,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		B9D8589321480C780007703A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = djinni_objc;
-			targetProxy = B9D8589221480C780007703A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
 		3CE3E5AE0E4854B72B39C9D2 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1172,12 +1124,9 @@
 				HEADER_SEARCH_PATHS = (
 					ios/Sources/include,
 					ios/Sources/objc,
-					"../djinni/support-lib/objc",
+					"support-lib/objc",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					ios/Libraries/x86,
-					"$(PROJECT_DIR)/build/Release",
-				);
+				LIBRARY_SEARCH_PATHS = ios/Libraries/x86;
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",
@@ -1219,12 +1168,9 @@
 				HEADER_SEARCH_PATHS = (
 					ios/Sources/include,
 					ios/Sources/objc,
-					"../djinni/support-lib/objc",
+					"support-lib/objc",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					ios/Libraries/x86,
-					"$(PROJECT_DIR)/build/Release",
-				);
+				LIBRARY_SEARCH_PATHS = ios/Libraries/x86;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-Wall",

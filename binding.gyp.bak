@@ -10,7 +10,7 @@
 			'type': 'static_library',
 			'conditions': [],
 			'dependencies': [
-				'../djinni/support-lib/support_lib.gyp:djinni_objc'
+				'support-lib/support_lib.gyp:djinni_objc'
 			],
 			'sources': [
 				"<!@(python glob.py ios/Sources/objc *.h *.m *.mm)",
