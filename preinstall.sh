@@ -41,7 +41,7 @@ function dl() {
 
   if ! curl \
     --fail \
-    --max-time 10 \
+    --max-time 120 \
     --output "$outputFile" \
     "$url"; \
   then
