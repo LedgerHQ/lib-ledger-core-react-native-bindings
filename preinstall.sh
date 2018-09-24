@@ -15,6 +15,7 @@ function main() {
   dl "libledger-core.dylib"   "ios/x86_64"            "ios/Libraries"   "x86"
   dl "libledger-core.dylib"   "ios/armv7"             "ios/Libraries"
   dl "libledger-core.dylib"   "ios/arm64"             "ios/Libraries"
+  dl "libledger-core.dylib"   "ios/universal"         "ios/Libraries"
   dl "libledger-core.so"      "android/x86"           "android/libs"
   dl "libledger-core.so"      "android/armeabi-v7a"   "android/libs"
   dl "libledger-core.so"      "android/arm64-v8a"     "android/libs"
