@@ -27,6 +27,7 @@
     if (error)
     {
         self.reject(@"RCTCoreLGAccountListCallback Error", error.message, nil);
+        return;
     }
 
     NSMutableArray *converted_result = [[NSMutableArray alloc] init];

@@ -27,6 +27,7 @@
     if (error)
     {
         self.reject(@"RCTCoreLGWalletCallback Error", error.message, nil);
+        return;
     }
 
     NSString *uuid = [[NSUUID UUID] UUIDString];

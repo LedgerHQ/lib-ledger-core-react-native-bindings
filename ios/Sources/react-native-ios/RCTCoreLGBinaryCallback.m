@@ -27,6 +27,7 @@
     if (error)
     {
         self.reject(@"RCTCoreLGBinaryCallback Error", error.message, nil);
+        return;
     }
 
 

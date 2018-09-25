@@ -27,6 +27,7 @@
     if (error)
     {
         self.reject(@"RCTCoreLGBlockCallback Error", error.message, nil);
+        return;
     }
 
     NSString *uuid = [[NSUUID UUID] UUIDString];

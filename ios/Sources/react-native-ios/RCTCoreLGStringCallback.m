@@ -27,6 +27,7 @@
     if (error)
     {
         self.reject(@"RCTCoreLGStringCallback Error", error.message, nil);
+        return;
     }
 
 

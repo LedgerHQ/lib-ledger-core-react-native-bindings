@@ -27,6 +27,7 @@
     if (error)
     {
         self.reject(@"RCTCoreLGExtendedKeyAccountCreationInfoCallback Error", error.message, nil);
+        return;
     }
 
     NSString *uuid = [[NSUUID UUID] UUIDString];
