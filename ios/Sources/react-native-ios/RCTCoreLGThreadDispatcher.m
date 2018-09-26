@@ -184,7 +184,7 @@ RCT_REMAP_METHOD(newLock,newLock:(NSDictionary *)currentInstance WithResolver:(R
     }
 
 }
-RCT_REMAP_METHOD(newInstace, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGThreadDispatcherImpl *objcResult = [[LGThreadDispatcherImpl alloc] init];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     [self.objcImplementations setObject:objcResult forKey:uuid];

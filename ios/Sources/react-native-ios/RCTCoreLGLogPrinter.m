@@ -196,7 +196,7 @@ RCT_REMAP_METHOD(getContext,getContext:(NSDictionary *)currentInstance WithResol
     }
 
 }
-RCT_REMAP_METHOD(newInstace, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGLogPrinterImpl *objcResult = [[LGLogPrinterImpl alloc] init];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     [self.objcImplementations setObject:objcResult forKey:uuid];

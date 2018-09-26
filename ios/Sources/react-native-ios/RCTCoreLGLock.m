@@ -115,7 +115,7 @@ RCT_REMAP_METHOD(unlock,unlock:(NSDictionary *)currentInstance WithResolver:(RCT
     [currentInstanceObj unlock];
 
 }
-RCT_REMAP_METHOD(newInstace, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGLockImpl *objcResult = [[LGLockImpl alloc] init];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     [self.objcImplementations setObject:objcResult forKey:uuid];
