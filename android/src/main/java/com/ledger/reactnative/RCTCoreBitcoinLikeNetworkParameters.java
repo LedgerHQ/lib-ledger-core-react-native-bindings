@@ -182,7 +182,7 @@ public class RCTCoreBitcoinLikeNetworkParameters extends ReactContextBaseJavaMod
         if (uid.length() > 0)
         {
             BitcoinLikeNetworkParameters javaObj = this.javaObjects.get(uid);
-            long result = javaObj.getDustAmount();
+            double result = javaObj.getDustAmount();
             promise.resolve(result);
         }
         else
@@ -230,7 +230,7 @@ public class RCTCoreBitcoinLikeNetworkParameters extends ReactContextBaseJavaMod
         if (uid.length() > 0)
         {
             BitcoinLikeNetworkParameters javaObj = this.javaObjects.get(uid);
-            long result = javaObj.getTimestampDelay();
+            double result = javaObj.getTimestampDelay();
             promise.resolve(result);
         }
         else
