@@ -122,8 +122,7 @@ RCT_REMAP_METHOD(getTime,getTime:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", error, nil);
     }
     NSDate * objcResult = [currentInstanceObj getTime];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    NSISO8601DateFormatter *dateFormatter = [[NSISO8601DateFormatter alloc] init];
     NSString *objcResultDate = [dateFormatter stringFromDate:objcResult];
     NSDictionary *result = @{@"value" : objcResultDate};
     if(result)
