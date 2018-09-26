@@ -126,7 +126,9 @@ public class RCTCoreBlock extends ReactContextBaseJavaModule {
         {
             Block javaObj = this.javaObjects.get(uid);
             Date result = javaObj.getTime();
-            promise.resolve(result);
+            DateFormat resultDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            String converted_result = dateFormat.format(result);
+            promise.resolve(converted_result);
         }
         else
         {
@@ -157,7 +159,7 @@ public class RCTCoreBlock extends ReactContextBaseJavaModule {
         if (uid.length() > 0)
         {
             Block javaObj = this.javaObjects.get(uid);
-            long result = javaObj.getHeight();
+            double result = javaObj.getHeight();
             promise.resolve(result);
         }
         else
