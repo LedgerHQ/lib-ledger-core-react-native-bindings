@@ -139,7 +139,7 @@ RCT_REMAP_METHOD(getPushedData,getPushedData:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", error, nil);
     }
     NSData * objcResult = [currentInstanceObj getPushedData];
-    NSDictionary *result = @{@"value" : objcResult};
+    NSDictionary *result = @{@"value" : objcResult.description};
     if(result)
     {
         resolve(result);

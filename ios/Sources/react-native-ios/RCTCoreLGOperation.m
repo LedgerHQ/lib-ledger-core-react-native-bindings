@@ -368,7 +368,7 @@ RCT_REMAP_METHOD(getBlockHeight,getBlockHeight:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", error, nil);
     }
     NSNumber * objcResult = [currentInstanceObj getBlockHeight];
-    NSDictionary *result = @{@"value" : objcResult};
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);

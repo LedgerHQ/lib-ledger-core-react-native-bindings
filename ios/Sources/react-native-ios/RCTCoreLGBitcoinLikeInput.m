@@ -273,7 +273,7 @@ RCT_REMAP_METHOD(getPreviousOutputIndex,getPreviousOutputIndex:(NSDictionary *)c
         reject(@"impl_call_error", error, nil);
     }
     NSNumber * objcResult = [currentInstanceObj getPreviousOutputIndex];
-    NSDictionary *result = @{@"value" : objcResult};
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);

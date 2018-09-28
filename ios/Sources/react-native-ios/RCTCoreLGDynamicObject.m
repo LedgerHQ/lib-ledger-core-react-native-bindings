@@ -386,7 +386,7 @@ RCT_REMAP_METHOD(getInt,getInt:(NSDictionary *)currentInstance withParams:(nonnu
         reject(@"impl_call_error", error, nil);
     }
     NSNumber * objcResult = [currentInstanceObj getInt:key];
-    NSDictionary *result = @{@"value" : objcResult};
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);
@@ -415,7 +415,7 @@ RCT_REMAP_METHOD(getLong,getLong:(NSDictionary *)currentInstance withParams:(non
         reject(@"impl_call_error", error, nil);
     }
     NSNumber * objcResult = [currentInstanceObj getLong:key];
-    NSDictionary *result = @{@"value" : objcResult};
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);
@@ -444,7 +444,7 @@ RCT_REMAP_METHOD(getDouble,getDouble:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", error, nil);
     }
     NSNumber * objcResult = [currentInstanceObj getDouble:key];
-    NSDictionary *result = @{@"value" : objcResult};
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);
@@ -473,7 +473,7 @@ RCT_REMAP_METHOD(getData,getData:(NSDictionary *)currentInstance withParams:(non
         reject(@"impl_call_error", error, nil);
     }
     NSData * objcResult = [currentInstanceObj getData:key];
-    NSDictionary *result = @{@"value" : objcResult};
+    NSDictionary *result = @{@"value" : objcResult.description};
     if(result)
     {
         resolve(result);
@@ -502,7 +502,7 @@ RCT_REMAP_METHOD(getBoolean,getBoolean:(NSDictionary *)currentInstance withParam
         reject(@"impl_call_error", error, nil);
     }
     NSNumber * objcResult = [currentInstanceObj getBoolean:key];
-    NSDictionary *result = @{@"value" : objcResult};
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);

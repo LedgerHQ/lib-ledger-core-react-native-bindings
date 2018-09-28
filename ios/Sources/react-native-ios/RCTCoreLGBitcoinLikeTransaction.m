@@ -273,7 +273,7 @@ RCT_REMAP_METHOD(getTimestamp,getTimestamp:(NSDictionary *)currentInstance WithR
         reject(@"impl_call_error", error, nil);
     }
     NSNumber * objcResult = [currentInstanceObj getTimestamp];
-    NSDictionary *result = @{@"value" : objcResult};
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);
@@ -373,7 +373,7 @@ RCT_REMAP_METHOD(getWitness,getWitness:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", error, nil);
     }
     NSData * objcResult = [currentInstanceObj getWitness];
-    NSDictionary *result = @{@"value" : objcResult};
+    NSDictionary *result = @{@"value" : objcResult.description};
     if(result)
     {
         resolve(result);
