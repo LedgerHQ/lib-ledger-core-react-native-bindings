@@ -1142,6 +1142,7 @@
 				);
 				PRODUCT_NAME = "ledger-core-objc";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Release;
@@ -1189,6 +1190,7 @@
 				);
 				PRODUCT_NAME = "ledger-core-objc";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Debug;

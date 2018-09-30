@@ -167,6 +167,7 @@
 				);
 				PRODUCT_NAME = djinni_objc;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Debug;
@@ -218,6 +219,7 @@
 				);
 				PRODUCT_NAME = djinni_objc;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Release;
