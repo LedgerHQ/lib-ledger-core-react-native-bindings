@@ -6,19 +6,23 @@
 #                              Preinstall script
 #
 
-LIB_CORE_VERSION="1.1.0"
+LIB_CORE_VERSION="1.1.1"
 BASE_URL="https://s3-eu-west-1.amazonaws.com/ledger-lib-ledger-core"
 
 function main() {
-  #  lib file                 architecture            destination       arch override
-  #  --------------------------------------------------------------------------------
-  dl "libledger-core.dylib"   "ios/x86_64"            "ios/Libraries"   "x86"
-  dl "libledger-core.dylib"   "ios/armv7"             "ios/Libraries"
-  dl "libledger-core.dylib"   "ios/arm64"             "ios/Libraries"
-  dl "libledger-core.dylib"   "ios/universal"         "ios/Libraries"
-  dl "libledger-core.so"      "android/x86"           "android/libs"
-  dl "libledger-core.so"      "android/armeabi-v7a"   "android/libs"
-  dl "libledger-core.so"      "android/arm64-v8a"     "android/libs"
+  #  lib file                             architecture            destination       arch override
+  #  ---------------------------------------------------------------------------------------------
+  dl "ledger-core.framework/ledger-core"  "ios/x86_64"            "ios/Frameworks"  "x86"
+  dl "ledger-core.framework/Info.plist"   "ios/x86_64"            "ios/Frameworks"  "x86"
+  dl "ledger-core.framework/ledger-core"  "ios/armv7"             "ios/Frameworks"
+  dl "ledger-core.framework/Info.plist"   "ios/armv7"             "ios/Frameworks"
+  dl "ledger-core.framework/ledger-core"  "ios/arm64"             "ios/Frameworks"
+  dl "ledger-core.framework/Info.plist"   "ios/arm64"             "ios/Frameworks"
+  dl "ledger-core.framework/ledger-core"  "ios/universal"         "ios/Frameworks"
+  dl "ledger-core.framework/Info.plist"   "ios/universal"         "ios/Frameworks"
+  dl "libledger-core.so"                  "android/x86"           "android/libs"
+  dl "libledger-core.so"                  "android/armeabi-v7a"   "android/libs"
+  dl "libledger-core.so"                  "android/arm64-v8a"     "android/libs"
 }
 
 function dl() {
@@ -36,8 +40,13 @@ function dl() {
   local outputFolder="$destination/$architecture"
 
   mkdir -p "$outputFolder"
-  local outputFile="$outputFolder/$libFile"
+  local isIOS=0
+  if [[  "$fullArchitecture" =~ "ios" ]]; then
+    isIOS=1
+    mkdir "$outputFolder/ledger-core.framework"
+  fi
 
+  local outputFile="$outputFolder/$libFile"
   echo -e "\\e[32m>> \\e[34m$fullArchitecture\\e[0m - \\e[35m$url\\e[0m"
 
   if ! curl \
@@ -50,7 +59,9 @@ function dl() {
     exit 1
   fi
 
-  chmod +x "$outputFile"
+  if [[ ! "$outputFile" =~ "Info.plist" ]]; then
+    chmod +x "$outputFile"
+  fi
 }
 
 main

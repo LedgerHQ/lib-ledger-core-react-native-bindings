@@ -40,7 +40,6 @@
 		33E6105C754C68903B910D7E /* LGSynchronizerEngines+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D45B3E1F39420578FB0F56E /* LGSynchronizerEngines+Private.mm */; };
 		39DD904A569B386133B78223 /* LGBitcoinLikeScriptChunk+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = D4EE25794DF1029B5BFB9A91 /* LGBitcoinLikeScriptChunk+Private.mm */; };
 		3C160132245FBDC73270D078 /* LGAddressListCallback+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71A37908904FB1C518D4 /* LGAddressListCallback+Private.mm */; };
-		3FAD373DA9F38FE0CCE3C77B /* libledger-core.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD34304E6FA5CF33FFD1B14 /* libledger-core.dylib */; };
 		414178FFBBB3DCBD04E8E0E9 /* LGAccountCreationInfoCallback+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D622CE5EDE730C97D74BB88 /* LGAccountCreationInfoCallback+Private.mm */; };
 		42ADBBE2572CFB977F10F05B /* LGConfigurationDefaults+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = 15B7490C68F49E98A5985FA4 /* LGConfigurationDefaults+Private.mm */; };
 		431A602AC8E7742A274E9FD6 /* LGCurrency+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A85040EEE54B73E8DB13251 /* LGCurrency+Private.mm */; };
@@ -90,6 +89,7 @@
 		AF3EF20156E4190EFA905AD2 /* LGBitcoinLikeOperator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 73E708CEAE459719CB82CA5A /* LGBitcoinLikeOperator.mm */; };
 		B2B07C27A20B0BD0D83E968B /* LGHttpReadBodyResult.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24521FAE427632A4F71E4DDF /* LGHttpReadBodyResult.mm */; };
 		B7BB1731803896DCFDB69CAB /* LGWalletListCallback+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13505A7D1B32ED5A76A8F05D /* LGWalletListCallback+Private.mm */; };
+		B91C431921641EB400E250AB /* ledger-core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91C431821641EB400E250AB /* ledger-core.framework */; };
 		B9D8594D2148E5DB0007703A /* libdjinni_objc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D859482148E5BE0007703A /* libdjinni_objc.a */; };
 		BAC39CE7DB8E7DAD8D95A3F1 /* LGBlock.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1EC23935F23B7279C6DA6D0C /* LGBlock.mm */; };
 		BD080C7FD06AD3E190B01510 /* LGLogger+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DEFB8BE6776C8E26C7384 /* LGLogger+Private.mm */; };
@@ -399,6 +399,7 @@
 		B5D41F4F79127E50B0AE9841 /* LGEthereumLikeWallet+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LGEthereumLikeWallet+Private.h"; sourceTree = "<group>"; };
 		B8370405628B2C6983E3A6E9 /* LGHttpReadBodyResult+Private.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGHttpReadBodyResult+Private.mm"; sourceTree = "<group>"; };
 		B918E47ACD3D918733CB6FD9 /* LGBitcoinLikeExtendedPublicKey+Private.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGBitcoinLikeExtendedPublicKey+Private.mm"; sourceTree = "<group>"; };
+		B91C431821641EB400E250AB /* ledger-core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "ledger-core.framework"; path = "ios/Frameworks/universal/ledger-core.framework"; sourceTree = "<group>"; };
 		B9A7AE98E340303D912B1D74 /* LGEthereumLikeWallet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGEthereumLikeWallet.h; sourceTree = "<group>"; };
 		B9D859432148E5BD0007703A /* support_lib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = support_lib.xcodeproj; path = "build_ios/support-lib/support_lib.xcodeproj"; sourceTree = "<group>"; };
 		B9DE47E4ED6BA1D34CE568B5 /* LGRoundingMode+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LGRoundingMode+Private.h"; sourceTree = "<group>"; };
@@ -456,7 +457,6 @@
 		E9BB19BB8557A56E736C311F /* LGDatabaseBackend+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LGDatabaseBackend+Private.h"; sourceTree = "<group>"; };
 		EA025D3ED36BCCFFFA245026 /* LGBitcoinLikeWalletConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGBitcoinLikeWalletConfiguration.h; sourceTree = "<group>"; };
 		EA224B36A69ED6D94D78ECB7 /* LGBitcoinLikePreparedTransaction.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LGBitcoinLikePreparedTransaction.mm; sourceTree = "<group>"; };
-		EBD34304E6FA5CF33FFD1B14 /* libledger-core.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libledger-core.dylib"; path = "ios/Libraries/x86/libledger-core.dylib"; sourceTree = "<group>"; };
 		EBD4F6712B9B964F05C73225 /* LGBitcoinLikeTransaction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGBitcoinLikeTransaction.h; sourceTree = "<group>"; };
 		EC219D4BE98392E8A130C018 /* LGConfigurationDefaults.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LGConfigurationDefaults.mm; sourceTree = "<group>"; };
 		EE21A24A255D42A5D4A78490 /* LGPoolConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPoolConfiguration.h; sourceTree = "<group>"; };
@@ -496,8 +496,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B91C431921641EB400E250AB /* ledger-core.framework in Frameworks */,
 				B9D8594D2148E5DB0007703A /* libdjinni_objc.a in Frameworks */,
-				3FAD373DA9F38FE0CCE3C77B /* libledger-core.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,7 +668,7 @@
 		8E2C455CD2C3383F3F1A7AFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EBD34304E6FA5CF33FFD1B14 /* libledger-core.dylib */,
+				B91C431821641EB400E250AB /* ledger-core.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1120,6 +1120,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DEAD_CODE_STRIPPING = YES;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ios/Frameworks/universal",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				HEADER_SEARCH_PATHS = (
 					ios/Sources/include,
@@ -1166,6 +1170,10 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ios/Frameworks/universal",
+				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				HEADER_SEARCH_PATHS = (

@@ -44,3 +44,4 @@ buck-out/
 
 # iOS
 /ios/Libraries
+/ios/Frameworks
