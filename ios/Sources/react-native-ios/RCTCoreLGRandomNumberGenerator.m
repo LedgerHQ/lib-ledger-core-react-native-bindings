@@ -94,8 +94,8 @@ RCT_REMAP_METHOD(getRandomInt,getRandomInt:(NSDictionary *)currentInstance WithR
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRandomNumberGeneratorImpl::getRandomInt, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    int32_t objcResult = [currentInstanceObj getRandomInt];
-    NSDictionary *result = @{@"value" : @(objcResult)};
+    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getRandomInt]];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);
@@ -122,8 +122,8 @@ RCT_REMAP_METHOD(getRandomLong,getRandomLong:(NSDictionary *)currentInstance Wit
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRandomNumberGeneratorImpl::getRandomLong, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    int64_t objcResult = [currentInstanceObj getRandomLong];
-    NSDictionary *result = @{@"value" : @(objcResult)};
+    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getRandomLong]];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);
@@ -150,8 +150,8 @@ RCT_REMAP_METHOD(getRandomByte,getRandomByte:(NSDictionary *)currentInstance Wit
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRandomNumberGeneratorImpl::getRandomByte, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    int8_t objcResult = [currentInstanceObj getRandomByte];
-    NSDictionary *result = @{@"value" : @(objcResult)};
+    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getRandomByte]];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);

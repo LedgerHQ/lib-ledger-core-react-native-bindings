@@ -93,8 +93,8 @@ RCT_REMAP_METHOD(getHeight,getHeight:(NSDictionary *)currentInstance WithResolve
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeBlock::getHeight, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    int64_t objcResult = [currentInstanceObj getHeight];
-    NSDictionary *result = @{@"value" : @(objcResult)};
+    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getHeight]];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);

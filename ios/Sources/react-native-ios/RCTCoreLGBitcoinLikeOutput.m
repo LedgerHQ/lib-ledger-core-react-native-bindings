@@ -93,8 +93,8 @@ RCT_REMAP_METHOD(getOutputIndex,getOutputIndex:(NSDictionary *)currentInstance W
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeOutput::getOutputIndex, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    int32_t objcResult = [currentInstanceObj getOutputIndex];
-    NSDictionary *result = @{@"value" : @(objcResult)};
+    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getOutputIndex]];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);

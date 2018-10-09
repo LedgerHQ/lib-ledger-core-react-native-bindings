@@ -65,8 +65,8 @@ RCT_REMAP_METHOD(getStatusCode,getStatusCode:(NSDictionary *)currentInstance Wit
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHttpUrlConnectionImpl::getStatusCode, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    int32_t objcResult = [currentInstanceObj getStatusCode];
-    NSDictionary *result = @{@"value" : @(objcResult)};
+    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getStatusCode]];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);

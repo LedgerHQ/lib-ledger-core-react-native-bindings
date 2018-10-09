@@ -187,8 +187,8 @@ RCT_REMAP_METHOD(getLockTime,getLockTime:(NSDictionary *)currentInstance WithRes
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransaction::getLockTime, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    int64_t objcResult = [currentInstanceObj getLockTime];
-    NSDictionary *result = @{@"value" : @(objcResult)};
+    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getLockTime]];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);
@@ -297,8 +297,8 @@ RCT_REMAP_METHOD(getVersion,getVersion:(NSDictionary *)currentInstance WithResol
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransaction::getVersion, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    int32_t objcResult = [currentInstanceObj getVersion];
-    NSDictionary *result = @{@"value" : @(objcResult)};
+    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getVersion]];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);

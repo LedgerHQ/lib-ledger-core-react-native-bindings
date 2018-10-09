@@ -346,8 +346,8 @@ RCT_REMAP_METHOD(intValue,intValue:(NSDictionary *)currentInstance WithResolver:
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBigInt::intValue, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    int32_t objcResult = [currentInstanceObj intValue];
-    NSDictionary *result = @{@"value" : @(objcResult)};
+    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj intValue]];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);
@@ -377,8 +377,8 @@ RCT_REMAP_METHOD(compare,compare:(NSDictionary *)currentInstance withParams:(NSD
     }
     RCTCoreLGBigInt *rctParam_i = (RCTCoreLGBigInt *)[self.bridge moduleForName:@"CoreLGBigInt"];
     LGBigInt *objcParam_0 = (LGBigInt *)[rctParam_i.objcImplementations objectForKey:i[@"uid"]];
-    int32_t objcResult = [currentInstanceObj compare:objcParam_0];
-    NSDictionary *result = @{@"value" : @(objcResult)};
+    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj compare:objcParam_0]];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);

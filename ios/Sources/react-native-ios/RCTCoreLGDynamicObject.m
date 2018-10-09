@@ -796,8 +796,8 @@ RCT_REMAP_METHOD(size,size:(NSDictionary *)currentInstance WithResolver:(RCTProm
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicObject::size, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    int64_t objcResult = [currentInstanceObj size];
-    NSDictionary *result = @{@"value" : @(objcResult)};
+    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj size]];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);

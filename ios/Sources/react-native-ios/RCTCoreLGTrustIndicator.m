@@ -61,8 +61,8 @@ RCT_REMAP_METHOD(getTrustWeight,getTrustWeight:(NSDictionary *)currentInstance W
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTrustIndicator::getTrustWeight, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    int32_t objcResult = [currentInstanceObj getTrustWeight];
-    NSDictionary *result = @{@"value" : @(objcResult)};
+    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getTrustWeight]];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
     if(result)
     {
         resolve(result);
