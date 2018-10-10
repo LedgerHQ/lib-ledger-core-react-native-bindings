@@ -40,10 +40,8 @@ function dl() {
   local outputFolder="$destination/$architecture"
 
   mkdir -p "$outputFolder"
-  local isIOS=0
   if [[  "$fullArchitecture" =~ "ios" ]]; then
-    isIOS=1
-    mkdir "$outputFolder/ledger-core.framework"
+    mkdir -p "$outputFolder/ledger-core.framework"
   fi
 
   local outputFile="$outputFolder/$libFile"
@@ -59,7 +57,7 @@ function dl() {
     exit 1
   fi
 
-  if [[ ! "$outputFile" =~ "Info.plist" ]]; then
+  if [[ ! "$outputFile" =~ Info.plist ]]; then
     chmod +x "$outputFile"
   fi
 }
