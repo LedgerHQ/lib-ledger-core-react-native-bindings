@@ -62,8 +62,8 @@ RCT_REMAP_METHOD(getDepth,getDepth:(NSDictionary *)currentInstance WithResolver:
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDerivationPath::getDepth, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getDepth]];
-    NSDictionary *result = @{@"value" : @([objcResult intValue])};
+    NSInteger objcResult = [currentInstanceObj getDepth];
+    NSDictionary *result = @{@"value" : @(objcResult)};
     if(result)
     {
         resolve(result);
@@ -87,8 +87,8 @@ RCT_REMAP_METHOD(getChildNum,getChildNum:(NSDictionary *)currentInstance withPar
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDerivationPath::getChildNum, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getChildNum:index]];
-    NSDictionary *result = @{@"value" : @([objcResult intValue])};
+    NSInteger objcResult = [currentInstanceObj getChildNum:index];
+    NSDictionary *result = @{@"value" : @(objcResult)};
     if(result)
     {
         resolve(result);
@@ -115,8 +115,8 @@ RCT_REMAP_METHOD(getUnhardenedChildNum,getUnhardenedChildNum:(NSDictionary *)cur
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDerivationPath::getUnhardenedChildNum, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getUnhardenedChildNum:index]];
-    NSDictionary *result = @{@"value" : @([objcResult intValue])};
+    NSInteger objcResult = [currentInstanceObj getUnhardenedChildNum:index];
+    NSDictionary *result = @{@"value" : @(objcResult)};
     if(result)
     {
         resolve(result);

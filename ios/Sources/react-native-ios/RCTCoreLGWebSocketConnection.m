@@ -122,8 +122,8 @@ RCT_REMAP_METHOD(getConnectionId,getConnectionId:(NSDictionary *)currentInstance
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWebSocketConnection::getConnectionId, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getConnectionId]];
-    NSDictionary *result = @{@"value" : @([objcResult intValue])};
+    NSInteger objcResult = [currentInstanceObj getConnectionId];
+    NSDictionary *result = @{@"value" : @(objcResult)};
     if(result)
     {
         resolve(result);

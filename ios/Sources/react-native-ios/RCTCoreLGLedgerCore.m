@@ -73,8 +73,8 @@ RCT_REMAP_METHOD(getStringVersion,getStringVersionWithResolver:(RCTPromiseResolv
  * @return The integer version of the library
  */
 RCT_REMAP_METHOD(getIntVersion,getIntVersionWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    NSNumber * objcResult = [NSNumber numberWithLongLong:[LGLedgerCore getIntVersion]];
-    NSDictionary *result = @{@"value" : @([objcResult intValue])};
+    NSInteger objcResult = [LGLedgerCore getIntVersion];
+    NSDictionary *result = @{@"value" : @(objcResult)};
     if(result)
     {
         resolve(result);
