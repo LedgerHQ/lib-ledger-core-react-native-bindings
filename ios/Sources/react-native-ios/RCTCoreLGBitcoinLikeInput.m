@@ -438,8 +438,8 @@ RCT_REMAP_METHOD(getSequence,getSequence:(NSDictionary *)currentInstance WithRes
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeInput::getSequence, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getSequence]];
-    NSDictionary *result = @{@"value" : @([objcResult intValue])};
+    NSInteger objcResult = [currentInstanceObj getSequence];
+    NSDictionary *result = @{@"value" : @(objcResult)};
     if(result)
     {
         resolve(result);

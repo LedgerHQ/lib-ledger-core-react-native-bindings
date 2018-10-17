@@ -258,8 +258,8 @@ RCT_REMAP_METHOD(toLong,toLong:(NSDictionary *)currentInstance WithResolver:(RCT
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAmount::toLong, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj toLong]];
-    NSDictionary *result = @{@"value" : @([objcResult intValue])};
+    NSInteger objcResult = [currentInstanceObj toLong];
+    NSDictionary *result = @{@"value" : @(objcResult)};
     if(result)
     {
         resolve(result);

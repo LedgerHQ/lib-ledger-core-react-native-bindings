@@ -154,8 +154,8 @@ RCT_REMAP_METHOD(getStickyTag,getStickyTag:(NSDictionary *)currentInstance WithR
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEvent::getStickyTag, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getStickyTag]];
-    NSDictionary *result = @{@"value" : @([objcResult intValue])};
+    NSInteger objcResult = [currentInstanceObj getStickyTag];
+    NSDictionary *result = @{@"value" : @(objcResult)};
     if(result)
     {
         resolve(result);

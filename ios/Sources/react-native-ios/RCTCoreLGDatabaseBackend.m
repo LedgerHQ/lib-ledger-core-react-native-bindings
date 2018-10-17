@@ -670,8 +670,8 @@ RCT_REMAP_METHOD(getConnectionPoolSize,getConnectionPoolSize:(NSDictionary *)cur
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::getConnectionPoolSize, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    NSNumber * objcResult = [NSNumber numberWithLongLong:[currentInstanceObj getConnectionPoolSize]];
-    NSDictionary *result = @{@"value" : @([objcResult intValue])};
+    NSInteger objcResult = [currentInstanceObj getConnectionPoolSize];
+    NSDictionary *result = @{@"value" : @(objcResult)};
     if(result)
     {
         resolve(result);
