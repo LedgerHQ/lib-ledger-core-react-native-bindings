@@ -92,13 +92,21 @@ public class RCTCoreAccountCreationInfo extends ReactContextBaseJavaModule {
         ArrayList<byte[]> javaParam_3 = new ArrayList<byte[]>();
         for (int i = 0; i <  publicKeys.size(); i++)
         {
-            byte[] publicKeys_elem = publicKeys.getString(i).getBytes();
+            byte [] publicKeys_elem = new byte [publicKeys.getArray(i).size()];
+            for (int publicKeys_i = 0; publicKeys_i < publicKeys.getArray(i).size(); publicKeys_i++)
+            {
+                publicKeys_elem[publicKeys_i] = (byte) publicKeys.getArray(i).getDouble(publicKeys_i);
+            }
             javaParam_3.add(publicKeys_elem);
         }
         ArrayList<byte[]> javaParam_4 = new ArrayList<byte[]>();
         for (int i = 0; i <  chainCodes.size(); i++)
         {
-            byte[] chainCodes_elem = chainCodes.getString(i).getBytes();
+            byte [] chainCodes_elem = new byte [chainCodes.getArray(i).size()];
+            for (int chainCodes_i = 0; chainCodes_i < chainCodes.getArray(i).size(); chainCodes_i++)
+            {
+                chainCodes_elem[chainCodes_i] = (byte) chainCodes.getArray(i).getDouble(chainCodes_i);
+            }
             javaParam_4.add(chainCodes_elem);
         }
         AccountCreationInfo javaResult = new AccountCreationInfo(index, javaParam_1, javaParam_2, javaParam_3, javaParam_4);
