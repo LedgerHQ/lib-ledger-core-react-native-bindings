@@ -164,13 +164,19 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
      *@param callback, ListCallback returning a list of Amount object which represents account's balance
      */
     @ReactMethod
-    public void getBalanceHistory(ReadableMap currentInstance, String start, String end, TimePeriod period, Promise promise) {
+    public void getBalanceHistory(ReadableMap currentInstance, String start, String end, int period, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
 
             Account currentInstanceObj = this.javaObjects.get(sUid);
 
+            if (period < 0 || TimePeriod.values().size() <= period)
+            {
+                promise.reject("Enum error", "Failed to get enum TimePeriod")
+                return;
+            }
+            TimePeriod javaParam_2 = TimePeriod.values()[period];
             RCTCoreAmountListCallback javaParam_3 = RCTCoreAmountListCallback.initWithPromise(promise, this.reactContext);
             currentInstanceObj.getBalanceHistory(start, end, period, javaParam_3);
         }

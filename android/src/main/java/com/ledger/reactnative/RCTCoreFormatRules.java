@@ -77,7 +77,13 @@ public class RCTCoreFormatRules extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void init(RoundingMode roundingMode, int maxNumberOfDecimals, Promise promise) {
+    public void init(int roundingMode, int maxNumberOfDecimals, Promise promise) {
+        if (roundingMode < 0 || RoundingMode.values().size() <= roundingMode)
+        {
+            promise.reject("Enum error", "Failed to get enum RoundingMode")
+            return;
+        }
+        RoundingMode javaParam_0 = RoundingMode.values()[roundingMode];
         FormatRules javaResult = new FormatRules(roundingMode, maxNumberOfDecimals);
 
         String uuid = UUID.randomUUID().toString();

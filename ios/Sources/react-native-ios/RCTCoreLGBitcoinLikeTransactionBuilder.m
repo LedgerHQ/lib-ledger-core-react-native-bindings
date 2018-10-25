@@ -506,11 +506,16 @@ RCT_REMAP_METHOD(reset,reset:(NSDictionary *)currentInstance WithResolver:(RCTPr
 
 }
 
+/**
+ * Parsing unsigned transaction
+ * parsing a tx might change depending on block height we are on (if an update is effective starting from a given hight)
+ */
 RCT_REMAP_METHOD(parseRawUnsignedTransaction,parseRawUnsignedTransactionwithParams:(NSDictionary *)currency
-                                                                    rawTransaction:(nonnull NSData *)rawTransaction withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                                                                    rawTransaction:(nonnull NSData *)rawTransaction
+                                                                currentBlockHeight:(nullable NSNumber *)currentBlockHeight withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     RCTCoreLGCurrency *rctParam_currency = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
     LGCurrency *objcParam_0 = (LGCurrency *)[rctParam_currency.objcImplementations objectForKey:currency[@"uid"]];
-    LGBitcoinLikeTransaction * objcResult = [LGBitcoinLikeTransactionBuilder parseRawUnsignedTransaction:objcParam_0 rawTransaction:rawTransaction];
+    LGBitcoinLikeTransaction * objcResult = [LGBitcoinLikeTransactionBuilder parseRawUnsignedTransaction:objcParam_0 rawTransaction:rawTransaction currentBlockHeight:currentBlockHeight];
 
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeTransaction *rctImpl_objcResult = (RCTCoreLGBitcoinLikeTransaction *)[self.bridge moduleForName:@"CoreLGBitcoinLikeTransaction"];

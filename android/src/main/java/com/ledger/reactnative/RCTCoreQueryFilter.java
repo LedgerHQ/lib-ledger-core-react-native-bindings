@@ -340,9 +340,15 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void trustEq(TrustLevel trust, Promise promise) {
+    public void trustEq(int trust, Promise promise) {
         try
         {
+            if (trust < 0 || TrustLevel.values().size() <= trust)
+            {
+                promise.reject("Enum error", "Failed to get enum TrustLevel")
+                return;
+            }
+            TrustLevel javaParam_0 = TrustLevel.values()[trust];
             QueryFilter javaResult = QueryFilter.trustEq(trust);
 
             String uuid = UUID.randomUUID().toString();
@@ -360,9 +366,15 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void trustNeq(TrustLevel trust, Promise promise) {
+    public void trustNeq(int trust, Promise promise) {
         try
         {
+            if (trust < 0 || TrustLevel.values().size() <= trust)
+            {
+                promise.reject("Enum error", "Failed to get enum TrustLevel")
+                return;
+            }
+            TrustLevel javaParam_0 = TrustLevel.values()[trust];
             QueryFilter javaResult = QueryFilter.trustNeq(trust);
 
             String uuid = UUID.randomUUID().toString();
@@ -784,9 +796,15 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void operationTypeEq(OperationType operationType, Promise promise) {
+    public void operationTypeEq(int operationType, Promise promise) {
         try
         {
+            if (operationType < 0 || OperationType.values().size() <= operationType)
+            {
+                promise.reject("Enum error", "Failed to get enum OperationType")
+                return;
+            }
+            OperationType javaParam_0 = OperationType.values()[operationType];
             QueryFilter javaResult = QueryFilter.operationTypeEq(operationType);
 
             String uuid = UUID.randomUUID().toString();
@@ -804,9 +822,15 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void operationTypeNeq(OperationType operationType, Promise promise) {
+    public void operationTypeNeq(int operationType, Promise promise) {
         try
         {
+            if (operationType < 0 || OperationType.values().size() <= operationType)
+            {
+                promise.reject("Enum error", "Failed to get enum OperationType")
+                return;
+            }
+            OperationType javaParam_0 = OperationType.values()[operationType];
             QueryFilter javaResult = QueryFilter.operationTypeNeq(operationType);
 
             String uuid = UUID.randomUUID().toString();

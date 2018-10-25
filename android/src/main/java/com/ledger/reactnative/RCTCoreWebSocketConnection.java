@@ -122,13 +122,19 @@ public class RCTCoreWebSocketConnection extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void onError(ReadableMap currentInstance, ErrorCode code, String message, Promise promise) {
+    public void onError(ReadableMap currentInstance, int code, String message, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
 
             WebSocketConnection currentInstanceObj = this.javaObjects.get(sUid);
 
+            if (code < 0 || ErrorCode.values().size() <= code)
+            {
+                promise.reject("Enum error", "Failed to get enum ErrorCode")
+                return;
+            }
+            ErrorCode javaParam_0 = ErrorCode.values()[code];
             currentInstanceObj.onError(code, message);
         }
         catch(Exception e)

@@ -76,7 +76,13 @@ public class RCTCoreBitcoinLikeNetworkParameters extends ReactContextBaseJavaMod
     }
 
     @ReactMethod
-    public void init(String Identifier, byte[] P2PKHVersion, byte[] P2SHVersion, byte[] XPUBVersion, BitcoinLikeFeePolicy FeePolicy, long DustAmount, String MessagePrefix, boolean UsesTimestampedTransaction, long TimestampDelay, byte[] SigHash, ReadableArray AdditionalBIPs, Promise promise) {
+    public void init(String Identifier, byte[] P2PKHVersion, byte[] P2SHVersion, byte[] XPUBVersion, int FeePolicy, long DustAmount, String MessagePrefix, boolean UsesTimestampedTransaction, long TimestampDelay, byte[] SigHash, ReadableArray AdditionalBIPs, Promise promise) {
+        if (FeePolicy < 0 || BitcoinLikeFeePolicy.values().size() <= FeePolicy)
+        {
+            promise.reject("Enum error", "Failed to get enum BitcoinLikeFeePolicy")
+            return;
+        }
+        BitcoinLikeFeePolicy javaParam_4 = BitcoinLikeFeePolicy.values()[FeePolicy];
         ArrayList<String> javaParam_10 = new ArrayList<String>();
         for (int i = 0; i <  AdditionalBIPs.size(); i++)
         {

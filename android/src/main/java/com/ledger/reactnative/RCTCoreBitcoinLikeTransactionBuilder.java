@@ -296,13 +296,19 @@ public class RCTCoreBitcoinLikeTransactionBuilder extends ReactContextBaseJavaMo
      * @return A reference on the same builder in order to chain calls.
      */
     @ReactMethod
-    public void pickInputs(ReadableMap currentInstance, BitcoinLikePickingStrategy strategy, int sequence, Promise promise) {
+    public void pickInputs(ReadableMap currentInstance, int strategy, int sequence, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
 
             BitcoinLikeTransactionBuilder currentInstanceObj = this.javaObjects.get(sUid);
 
+            if (strategy < 0 || BitcoinLikePickingStrategy.values().size() <= strategy)
+            {
+                promise.reject("Enum error", "Failed to get enum BitcoinLikePickingStrategy")
+                return;
+            }
+            BitcoinLikePickingStrategy javaParam_0 = BitcoinLikePickingStrategy.values()[strategy];
             BitcoinLikeTransactionBuilder javaResult = currentInstanceObj.pickInputs(strategy, sequence);
 
             String uuid = UUID.randomUUID().toString();
@@ -471,13 +477,17 @@ public class RCTCoreBitcoinLikeTransactionBuilder extends ReactContextBaseJavaMo
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /**
+     * Parsing unsigned transaction
+     * parsing a tx might change depending on block height we are on (if an update is effective starting from a given hight)
+     */
     @ReactMethod
-    public void parseRawUnsignedTransaction(ReadableMap currency, byte[] rawTransaction, Promise promise) {
+    public void parseRawUnsignedTransaction(ReadableMap currency, byte[] rawTransaction, int currentBlockHeight, Promise promise) {
         try
         {
             RCTCoreCurrency rctParam_currency = this.reactContext.getNativeModule(RCTCoreCurrency.class);
             Currency javaParam_0 = rctParam_currency.getJavaObjects().get(currency.getString("uid"));
-            BitcoinLikeTransaction javaResult = BitcoinLikeTransactionBuilder.parseRawUnsignedTransaction(javaParam_0, rawTransaction);
+            BitcoinLikeTransaction javaResult = BitcoinLikeTransactionBuilder.parseRawUnsignedTransaction(javaParam_0, rawTransaction, currentBlockHeight);
 
             String uuid = UUID.randomUUID().toString();
             RCTCoreBitcoinLikeTransaction rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreBitcoinLikeTransaction.class);

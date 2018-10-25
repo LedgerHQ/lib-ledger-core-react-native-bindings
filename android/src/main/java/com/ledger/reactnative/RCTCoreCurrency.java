@@ -81,8 +81,14 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void init(WalletType walletType, String name, int bip44CoinType, String paymentUriScheme, ReadableArray units, Optional<ReadableMap> bitcoinLikeNetworkParameters, Promise promise) {
+    public void init(int walletType, String name, int bip44CoinType, String paymentUriScheme, ReadableArray units, Optional<ReadableMap> bitcoinLikeNetworkParameters, Promise promise) {
         Map<String, ArrayList<String>> implementationsData = new HashMap<String, ArrayList<String>>();
+        if (walletType < 0 || WalletType.values().size() <= walletType)
+        {
+            promise.reject("Enum error", "Failed to get enum WalletType")
+            return;
+        }
+        WalletType javaParam_0 = WalletType.values()[walletType];
         ArrayList<CurrencyUnit> javaParam_4 = new ArrayList<CurrencyUnit>();
         ArrayList<String> javaParam_4_data = new ArrayList<String>();
 
