@@ -340,10 +340,16 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void trustEq(TrustLevel trust, Promise promise) {
+    public void trustEq(int trust, Promise promise) {
         try
         {
-            QueryFilter javaResult = QueryFilter.trustEq(trust);
+            if (trust < 0 || TrustLevel.values().length <= trust)
+            {
+                promise.reject("Enum error", "Failed to get enum TrustLevel");
+                return;
+            }
+            TrustLevel javaParam_0 = TrustLevel.values()[trust];
+            QueryFilter javaResult = QueryFilter.trustEq(javaParam_0);
 
             String uuid = UUID.randomUUID().toString();
             RCTCoreQueryFilter rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreQueryFilter.class);
@@ -360,10 +366,16 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void trustNeq(TrustLevel trust, Promise promise) {
+    public void trustNeq(int trust, Promise promise) {
         try
         {
-            QueryFilter javaResult = QueryFilter.trustNeq(trust);
+            if (trust < 0 || TrustLevel.values().length <= trust)
+            {
+                promise.reject("Enum error", "Failed to get enum TrustLevel");
+                return;
+            }
+            TrustLevel javaParam_0 = TrustLevel.values()[trust];
+            QueryFilter javaResult = QueryFilter.trustNeq(javaParam_0);
 
             String uuid = UUID.randomUUID().toString();
             RCTCoreQueryFilter rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreQueryFilter.class);
@@ -784,10 +796,16 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void operationTypeEq(OperationType operationType, Promise promise) {
+    public void operationTypeEq(int operationType, Promise promise) {
         try
         {
-            QueryFilter javaResult = QueryFilter.operationTypeEq(operationType);
+            if (operationType < 0 || OperationType.values().length <= operationType)
+            {
+                promise.reject("Enum error", "Failed to get enum OperationType");
+                return;
+            }
+            OperationType javaParam_0 = OperationType.values()[operationType];
+            QueryFilter javaResult = QueryFilter.operationTypeEq(javaParam_0);
 
             String uuid = UUID.randomUUID().toString();
             RCTCoreQueryFilter rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreQueryFilter.class);
@@ -804,10 +822,16 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void operationTypeNeq(OperationType operationType, Promise promise) {
+    public void operationTypeNeq(int operationType, Promise promise) {
         try
         {
-            QueryFilter javaResult = QueryFilter.operationTypeNeq(operationType);
+            if (operationType < 0 || OperationType.values().length <= operationType)
+            {
+                promise.reject("Enum error", "Failed to get enum OperationType");
+                return;
+            }
+            OperationType javaParam_0 = OperationType.values()[operationType];
+            QueryFilter javaResult = QueryFilter.operationTypeNeq(javaParam_0);
 
             String uuid = UUID.randomUUID().toString();
             RCTCoreQueryFilter rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreQueryFilter.class);

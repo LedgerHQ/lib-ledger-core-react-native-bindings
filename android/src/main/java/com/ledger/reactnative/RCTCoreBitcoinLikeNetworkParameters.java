@@ -76,14 +76,20 @@ public class RCTCoreBitcoinLikeNetworkParameters extends ReactContextBaseJavaMod
     }
 
     @ReactMethod
-    public void init(String Identifier, byte[] P2PKHVersion, byte[] P2SHVersion, byte[] XPUBVersion, BitcoinLikeFeePolicy FeePolicy, long DustAmount, String MessagePrefix, boolean UsesTimestampedTransaction, long TimestampDelay, byte[] SigHash, ReadableArray AdditionalBIPs, Promise promise) {
+    public void init(String Identifier, byte[] P2PKHVersion, byte[] P2SHVersion, byte[] XPUBVersion, int FeePolicy, long DustAmount, String MessagePrefix, boolean UsesTimestampedTransaction, long TimestampDelay, byte[] SigHash, ReadableArray AdditionalBIPs, Promise promise) {
+        if (FeePolicy < 0 || BitcoinLikeFeePolicy.values().length <= FeePolicy)
+        {
+            promise.reject("Enum error", "Failed to get enum BitcoinLikeFeePolicy");
+            return;
+        }
+        BitcoinLikeFeePolicy javaParam_4 = BitcoinLikeFeePolicy.values()[FeePolicy];
         ArrayList<String> javaParam_10 = new ArrayList<String>();
         for (int i = 0; i <  AdditionalBIPs.size(); i++)
         {
             String AdditionalBIPs_elem = AdditionalBIPs.getString(i);
             javaParam_10.add(AdditionalBIPs_elem);
         }
-        BitcoinLikeNetworkParameters javaResult = new BitcoinLikeNetworkParameters(Identifier, P2PKHVersion, P2SHVersion, XPUBVersion, FeePolicy, DustAmount, MessagePrefix, UsesTimestampedTransaction, TimestampDelay, SigHash, javaParam_10);
+        BitcoinLikeNetworkParameters javaResult = new BitcoinLikeNetworkParameters(Identifier, P2PKHVersion, P2SHVersion, XPUBVersion, javaParam_4, DustAmount, MessagePrefix, UsesTimestampedTransaction, TimestampDelay, SigHash, javaParam_10);
 
         String uuid = UUID.randomUUID().toString();
         this.javaObjects.put(uuid, javaResult);

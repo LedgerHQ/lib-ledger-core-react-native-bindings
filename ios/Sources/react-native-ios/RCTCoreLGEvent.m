@@ -173,11 +173,11 @@ RCT_REMAP_METHOD(getStickyTag,getStickyTag:(NSDictionary *)currentInstance WithR
  *@param payload, DynamicObject object
  *@return Event instance
  */
-RCT_REMAP_METHOD(newInstance,newInstancewithParams:(LGEventCode)code
+RCT_REMAP_METHOD(newInstance,newInstancewithParams:(int)code
                                            payload:(NSDictionary *)payload withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     RCTCoreLGDynamicObject *rctParam_payload = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
     LGDynamicObject *objcParam_1 = (LGDynamicObject *)[rctParam_payload.objcImplementations objectForKey:payload[@"uid"]];
-    LGEvent * objcResult = [LGEvent newInstance:code payload:objcParam_1];
+    LGEvent * objcResult = [LGEvent newInstance:(LGEventCode)code payload:objcParam_1];
 
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGEvent *rctImpl_objcResult = (RCTCoreLGEvent *)[self.bridge moduleForName:@"CoreLGEvent"];

@@ -183,12 +183,18 @@ public class RCTCoreEvent extends ReactContextBaseJavaModule {
      *@return Event instance
      */
     @ReactMethod
-    public void newInstance(EventCode code, ReadableMap payload, Promise promise) {
+    public void newInstance(int code, ReadableMap payload, Promise promise) {
         try
         {
+            if (code < 0 || EventCode.values().length <= code)
+            {
+                promise.reject("Enum error", "Failed to get enum EventCode");
+                return;
+            }
+            EventCode javaParam_0 = EventCode.values()[code];
             RCTCoreDynamicObject rctParam_payload = this.reactContext.getNativeModule(RCTCoreDynamicObject.class);
             DynamicObject javaParam_1 = rctParam_payload.getJavaObjects().get(payload.getString("uid"));
-            Event javaResult = Event.newInstance(code, javaParam_1);
+            Event javaResult = Event.newInstance(javaParam_0, javaParam_1);
 
             String uuid = UUID.randomUUID().toString();
             RCTCoreEvent rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreEvent.class);

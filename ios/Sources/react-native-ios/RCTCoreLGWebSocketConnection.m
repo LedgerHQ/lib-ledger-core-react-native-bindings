@@ -95,7 +95,7 @@ RCT_REMAP_METHOD(onMessage,onMessage:(NSDictionary *)currentInstance withParams:
 
 }
 
-RCT_REMAP_METHOD(onError,onError:(NSDictionary *)currentInstance withParams:(LGErrorCode)code
+RCT_REMAP_METHOD(onError,onError:(NSDictionary *)currentInstance withParams:(int)code
                                                                     message:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -107,7 +107,7 @@ RCT_REMAP_METHOD(onError,onError:(NSDictionary *)currentInstance withParams:(LGE
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWebSocketConnection::onError, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    [currentInstanceObj onError:code message:message];
+    [currentInstanceObj onError:(LGErrorCode)code message:message];
 
 }
 

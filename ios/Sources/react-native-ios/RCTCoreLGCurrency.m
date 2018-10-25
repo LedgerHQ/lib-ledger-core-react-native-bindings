@@ -50,7 +50,7 @@ RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve reject
     [self.objcImplementations removeAllObjects];
     resolve(@(YES));
 }
-RCT_REMAP_METHOD(init, initWithWalletType:(LGWalletType)walletType
+RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
                                      name:(nonnull NSString *)name
                             bip44CoinType:(int)bip44CoinType
                          paymentUriScheme:(nonnull NSString *)paymentUriScheme
@@ -76,7 +76,7 @@ RCT_REMAP_METHOD(init, initWithWalletType:(LGWalletType)walletType
     [implementationsData setObject:bitcoinLikeNetworkParameters[@"uid"] forKey:@"bitcoinLikeNetworkParameters"];
 
 
-    LGCurrency * finalResult = [[LGCurrency alloc] initWithWalletType:walletType name:name bip44CoinType:bip44CoinType paymentUriScheme:paymentUriScheme units:field_4 bitcoinLikeNetworkParameters:field_5];
+    LGCurrency * finalResult = [[LGCurrency alloc] initWithWalletType:(LGWalletType)walletType name:name bip44CoinType:bip44CoinType paymentUriScheme:paymentUriScheme units:field_4 bitcoinLikeNetworkParameters:field_5];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGCurrency *rctImpl = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
     [rctImpl.objcImplementations setObject:finalResult forKey:uuid];

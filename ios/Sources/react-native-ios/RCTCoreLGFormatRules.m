@@ -49,11 +49,11 @@ RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve reject
     [self.objcImplementations removeAllObjects];
     resolve(@(YES));
 }
-RCT_REMAP_METHOD(init, initWithRoundingMode:(LGRoundingMode)roundingMode
+RCT_REMAP_METHOD(init, initWithRoundingMode:(int)roundingMode
                         maxNumberOfDecimals:(int)maxNumberOfDecimals withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
 
 
-    LGFormatRules * finalResult = [[LGFormatRules alloc] initWithRoundingMode:roundingMode maxNumberOfDecimals:maxNumberOfDecimals];
+    LGFormatRules * finalResult = [[LGFormatRules alloc] initWithRoundingMode:(LGRoundingMode)roundingMode maxNumberOfDecimals:maxNumberOfDecimals];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGFormatRules *rctImpl = (RCTCoreLGFormatRules *)[self.bridge moduleForName:@"CoreLGFormatRules"];
     [rctImpl.objcImplementations setObject:finalResult forKey:uuid];

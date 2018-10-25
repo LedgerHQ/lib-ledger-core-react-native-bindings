@@ -49,11 +49,11 @@ RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve reject
     [self.objcImplementations removeAllObjects];
     resolve(@(YES));
 }
-RCT_REMAP_METHOD(init, initWithCode:(LGErrorCode)code
+RCT_REMAP_METHOD(init, initWithCode:(int)code
                             message:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
 
 
-    LGError * finalResult = [[LGError alloc] initWithCode:code message:message];
+    LGError * finalResult = [[LGError alloc] initWithCode:(LGErrorCode)code message:message];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGError *rctImpl = (RCTCoreLGError *)[self.bridge moduleForName:@"CoreLGError"];
     [rctImpl.objcImplementations setObject:finalResult forKey:uuid];

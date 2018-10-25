@@ -297,8 +297,8 @@ RCT_REMAP_METHOD(operationUidNeq,operationUidNeqwithParams:(nonnull NSString *)o
 
 }
 
-RCT_REMAP_METHOD(trustEq,trustEqwithParams:(LGTrustLevel)trust withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    LGQueryFilter * objcResult = [LGQueryFilter trustEq:trust];
+RCT_REMAP_METHOD(trustEq,trustEqwithParams:(int)trust withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    LGQueryFilter * objcResult = [LGQueryFilter trustEq:(LGTrustLevel)trust];
 
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
@@ -316,8 +316,8 @@ RCT_REMAP_METHOD(trustEq,trustEqwithParams:(LGTrustLevel)trust withResolver:(RCT
 
 }
 
-RCT_REMAP_METHOD(trustNeq,trustNeqwithParams:(LGTrustLevel)trust withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    LGQueryFilter * objcResult = [LGQueryFilter trustNeq:trust];
+RCT_REMAP_METHOD(trustNeq,trustNeqwithParams:(int)trust withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    LGQueryFilter * objcResult = [LGQueryFilter trustNeq:(LGTrustLevel)trust];
 
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
@@ -720,8 +720,8 @@ RCT_REMAP_METHOD(blockHeightIsNull,blockHeightIsNullWithResolver:(RCTPromiseReso
 
 }
 
-RCT_REMAP_METHOD(operationTypeEq,operationTypeEqwithParams:(LGOperationType)operationType withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    LGQueryFilter * objcResult = [LGQueryFilter operationTypeEq:operationType];
+RCT_REMAP_METHOD(operationTypeEq,operationTypeEqwithParams:(int)operationType withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    LGQueryFilter * objcResult = [LGQueryFilter operationTypeEq:(LGOperationType)operationType];
 
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
@@ -739,8 +739,8 @@ RCT_REMAP_METHOD(operationTypeEq,operationTypeEqwithParams:(LGOperationType)oper
 
 }
 
-RCT_REMAP_METHOD(operationTypeNeq,operationTypeNeqwithParams:(LGOperationType)operationType withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    LGQueryFilter * objcResult = [LGQueryFilter operationTypeNeq:operationType];
+RCT_REMAP_METHOD(operationTypeNeq,operationTypeNeqwithParams:(int)operationType withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    LGQueryFilter * objcResult = [LGQueryFilter operationTypeNeq:(LGOperationType)operationType];
 
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
