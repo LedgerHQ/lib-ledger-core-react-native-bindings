@@ -303,7 +303,7 @@ RCT_REMAP_METHOD(setMinAmountOnChange,setMinAmountOnChange:(NSDictionary *)curre
  * just use 0xFFFFFF
  * @return A reference on the same builder in order to chain calls.
  */
-RCT_REMAP_METHOD(pickInputs,pickInputs:(NSDictionary *)currentInstance withParams:(LGBitcoinLikePickingStrategy)strategy
+RCT_REMAP_METHOD(pickInputs,pickInputs:(NSDictionary *)currentInstance withParams:(int)strategy
                                                                          sequence:(int)sequence withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -315,7 +315,7 @@ RCT_REMAP_METHOD(pickInputs,pickInputs:(NSDictionary *)currentInstance withParam
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::pickInputs, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    LGBitcoinLikeTransactionBuilder * objcResult = [currentInstanceObj pickInputs:strategy sequence:sequence];
+    LGBitcoinLikeTransactionBuilder * objcResult = [currentInstanceObj pickInputs:(LGBitcoinLikePickingStrategy)strategy sequence:sequence];
 
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeTransactionBuilder *rctImpl_objcResult = (RCTCoreLGBitcoinLikeTransactionBuilder *)[self.bridge moduleForName:@"CoreLGBitcoinLikeTransactionBuilder"];

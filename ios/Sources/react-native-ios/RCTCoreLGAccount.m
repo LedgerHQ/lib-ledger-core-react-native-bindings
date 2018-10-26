@@ -137,7 +137,7 @@ RCT_REMAP_METHOD(getBalance,getBalance:(NSDictionary *)currentInstance WithResol
  */
 RCT_REMAP_METHOD(getBalanceHistory,getBalanceHistory:(NSDictionary *)currentInstance withParams:(nonnull NSString *)start
                                                                                             end:(nonnull NSString *)end
-                                                                                         period:(LGTimePeriod)period withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                                                                                         period:(int)period withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::getBalanceHistory, first argument should be an instance of LGAccount", nil);
@@ -149,7 +149,7 @@ RCT_REMAP_METHOD(getBalanceHistory,getBalanceHistory:(NSDictionary *)currentInst
         reject(@"impl_call_error", error, nil);
     }
     RCTCoreLGAmountListCallback *objcParam_3 = [[RCTCoreLGAmountListCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
-    [currentInstanceObj getBalanceHistory:start end:end period:period callback:objcParam_3];
+    [currentInstanceObj getBalanceHistory:start end:end period:(LGTimePeriod)period callback:objcParam_3];
 
 }
 

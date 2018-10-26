@@ -303,13 +303,13 @@ public class RCTCoreBitcoinLikeTransactionBuilder extends ReactContextBaseJavaMo
 
             BitcoinLikeTransactionBuilder currentInstanceObj = this.javaObjects.get(sUid);
 
-            if (strategy < 0 || BitcoinLikePickingStrategy.values().size() <= strategy)
+            if (strategy < 0 || BitcoinLikePickingStrategy.values().length <= strategy)
             {
-                promise.reject("Enum error", "Failed to get enum BitcoinLikePickingStrategy")
+                promise.reject("Enum error", "Failed to get enum BitcoinLikePickingStrategy");
                 return;
             }
             BitcoinLikePickingStrategy javaParam_0 = BitcoinLikePickingStrategy.values()[strategy];
-            BitcoinLikeTransactionBuilder javaResult = currentInstanceObj.pickInputs(strategy, sequence);
+            BitcoinLikeTransactionBuilder javaResult = currentInstanceObj.pickInputs(javaParam_0, sequence);
 
             String uuid = UUID.randomUUID().toString();
             RCTCoreBitcoinLikeTransactionBuilder rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreBitcoinLikeTransactionBuilder.class);

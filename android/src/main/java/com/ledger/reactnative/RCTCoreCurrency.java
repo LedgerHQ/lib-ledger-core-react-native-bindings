@@ -83,9 +83,9 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
     @ReactMethod
     public void init(int walletType, String name, int bip44CoinType, String paymentUriScheme, ReadableArray units, Optional<ReadableMap> bitcoinLikeNetworkParameters, Promise promise) {
         Map<String, ArrayList<String>> implementationsData = new HashMap<String, ArrayList<String>>();
-        if (walletType < 0 || WalletType.values().size() <= walletType)
+        if (walletType < 0 || WalletType.values().length <= walletType)
         {
-            promise.reject("Enum error", "Failed to get enum WalletType")
+            promise.reject("Enum error", "Failed to get enum WalletType");
             return;
         }
         WalletType javaParam_0 = WalletType.values()[walletType];
@@ -107,7 +107,7 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         ArrayList<String> javaParam_5_tmp = new ArrayList<String>();
         javaParam_5_tmp.add(bitcoinLikeNetworkParameters.get().getString("uid"));
         implementationsData.put("bitcoinLikeNetworkParameters", javaParam_5_tmp);
-        Currency javaResult = new Currency(walletType, name, bip44CoinType, paymentUriScheme, javaParam_4, javaParam_5);
+        Currency javaResult = new Currency(javaParam_0, name, bip44CoinType, paymentUriScheme, javaParam_4, javaParam_5);
 
         String uuid = UUID.randomUUID().toString();
         this.javaObjects.put(uuid, javaResult);

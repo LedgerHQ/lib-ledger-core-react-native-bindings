@@ -77,13 +77,13 @@ public class RCTCoreError extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void init(int code, String message, Promise promise) {
-        if (code < 0 || ErrorCode.values().size() <= code)
+        if (code < 0 || ErrorCode.values().length <= code)
         {
-            promise.reject("Enum error", "Failed to get enum ErrorCode")
+            promise.reject("Enum error", "Failed to get enum ErrorCode");
             return;
         }
         ErrorCode javaParam_0 = ErrorCode.values()[code];
-        Error javaResult = new Error(code, message);
+        Error javaResult = new Error(javaParam_0, message);
 
         String uuid = UUID.randomUUID().toString();
         this.javaObjects.put(uuid, javaResult);

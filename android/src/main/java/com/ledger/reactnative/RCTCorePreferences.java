@@ -270,7 +270,7 @@ public class RCTCorePreferences extends ReactContextBaseJavaModule {
             PreferencesEditor javaResult = currentInstanceObj.edit();
 
             String uuid = UUID.randomUUID().toString();
-            com.ledger.reactnative.RCTCorePreferencesEditor rctImpl_javaResult = this.reactContext.getNativeModule(com.ledger.reactnative.RCTCorePreferencesEditor.class);
+            RCTCorePreferencesEditor rctImpl_javaResult = this.reactContext.getNativeModule(RCTCorePreferencesEditor.class);
             rctImpl_javaResult.getJavaObjects().put(uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCorePreferencesEditor");

@@ -93,13 +93,13 @@ public class RCTCoreOperationQuery extends ReactContextBaseJavaModule {
 
             OperationQuery currentInstanceObj = this.javaObjects.get(sUid);
 
-            if (key < 0 || OperationOrderKey.values().size() <= key)
+            if (key < 0 || OperationOrderKey.values().length <= key)
             {
-                promise.reject("Enum error", "Failed to get enum OperationOrderKey")
+                promise.reject("Enum error", "Failed to get enum OperationOrderKey");
                 return;
             }
             OperationOrderKey javaParam_0 = OperationOrderKey.values()[key];
-            OperationQuery javaResult = currentInstanceObj.addOrder(key, descending);
+            OperationQuery javaResult = currentInstanceObj.addOrder(javaParam_0, descending);
 
             String uuid = UUID.randomUUID().toString();
             RCTCoreOperationQuery rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreOperationQuery.class);

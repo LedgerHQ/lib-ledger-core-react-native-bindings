@@ -56,7 +56,7 @@ RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve reject
  *@param descending, bool
  *@return OperationQuery object, new ordered operation
  */
-RCT_REMAP_METHOD(addOrder,addOrder:(NSDictionary *)currentInstance withParams:(LGOperationOrderKey)key
+RCT_REMAP_METHOD(addOrder,addOrder:(NSDictionary *)currentInstance withParams:(int)key
                                                                    descending:(BOOL)descending withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -68,7 +68,7 @@ RCT_REMAP_METHOD(addOrder,addOrder:(NSDictionary *)currentInstance withParams:(L
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperationQuery::addOrder, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    LGOperationQuery * objcResult = [currentInstanceObj addOrder:key descending:descending];
+    LGOperationQuery * objcResult = [currentInstanceObj addOrder:(LGOperationOrderKey)key descending:descending];
 
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGOperationQuery *rctImpl_objcResult = (RCTCoreLGOperationQuery *)[self.bridge moduleForName:@"CoreLGOperationQuery"];

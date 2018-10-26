@@ -53,7 +53,7 @@ RCT_REMAP_METHOD(init, initWithIdentifier:(nonnull NSString *)Identifier
                              P2PKHVersion:(nonnull NSData *)P2PKHVersion
                               P2SHVersion:(nonnull NSData *)P2SHVersion
                               XPUBVersion:(nonnull NSData *)XPUBVersion
-                                FeePolicy:(LGBitcoinLikeFeePolicy)FeePolicy
+                                FeePolicy:(int)FeePolicy
                                DustAmount:(int)DustAmount
                             MessagePrefix:(nonnull NSString *)MessagePrefix
                UsesTimestampedTransaction:(BOOL)UsesTimestampedTransaction
@@ -62,7 +62,7 @@ RCT_REMAP_METHOD(init, initWithIdentifier:(nonnull NSString *)Identifier
                            AdditionalBIPs:(nonnull NSArray<NSString *> *)AdditionalBIPs withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
 
 
-    LGBitcoinLikeNetworkParameters * finalResult = [[LGBitcoinLikeNetworkParameters alloc] initWithIdentifier:Identifier P2PKHVersion:P2PKHVersion P2SHVersion:P2SHVersion XPUBVersion:XPUBVersion FeePolicy:FeePolicy DustAmount:DustAmount MessagePrefix:MessagePrefix UsesTimestampedTransaction:UsesTimestampedTransaction TimestampDelay:TimestampDelay SigHash:SigHash AdditionalBIPs:AdditionalBIPs];
+    LGBitcoinLikeNetworkParameters * finalResult = [[LGBitcoinLikeNetworkParameters alloc] initWithIdentifier:Identifier P2PKHVersion:P2PKHVersion P2SHVersion:P2SHVersion XPUBVersion:XPUBVersion FeePolicy:(LGBitcoinLikeFeePolicy)FeePolicy DustAmount:DustAmount MessagePrefix:MessagePrefix UsesTimestampedTransaction:UsesTimestampedTransaction TimestampDelay:TimestampDelay SigHash:SigHash AdditionalBIPs:AdditionalBIPs];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeNetworkParameters *rctImpl = (RCTCoreLGBitcoinLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGBitcoinLikeNetworkParameters"];
     [rctImpl.objcImplementations setObject:finalResult forKey:uuid];
