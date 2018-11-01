@@ -30,10 +30,10 @@
         return;
     }
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *result_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBlock *rctImpl_result = (RCTCoreLGBlock *)[self.bridge moduleForName:@"CoreLGBlock"];
-    [rctImpl_result.objcImplementations setObject:result forKey:uuid];
-    NSDictionary *converted_result = @{@"type" : @"CoreLGBlock", @"uid" : uuid };
+    [rctImpl_result.objcImplementations setObject:result forKey:result_uuid];
+    NSDictionary *converted_result = @{@"type" : @"CoreLGBlock", @"uid" : result_uuid };
 
     self.resolve(converted_result);
 

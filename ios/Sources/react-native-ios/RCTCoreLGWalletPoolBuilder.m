@@ -70,10 +70,10 @@ RCT_REMAP_METHOD(setHttpClient,setHttpClient:(NSDictionary *)currentInstance wit
     id<LGHttpClient>objcParam_0 = (id<LGHttpClient>)[rctParam_client.objcImplementations objectForKey:client[@"uid"]];
     LGWalletPoolBuilder * objcResult = [currentInstanceObj setHttpClient:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGWalletPoolBuilder *rctImpl_objcResult = (RCTCoreLGWalletPoolBuilder *)[self.bridge moduleForName:@"CoreLGWalletPoolBuilder"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -106,10 +106,10 @@ RCT_REMAP_METHOD(setWebsocketClient,setWebsocketClient:(NSDictionary *)currentIn
     id<LGWebSocketClient>objcParam_0 = (id<LGWebSocketClient>)[rctParam_client.objcImplementations objectForKey:client[@"uid"]];
     LGWalletPoolBuilder * objcResult = [currentInstanceObj setWebsocketClient:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGWalletPoolBuilder *rctImpl_objcResult = (RCTCoreLGWalletPoolBuilder *)[self.bridge moduleForName:@"CoreLGWalletPoolBuilder"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -142,10 +142,10 @@ RCT_REMAP_METHOD(setPathResolver,setPathResolver:(NSDictionary *)currentInstance
     id<LGPathResolver>objcParam_0 = (id<LGPathResolver>)[rctParam_pathResolver.objcImplementations objectForKey:pathResolver[@"uid"]];
     LGWalletPoolBuilder * objcResult = [currentInstanceObj setPathResolver:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGWalletPoolBuilder *rctImpl_objcResult = (RCTCoreLGWalletPoolBuilder *)[self.bridge moduleForName:@"CoreLGWalletPoolBuilder"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -178,10 +178,10 @@ RCT_REMAP_METHOD(setLogPrinter,setLogPrinter:(NSDictionary *)currentInstance wit
     id<LGLogPrinter>objcParam_0 = (id<LGLogPrinter>)[rctParam_printer.objcImplementations objectForKey:printer[@"uid"]];
     LGWalletPoolBuilder * objcResult = [currentInstanceObj setLogPrinter:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGWalletPoolBuilder *rctImpl_objcResult = (RCTCoreLGWalletPoolBuilder *)[self.bridge moduleForName:@"CoreLGWalletPoolBuilder"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -214,10 +214,10 @@ RCT_REMAP_METHOD(setThreadDispatcher,setThreadDispatcher:(NSDictionary *)current
     id<LGThreadDispatcher>objcParam_0 = (id<LGThreadDispatcher>)[rctParam_dispatcher.objcImplementations objectForKey:dispatcher[@"uid"]];
     LGWalletPoolBuilder * objcResult = [currentInstanceObj setThreadDispatcher:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGWalletPoolBuilder *rctImpl_objcResult = (RCTCoreLGWalletPoolBuilder *)[self.bridge moduleForName:@"CoreLGWalletPoolBuilder"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -248,10 +248,10 @@ RCT_REMAP_METHOD(setName,setName:(NSDictionary *)currentInstance withParams:(non
     }
     LGWalletPoolBuilder * objcResult = [currentInstanceObj setName:name];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGWalletPoolBuilder *rctImpl_objcResult = (RCTCoreLGWalletPoolBuilder *)[self.bridge moduleForName:@"CoreLGWalletPoolBuilder"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -282,10 +282,10 @@ RCT_REMAP_METHOD(setPassword,setPassword:(NSDictionary *)currentInstance withPar
     }
     LGWalletPoolBuilder * objcResult = [currentInstanceObj setPassword:password];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGWalletPoolBuilder *rctImpl_objcResult = (RCTCoreLGWalletPoolBuilder *)[self.bridge moduleForName:@"CoreLGWalletPoolBuilder"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -318,10 +318,10 @@ RCT_REMAP_METHOD(setRandomNumberGenerator,setRandomNumberGenerator:(NSDictionary
     id<LGRandomNumberGenerator>objcParam_0 = (id<LGRandomNumberGenerator>)[rctParam_rng.objcImplementations objectForKey:rng[@"uid"]];
     LGWalletPoolBuilder * objcResult = [currentInstanceObj setRandomNumberGenerator:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGWalletPoolBuilder *rctImpl_objcResult = (RCTCoreLGWalletPoolBuilder *)[self.bridge moduleForName:@"CoreLGWalletPoolBuilder"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -354,10 +354,10 @@ RCT_REMAP_METHOD(setDatabaseBackend,setDatabaseBackend:(NSDictionary *)currentIn
     LGDatabaseBackend *objcParam_0 = (LGDatabaseBackend *)[rctParam_backend.objcImplementations objectForKey:backend[@"uid"]];
     LGWalletPoolBuilder * objcResult = [currentInstanceObj setDatabaseBackend:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGWalletPoolBuilder *rctImpl_objcResult = (RCTCoreLGWalletPoolBuilder *)[self.bridge moduleForName:@"CoreLGWalletPoolBuilder"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -390,10 +390,10 @@ RCT_REMAP_METHOD(setConfiguration,setConfiguration:(NSDictionary *)currentInstan
     LGDynamicObject *objcParam_0 = (LGDynamicObject *)[rctParam_configuration.objcImplementations objectForKey:configuration[@"uid"]];
     LGWalletPoolBuilder * objcResult = [currentInstanceObj setConfiguration:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGWalletPoolBuilder *rctImpl_objcResult = (RCTCoreLGWalletPoolBuilder *)[self.bridge moduleForName:@"CoreLGWalletPoolBuilder"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -433,10 +433,10 @@ RCT_REMAP_METHOD(build,build:(NSDictionary *)currentInstance WithResolver:(RCTPr
 RCT_REMAP_METHOD(createInstance,createInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGWalletPoolBuilder * objcResult = [LGWalletPoolBuilder createInstance];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGWalletPoolBuilder *rctImpl_objcResult = (RCTCoreLGWalletPoolBuilder *)[self.bridge moduleForName:@"CoreLGWalletPoolBuilder"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : objcResult_uuid };
 
     if(result)
     {

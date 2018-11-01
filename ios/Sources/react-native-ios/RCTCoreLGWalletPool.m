@@ -92,10 +92,10 @@ RCT_REMAP_METHOD(newInstance,newInstancewithParams:(nonnull NSString *)name
     LGDynamicObject *objcParam_9 = (LGDynamicObject *)[rctParam_configuration.objcImplementations objectForKey:configuration[@"uid"]];
     LGWalletPool * objcResult = [LGWalletPool newInstance:name password:password httpClient:objcParam_2 webSocketClient:objcParam_3 pathResolver:objcParam_4 logPrinter:objcParam_5 dispatcher:objcParam_6 rng:objcParam_7 backend:objcParam_8 configuration:objcParam_9];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGWalletPool *rctImpl_objcResult = (RCTCoreLGWalletPool *)[self.bridge moduleForName:@"CoreLGWalletPool"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGWalletPool", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPool", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -125,10 +125,10 @@ RCT_REMAP_METHOD(getLogger,getLogger:(NSDictionary *)currentInstance WithResolve
     }
     LGLogger * objcResult = [currentInstanceObj getLogger];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGLogger *rctImpl_objcResult = (RCTCoreLGLogger *)[self.bridge moduleForName:@"CoreLGLogger"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGLogger", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGLogger", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -186,10 +186,10 @@ RCT_REMAP_METHOD(getPreferences,getPreferences:(NSDictionary *)currentInstance W
     }
     LGPreferences * objcResult = [currentInstanceObj getPreferences];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGPreferences *rctImpl_objcResult = (RCTCoreLGPreferences *)[self.bridge moduleForName:@"CoreLGPreferences"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGPreferences", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGPreferences", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -374,10 +374,10 @@ RCT_REMAP_METHOD(getEventBus,getEventBus:(NSDictionary *)currentInstance WithRes
     }
     LGEventBus * objcResult = [currentInstanceObj getEventBus];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGEventBus *rctImpl_objcResult = (RCTCoreLGEventBus *)[self.bridge moduleForName:@"CoreLGEventBus"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGEventBus", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGEventBus", @"uid" : objcResult_uuid };
 
     if(result)
     {

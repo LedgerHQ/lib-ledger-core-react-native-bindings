@@ -49,6 +49,20 @@ RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve reject
     [self.objcImplementations removeAllObjects];
     resolve(@(YES));
 }
+-(NSData *) hexStringToData: (NSString *)hexString 
+{
+    NSMutableData *data= [[NSMutableData alloc] init];
+    unsigned char byte;
+    char byteChars[3] = {'\0','\0','\0'};
+    for (int i = 0; i < ([hexString length] / 2); i++)
+    {
+        byteChars[0] = [hexString characterAtIndex: i*2];
+        byteChars[1] = [hexString characterAtIndex: i*2 + 1];
+        byte = strtol(byteChars, NULL, 16);
+        [data appendBytes:&byte length:1];
+    }
+    return data;
+}
 
 /**
  *Store a string with a given key
@@ -70,10 +84,10 @@ RCT_REMAP_METHOD(putString,putString:(NSDictionary *)currentInstance withParams:
     }
     LGDynamicObject * objcResult = [currentInstanceObj putString:key value:value];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -106,10 +120,10 @@ RCT_REMAP_METHOD(putInt,putInt:(NSDictionary *)currentInstance withParams:(nonnu
     }
     LGDynamicObject * objcResult = [currentInstanceObj putInt:key value:value];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -142,10 +156,10 @@ RCT_REMAP_METHOD(putLong,putLong:(NSDictionary *)currentInstance withParams:(non
     }
     LGDynamicObject * objcResult = [currentInstanceObj putLong:key value:value];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -178,10 +192,10 @@ RCT_REMAP_METHOD(putDouble,putDouble:(NSDictionary *)currentInstance withParams:
     }
     LGDynamicObject * objcResult = [currentInstanceObj putDouble:key value:value];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -201,7 +215,7 @@ RCT_REMAP_METHOD(putDouble,putDouble:(NSDictionary *)currentInstance withParams:
  *@return DynamicObject object with value stored in it
  */
 RCT_REMAP_METHOD(putData,putData:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key
-                                                                      value:(nonnull NSData *)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                                                                      value:(NSString *)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicObject::putData, first argument should be an instance of LGDynamicObject", nil);
@@ -212,12 +226,14 @@ RCT_REMAP_METHOD(putData,putData:(NSDictionary *)currentInstance withParams:(non
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicObject::putData, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    LGDynamicObject * objcResult = [currentInstanceObj putData:key value:value];
+    NSData *objcParam_1 = [self hexStringToData:value];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    LGDynamicObject * objcResult = [currentInstanceObj putData:key value:objcParam_1];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -250,10 +266,10 @@ RCT_REMAP_METHOD(putBoolean,putBoolean:(NSDictionary *)currentInstance withParam
     }
     LGDynamicObject * objcResult = [currentInstanceObj putBoolean:key value:value];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -287,10 +303,10 @@ RCT_REMAP_METHOD(putObject,putObject:(NSDictionary *)currentInstance withParams:
     LGDynamicObject *objcParam_1 = (LGDynamicObject *)[rctParam_value.objcImplementations objectForKey:value[@"uid"]];
     LGDynamicObject * objcResult = [currentInstanceObj putObject:key value:objcParam_1];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -324,10 +340,10 @@ RCT_REMAP_METHOD(putArray,putArray:(NSDictionary *)currentInstance withParams:(n
     LGDynamicArray *objcParam_1 = (LGDynamicArray *)[rctParam_value.objcImplementations objectForKey:value[@"uid"]];
     LGDynamicObject * objcResult = [currentInstanceObj putArray:key value:objcParam_1];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -532,10 +548,10 @@ RCT_REMAP_METHOD(getObject,getObject:(NSDictionary *)currentInstance withParams:
     }
     LGDynamicObject * objcResult = [currentInstanceObj getObject:key];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -566,10 +582,10 @@ RCT_REMAP_METHOD(getArray,getArray:(NSDictionary *)currentInstance withParams:(n
     }
     LGDynamicArray * objcResult = [currentInstanceObj getArray:key];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicArray *rctImpl_objcResult = (RCTCoreLGDynamicArray *)[self.bridge moduleForName:@"CoreLGDynamicArray"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDynamicArray", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicArray", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -816,10 +832,10 @@ RCT_REMAP_METHOD(size,size:(NSDictionary *)currentInstance WithResolver:(RCTProm
 RCT_REMAP_METHOD(newInstance,newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGDynamicObject * objcResult = [LGDynamicObject newInstance];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -837,13 +853,15 @@ RCT_REMAP_METHOD(newInstance,newInstanceWithResolver:(RCTPromiseResolveBlock)res
  *@param serialized, binary to parse
  *@return Optional DynamicObject
  */
-RCT_REMAP_METHOD(load,loadwithParams:(nonnull NSData *)serialized withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    LGDynamicObject * objcResult = [LGDynamicObject load:serialized];
+RCT_REMAP_METHOD(load,loadwithParams:(NSString *)serialized withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    NSData *objcParam_0 = [self hexStringToData:serialized];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    LGDynamicObject * objcResult = [LGDynamicObject load:objcParam_0];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
 
     if(result)
     {

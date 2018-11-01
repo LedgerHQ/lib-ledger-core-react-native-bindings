@@ -14,4 +14,5 @@
 @interface RCTCoreLGCurrency : NSObject <RCTBridgeModule>
 @property (nonatomic, strong) NSMutableDictionary *objcImplementations;
 @property (nonatomic, strong) NSMutableDictionary *implementationsData;
+-(void)mapImplementationsData:(NSDictionary *)currentInstance;
 @end

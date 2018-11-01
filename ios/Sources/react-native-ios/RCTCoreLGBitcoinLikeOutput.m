@@ -123,10 +123,10 @@ RCT_REMAP_METHOD(getValue,getValue:(NSDictionary *)currentInstance WithResolver:
     }
     LGAmount * objcResult = [currentInstanceObj getValue];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGAmount *rctImpl_objcResult = (RCTCoreLGAmount *)[self.bridge moduleForName:@"CoreLGAmount"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGAmount", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGAmount", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -180,10 +180,10 @@ RCT_REMAP_METHOD(parseScript,parseScript:(NSDictionary *)currentInstance WithRes
     }
     LGBitcoinLikeScript * objcResult = [currentInstanceObj parseScript];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeScript *rctImpl_objcResult = (RCTCoreLGBitcoinLikeScript *)[self.bridge moduleForName:@"CoreLGBitcoinLikeScript"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeScript", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeScript", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -237,10 +237,10 @@ RCT_REMAP_METHOD(getDerivationPath,getDerivationPath:(NSDictionary *)currentInst
     }
     LGDerivationPath * objcResult = [currentInstanceObj getDerivationPath];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDerivationPath *rctImpl_objcResult = (RCTCoreLGDerivationPath *)[self.bridge moduleForName:@"CoreLGDerivationPath"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDerivationPath", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDerivationPath", @"uid" : objcResult_uuid };
 
     if(result)
     {

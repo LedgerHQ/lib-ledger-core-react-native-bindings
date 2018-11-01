@@ -195,10 +195,10 @@ RCT_REMAP_METHOD(getParent,getParent:(NSDictionary *)currentInstance WithResolve
     }
     LGDerivationPath * objcResult = [currentInstanceObj getParent];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDerivationPath *rctImpl_objcResult = (RCTCoreLGDerivationPath *)[self.bridge moduleForName:@"CoreLGDerivationPath"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDerivationPath", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDerivationPath", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -239,10 +239,10 @@ RCT_REMAP_METHOD(toArray,toArray:(NSDictionary *)currentInstance WithResolver:(R
 RCT_REMAP_METHOD(parse,parsewithParams:(nonnull NSString *)path withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGDerivationPath * objcResult = [LGDerivationPath parse:path];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDerivationPath *rctImpl_objcResult = (RCTCoreLGDerivationPath *)[self.bridge moduleForName:@"CoreLGDerivationPath"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDerivationPath", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDerivationPath", @"uid" : objcResult_uuid };
 
     if(result)
     {

@@ -49,14 +49,46 @@ RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve reject
     [self.objcImplementations removeAllObjects];
     resolve(@(YES));
 }
+-(NSData *) hexStringToData: (NSString *)hexString 
+{
+    NSMutableData *data= [[NSMutableData alloc] init];
+    unsigned char byte;
+    char byteChars[3] = {'\0','\0','\0'};
+    for (int i = 0; i < ([hexString length] / 2); i++)
+    {
+        byteChars[0] = [hexString characterAtIndex: i*2];
+        byteChars[1] = [hexString characterAtIndex: i*2 + 1];
+        byte = strtol(byteChars, NULL, 16);
+        [data appendBytes:&byte length:1];
+    }
+    return data;
+}
 RCT_REMAP_METHOD(init, initWithIndex:(int)index
                               owners:(nonnull NSArray<NSString *> *)owners
                          derivations:(nonnull NSArray<NSString *> *)derivations
-                          publicKeys:(nonnull NSArray<NSData *> *)publicKeys
-                          chainCodes:(nonnull NSArray<NSData *> *)chainCodes withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                          publicKeys:(NSArray<NSString *> *)publicKeys
+                          chainCodes:(NSArray<NSString *> *)chainCodes withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    NSMutableArray *field_3 = [[NSMutableArray alloc] init];
+
+    for (id publicKeys_elem in publicKeys)
+    {
+        NSData *field_3_elem = [self hexStringToData:publicKeys_elem];
+
+        [field_3 addObject:field_3_elem];
+
+    }
+    NSMutableArray *field_4 = [[NSMutableArray alloc] init];
+
+    for (id chainCodes_elem in chainCodes)
+    {
+        NSData *field_4_elem = [self hexStringToData:chainCodes_elem];
+
+        [field_4 addObject:field_4_elem];
+
+    }
 
 
-    LGAccountCreationInfo * finalResult = [[LGAccountCreationInfo alloc] initWithIndex:index owners:owners derivations:derivations publicKeys:publicKeys chainCodes:chainCodes];
+    LGAccountCreationInfo * finalResult = [[LGAccountCreationInfo alloc] initWithIndex:index owners:owners derivations:derivations publicKeys:field_3 chainCodes:field_4];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGAccountCreationInfo *rctImpl = (RCTCoreLGAccountCreationInfo *)[self.bridge moduleForName:@"CoreLGAccountCreationInfo"];
     [rctImpl.objcImplementations setObject:finalResult forKey:uuid];

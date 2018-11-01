@@ -68,10 +68,10 @@ RCT_REMAP_METHOD(getSerialExecutionContext,getSerialExecutionContext:(NSDictiona
     }
     id<LGExecutionContext> objcResult = [currentInstanceObj getSerialExecutionContext:name];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGExecutionContext *rctImpl_objcResult = (RCTCoreLGExecutionContext *)[self.bridge moduleForName:@"CoreLGExecutionContext"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGExecutionContext", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGExecutionContext", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -103,10 +103,10 @@ RCT_REMAP_METHOD(getThreadPoolExecutionContext,getThreadPoolExecutionContext:(NS
     }
     id<LGExecutionContext> objcResult = [currentInstanceObj getThreadPoolExecutionContext:name];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGExecutionContext *rctImpl_objcResult = (RCTCoreLGExecutionContext *)[self.bridge moduleForName:@"CoreLGExecutionContext"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGExecutionContext", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGExecutionContext", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -136,10 +136,10 @@ RCT_REMAP_METHOD(getMainExecutionContext,getMainExecutionContext:(NSDictionary *
     }
     id<LGExecutionContext> objcResult = [currentInstanceObj getMainExecutionContext];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGExecutionContext *rctImpl_objcResult = (RCTCoreLGExecutionContext *)[self.bridge moduleForName:@"CoreLGExecutionContext"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGExecutionContext", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGExecutionContext", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -169,10 +169,10 @@ RCT_REMAP_METHOD(newLock,newLock:(NSDictionary *)currentInstance WithResolver:(R
     }
     id<LGLock> objcResult = [currentInstanceObj newLock];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGLock *rctImpl_objcResult = (RCTCoreLGLock *)[self.bridge moduleForName:@"CoreLGLock"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGLock", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGLock", @"uid" : objcResult_uuid };
 
     if(result)
     {

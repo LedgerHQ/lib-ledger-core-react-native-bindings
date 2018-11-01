@@ -151,10 +151,10 @@ RCT_REMAP_METHOD(readBody,readBody:(NSDictionary *)currentInstance WithResolver:
     }
     LGHttpReadBodyResult * objcResult = [currentInstanceObj readBody];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGHttpReadBodyResult *rctImpl_objcResult = (RCTCoreLGHttpReadBodyResult *)[self.bridge moduleForName:@"CoreLGHttpReadBodyResult"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGHttpReadBodyResult", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGHttpReadBodyResult", @"uid" : objcResult_uuid };
 
     if(result)
     {

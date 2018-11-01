@@ -67,10 +67,10 @@ RCT_REMAP_METHOD(getTransaction,getTransaction:(NSDictionary *)currentInstance W
     }
     LGBitcoinLikeTransaction * objcResult = [currentInstanceObj getTransaction];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeTransaction *rctImpl_objcResult = (RCTCoreLGBitcoinLikeTransaction *)[self.bridge moduleForName:@"CoreLGBitcoinLikeTransaction"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeTransaction", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeTransaction", @"uid" : objcResult_uuid };
 
     if(result)
     {

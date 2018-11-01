@@ -67,10 +67,10 @@ RCT_REMAP_METHOD(getEventBus,getEventBus:(NSDictionary *)currentInstance WithRes
     }
     LGEventBus * objcResult = [currentInstanceObj getEventBus];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGEventBus *rctImpl_objcResult = (RCTCoreLGEventBus *)[self.bridge moduleForName:@"CoreLGEventBus"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGEventBus", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGEventBus", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -157,10 +157,10 @@ RCT_REMAP_METHOD(newInstance,newInstancewithParams:(NSDictionary *)context withR
     id<LGExecutionContext>objcParam_0 = (id<LGExecutionContext>)[rctParam_context.objcImplementations objectForKey:context[@"uid"]];
     LGEventPublisher * objcResult = [LGEventPublisher newInstance:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGEventPublisher *rctImpl_objcResult = (RCTCoreLGEventPublisher *)[self.bridge moduleForName:@"CoreLGEventPublisher"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGEventPublisher", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGEventPublisher", @"uid" : objcResult_uuid };
 
     if(result)
     {

@@ -181,6 +181,12 @@ RCT_REMAP_METHOD(complete,complete:(NSDictionary *)currentInstance withParams:(n
     }
     RCTCoreLGHttpUrlConnection *rctParam_response = (RCTCoreLGHttpUrlConnection *)[self.bridge moduleForName:@"CoreLGHttpUrlConnection"];
     id<LGHttpUrlConnection>objcParam_0 = (id<LGHttpUrlConnection>)[rctParam_response.objcImplementations objectForKey:response[@"uid"]];
+    LGHttpUrlConnectionImpl *objcParam_0_objc = (LGHttpUrlConnectionImpl *)objcParam_0;
+    if (objcParam_0_objc)
+    {
+        objcParam_0_objc.resolve = resolve;
+        objcParam_0_objc.reject = reject;
+    }
     RCTCoreLGError *rctParam_error = (RCTCoreLGError *)[self.bridge moduleForName:@"CoreLGError"];
     LGError *objcParam_1 = (LGError *)[rctParam_error.objcImplementations objectForKey:error[@"uid"]];
     [currentInstanceObj complete:objcParam_0 error:objcParam_1];

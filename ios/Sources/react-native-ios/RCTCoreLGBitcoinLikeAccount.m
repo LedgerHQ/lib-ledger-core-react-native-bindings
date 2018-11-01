@@ -49,6 +49,20 @@ RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve reject
     [self.objcImplementations removeAllObjects];
     resolve(@(YES));
 }
+-(NSData *) hexStringToData: (NSString *)hexString 
+{
+    NSMutableData *data= [[NSMutableData alloc] init];
+    unsigned char byte;
+    char byteChars[3] = {'\0','\0','\0'};
+    for (int i = 0; i < ([hexString length] / 2); i++)
+    {
+        byteChars[0] = [hexString characterAtIndex: i*2];
+        byteChars[1] = [hexString characterAtIndex: i*2 + 1];
+        byte = strtol(byteChars, NULL, 16);
+        [data appendBytes:&byte length:1];
+    }
+    return data;
+}
 
 /**
  *Get UTXOs of account in a given range
@@ -93,7 +107,7 @@ RCT_REMAP_METHOD(getUTXOCount,getUTXOCount:(NSDictionary *)currentInstance WithR
 
 }
 
-RCT_REMAP_METHOD(broadcastRawTransaction,broadcastRawTransaction:(NSDictionary *)currentInstance withParams:(nonnull NSData *)transaction withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_REMAP_METHOD(broadcastRawTransaction,broadcastRawTransaction:(NSDictionary *)currentInstance withParams:(NSString *)transaction withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::broadcastRawTransaction, first argument should be an instance of LGBitcoinLikeAccount", nil);
@@ -104,8 +118,10 @@ RCT_REMAP_METHOD(broadcastRawTransaction,broadcastRawTransaction:(NSDictionary *
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAccount::broadcastRawTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
+    NSData *objcParam_0 = [self hexStringToData:transaction];
+
     RCTCoreLGStringCallback *objcParam_1 = [[RCTCoreLGStringCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
-    [currentInstanceObj broadcastRawTransaction:transaction callback:objcParam_1];
+    [currentInstanceObj broadcastRawTransaction:objcParam_0 callback:objcParam_1];
 
 }
 
@@ -140,10 +156,10 @@ RCT_REMAP_METHOD(buildTransaction,buildTransaction:(NSDictionary *)currentInstan
     }
     LGBitcoinLikeTransactionBuilder * objcResult = [currentInstanceObj buildTransaction];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeTransactionBuilder *rctImpl_objcResult = (RCTCoreLGBitcoinLikeTransactionBuilder *)[self.bridge moduleForName:@"CoreLGBitcoinLikeTransactionBuilder"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeTransactionBuilder", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeTransactionBuilder", @"uid" : objcResult_uuid };
 
     if(result)
     {

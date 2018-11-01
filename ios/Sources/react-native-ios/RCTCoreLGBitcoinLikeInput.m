@@ -49,6 +49,20 @@ RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve reject
     [self.objcImplementations removeAllObjects];
     resolve(@(YES));
 }
+-(NSData *) hexStringToData: (NSString *)hexString 
+{
+    NSMutableData *data= [[NSMutableData alloc] init];
+    unsigned char byte;
+    char byteChars[3] = {'\0','\0','\0'};
+    for (int i = 0; i < ([hexString length] / 2); i++)
+    {
+        byteChars[0] = [hexString characterAtIndex: i*2];
+        byteChars[1] = [hexString characterAtIndex: i*2 + 1];
+        byte = strtol(byteChars, NULL, 16);
+        [data appendBytes:&byte length:1];
+    }
+    return data;
+}
 
 /** Returns the address of the input (if an address can be computed) */
 RCT_REMAP_METHOD(getAddress,getAddress:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -120,10 +134,10 @@ RCT_REMAP_METHOD(getDerivationPath,getDerivationPath:(NSDictionary *)currentInst
     NSMutableArray *result = [[NSMutableArray alloc] init];
     for (id objcResult_elem in objcResult)
     {
-        NSString *uuid = [[NSUUID UUID] UUIDString];
+        NSString *objcResult_elem_uuid = [[NSUUID UUID] UUIDString];
         RCTCoreLGDerivationPath *rctImpl_objcResult_elem = (RCTCoreLGDerivationPath *)[self.bridge moduleForName:@"CoreLGDerivationPath"];
-        [rctImpl_objcResult_elem.objcImplementations setObject:objcResult_elem forKey:uuid];
-        NSDictionary *result_elem = @{@"type" : @"CoreLGDerivationPath", @"uid" : uuid };
+        [rctImpl_objcResult_elem.objcImplementations setObject:objcResult_elem forKey:objcResult_elem_uuid];
+        NSDictionary *result_elem = @{@"type" : @"CoreLGDerivationPath", @"uid" : objcResult_elem_uuid };
         [result addObject:result_elem];
     }
 
@@ -155,10 +169,10 @@ RCT_REMAP_METHOD(getValue,getValue:(NSDictionary *)currentInstance WithResolver:
     }
     LGAmount * objcResult = [currentInstanceObj getValue];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGAmount *rctImpl_objcResult = (RCTCoreLGAmount *)[self.bridge moduleForName:@"CoreLGAmount"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGAmount", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGAmount", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -304,10 +318,10 @@ RCT_REMAP_METHOD(getPreviousOuput,getPreviousOuput:(NSDictionary *)currentInstan
     }
     LGBitcoinLikeOutput * objcResult = [currentInstanceObj getPreviousOuput];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeOutput *rctImpl_objcResult = (RCTCoreLGBitcoinLikeOutput *)[self.bridge moduleForName:@"CoreLGBitcoinLikeOutput"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeOutput", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeOutput", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -359,10 +373,10 @@ RCT_REMAP_METHOD(parseScriptSig,parseScriptSig:(NSDictionary *)currentInstance W
     }
     LGBitcoinLikeScript * objcResult = [currentInstanceObj parseScriptSig];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeScript *rctImpl_objcResult = (RCTCoreLGBitcoinLikeScript *)[self.bridge moduleForName:@"CoreLGBitcoinLikeScript"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeScript", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeScript", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -379,7 +393,7 @@ RCT_REMAP_METHOD(parseScriptSig,parseScriptSig:(NSDictionary *)currentInstance W
  * Set the ScriptS to the given value
  * @param scriptSig The ScriptSig to use for this input
  */
-RCT_REMAP_METHOD(setScriptSig,setScriptSig:(NSDictionary *)currentInstance withParams:(nonnull NSData *)scriptSig withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_REMAP_METHOD(setScriptSig,setScriptSig:(NSDictionary *)currentInstance withParams:(NSString *)scriptSig withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeInput::setScriptSig, first argument should be an instance of LGBitcoinLikeInput", nil);
@@ -390,12 +404,14 @@ RCT_REMAP_METHOD(setScriptSig,setScriptSig:(NSDictionary *)currentInstance withP
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeInput::setScriptSig, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    [currentInstanceObj setScriptSig:scriptSig];
+    NSData *objcParam_0 = [self hexStringToData:scriptSig];
+
+    [currentInstanceObj setScriptSig:objcParam_0];
 
 }
 
 /** Push data to the end of the current ScriptSig */
-RCT_REMAP_METHOD(pushToScriptSig,pushToScriptSig:(NSDictionary *)currentInstance withParams:(nonnull NSData *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_REMAP_METHOD(pushToScriptSig,pushToScriptSig:(NSDictionary *)currentInstance withParams:(NSString *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeInput::pushToScriptSig, first argument should be an instance of LGBitcoinLikeInput", nil);
@@ -406,7 +422,9 @@ RCT_REMAP_METHOD(pushToScriptSig,pushToScriptSig:(NSDictionary *)currentInstance
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeInput::pushToScriptSig, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    [currentInstanceObj pushToScriptSig:data];
+    NSData *objcParam_0 = [self hexStringToData:data];
+
+    [currentInstanceObj pushToScriptSig:objcParam_0];
 
 }
 
@@ -468,7 +486,7 @@ RCT_REMAP_METHOD(getPreviousTransaction,getPreviousTransaction:(NSDictionary *)c
 }
 
 /** Easy way to set the P2PKH script signature. Shorthand for input.pushToScriptSig(input.getPublicKeys()[0], signature) */
-RCT_REMAP_METHOD(setP2PKHSigScript,setP2PKHSigScript:(NSDictionary *)currentInstance withParams:(nonnull NSData *)signature withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_REMAP_METHOD(setP2PKHSigScript,setP2PKHSigScript:(NSDictionary *)currentInstance withParams:(NSString *)signature withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeInput::setP2PKHSigScript, first argument should be an instance of LGBitcoinLikeInput", nil);
@@ -479,7 +497,9 @@ RCT_REMAP_METHOD(setP2PKHSigScript,setP2PKHSigScript:(NSDictionary *)currentInst
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeInput::setP2PKHSigScript, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    [currentInstanceObj setP2PKHSigScript:signature];
+    NSData *objcParam_0 = [self hexStringToData:signature];
+
+    [currentInstanceObj setP2PKHSigScript:objcParam_0];
 
 }
 @end

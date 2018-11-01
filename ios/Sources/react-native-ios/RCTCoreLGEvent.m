@@ -95,10 +95,10 @@ RCT_REMAP_METHOD(getPayload,getPayload:(NSDictionary *)currentInstance WithResol
     }
     LGDynamicObject * objcResult = [currentInstanceObj getPayload];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -179,10 +179,10 @@ RCT_REMAP_METHOD(newInstance,newInstancewithParams:(int)code
     LGDynamicObject *objcParam_1 = (LGDynamicObject *)[rctParam_payload.objcImplementations objectForKey:payload[@"uid"]];
     LGEvent * objcResult = [LGEvent newInstance:(LGEventCode)code payload:objcParam_1];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGEvent *rctImpl_objcResult = (RCTCoreLGEvent *)[self.bridge moduleForName:@"CoreLGEvent"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGEvent", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGEvent", @"uid" : objcResult_uuid };
 
     if(result)
     {

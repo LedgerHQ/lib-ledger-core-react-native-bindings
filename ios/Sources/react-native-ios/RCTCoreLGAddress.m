@@ -119,10 +119,10 @@ RCT_REMAP_METHOD(asBitcoinLikeAddress,asBitcoinLikeAddress:(NSDictionary *)curre
     }
     LGBitcoinLikeAddress * objcResult = [currentInstanceObj asBitcoinLikeAddress];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeAddress *rctImpl_objcResult = (RCTCoreLGBitcoinLikeAddress *)[self.bridge moduleForName:@"CoreLGBitcoinLikeAddress"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeAddress", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeAddress", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -172,10 +172,10 @@ RCT_REMAP_METHOD(getCurrency,getCurrency:(NSDictionary *)currentInstance WithRes
     }
     LGCurrency * objcResult = [currentInstanceObj getCurrency];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGCurrency *rctImpl_objcResult = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGCurrency", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGCurrency", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -201,10 +201,10 @@ RCT_REMAP_METHOD(parse,parsewithParams:(nonnull NSString *)address
     LGCurrency *objcParam_1 = (LGCurrency *)[rctParam_currency.objcImplementations objectForKey:currency[@"uid"]];
     LGAddress * objcResult = [LGAddress parse:address currency:objcParam_1];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGAddress *rctImpl_objcResult = (RCTCoreLGAddress *)[self.bridge moduleForName:@"CoreLGAddress"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGAddress", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGAddress", @"uid" : objcResult_uuid };
 
     if(result)
     {

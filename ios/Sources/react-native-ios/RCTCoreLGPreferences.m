@@ -49,6 +49,20 @@ RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve reject
     [self.objcImplementations removeAllObjects];
     resolve(@(YES));
 }
+-(NSData *) hexStringToData: (NSString *)hexString 
+{
+    NSMutableData *data= [[NSMutableData alloc] init];
+    unsigned char byte;
+    char byteChars[3] = {'\0','\0','\0'};
+    for (int i = 0; i < ([hexString length] / 2); i++)
+    {
+        byteChars[0] = [hexString characterAtIndex: i*2];
+        byteChars[1] = [hexString characterAtIndex: i*2 + 1];
+        byte = strtol(byteChars, NULL, 16);
+        [data appendBytes:&byte length:1];
+    }
+    return data;
+}
 
 /**
  * Retrieves the value associated with the given key or fallback to the default value.
@@ -200,7 +214,7 @@ RCT_REMAP_METHOD(getStringArray,getStringArray:(NSDictionary *)currentInstance w
  * @return The data associated with the key or fallbackValue.
  */
 RCT_REMAP_METHOD(getData,getData:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key
-                                                              fallbackValue:(nonnull NSData *)fallbackValue withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                                                              fallbackValue:(NSString *)fallbackValue withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferences::getData, first argument should be an instance of LGPreferences", nil);
@@ -211,7 +225,9 @@ RCT_REMAP_METHOD(getData,getData:(NSDictionary *)currentInstance withParams:(non
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferences::getData, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
     }
-    NSData * objcResult = [currentInstanceObj getData:key fallbackValue:fallbackValue];
+    NSData *objcParam_1 = [self hexStringToData:fallbackValue];
+
+    NSData * objcResult = [currentInstanceObj getData:key fallbackValue:objcParam_1];
     NSDictionary *result = @{@"value" : objcResult.description};
     if(result)
     {
@@ -269,10 +285,10 @@ RCT_REMAP_METHOD(edit,edit:(NSDictionary *)currentInstance WithResolver:(RCTProm
     }
     LGPreferencesEditor * objcResult = [currentInstanceObj edit];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGPreferencesEditor *rctImpl_objcResult = (RCTCoreLGPreferencesEditor *)[self.bridge moduleForName:@"CoreLGPreferencesEditor"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGPreferencesEditor", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGPreferencesEditor", @"uid" : objcResult_uuid };
 
     if(result)
     {

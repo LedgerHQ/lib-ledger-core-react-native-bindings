@@ -92,10 +92,10 @@ RCT_REMAP_METHOD(getInputs,getInputs:(NSDictionary *)currentInstance WithResolve
     NSMutableArray *result = [[NSMutableArray alloc] init];
     for (id objcResult_elem in objcResult)
     {
-        NSString *uuid = [[NSUUID UUID] UUIDString];
+        NSString *objcResult_elem_uuid = [[NSUUID UUID] UUIDString];
         RCTCoreLGBitcoinLikeInput *rctImpl_objcResult_elem = (RCTCoreLGBitcoinLikeInput *)[self.bridge moduleForName:@"CoreLGBitcoinLikeInput"];
-        [rctImpl_objcResult_elem.objcImplementations setObject:objcResult_elem forKey:uuid];
-        NSDictionary *result_elem = @{@"type" : @"CoreLGBitcoinLikeInput", @"uid" : uuid };
+        [rctImpl_objcResult_elem.objcImplementations setObject:objcResult_elem forKey:objcResult_elem_uuid];
+        NSDictionary *result_elem = @{@"type" : @"CoreLGBitcoinLikeInput", @"uid" : objcResult_elem_uuid };
         [result addObject:result_elem];
     }
 
@@ -127,10 +127,10 @@ RCT_REMAP_METHOD(getOutputs,getOutputs:(NSDictionary *)currentInstance WithResol
     NSMutableArray *result = [[NSMutableArray alloc] init];
     for (id objcResult_elem in objcResult)
     {
-        NSString *uuid = [[NSUUID UUID] UUIDString];
+        NSString *objcResult_elem_uuid = [[NSUUID UUID] UUIDString];
         RCTCoreLGBitcoinLikeOutput *rctImpl_objcResult_elem = (RCTCoreLGBitcoinLikeOutput *)[self.bridge moduleForName:@"CoreLGBitcoinLikeOutput"];
-        [rctImpl_objcResult_elem.objcImplementations setObject:objcResult_elem forKey:uuid];
-        NSDictionary *result_elem = @{@"type" : @"CoreLGBitcoinLikeOutput", @"uid" : uuid };
+        [rctImpl_objcResult_elem.objcImplementations setObject:objcResult_elem forKey:objcResult_elem_uuid];
+        NSDictionary *result_elem = @{@"type" : @"CoreLGBitcoinLikeOutput", @"uid" : objcResult_elem_uuid };
         [result addObject:result_elem];
     }
 
@@ -159,10 +159,10 @@ RCT_REMAP_METHOD(getBlock,getBlock:(NSDictionary *)currentInstance WithResolver:
     }
     LGBitcoinLikeBlock * objcResult = [currentInstanceObj getBlock];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeBlock *rctImpl_objcResult = (RCTCoreLGBitcoinLikeBlock *)[self.bridge moduleForName:@"CoreLGBitcoinLikeBlock"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeBlock", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeBlock", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -214,10 +214,10 @@ RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(R
     }
     LGAmount * objcResult = [currentInstanceObj getFees];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGAmount *rctImpl_objcResult = (RCTCoreLGAmount *)[self.bridge moduleForName:@"CoreLGAmount"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGAmount", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGAmount", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -402,10 +402,10 @@ RCT_REMAP_METHOD(getEstimatedSize,getEstimatedSize:(NSDictionary *)currentInstan
     }
     LGEstimatedSize * objcResult = [currentInstanceObj getEstimatedSize];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGEstimatedSize *rctImpl_objcResult = (RCTCoreLGEstimatedSize *)[self.bridge moduleForName:@"CoreLGEstimatedSize"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGEstimatedSize", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGEstimatedSize", @"uid" : objcResult_uuid };
 
     if(result)
     {

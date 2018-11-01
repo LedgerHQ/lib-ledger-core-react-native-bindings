@@ -53,10 +53,10 @@ RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve reject
 RCT_REMAP_METHOD(accountEq,accountEqwithParams:(nonnull NSString *)accountUid withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter accountEq:accountUid];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -72,10 +72,10 @@ RCT_REMAP_METHOD(accountEq,accountEqwithParams:(nonnull NSString *)accountUid wi
 RCT_REMAP_METHOD(accountNeq,accountNeqwithParams:(nonnull NSString *)accountUid withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter accountNeq:accountUid];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -91,10 +91,10 @@ RCT_REMAP_METHOD(accountNeq,accountNeqwithParams:(nonnull NSString *)accountUid 
 RCT_REMAP_METHOD(dateLte,dateLtewithParams:(nonnull NSDate *)time withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter dateLte:time];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -110,10 +110,10 @@ RCT_REMAP_METHOD(dateLte,dateLtewithParams:(nonnull NSDate *)time withResolver:(
 RCT_REMAP_METHOD(dateLt,dateLtwithParams:(nonnull NSDate *)time withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter dateLt:time];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -129,10 +129,10 @@ RCT_REMAP_METHOD(dateLt,dateLtwithParams:(nonnull NSDate *)time withResolver:(RC
 RCT_REMAP_METHOD(dateGt,dateGtwithParams:(nonnull NSDate *)time withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter dateGt:time];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -148,10 +148,10 @@ RCT_REMAP_METHOD(dateGt,dateGtwithParams:(nonnull NSDate *)time withResolver:(RC
 RCT_REMAP_METHOD(dateGte,dateGtewithParams:(nonnull NSDate *)time withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter dateGte:time];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -167,10 +167,10 @@ RCT_REMAP_METHOD(dateGte,dateGtewithParams:(nonnull NSDate *)time withResolver:(
 RCT_REMAP_METHOD(dateEq,dateEqwithParams:(nonnull NSDate *)time withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter dateEq:time];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -186,10 +186,10 @@ RCT_REMAP_METHOD(dateEq,dateEqwithParams:(nonnull NSDate *)time withResolver:(RC
 RCT_REMAP_METHOD(dateNeq,dateNeqwithParams:(nonnull NSDate *)time withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter dateNeq:time];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -205,10 +205,10 @@ RCT_REMAP_METHOD(dateNeq,dateNeqwithParams:(nonnull NSDate *)time withResolver:(
 RCT_REMAP_METHOD(containsRecipient,containsRecipientwithParams:(nonnull NSString *)recipientAddress withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter containsRecipient:recipientAddress];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -224,10 +224,10 @@ RCT_REMAP_METHOD(containsRecipient,containsRecipientwithParams:(nonnull NSString
 RCT_REMAP_METHOD(containsSender,containsSenderwithParams:(nonnull NSString *)senderAddress withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter containsSender:senderAddress];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -243,10 +243,10 @@ RCT_REMAP_METHOD(containsSender,containsSenderwithParams:(nonnull NSString *)sen
 RCT_REMAP_METHOD(currencyEq,currencyEqwithParams:(nonnull NSString *)currencyName withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter currencyEq:currencyName];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -262,10 +262,10 @@ RCT_REMAP_METHOD(currencyEq,currencyEqwithParams:(nonnull NSString *)currencyNam
 RCT_REMAP_METHOD(operationUidEq,operationUidEqwithParams:(nonnull NSString *)operationUid withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter operationUidEq:operationUid];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -281,10 +281,10 @@ RCT_REMAP_METHOD(operationUidEq,operationUidEqwithParams:(nonnull NSString *)ope
 RCT_REMAP_METHOD(operationUidNeq,operationUidNeqwithParams:(nonnull NSString *)operationUid withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter operationUidNeq:operationUid];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -300,10 +300,10 @@ RCT_REMAP_METHOD(operationUidNeq,operationUidNeqwithParams:(nonnull NSString *)o
 RCT_REMAP_METHOD(trustEq,trustEqwithParams:(int)trust withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter trustEq:(LGTrustLevel)trust];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -319,10 +319,10 @@ RCT_REMAP_METHOD(trustEq,trustEqwithParams:(int)trust withResolver:(RCTPromiseRe
 RCT_REMAP_METHOD(trustNeq,trustNeqwithParams:(int)trust withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter trustNeq:(LGTrustLevel)trust];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -340,10 +340,10 @@ RCT_REMAP_METHOD(feesEq,feesEqwithParams:(NSDictionary *)amount withResolver:(RC
     LGAmount *objcParam_0 = (LGAmount *)[rctParam_amount.objcImplementations objectForKey:amount[@"uid"]];
     LGQueryFilter * objcResult = [LGQueryFilter feesEq:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -361,10 +361,10 @@ RCT_REMAP_METHOD(feesNeq,feesNeqwithParams:(NSDictionary *)amount withResolver:(
     LGAmount *objcParam_0 = (LGAmount *)[rctParam_amount.objcImplementations objectForKey:amount[@"uid"]];
     LGQueryFilter * objcResult = [LGQueryFilter feesNeq:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -382,10 +382,10 @@ RCT_REMAP_METHOD(feesGte,feesGtewithParams:(NSDictionary *)amount withResolver:(
     LGAmount *objcParam_0 = (LGAmount *)[rctParam_amount.objcImplementations objectForKey:amount[@"uid"]];
     LGQueryFilter * objcResult = [LGQueryFilter feesGte:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -403,10 +403,10 @@ RCT_REMAP_METHOD(feesGt,feesGtwithParams:(NSDictionary *)amount withResolver:(RC
     LGAmount *objcParam_0 = (LGAmount *)[rctParam_amount.objcImplementations objectForKey:amount[@"uid"]];
     LGQueryFilter * objcResult = [LGQueryFilter feesGt:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -424,10 +424,10 @@ RCT_REMAP_METHOD(feesLte,feesLtewithParams:(NSDictionary *)amount withResolver:(
     LGAmount *objcParam_0 = (LGAmount *)[rctParam_amount.objcImplementations objectForKey:amount[@"uid"]];
     LGQueryFilter * objcResult = [LGQueryFilter feesLte:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -445,10 +445,10 @@ RCT_REMAP_METHOD(feesLt,feesLtwithParams:(NSDictionary *)amount withResolver:(RC
     LGAmount *objcParam_0 = (LGAmount *)[rctParam_amount.objcImplementations objectForKey:amount[@"uid"]];
     LGQueryFilter * objcResult = [LGQueryFilter feesLt:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -466,10 +466,10 @@ RCT_REMAP_METHOD(amountEq,amountEqwithParams:(NSDictionary *)amount withResolver
     LGAmount *objcParam_0 = (LGAmount *)[rctParam_amount.objcImplementations objectForKey:amount[@"uid"]];
     LGQueryFilter * objcResult = [LGQueryFilter amountEq:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -487,10 +487,10 @@ RCT_REMAP_METHOD(amountNeq,amountNeqwithParams:(NSDictionary *)amount withResolv
     LGAmount *objcParam_0 = (LGAmount *)[rctParam_amount.objcImplementations objectForKey:amount[@"uid"]];
     LGQueryFilter * objcResult = [LGQueryFilter amountNeq:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -508,10 +508,10 @@ RCT_REMAP_METHOD(amountGte,amountGtewithParams:(NSDictionary *)amount withResolv
     LGAmount *objcParam_0 = (LGAmount *)[rctParam_amount.objcImplementations objectForKey:amount[@"uid"]];
     LGQueryFilter * objcResult = [LGQueryFilter amountGte:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -529,10 +529,10 @@ RCT_REMAP_METHOD(amountGt,amountGtwithParams:(NSDictionary *)amount withResolver
     LGAmount *objcParam_0 = (LGAmount *)[rctParam_amount.objcImplementations objectForKey:amount[@"uid"]];
     LGQueryFilter * objcResult = [LGQueryFilter amountGt:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -550,10 +550,10 @@ RCT_REMAP_METHOD(amountLte,amountLtewithParams:(NSDictionary *)amount withResolv
     LGAmount *objcParam_0 = (LGAmount *)[rctParam_amount.objcImplementations objectForKey:amount[@"uid"]];
     LGQueryFilter * objcResult = [LGQueryFilter amountLte:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -571,10 +571,10 @@ RCT_REMAP_METHOD(amountLt,amountLtwithParams:(NSDictionary *)amount withResolver
     LGAmount *objcParam_0 = (LGAmount *)[rctParam_amount.objcImplementations objectForKey:amount[@"uid"]];
     LGQueryFilter * objcResult = [LGQueryFilter amountLt:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -590,10 +590,10 @@ RCT_REMAP_METHOD(amountLt,amountLtwithParams:(NSDictionary *)amount withResolver
 RCT_REMAP_METHOD(blockHeightEq,blockHeightEqwithParams:(int)blockHeight withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter blockHeightEq:blockHeight];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -609,10 +609,10 @@ RCT_REMAP_METHOD(blockHeightEq,blockHeightEqwithParams:(int)blockHeight withReso
 RCT_REMAP_METHOD(blockHeightNeq,blockHeightNeqwithParams:(int)blockHeight withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter blockHeightNeq:blockHeight];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -628,10 +628,10 @@ RCT_REMAP_METHOD(blockHeightNeq,blockHeightNeqwithParams:(int)blockHeight withRe
 RCT_REMAP_METHOD(blockHeightGte,blockHeightGtewithParams:(int)blockHeight withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter blockHeightGte:blockHeight];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -647,10 +647,10 @@ RCT_REMAP_METHOD(blockHeightGte,blockHeightGtewithParams:(int)blockHeight withRe
 RCT_REMAP_METHOD(blockHeightGt,blockHeightGtwithParams:(int)blockHeight withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter blockHeightGt:blockHeight];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -666,10 +666,10 @@ RCT_REMAP_METHOD(blockHeightGt,blockHeightGtwithParams:(int)blockHeight withReso
 RCT_REMAP_METHOD(blockHeightLte,blockHeightLtewithParams:(int)blockHeight withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter blockHeightLte:blockHeight];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -685,10 +685,10 @@ RCT_REMAP_METHOD(blockHeightLte,blockHeightLtewithParams:(int)blockHeight withRe
 RCT_REMAP_METHOD(blockHeightLt,blockHeightLtwithParams:(int)blockHeight withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter blockHeightLt:blockHeight];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -704,10 +704,10 @@ RCT_REMAP_METHOD(blockHeightLt,blockHeightLtwithParams:(int)blockHeight withReso
 RCT_REMAP_METHOD(blockHeightIsNull,blockHeightIsNullWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter blockHeightIsNull];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -723,10 +723,10 @@ RCT_REMAP_METHOD(blockHeightIsNull,blockHeightIsNullWithResolver:(RCTPromiseReso
 RCT_REMAP_METHOD(operationTypeEq,operationTypeEqwithParams:(int)operationType withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter operationTypeEq:(LGOperationType)operationType];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -742,10 +742,10 @@ RCT_REMAP_METHOD(operationTypeEq,operationTypeEqwithParams:(int)operationType wi
 RCT_REMAP_METHOD(operationTypeNeq,operationTypeNeqwithParams:(int)operationType withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGQueryFilter * objcResult = [LGQueryFilter operationTypeNeq:(LGOperationType)operationType];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -773,10 +773,10 @@ RCT_REMAP_METHOD(opAnd,opAnd:(NSDictionary *)currentInstance withParams:(NSDicti
     LGQueryFilter *objcParam_0 = (LGQueryFilter *)[rctParam_filter.objcImplementations objectForKey:filter[@"uid"]];
     LGQueryFilter * objcResult = [currentInstanceObj opAnd:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -804,10 +804,10 @@ RCT_REMAP_METHOD(opOr,opOr:(NSDictionary *)currentInstance withParams:(NSDiction
     LGQueryFilter *objcParam_0 = (LGQueryFilter *)[rctParam_filter.objcImplementations objectForKey:filter[@"uid"]];
     LGQueryFilter * objcResult = [currentInstanceObj opOr:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -835,10 +835,10 @@ RCT_REMAP_METHOD(opAndNot,opAndNot:(NSDictionary *)currentInstance withParams:(N
     LGQueryFilter *objcParam_0 = (LGQueryFilter *)[rctParam_filter.objcImplementations objectForKey:filter[@"uid"]];
     LGQueryFilter * objcResult = [currentInstanceObj opAndNot:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -866,10 +866,10 @@ RCT_REMAP_METHOD(opOrNot,opOrNot:(NSDictionary *)currentInstance withParams:(NSD
     LGQueryFilter *objcParam_0 = (LGQueryFilter *)[rctParam_filter.objcImplementations objectForKey:filter[@"uid"]];
     LGQueryFilter * objcResult = [currentInstanceObj opOrNot:objcParam_0];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {

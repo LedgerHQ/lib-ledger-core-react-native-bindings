@@ -31,7 +31,7 @@
     }
 
 
-    self.resolve(result);
+    self.resolve(result.description);
 
 }
 @end

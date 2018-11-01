@@ -70,10 +70,10 @@ RCT_REMAP_METHOD(addOrder,addOrder:(NSDictionary *)currentInstance withParams:(i
     }
     LGOperationQuery * objcResult = [currentInstanceObj addOrder:(LGOperationOrderKey)key descending:descending];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGOperationQuery *rctImpl_objcResult = (RCTCoreLGOperationQuery *)[self.bridge moduleForName:@"CoreLGOperationQuery"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGOperationQuery", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGOperationQuery", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -103,10 +103,10 @@ RCT_REMAP_METHOD(filter,filter:(NSDictionary *)currentInstance WithResolver:(RCT
     }
     LGQueryFilter * objcResult = [currentInstanceObj filter];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGQueryFilter *rctImpl_objcResult = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGQueryFilter", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -136,10 +136,10 @@ RCT_REMAP_METHOD(offset,offset:(NSDictionary *)currentInstance withParams:(int)f
     }
     LGOperationQuery * objcResult = [currentInstanceObj offset:from];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGOperationQuery *rctImpl_objcResult = (RCTCoreLGOperationQuery *)[self.bridge moduleForName:@"CoreLGOperationQuery"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGOperationQuery", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGOperationQuery", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -169,10 +169,10 @@ RCT_REMAP_METHOD(limit,limit:(NSDictionary *)currentInstance withParams:(int)cou
     }
     LGOperationQuery * objcResult = [currentInstanceObj limit:count];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGOperationQuery *rctImpl_objcResult = (RCTCoreLGOperationQuery *)[self.bridge moduleForName:@"CoreLGOperationQuery"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGOperationQuery", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGOperationQuery", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -202,10 +202,10 @@ RCT_REMAP_METHOD(complete,complete:(NSDictionary *)currentInstance WithResolver:
     }
     LGOperationQuery * objcResult = [currentInstanceObj complete];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGOperationQuery *rctImpl_objcResult = (RCTCoreLGOperationQuery *)[self.bridge moduleForName:@"CoreLGOperationQuery"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGOperationQuery", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGOperationQuery", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -232,10 +232,10 @@ RCT_REMAP_METHOD(partial,partial:(NSDictionary *)currentInstance WithResolver:(R
     }
     LGOperationQuery * objcResult = [currentInstanceObj partial];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGOperationQuery *rctImpl_objcResult = (RCTCoreLGOperationQuery *)[self.bridge moduleForName:@"CoreLGOperationQuery"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGOperationQuery", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGOperationQuery", @"uid" : objcResult_uuid };
 
     if(result)
     {

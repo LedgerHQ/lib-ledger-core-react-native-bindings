@@ -30,10 +30,10 @@
         return;
     }
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *result_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeTransaction *rctImpl_result = (RCTCoreLGBitcoinLikeTransaction *)[self.bridge moduleForName:@"CoreLGBitcoinLikeTransaction"];
-    [rctImpl_result.objcImplementations setObject:result forKey:uuid];
-    NSDictionary *converted_result = @{@"type" : @"CoreLGBitcoinLikeTransaction", @"uid" : uuid };
+    [rctImpl_result.objcImplementations setObject:result forKey:result_uuid];
+    NSDictionary *converted_result = @{@"type" : @"CoreLGBitcoinLikeTransaction", @"uid" : result_uuid };
 
     self.resolve(converted_result);
 

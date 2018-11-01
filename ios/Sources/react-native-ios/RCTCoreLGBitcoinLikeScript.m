@@ -49,6 +49,20 @@ RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve reject
     [self.objcImplementations removeAllObjects];
     resolve(@(YES));
 }
+-(NSData *) hexStringToData: (NSString *)hexString 
+{
+    NSMutableData *data= [[NSMutableData alloc] init];
+    unsigned char byte;
+    char byteChars[3] = {'\0','\0','\0'};
+    for (int i = 0; i < ([hexString length] / 2); i++)
+    {
+        byteChars[0] = [hexString characterAtIndex: i*2];
+        byteChars[1] = [hexString characterAtIndex: i*2 + 1];
+        byte = strtol(byteChars, NULL, 16);
+        [data appendBytes:&byte length:1];
+    }
+    return data;
+}
 
 RCT_REMAP_METHOD(head,head:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -63,10 +77,10 @@ RCT_REMAP_METHOD(head,head:(NSDictionary *)currentInstance WithResolver:(RCTProm
     }
     LGBitcoinLikeScriptChunk * objcResult = [currentInstanceObj head];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeScriptChunk *rctImpl_objcResult = (RCTCoreLGBitcoinLikeScriptChunk *)[self.bridge moduleForName:@"CoreLGBitcoinLikeScriptChunk"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeScriptChunk", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeScriptChunk", @"uid" : objcResult_uuid };
 
     if(result)
     {
@@ -103,13 +117,15 @@ RCT_REMAP_METHOD(toString,toString:(NSDictionary *)currentInstance WithResolver:
 
 }
 
-RCT_REMAP_METHOD(parse,parsewithParams:(nonnull NSData *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    LGBitcoinLikeScript * objcResult = [LGBitcoinLikeScript parse:data];
+RCT_REMAP_METHOD(parse,parsewithParams:(NSString *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    NSData *objcParam_0 = [self hexStringToData:data];
 
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    LGBitcoinLikeScript * objcResult = [LGBitcoinLikeScript parse:objcParam_0];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeScript *rctImpl_objcResult = (RCTCoreLGBitcoinLikeScript *)[self.bridge moduleForName:@"CoreLGBitcoinLikeScript"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:uuid];
-    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeScript", @"uid" : uuid };
+    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeScript", @"uid" : objcResult_uuid };
 
     if(result)
     {

@@ -50,15 +50,31 @@ RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve reject
     [self.objcImplementations removeAllObjects];
     resolve(@(YES));
 }
+-(NSData *) hexStringToData: (NSString *)hexString 
+{
+    NSMutableData *data= [[NSMutableData alloc] init];
+    unsigned char byte;
+    char byteChars[3] = {'\0','\0','\0'};
+    for (int i = 0; i < ([hexString length] / 2); i++)
+    {
+        byteChars[0] = [hexString characterAtIndex: i*2];
+        byteChars[1] = [hexString characterAtIndex: i*2 + 1];
+        byte = strtol(byteChars, NULL, 16);
+        [data appendBytes:&byte length:1];
+    }
+    return data;
+}
 RCT_REMAP_METHOD(init, initWithError:(nullable NSDictionary *)error
-                                data:(nullable NSData *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                                data:(NSString *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSMutableDictionary *implementationsData = [[NSMutableDictionary alloc] init];
     RCTCoreLGError *rctParam_error = (RCTCoreLGError *)[self.bridge moduleForName:@"CoreLGError"];
     LGError *field_0 = (LGError *)[rctParam_error.objcImplementations objectForKey:error[@"uid"]];
     [implementationsData setObject:error[@"uid"] forKey:@"error"];
+    NSData *field_1 = [self hexStringToData:data];
 
 
-    LGHttpReadBodyResult * finalResult = [[LGHttpReadBodyResult alloc] initWithError:field_0 data:data];
+
+    LGHttpReadBodyResult * finalResult = [[LGHttpReadBodyResult alloc] initWithError:field_0 data:field_1];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGHttpReadBodyResult *rctImpl = (RCTCoreLGHttpReadBodyResult *)[self.bridge moduleForName:@"CoreLGHttpReadBodyResult"];
     [rctImpl.objcImplementations setObject:finalResult forKey:uuid];
@@ -70,10 +86,27 @@ RCT_REMAP_METHOD(init, initWithError:(nullable NSDictionary *)error
     }
 }
 
+-(void)mapImplementationsData:(NSDictionary *)currentInstance
+{
+    LGHttpReadBodyResult *objcImpl = (LGHttpReadBodyResult *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    NSMutableDictionary *implementationsData = [[NSMutableDictionary alloc] init];
+    id field_0 = objcImpl.error;
+    NSString *field_0_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGError *rctImpl_field_0 = (RCTCoreLGError *)[self.bridge moduleForName:@"CoreLGError"];
+    [rctImpl_field_0.objcImplementations setObject:field_0 forKey:field_0_uuid];
+    NSDictionary *converted_field_0 = @{@"type" : @"CoreLGError", @"uid" : field_0_uuid };
+    [implementationsData setObject:converted_field_0 forKey:@"error"];
+    [self.implementationsData setObject:implementationsData forKey:currentInstance[@"uid"]];
+}
 RCT_REMAP_METHOD(getError, getError:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGHttpReadBodyResult *objcImpl = (LGHttpReadBodyResult *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
     NSDictionary *data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
+    if (!data)
+    {
+        [self mapImplementationsData:currentInstance];
+        data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
+    }
     NSString *returnUuid = [data objectForKey:@"error"];
     NSDictionary *result = @{@"type" : @"CoreLGError", @"uid" : returnUuid };
     resolve(result);
@@ -82,7 +115,7 @@ RCT_REMAP_METHOD(getError, getError:(NSDictionary *)currentInstance withResolver
 RCT_REMAP_METHOD(getData, getData:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGHttpReadBodyResult *objcImpl = (LGHttpReadBodyResult *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : objcImpl.data};
+    NSDictionary *result = @{@"value" : objcImpl.data.description};
     resolve(result);
 }
 

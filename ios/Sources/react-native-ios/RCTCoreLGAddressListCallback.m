@@ -33,10 +33,10 @@
     NSMutableArray *converted_result = [[NSMutableArray alloc] init];
     for (id result_elem in result)
     {
-        NSString *uuid = [[NSUUID UUID] UUIDString];
+        NSString *result_elem_uuid = [[NSUUID UUID] UUIDString];
         RCTCoreLGAddress *rctImpl_result_elem = (RCTCoreLGAddress *)[self.bridge moduleForName:@"CoreLGAddress"];
-        [rctImpl_result_elem.objcImplementations setObject:result_elem forKey:uuid];
-        NSDictionary *converted_result_elem = @{@"type" : @"CoreLGAddress", @"uid" : uuid };
+        [rctImpl_result_elem.objcImplementations setObject:result_elem forKey:result_elem_uuid];
+        NSDictionary *converted_result_elem = @{@"type" : @"CoreLGAddress", @"uid" : result_elem_uuid };
         [converted_result addObject:converted_result_elem];
     }
 
