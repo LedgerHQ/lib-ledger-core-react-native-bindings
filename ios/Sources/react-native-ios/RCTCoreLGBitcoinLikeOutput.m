@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeOutput::release, first argument should be an instance of LGBitcoinLikeOutput", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -58,12 +59,14 @@ RCT_REMAP_METHOD(getTransactionHash,getTransactionHash:(NSDictionary *)currentIn
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeOutput::getTransactionHash, first argument should be an instance of LGBitcoinLikeOutput", nil);
+        return;
     }
     LGBitcoinLikeOutput *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeOutput::getTransactionHash, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getTransactionHash];
     NSDictionary *result = @{@"value" : objcResult};
@@ -74,6 +77,7 @@ RCT_REMAP_METHOD(getTransactionHash,getTransactionHash:(NSDictionary *)currentIn
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeOutput::getTransactionHash", nil);
+        return;
     }
 
 }
@@ -86,12 +90,14 @@ RCT_REMAP_METHOD(getOutputIndex,getOutputIndex:(NSDictionary *)currentInstance W
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeOutput::getOutputIndex, first argument should be an instance of LGBitcoinLikeOutput", nil);
+        return;
     }
     LGBitcoinLikeOutput *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeOutput::getOutputIndex, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSInteger objcResult = [currentInstanceObj getOutputIndex];
     NSDictionary *result = @{@"value" : @(objcResult)};
@@ -102,6 +108,7 @@ RCT_REMAP_METHOD(getOutputIndex,getOutputIndex:(NSDictionary *)currentInstance W
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeOutput::getOutputIndex", nil);
+        return;
     }
 
 }
@@ -114,12 +121,14 @@ RCT_REMAP_METHOD(getValue,getValue:(NSDictionary *)currentInstance WithResolver:
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeOutput::getValue, first argument should be an instance of LGBitcoinLikeOutput", nil);
+        return;
     }
     LGBitcoinLikeOutput *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeOutput::getValue, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGAmount * objcResult = [currentInstanceObj getValue];
 
@@ -135,6 +144,7 @@ RCT_REMAP_METHOD(getValue,getValue:(NSDictionary *)currentInstance WithResolver:
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeOutput::getValue", nil);
+        return;
     }
 
 }
@@ -147,12 +157,14 @@ RCT_REMAP_METHOD(getScript,getScript:(NSDictionary *)currentInstance WithResolve
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeOutput::getScript, first argument should be an instance of LGBitcoinLikeOutput", nil);
+        return;
     }
     LGBitcoinLikeOutput *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeOutput::getScript, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSData * objcResult = [currentInstanceObj getScript];
     NSDictionary *result = @{@"value" : objcResult.description};
@@ -163,6 +175,7 @@ RCT_REMAP_METHOD(getScript,getScript:(NSDictionary *)currentInstance WithResolve
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeOutput::getScript", nil);
+        return;
     }
 
 }
@@ -171,12 +184,14 @@ RCT_REMAP_METHOD(parseScript,parseScript:(NSDictionary *)currentInstance WithRes
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeOutput::parseScript, first argument should be an instance of LGBitcoinLikeOutput", nil);
+        return;
     }
     LGBitcoinLikeOutput *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeOutput::parseScript, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGBitcoinLikeScript * objcResult = [currentInstanceObj parseScript];
 
@@ -192,6 +207,7 @@ RCT_REMAP_METHOD(parseScript,parseScript:(NSDictionary *)currentInstance WithRes
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeOutput::parseScript", nil);
+        return;
     }
 
 }
@@ -204,12 +220,14 @@ RCT_REMAP_METHOD(getAddress,getAddress:(NSDictionary *)currentInstance WithResol
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeOutput::getAddress, first argument should be an instance of LGBitcoinLikeOutput", nil);
+        return;
     }
     LGBitcoinLikeOutput *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeOutput::getAddress, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getAddress];
     NSDictionary *result = @{@"value" : objcResult};
@@ -220,6 +238,7 @@ RCT_REMAP_METHOD(getAddress,getAddress:(NSDictionary *)currentInstance WithResol
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeOutput::getAddress", nil);
+        return;
     }
 
 }
@@ -228,12 +247,14 @@ RCT_REMAP_METHOD(getDerivationPath,getDerivationPath:(NSDictionary *)currentInst
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeOutput::getDerivationPath, first argument should be an instance of LGBitcoinLikeOutput", nil);
+        return;
     }
     LGBitcoinLikeOutput *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeOutput::getDerivationPath, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGDerivationPath * objcResult = [currentInstanceObj getDerivationPath];
 
@@ -249,6 +270,7 @@ RCT_REMAP_METHOD(getDerivationPath,getDerivationPath:(NSDictionary *)currentInst
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeOutput::getDerivationPath", nil);
+        return;
     }
 
 }

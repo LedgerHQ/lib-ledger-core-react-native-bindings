@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeExtendedPublicKey::release, first argument should be an instance of LGBitcoinLikeExtendedPublicKey", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -54,12 +55,14 @@ RCT_REMAP_METHOD(derive,derive:(NSDictionary *)currentInstance withParams:(nonnu
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeExtendedPublicKey::derive, first argument should be an instance of LGBitcoinLikeExtendedPublicKey", nil);
+        return;
     }
     LGBitcoinLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeExtendedPublicKey::derive, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGBitcoinLikeAddress * objcResult = [currentInstanceObj derive:path];
 
@@ -75,6 +78,7 @@ RCT_REMAP_METHOD(derive,derive:(NSDictionary *)currentInstance withParams:(nonnu
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeExtendedPublicKey::derive", nil);
+        return;
     }
 
 }
@@ -83,12 +87,14 @@ RCT_REMAP_METHOD(derivePublicKey,derivePublicKey:(NSDictionary *)currentInstance
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeExtendedPublicKey::derivePublicKey, first argument should be an instance of LGBitcoinLikeExtendedPublicKey", nil);
+        return;
     }
     LGBitcoinLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeExtendedPublicKey::derivePublicKey, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSData * objcResult = [currentInstanceObj derivePublicKey:path];
     NSDictionary *result = @{@"value" : objcResult.description};
@@ -99,6 +105,7 @@ RCT_REMAP_METHOD(derivePublicKey,derivePublicKey:(NSDictionary *)currentInstance
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeExtendedPublicKey::derivePublicKey", nil);
+        return;
     }
 
 }
@@ -107,12 +114,14 @@ RCT_REMAP_METHOD(deriveHash160,deriveHash160:(NSDictionary *)currentInstance wit
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeExtendedPublicKey::deriveHash160, first argument should be an instance of LGBitcoinLikeExtendedPublicKey", nil);
+        return;
     }
     LGBitcoinLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeExtendedPublicKey::deriveHash160, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSData * objcResult = [currentInstanceObj deriveHash160:path];
     NSDictionary *result = @{@"value" : objcResult.description};
@@ -123,6 +132,7 @@ RCT_REMAP_METHOD(deriveHash160,deriveHash160:(NSDictionary *)currentInstance wit
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeExtendedPublicKey::deriveHash160", nil);
+        return;
     }
 
 }
@@ -131,12 +141,14 @@ RCT_REMAP_METHOD(toBase58,toBase58:(NSDictionary *)currentInstance WithResolver:
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeExtendedPublicKey::toBase58, first argument should be an instance of LGBitcoinLikeExtendedPublicKey", nil);
+        return;
     }
     LGBitcoinLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeExtendedPublicKey::toBase58, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj toBase58];
     NSDictionary *result = @{@"value" : objcResult};
@@ -147,6 +159,7 @@ RCT_REMAP_METHOD(toBase58,toBase58:(NSDictionary *)currentInstance WithResolver:
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeExtendedPublicKey::toBase58", nil);
+        return;
     }
 
 }
@@ -155,12 +168,14 @@ RCT_REMAP_METHOD(getRootPath,getRootPath:(NSDictionary *)currentInstance WithRes
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeExtendedPublicKey::getRootPath, first argument should be an instance of LGBitcoinLikeExtendedPublicKey", nil);
+        return;
     }
     LGBitcoinLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeExtendedPublicKey::getRootPath, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getRootPath];
     NSDictionary *result = @{@"value" : objcResult};
@@ -171,6 +186,7 @@ RCT_REMAP_METHOD(getRootPath,getRootPath:(NSDictionary *)currentInstance WithRes
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeExtendedPublicKey::getRootPath", nil);
+        return;
     }
 
 }

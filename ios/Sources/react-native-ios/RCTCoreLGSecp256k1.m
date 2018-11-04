@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGSecp256k1::release, first argument should be an instance of LGSecp256k1", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -83,6 +84,7 @@ RCT_REMAP_METHOD(createInstance,createInstanceWithResolver:(RCTPromiseResolveBlo
     else
     {
         reject(@"impl_call_error", @"Error while calling LGSecp256k1::createInstance", nil);
+        return;
     }
 
 }
@@ -98,12 +100,14 @@ RCT_REMAP_METHOD(computePubKey,computePubKey:(NSDictionary *)currentInstance wit
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGSecp256k1::computePubKey, first argument should be an instance of LGSecp256k1", nil);
+        return;
     }
     LGSecp256k1 *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGSecp256k1::computePubKey, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSData *objcParam_0 = [self hexStringToData:privKey];
 
@@ -116,6 +120,7 @@ RCT_REMAP_METHOD(computePubKey,computePubKey:(NSDictionary *)currentInstance wit
     else
     {
         reject(@"impl_call_error", @"Error while calling LGSecp256k1::computePubKey", nil);
+        return;
     }
 
 }
@@ -131,12 +136,14 @@ RCT_REMAP_METHOD(sign,sign:(NSDictionary *)currentInstance withParams:(NSString 
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGSecp256k1::sign, first argument should be an instance of LGSecp256k1", nil);
+        return;
     }
     LGSecp256k1 *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGSecp256k1::sign, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSData *objcParam_0 = [self hexStringToData:privKey];
 
@@ -151,6 +158,7 @@ RCT_REMAP_METHOD(sign,sign:(NSDictionary *)currentInstance withParams:(NSString 
     else
     {
         reject(@"impl_call_error", @"Error while calling LGSecp256k1::sign", nil);
+        return;
     }
 
 }
@@ -168,12 +176,14 @@ RCT_REMAP_METHOD(verify,verify:(NSDictionary *)currentInstance withParams:(NSStr
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGSecp256k1::verify, first argument should be an instance of LGSecp256k1", nil);
+        return;
     }
     LGSecp256k1 *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGSecp256k1::verify, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSData *objcParam_0 = [self hexStringToData:data];
 
@@ -190,6 +200,7 @@ RCT_REMAP_METHOD(verify,verify:(NSDictionary *)currentInstance withParams:(NSStr
     else
     {
         reject(@"impl_call_error", @"Error while calling LGSecp256k1::verify", nil);
+        return;
     }
 
 }
@@ -209,6 +220,7 @@ RCT_REMAP_METHOD(newInstance,newInstanceWithResolver:(RCTPromiseResolveBlock)res
     else
     {
         reject(@"impl_call_error", @"Error while calling LGSecp256k1::newInstance", nil);
+        return;
     }
 
 }

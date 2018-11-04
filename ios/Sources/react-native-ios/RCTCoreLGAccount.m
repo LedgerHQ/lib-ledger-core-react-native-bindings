@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::release, first argument should be an instance of LGAccount", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -58,12 +59,14 @@ RCT_REMAP_METHOD(getIndex,getIndex:(NSDictionary *)currentInstance WithResolver:
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::getIndex, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::getIndex, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSInteger objcResult = [currentInstanceObj getIndex];
     NSDictionary *result = @{@"value" : @(objcResult)};
@@ -74,6 +77,7 @@ RCT_REMAP_METHOD(getIndex,getIndex:(NSDictionary *)currentInstance WithResolver:
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::getIndex", nil);
+        return;
     }
 
 }
@@ -83,12 +87,14 @@ RCT_REMAP_METHOD(queryOperations,queryOperations:(NSDictionary *)currentInstance
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::queryOperations, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::queryOperations, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGOperationQuery * objcResult = [currentInstanceObj queryOperations];
 
@@ -104,6 +110,7 @@ RCT_REMAP_METHOD(queryOperations,queryOperations:(NSDictionary *)currentInstance
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::queryOperations", nil);
+        return;
     }
 
 }
@@ -116,12 +123,14 @@ RCT_REMAP_METHOD(getBalance,getBalance:(NSDictionary *)currentInstance WithResol
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::getBalance, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::getBalance, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGAmountCallback *objcParam_0 = [[RCTCoreLGAmountCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj getBalance:objcParam_0];
@@ -141,12 +150,14 @@ RCT_REMAP_METHOD(getBalanceHistory,getBalanceHistory:(NSDictionary *)currentInst
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::getBalanceHistory, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::getBalanceHistory, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGAmountListCallback *objcParam_3 = [[RCTCoreLGAmountListCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj getBalanceHistory:start end:end period:(LGTimePeriod)period callback:objcParam_3];
@@ -161,12 +172,14 @@ RCT_REMAP_METHOD(isSynchronizing,isSynchronizing:(NSDictionary *)currentInstance
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::isSynchronizing, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::isSynchronizing, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     BOOL objcResult = [currentInstanceObj isSynchronizing];
     NSDictionary *result = @{@"value" : @(objcResult)};
@@ -177,6 +190,7 @@ RCT_REMAP_METHOD(isSynchronizing,isSynchronizing:(NSDictionary *)currentInstance
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::isSynchronizing", nil);
+        return;
     }
 
 }
@@ -189,12 +203,14 @@ RCT_REMAP_METHOD(synchronize,synchronize:(NSDictionary *)currentInstance WithRes
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::synchronize, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::synchronize, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGEventBus * objcResult = [currentInstanceObj synchronize];
 
@@ -210,6 +226,7 @@ RCT_REMAP_METHOD(synchronize,synchronize:(NSDictionary *)currentInstance WithRes
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::synchronize", nil);
+        return;
     }
 
 }
@@ -222,12 +239,14 @@ RCT_REMAP_METHOD(getPreferences,getPreferences:(NSDictionary *)currentInstance W
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::getPreferences, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::getPreferences, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGPreferences * objcResult = [currentInstanceObj getPreferences];
 
@@ -243,6 +262,7 @@ RCT_REMAP_METHOD(getPreferences,getPreferences:(NSDictionary *)currentInstance W
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::getPreferences", nil);
+        return;
     }
 
 }
@@ -255,12 +275,14 @@ RCT_REMAP_METHOD(getLogger,getLogger:(NSDictionary *)currentInstance WithResolve
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::getLogger, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::getLogger, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGLogger * objcResult = [currentInstanceObj getLogger];
 
@@ -276,6 +298,7 @@ RCT_REMAP_METHOD(getLogger,getLogger:(NSDictionary *)currentInstance WithResolve
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::getLogger", nil);
+        return;
     }
 
 }
@@ -291,12 +314,14 @@ RCT_REMAP_METHOD(getOperationPreferences,getOperationPreferences:(NSDictionary *
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::getOperationPreferences, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::getOperationPreferences, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGPreferences * objcResult = [currentInstanceObj getOperationPreferences:uid];
 
@@ -312,6 +337,7 @@ RCT_REMAP_METHOD(getOperationPreferences,getOperationPreferences:(NSDictionary *
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::getOperationPreferences", nil);
+        return;
     }
 
 }
@@ -320,12 +346,14 @@ RCT_REMAP_METHOD(asBitcoinLikeAccount,asBitcoinLikeAccount:(NSDictionary *)curre
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::asBitcoinLikeAccount, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::asBitcoinLikeAccount, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGBitcoinLikeAccount * objcResult = [currentInstanceObj asBitcoinLikeAccount];
 
@@ -341,6 +369,7 @@ RCT_REMAP_METHOD(asBitcoinLikeAccount,asBitcoinLikeAccount:(NSDictionary *)curre
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::asBitcoinLikeAccount", nil);
+        return;
     }
 
 }
@@ -355,12 +384,14 @@ RCT_REMAP_METHOD(isInstanceOfBitcoinLikeAccount,isInstanceOfBitcoinLikeAccount:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::isInstanceOfBitcoinLikeAccount, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::isInstanceOfBitcoinLikeAccount, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     BOOL objcResult = [currentInstanceObj isInstanceOfBitcoinLikeAccount];
     NSDictionary *result = @{@"value" : @(objcResult)};
@@ -371,6 +402,7 @@ RCT_REMAP_METHOD(isInstanceOfBitcoinLikeAccount,isInstanceOfBitcoinLikeAccount:(
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::isInstanceOfBitcoinLikeAccount", nil);
+        return;
     }
 
 }
@@ -383,12 +415,14 @@ RCT_REMAP_METHOD(isInstanceOfEthereumLikeAccount,isInstanceOfEthereumLikeAccount
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::isInstanceOfEthereumLikeAccount, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::isInstanceOfEthereumLikeAccount, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     BOOL objcResult = [currentInstanceObj isInstanceOfEthereumLikeAccount];
     NSDictionary *result = @{@"value" : @(objcResult)};
@@ -399,6 +433,7 @@ RCT_REMAP_METHOD(isInstanceOfEthereumLikeAccount,isInstanceOfEthereumLikeAccount
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::isInstanceOfEthereumLikeAccount", nil);
+        return;
     }
 
 }
@@ -411,12 +446,14 @@ RCT_REMAP_METHOD(isInstanceOfRippleLikeAccount,isInstanceOfRippleLikeAccount:(NS
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::isInstanceOfRippleLikeAccount, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::isInstanceOfRippleLikeAccount, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     BOOL objcResult = [currentInstanceObj isInstanceOfRippleLikeAccount];
     NSDictionary *result = @{@"value" : @(objcResult)};
@@ -427,6 +464,7 @@ RCT_REMAP_METHOD(isInstanceOfRippleLikeAccount,isInstanceOfRippleLikeAccount:(NS
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::isInstanceOfRippleLikeAccount", nil);
+        return;
     }
 
 }
@@ -436,12 +474,14 @@ RCT_REMAP_METHOD(getFreshPublicAddresses,getFreshPublicAddresses:(NSDictionary *
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::getFreshPublicAddresses, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::getFreshPublicAddresses, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGAddressListCallback *objcParam_0 = [[RCTCoreLGAddressListCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj getFreshPublicAddresses:objcParam_0];
@@ -456,12 +496,14 @@ RCT_REMAP_METHOD(getWalletType,getWalletType:(NSDictionary *)currentInstance Wit
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::getWalletType, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::getWalletType, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGWalletType objcResult = [currentInstanceObj getWalletType];
     NSDictionary *result = @{@"value" : @(objcResult)};
@@ -472,6 +514,7 @@ RCT_REMAP_METHOD(getWalletType,getWalletType:(NSDictionary *)currentInstance Wit
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::getWalletType", nil);
+        return;
     }
 
 }
@@ -484,12 +527,14 @@ RCT_REMAP_METHOD(getEventBus,getEventBus:(NSDictionary *)currentInstance WithRes
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::getEventBus, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::getEventBus, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGEventBus * objcResult = [currentInstanceObj getEventBus];
 
@@ -505,6 +550,7 @@ RCT_REMAP_METHOD(getEventBus,getEventBus:(NSDictionary *)currentInstance WithRes
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::getEventBus", nil);
+        return;
     }
 
 }
@@ -514,12 +560,14 @@ RCT_REMAP_METHOD(startBlockchainObservation,startBlockchainObservation:(NSDictio
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::startBlockchainObservation, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::startBlockchainObservation, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     [currentInstanceObj startBlockchainObservation];
 
@@ -530,12 +578,14 @@ RCT_REMAP_METHOD(stopBlockchainObservation,stopBlockchainObservation:(NSDictiona
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::stopBlockchainObservation, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::stopBlockchainObservation, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     [currentInstanceObj stopBlockchainObservation];
 
@@ -549,12 +599,14 @@ RCT_REMAP_METHOD(isObservingBlockchain,isObservingBlockchain:(NSDictionary *)cur
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::isObservingBlockchain, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::isObservingBlockchain, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     BOOL objcResult = [currentInstanceObj isObservingBlockchain];
     NSDictionary *result = @{@"value" : @(objcResult)};
@@ -565,6 +617,7 @@ RCT_REMAP_METHOD(isObservingBlockchain,isObservingBlockchain:(NSDictionary *)cur
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::isObservingBlockchain", nil);
+        return;
     }
 
 }
@@ -577,12 +630,14 @@ RCT_REMAP_METHOD(getLastBlock,getLastBlock:(NSDictionary *)currentInstance WithR
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::getLastBlock, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::getLastBlock, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGBlockCallback *objcParam_0 = [[RCTCoreLGBlockCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj getLastBlock:objcParam_0];
@@ -594,12 +649,14 @@ RCT_REMAP_METHOD(getRestoreKey,getRestoreKey:(NSDictionary *)currentInstance Wit
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::getRestoreKey, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::getRestoreKey, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getRestoreKey];
     NSDictionary *result = @{@"value" : objcResult};
@@ -610,6 +667,7 @@ RCT_REMAP_METHOD(getRestoreKey,getRestoreKey:(NSDictionary *)currentInstance Wit
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::getRestoreKey", nil);
+        return;
     }
 
 }
@@ -622,12 +680,14 @@ RCT_REMAP_METHOD(eraseDataSince,eraseDataSince:(NSDictionary *)currentInstance w
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::eraseDataSince, first argument should be an instance of LGAccount", nil);
+        return;
     }
     LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::eraseDataSince, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGErrorCodeCallback *objcParam_1 = [[RCTCoreLGErrorCodeCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj eraseDataSince:date callback:objcParam_1];

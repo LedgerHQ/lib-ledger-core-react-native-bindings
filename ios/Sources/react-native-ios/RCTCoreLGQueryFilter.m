@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGQueryFilter::release, first argument should be an instance of LGQueryFilter", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -65,6 +66,7 @@ RCT_REMAP_METHOD(accountEq,accountEqwithParams:(nonnull NSString *)accountUid wi
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::accountEq", nil);
+        return;
     }
 
 }
@@ -84,6 +86,7 @@ RCT_REMAP_METHOD(accountNeq,accountNeqwithParams:(nonnull NSString *)accountUid 
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::accountNeq", nil);
+        return;
     }
 
 }
@@ -103,6 +106,7 @@ RCT_REMAP_METHOD(dateLte,dateLtewithParams:(nonnull NSDate *)time withResolver:(
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::dateLte", nil);
+        return;
     }
 
 }
@@ -122,6 +126,7 @@ RCT_REMAP_METHOD(dateLt,dateLtwithParams:(nonnull NSDate *)time withResolver:(RC
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::dateLt", nil);
+        return;
     }
 
 }
@@ -141,6 +146,7 @@ RCT_REMAP_METHOD(dateGt,dateGtwithParams:(nonnull NSDate *)time withResolver:(RC
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::dateGt", nil);
+        return;
     }
 
 }
@@ -160,6 +166,7 @@ RCT_REMAP_METHOD(dateGte,dateGtewithParams:(nonnull NSDate *)time withResolver:(
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::dateGte", nil);
+        return;
     }
 
 }
@@ -179,6 +186,7 @@ RCT_REMAP_METHOD(dateEq,dateEqwithParams:(nonnull NSDate *)time withResolver:(RC
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::dateEq", nil);
+        return;
     }
 
 }
@@ -198,6 +206,7 @@ RCT_REMAP_METHOD(dateNeq,dateNeqwithParams:(nonnull NSDate *)time withResolver:(
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::dateNeq", nil);
+        return;
     }
 
 }
@@ -217,6 +226,7 @@ RCT_REMAP_METHOD(containsRecipient,containsRecipientwithParams:(nonnull NSString
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::containsRecipient", nil);
+        return;
     }
 
 }
@@ -236,6 +246,7 @@ RCT_REMAP_METHOD(containsSender,containsSenderwithParams:(nonnull NSString *)sen
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::containsSender", nil);
+        return;
     }
 
 }
@@ -255,6 +266,7 @@ RCT_REMAP_METHOD(currencyEq,currencyEqwithParams:(nonnull NSString *)currencyNam
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::currencyEq", nil);
+        return;
     }
 
 }
@@ -274,6 +286,7 @@ RCT_REMAP_METHOD(operationUidEq,operationUidEqwithParams:(nonnull NSString *)ope
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::operationUidEq", nil);
+        return;
     }
 
 }
@@ -293,6 +306,7 @@ RCT_REMAP_METHOD(operationUidNeq,operationUidNeqwithParams:(nonnull NSString *)o
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::operationUidNeq", nil);
+        return;
     }
 
 }
@@ -312,6 +326,7 @@ RCT_REMAP_METHOD(trustEq,trustEqwithParams:(int)trust withResolver:(RCTPromiseRe
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::trustEq", nil);
+        return;
     }
 
 }
@@ -331,6 +346,7 @@ RCT_REMAP_METHOD(trustNeq,trustNeqwithParams:(int)trust withResolver:(RCTPromise
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::trustNeq", nil);
+        return;
     }
 
 }
@@ -352,6 +368,7 @@ RCT_REMAP_METHOD(feesEq,feesEqwithParams:(NSDictionary *)amount withResolver:(RC
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::feesEq", nil);
+        return;
     }
 
 }
@@ -373,6 +390,7 @@ RCT_REMAP_METHOD(feesNeq,feesNeqwithParams:(NSDictionary *)amount withResolver:(
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::feesNeq", nil);
+        return;
     }
 
 }
@@ -394,6 +412,7 @@ RCT_REMAP_METHOD(feesGte,feesGtewithParams:(NSDictionary *)amount withResolver:(
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::feesGte", nil);
+        return;
     }
 
 }
@@ -415,6 +434,7 @@ RCT_REMAP_METHOD(feesGt,feesGtwithParams:(NSDictionary *)amount withResolver:(RC
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::feesGt", nil);
+        return;
     }
 
 }
@@ -436,6 +456,7 @@ RCT_REMAP_METHOD(feesLte,feesLtewithParams:(NSDictionary *)amount withResolver:(
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::feesLte", nil);
+        return;
     }
 
 }
@@ -457,6 +478,7 @@ RCT_REMAP_METHOD(feesLt,feesLtwithParams:(NSDictionary *)amount withResolver:(RC
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::feesLt", nil);
+        return;
     }
 
 }
@@ -478,6 +500,7 @@ RCT_REMAP_METHOD(amountEq,amountEqwithParams:(NSDictionary *)amount withResolver
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::amountEq", nil);
+        return;
     }
 
 }
@@ -499,6 +522,7 @@ RCT_REMAP_METHOD(amountNeq,amountNeqwithParams:(NSDictionary *)amount withResolv
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::amountNeq", nil);
+        return;
     }
 
 }
@@ -520,6 +544,7 @@ RCT_REMAP_METHOD(amountGte,amountGtewithParams:(NSDictionary *)amount withResolv
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::amountGte", nil);
+        return;
     }
 
 }
@@ -541,6 +566,7 @@ RCT_REMAP_METHOD(amountGt,amountGtwithParams:(NSDictionary *)amount withResolver
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::amountGt", nil);
+        return;
     }
 
 }
@@ -562,6 +588,7 @@ RCT_REMAP_METHOD(amountLte,amountLtewithParams:(NSDictionary *)amount withResolv
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::amountLte", nil);
+        return;
     }
 
 }
@@ -583,6 +610,7 @@ RCT_REMAP_METHOD(amountLt,amountLtwithParams:(NSDictionary *)amount withResolver
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::amountLt", nil);
+        return;
     }
 
 }
@@ -602,6 +630,7 @@ RCT_REMAP_METHOD(blockHeightEq,blockHeightEqwithParams:(int)blockHeight withReso
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::blockHeightEq", nil);
+        return;
     }
 
 }
@@ -621,6 +650,7 @@ RCT_REMAP_METHOD(blockHeightNeq,blockHeightNeqwithParams:(int)blockHeight withRe
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::blockHeightNeq", nil);
+        return;
     }
 
 }
@@ -640,6 +670,7 @@ RCT_REMAP_METHOD(blockHeightGte,blockHeightGtewithParams:(int)blockHeight withRe
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::blockHeightGte", nil);
+        return;
     }
 
 }
@@ -659,6 +690,7 @@ RCT_REMAP_METHOD(blockHeightGt,blockHeightGtwithParams:(int)blockHeight withReso
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::blockHeightGt", nil);
+        return;
     }
 
 }
@@ -678,6 +710,7 @@ RCT_REMAP_METHOD(blockHeightLte,blockHeightLtewithParams:(int)blockHeight withRe
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::blockHeightLte", nil);
+        return;
     }
 
 }
@@ -697,6 +730,7 @@ RCT_REMAP_METHOD(blockHeightLt,blockHeightLtwithParams:(int)blockHeight withReso
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::blockHeightLt", nil);
+        return;
     }
 
 }
@@ -716,6 +750,7 @@ RCT_REMAP_METHOD(blockHeightIsNull,blockHeightIsNullWithResolver:(RCTPromiseReso
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::blockHeightIsNull", nil);
+        return;
     }
 
 }
@@ -735,6 +770,7 @@ RCT_REMAP_METHOD(operationTypeEq,operationTypeEqwithParams:(int)operationType wi
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::operationTypeEq", nil);
+        return;
     }
 
 }
@@ -754,6 +790,7 @@ RCT_REMAP_METHOD(operationTypeNeq,operationTypeNeqwithParams:(int)operationType 
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::operationTypeNeq", nil);
+        return;
     }
 
 }
@@ -762,12 +799,14 @@ RCT_REMAP_METHOD(opAnd,opAnd:(NSDictionary *)currentInstance withParams:(NSDicti
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGQueryFilter::opAnd, first argument should be an instance of LGQueryFilter", nil);
+        return;
     }
     LGQueryFilter *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGQueryFilter::opAnd, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGQueryFilter *rctParam_filter = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
     LGQueryFilter *objcParam_0 = (LGQueryFilter *)[rctParam_filter.objcImplementations objectForKey:filter[@"uid"]];
@@ -785,6 +824,7 @@ RCT_REMAP_METHOD(opAnd,opAnd:(NSDictionary *)currentInstance withParams:(NSDicti
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::opAnd", nil);
+        return;
     }
 
 }
@@ -793,12 +833,14 @@ RCT_REMAP_METHOD(opOr,opOr:(NSDictionary *)currentInstance withParams:(NSDiction
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGQueryFilter::opOr, first argument should be an instance of LGQueryFilter", nil);
+        return;
     }
     LGQueryFilter *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGQueryFilter::opOr, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGQueryFilter *rctParam_filter = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
     LGQueryFilter *objcParam_0 = (LGQueryFilter *)[rctParam_filter.objcImplementations objectForKey:filter[@"uid"]];
@@ -816,6 +858,7 @@ RCT_REMAP_METHOD(opOr,opOr:(NSDictionary *)currentInstance withParams:(NSDiction
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::opOr", nil);
+        return;
     }
 
 }
@@ -824,12 +867,14 @@ RCT_REMAP_METHOD(opAndNot,opAndNot:(NSDictionary *)currentInstance withParams:(N
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGQueryFilter::opAndNot, first argument should be an instance of LGQueryFilter", nil);
+        return;
     }
     LGQueryFilter *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGQueryFilter::opAndNot, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGQueryFilter *rctParam_filter = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
     LGQueryFilter *objcParam_0 = (LGQueryFilter *)[rctParam_filter.objcImplementations objectForKey:filter[@"uid"]];
@@ -847,6 +892,7 @@ RCT_REMAP_METHOD(opAndNot,opAndNot:(NSDictionary *)currentInstance withParams:(N
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::opAndNot", nil);
+        return;
     }
 
 }
@@ -855,12 +901,14 @@ RCT_REMAP_METHOD(opOrNot,opOrNot:(NSDictionary *)currentInstance withParams:(NSD
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGQueryFilter::opOrNot, first argument should be an instance of LGQueryFilter", nil);
+        return;
     }
     LGQueryFilter *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGQueryFilter::opOrNot, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGQueryFilter *rctParam_filter = (RCTCoreLGQueryFilter *)[self.bridge moduleForName:@"CoreLGQueryFilter"];
     LGQueryFilter *objcParam_0 = (LGQueryFilter *)[rctParam_filter.objcImplementations objectForKey:filter[@"uid"]];
@@ -878,6 +926,7 @@ RCT_REMAP_METHOD(opOrNot,opOrNot:(NSDictionary *)currentInstance withParams:(NSD
     else
     {
         reject(@"impl_call_error", @"Error while calling LGQueryFilter::opOrNot", nil);
+        return;
     }
 
 }
