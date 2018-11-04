@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeBlock::release, first argument should be an instance of LGBitcoinLikeBlock", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -58,12 +59,14 @@ RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(R
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeBlock::getHash, first argument should be an instance of LGBitcoinLikeBlock", nil);
+        return;
     }
     LGBitcoinLikeBlock *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeBlock::getHash, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getHash];
     NSDictionary *result = @{@"value" : objcResult};
@@ -74,6 +77,7 @@ RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(R
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeBlock::getHash", nil);
+        return;
     }
 
 }
@@ -86,12 +90,14 @@ RCT_REMAP_METHOD(getHeight,getHeight:(NSDictionary *)currentInstance WithResolve
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeBlock::getHeight, first argument should be an instance of LGBitcoinLikeBlock", nil);
+        return;
     }
     LGBitcoinLikeBlock *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeBlock::getHeight, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSInteger objcResult = [currentInstanceObj getHeight];
     NSDictionary *result = @{@"value" : @(objcResult)};
@@ -102,6 +108,7 @@ RCT_REMAP_METHOD(getHeight,getHeight:(NSDictionary *)currentInstance WithResolve
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeBlock::getHeight", nil);
+        return;
     }
 
 }
@@ -114,12 +121,14 @@ RCT_REMAP_METHOD(getTime,getTime:(NSDictionary *)currentInstance WithResolver:(R
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeBlock::getTime, first argument should be an instance of LGBitcoinLikeBlock", nil);
+        return;
     }
     LGBitcoinLikeBlock *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeBlock::getTime, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSDate * objcResult = [currentInstanceObj getTime];
     NSISO8601DateFormatter *dateFormatter = [[NSISO8601DateFormatter alloc] init];
@@ -132,6 +141,7 @@ RCT_REMAP_METHOD(getTime,getTime:(NSDictionary *)currentInstance WithResolver:(R
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeBlock::getTime", nil);
+        return;
     }
 
 }

@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::release, first argument should be an instance of LGWalletPool", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -104,6 +105,7 @@ RCT_REMAP_METHOD(newInstance,newInstancewithParams:(nonnull NSString *)name
     else
     {
         reject(@"impl_call_error", @"Error while calling LGWalletPool::newInstance", nil);
+        return;
     }
 
 }
@@ -116,12 +118,14 @@ RCT_REMAP_METHOD(getLogger,getLogger:(NSDictionary *)currentInstance WithResolve
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getLogger, first argument should be an instance of LGWalletPool", nil);
+        return;
     }
     LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getLogger, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGLogger * objcResult = [currentInstanceObj getLogger];
 
@@ -137,6 +141,7 @@ RCT_REMAP_METHOD(getLogger,getLogger:(NSDictionary *)currentInstance WithResolve
     else
     {
         reject(@"impl_call_error", @"Error while calling LGWalletPool::getLogger", nil);
+        return;
     }
 
 }
@@ -149,12 +154,14 @@ RCT_REMAP_METHOD(getName,getName:(NSDictionary *)currentInstance WithResolver:(R
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getName, first argument should be an instance of LGWalletPool", nil);
+        return;
     }
     LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getName, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getName];
     NSDictionary *result = @{@"value" : objcResult};
@@ -165,6 +172,7 @@ RCT_REMAP_METHOD(getName,getName:(NSDictionary *)currentInstance WithResolver:(R
     else
     {
         reject(@"impl_call_error", @"Error while calling LGWalletPool::getName", nil);
+        return;
     }
 
 }
@@ -177,12 +185,14 @@ RCT_REMAP_METHOD(getPreferences,getPreferences:(NSDictionary *)currentInstance W
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getPreferences, first argument should be an instance of LGWalletPool", nil);
+        return;
     }
     LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getPreferences, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGPreferences * objcResult = [currentInstanceObj getPreferences];
 
@@ -198,6 +208,7 @@ RCT_REMAP_METHOD(getPreferences,getPreferences:(NSDictionary *)currentInstance W
     else
     {
         reject(@"impl_call_error", @"Error while calling LGWalletPool::getPreferences", nil);
+        return;
     }
 
 }
@@ -210,12 +221,14 @@ RCT_REMAP_METHOD(getWalletCount,getWalletCount:(NSDictionary *)currentInstance W
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getWalletCount, first argument should be an instance of LGWalletPool", nil);
+        return;
     }
     LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getWalletCount, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGI32Callback *objcParam_0 = [[RCTCoreLGI32Callback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj getWalletCount:objcParam_0];
@@ -233,12 +246,14 @@ RCT_REMAP_METHOD(getWallets,getWallets:(NSDictionary *)currentInstance withParam
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getWallets, first argument should be an instance of LGWalletPool", nil);
+        return;
     }
     LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getWallets, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGWalletListCallback *objcParam_2 = [[RCTCoreLGWalletListCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj getWallets:from size:size callback:objcParam_2];
@@ -254,12 +269,14 @@ RCT_REMAP_METHOD(getWallet,getWallet:(NSDictionary *)currentInstance withParams:
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getWallet, first argument should be an instance of LGWalletPool", nil);
+        return;
     }
     LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getWallet, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGWalletCallback *objcParam_1 = [[RCTCoreLGWalletCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj getWallet:name callback:objcParam_1];
@@ -279,12 +296,14 @@ RCT_REMAP_METHOD(createWallet,createWallet:(NSDictionary *)currentInstance withP
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::createWallet, first argument should be an instance of LGWalletPool", nil);
+        return;
     }
     LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::createWallet, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGCurrency *rctParam_currency = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
     LGCurrency *objcParam_1 = (LGCurrency *)[rctParam_currency.objcImplementations objectForKey:currency[@"uid"]];
@@ -303,12 +322,14 @@ RCT_REMAP_METHOD(getCurrencies,getCurrencies:(NSDictionary *)currentInstance Wit
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getCurrencies, first argument should be an instance of LGWalletPool", nil);
+        return;
     }
     LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getCurrencies, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGCurrencyListCallback *objcParam_0 = [[RCTCoreLGCurrencyListCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj getCurrencies:objcParam_0];
@@ -324,12 +345,14 @@ RCT_REMAP_METHOD(getCurrency,getCurrency:(NSDictionary *)currentInstance withPar
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getCurrency, first argument should be an instance of LGWalletPool", nil);
+        return;
     }
     LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getCurrency, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGCurrencyCallback *objcParam_1 = [[RCTCoreLGCurrencyCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj getCurrency:name callback:objcParam_1];
@@ -345,12 +368,14 @@ RCT_REMAP_METHOD(getLastBlock,getLastBlock:(NSDictionary *)currentInstance withP
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getLastBlock, first argument should be an instance of LGWalletPool", nil);
+        return;
     }
     LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getLastBlock, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGBlockCallback *objcParam_1 = [[RCTCoreLGBlockCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj getLastBlock:currencyName callback:objcParam_1];
@@ -365,12 +390,14 @@ RCT_REMAP_METHOD(getEventBus,getEventBus:(NSDictionary *)currentInstance WithRes
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getEventBus, first argument should be an instance of LGWalletPool", nil);
+        return;
     }
     LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getEventBus, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGEventBus * objcResult = [currentInstanceObj getEventBus];
 
@@ -386,6 +413,7 @@ RCT_REMAP_METHOD(getEventBus,getEventBus:(NSDictionary *)currentInstance WithRes
     else
     {
         reject(@"impl_call_error", @"Error while calling LGWalletPool::getEventBus", nil);
+        return;
     }
 
 }
@@ -398,12 +426,14 @@ RCT_REMAP_METHOD(eraseDataSince,eraseDataSince:(NSDictionary *)currentInstance w
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::eraseDataSince, first argument should be an instance of LGWalletPool", nil);
+        return;
     }
     LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::eraseDataSince, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGErrorCodeCallback *objcParam_1 = [[RCTCoreLGErrorCodeCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj eraseDataSince:date callback:objcParam_1];

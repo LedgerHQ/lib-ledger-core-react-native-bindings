@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeScript::release, first argument should be an instance of LGBitcoinLikeScript", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -68,12 +69,14 @@ RCT_REMAP_METHOD(head,head:(NSDictionary *)currentInstance WithResolver:(RCTProm
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeScript::head, first argument should be an instance of LGBitcoinLikeScript", nil);
+        return;
     }
     LGBitcoinLikeScript *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeScript::head, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGBitcoinLikeScriptChunk * objcResult = [currentInstanceObj head];
 
@@ -89,6 +92,7 @@ RCT_REMAP_METHOD(head,head:(NSDictionary *)currentInstance WithResolver:(RCTProm
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeScript::head", nil);
+        return;
     }
 
 }
@@ -97,12 +101,14 @@ RCT_REMAP_METHOD(toString,toString:(NSDictionary *)currentInstance WithResolver:
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeScript::toString, first argument should be an instance of LGBitcoinLikeScript", nil);
+        return;
     }
     LGBitcoinLikeScript *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeScript::toString, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj toString];
     NSDictionary *result = @{@"value" : objcResult};
@@ -113,6 +119,7 @@ RCT_REMAP_METHOD(toString,toString:(NSDictionary *)currentInstance WithResolver:
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeScript::toString", nil);
+        return;
     }
 
 }
@@ -134,6 +141,7 @@ RCT_REMAP_METHOD(parse,parsewithParams:(NSString *)data withResolver:(RCTPromise
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeScript::parse", nil);
+        return;
     }
 
 }

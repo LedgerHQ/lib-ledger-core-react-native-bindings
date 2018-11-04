@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpClient::release, first argument should be an instance of LGHttpClient", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -58,12 +59,14 @@ RCT_REMAP_METHOD(execute,execute:(NSDictionary *)currentInstance withParams:(NSD
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpClient::execute, first argument should be an instance of LGHttpClientImpl", nil);
+        return;
     }
     LGHttpClientImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHttpClientImpl::execute, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGHttpRequest *rctParam_request = (RCTCoreLGHttpRequest *)[self.bridge moduleForName:@"CoreLGHttpRequest"];
     LGHttpRequest *objcParam_0 = (LGHttpRequest *)[rctParam_request.objcImplementations objectForKey:request[@"uid"]];
@@ -78,6 +81,7 @@ RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)re
     if (!objcResult || !result)
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpClientImpl::init", nil);
+        return;
     }
     resolve(result);
 }

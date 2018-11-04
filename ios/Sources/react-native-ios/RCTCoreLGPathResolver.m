@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPathResolver::release, first argument should be an instance of LGPathResolver", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -59,12 +60,14 @@ RCT_REMAP_METHOD(resolveDatabasePath,resolveDatabasePath:(NSDictionary *)current
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPathResolver::resolveDatabasePath, first argument should be an instance of LGPathResolverImpl", nil);
+        return;
     }
     LGPathResolverImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPathResolverImpl::resolveDatabasePath, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj resolveDatabasePath:path];
     NSDictionary *result = @{@"value" : objcResult};
@@ -75,6 +78,7 @@ RCT_REMAP_METHOD(resolveDatabasePath,resolveDatabasePath:(NSDictionary *)current
     else
     {
         reject(@"impl_call_error", @"Error while calling LGPathResolverImpl::resolveDatabasePath", nil);
+        return;
     }
 
 }
@@ -88,12 +92,14 @@ RCT_REMAP_METHOD(resolveLogFilePath,resolveLogFilePath:(NSDictionary *)currentIn
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPathResolver::resolveLogFilePath, first argument should be an instance of LGPathResolverImpl", nil);
+        return;
     }
     LGPathResolverImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPathResolverImpl::resolveLogFilePath, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj resolveLogFilePath:path];
     NSDictionary *result = @{@"value" : objcResult};
@@ -104,6 +110,7 @@ RCT_REMAP_METHOD(resolveLogFilePath,resolveLogFilePath:(NSDictionary *)currentIn
     else
     {
         reject(@"impl_call_error", @"Error while calling LGPathResolverImpl::resolveLogFilePath", nil);
+        return;
     }
 
 }
@@ -117,12 +124,14 @@ RCT_REMAP_METHOD(resolvePreferencesPath,resolvePreferencesPath:(NSDictionary *)c
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPathResolver::resolvePreferencesPath, first argument should be an instance of LGPathResolverImpl", nil);
+        return;
     }
     LGPathResolverImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPathResolverImpl::resolvePreferencesPath, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj resolvePreferencesPath:path];
     NSDictionary *result = @{@"value" : objcResult};
@@ -133,6 +142,7 @@ RCT_REMAP_METHOD(resolvePreferencesPath,resolvePreferencesPath:(NSDictionary *)c
     else
     {
         reject(@"impl_call_error", @"Error while calling LGPathResolverImpl::resolvePreferencesPath", nil);
+        return;
     }
 
 }
@@ -144,6 +154,7 @@ RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)re
     if (!objcResult || !result)
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPathResolverImpl::init", nil);
+        return;
     }
     resolve(result);
 }

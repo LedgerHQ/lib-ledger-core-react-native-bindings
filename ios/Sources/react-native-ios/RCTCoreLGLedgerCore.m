@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLedgerCore::release, first argument should be an instance of LGLedgerCore", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -64,6 +65,7 @@ RCT_REMAP_METHOD(getStringVersion,getStringVersionWithResolver:(RCTPromiseResolv
     else
     {
         reject(@"impl_call_error", @"Error while calling LGLedgerCore::getStringVersion", nil);
+        return;
     }
 
 }
@@ -82,6 +84,7 @@ RCT_REMAP_METHOD(getIntVersion,getIntVersionWithResolver:(RCTPromiseResolveBlock
     else
     {
         reject(@"impl_call_error", @"Error while calling LGLedgerCore::getIntVersion", nil);
+        return;
     }
 
 }

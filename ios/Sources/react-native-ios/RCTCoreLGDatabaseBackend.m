@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::release, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -59,12 +60,14 @@ RCT_REMAP_METHOD(setUsername,setUsername:(NSDictionary *)currentInstance withPar
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::setUsername, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::setUsername, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGDatabaseBackend * objcResult = [currentInstanceObj setUsername:username];
 
@@ -80,6 +83,7 @@ RCT_REMAP_METHOD(setUsername,setUsername:(NSDictionary *)currentInstance withPar
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::setUsername", nil);
+        return;
     }
 
 }
@@ -93,12 +97,14 @@ RCT_REMAP_METHOD(setPassword,setPassword:(NSDictionary *)currentInstance withPar
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::setPassword, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::setPassword, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGDatabaseBackend * objcResult = [currentInstanceObj setPassword:pwd];
 
@@ -114,6 +120,7 @@ RCT_REMAP_METHOD(setPassword,setPassword:(NSDictionary *)currentInstance withPar
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::setPassword", nil);
+        return;
     }
 
 }
@@ -127,12 +134,14 @@ RCT_REMAP_METHOD(setHost,setHost:(NSDictionary *)currentInstance withParams:(non
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::setHost, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::setHost, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGDatabaseBackend * objcResult = [currentInstanceObj setHost:host];
 
@@ -148,6 +157,7 @@ RCT_REMAP_METHOD(setHost,setHost:(NSDictionary *)currentInstance withParams:(non
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::setHost", nil);
+        return;
     }
 
 }
@@ -161,12 +171,14 @@ RCT_REMAP_METHOD(setHostAddr,setHostAddr:(NSDictionary *)currentInstance withPar
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::setHostAddr, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::setHostAddr, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGDatabaseBackend * objcResult = [currentInstanceObj setHostAddr:hostAddr];
 
@@ -182,6 +194,7 @@ RCT_REMAP_METHOD(setHostAddr,setHostAddr:(NSDictionary *)currentInstance withPar
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::setHostAddr", nil);
+        return;
     }
 
 }
@@ -195,12 +208,14 @@ RCT_REMAP_METHOD(setPort,setPort:(NSDictionary *)currentInstance withParams:(non
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::setPort, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::setPort, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGDatabaseBackend * objcResult = [currentInstanceObj setPort:port];
 
@@ -216,6 +231,7 @@ RCT_REMAP_METHOD(setPort,setPort:(NSDictionary *)currentInstance withParams:(non
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::setPort", nil);
+        return;
     }
 
 }
@@ -229,12 +245,14 @@ RCT_REMAP_METHOD(setOptions,setOptions:(NSDictionary *)currentInstance withParam
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::setOptions, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::setOptions, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGDatabaseBackend * objcResult = [currentInstanceObj setOptions:opts];
 
@@ -250,6 +268,7 @@ RCT_REMAP_METHOD(setOptions,setOptions:(NSDictionary *)currentInstance withParam
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::setOptions", nil);
+        return;
     }
 
 }
@@ -263,12 +282,14 @@ RCT_REMAP_METHOD(setSslMode,setSslMode:(NSDictionary *)currentInstance withParam
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::setSslMode, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::setSslMode, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGDatabaseBackend * objcResult = [currentInstanceObj setSslMode:mode];
 
@@ -284,6 +305,7 @@ RCT_REMAP_METHOD(setSslMode,setSslMode:(NSDictionary *)currentInstance withParam
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::setSslMode", nil);
+        return;
     }
 
 }
@@ -297,12 +319,14 @@ RCT_REMAP_METHOD(setKerberosName,setKerberosName:(NSDictionary *)currentInstance
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::setKerberosName, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::setKerberosName, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGDatabaseBackend * objcResult = [currentInstanceObj setKerberosName:name];
 
@@ -318,6 +342,7 @@ RCT_REMAP_METHOD(setKerberosName,setKerberosName:(NSDictionary *)currentInstance
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::setKerberosName", nil);
+        return;
     }
 
 }
@@ -327,12 +352,14 @@ RCT_REMAP_METHOD(setService,setService:(NSDictionary *)currentInstance withParam
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::setService, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::setService, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGDatabaseBackend * objcResult = [currentInstanceObj setService:service];
 
@@ -348,6 +375,7 @@ RCT_REMAP_METHOD(setService,setService:(NSDictionary *)currentInstance withParam
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::setService", nil);
+        return;
     }
 
 }
@@ -356,12 +384,14 @@ RCT_REMAP_METHOD(setConnectionPoolSize,setConnectionPoolSize:(NSDictionary *)cur
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::setConnectionPoolSize, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::setConnectionPoolSize, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGDatabaseBackend * objcResult = [currentInstanceObj setConnectionPoolSize:size];
 
@@ -377,6 +407,7 @@ RCT_REMAP_METHOD(setConnectionPoolSize,setConnectionPoolSize:(NSDictionary *)cur
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::setConnectionPoolSize", nil);
+        return;
     }
 
 }
@@ -385,12 +416,14 @@ RCT_REMAP_METHOD(enableQueryLogging,enableQueryLogging:(NSDictionary *)currentIn
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::enableQueryLogging, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::enableQueryLogging, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGDatabaseBackend * objcResult = [currentInstanceObj enableQueryLogging:enable];
 
@@ -406,6 +439,7 @@ RCT_REMAP_METHOD(enableQueryLogging,enableQueryLogging:(NSDictionary *)currentIn
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::enableQueryLogging", nil);
+        return;
     }
 
 }
@@ -418,12 +452,14 @@ RCT_REMAP_METHOD(getUsername,getUsername:(NSDictionary *)currentInstance WithRes
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::getUsername, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::getUsername, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getUsername];
     NSDictionary *result = @{@"value" : objcResult};
@@ -434,6 +470,7 @@ RCT_REMAP_METHOD(getUsername,getUsername:(NSDictionary *)currentInstance WithRes
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getUsername", nil);
+        return;
     }
 
 }
@@ -446,12 +483,14 @@ RCT_REMAP_METHOD(getPassword,getPassword:(NSDictionary *)currentInstance WithRes
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::getPassword, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::getPassword, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getPassword];
     NSDictionary *result = @{@"value" : objcResult};
@@ -462,6 +501,7 @@ RCT_REMAP_METHOD(getPassword,getPassword:(NSDictionary *)currentInstance WithRes
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getPassword", nil);
+        return;
     }
 
 }
@@ -474,12 +514,14 @@ RCT_REMAP_METHOD(getHost,getHost:(NSDictionary *)currentInstance WithResolver:(R
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::getHost, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::getHost, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getHost];
     NSDictionary *result = @{@"value" : objcResult};
@@ -490,6 +532,7 @@ RCT_REMAP_METHOD(getHost,getHost:(NSDictionary *)currentInstance WithResolver:(R
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getHost", nil);
+        return;
     }
 
 }
@@ -502,12 +545,14 @@ RCT_REMAP_METHOD(getHostAddr,getHostAddr:(NSDictionary *)currentInstance WithRes
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::getHostAddr, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::getHostAddr, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getHostAddr];
     NSDictionary *result = @{@"value" : objcResult};
@@ -518,6 +563,7 @@ RCT_REMAP_METHOD(getHostAddr,getHostAddr:(NSDictionary *)currentInstance WithRes
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getHostAddr", nil);
+        return;
     }
 
 }
@@ -530,12 +576,14 @@ RCT_REMAP_METHOD(getPort,getPort:(NSDictionary *)currentInstance WithResolver:(R
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::getPort, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::getPort, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getPort];
     NSDictionary *result = @{@"value" : objcResult};
@@ -546,6 +594,7 @@ RCT_REMAP_METHOD(getPort,getPort:(NSDictionary *)currentInstance WithResolver:(R
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getPort", nil);
+        return;
     }
 
 }
@@ -558,12 +607,14 @@ RCT_REMAP_METHOD(getOptions,getOptions:(NSDictionary *)currentInstance WithResol
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::getOptions, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::getOptions, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getOptions];
     NSDictionary *result = @{@"value" : objcResult};
@@ -574,6 +625,7 @@ RCT_REMAP_METHOD(getOptions,getOptions:(NSDictionary *)currentInstance WithResol
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getOptions", nil);
+        return;
     }
 
 }
@@ -586,12 +638,14 @@ RCT_REMAP_METHOD(getSslMode,getSslMode:(NSDictionary *)currentInstance WithResol
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::getSslMode, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::getSslMode, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getSslMode];
     NSDictionary *result = @{@"value" : objcResult};
@@ -602,6 +656,7 @@ RCT_REMAP_METHOD(getSslMode,getSslMode:(NSDictionary *)currentInstance WithResol
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getSslMode", nil);
+        return;
     }
 
 }
@@ -614,12 +669,14 @@ RCT_REMAP_METHOD(getKerberosName,getKerberosName:(NSDictionary *)currentInstance
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::getKerberosName, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::getKerberosName, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getKerberosName];
     NSDictionary *result = @{@"value" : objcResult};
@@ -630,6 +687,7 @@ RCT_REMAP_METHOD(getKerberosName,getKerberosName:(NSDictionary *)currentInstance
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getKerberosName", nil);
+        return;
     }
 
 }
@@ -639,12 +697,14 @@ RCT_REMAP_METHOD(getService,getService:(NSDictionary *)currentInstance WithResol
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::getService, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::getService, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getService];
     NSDictionary *result = @{@"value" : objcResult};
@@ -655,6 +715,7 @@ RCT_REMAP_METHOD(getService,getService:(NSDictionary *)currentInstance WithResol
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getService", nil);
+        return;
     }
 
 }
@@ -663,12 +724,14 @@ RCT_REMAP_METHOD(getConnectionPoolSize,getConnectionPoolSize:(NSDictionary *)cur
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::getConnectionPoolSize, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::getConnectionPoolSize, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSInteger objcResult = [currentInstanceObj getConnectionPoolSize];
     NSDictionary *result = @{@"value" : @(objcResult)};
@@ -679,6 +742,7 @@ RCT_REMAP_METHOD(getConnectionPoolSize,getConnectionPoolSize:(NSDictionary *)cur
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getConnectionPoolSize", nil);
+        return;
     }
 
 }
@@ -687,12 +751,14 @@ RCT_REMAP_METHOD(isLoggingEnabled,isLoggingEnabled:(NSDictionary *)currentInstan
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::isLoggingEnabled, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
     }
     LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::isLoggingEnabled, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     BOOL objcResult = [currentInstanceObj isLoggingEnabled];
     NSDictionary *result = @{@"value" : @(objcResult)};
@@ -703,6 +769,7 @@ RCT_REMAP_METHOD(isLoggingEnabled,isLoggingEnabled:(NSDictionary *)currentInstan
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::isLoggingEnabled", nil);
+        return;
     }
 
 }
@@ -726,6 +793,7 @@ RCT_REMAP_METHOD(getSqlite3Backend,getSqlite3BackendWithResolver:(RCTPromiseReso
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getSqlite3Backend", nil);
+        return;
     }
 
 }
@@ -749,6 +817,7 @@ RCT_REMAP_METHOD(getPostgreSQLBackend,getPostgreSQLBackendWithResolver:(RCTPromi
     else
     {
         reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getPostgreSQLBackend", nil);
+        return;
     }
 
 }

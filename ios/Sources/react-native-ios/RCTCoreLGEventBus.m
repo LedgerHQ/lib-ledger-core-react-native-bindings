@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEventBus::release, first argument should be an instance of LGEventBus", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -60,12 +61,14 @@ RCT_REMAP_METHOD(subscribe,subscribe:(NSDictionary *)currentInstance withParams:
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEventBus::subscribe, first argument should be an instance of LGEventBus", nil);
+        return;
     }
     LGEventBus *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEventBus::subscribe, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGExecutionContext *rctParam_context = (RCTCoreLGExecutionContext *)[self.bridge moduleForName:@"CoreLGExecutionContext"];
     id<LGExecutionContext>objcParam_0 = (id<LGExecutionContext>)[rctParam_context.objcImplementations objectForKey:context[@"uid"]];
@@ -95,12 +98,14 @@ RCT_REMAP_METHOD(unsubscribe,unsubscribe:(NSDictionary *)currentInstance withPar
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEventBus::unsubscribe, first argument should be an instance of LGEventBus", nil);
+        return;
     }
     LGEventBus *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEventBus::unsubscribe, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     RCTCoreLGEventReceiver *rctParam_receiver = (RCTCoreLGEventReceiver *)[self.bridge moduleForName:@"CoreLGEventReceiver"];
     id<LGEventReceiver>objcParam_0 = (id<LGEventReceiver>)[rctParam_receiver.objcImplementations objectForKey:receiver[@"uid"]];

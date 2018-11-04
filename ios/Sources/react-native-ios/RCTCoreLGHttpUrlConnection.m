@@ -30,6 +30,7 @@ RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpUrlConnection::release, first argument should be an instance of LGHttpUrlConnection", nil);
+        return;
     }
     [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
     resolve(@(YES));
@@ -58,12 +59,14 @@ RCT_REMAP_METHOD(getStatusCode,getStatusCode:(NSDictionary *)currentInstance Wit
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpUrlConnection::getStatusCode, first argument should be an instance of LGHttpUrlConnectionImpl", nil);
+        return;
     }
     LGHttpUrlConnectionImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHttpUrlConnectionImpl::getStatusCode, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSInteger objcResult = [currentInstanceObj getStatusCode];
     NSDictionary *result = @{@"value" : @(objcResult)};
@@ -74,6 +77,7 @@ RCT_REMAP_METHOD(getStatusCode,getStatusCode:(NSDictionary *)currentInstance Wit
     else
     {
         reject(@"impl_call_error", @"Error while calling LGHttpUrlConnectionImpl::getStatusCode", nil);
+        return;
     }
 
 }
@@ -86,12 +90,14 @@ RCT_REMAP_METHOD(getStatusText,getStatusText:(NSDictionary *)currentInstance Wit
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpUrlConnection::getStatusText, first argument should be an instance of LGHttpUrlConnectionImpl", nil);
+        return;
     }
     LGHttpUrlConnectionImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHttpUrlConnectionImpl::getStatusText, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSString * objcResult = [currentInstanceObj getStatusText];
     NSDictionary *result = @{@"value" : objcResult};
@@ -102,6 +108,7 @@ RCT_REMAP_METHOD(getStatusText,getStatusText:(NSDictionary *)currentInstance Wit
     else
     {
         reject(@"impl_call_error", @"Error while calling LGHttpUrlConnectionImpl::getStatusText", nil);
+        return;
     }
 
 }
@@ -114,12 +121,14 @@ RCT_REMAP_METHOD(getHeaders,getHeaders:(NSDictionary *)currentInstance WithResol
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpUrlConnection::getHeaders, first argument should be an instance of LGHttpUrlConnectionImpl", nil);
+        return;
     }
     LGHttpUrlConnectionImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHttpUrlConnectionImpl::getHeaders, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     NSDictionary<NSString *, NSString *> * objcResult = [currentInstanceObj getHeaders];
     NSDictionary *result = @{@"value" : objcResult};
@@ -130,6 +139,7 @@ RCT_REMAP_METHOD(getHeaders,getHeaders:(NSDictionary *)currentInstance WithResol
     else
     {
         reject(@"impl_call_error", @"Error while calling LGHttpUrlConnectionImpl::getHeaders", nil);
+        return;
     }
 
 }
@@ -142,12 +152,14 @@ RCT_REMAP_METHOD(readBody,readBody:(NSDictionary *)currentInstance WithResolver:
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpUrlConnection::readBody, first argument should be an instance of LGHttpUrlConnectionImpl", nil);
+        return;
     }
     LGHttpUrlConnectionImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHttpUrlConnectionImpl::readBody, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
+        return;
     }
     LGHttpReadBodyResult * objcResult = [currentInstanceObj readBody];
 
@@ -163,6 +175,7 @@ RCT_REMAP_METHOD(readBody,readBody:(NSDictionary *)currentInstance WithResolver:
     else
     {
         reject(@"impl_call_error", @"Error while calling LGHttpUrlConnectionImpl::readBody", nil);
+        return;
     }
 
 }
@@ -174,6 +187,7 @@ RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)re
     if (!objcResult || !result)
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpUrlConnectionImpl::init", nil);
+        return;
     }
     resolve(result);
 }
