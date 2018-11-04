@@ -31,7 +31,8 @@
     }
 
 
-    self.resolve(result.description);
+    NSDictionary *callbackResult = @{@"value" : result.description};
+    self.resolve(callbackResult);
 
 }
 @end

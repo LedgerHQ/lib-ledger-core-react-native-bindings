@@ -146,57 +146,49 @@ RCT_REMAP_METHOD(init, initWithUtxo:(NSArray <NSDictionary *> *)utxo
 }
 RCT_REMAP_METHOD(getUtxo, getUtxo:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
-    LGBitcoinLikeTransactionRequest *objcImpl = (LGBitcoinLikeTransactionRequest *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
     NSDictionary *data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     if (!data)
     {
         [self mapImplementationsData:currentInstance];
         data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     }
-    NSArray *returnUuid = [data objectForKey:@"utxo"];
-    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeOutput", @"uid" : returnUuid };
+    NSArray<NSDictionary *> *result = [data objectForKey:@"utxo"];
     resolve(result);
 }
 
 RCT_REMAP_METHOD(getOutputs, getOutputs:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
-    LGBitcoinLikeTransactionRequest *objcImpl = (LGBitcoinLikeTransactionRequest *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
     NSDictionary *data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     if (!data)
     {
         [self mapImplementationsData:currentInstance];
         data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     }
-    NSArray *returnUuid = [data objectForKey:@"outputs"];
-    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeOutput", @"uid" : returnUuid };
+    NSArray<NSDictionary *> *result = [data objectForKey:@"outputs"];
     resolve(result);
 }
 
 RCT_REMAP_METHOD(getBaseFees, getBaseFees:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
-    LGBitcoinLikeTransactionRequest *objcImpl = (LGBitcoinLikeTransactionRequest *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
     NSDictionary *data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     if (!data)
     {
         [self mapImplementationsData:currentInstance];
         data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     }
-    NSString *returnUuid = [data objectForKey:@"baseFees"];
-    NSDictionary *result = @{@"type" : @"CoreLGAmount", @"uid" : returnUuid };
+    NSDictionary *result = [data objectForKey:@"baseFees"];
     resolve(result);
 }
 
 RCT_REMAP_METHOD(getTotalFees, getTotalFees:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
-    LGBitcoinLikeTransactionRequest *objcImpl = (LGBitcoinLikeTransactionRequest *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
     NSDictionary *data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     if (!data)
     {
         [self mapImplementationsData:currentInstance];
         data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     }
-    NSString *returnUuid = [data objectForKey:@"totalFees"];
-    NSDictionary *result = @{@"type" : @"CoreLGAmount", @"uid" : returnUuid };
+    NSDictionary *result = [data objectForKey:@"totalFees"];
     resolve(result);
 }
 

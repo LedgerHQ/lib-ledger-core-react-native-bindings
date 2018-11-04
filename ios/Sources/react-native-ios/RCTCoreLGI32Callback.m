@@ -31,7 +31,8 @@
     }
 
 
-    self.resolve(result);
+    NSDictionary *callbackResult = @{@"value" : @([result intValue])};
+    self.resolve(callbackResult);
 
 }
 @end
