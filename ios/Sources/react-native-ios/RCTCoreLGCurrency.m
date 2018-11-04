@@ -141,29 +141,25 @@ RCT_REMAP_METHOD(getPaymentUriScheme, getPaymentUriScheme:(NSDictionary *)curren
 
 RCT_REMAP_METHOD(getUnits, getUnits:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
-    LGCurrency *objcImpl = (LGCurrency *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
     NSDictionary *data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     if (!data)
     {
         [self mapImplementationsData:currentInstance];
         data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     }
-    NSArray *returnUuid = [data objectForKey:@"units"];
-    NSDictionary *result = @{@"type" : @"CoreLGCurrencyUnit", @"uid" : returnUuid };
+    NSArray<NSDictionary *> *result = [data objectForKey:@"units"];
     resolve(result);
 }
 
 RCT_REMAP_METHOD(getBitcoinLikeNetworkParameters, getBitcoinLikeNetworkParameters:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
-    LGCurrency *objcImpl = (LGCurrency *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
     NSDictionary *data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     if (!data)
     {
         [self mapImplementationsData:currentInstance];
         data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     }
-    NSString *returnUuid = [data objectForKey:@"bitcoinLikeNetworkParameters"];
-    NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeNetworkParameters", @"uid" : returnUuid };
+    NSDictionary *result = [data objectForKey:@"bitcoinLikeNetworkParameters"];
     resolve(result);
 }
 

@@ -100,15 +100,13 @@ RCT_REMAP_METHOD(init, initWithError:(nullable NSDictionary *)error
 }
 RCT_REMAP_METHOD(getError, getError:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
-    LGHttpReadBodyResult *objcImpl = (LGHttpReadBodyResult *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
     NSDictionary *data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     if (!data)
     {
         [self mapImplementationsData:currentInstance];
         data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     }
-    NSString *returnUuid = [data objectForKey:@"error"];
-    NSDictionary *result = @{@"type" : @"CoreLGError", @"uid" : returnUuid };
+    NSDictionary *result = [data objectForKey:@"error"];
     resolve(result);
 }
 
