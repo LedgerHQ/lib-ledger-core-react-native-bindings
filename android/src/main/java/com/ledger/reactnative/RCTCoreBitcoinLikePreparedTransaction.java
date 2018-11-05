@@ -12,6 +12,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableNativeArray;
+import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import java.text.DateFormat;
@@ -28,7 +30,7 @@ import java.util.UUID;
 public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, BitcoinLikePreparedTransaction> javaObjects;
-    private Map<String, Map<String, ArrayList<String>>> implementationsData;
+    private WritableNativeMap implementationsData;
     public Map<String, BitcoinLikePreparedTransaction> getJavaObjects()
     {
         return javaObjects;
@@ -39,7 +41,8 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikePreparedTransaction>();
-        this.implementationsData = new HashMap<String, Map<String, ArrayList<String>>>();
+        WritableNativeMap.setUseNativeAccessor(true);
+        this.implementationsData = new WritableNativeMap();
     }
 
     @Override
@@ -80,19 +83,19 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
 
     @ReactMethod
     public void init(int version, ReadableArray inputs, ReadableArray paths, ReadableArray outputs, int lockTime, Promise promise) {
-        Map<String, ArrayList<String>> implementationsData = new HashMap<String, ArrayList<String>>();
+        WritableNativeMap implementationsData = new WritableNativeMap();
         ArrayList<BitcoinLikeOutput> javaParam_1 = new ArrayList<BitcoinLikeOutput>();
-        ArrayList<String> javaParam_1_data = new ArrayList<String>();
+        WritableNativeArray javaParam_1_data = new WritableNativeArray();
 
         for (int i = 0; i <  inputs.size(); i++)
         {
             ReadableMap inputs_elem = inputs.getMap(i);
             RCTCoreBitcoinLikeOutput rctParam_inputs_elem = this.reactContext.getNativeModule(RCTCoreBitcoinLikeOutput.class);
             BitcoinLikeOutput javaParam_1_elem = rctParam_inputs_elem.getJavaObjects().get(inputs_elem.getString("uid"));
-            javaParam_1_data.add(inputs_elem.getString("uid"));
+            javaParam_1_data.pushString(inputs_elem.getString("uid"));
             javaParam_1.add(javaParam_1_elem);
         }
-        implementationsData.put("inputs", javaParam_1_data);
+        implementationsData.putArray("inputs", javaParam_1_data);
 
         ArrayList<String> javaParam_2 = new ArrayList<String>();
         for (int i = 0; i <  paths.size(); i++)
@@ -101,17 +104,17 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
             javaParam_2.add(paths_elem);
         }
         ArrayList<BitcoinLikeOutput> javaParam_3 = new ArrayList<BitcoinLikeOutput>();
-        ArrayList<String> javaParam_3_data = new ArrayList<String>();
+        WritableNativeArray javaParam_3_data = new WritableNativeArray();
 
         for (int i = 0; i <  outputs.size(); i++)
         {
             ReadableMap outputs_elem = outputs.getMap(i);
             RCTCoreBitcoinLikeOutput rctParam_outputs_elem = this.reactContext.getNativeModule(RCTCoreBitcoinLikeOutput.class);
             BitcoinLikeOutput javaParam_3_elem = rctParam_outputs_elem.getJavaObjects().get(outputs_elem.getString("uid"));
-            javaParam_3_data.add(outputs_elem.getString("uid"));
+            javaParam_3_data.pushString(outputs_elem.getString("uid"));
             javaParam_3.add(javaParam_3_elem);
         }
-        implementationsData.put("outputs", javaParam_3_data);
+        implementationsData.putArray("outputs", javaParam_3_data);
 
         BitcoinLikePreparedTransaction javaResult = new BitcoinLikePreparedTransaction(version, javaParam_1, javaParam_2, javaParam_3, lockTime);
 
@@ -120,8 +123,41 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
         WritableNativeMap finalResult = new WritableNativeMap();
         finalResult.putString("type","RCTCoreBitcoinLikePreparedTransaction");
         finalResult.putString("uid",uuid);
-        this.implementationsData.put(uuid, implementationsData);
+        this.implementationsData.putMap(uuid, implementationsData);
         promise.resolve(finalResult);
+    }
+    public void mapImplementationsData(ReadableMap currentInstance)
+    {
+        String currentInstanceUid = currentInstance.getString("uid");
+        BitcoinLikePreparedTransaction javaImpl = this.javaObjects.get(currentInstanceUid);
+        WritableNativeMap implementationsData = new WritableNativeMap();
+        ArrayList<BitcoinLikeOutput> field_1 = javaImpl.getInputs();
+        WritableNativeArray converted_field_1 = new WritableNativeArray();
+        for (BitcoinLikeOutput field_1_elem : field_1)
+        {
+            String field_1_elem_uuid = UUID.randomUUID().toString();
+            RCTCoreBitcoinLikeOutput rctImpl_field_1_elem = this.reactContext.getNativeModule(RCTCoreBitcoinLikeOutput.class);
+            rctImpl_field_1_elem.getJavaObjects().put(field_1_elem_uuid, field_1_elem);
+            WritableNativeMap converted_field_1_elem = new WritableNativeMap();
+            converted_field_1_elem.putString("type","RCTCoreBitcoinLikeOutput");
+            converted_field_1_elem.putString("uid",field_1_elem_uuid);
+            converted_field_1.pushMap(converted_field_1_elem);
+        }
+        implementationsData.putArray("inputs", converted_field_1);
+        ArrayList<BitcoinLikeOutput> field_3 = javaImpl.getOutputs();
+        WritableNativeArray converted_field_3 = new WritableNativeArray();
+        for (BitcoinLikeOutput field_3_elem : field_3)
+        {
+            String field_3_elem_uuid = UUID.randomUUID().toString();
+            RCTCoreBitcoinLikeOutput rctImpl_field_3_elem = this.reactContext.getNativeModule(RCTCoreBitcoinLikeOutput.class);
+            rctImpl_field_3_elem.getJavaObjects().put(field_3_elem_uuid, field_3_elem);
+            WritableNativeMap converted_field_3_elem = new WritableNativeMap();
+            converted_field_3_elem.putString("type","RCTCoreBitcoinLikeOutput");
+            converted_field_3_elem.putString("uid",field_3_elem_uuid);
+            converted_field_3.pushMap(converted_field_3_elem);
+        }
+        implementationsData.putArray("outputs", converted_field_3);
+        this.implementationsData.putMap(currentInstanceUid, implementationsData);
     }
     @ReactMethod
     public void getVersion(ReadableMap currentInstance, Promise promise)
@@ -145,16 +181,19 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
-            BitcoinLikePreparedTransaction javaObj = this.javaObjects.get(uid);
-            Map<String, ArrayList<String>> data = this.implementationsData.get(uid);
-            ArrayList<String> fieldData = data.get("inputs");
-            WritableNativeArray nativeFieldData = new WritableNativeArray();
-            for (String elem : fieldData)
+            if (!this.implementationsData.hasKey(uid))
             {
-                nativeFieldData.pushString(elem);
+                this.mapImplementationsData(currentInstance);
             }
-            WritableNativeMap result = new WritableNativeMap();
-            result.putArray(uid,nativeFieldData);
+            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            ReadableArray resultTmp = data.getArray("inputs");
+            WritableNativeArray result = new WritableNativeArray();
+            for (int i = 0; i < resultTmp.size(); i++)
+            {
+                WritableNativeMap result_elem = new WritableNativeMap();
+                result_elem.merge(resultTmp.getMap(i));
+                result.pushMap(result_elem);
+            }
             promise.resolve(result);
         }
         else
@@ -190,16 +229,19 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
-            BitcoinLikePreparedTransaction javaObj = this.javaObjects.get(uid);
-            Map<String, ArrayList<String>> data = this.implementationsData.get(uid);
-            ArrayList<String> fieldData = data.get("outputs");
-            WritableNativeArray nativeFieldData = new WritableNativeArray();
-            for (String elem : fieldData)
+            if (!this.implementationsData.hasKey(uid))
             {
-                nativeFieldData.pushString(elem);
+                this.mapImplementationsData(currentInstance);
             }
-            WritableNativeMap result = new WritableNativeMap();
-            result.putArray(uid,nativeFieldData);
+            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            ReadableArray resultTmp = data.getArray("outputs");
+            WritableNativeArray result = new WritableNativeArray();
+            for (int i = 0; i < resultTmp.size(); i++)
+            {
+                WritableNativeMap result_elem = new WritableNativeMap();
+                result_elem.merge(resultTmp.getMap(i));
+                result.pushMap(result_elem);
+            }
             promise.resolve(result);
         }
         else

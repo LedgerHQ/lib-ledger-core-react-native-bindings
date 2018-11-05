@@ -16,6 +16,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableNativeArray;
+import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import java.text.DateFormat;
@@ -43,6 +45,7 @@ public class RCTCoreBitcoinLikeAccount extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikeAccount>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override
@@ -79,6 +82,16 @@ public class RCTCoreBitcoinLikeAccount extends ReactContextBaseJavaModule {
     {
         this.javaObjects.clear();
         promise.resolve(0);
+    }
+    public static byte[] hexStringToByteArray(String hexString)
+    {
+        int hexStringLength = hexString.length();
+        byte[] data = new byte[hexStringLength / 2];
+        for (int i = 0; i < hexStringLength; i += 2)
+        {
+            data[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4) + Character.digit(hexString.charAt(i+1), 16));
+        }
+        return data;
     }
 
     /**
@@ -124,15 +137,17 @@ public class RCTCoreBitcoinLikeAccount extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void broadcastRawTransaction(ReadableMap currentInstance, byte[] transaction, Promise promise) {
+    public void broadcastRawTransaction(ReadableMap currentInstance, String transaction, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
 
             BitcoinLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
 
+            byte [] javaParam_0 = hexStringToByteArray(transaction);
+
             RCTCoreStringCallback javaParam_1 = RCTCoreStringCallback.initWithPromise(promise, this.reactContext);
-            currentInstanceObj.broadcastRawTransaction(transaction, javaParam_1);
+            currentInstanceObj.broadcastRawTransaction(javaParam_0, javaParam_1);
         }
         catch(Exception e)
         {
@@ -167,12 +182,12 @@ public class RCTCoreBitcoinLikeAccount extends ReactContextBaseJavaModule {
 
             BitcoinLikeTransactionBuilder javaResult = currentInstanceObj.buildTransaction();
 
-            String uuid = UUID.randomUUID().toString();
+            String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreBitcoinLikeTransactionBuilder rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreBitcoinLikeTransactionBuilder.class);
-            rctImpl_javaResult.getJavaObjects().put(uuid, javaResult);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreBitcoinLikeTransactionBuilder");
-            result.putString("uid",uuid);
+            result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);
         }

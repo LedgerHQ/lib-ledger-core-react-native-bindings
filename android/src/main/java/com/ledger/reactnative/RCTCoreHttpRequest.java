@@ -14,6 +14,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableNativeArray;
+import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import java.text.DateFormat;
@@ -41,6 +43,7 @@ public class RCTCoreHttpRequest extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, HttpRequest>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override
@@ -194,6 +197,8 @@ public class RCTCoreHttpRequest extends ReactContextBaseJavaModule {
 
             RCTCoreHttpUrlConnection rctParam_response = this.reactContext.getNativeModule(RCTCoreHttpUrlConnection.class);
             HttpUrlConnection javaParam_0 = rctParam_response.getJavaObjects().get(response.get().getString("uid"));
+            HttpUrlConnectionImpl javaParam_0_java = (HttpUrlConnectionImpl)javaParam_0;
+            javaParam_0_java.setPromise(promise);
             RCTCoreError rctParam_error = this.reactContext.getNativeModule(RCTCoreError.class);
             Error javaParam_1 = rctParam_error.getJavaObjects().get(error.get().getString("uid"));
             currentInstanceObj.complete(javaParam_0, javaParam_1);

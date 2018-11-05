@@ -11,6 +11,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableNativeArray;
+import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import java.text.DateFormat;
@@ -37,6 +39,7 @@ public class RCTCoreAccountCreationInfo extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, AccountCreationInfo>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override
@@ -74,6 +77,16 @@ public class RCTCoreAccountCreationInfo extends ReactContextBaseJavaModule {
         this.javaObjects.clear();
         promise.resolve(0);
     }
+    public static byte[] hexStringToByteArray(String hexString)
+    {
+        int hexStringLength = hexString.length();
+        byte[] data = new byte[hexStringLength / 2];
+        for (int i = 0; i < hexStringLength; i += 2)
+        {
+            data[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4) + Character.digit(hexString.charAt(i+1), 16));
+        }
+        return data;
+    }
 
     @ReactMethod
     public void init(int index, ReadableArray owners, ReadableArray derivations, ReadableArray publicKeys, ReadableArray chainCodes, Promise promise) {
@@ -92,22 +105,18 @@ public class RCTCoreAccountCreationInfo extends ReactContextBaseJavaModule {
         ArrayList<byte[]> javaParam_3 = new ArrayList<byte[]>();
         for (int i = 0; i <  publicKeys.size(); i++)
         {
-            byte [] publicKeys_elem = new byte [publicKeys.getArray(i).size()];
-            for (int publicKeys_i = 0; publicKeys_i < publicKeys.getArray(i).size(); publicKeys_i++)
-            {
-                publicKeys_elem[publicKeys_i] = (byte) publicKeys.getArray(i).getDouble(publicKeys_i);
-            }
-            javaParam_3.add(publicKeys_elem);
+            String publicKeys_elem = publicKeys.getString(i);
+            byte [] javaParam_3_elem = hexStringToByteArray(publicKeys_elem);
+
+            javaParam_3.add(javaParam_3_elem);
         }
         ArrayList<byte[]> javaParam_4 = new ArrayList<byte[]>();
         for (int i = 0; i <  chainCodes.size(); i++)
         {
-            byte [] chainCodes_elem = new byte [chainCodes.getArray(i).size()];
-            for (int chainCodes_i = 0; chainCodes_i < chainCodes.getArray(i).size(); chainCodes_i++)
-            {
-                chainCodes_elem[chainCodes_i] = (byte) chainCodes.getArray(i).getDouble(chainCodes_i);
-            }
-            javaParam_4.add(chainCodes_elem);
+            String chainCodes_elem = chainCodes.getString(i);
+            byte [] javaParam_4_elem = hexStringToByteArray(chainCodes_elem);
+
+            javaParam_4.add(javaParam_4_elem);
         }
         AccountCreationInfo javaResult = new AccountCreationInfo(index, javaParam_1, javaParam_2, javaParam_3, javaParam_4);
 
