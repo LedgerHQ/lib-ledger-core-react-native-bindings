@@ -41,6 +41,7 @@ public class RCTCoreTrustIndicator extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, TrustIndicator>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

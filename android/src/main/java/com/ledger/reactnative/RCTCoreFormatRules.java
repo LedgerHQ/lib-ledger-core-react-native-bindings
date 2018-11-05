@@ -40,6 +40,7 @@ public class RCTCoreFormatRules extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, FormatRules>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

@@ -41,6 +41,7 @@ public class RCTCoreGetEthreumLikeWalletCallback extends ReactContextBaseJavaMod
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, GetEthreumLikeWalletCallbackImpl>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

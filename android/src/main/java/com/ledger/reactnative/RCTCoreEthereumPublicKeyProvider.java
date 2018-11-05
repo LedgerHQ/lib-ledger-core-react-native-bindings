@@ -39,6 +39,7 @@ public class RCTCoreEthereumPublicKeyProvider extends ReactContextBaseJavaModule
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, EthereumPublicKeyProviderImpl>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

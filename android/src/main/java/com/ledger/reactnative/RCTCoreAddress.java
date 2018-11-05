@@ -41,6 +41,7 @@ public class RCTCoreAddress extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Address>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

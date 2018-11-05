@@ -52,6 +52,7 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Account>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

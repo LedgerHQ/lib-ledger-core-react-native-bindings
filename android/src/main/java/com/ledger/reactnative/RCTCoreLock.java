@@ -40,6 +40,7 @@ public class RCTCoreLock extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, LockImpl>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

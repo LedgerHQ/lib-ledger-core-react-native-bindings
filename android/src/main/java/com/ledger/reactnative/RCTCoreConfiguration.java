@@ -39,6 +39,7 @@ public class RCTCoreConfiguration extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Configuration>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

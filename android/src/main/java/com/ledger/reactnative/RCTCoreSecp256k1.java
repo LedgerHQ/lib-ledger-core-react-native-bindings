@@ -40,6 +40,7 @@ public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Secp256k1>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

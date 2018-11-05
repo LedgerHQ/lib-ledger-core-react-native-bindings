@@ -41,6 +41,7 @@ public class RCTCoreEventReceiver extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, EventReceiverImpl>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

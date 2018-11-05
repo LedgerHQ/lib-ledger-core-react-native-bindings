@@ -42,6 +42,7 @@ public class RCTCoreEvent extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Event>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

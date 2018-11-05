@@ -41,6 +41,7 @@ public class RCTCoreHttpReadBodyResult extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, HttpReadBodyResult>();
+        WritableNativeMap.setUseNativeAccessor(true);
         this.implementationsData = new WritableNativeMap();
     }
 
@@ -134,7 +135,8 @@ public class RCTCoreHttpReadBodyResult extends ReactContextBaseJavaModule {
                 this.mapImplementationsData(currentInstance);
             }
             ReadableNativeMap data = this.implementationsData.getMap(uid);
-            ReadableNativeMap result = data.getMap("error");
+            WritableNativeMap result = new WritableNativeMap();
+            result.merge(data.getMap("error"));
             promise.resolve(result);
         }
         else

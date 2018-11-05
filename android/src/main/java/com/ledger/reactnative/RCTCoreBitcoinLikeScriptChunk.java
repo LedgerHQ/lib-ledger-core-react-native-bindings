@@ -40,6 +40,7 @@ public class RCTCoreBitcoinLikeScriptChunk extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikeScriptChunk>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

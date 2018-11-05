@@ -39,6 +39,7 @@ public class RCTCoreBitcoinLikeNetworkParameters extends ReactContextBaseJavaMod
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikeNetworkParameters>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

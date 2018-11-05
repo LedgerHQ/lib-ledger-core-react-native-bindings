@@ -39,6 +39,7 @@ public class RCTCoreDerivationPath extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, DerivationPath>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

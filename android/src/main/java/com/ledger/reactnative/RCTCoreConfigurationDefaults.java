@@ -40,6 +40,7 @@ public class RCTCoreConfigurationDefaults extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, ConfigurationDefaults>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

@@ -40,6 +40,7 @@ public class RCTCoreNetworks extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Networks>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

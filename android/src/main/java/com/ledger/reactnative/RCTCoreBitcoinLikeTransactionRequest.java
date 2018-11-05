@@ -42,6 +42,7 @@ public class RCTCoreBitcoinLikeTransactionRequest extends ReactContextBaseJavaMo
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikeTransactionRequest>();
+        WritableNativeMap.setUseNativeAccessor(true);
         this.implementationsData = new WritableNativeMap();
     }
 
@@ -186,7 +187,14 @@ public class RCTCoreBitcoinLikeTransactionRequest extends ReactContextBaseJavaMo
                 this.mapImplementationsData(currentInstance);
             }
             ReadableNativeMap data = this.implementationsData.getMap(uid);
-            ReadableArray result = data.getArray("utxo");
+            ReadableArray resultTmp = data.getArray("utxo");
+            WritableNativeArray result = new WritableNativeArray();
+            for (int i = 0; i < resultTmp.size(); i++)
+            {
+                WritableNativeMap result_elem = new WritableNativeMap();
+                result_elem.merge(resultTmp.getMap(i));
+                result.pushMap(result_elem);
+            }
             promise.resolve(result);
         }
         else
@@ -206,7 +214,14 @@ public class RCTCoreBitcoinLikeTransactionRequest extends ReactContextBaseJavaMo
                 this.mapImplementationsData(currentInstance);
             }
             ReadableNativeMap data = this.implementationsData.getMap(uid);
-            ReadableArray result = data.getArray("outputs");
+            ReadableArray resultTmp = data.getArray("outputs");
+            WritableNativeArray result = new WritableNativeArray();
+            for (int i = 0; i < resultTmp.size(); i++)
+            {
+                WritableNativeMap result_elem = new WritableNativeMap();
+                result_elem.merge(resultTmp.getMap(i));
+                result.pushMap(result_elem);
+            }
             promise.resolve(result);
         }
         else
@@ -226,7 +241,8 @@ public class RCTCoreBitcoinLikeTransactionRequest extends ReactContextBaseJavaMo
                 this.mapImplementationsData(currentInstance);
             }
             ReadableNativeMap data = this.implementationsData.getMap(uid);
-            ReadableNativeMap result = data.getMap("baseFees");
+            WritableNativeMap result = new WritableNativeMap();
+            result.merge(data.getMap("baseFees"));
             promise.resolve(result);
         }
         else
@@ -246,7 +262,8 @@ public class RCTCoreBitcoinLikeTransactionRequest extends ReactContextBaseJavaMo
                 this.mapImplementationsData(currentInstance);
             }
             ReadableNativeMap data = this.implementationsData.getMap(uid);
-            ReadableNativeMap result = data.getMap("totalFees");
+            WritableNativeMap result = new WritableNativeMap();
+            result.merge(data.getMap("totalFees"));
             promise.resolve(result);
         }
         else

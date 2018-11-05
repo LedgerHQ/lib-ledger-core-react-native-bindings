@@ -38,6 +38,7 @@ public class RCTCoreEstimatedSize extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, EstimatedSize>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

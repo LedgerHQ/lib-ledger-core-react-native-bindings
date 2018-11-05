@@ -41,6 +41,7 @@ public class RCTCoreHttpClient extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, HttpClientImpl>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

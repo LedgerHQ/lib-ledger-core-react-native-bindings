@@ -43,6 +43,7 @@ public class RCTCorePathResolver extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, PathResolverImpl>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

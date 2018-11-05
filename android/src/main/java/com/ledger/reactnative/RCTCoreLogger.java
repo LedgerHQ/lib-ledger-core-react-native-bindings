@@ -40,6 +40,7 @@ public class RCTCoreLogger extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Logger>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

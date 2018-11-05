@@ -40,6 +40,7 @@ public class RCTCorePreferencesEditor extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, PreferencesEditor>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

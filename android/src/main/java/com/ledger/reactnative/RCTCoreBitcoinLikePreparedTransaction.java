@@ -41,6 +41,7 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikePreparedTransaction>();
+        WritableNativeMap.setUseNativeAccessor(true);
         this.implementationsData = new WritableNativeMap();
     }
 
@@ -185,7 +186,14 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
                 this.mapImplementationsData(currentInstance);
             }
             ReadableNativeMap data = this.implementationsData.getMap(uid);
-            ReadableArray result = data.getArray("inputs");
+            ReadableArray resultTmp = data.getArray("inputs");
+            WritableNativeArray result = new WritableNativeArray();
+            for (int i = 0; i < resultTmp.size(); i++)
+            {
+                WritableNativeMap result_elem = new WritableNativeMap();
+                result_elem.merge(resultTmp.getMap(i));
+                result.pushMap(result_elem);
+            }
             promise.resolve(result);
         }
         else
@@ -226,7 +234,14 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
                 this.mapImplementationsData(currentInstance);
             }
             ReadableNativeMap data = this.implementationsData.getMap(uid);
-            ReadableArray result = data.getArray("outputs");
+            ReadableArray resultTmp = data.getArray("outputs");
+            WritableNativeArray result = new WritableNativeArray();
+            for (int i = 0; i < resultTmp.size(); i++)
+            {
+                WritableNativeMap result_elem = new WritableNativeMap();
+                result_elem.merge(resultTmp.getMap(i));
+                result.pushMap(result_elem);
+            }
             promise.resolve(result);
         }
         else

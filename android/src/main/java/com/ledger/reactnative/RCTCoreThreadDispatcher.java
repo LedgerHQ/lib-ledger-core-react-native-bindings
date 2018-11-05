@@ -42,6 +42,7 @@ public class RCTCoreThreadDispatcher extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, ThreadDispatcherImpl>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

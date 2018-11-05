@@ -43,6 +43,7 @@ public class RCTCoreHttpRequest extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, HttpRequest>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

@@ -43,6 +43,7 @@ public class RCTCoreOperationQuery extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, OperationQuery>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

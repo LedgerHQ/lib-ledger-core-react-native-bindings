@@ -43,6 +43,7 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Currency>();
+        WritableNativeMap.setUseNativeAccessor(true);
         this.implementationsData = new WritableNativeMap();
     }
 
@@ -220,7 +221,14 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
                 this.mapImplementationsData(currentInstance);
             }
             ReadableNativeMap data = this.implementationsData.getMap(uid);
-            ReadableArray result = data.getArray("units");
+            ReadableArray resultTmp = data.getArray("units");
+            WritableNativeArray result = new WritableNativeArray();
+            for (int i = 0; i < resultTmp.size(); i++)
+            {
+                WritableNativeMap result_elem = new WritableNativeMap();
+                result_elem.merge(resultTmp.getMap(i));
+                result.pushMap(result_elem);
+            }
             promise.resolve(result);
         }
         else
@@ -240,7 +248,8 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
                 this.mapImplementationsData(currentInstance);
             }
             ReadableNativeMap data = this.implementationsData.getMap(uid);
-            ReadableNativeMap result = data.getMap("bitcoinLikeNetworkParameters");
+            WritableNativeMap result = new WritableNativeMap();
+            result.merge(data.getMap("bitcoinLikeNetworkParameters"));
             promise.resolve(result);
         }
         else

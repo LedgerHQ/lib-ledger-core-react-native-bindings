@@ -39,6 +39,7 @@ public class RCTCoreExtendedKeyAccountCreationInfo extends ReactContextBaseJavaM
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, ExtendedKeyAccountCreationInfo>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

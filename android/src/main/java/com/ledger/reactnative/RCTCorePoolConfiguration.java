@@ -40,6 +40,7 @@ public class RCTCorePoolConfiguration extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, PoolConfiguration>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

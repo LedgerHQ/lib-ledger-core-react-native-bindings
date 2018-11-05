@@ -40,6 +40,7 @@ public class RCTCoreBitcoinLikeExtendedPublicKey extends ReactContextBaseJavaMod
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikeExtendedPublicKey>();
+        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override
