@@ -40,6 +40,20 @@ public class RCTCoreBinaryCallback extends BinaryCallback {
         callback.reactContext = reactContext;
         return callback;
     }
+    static final String HEXES = "0123456789ABCDEF";
+    public static String byteArrayToHexString( byte [] data)
+    {
+        if (data == null)
+        {
+            return null;
+        }
+        final StringBuilder hexStringBuilder = new StringBuilder( 2 * data.length );
+        for ( final byte b : data )
+        {
+            hexStringBuilder.append(HEXES.charAt((b & 0xF0) >> 4)).append(HEXES.charAt((b & 0x0F)));
+        }
+        return hexStringBuilder.toString();
+    }
     /**
      * Method triggered when main task complete
      * @params result optional of type T, non null if main task failed
@@ -52,8 +66,9 @@ public class RCTCoreBinaryCallback extends BinaryCallback {
             {
                 this.promise.reject(error.toString(), error.getMessage());
             }
+            String converted_result = byteArrayToHexString(result);
 
-            this.promise.resolve(result);
+            this.promise.resolve(converted_result);
         }
         catch(Exception e)
         {
