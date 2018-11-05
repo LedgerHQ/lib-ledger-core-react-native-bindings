@@ -93,6 +93,20 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
         return data;
     }
+    static final String HEXES = "0123456789ABCDEF";
+    public static String byteArrayToHexString( byte [] data)
+    {
+        if (data == null)
+        {
+            return null;
+        }
+        final StringBuilder hexStringBuilder = new StringBuilder( 2 * data.length );
+        for ( final byte b : data )
+        {
+            hexStringBuilder.append(HEXES.charAt((b & 0xF0) >> 4)).append(HEXES.charAt((b & 0x0F)));
+        }
+        return hexStringBuilder.toString();
+    }
 
     /**
      *Get count of stored references
@@ -604,8 +618,8 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
 
             DynamicType javaResult = currentInstanceObj.getType(index);
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = javaResult.toString();
-            result.putString("value", finalJavaResult);
+            int finalJavaResult = javaResult.ordinal();
+            result.putInt("value", finalJavaResult);
 
             promise.resolve(result);
         }

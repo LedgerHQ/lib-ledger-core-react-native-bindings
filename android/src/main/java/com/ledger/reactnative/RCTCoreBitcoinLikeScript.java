@@ -88,6 +88,20 @@ public class RCTCoreBitcoinLikeScript extends ReactContextBaseJavaModule {
         }
         return data;
     }
+    static final String HEXES = "0123456789ABCDEF";
+    public static String byteArrayToHexString( byte [] data)
+    {
+        if (data == null)
+        {
+            return null;
+        }
+        final StringBuilder hexStringBuilder = new StringBuilder( 2 * data.length );
+        for ( final byte b : data )
+        {
+            hexStringBuilder.append(HEXES.charAt((b & 0xF0) >> 4)).append(HEXES.charAt((b & 0x0F)));
+        }
+        return hexStringBuilder.toString();
+    }
 
     @ReactMethod
     public void head(ReadableMap currentInstance, Promise promise) {

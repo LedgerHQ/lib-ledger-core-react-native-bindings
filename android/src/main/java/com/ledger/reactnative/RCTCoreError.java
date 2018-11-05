@@ -103,7 +103,9 @@ public class RCTCoreError extends ReactContextBaseJavaModule {
         {
             Error javaObj = this.javaObjects.get(uid);
             ErrorCode result = javaObj.getCode();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result.ordinal());
+            promise.resolve(resultMap);
         }
         else
         {
@@ -119,7 +121,9 @@ public class RCTCoreError extends ReactContextBaseJavaModule {
         {
             Error javaObj = this.javaObjects.get(uid);
             String result = javaObj.getMessage();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", result);
+            promise.resolve(resultMap);
         }
         else
         {

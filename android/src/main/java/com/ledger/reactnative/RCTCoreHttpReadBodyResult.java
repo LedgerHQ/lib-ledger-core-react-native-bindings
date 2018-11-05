@@ -90,6 +90,20 @@ public class RCTCoreHttpReadBodyResult extends ReactContextBaseJavaModule {
         }
         return data;
     }
+    static final String HEXES = "0123456789ABCDEF";
+    public static String byteArrayToHexString( byte [] data)
+    {
+        if (data == null)
+        {
+            return null;
+        }
+        final StringBuilder hexStringBuilder = new StringBuilder( 2 * data.length );
+        for ( final byte b : data )
+        {
+            hexStringBuilder.append(HEXES.charAt((b & 0xF0) >> 4)).append(HEXES.charAt((b & 0x0F)));
+        }
+        return hexStringBuilder.toString();
+    }
 
     @ReactMethod
     public void init(Optional<ReadableMap> error, String data, Promise promise) {
@@ -153,8 +167,10 @@ public class RCTCoreHttpReadBodyResult extends ReactContextBaseJavaModule {
         {
             HttpReadBodyResult javaObj = this.javaObjects.get(uid);
             byte[] result = javaObj.getData();
-            String converted_result = result.toString();
-            promise.resolve(result);
+            String converted_result = byteArrayToHexString(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", converted_result);
+            promise.resolve(resultMap);
         }
         else
         {

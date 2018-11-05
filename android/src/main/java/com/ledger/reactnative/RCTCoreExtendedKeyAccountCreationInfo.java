@@ -115,7 +115,9 @@ public class RCTCoreExtendedKeyAccountCreationInfo extends ReactContextBaseJavaM
         {
             ExtendedKeyAccountCreationInfo javaObj = this.javaObjects.get(uid);
             int result = javaObj.getIndex();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result);
+            promise.resolve(resultMap);
         }
         else
         {

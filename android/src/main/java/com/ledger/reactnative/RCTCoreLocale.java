@@ -96,7 +96,9 @@ public class RCTCoreLocale extends ReactContextBaseJavaModule {
         {
             Locale javaObj = this.javaObjects.get(uid);
             String result = javaObj.getDecimalSeparator();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -112,7 +114,9 @@ public class RCTCoreLocale extends ReactContextBaseJavaModule {
         {
             Locale javaObj = this.javaObjects.get(uid);
             String result = javaObj.getThousandsSeparator();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -128,7 +132,9 @@ public class RCTCoreLocale extends ReactContextBaseJavaModule {
         {
             Locale javaObj = this.javaObjects.get(uid);
             boolean result = javaObj.getIsPrefixedByCurrencySymbol();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putBoolean("value", result);
+            promise.resolve(resultMap);
         }
         else
         {

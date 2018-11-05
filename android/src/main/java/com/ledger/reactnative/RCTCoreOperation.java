@@ -146,8 +146,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
 
             OperationType javaResult = currentInstanceObj.getOperationType();
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = javaResult.toString();
-            result.putString("value", finalJavaResult);
+            int finalJavaResult = javaResult.ordinal();
+            result.putInt("value", finalJavaResult);
 
             promise.resolve(result);
         }
@@ -504,8 +504,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
 
             WalletType javaResult = currentInstanceObj.getWalletType();
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = javaResult.toString();
-            result.putString("value", finalJavaResult);
+            int finalJavaResult = javaResult.ordinal();
+            result.putInt("value", finalJavaResult);
 
             promise.resolve(result);
         }

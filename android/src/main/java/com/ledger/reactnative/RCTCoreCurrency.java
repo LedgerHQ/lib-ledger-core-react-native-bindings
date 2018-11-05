@@ -154,7 +154,9 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         {
             Currency javaObj = this.javaObjects.get(uid);
             WalletType result = javaObj.getWalletType();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result.ordinal());
+            promise.resolve(resultMap);
         }
         else
         {
@@ -170,7 +172,9 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         {
             Currency javaObj = this.javaObjects.get(uid);
             String result = javaObj.getName();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -186,7 +190,9 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         {
             Currency javaObj = this.javaObjects.get(uid);
             int result = javaObj.getBip44CoinType();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -202,7 +208,9 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         {
             Currency javaObj = this.javaObjects.get(uid);
             String result = javaObj.getPaymentUriScheme();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", result);
+            promise.resolve(resultMap);
         }
         else
         {

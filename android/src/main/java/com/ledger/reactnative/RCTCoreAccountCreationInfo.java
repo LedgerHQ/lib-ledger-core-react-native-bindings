@@ -87,6 +87,20 @@ public class RCTCoreAccountCreationInfo extends ReactContextBaseJavaModule {
         }
         return data;
     }
+    static final String HEXES = "0123456789ABCDEF";
+    public static String byteArrayToHexString( byte [] data)
+    {
+        if (data == null)
+        {
+            return null;
+        }
+        final StringBuilder hexStringBuilder = new StringBuilder( 2 * data.length );
+        for ( final byte b : data )
+        {
+            hexStringBuilder.append(HEXES.charAt((b & 0xF0) >> 4)).append(HEXES.charAt((b & 0x0F)));
+        }
+        return hexStringBuilder.toString();
+    }
 
     @ReactMethod
     public void init(int index, ReadableArray owners, ReadableArray derivations, ReadableArray publicKeys, ReadableArray chainCodes, Promise promise) {
@@ -135,7 +149,9 @@ public class RCTCoreAccountCreationInfo extends ReactContextBaseJavaModule {
         {
             AccountCreationInfo javaObj = this.javaObjects.get(uid);
             int result = javaObj.getIndex();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -196,8 +212,8 @@ public class RCTCoreAccountCreationInfo extends ReactContextBaseJavaModule {
             WritableNativeArray converted_result = new WritableNativeArray();
             for (byte[] result_elem : result)
             {
-                String converted_result_elem = result_elem.toString();
-                converted_result.pushString(result_elem.toString());
+                String converted_result_elem = byteArrayToHexString(result_elem);
+                converted_result.pushString(converted_result_elem);
             }
             promise.resolve(converted_result);
         }
@@ -218,8 +234,8 @@ public class RCTCoreAccountCreationInfo extends ReactContextBaseJavaModule {
             WritableNativeArray converted_result = new WritableNativeArray();
             for (byte[] result_elem : result)
             {
-                String converted_result_elem = result_elem.toString();
-                converted_result.pushString(result_elem.toString());
+                String converted_result_elem = byteArrayToHexString(result_elem);
+                converted_result.pushString(converted_result_elem);
             }
             promise.resolve(converted_result);
         }

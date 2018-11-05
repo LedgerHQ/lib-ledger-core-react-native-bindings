@@ -95,8 +95,8 @@ public class RCTCoreEvent extends ReactContextBaseJavaModule {
 
             EventCode javaResult = currentInstanceObj.getCode();
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = javaResult.toString();
-            result.putString("value", finalJavaResult);
+            int finalJavaResult = javaResult.ordinal();
+            result.putInt("value", finalJavaResult);
 
             promise.resolve(result);
         }

@@ -96,7 +96,9 @@ public class RCTCoreEstimatedSize extends ReactContextBaseJavaModule {
         {
             EstimatedSize javaObj = this.javaObjects.get(uid);
             int result = javaObj.getMin();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -112,7 +114,9 @@ public class RCTCoreEstimatedSize extends ReactContextBaseJavaModule {
         {
             EstimatedSize javaObj = this.javaObjects.get(uid);
             int result = javaObj.getMax();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result);
+            promise.resolve(resultMap);
         }
         else
         {

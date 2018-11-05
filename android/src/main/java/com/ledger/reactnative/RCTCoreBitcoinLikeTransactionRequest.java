@@ -280,7 +280,9 @@ public class RCTCoreBitcoinLikeTransactionRequest extends ReactContextBaseJavaMo
         {
             BitcoinLikeTransactionRequest javaObj = this.javaObjects.get(uid);
             Integer result = javaObj.getLockTime();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result);
+            promise.resolve(resultMap);
         }
         else
         {

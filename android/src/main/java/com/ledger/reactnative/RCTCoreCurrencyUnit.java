@@ -97,7 +97,9 @@ public class RCTCoreCurrencyUnit extends ReactContextBaseJavaModule {
         {
             CurrencyUnit javaObj = this.javaObjects.get(uid);
             String result = javaObj.getName();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -113,7 +115,9 @@ public class RCTCoreCurrencyUnit extends ReactContextBaseJavaModule {
         {
             CurrencyUnit javaObj = this.javaObjects.get(uid);
             String result = javaObj.getSymbol();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -129,7 +133,9 @@ public class RCTCoreCurrencyUnit extends ReactContextBaseJavaModule {
         {
             CurrencyUnit javaObj = this.javaObjects.get(uid);
             String result = javaObj.getCode();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -145,7 +151,9 @@ public class RCTCoreCurrencyUnit extends ReactContextBaseJavaModule {
         {
             CurrencyUnit javaObj = this.javaObjects.get(uid);
             int result = javaObj.getNumberOfDecimal();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result);
+            promise.resolve(resultMap);
         }
         else
         {

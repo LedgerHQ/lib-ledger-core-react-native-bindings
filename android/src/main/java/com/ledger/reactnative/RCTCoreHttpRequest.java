@@ -96,8 +96,8 @@ public class RCTCoreHttpRequest extends ReactContextBaseJavaModule {
 
             HttpMethod javaResult = currentInstanceObj.getMethod();
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = javaResult.toString();
-            result.putString("value", finalJavaResult);
+            int finalJavaResult = javaResult.ordinal();
+            result.putInt("value", finalJavaResult);
 
             promise.resolve(result);
         }

@@ -104,7 +104,9 @@ public class RCTCoreFormatRules extends ReactContextBaseJavaModule {
         {
             FormatRules javaObj = this.javaObjects.get(uid);
             RoundingMode result = javaObj.getRoundingMode();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result.ordinal());
+            promise.resolve(resultMap);
         }
         else
         {
@@ -120,7 +122,9 @@ public class RCTCoreFormatRules extends ReactContextBaseJavaModule {
         {
             FormatRules javaObj = this.javaObjects.get(uid);
             int result = javaObj.getMaxNumberOfDecimals();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result);
+            promise.resolve(resultMap);
         }
         else
         {

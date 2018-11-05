@@ -167,7 +167,9 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
         {
             BitcoinLikePreparedTransaction javaObj = this.javaObjects.get(uid);
             int result = javaObj.getVersion();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -258,7 +260,9 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
         {
             BitcoinLikePreparedTransaction javaObj = this.javaObjects.get(uid);
             int result = javaObj.getLockTime();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result);
+            promise.resolve(resultMap);
         }
         else
         {

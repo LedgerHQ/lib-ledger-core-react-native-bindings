@@ -109,8 +109,8 @@ public class RCTCoreTrustIndicator extends ReactContextBaseJavaModule {
 
             TrustLevel javaResult = currentInstanceObj.getTrustLevel();
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = javaResult.toString();
-            result.putString("value", finalJavaResult);
+            int finalJavaResult = javaResult.ordinal();
+            result.putInt("value", finalJavaResult);
 
             promise.resolve(result);
         }

@@ -96,7 +96,9 @@ public class RCTCoreBitcoinLikeOperator extends ReactContextBaseJavaModule {
         {
             BitcoinLikeOperator javaObj = this.javaObjects.get(uid);
             String result = javaObj.getOperatorName();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -112,7 +114,9 @@ public class RCTCoreBitcoinLikeOperator extends ReactContextBaseJavaModule {
         {
             BitcoinLikeOperator javaObj = this.javaObjects.get(uid);
             byte result = javaObj.getValue();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result);
+            promise.resolve(resultMap);
         }
         else
         {

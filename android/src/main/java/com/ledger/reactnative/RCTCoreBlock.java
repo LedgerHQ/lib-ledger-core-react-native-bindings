@@ -97,7 +97,9 @@ public class RCTCoreBlock extends ReactContextBaseJavaModule {
         {
             Block javaObj = this.javaObjects.get(uid);
             String result = javaObj.getBlockHash();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -113,7 +115,9 @@ public class RCTCoreBlock extends ReactContextBaseJavaModule {
         {
             Block javaObj = this.javaObjects.get(uid);
             String result = javaObj.getUid();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -147,7 +151,9 @@ public class RCTCoreBlock extends ReactContextBaseJavaModule {
         {
             Block javaObj = this.javaObjects.get(uid);
             String result = javaObj.getCurrencyName();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
@@ -163,7 +169,9 @@ public class RCTCoreBlock extends ReactContextBaseJavaModule {
         {
             Block javaObj = this.javaObjects.get(uid);
             double result = javaObj.getHeight();
-            promise.resolve(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putDouble("value", result);
+            promise.resolve(resultMap);
         }
         else
         {
