@@ -13,6 +13,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableNativeArray;
+import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import java.text.DateFormat;
@@ -51,12 +53,12 @@ public class RCTCoreAmountCallback extends AmountCallback {
             {
                 this.promise.reject(error.toString(), error.getMessage());
             }
-            String uuid = UUID.randomUUID().toString();
+            String result_uuid = UUID.randomUUID().toString();
             RCTCoreAmount rctImpl_result = this.reactContext.getNativeModule(RCTCoreAmount.class);
-            rctImpl_result.getJavaObjects().put(uuid, result);
+            rctImpl_result.getJavaObjects().put(result_uuid, result);
             WritableNativeMap converted_result = new WritableNativeMap();
             converted_result.putString("type","RCTCoreAmount");
-            converted_result.putString("uid",uuid);
+            converted_result.putString("uid",result_uuid);
 
             this.promise.resolve(converted_result);
         }

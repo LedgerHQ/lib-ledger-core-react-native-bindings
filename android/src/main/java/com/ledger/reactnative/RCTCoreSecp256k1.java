@@ -11,6 +11,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableNativeArray;
+import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import java.text.DateFormat;
@@ -75,6 +77,16 @@ public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
         this.javaObjects.clear();
         promise.resolve(0);
     }
+    public static byte[] hexStringToByteArray(String hexString)
+    {
+        int hexStringLength = hexString.length();
+        byte[] data = new byte[hexStringLength / 2];
+        for (int i = 0; i < hexStringLength; i += 2)
+        {
+            data[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4) + Character.digit(hexString.charAt(i+1), 16));
+        }
+        return data;
+    }
 
     /**
      * Create an instance of Secp256k1
@@ -86,12 +98,12 @@ public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
         {
             Secp256k1 javaResult = Secp256k1.createInstance();
 
-            String uuid = UUID.randomUUID().toString();
+            String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreSecp256k1 rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreSecp256k1.class);
-            rctImpl_javaResult.getJavaObjects().put(uuid, javaResult);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreSecp256k1");
-            result.putString("uid",uuid);
+            result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);
         }
@@ -107,14 +119,16 @@ public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
      * @return public key can be compressed (35 bytes starting with 02 or 03) or un compressed (65 bytes starting with 04)
      */
     @ReactMethod
-    public void computePubKey(ReadableMap currentInstance, byte[] privKey, boolean compress, Promise promise) {
+    public void computePubKey(ReadableMap currentInstance, String privKey, boolean compress, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
 
             Secp256k1 currentInstanceObj = this.javaObjects.get(sUid);
 
-            byte[] javaResult = currentInstanceObj.computePubKey(privKey, compress);
+            byte [] javaParam_0 = hexStringToByteArray(privKey);
+
+            byte[] javaResult = currentInstanceObj.computePubKey(javaParam_0, compress);
             WritableNativeMap result = new WritableNativeMap();
             String finalJavaResult = new String(javaResult);
             result.putString("value", finalJavaResult);
@@ -133,14 +147,18 @@ public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
      * @return 32 bytes signed message
      */
     @ReactMethod
-    public void sign(ReadableMap currentInstance, byte[] privKey, byte[] data, Promise promise) {
+    public void sign(ReadableMap currentInstance, String privKey, String data, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
 
             Secp256k1 currentInstanceObj = this.javaObjects.get(sUid);
 
-            byte[] javaResult = currentInstanceObj.sign(privKey, data);
+            byte [] javaParam_0 = hexStringToByteArray(privKey);
+
+            byte [] javaParam_1 = hexStringToByteArray(data);
+
+            byte[] javaResult = currentInstanceObj.sign(javaParam_0, javaParam_1);
             WritableNativeMap result = new WritableNativeMap();
             String finalJavaResult = new String(javaResult);
             result.putString("value", finalJavaResult);
@@ -160,14 +178,20 @@ public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
      * @return true if message was signed with signature and public key (both issued from same private key)
      */
     @ReactMethod
-    public void verify(ReadableMap currentInstance, byte[] data, byte[] signature, byte[] pubKey, Promise promise) {
+    public void verify(ReadableMap currentInstance, String data, String signature, String pubKey, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
 
             Secp256k1 currentInstanceObj = this.javaObjects.get(sUid);
 
-            boolean javaResult = currentInstanceObj.verify(data, signature, pubKey);
+            byte [] javaParam_0 = hexStringToByteArray(data);
+
+            byte [] javaParam_1 = hexStringToByteArray(signature);
+
+            byte [] javaParam_2 = hexStringToByteArray(pubKey);
+
+            boolean javaResult = currentInstanceObj.verify(javaParam_0, javaParam_1, javaParam_2);
             WritableNativeMap result = new WritableNativeMap();
             result.putBoolean("value", javaResult);
 
@@ -184,12 +208,12 @@ public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
         {
             Secp256k1 javaResult = Secp256k1.newInstance();
 
-            String uuid = UUID.randomUUID().toString();
+            String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreSecp256k1 rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreSecp256k1.class);
-            rctImpl_javaResult.getJavaObjects().put(uuid, javaResult);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreSecp256k1");
-            result.putString("uid",uuid);
+            result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);
         }

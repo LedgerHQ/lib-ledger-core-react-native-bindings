@@ -14,6 +14,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableNativeArray;
+import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import java.text.DateFormat;
@@ -30,7 +32,7 @@ import java.util.UUID;
 public class RCTCoreCurrency extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, Currency> javaObjects;
-    private Map<String, Map<String, ArrayList<String>>> implementationsData;
+    private WritableNativeMap implementationsData;
     public Map<String, Currency> getJavaObjects()
     {
         return javaObjects;
@@ -41,7 +43,7 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Currency>();
-        this.implementationsData = new HashMap<String, Map<String, ArrayList<String>>>();
+        this.implementationsData = new WritableNativeMap();
     }
 
     @Override
@@ -82,7 +84,7 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void init(int walletType, String name, int bip44CoinType, String paymentUriScheme, ReadableArray units, Optional<ReadableMap> bitcoinLikeNetworkParameters, Promise promise) {
-        Map<String, ArrayList<String>> implementationsData = new HashMap<String, ArrayList<String>>();
+        WritableNativeMap implementationsData = new WritableNativeMap();
         if (walletType < 0 || WalletType.values().length <= walletType)
         {
             promise.reject("Enum error", "Failed to get enum WalletType");
@@ -90,23 +92,21 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         }
         WalletType javaParam_0 = WalletType.values()[walletType];
         ArrayList<CurrencyUnit> javaParam_4 = new ArrayList<CurrencyUnit>();
-        ArrayList<String> javaParam_4_data = new ArrayList<String>();
+        WritableNativeArray javaParam_4_data = new WritableNativeArray();
 
         for (int i = 0; i <  units.size(); i++)
         {
             ReadableMap units_elem = units.getMap(i);
             RCTCoreCurrencyUnit rctParam_units_elem = this.reactContext.getNativeModule(RCTCoreCurrencyUnit.class);
             CurrencyUnit javaParam_4_elem = rctParam_units_elem.getJavaObjects().get(units_elem.getString("uid"));
-            javaParam_4_data.add(units_elem.getString("uid"));
+            javaParam_4_data.pushString(units_elem.getString("uid"));
             javaParam_4.add(javaParam_4_elem);
         }
-        implementationsData.put("units", javaParam_4_data);
+        implementationsData.putArray("units", javaParam_4_data);
 
         RCTCoreBitcoinLikeNetworkParameters rctParam_bitcoinLikeNetworkParameters = this.reactContext.getNativeModule(RCTCoreBitcoinLikeNetworkParameters.class);
         BitcoinLikeNetworkParameters javaParam_5 = rctParam_bitcoinLikeNetworkParameters.getJavaObjects().get(bitcoinLikeNetworkParameters.get().getString("uid"));
-        ArrayList<String> javaParam_5_tmp = new ArrayList<String>();
-        javaParam_5_tmp.add(bitcoinLikeNetworkParameters.get().getString("uid"));
-        implementationsData.put("bitcoinLikeNetworkParameters", javaParam_5_tmp);
+        implementationsData.putString("bitcoinLikeNetworkParameters", bitcoinLikeNetworkParameters.get().getString("uid"));
         Currency javaResult = new Currency(javaParam_0, name, bip44CoinType, paymentUriScheme, javaParam_4, javaParam_5);
 
         String uuid = UUID.randomUUID().toString();
@@ -114,8 +114,36 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         WritableNativeMap finalResult = new WritableNativeMap();
         finalResult.putString("type","RCTCoreCurrency");
         finalResult.putString("uid",uuid);
-        this.implementationsData.put(uuid, implementationsData);
+        this.implementationsData.putMap(uuid, implementationsData);
         promise.resolve(finalResult);
+    }
+    public void mapImplementationsData(ReadableMap currentInstance)
+    {
+        String currentInstanceUid = currentInstance.getString("uid");
+        Currency javaImpl = this.javaObjects.get(currentInstanceUid);
+        WritableNativeMap implementationsData = new WritableNativeMap();
+        ArrayList<CurrencyUnit> field_4 = javaImpl.getUnits();
+        WritableNativeArray converted_field_4 = new WritableNativeArray();
+        for (CurrencyUnit field_4_elem : field_4)
+        {
+            String field_4_elem_uuid = UUID.randomUUID().toString();
+            RCTCoreCurrencyUnit rctImpl_field_4_elem = this.reactContext.getNativeModule(RCTCoreCurrencyUnit.class);
+            rctImpl_field_4_elem.getJavaObjects().put(field_4_elem_uuid, field_4_elem);
+            WritableNativeMap converted_field_4_elem = new WritableNativeMap();
+            converted_field_4_elem.putString("type","RCTCoreCurrencyUnit");
+            converted_field_4_elem.putString("uid",field_4_elem_uuid);
+            converted_field_4.pushMap(converted_field_4_elem);
+        }
+        implementationsData.putArray("units", converted_field_4);
+        BitcoinLikeNetworkParameters field_5 = javaImpl.getBitcoinLikeNetworkParameters();
+        String field_5_uuid = UUID.randomUUID().toString();
+        RCTCoreBitcoinLikeNetworkParameters rctImpl_field_5 = this.reactContext.getNativeModule(RCTCoreBitcoinLikeNetworkParameters.class);
+        rctImpl_field_5.getJavaObjects().put(field_5_uuid, field_5);
+        WritableNativeMap converted_field_5 = new WritableNativeMap();
+        converted_field_5.putString("type","RCTCoreBitcoinLikeNetworkParameters");
+        converted_field_5.putString("uid",field_5_uuid);
+        implementationsData.putMap("bitcoinLikeNetworkParameters", converted_field_5);
+        this.implementationsData.putMap(currentInstanceUid, implementationsData);
     }
     @ReactMethod
     public void getWalletType(ReadableMap currentInstance, Promise promise)
@@ -187,16 +215,12 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
-            Currency javaObj = this.javaObjects.get(uid);
-            Map<String, ArrayList<String>> data = this.implementationsData.get(uid);
-            ArrayList<String> fieldData = data.get("units");
-            WritableNativeArray nativeFieldData = new WritableNativeArray();
-            for (String elem : fieldData)
+            if (!this.implementationsData.hasKey(uid))
             {
-                nativeFieldData.pushString(elem);
+                this.mapImplementationsData(currentInstance);
             }
-            WritableNativeMap result = new WritableNativeMap();
-            result.putArray(uid,nativeFieldData);
+            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            ReadableArray result = data.getArray("units");
             promise.resolve(result);
         }
         else
@@ -211,16 +235,12 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
-            Currency javaObj = this.javaObjects.get(uid);
-            Map<String, ArrayList<String>> data = this.implementationsData.get(uid);
-            ArrayList<String> fieldData = data.get("bitcoinLikeNetworkParameters");
-            WritableNativeArray nativeFieldData = new WritableNativeArray();
-            for (String elem : fieldData)
+            if (!this.implementationsData.hasKey(uid))
             {
-                nativeFieldData.pushString(elem);
+                this.mapImplementationsData(currentInstance);
             }
-            WritableNativeMap result = new WritableNativeMap();
-            result.putArray(uid,nativeFieldData);
+            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            ReadableNativeMap result = data.getMap("bitcoinLikeNetworkParameters");
             promise.resolve(result);
         }
         else

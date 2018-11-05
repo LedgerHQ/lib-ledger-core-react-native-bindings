@@ -12,6 +12,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableNativeArray;
+import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import java.text.DateFormat;
@@ -80,6 +82,16 @@ public class RCTCorePreferences extends ReactContextBaseJavaModule {
     {
         this.javaObjects.clear();
         promise.resolve(0);
+    }
+    public static byte[] hexStringToByteArray(String hexString)
+    {
+        int hexStringLength = hexString.length();
+        byte[] data = new byte[hexStringLength / 2];
+        for (int i = 0; i < hexStringLength; i += 2)
+        {
+            data[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4) + Character.digit(hexString.charAt(i+1), 16));
+        }
+        return data;
     }
 
     /**
@@ -213,14 +225,16 @@ public class RCTCorePreferences extends ReactContextBaseJavaModule {
      * @return The data associated with the key or fallbackValue.
      */
     @ReactMethod
-    public void getData(ReadableMap currentInstance, String key, byte[] fallbackValue, Promise promise) {
+    public void getData(ReadableMap currentInstance, String key, String fallbackValue, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
 
             Preferences currentInstanceObj = this.javaObjects.get(sUid);
 
-            byte[] javaResult = currentInstanceObj.getData(key, fallbackValue);
+            byte [] javaParam_1 = hexStringToByteArray(fallbackValue);
+
+            byte[] javaResult = currentInstanceObj.getData(key, javaParam_1);
             WritableNativeMap result = new WritableNativeMap();
             String finalJavaResult = new String(javaResult);
             result.putString("value", finalJavaResult);
@@ -269,12 +283,12 @@ public class RCTCorePreferences extends ReactContextBaseJavaModule {
 
             PreferencesEditor javaResult = currentInstanceObj.edit();
 
-            String uuid = UUID.randomUUID().toString();
+            String javaResult_uuid = UUID.randomUUID().toString();
             RCTCorePreferencesEditor rctImpl_javaResult = this.reactContext.getNativeModule(RCTCorePreferencesEditor.class);
-            rctImpl_javaResult.getJavaObjects().put(uuid, javaResult);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCorePreferencesEditor");
-            result.putString("uid",uuid);
+            result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);
         }

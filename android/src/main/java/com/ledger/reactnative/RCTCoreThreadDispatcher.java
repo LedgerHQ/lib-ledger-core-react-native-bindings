@@ -13,6 +13,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableNativeArray;
+import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import java.text.DateFormat;
@@ -104,12 +106,12 @@ public class RCTCoreThreadDispatcher extends ReactContextBaseJavaModule {
 
             ExecutionContext javaResult = currentInstanceObj.getSerialExecutionContext(name);
 
-            String uuid = UUID.randomUUID().toString();
+            String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreExecutionContext rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreExecutionContext.class);
-            rctImpl_javaResult.getJavaObjects().put(uuid, (ExecutionContextImpl)javaResult);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, (ExecutionContextImpl)javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreExecutionContext");
-            result.putString("uid",uuid);
+            result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);
         }
@@ -134,12 +136,12 @@ public class RCTCoreThreadDispatcher extends ReactContextBaseJavaModule {
 
             ExecutionContext javaResult = currentInstanceObj.getThreadPoolExecutionContext(name);
 
-            String uuid = UUID.randomUUID().toString();
+            String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreExecutionContext rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreExecutionContext.class);
-            rctImpl_javaResult.getJavaObjects().put(uuid, (ExecutionContextImpl)javaResult);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, (ExecutionContextImpl)javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreExecutionContext");
-            result.putString("uid",uuid);
+            result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);
         }
@@ -162,12 +164,12 @@ public class RCTCoreThreadDispatcher extends ReactContextBaseJavaModule {
 
             ExecutionContext javaResult = currentInstanceObj.getMainExecutionContext();
 
-            String uuid = UUID.randomUUID().toString();
+            String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreExecutionContext rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreExecutionContext.class);
-            rctImpl_javaResult.getJavaObjects().put(uuid, (ExecutionContextImpl)javaResult);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, (ExecutionContextImpl)javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreExecutionContext");
-            result.putString("uid",uuid);
+            result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);
         }
@@ -190,12 +192,12 @@ public class RCTCoreThreadDispatcher extends ReactContextBaseJavaModule {
 
             Lock javaResult = currentInstanceObj.newLock();
 
-            String uuid = UUID.randomUUID().toString();
+            String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreLock rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreLock.class);
-            rctImpl_javaResult.getJavaObjects().put(uuid, (LockImpl)javaResult);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, (LockImpl)javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreLock");
-            result.putString("uid",uuid);
+            result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);
         }
