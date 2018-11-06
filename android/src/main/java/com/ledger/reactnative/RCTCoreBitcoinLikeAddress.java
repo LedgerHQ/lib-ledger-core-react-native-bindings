@@ -79,6 +79,30 @@ public class RCTCoreBitcoinLikeAddress extends ReactContextBaseJavaModule {
         this.javaObjects.clear();
         promise.resolve(0);
     }
+    public static byte[] hexStringToByteArray(String hexString)
+    {
+        int hexStringLength = hexString.length();
+        byte[] data = new byte[hexStringLength / 2];
+        for (int i = 0; i < hexStringLength; i += 2)
+        {
+            data[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4) + Character.digit(hexString.charAt(i+1), 16));
+        }
+        return data;
+    }
+    static final String HEXES = "0123456789ABCDEF";
+    public static String byteArrayToHexString( byte [] data)
+    {
+        if (data == null)
+        {
+            return null;
+        }
+        final StringBuilder hexStringBuilder = new StringBuilder( 2 * data.length );
+        for ( final byte b : data )
+        {
+            hexStringBuilder.append(HEXES.charAt((b & 0xF0) >> 4)).append(HEXES.charAt((b & 0x0F)));
+        }
+        return hexStringBuilder.toString();
+    }
 
     /**
      * Gets the version of the address (P2SH or P2PKH)
@@ -94,7 +118,7 @@ public class RCTCoreBitcoinLikeAddress extends ReactContextBaseJavaModule {
 
             byte[] javaResult = currentInstanceObj.getVersion();
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = new String(javaResult);
+            String finalJavaResult = byteArrayToHexString(javaResult);
             result.putString("value", finalJavaResult);
 
             promise.resolve(result);
@@ -118,7 +142,7 @@ public class RCTCoreBitcoinLikeAddress extends ReactContextBaseJavaModule {
 
             byte[] javaResult = currentInstanceObj.getHash160();
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = new String(javaResult);
+            String finalJavaResult = byteArrayToHexString(javaResult);
             result.putString("value", finalJavaResult);
 
             promise.resolve(result);

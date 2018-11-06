@@ -145,7 +145,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
             WritableNativeArray javaResult_list = new WritableNativeArray();
             for(byte[] javaResult_elem : javaResult)
             {
-                String finalJavaResult = new String(javaResult_elem);
+                String finalJavaResult = byteArrayToHexString(javaResult_elem);
                 javaResult_list.pushString(finalJavaResult);
             }
             result.putArray("value", javaResult_list);
@@ -350,7 +350,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
 
             byte[] javaResult = currentInstanceObj.getScriptSig();
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = new String(javaResult);
+            String finalJavaResult = byteArrayToHexString(javaResult);
             result.putString("value", finalJavaResult);
 
             promise.resolve(result);

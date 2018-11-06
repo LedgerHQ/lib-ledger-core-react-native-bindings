@@ -145,7 +145,7 @@ public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
 
             byte[] javaResult = currentInstanceObj.computePubKey(javaParam_0, compress);
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = new String(javaResult);
+            String finalJavaResult = byteArrayToHexString(javaResult);
             result.putString("value", finalJavaResult);
 
             promise.resolve(result);
@@ -175,7 +175,7 @@ public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
 
             byte[] javaResult = currentInstanceObj.sign(javaParam_0, javaParam_1);
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = new String(javaResult);
+            String finalJavaResult = byteArrayToHexString(javaResult);
             result.putString("value", finalJavaResult);
 
             promise.resolve(result);

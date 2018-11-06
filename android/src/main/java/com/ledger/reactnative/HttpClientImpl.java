@@ -9,6 +9,7 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.StringWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -34,6 +35,19 @@ public class HttpClientImpl extends co.ledger.core.HttpClient {
             for (String hr : headers.keySet()) {
                 connection.setRequestProperty(hr, headers.get(hr));
             }
+
+            byte[] body = request.getBody();
+            if (body.length > 0) {
+                connection.setRequestMethod( "POST" );
+                connection.setRequestProperty( "Content-Type", "application/json");
+                connection.setRequestProperty( "charset", "utf-8");
+                connection.setRequestProperty( "Content-Length", Integer.toString(body.length));
+                OutputStream os = connection.getOutputStream();
+                os.write(body);
+                os.flush();
+                os.close();
+            }
+            
             int httpCode = connection.getResponseCode();
             BufferedInputStream iStream = new BufferedInputStream(connection.getInputStream());
             String response = getString(iStream, "UTF-8");

@@ -131,7 +131,7 @@ public class RCTCoreHashAlgorithmHelper extends ReactContextBaseJavaModule {
 
             byte[] javaResult = currentInstanceObj.ripemd160(javaParam_0);
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = new String(javaResult);
+            String finalJavaResult = byteArrayToHexString(javaResult);
             result.putString("value", finalJavaResult);
 
             promise.resolve(result);
@@ -158,7 +158,7 @@ public class RCTCoreHashAlgorithmHelper extends ReactContextBaseJavaModule {
 
             byte[] javaResult = currentInstanceObj.sha256(javaParam_0);
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = new String(javaResult);
+            String finalJavaResult = byteArrayToHexString(javaResult);
             result.putString("value", finalJavaResult);
 
             promise.resolve(result);
@@ -185,7 +185,7 @@ public class RCTCoreHashAlgorithmHelper extends ReactContextBaseJavaModule {
 
             byte[] javaResult = currentInstanceObj.keccak256(javaParam_0);
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = new String(javaResult);
+            String finalJavaResult = byteArrayToHexString(javaResult);
             result.putString("value", finalJavaResult);
 
             promise.resolve(result);

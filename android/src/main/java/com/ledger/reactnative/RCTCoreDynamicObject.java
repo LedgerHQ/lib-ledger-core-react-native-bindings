@@ -463,7 +463,7 @@ public class RCTCoreDynamicObject extends ReactContextBaseJavaModule {
 
             byte[] javaResult = currentInstanceObj.getData(key);
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = new String(javaResult);
+            String finalJavaResult = byteArrayToHexString(javaResult);
             result.putString("value", finalJavaResult);
 
             promise.resolve(result);
@@ -693,7 +693,7 @@ public class RCTCoreDynamicObject extends ReactContextBaseJavaModule {
 
             byte[] javaResult = currentInstanceObj.serialize();
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = new String(javaResult);
+            String finalJavaResult = byteArrayToHexString(javaResult);
             result.putString("value", finalJavaResult);
 
             promise.resolve(result);
