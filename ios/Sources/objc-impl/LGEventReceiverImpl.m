@@ -31,11 +31,9 @@
             error = @"Syncronization Failed";
             
         }
-        //self.reject(error, @"Error while calling LGEventReceiverImpl::getIndex", nil);
+        self.reject(error, @"Error while calling LGEventReceiverImpl::onEvent", nil);
         return;
-        //TODO: Call to rejecter
     } else if (eventCode == LGEventCodeSynchronizationSucceed || eventCode == LGEventCodeSynchronizationSucceedOnPreviouslyEmptyAccount) {
-        //TODO: Call to resolver
         self.resolve([payload getString:@"result"]);
         return;
     }
