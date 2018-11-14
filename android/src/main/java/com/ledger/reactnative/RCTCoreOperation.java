@@ -170,7 +170,7 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
 
             Date javaResult = currentInstanceObj.getDate();
             WritableNativeMap result = new WritableNativeMap();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
             String finalJavaResult = dateFormat.format(javaResult);
             result.putString("value", finalJavaResult);
 
@@ -363,6 +363,11 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
 
             Long javaResult = currentInstanceObj.getBlockHeight();
             WritableNativeMap result = new WritableNativeMap();
+            if (javaResult == null)
+            {
+                promise.resolve(javaResult);
+                return;
+            }
             result.putDouble("value", javaResult);
 
             promise.resolve(result);

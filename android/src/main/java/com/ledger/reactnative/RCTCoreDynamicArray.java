@@ -408,6 +408,11 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
 
             Integer javaResult = currentInstanceObj.getInt(index);
             WritableNativeMap result = new WritableNativeMap();
+            if (javaResult == null)
+            {
+                promise.resolve(javaResult);
+                return;
+            }
             result.putInt("value", javaResult);
 
             promise.resolve(result);
@@ -432,6 +437,11 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
 
             Long javaResult = currentInstanceObj.getLong(index);
             WritableNativeMap result = new WritableNativeMap();
+            if (javaResult == null)
+            {
+                promise.resolve(javaResult);
+                return;
+            }
             result.putDouble("value", javaResult);
 
             promise.resolve(result);
@@ -456,6 +466,11 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
 
             Double javaResult = currentInstanceObj.getDouble(index);
             WritableNativeMap result = new WritableNativeMap();
+            if (javaResult == null)
+            {
+                promise.resolve(javaResult);
+                return;
+            }
             result.putDouble("value", javaResult);
 
             promise.resolve(result);
@@ -505,6 +520,11 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
 
             Boolean javaResult = currentInstanceObj.getBoolean(index);
             WritableNativeMap result = new WritableNativeMap();
+            if (javaResult == null)
+            {
+                promise.resolve(javaResult);
+                return;
+            }
             result.putBoolean("value", javaResult);
 
             promise.resolve(result);

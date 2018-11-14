@@ -133,7 +133,7 @@ public class RCTCoreBlock extends ReactContextBaseJavaModule {
         {
             Block javaObj = this.javaObjects.get(uid);
             Date result = javaObj.getTime();
-            DateFormat resultDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            DateFormat resultDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
             String converted_result = resultDateFormat.format(result);
             promise.resolve(converted_result);
         }

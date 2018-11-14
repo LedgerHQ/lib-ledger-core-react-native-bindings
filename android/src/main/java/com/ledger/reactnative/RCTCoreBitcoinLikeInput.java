@@ -300,6 +300,11 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
 
             Integer javaResult = currentInstanceObj.getPreviousOutputIndex();
             WritableNativeMap result = new WritableNativeMap();
+            if (javaResult == null)
+            {
+                promise.resolve(javaResult);
+                return;
+            }
             result.putInt("value", javaResult);
 
             promise.resolve(result);

@@ -139,7 +139,7 @@ public class RCTCoreBitcoinLikeBlock extends ReactContextBaseJavaModule {
 
             Date javaResult = currentInstanceObj.getTime();
             WritableNativeMap result = new WritableNativeMap();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
             String finalJavaResult = dateFormat.format(javaResult);
             result.putString("value", finalJavaResult);
 

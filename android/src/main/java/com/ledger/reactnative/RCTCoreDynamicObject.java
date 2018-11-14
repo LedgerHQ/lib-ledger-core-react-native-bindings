@@ -391,6 +391,11 @@ public class RCTCoreDynamicObject extends ReactContextBaseJavaModule {
 
             Integer javaResult = currentInstanceObj.getInt(key);
             WritableNativeMap result = new WritableNativeMap();
+            if (javaResult == null)
+            {
+                promise.resolve(javaResult);
+                return;
+            }
             result.putInt("value", javaResult);
 
             promise.resolve(result);
@@ -415,6 +420,11 @@ public class RCTCoreDynamicObject extends ReactContextBaseJavaModule {
 
             Long javaResult = currentInstanceObj.getLong(key);
             WritableNativeMap result = new WritableNativeMap();
+            if (javaResult == null)
+            {
+                promise.resolve(javaResult);
+                return;
+            }
             result.putDouble("value", javaResult);
 
             promise.resolve(result);
@@ -439,6 +449,11 @@ public class RCTCoreDynamicObject extends ReactContextBaseJavaModule {
 
             Double javaResult = currentInstanceObj.getDouble(key);
             WritableNativeMap result = new WritableNativeMap();
+            if (javaResult == null)
+            {
+                promise.resolve(javaResult);
+                return;
+            }
             result.putDouble("value", javaResult);
 
             promise.resolve(result);
@@ -488,6 +503,11 @@ public class RCTCoreDynamicObject extends ReactContextBaseJavaModule {
 
             Boolean javaResult = currentInstanceObj.getBoolean(key);
             WritableNativeMap result = new WritableNativeMap();
+            if (javaResult == null)
+            {
+                promise.resolve(javaResult);
+                return;
+            }
             result.putBoolean("value", javaResult);
 
             promise.resolve(result);
