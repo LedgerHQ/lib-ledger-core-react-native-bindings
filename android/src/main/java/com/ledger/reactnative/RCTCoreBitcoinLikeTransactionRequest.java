@@ -81,6 +81,25 @@ public class RCTCoreBitcoinLikeTransactionRequest extends ReactContextBaseJavaMo
         this.javaObjects.clear();
         promise.resolve(0);
     }
+    @ReactMethod
+    public void isNull(ReadableMap currentInstance, Promise promise)
+    {
+        String uid = currentInstance.getString("uid");
+        if (uid.length() > 0)
+        {
+            if (this.javaObjects.get(uid) == null)
+            {
+                promise.resolve(true);
+                return;
+            }
+            else
+            {
+                promise.resolve(false);
+                return;
+            }
+        }
+        promise.resolve(true);
+    }
 
     @ReactMethod
     public void init(ReadableArray utxo, ReadableArray outputs, Optional<ReadableMap> baseFees, Optional<ReadableMap> totalFees, Integer lockTime, Promise promise) {

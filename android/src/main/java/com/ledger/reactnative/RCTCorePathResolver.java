@@ -92,6 +92,25 @@ public class RCTCorePathResolver extends ReactContextBaseJavaModule {
         this.javaObjects.clear();
         promise.resolve(0);
     }
+    @ReactMethod
+    public void isNull(ReadableMap currentInstance, Promise promise)
+    {
+        String uid = currentInstance.getString("uid");
+        if (uid.length() > 0)
+        {
+            if (this.javaObjects.get(uid) == null)
+            {
+                promise.resolve(true);
+                return;
+            }
+            else
+            {
+                promise.resolve(false);
+                return;
+            }
+        }
+        promise.resolve(true);
+    }
 
     /**
      * Resolves the path for a SQLite database file.

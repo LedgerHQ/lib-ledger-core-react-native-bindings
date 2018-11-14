@@ -50,6 +50,21 @@ RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve reject
     [self.objcImplementations removeAllObjects];
     resolve(@(YES));
 }
+RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+{
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        resolve(@(YES));
+        return;
+    }
+    [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if ([self.objcImplementations objectForKey:currentInstance[@"uid"]])
+    {
+        resolve(@(NO));
+        return;
+    }
+    resolve(@(YES));
+}
 
 /**
  *Get index of account in user's wallet
