@@ -77,6 +77,25 @@ public class RCTCoreExtendedKeyAccountCreationInfo extends ReactContextBaseJavaM
         this.javaObjects.clear();
         promise.resolve(0);
     }
+    @ReactMethod
+    public void isNull(ReadableMap currentInstance, Promise promise)
+    {
+        String uid = currentInstance.getString("uid");
+        if (uid.length() > 0)
+        {
+            if (this.javaObjects.get(uid) == null)
+            {
+                promise.resolve(true);
+                return;
+            }
+            else
+            {
+                promise.resolve(false);
+                return;
+            }
+        }
+        promise.resolve(true);
+    }
 
     @ReactMethod
     public void init(int index, ReadableArray owners, ReadableArray derivations, ReadableArray extendedKeys, Promise promise) {
