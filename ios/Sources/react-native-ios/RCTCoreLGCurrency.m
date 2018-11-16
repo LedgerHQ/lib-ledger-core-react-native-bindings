@@ -58,7 +58,6 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
         resolve(@(YES));
         return;
     }
-    [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if ([self.objcImplementations objectForKey:currentInstance[@"uid"]])
     {
         resolve(@(NO));
@@ -122,7 +121,10 @@ RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
     id field_5 = objcImpl.bitcoinLikeNetworkParameters;
     NSString *field_5_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeNetworkParameters *rctImpl_field_5 = (RCTCoreLGBitcoinLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGBitcoinLikeNetworkParameters"];
-    [rctImpl_field_5.objcImplementations setObject:field_5 forKey:field_5_uuid];
+    if (field_5)
+    {
+        [rctImpl_field_5.objcImplementations setObject:field_5 forKey:field_5_uuid];
+    }
     NSDictionary *converted_field_5 = @{@"type" : @"CoreLGBitcoinLikeNetworkParameters", @"uid" : field_5_uuid };
     [implementationsData setObject:converted_field_5 forKey:@"bitcoinLikeNetworkParameters"];
     [self.implementationsData setObject:implementationsData forKey:currentInstance[@"uid"]];

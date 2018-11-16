@@ -57,7 +57,6 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
         resolve(@(YES));
         return;
     }
-    [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if ([self.objcImplementations objectForKey:currentInstance[@"uid"]])
     {
         resolve(@(NO));
@@ -145,7 +144,10 @@ RCT_REMAP_METHOD(asBitcoinLikeAddress,asBitcoinLikeAddress:(NSDictionary *)curre
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeAddress *rctImpl_objcResult = (RCTCoreLGBitcoinLikeAddress *)[self.bridge moduleForName:@"CoreLGBitcoinLikeAddress"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    if (objcResult)
+    {
+        [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    }
     NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeAddress", @"uid" : objcResult_uuid };
 
     if(result)
@@ -234,7 +236,10 @@ RCT_REMAP_METHOD(parse,parsewithParams:(nonnull NSString *)address
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGAddress *rctImpl_objcResult = (RCTCoreLGAddress *)[self.bridge moduleForName:@"CoreLGAddress"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    if (objcResult)
+    {
+        [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    }
     NSDictionary *result = @{@"type" : @"CoreLGAddress", @"uid" : objcResult_uuid };
 
     if(result)

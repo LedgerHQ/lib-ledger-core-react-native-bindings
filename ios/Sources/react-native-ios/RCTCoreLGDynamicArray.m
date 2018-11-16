@@ -57,7 +57,6 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
         resolve(@(YES));
         return;
     }
-    [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if ([self.objcImplementations objectForKey:currentInstance[@"uid"]])
     {
         resolve(@(NO));
@@ -627,7 +626,10 @@ RCT_REMAP_METHOD(getObject,getObject:(NSDictionary *)currentInstance withParams:
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    if (objcResult)
+    {
+        [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    }
     NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
 
     if(result)
@@ -664,7 +666,10 @@ RCT_REMAP_METHOD(getArray,getArray:(NSDictionary *)currentInstance withParams:(i
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicArray *rctImpl_objcResult = (RCTCoreLGDynamicArray *)[self.bridge moduleForName:@"CoreLGDynamicArray"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    if (objcResult)
+    {
+        [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    }
     NSDictionary *result = @{@"type" : @"CoreLGDynamicArray", @"uid" : objcResult_uuid };
 
     if(result)
@@ -911,7 +916,10 @@ RCT_REMAP_METHOD(load,loadwithParams:(NSString *)serialized withResolver:(RCTPro
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDynamicArray *rctImpl_objcResult = (RCTCoreLGDynamicArray *)[self.bridge moduleForName:@"CoreLGDynamicArray"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    if (objcResult)
+    {
+        [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    }
     NSDictionary *result = @{@"type" : @"CoreLGDynamicArray", @"uid" : objcResult_uuid };
 
     if(result)

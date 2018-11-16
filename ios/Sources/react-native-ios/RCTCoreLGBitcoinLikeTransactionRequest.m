@@ -58,7 +58,6 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
         resolve(@(YES));
         return;
     }
-    [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if ([self.objcImplementations objectForKey:currentInstance[@"uid"]])
     {
         resolve(@(NO));
@@ -149,13 +148,19 @@ RCT_REMAP_METHOD(init, initWithUtxo:(NSArray <NSDictionary *> *)utxo
     id field_2 = objcImpl.baseFees;
     NSString *field_2_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGAmount *rctImpl_field_2 = (RCTCoreLGAmount *)[self.bridge moduleForName:@"CoreLGAmount"];
-    [rctImpl_field_2.objcImplementations setObject:field_2 forKey:field_2_uuid];
+    if (field_2)
+    {
+        [rctImpl_field_2.objcImplementations setObject:field_2 forKey:field_2_uuid];
+    }
     NSDictionary *converted_field_2 = @{@"type" : @"CoreLGAmount", @"uid" : field_2_uuid };
     [implementationsData setObject:converted_field_2 forKey:@"baseFees"];
     id field_3 = objcImpl.totalFees;
     NSString *field_3_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGAmount *rctImpl_field_3 = (RCTCoreLGAmount *)[self.bridge moduleForName:@"CoreLGAmount"];
-    [rctImpl_field_3.objcImplementations setObject:field_3 forKey:field_3_uuid];
+    if (field_3)
+    {
+        [rctImpl_field_3.objcImplementations setObject:field_3 forKey:field_3_uuid];
+    }
     NSDictionary *converted_field_3 = @{@"type" : @"CoreLGAmount", @"uid" : field_3_uuid };
     [implementationsData setObject:converted_field_3 forKey:@"totalFees"];
     [self.implementationsData setObject:implementationsData forKey:currentInstance[@"uid"]];

@@ -35,7 +35,10 @@
     {
         NSString *result_elem_uuid = [[NSUUID UUID] UUIDString];
         RCTCoreLGWallet *rctImpl_result_elem = (RCTCoreLGWallet *)[self.bridge moduleForName:@"CoreLGWallet"];
-        [rctImpl_result_elem.objcImplementations setObject:result_elem forKey:result_elem_uuid];
+        if (result_elem)
+        {
+            [rctImpl_result_elem.objcImplementations setObject:result_elem forKey:result_elem_uuid];
+        }
         NSDictionary *converted_result_elem = @{@"type" : @"CoreLGWallet", @"uid" : result_elem_uuid };
         [converted_result addObject:converted_result_elem];
     }

@@ -57,7 +57,6 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
         resolve(@(YES));
         return;
     }
-    [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if ([self.objcImplementations objectForKey:currentInstance[@"uid"]])
     {
         resolve(@(NO));
@@ -198,7 +197,10 @@ RCT_REMAP_METHOD(getValue,getValue:(NSDictionary *)currentInstance WithResolver:
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGAmount *rctImpl_objcResult = (RCTCoreLGAmount *)[self.bridge moduleForName:@"CoreLGAmount"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    if (objcResult)
+    {
+        [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    }
     NSDictionary *result = @{@"type" : @"CoreLGAmount", @"uid" : objcResult_uuid };
 
     if(result)

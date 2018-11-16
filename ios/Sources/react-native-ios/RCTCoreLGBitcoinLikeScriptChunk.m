@@ -57,7 +57,6 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
         resolve(@(YES));
         return;
     }
-    [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if ([self.objcImplementations objectForKey:currentInstance[@"uid"]])
     {
         resolve(@(NO));
@@ -137,7 +136,10 @@ RCT_REMAP_METHOD(getOperator,getOperator:(NSDictionary *)currentInstance WithRes
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeOperator *rctImpl_objcResult = (RCTCoreLGBitcoinLikeOperator *)[self.bridge moduleForName:@"CoreLGBitcoinLikeOperator"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    if (objcResult)
+    {
+        [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    }
     NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeOperator", @"uid" : objcResult_uuid };
 
     if(result)

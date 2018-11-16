@@ -58,7 +58,6 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
         resolve(@(YES));
         return;
     }
-    [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if ([self.objcImplementations objectForKey:currentInstance[@"uid"]])
     {
         resolve(@(NO));
@@ -109,7 +108,10 @@ RCT_REMAP_METHOD(init, initWithError:(nullable NSDictionary *)error
     id field_0 = objcImpl.error;
     NSString *field_0_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGError *rctImpl_field_0 = (RCTCoreLGError *)[self.bridge moduleForName:@"CoreLGError"];
-    [rctImpl_field_0.objcImplementations setObject:field_0 forKey:field_0_uuid];
+    if (field_0)
+    {
+        [rctImpl_field_0.objcImplementations setObject:field_0 forKey:field_0_uuid];
+    }
     NSDictionary *converted_field_0 = @{@"type" : @"CoreLGError", @"uid" : field_0_uuid };
     [implementationsData setObject:converted_field_0 forKey:@"error"];
     [self.implementationsData setObject:implementationsData forKey:currentInstance[@"uid"]];

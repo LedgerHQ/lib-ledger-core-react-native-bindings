@@ -32,7 +32,10 @@
 
     NSString *result_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGExtendedKeyAccountCreationInfo *rctImpl_result = (RCTCoreLGExtendedKeyAccountCreationInfo *)[self.bridge moduleForName:@"CoreLGExtendedKeyAccountCreationInfo"];
-    [rctImpl_result.objcImplementations setObject:result forKey:result_uuid];
+    if (result)
+    {
+        [rctImpl_result.objcImplementations setObject:result forKey:result_uuid];
+    }
     NSDictionary *converted_result = @{@"type" : @"CoreLGExtendedKeyAccountCreationInfo", @"uid" : result_uuid };
 
     self.resolve(converted_result);

@@ -32,7 +32,10 @@
 
     NSString *result_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGAccount *rctImpl_result = (RCTCoreLGAccount *)[self.bridge moduleForName:@"CoreLGAccount"];
-    [rctImpl_result.objcImplementations setObject:result forKey:result_uuid];
+    if (result)
+    {
+        [rctImpl_result.objcImplementations setObject:result forKey:result_uuid];
+    }
     NSDictionary *converted_result = @{@"type" : @"CoreLGAccount", @"uid" : result_uuid };
 
     self.resolve(converted_result);

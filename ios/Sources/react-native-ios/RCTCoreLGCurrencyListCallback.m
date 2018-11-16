@@ -35,7 +35,10 @@
     {
         NSString *result_elem_uuid = [[NSUUID UUID] UUIDString];
         RCTCoreLGCurrency *rctImpl_result_elem = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
-        [rctImpl_result_elem.objcImplementations setObject:result_elem forKey:result_elem_uuid];
+        if (result_elem)
+        {
+            [rctImpl_result_elem.objcImplementations setObject:result_elem forKey:result_elem_uuid];
+        }
         NSDictionary *converted_result_elem = @{@"type" : @"CoreLGCurrency", @"uid" : result_elem_uuid };
         [converted_result addObject:converted_result_elem];
     }
