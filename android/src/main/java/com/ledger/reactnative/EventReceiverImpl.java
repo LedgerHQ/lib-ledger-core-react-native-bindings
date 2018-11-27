@@ -28,7 +28,7 @@ public class EventReceiverImpl extends co.ledger.core.EventReceiver {
             if (error.length() == 0) {
                 error = "Synchronization Failed";
             }
-            this.promise.reject(error, "EventReceiverImpl::onEvent: synchronization failure");
+            this.promise.reject(error, error);
         } else if (eventCode == EventCode.SYNCHRONIZATION_SUCCEED || eventCode == EventCode.SYNCHRONIZATION_SUCCEED_ON_PREVIOUSLY_EMPTY_ACCOUNT) {
             //TODO: check if we should resolve with something else
             this.promise.resolve(0);

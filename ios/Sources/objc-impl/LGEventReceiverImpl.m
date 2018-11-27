@@ -29,9 +29,8 @@
             error = [payload getString:@"EV_SYNC_ERROR_MESSAGE"];
         } else {
             error = @"Syncronization Failed";
-            
         }
-        self.reject(error, @"Error while calling LGEventReceiverImpl::onEvent", nil);
+        self.reject(error, error, nil);
         return;
     } else if (eventCode == LGEventCodeSynchronizationSucceed || eventCode == LGEventCodeSynchronizationSucceedOnPreviouslyEmptyAccount) {
         self.resolve([payload getString:@"result"]);

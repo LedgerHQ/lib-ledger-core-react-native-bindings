@@ -7,7 +7,7 @@
     self = [super init];
     if (self) {
         BOOL isSerialized = YES;
-        self.context = [[LGExecutionContextImpl alloc] initContext:isSerialized];
+        self.context = [[LGExecutionContextImpl alloc] initContextWithName:@"__logger__" andIsSerialized:isSerialized];
     }
     return self;
 }

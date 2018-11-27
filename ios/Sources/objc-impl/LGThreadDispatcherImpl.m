@@ -17,7 +17,7 @@
     if (context) {
         return context;
     }
-    LGExecutionContextImpl *newContext = [[LGExecutionContextImpl alloc] initContext:isSerialized];
+    LGExecutionContextImpl *newContext = [[LGExecutionContextImpl alloc] initContextWithName:name andIsSerialized:isSerialized];
     [self.contexts setObject:newContext forKey:name];
     return newContext;
 }
