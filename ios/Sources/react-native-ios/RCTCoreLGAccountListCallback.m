@@ -37,7 +37,8 @@
         RCTCoreLGAccount *rctImpl_result_elem = (RCTCoreLGAccount *)[self.bridge moduleForName:@"CoreLGAccount"];
         if (result_elem)
         {
-            [rctImpl_result_elem.objcImplementations setObject:result_elem forKey:result_elem_uuid];
+            NSArray *result_elem_array = [[NSArray alloc] initWithObjects:result_elem, result_elem_uuid, nil];
+            [rctImpl_result_elem baseSetObject:result_elem_array];
         }
         NSDictionary *converted_result_elem = @{@"type" : @"CoreLGAccount", @"uid" : result_elem_uuid };
         [converted_result addObject:converted_result_elem];

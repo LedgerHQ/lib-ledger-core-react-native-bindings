@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8FE62F5D212329BD006089C1 /* libledger-core-objc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA6ED992123295D008DE63D /* libledger-core-objc.a */; };
+		B93A3E5A21B7CDAF00247CA8 /* RCTCoreBaseModule.m in Sources */ = {isa = PBXBuildFile; fileRef = B93A3E5921B7CDAF00247CA8 /* RCTCoreBaseModule.m */; };
 		B9D857AF214805D90007703A /* RCTCoreLGBlockchainExplorerEngines.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D856F0214805C50007703A /* RCTCoreLGBlockchainExplorerEngines.m */; };
 		B9D857B0214805D90007703A /* RCTCoreLGSecp256k1.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D856F3214805C50007703A /* RCTCoreLGSecp256k1.m */; };
 		B9D857B1214805D90007703A /* RCTCoreLGOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D856F4214805C50007703A /* RCTCoreLGOperation.m */; };
@@ -292,6 +293,8 @@
 		134814201AA4EA6300B7C361 /* libRNLibLedgerCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNLibLedgerCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FA6ED6021232941008DE63D /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		8FA6ED942123295D008DE63D /* binding.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = binding.xcodeproj; path = ../build_ios/binding.xcodeproj; sourceTree = "<group>"; };
+		B93A3E5821B7CDAF00247CA8 /* RCTCoreBaseModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreBaseModule.h; path = "Sources/react-native-ios/RCTCoreBaseModule.h"; sourceTree = "<group>"; };
+		B93A3E5921B7CDAF00247CA8 /* RCTCoreBaseModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreBaseModule.m; path = "Sources/react-native-ios/RCTCoreBaseModule.m"; sourceTree = "<group>"; };
 		B9D856ED214805C40007703A /* RCTCoreLGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGConfiguration.h; path = "Sources/react-native-ios/RCTCoreLGConfiguration.h"; sourceTree = "<group>"; };
 		B9D856EE214805C40007703A /* RCTCoreLGOperationListCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGOperationListCallback.h; path = "Sources/react-native-ios/RCTCoreLGOperationListCallback.h"; sourceTree = "<group>"; };
 		B9D856EF214805C40007703A /* RCTCoreLGStringCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGStringCallback.h; path = "Sources/react-native-ios/RCTCoreLGStringCallback.h"; sourceTree = "<group>"; };
@@ -627,6 +630,8 @@
 		8FA6ED9A21232967008DE63D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B93A3E5821B7CDAF00247CA8 /* RCTCoreBaseModule.h */,
+				B93A3E5921B7CDAF00247CA8 /* RCTCoreBaseModule.m */,
 				B9D857AD214805D80007703A /* RCTCoreLGAccount.h */,
 				B9D85704214805C70007703A /* RCTCoreLGAccount.m */,
 				B9D85750214805CF0007703A /* RCTCoreLGAccountCallback.h */,
@@ -1167,6 +1172,7 @@
 				B9D857DB214805D90007703A /* RCTCoreLGPreferencesEditor.m in Sources */,
 				B9D857D0214805D90007703A /* RCTCoreLGLocale.m in Sources */,
 				B9D8585F214805F20007703A /* LGWalletPoolCallbackImpl.m in Sources */,
+				B93A3E5A21B7CDAF00247CA8 /* RCTCoreBaseModule.m in Sources */,
 				B9D857E4214805D90007703A /* RCTCoreLGAddressListCallback.m in Sources */,
 				B9D8585E214805F20007703A /* LGAmountListCallbackImpl.m in Sources */,
 				B9D857E7214805D90007703A /* RCTCoreLGAmount.m in Sources */,

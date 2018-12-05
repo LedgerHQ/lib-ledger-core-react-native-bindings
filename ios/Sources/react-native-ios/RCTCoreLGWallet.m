@@ -10,16 +10,6 @@ RCT_EXPORT_MODULE(RCTCoreLGWallet)
 
 @synthesize bridge = _bridge;
 
--(instancetype)init
-{
-    self = [super init];
-    //Init Objc implementation
-    if(self)
-    {
-        self.objcImplementations = [[NSMutableDictionary alloc] init];
-    }
-    return self;
-}
 
 + (BOOL)requiresMainQueueSetup
 {
@@ -27,42 +17,19 @@ RCT_EXPORT_MODULE(RCTCoreLGWallet)
 }
 RCT_REMAP_METHOD(release, release:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
-    {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGWallet::release, first argument should be an instance of LGWallet", nil);
-        return;
-    }
-    [self.objcImplementations removeObjectForKey:currentInstance[@"uid"]];
-    resolve(@(YES));
+    [self baseRelease:currentInstance withResolver: resolve rejecter:reject];
 }
 RCT_REMAP_METHOD(log, logWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    NSMutableArray *uuids = [[NSMutableArray alloc] init];
-    for (id key in self.objcImplementations)
-    {
-        [uuids addObject:key];
-    }
-    NSDictionary *result = @{@"value" : uuids};
-    resolve(result);
+    [self baseLogWithResolver:resolve rejecter:reject];
 }
 RCT_REMAP_METHOD(flush, flushWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    [self.objcImplementations removeAllObjects];
-    resolve(@(YES));
+    [self baseFlushWithResolver:resolve rejecter:reject];
 }
 RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
-    {
-        resolve(@(YES));
-        return;
-    }
-    if ([self.objcImplementations objectForKey:currentInstance[@"uid"]])
-    {
-        resolve(@(NO));
-        return;
-    }
-    resolve(@(YES));
+    [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
 
 /**
@@ -209,7 +176,8 @@ RCT_REMAP_METHOD(getEventBus,getEventBus:(NSDictionary *)currentInstance WithRes
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGEventBus *rctImpl_objcResult = (RCTCoreLGEventBus *)[self.bridge moduleForName:@"CoreLGEventBus"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
     NSDictionary *result = @{@"type" : @"CoreLGEventBus", @"uid" : objcResult_uuid };
 
     if(result)
@@ -276,7 +244,8 @@ RCT_REMAP_METHOD(synchronize,synchronize:(NSDictionary *)currentInstance WithRes
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGEventBus *rctImpl_objcResult = (RCTCoreLGEventBus *)[self.bridge moduleForName:@"CoreLGEventBus"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
     NSDictionary *result = @{@"type" : @"CoreLGEventBus", @"uid" : objcResult_uuid };
 
     if(result)
@@ -312,7 +281,8 @@ RCT_REMAP_METHOD(getPreferences,getPreferences:(NSDictionary *)currentInstance W
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGPreferences *rctImpl_objcResult = (RCTCoreLGPreferences *)[self.bridge moduleForName:@"CoreLGPreferences"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
     NSDictionary *result = @{@"type" : @"CoreLGPreferences", @"uid" : objcResult_uuid };
 
     if(result)
@@ -348,7 +318,8 @@ RCT_REMAP_METHOD(getLogger,getLogger:(NSDictionary *)currentInstance WithResolve
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGLogger *rctImpl_objcResult = (RCTCoreLGLogger *)[self.bridge moduleForName:@"CoreLGLogger"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
     NSDictionary *result = @{@"type" : @"CoreLGLogger", @"uid" : objcResult_uuid };
 
     if(result)
@@ -385,7 +356,8 @@ RCT_REMAP_METHOD(getAccountPreferences,getAccountPreferences:(NSDictionary *)cur
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGPreferences *rctImpl_objcResult = (RCTCoreLGPreferences *)[self.bridge moduleForName:@"CoreLGPreferences"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
     NSDictionary *result = @{@"type" : @"CoreLGPreferences", @"uid" : objcResult_uuid };
 
     if(result)
@@ -424,7 +396,8 @@ RCT_REMAP_METHOD(asBitcoinLikeWallet,asBitcoinLikeWallet:(NSDictionary *)current
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeWallet *rctImpl_objcResult = (RCTCoreLGBitcoinLikeWallet *)[self.bridge moduleForName:@"CoreLGBitcoinLikeWallet"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
     NSDictionary *result = @{@"type" : @"CoreLGBitcoinLikeWallet", @"uid" : objcResult_uuid };
 
     if(result)
@@ -460,7 +433,8 @@ RCT_REMAP_METHOD(getCurrency,getCurrency:(NSDictionary *)currentInstance WithRes
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGCurrency *rctImpl_objcResult = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
-    [rctImpl_objcResult.objcImplementations setObject:objcResult forKey:objcResult_uuid];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
     NSDictionary *result = @{@"type" : @"CoreLGCurrency", @"uid" : objcResult_uuid };
 
     if(result)

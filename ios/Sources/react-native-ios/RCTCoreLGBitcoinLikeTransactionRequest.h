@@ -3,6 +3,7 @@
 
 #import "LGAmount.h"
 #import "LGBitcoinLikeOutput.h"
+#import "RCTCoreBaseModule.h"
 #import "RCTCoreLGAmount.h"
 #import "RCTCoreLGBitcoinLikeOutput.h"
 #import <Foundation/Foundation.h>
@@ -10,7 +11,7 @@
 #import <React/RCTBridgeModule.h>
 
 /**Structure representing a bitcoin transaction request */
-@interface RCTCoreLGBitcoinLikeTransactionRequest : NSObject <RCTBridgeModule>
+@interface RCTCoreLGBitcoinLikeTransactionRequest : RCTCoreBaseModule <RCTBridgeModule>
 @property (nonatomic, strong) NSMutableDictionary *objcImplementations;
 @property (nonatomic, strong) NSMutableDictionary *implementationsData;
 -(void)mapImplementationsData:(NSDictionary *)currentInstance;

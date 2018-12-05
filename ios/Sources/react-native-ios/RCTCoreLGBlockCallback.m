@@ -34,7 +34,8 @@
     RCTCoreLGBlock *rctImpl_result = (RCTCoreLGBlock *)[self.bridge moduleForName:@"CoreLGBlock"];
     if (result)
     {
-        [rctImpl_result.objcImplementations setObject:result forKey:result_uuid];
+        NSArray *result_array = [[NSArray alloc] initWithObjects:result, result_uuid, nil];
+        [rctImpl_result baseSetObject:result_array];
     }
     NSDictionary *converted_result = @{@"type" : @"CoreLGBlock", @"uid" : result_uuid };
 

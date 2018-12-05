@@ -14,7 +14,7 @@
             if ([name isEqualToString:@"__main__"]) {
                 self.queue = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0);
             } else {
-                self.queue = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0);
+                self.queue = dispatch_get_global_queue(QOS_CLASS_UTILITY, 0);
             }
             
         }

@@ -34,7 +34,8 @@
     RCTCoreLGAccountCreationInfo *rctImpl_result = (RCTCoreLGAccountCreationInfo *)[self.bridge moduleForName:@"CoreLGAccountCreationInfo"];
     if (result)
     {
-        [rctImpl_result.objcImplementations setObject:result forKey:result_uuid];
+        NSArray *result_array = [[NSArray alloc] initWithObjects:result, result_uuid, nil];
+        [rctImpl_result baseSetObject:result_array];
     }
     NSDictionary *converted_result = @{@"type" : @"CoreLGAccountCreationInfo", @"uid" : result_uuid };
 
