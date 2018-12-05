@@ -8,5 +8,4 @@
 
 /**TODO */
 @interface RCTCoreLGExtendedKeyAccountCreationInfo : RCTCoreBaseModule <RCTBridgeModule>
-@property (nonatomic, strong) NSMutableDictionary *objcImplementations;
 @end

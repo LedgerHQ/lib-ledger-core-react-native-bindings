@@ -8,5 +8,4 @@
 
 /**Structure of a block in the blockchain */
 @interface RCTCoreLGBlock : RCTCoreBaseModule <RCTBridgeModule>
-@property (nonatomic, strong) NSMutableDictionary *objcImplementations;
 @end

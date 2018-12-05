@@ -8,5 +8,4 @@
 #import <React/RCTBridgeModule.h>
 
 @interface RCTCoreLGError : RCTCoreBaseModule <RCTBridgeModule>
-@property (nonatomic, strong) NSMutableDictionary *objcImplementations;
 @end

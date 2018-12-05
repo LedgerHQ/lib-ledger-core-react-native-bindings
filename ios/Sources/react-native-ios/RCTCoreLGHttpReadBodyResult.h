@@ -10,7 +10,5 @@
 
 /**Structure representing Http response body */
 @interface RCTCoreLGHttpReadBodyResult : RCTCoreBaseModule <RCTBridgeModule>
-@property (nonatomic, strong) NSMutableDictionary *objcImplementations;
-@property (nonatomic, strong) NSMutableDictionary *implementationsData;
 -(void)mapImplementationsData:(NSDictionary *)currentInstance;
 @end

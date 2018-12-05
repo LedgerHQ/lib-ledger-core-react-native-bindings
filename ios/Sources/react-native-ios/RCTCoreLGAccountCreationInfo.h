@@ -8,5 +8,4 @@
 
 /**Structure of informations needed for account creation */
 @interface RCTCoreLGAccountCreationInfo : RCTCoreBaseModule <RCTBridgeModule>
-@property (nonatomic, strong) NSMutableDictionary *objcImplementations;
 @end

@@ -8,5 +8,4 @@
 
 /**Structure of cryptocurrency unit */
 @interface RCTCoreLGCurrencyUnit : RCTCoreBaseModule <RCTBridgeModule>
-@property (nonatomic, strong) NSMutableDictionary *objcImplementations;
 @end

@@ -7,5 +7,4 @@
 #import <React/RCTBridgeModule.h>
 
 @interface RCTCoreLGEstimatedSize : RCTCoreBaseModule <RCTBridgeModule>
-@property (nonatomic, strong) NSMutableDictionary *objcImplementations;
 @end

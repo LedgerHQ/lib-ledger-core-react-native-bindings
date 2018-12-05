@@ -7,5 +7,4 @@
 #import <React/RCTBridgeModule.h>
 
 @interface RCTCoreLGBitcoinLikeOperator : RCTCoreBaseModule <RCTBridgeModule>
-@property (nonatomic, strong) NSMutableDictionary *objcImplementations;
 @end

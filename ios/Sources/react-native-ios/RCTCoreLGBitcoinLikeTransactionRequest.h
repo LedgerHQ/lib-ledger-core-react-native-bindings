@@ -12,7 +12,5 @@
 
 /**Structure representing a bitcoin transaction request */
 @interface RCTCoreLGBitcoinLikeTransactionRequest : RCTCoreBaseModule <RCTBridgeModule>
-@property (nonatomic, strong) NSMutableDictionary *objcImplementations;
-@property (nonatomic, strong) NSMutableDictionary *implementationsData;
 -(void)mapImplementationsData:(NSDictionary *)currentInstance;
 @end

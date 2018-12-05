@@ -10,7 +10,5 @@
 
 /**Structure representing a prepared bitcoin transaction (ready to be used with device) */
 @interface RCTCoreLGBitcoinLikePreparedTransaction : RCTCoreBaseModule <RCTBridgeModule>
-@property (nonatomic, strong) NSMutableDictionary *objcImplementations;
-@property (nonatomic, strong) NSMutableDictionary *implementationsData;
 -(void)mapImplementationsData:(NSDictionary *)currentInstance;
 @end

@@ -11,6 +11,7 @@
     if(self)
     {
         self.objcImplementations = [[NSMutableDictionary alloc] init];
+        self.implementationsData = [[NSMutableDictionary alloc] init];
     }
     return self;
 }

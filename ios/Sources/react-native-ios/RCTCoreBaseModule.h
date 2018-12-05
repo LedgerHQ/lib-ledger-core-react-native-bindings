@@ -6,6 +6,7 @@
 
 @interface RCTCoreBaseModule : NSObject
 @property (nonatomic, strong) NSMutableDictionary *objcImplementations;
+@property (nonatomic, strong) NSMutableDictionary *implementationsData;
 -(void)baseRelease:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject;
 -(void)baseLogWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject;
 -(void)baseFlushWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject;

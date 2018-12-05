@@ -9,5 +9,4 @@
 
 /**TODO */
 @interface RCTCoreLGFormatRules : RCTCoreBaseModule <RCTBridgeModule>
-@property (nonatomic, strong) NSMutableDictionary *objcImplementations;
 @end
