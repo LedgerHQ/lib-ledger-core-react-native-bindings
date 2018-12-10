@@ -68,6 +68,11 @@
             resolve(@(NO));
             return;
         }
+        else
+        {
+            resolve(@(YES));
+            return;
+        }
     }
 }
 
