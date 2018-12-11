@@ -29,8 +29,6 @@ public class HttpClientImpl extends co.ledger.core.HttpClient {
     private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2, 10,25, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(25), Executors.defaultThreadFactory(), new RejectedExecutionHandler() {
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-        @Override
-        public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
             System.out.println(r.toString() + " is rejected");
         }
     });
