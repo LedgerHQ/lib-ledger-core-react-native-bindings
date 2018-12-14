@@ -133,7 +133,7 @@ RCT_REMAP_METHOD(broadcastTransaction,broadcastTransaction:(NSDictionary *)curre
 
 }
 
-RCT_REMAP_METHOD(buildTransaction,buildTransaction:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_REMAP_METHOD(buildTransaction,buildTransaction:(NSDictionary *)currentInstance withParams:(nullable NSNumber *)partial withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::buildTransaction, first argument should be an instance of LGBitcoinLikeAccount", nil);
@@ -146,7 +146,7 @@ RCT_REMAP_METHOD(buildTransaction,buildTransaction:(NSDictionary *)currentInstan
         reject(@"impl_call_error", error, nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder * objcResult = [currentInstanceObj buildTransaction];
+    LGBitcoinLikeTransactionBuilder * objcResult = [currentInstanceObj buildTransaction:partial];
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeTransactionBuilder *rctImpl_objcResult = (RCTCoreLGBitcoinLikeTransactionBuilder *)[self.bridge moduleForName:@"CoreLGBitcoinLikeTransactionBuilder"];
