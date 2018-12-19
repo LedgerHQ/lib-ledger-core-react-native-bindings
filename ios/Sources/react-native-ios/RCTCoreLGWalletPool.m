@@ -47,7 +47,7 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
  *@return WalletPool object, instance of WalletPool
  */
 RCT_REMAP_METHOD(newInstance,newInstancewithParams:(nonnull NSString *)name
-                                          password:(nullable NSString *)password
+                                          password:(nonnull NSString *)password
                                         httpClient:(NSDictionary *)httpClient
                                    webSocketClient:(NSDictionary *)webSocketClient
                                       pathResolver:(NSDictionary *)pathResolver
