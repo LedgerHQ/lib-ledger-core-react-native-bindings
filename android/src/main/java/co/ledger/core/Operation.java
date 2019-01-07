@@ -81,6 +81,12 @@ public abstract class Operation {
      */
     public abstract BitcoinLikeOperation asBitcoinLikeOperation();
 
+    /**
+     *Convert operation as Ethereum operation
+     *@return EthereumLikeOperation object
+     */
+    public abstract EthereumLikeOperation asEthereumLikeOperation();
+
     public abstract boolean isInstanceOfBitcoinLikeOperation();
 
     /**
@@ -229,6 +235,14 @@ public abstract class Operation {
             return native_asBitcoinLikeOperation(this.nativeRef);
         }
         private native BitcoinLikeOperation native_asBitcoinLikeOperation(long _nativeRef);
+
+        @Override
+        public EthereumLikeOperation asEthereumLikeOperation()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asEthereumLikeOperation(this.nativeRef);
+        }
+        private native EthereumLikeOperation native_asEthereumLikeOperation(long _nativeRef);
 
         @Override
         public boolean isInstanceOfBitcoinLikeOperation()

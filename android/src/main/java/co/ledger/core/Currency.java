@@ -21,19 +21,23 @@ public final class Currency {
 
     /*package*/ final BitcoinLikeNetworkParameters bitcoinLikeNetworkParameters;
 
+    /*package*/ final EthereumLikeNetworkParameters ethereumLikeNetworkParameters;
+
     public Currency(
             WalletType walletType,
             String name,
             int bip44CoinType,
             String paymentUriScheme,
             ArrayList<CurrencyUnit> units,
-            BitcoinLikeNetworkParameters bitcoinLikeNetworkParameters) {
+            BitcoinLikeNetworkParameters bitcoinLikeNetworkParameters,
+            EthereumLikeNetworkParameters ethereumLikeNetworkParameters) {
         this.walletType = walletType;
         this.name = name;
         this.bip44CoinType = bip44CoinType;
         this.paymentUriScheme = paymentUriScheme;
         this.units = units;
         this.bitcoinLikeNetworkParameters = bitcoinLikeNetworkParameters;
+        this.ethereumLikeNetworkParameters = ethereumLikeNetworkParameters;
     }
 
     /**WalletType object defining the type of wallet the currency belongs to */
@@ -64,9 +68,17 @@ public final class Currency {
         return units;
     }
 
-    /**Optional BitcoinLikeNetworkParameters, for more details refer to BitcoinLikeNetworkParameters doc */
+    /**
+     *TODO: find a better solution to have only a networkParameters
+     *Optional BitcoinLikeNetworkParameters, for more details refer to BitcoinLikeNetworkParameters doc
+     */
     public BitcoinLikeNetworkParameters getBitcoinLikeNetworkParameters() {
         return bitcoinLikeNetworkParameters;
+    }
+
+    /**Optional EthereumLikeNetworkParameters, for more details refer to EthereumLikeNetworkParameters doc */
+    public EthereumLikeNetworkParameters getEthereumLikeNetworkParameters() {
+        return ethereumLikeNetworkParameters;
     }
 
     @Override
@@ -78,6 +90,7 @@ public final class Currency {
                 "," + "paymentUriScheme=" + paymentUriScheme +
                 "," + "units=" + units +
                 "," + "bitcoinLikeNetworkParameters=" + bitcoinLikeNetworkParameters +
+                "," + "ethereumLikeNetworkParameters=" + ethereumLikeNetworkParameters +
         "}";
     }
 

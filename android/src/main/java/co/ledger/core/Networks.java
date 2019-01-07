@@ -8,6 +8,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class Networks {
     public static native BitcoinLikeNetworkParameters bitcoin();
 
+    public static native EthereumLikeNetworkParameters ethereum();
+
     private static final class CppProxy extends Networks
     {
         private final long nativeRef;

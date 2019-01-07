@@ -36,7 +36,8 @@ RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
                             bip44CoinType:(int)bip44CoinType
                          paymentUriScheme:(nonnull NSString *)paymentUriScheme
                                     units:(NSArray <NSDictionary *> *)units
-             bitcoinLikeNetworkParameters:(nullable NSDictionary *)bitcoinLikeNetworkParameters withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+             bitcoinLikeNetworkParameters:(nullable NSDictionary *)bitcoinLikeNetworkParameters
+            ethereumLikeNetworkParameters:(nullable NSDictionary *)ethereumLikeNetworkParameters withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSMutableDictionary *implementationsData = [[NSMutableDictionary alloc] init];
     NSMutableArray *field_4 = [[NSMutableArray alloc] init];
 
@@ -55,9 +56,12 @@ RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
     RCTCoreLGBitcoinLikeNetworkParameters *rctParam_bitcoinLikeNetworkParameters = (RCTCoreLGBitcoinLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGBitcoinLikeNetworkParameters"];
     LGBitcoinLikeNetworkParameters *field_5 = (LGBitcoinLikeNetworkParameters *)[rctParam_bitcoinLikeNetworkParameters.objcImplementations objectForKey:bitcoinLikeNetworkParameters[@"uid"]];
     [implementationsData setObject:bitcoinLikeNetworkParameters[@"uid"] forKey:@"bitcoinLikeNetworkParameters"];
+    RCTCoreLGEthereumLikeNetworkParameters *rctParam_ethereumLikeNetworkParameters = (RCTCoreLGEthereumLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGEthereumLikeNetworkParameters"];
+    LGEthereumLikeNetworkParameters *field_6 = (LGEthereumLikeNetworkParameters *)[rctParam_ethereumLikeNetworkParameters.objcImplementations objectForKey:ethereumLikeNetworkParameters[@"uid"]];
+    [implementationsData setObject:ethereumLikeNetworkParameters[@"uid"] forKey:@"ethereumLikeNetworkParameters"];
 
 
-    LGCurrency * finalResult = [[LGCurrency alloc] initWithWalletType:(LGWalletType)walletType name:name bip44CoinType:bip44CoinType paymentUriScheme:paymentUriScheme units:field_4 bitcoinLikeNetworkParameters:field_5];
+    LGCurrency * finalResult = [[LGCurrency alloc] initWithWalletType:(LGWalletType)walletType name:name bip44CoinType:bip44CoinType paymentUriScheme:paymentUriScheme units:field_4 bitcoinLikeNetworkParameters:field_5 ethereumLikeNetworkParameters:field_6];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGCurrency *rctImpl = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
     NSArray *finalResultArray = [[NSArray alloc] initWithObjects:finalResult, uuid, nil];
@@ -96,6 +100,16 @@ RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
     }
     NSDictionary *converted_field_5 = @{@"type" : @"CoreLGBitcoinLikeNetworkParameters", @"uid" : field_5_uuid };
     [implementationsData setObject:converted_field_5 forKey:@"bitcoinLikeNetworkParameters"];
+    id field_6 = objcImpl.ethereumLikeNetworkParameters;
+    NSString *field_6_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGEthereumLikeNetworkParameters *rctImpl_field_6 = (RCTCoreLGEthereumLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGEthereumLikeNetworkParameters"];
+    if (field_6)
+    {
+        NSArray *field_6_array = [[NSArray alloc] initWithObjects:field_6, field_6_uuid, nil];
+        [rctImpl_field_6 baseSetObject:field_6_array];
+    }
+    NSDictionary *converted_field_6 = @{@"type" : @"CoreLGEthereumLikeNetworkParameters", @"uid" : field_6_uuid };
+    [implementationsData setObject:converted_field_6 forKey:@"ethereumLikeNetworkParameters"];
     [self.implementationsData setObject:implementationsData forKey:currentInstance[@"uid"]];
 }
 RCT_REMAP_METHOD(getWalletType, getWalletType:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
@@ -147,6 +161,18 @@ RCT_REMAP_METHOD(getBitcoinLikeNetworkParameters, getBitcoinLikeNetworkParameter
         data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     }
     NSDictionary *result = [data objectForKey:@"bitcoinLikeNetworkParameters"];
+    resolve(result);
+}
+
+RCT_REMAP_METHOD(getEthereumLikeNetworkParameters, getEthereumLikeNetworkParameters:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
+{
+    NSDictionary *data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
+    if (!data)
+    {
+        [self mapImplementationsData:currentInstance];
+        data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
+    }
+    NSDictionary *result = [data objectForKey:@"ethereumLikeNetworkParameters"];
     resolve(result);
 }
 

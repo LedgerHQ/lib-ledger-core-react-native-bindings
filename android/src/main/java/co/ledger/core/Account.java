@@ -95,6 +95,8 @@ public abstract class Account {
 
     public abstract BitcoinLikeAccount asBitcoinLikeAccount();
 
+    public abstract EthereumLikeAccount asEthereumLikeAccount();
+
     /**
      * asEthereumLikeAccount(): Callback<EthereumLikeAccount>;
      * asRippleLikeAccount(): Callback<RippleLikeAccount>;
@@ -259,6 +261,14 @@ public abstract class Account {
             return native_asBitcoinLikeAccount(this.nativeRef);
         }
         private native BitcoinLikeAccount native_asBitcoinLikeAccount(long _nativeRef);
+
+        @Override
+        public EthereumLikeAccount asEthereumLikeAccount()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asEthereumLikeAccount(this.nativeRef);
+        }
+        private native EthereumLikeAccount native_asEthereumLikeAccount(long _nativeRef);
 
         @Override
         public boolean isInstanceOfBitcoinLikeAccount()

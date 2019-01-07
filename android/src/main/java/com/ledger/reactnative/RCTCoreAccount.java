@@ -10,6 +10,7 @@ import co.ledger.core.AmountListCallback;
 import co.ledger.core.BitcoinLikeAccount;
 import co.ledger.core.BlockCallback;
 import co.ledger.core.ErrorCodeCallback;
+import co.ledger.core.EthereumLikeAccount;
 import co.ledger.core.EventBus;
 import co.ledger.core.Logger;
 import co.ledger.core.OperationQuery;
@@ -360,6 +361,30 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreBitcoinLikeAccount");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    @ReactMethod
+    public void asEthereumLikeAccount(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Account currentInstanceObj = this.javaObjects.get(sUid);
+
+            EthereumLikeAccount javaResult = currentInstanceObj.asEthereumLikeAccount();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreEthereumLikeAccount rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreEthereumLikeAccount.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreEthereumLikeAccount");
             result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);

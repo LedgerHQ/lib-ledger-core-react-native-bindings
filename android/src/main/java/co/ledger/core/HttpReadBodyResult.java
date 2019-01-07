@@ -7,12 +7,12 @@ package co.ledger.core;
 public final class HttpReadBodyResult {
 
 
-    /*package*/ final co.ledger.core.Error error;
+    /*package*/ final Error error;
 
     /*package*/ final byte[] data;
 
     public HttpReadBodyResult(
-            co.ledger.core.Error error,
+            Error error,
             byte[] data) {
         this.error = error;
         this.data = data;

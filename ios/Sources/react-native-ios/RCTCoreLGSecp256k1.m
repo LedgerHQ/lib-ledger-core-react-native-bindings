@@ -108,6 +108,40 @@ RCT_REMAP_METHOD(computePubKey,computePubKey:(NSDictionary *)currentInstance wit
 }
 
 /**
+ * Generates uncompressed public key from compressed public key.
+ * @param pubKey 33 byte private key (starting with 02 or 03)
+ * @return uncompressed public key (65 bytes starting with 04)
+ */
+RCT_REMAP_METHOD(computeUncompressedPubKey,computeUncompressedPubKey:(NSDictionary *)currentInstance withParams:(NSString *)pubKey withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGSecp256k1::computeUncompressedPubKey, first argument should be an instance of LGSecp256k1", nil);
+        return;
+    }
+    LGSecp256k1 *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGSecp256k1::computeUncompressedPubKey, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSData *objcParam_0 = [self hexStringToData:pubKey];
+
+    NSData * objcResult = [currentInstanceObj computeUncompressedPubKey:objcParam_0];
+    NSDictionary *result = @{@"value" : objcResult.description};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGSecp256k1::computeUncompressedPubKey", nil);
+        return;
+    }
+
+}
+
+/**
  * Signs message using a given private key
  * @param privKey 32 bytes private key
  * @param data 32 bytes message to sign

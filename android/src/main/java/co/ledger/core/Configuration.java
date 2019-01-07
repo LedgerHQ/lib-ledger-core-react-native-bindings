@@ -21,6 +21,9 @@ public abstract class Configuration {
     /** Sets the API endpoint for API based engine (Ledger's API) */
     public static final String BLOCKCHAIN_EXPLORER_API_ENDPOINT = "BLOCKCHAIN_EXPLORER_API_ENDPOINT";
 
+    /** Sets the API version */
+    public static final String BLOCKCHAIN_EXPLORER_VERSION = "BLOCKCHAIN_EXPLORER_VERSION";
+
     /** Selects the blockchain observer engine (Ledger's API) */
     public static final String BLOCKCHAIN_OBSERVER_ENGINE = "BLOCKCHAIN_OBSERVER_ENGINE";
 

@@ -13,5 +13,5 @@ public abstract class CurrencyCallback {
      * @params result optional of type T, non null if main task failed
      * @params error optional of type Error, non null if main task succeeded
      */
-    public abstract void onCallback(co.ledger.core.Currency result, co.ledger.core.Error error);
+    public abstract void onCallback(Currency result, Error error);
 }

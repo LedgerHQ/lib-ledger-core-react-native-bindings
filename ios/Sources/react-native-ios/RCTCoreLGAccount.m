@@ -361,6 +361,39 @@ RCT_REMAP_METHOD(asBitcoinLikeAccount,asBitcoinLikeAccount:(NSDictionary *)curre
 
 }
 
+RCT_REMAP_METHOD(asEthereumLikeAccount,asEthereumLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::asEthereumLikeAccount, first argument should be an instance of LGAccount", nil);
+        return;
+    }
+    LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::asEthereumLikeAccount, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGEthereumLikeAccount * objcResult = [currentInstanceObj asEthereumLikeAccount];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGEthereumLikeAccount *rctImpl_objcResult = (RCTCoreLGEthereumLikeAccount *)[self.bridge moduleForName:@"CoreLGEthereumLikeAccount"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGEthereumLikeAccount", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGAccount::asEthereumLikeAccount", nil);
+        return;
+    }
+
+}
+
 /**
  * asEthereumLikeAccount(): Callback<EthereumLikeAccount>;
  * asRippleLikeAccount(): Callback<RippleLikeAccount>;

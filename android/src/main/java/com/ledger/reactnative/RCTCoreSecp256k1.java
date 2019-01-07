@@ -175,6 +175,33 @@ public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
         }
     }
     /**
+     * Generates uncompressed public key from compressed public key.
+     * @param pubKey 33 byte private key (starting with 02 or 03)
+     * @return uncompressed public key (65 bytes starting with 04)
+     */
+    @ReactMethod
+    public void computeUncompressedPubKey(ReadableMap currentInstance, String pubKey, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Secp256k1 currentInstanceObj = this.javaObjects.get(sUid);
+
+            byte [] javaParam_0 = hexStringToByteArray(pubKey);
+
+            byte[] javaResult = currentInstanceObj.computeUncompressedPubKey(javaParam_0);
+            WritableNativeMap result = new WritableNativeMap();
+            String finalJavaResult = byteArrayToHexString(javaResult);
+            result.putString("value", finalJavaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
      * Signs message using a given private key
      * @param privKey 32 bytes private key
      * @param data 32 bytes message to sign

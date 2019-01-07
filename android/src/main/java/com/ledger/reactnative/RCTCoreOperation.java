@@ -6,6 +6,7 @@ package com.ledger.reactnative;
 import co.ledger.core.Amount;
 import co.ledger.core.BitcoinLikeOperation;
 import co.ledger.core.Currency;
+import co.ledger.core.EthereumLikeOperation;
 import co.ledger.core.Operation;
 import co.ledger.core.OperationType;
 import co.ledger.core.Preferences;
@@ -415,6 +416,34 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
             rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreBitcoinLikeOperation");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     *Convert operation as Ethereum operation
+     *@return EthereumLikeOperation object
+     */
+    @ReactMethod
+    public void asEthereumLikeOperation(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Operation currentInstanceObj = this.javaObjects.get(sUid);
+
+            EthereumLikeOperation javaResult = currentInstanceObj.asEthereumLikeOperation();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreEthereumLikeOperation rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreEthereumLikeOperation.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreEthereumLikeOperation");
             result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);

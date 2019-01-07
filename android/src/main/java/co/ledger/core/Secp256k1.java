@@ -16,6 +16,13 @@ public abstract class Secp256k1 {
     public abstract byte[] computePubKey(byte[] privKey, boolean compress);
 
     /**
+     * Generates uncompressed public key from compressed public key.
+     * @param pubKey 33 byte private key (starting with 02 or 03)
+     * @return uncompressed public key (65 bytes starting with 04)
+     */
+    public abstract byte[] computeUncompressedPubKey(byte[] pubKey);
+
+    /**
      * Signs message using a given private key
      * @param privKey 32 bytes private key
      * @param data 32 bytes message to sign
@@ -70,6 +77,14 @@ public abstract class Secp256k1 {
             return native_computePubKey(this.nativeRef, privKey, compress);
         }
         private native byte[] native_computePubKey(long _nativeRef, byte[] privKey, boolean compress);
+
+        @Override
+        public byte[] computeUncompressedPubKey(byte[] pubKey)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_computeUncompressedPubKey(this.nativeRef, pubKey);
+        }
+        private native byte[] native_computeUncompressedPubKey(long _nativeRef, byte[] pubKey);
 
         @Override
         public byte[] sign(byte[] privKey, byte[] data)
