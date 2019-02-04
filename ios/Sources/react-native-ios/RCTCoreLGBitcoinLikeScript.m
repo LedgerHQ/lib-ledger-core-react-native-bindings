@@ -46,6 +46,10 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     return data;
 }
 
+/**
+ * Get the head of the script. Scripts are organized by chunks, so you get an iterator-like
+ * interface.
+ */
 RCT_REMAP_METHOD(head,head:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -79,6 +83,7 @@ RCT_REMAP_METHOD(head,head:(NSDictionary *)currentInstance WithResolver:(RCTProm
 
 }
 
+/** Turn the script into a string representation. */
 RCT_REMAP_METHOD(toString,toString:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -106,6 +111,7 @@ RCT_REMAP_METHOD(toString,toString:(NSDictionary *)currentInstance WithResolver:
 
 }
 
+/** Parse data into a script. */
 RCT_REMAP_METHOD(parse,parsewithParams:(NSString *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSData *objcParam_0 = [self hexStringToData:data];
 

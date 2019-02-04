@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Structure of cryptocurrency unit */
+/** Structure of cryptocurrency unit. */
 public class RCTCoreCurrencyUnit extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, CurrencyUnit> javaObjects;

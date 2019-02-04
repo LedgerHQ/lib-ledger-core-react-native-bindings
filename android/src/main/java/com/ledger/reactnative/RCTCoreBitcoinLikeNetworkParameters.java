@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/** Bitcoin network parameters. */
 public class RCTCoreBitcoinLikeNetworkParameters extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, BitcoinLikeNetworkParameters> javaObjects;

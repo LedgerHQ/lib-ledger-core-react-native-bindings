@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing an event publisher */
+/** Class representing an event publisher. */
 public class RCTCoreEventPublisher extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -102,8 +102,8 @@ public class RCTCoreEventPublisher extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Get event bus through which publisher broadcast its events
-     *@return EventBus object
+     * Get event bus through which publisher broadcast its events.
+     * @return EventBus object
      */
     @ReactMethod
     public void getEventBus(ReadableMap currentInstance, Promise promise) {
@@ -130,8 +130,8 @@ public class RCTCoreEventPublisher extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Broadcast an event through eventbus (to all subscribed receivers to this EventBus)
-     *@param event, Event object
+     * Broadcast an event through eventbus (to all subscribed receivers to this EventBus).
+     * @param event, Event object
      */
     @ReactMethod
     public void post(ReadableMap currentInstance, ReadableMap event, Promise promise) {
@@ -151,9 +151,9 @@ public class RCTCoreEventPublisher extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Same as post method but with an sticky event
-     *@param event, Event object
-     *@param tag, 32 bits integer, tag of sticky event
+     * Same as post method but with an sticky event.
+     * @param event, Event object
+     * @param tag, 32 bits integer, tag of sticky event
      */
     @ReactMethod
     public void postSticky(ReadableMap currentInstance, ReadableMap event, int tag, Promise promise) {
@@ -173,8 +173,8 @@ public class RCTCoreEventPublisher extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Relay an event to another EventBus (other than EventPublisher's event bus)
-     *@param bus, EventBus object, through which we want to broadcast EventPublisher's event to EventPublisher's receiver
+     * Relay an event to another EventBus (other than EventPublisher's event bus).
+     * @param bus, EventBus object, through which we want to broadcast EventPublisher's event to EventPublisher's receiver
      */
     @ReactMethod
     public void relay(ReadableMap currentInstance, ReadableMap bus, Promise promise) {
@@ -194,8 +194,8 @@ public class RCTCoreEventPublisher extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Create a new instance of EventPublisher class
-     *@param context, executionContext object, context in which event publisher broadcast its events
+     * Create a new instance of EventPublisher class.
+     * @param context, executionContext object, context in which event publisher broadcast its events
      */
     @ReactMethod
     public void newInstance(ReadableMap context, Promise promise) {

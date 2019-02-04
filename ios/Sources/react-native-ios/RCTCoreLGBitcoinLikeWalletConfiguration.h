@@ -8,6 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class of constants to set Bitcoin like wallet configurations */
+/** Class of constants to set Bitcoin like wallet configurations. */
 @interface RCTCoreLGBitcoinLikeWalletConfiguration : RCTCoreBaseModule <RCTBridgeModule>
 @end

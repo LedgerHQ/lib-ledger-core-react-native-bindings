@@ -8,6 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**TODO */
+/** Configuration of wallet pools. */
 @interface RCTCoreLGPoolConfiguration : RCTCoreBaseModule <RCTBridgeModule>
 @end

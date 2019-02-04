@@ -8,5 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
+/** An Ethereum-like wallet. */
 @interface RCTCoreLGEthereumLikeWallet : RCTCoreBaseModule <RCTBridgeModule>
 @end

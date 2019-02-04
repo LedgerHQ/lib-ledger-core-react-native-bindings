@@ -6,6 +6,6 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>
 
-/**Structure of informations needed for account creation */
+/** Structure of informations needed for account creation. */
 @interface RCTCoreLGAccountCreationInfo : RCTCoreBaseModule <RCTBridgeModule>
 @end

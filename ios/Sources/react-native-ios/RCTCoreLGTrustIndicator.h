@@ -9,6 +9,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**TODO */
+/** The trust indicator of an operation. */
 @interface RCTCoreLGTrustIndicator : RCTCoreBaseModule <RCTBridgeModule>
 @end

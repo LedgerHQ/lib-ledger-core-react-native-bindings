@@ -8,6 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/** Helper class for commonly used crypto algorithms */
+/** Helper class for commonly used crypto algorithms. */
 @interface RCTCoreLGHashAlgorithmHelper : RCTCoreBaseModule <RCTBridgeModule>
 @end

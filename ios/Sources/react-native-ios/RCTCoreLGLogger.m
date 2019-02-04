@@ -33,9 +33,9 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Print debug message to console
- *@param tag, string
- *@param message, string
+ * Print debug message to console.
+ * @param tag, string
+ * @param message, string
  */
 RCT_REMAP_METHOD(d,d:(NSDictionary *)currentInstance withParams:(nonnull NSString *)tag
                                                         message:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -56,9 +56,9 @@ RCT_REMAP_METHOD(d,d:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
 }
 
 /**
- *Print information message to console
- *@param tag, string
- *@param message, string
+ * Print information message to console.
+ * @param tag, string
+ * @param message, string
  */
 RCT_REMAP_METHOD(i,i:(NSDictionary *)currentInstance withParams:(nonnull NSString *)tag
                                                         message:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -79,9 +79,9 @@ RCT_REMAP_METHOD(i,i:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
 }
 
 /**
- *Print error message to console
- *@param tag, string
- *@param message, string
+ * Print error message to console.
+ * @param tag, string
+ * @param message, string
  */
 RCT_REMAP_METHOD(e,e:(NSDictionary *)currentInstance withParams:(nonnull NSString *)tag
                                                         message:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -102,9 +102,9 @@ RCT_REMAP_METHOD(e,e:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
 }
 
 /**
- *Print warning message to console
- *@param tag, string
- *@param message, string
+ * Print warning message to console.
+ * @param tag, string
+ * @param message, string
  */
 RCT_REMAP_METHOD(w,w:(NSDictionary *)currentInstance withParams:(nonnull NSString *)tag
                                                         message:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -125,9 +125,9 @@ RCT_REMAP_METHOD(w,w:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
 }
 
 /**
- *Print critical error message to console
- *@param tag, string
- *@param message, string
+ * Print critical error message to console.
+ * @param tag, string
+ * @param message, string
  */
 RCT_REMAP_METHOD(c,c:(NSDictionary *)currentInstance withParams:(nonnull NSString *)tag
                                                         message:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {

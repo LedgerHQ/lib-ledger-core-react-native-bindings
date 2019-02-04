@@ -47,10 +47,10 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Get UTXOs of account in a given range
- *@param from, integer, lower bound for account's UTXO's index
- *@param to, integer, upper bound for account's UTXO's index
- *@param callback, ListCallback object which returns a list of BitcoinLikeOutput if getUTXO succeed
+ * Get UTXOs of account in a given range.
+ * @param from, integer, lower bound for account's UTXO's index
+ * @param to, integer, upper bound for account's UTXO's index
+ * @param callback, ListCallback object which returns a list of BitcoinLikeOutput if getUTXO succeed
  */
 RCT_REMAP_METHOD(getUTXO,getUTXO:(NSDictionary *)currentInstance withParams:(int)from
                                                                          to:(int)to withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -72,8 +72,8 @@ RCT_REMAP_METHOD(getUTXO,getUTXO:(NSDictionary *)currentInstance withParams:(int
 }
 
 /**
- *Get UTXOs count of account
- *@param callback, Callback object which returns number of UTXO owned by this account
+ * Get UTXOs count of account.
+ * @param callback, Callback object which returns number of UTXO owned by this account
  */
 RCT_REMAP_METHOD(getUTXOCount,getUTXOCount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

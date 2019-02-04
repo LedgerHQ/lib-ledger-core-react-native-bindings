@@ -10,6 +10,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class representing an Http connection */
+/** Class representing an Http connection. */
 @interface RCTCoreLGHttpUrlConnection : RCTCoreBaseModule <RCTBridgeModule>
 @end

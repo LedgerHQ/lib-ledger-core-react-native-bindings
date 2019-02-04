@@ -8,7 +8,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>
 
-/**Structure representing Http response body */
+/** Structure representing Http response body. */
 @interface RCTCoreLGHttpReadBodyResult : RCTCoreBaseModule <RCTBridgeModule>
 -(void)mapImplementationsData:(NSDictionary *)currentInstance;
 @end

@@ -33,8 +33,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Get method of request
- *@return HttpMethod enum entry
+ * Get method of request.
+ * @return HttpMethod enum entry
  */
 RCT_REMAP_METHOD(getMethod,getMethod:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -64,8 +64,8 @@ RCT_REMAP_METHOD(getMethod,getMethod:(NSDictionary *)currentInstance WithResolve
 }
 
 /**
- *Get headers set in the request
- *@return Map with key and value of type string
+ * Get headers set in the request.
+ * @return Map with key and value of type string
  */
 RCT_REMAP_METHOD(getHeaders,getHeaders:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -95,8 +95,8 @@ RCT_REMAP_METHOD(getHeaders,getHeaders:(NSDictionary *)currentInstance WithResol
 }
 
 /**
- *Get body of request
- *@return binary
+ * Get body of request.
+ * @return binary
  */
 RCT_REMAP_METHOD(getBody,getBody:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -126,8 +126,8 @@ RCT_REMAP_METHOD(getBody,getBody:(NSDictionary *)currentInstance WithResolver:(R
 }
 
 /**
- *Get Url of request
- *@return string
+ * Get Url of request.
+ * @return string
  */
 RCT_REMAP_METHOD(getUrl,getUrl:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -157,9 +157,9 @@ RCT_REMAP_METHOD(getUrl,getUrl:(NSDictionary *)currentInstance WithResolver:(RCT
 }
 
 /**
- *Method called when reauest is completed
- *@param response, Optional HttpUrlConnection object, response of request if succeed
- *@param error, optional Error structure, error returned in case of request failure
+ * Method called when reauest is completed.
+ * @param response, Optional HttpUrlConnection object, response of request if succeed
+ * @param error, optional Error structure, error returned in case of request failure
  */
 RCT_REMAP_METHOD(complete,complete:(NSDictionary *)currentInstance withParams:(nullable NSDictionary *)response
                                                                         error:(nullable NSDictionary *)error withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {

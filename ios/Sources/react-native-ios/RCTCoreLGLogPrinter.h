@@ -11,8 +11,8 @@
 
 
 /**
- *Class representing a printer of errors, warnings, infos ... (at runtime)
- *Printed logs are stored in path set by PathResolver::resolveLogFilePath
+ * Class representing a printer of errors, warnings, infos ... (at runtime).
+ * Printed logs are stored in path set by PathResolver::resolveLogFilePath.
  */
 @interface RCTCoreLGLogPrinter : RCTCoreBaseModule <RCTBridgeModule>
 @end

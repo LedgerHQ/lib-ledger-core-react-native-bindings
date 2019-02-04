@@ -27,8 +27,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
- *Class representing a printer of errors, warnings, infos ... (at runtime)
- *Printed logs are stored in path set by PathResolver::resolveLogFilePath
+ * Class representing a printer of errors, warnings, infos ... (at runtime).
+ * Printed logs are stored in path set by PathResolver::resolveLogFilePath.
  */
 public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
 
@@ -114,8 +114,8 @@ public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Print different encountered errors
-     *@param message, string
+     * Print different encountered errors.
+     * @param message, string
      */
     @ReactMethod
     public void printError(ReadableMap currentInstance, String message, Promise promise) {
@@ -133,8 +133,8 @@ public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Print useful information messages
-     *@param message, string
+     * Print useful information messages.
+     * @param message, string
      */
     @ReactMethod
     public void printInfo(ReadableMap currentInstance, String message, Promise promise) {
@@ -152,8 +152,8 @@ public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Print debug messages
-     *@param message string
+     * Print debug messages.
+     * @param message string
      */
     @ReactMethod
     public void printDebug(ReadableMap currentInstance, String message, Promise promise) {
@@ -171,8 +171,8 @@ public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Print warning messages
-     *@param message, string
+     * Print warning messages.
+     * @param message, string
      */
     @ReactMethod
     public void printWarning(ReadableMap currentInstance, String message, Promise promise) {
@@ -190,8 +190,8 @@ public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Print messages from APDU comand interpretation loop
-     *@param message, string
+     * Print messages from APDU comand interpretation loop.
+     * @param message, string
      */
     @ReactMethod
     public void printApdu(ReadableMap currentInstance, String message, Promise promise) {
@@ -209,8 +209,8 @@ public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Print critical errors causing a core dump or error from which recovery is impossible
-     *@param message, string
+     * Print critical errors causing a core dump or error from which recovery is impossible.
+     * @param message, string
      */
     @ReactMethod
     public void printCriticalError(ReadableMap currentInstance, String message, Promise promise) {
@@ -228,8 +228,8 @@ public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get context in which printer is executed (print)
-     *@return ExecutionContext object
+     * Get context in which printer is executed (print).
+     * @return ExecutionContext object
      */
     @ReactMethod
     public void getContext(ReadableMap currentInstance, Promise promise) {

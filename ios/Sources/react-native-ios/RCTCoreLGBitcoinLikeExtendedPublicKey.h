@@ -10,5 +10,6 @@
 #import <React/RCTBridgeModule.h>
 
 
+/** The xPUB definition for Bitcoin. */
 @interface RCTCoreLGBitcoinLikeExtendedPublicKey : RCTCoreBaseModule <RCTBridgeModule>
 @end

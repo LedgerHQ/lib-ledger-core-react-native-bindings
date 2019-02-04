@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class of constants representing the engines to rely on for synchronization */
+/** Class of constants representing the engines to rely on for synchronization. */
 public class RCTCoreSynchronizerEngines extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

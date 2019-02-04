@@ -8,6 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/** Class to generate random numbers */
+/** Class to generate random numbers. */
 @interface RCTCoreLGRandomNumberGenerator : RCTCoreBaseModule <RCTBridgeModule>
 @end

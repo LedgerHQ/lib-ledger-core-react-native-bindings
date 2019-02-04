@@ -19,6 +19,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class representing amount of transaction, output, inputs ... */
+/** Class representing amount of transaction, output, inputs… */
 @interface RCTCoreLGAmount : RCTCoreBaseModule <RCTBridgeModule>
 @end

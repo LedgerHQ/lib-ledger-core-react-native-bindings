@@ -33,8 +33,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Get index of account in user's wallet
- *32 bits integer
+ * Get index of account in user's wallet
+ * 32-bit integer
  */
 RCT_REMAP_METHOD(getIndex,getIndex:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -63,7 +63,7 @@ RCT_REMAP_METHOD(getIndex,getIndex:(NSDictionary *)currentInstance WithResolver:
 
 }
 
-/**TODO */
+/** Get the list of all operations. */
 RCT_REMAP_METHOD(queryOperations,queryOperations:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -98,8 +98,8 @@ RCT_REMAP_METHOD(queryOperations,queryOperations:(NSDictionary *)currentInstance
 }
 
 /**
- *Get balance of account
- *@param callback, if getBalacne, Callback returning an Amount object which represents account's balance
+ * Get balance of account.
+ * @param callback, if getBalacne, Callback returning an Amount object which represents account's balance
  */
 RCT_REMAP_METHOD(getBalance,getBalance:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -120,11 +120,11 @@ RCT_REMAP_METHOD(getBalance,getBalance:(NSDictionary *)currentInstance WithResol
 }
 
 /**
- *Get balance of account at a precise interval with a certain granularity
- *@param start, lower bound of search range
- *@param end, upper bound of search range
- *@param precision, granularity at which we want results
- *@param callback, ListCallback returning a list of Amount object which represents account's balance
+ * Get balance of account at a precise interval with a certain granularity.
+ * @param start, lower bound of search range
+ * @param end, upper bound of search range
+ * @param precision, granularity at which we want results
+ * @param callback, ListCallback returning a list of Amount object which represents account's balance
  */
 RCT_REMAP_METHOD(getBalanceHistory,getBalanceHistory:(NSDictionary *)currentInstance withParams:(nonnull NSString *)start
                                                                                             end:(nonnull NSString *)end
@@ -147,8 +147,8 @@ RCT_REMAP_METHOD(getBalanceHistory,getBalanceHistory:(NSDictionary *)currentInst
 }
 
 /**
- *Get synchronization status of account
- *@return bool
+ * Get synchronization status of account.
+ * @return bool
  */
 RCT_REMAP_METHOD(isSynchronizing,isSynchronizing:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -178,8 +178,8 @@ RCT_REMAP_METHOD(isSynchronizing,isSynchronizing:(NSDictionary *)currentInstance
 }
 
 /**
- *Start synchronization of account
- *@return EventBus, handler will be notified of synchronization outcome
+ * Start synchronization of account.
+ * @return EventBus, handler will be notified of synchronization outcome
  */
 RCT_REMAP_METHOD(synchronize,synchronize:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -215,8 +215,8 @@ RCT_REMAP_METHOD(synchronize,synchronize:(NSDictionary *)currentInstance WithRes
 }
 
 /**
- *Return account's preferences
- *@return Preferences object
+ * Return account's preferences.
+ * @return Preferences object
  */
 RCT_REMAP_METHOD(getPreferences,getPreferences:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -252,8 +252,8 @@ RCT_REMAP_METHOD(getPreferences,getPreferences:(NSDictionary *)currentInstance W
 }
 
 /**
- *Return account's logger which provides all needed (e.g. database) logs
- *@return Logger Object
+ * Return account's logger which provides all needed (e.g. database) logs.
+ * @return Logger Object
  */
 RCT_REMAP_METHOD(getLogger,getLogger:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -289,11 +289,8 @@ RCT_REMAP_METHOD(getLogger,getLogger:(NSDictionary *)currentInstance WithResolve
 }
 
 /**
- *Return preferences of specific operation
- *@param uid, string of operation id
- *@return Preferences
- *Return operation for a specific operation
- *@param uid, string of operation id
+ * Return operation for a specific operation.
+ * @param uid, string of operation id
  */
 RCT_REMAP_METHOD(getOperationPreferences,getOperationPreferences:(NSDictionary *)currentInstance withParams:(nonnull NSString *)uid withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -328,6 +325,10 @@ RCT_REMAP_METHOD(getOperationPreferences,getOperationPreferences:(NSDictionary *
 
 }
 
+/**
+ * Turn the account into an Bitcoin one, allowing operations to be performerd on the Bitcoin
+ * network.
+ */
 RCT_REMAP_METHOD(asBitcoinLikeAccount,asBitcoinLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -362,10 +363,45 @@ RCT_REMAP_METHOD(asBitcoinLikeAccount,asBitcoinLikeAccount:(NSDictionary *)curre
 }
 
 /**
- * asEthereumLikeAccount(): Callback<EthereumLikeAccount>;
- * asRippleLikeAccount(): Callback<RippleLikeAccount>;
- *Check if account is a Bitcoin one
- *@return bool
+ * Turn the account into an Ethereum one, allowing operations to be performerd on the Ethereum
+ * network.
+ */
+RCT_REMAP_METHOD(asEthereumLikeAccount,asEthereumLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::asEthereumLikeAccount, first argument should be an instance of LGAccount", nil);
+        return;
+    }
+    LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::asEthereumLikeAccount, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGEthereumLikeAccount * objcResult = [currentInstanceObj asEthereumLikeAccount];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGEthereumLikeAccount *rctImpl_objcResult = (RCTCoreLGEthereumLikeAccount *)[self.bridge moduleForName:@"CoreLGEthereumLikeAccount"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGEthereumLikeAccount", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGAccount::asEthereumLikeAccount", nil);
+        return;
+    }
+
+}
+
+/**
+ * Check if account is a Bitcoin one.
+ * @return bool
  */
 RCT_REMAP_METHOD(isInstanceOfBitcoinLikeAccount,isInstanceOfBitcoinLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -395,8 +431,8 @@ RCT_REMAP_METHOD(isInstanceOfBitcoinLikeAccount,isInstanceOfBitcoinLikeAccount:(
 }
 
 /**
- *Check if account is an Ethereum one
- *@return bool
+ * Check if account is an Ethereum one.
+ * @return bool
  */
 RCT_REMAP_METHOD(isInstanceOfEthereumLikeAccount,isInstanceOfEthereumLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -426,8 +462,8 @@ RCT_REMAP_METHOD(isInstanceOfEthereumLikeAccount,isInstanceOfEthereumLikeAccount
 }
 
 /**
- *Check if account is a Ripple one
- *@return bool
+ * Check if account is a Ripple one.
+ * @return bool
  */
 RCT_REMAP_METHOD(isInstanceOfRippleLikeAccount,isInstanceOfRippleLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -476,8 +512,8 @@ RCT_REMAP_METHOD(getFreshPublicAddresses,getFreshPublicAddresses:(NSDictionary *
 }
 
 /**
- *Get type of wallet to which account belongs
- *@return WalletType object
+ * Get type of wallet to which account belongs.
+ * @return WalletType object
  */
 RCT_REMAP_METHOD(getWalletType,getWalletType:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -507,8 +543,8 @@ RCT_REMAP_METHOD(getWalletType,getWalletType:(NSDictionary *)currentInstance Wit
 }
 
 /**
- *Get event bus through which account is notified on synchronization status
- *@return EventBus object
+ * Get event bus through which account is notified on synchronization status.
+ * @return EventBus object
  */
 RCT_REMAP_METHOD(getEventBus,getEventBus:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -543,7 +579,7 @@ RCT_REMAP_METHOD(getEventBus,getEventBus:(NSDictionary *)currentInstance WithRes
 
 }
 
-/**Start observing blockchain on which account synchronizes and send/receive transactions */
+/** Start observing blockchain on which account synchronizes and send/receive transactions. */
 RCT_REMAP_METHOD(startBlockchainObservation,startBlockchainObservation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -561,7 +597,7 @@ RCT_REMAP_METHOD(startBlockchainObservation,startBlockchainObservation:(NSDictio
 
 }
 
-/**Stop observing blockchain */
+/** Stop observing blockchain. */
 RCT_REMAP_METHOD(stopBlockchainObservation,stopBlockchainObservation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -580,8 +616,8 @@ RCT_REMAP_METHOD(stopBlockchainObservation,stopBlockchainObservation:(NSDictiona
 }
 
 /**
- *Get account's observation status
- *@return boolean
+ * Get account's observation status.
+ * @return boolean
  */
 RCT_REMAP_METHOD(isObservingBlockchain,isObservingBlockchain:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -611,8 +647,8 @@ RCT_REMAP_METHOD(isObservingBlockchain,isObservingBlockchain:(NSDictionary *)cur
 }
 
 /**
- *Get Last block of blockchain on which account operates
- *@param callback, Callback returning, if getLastBlock succeeds, a Block object
+ * Get Last block of blockchain on which account operates.
+ * @param callback, Callback returning, if getLastBlock succeeds, a Block object
  */
 RCT_REMAP_METHOD(getLastBlock,getLastBlock:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -632,7 +668,7 @@ RCT_REMAP_METHOD(getLastBlock,getLastBlock:(NSDictionary *)currentInstance WithR
 
 }
 
-/** Get the key used to generate the account */
+/** Get the key used to generate the account. */
 RCT_REMAP_METHOD(getRestoreKey,getRestoreKey:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -661,8 +697,8 @@ RCT_REMAP_METHOD(getRestoreKey,getRestoreKey:(NSDictionary *)currentInstance Wit
 }
 
 /**
- *Erase data (in user's DB) relative to wallet since given date
- *@param date, start date of data deletion
+ * Erase data (in user's DB) relative to wallet since given date.
+ * @param date, start date of data deletion
  */
 RCT_REMAP_METHOD(eraseDataSince,eraseDataSince:(NSDictionary *)currentInstance withParams:(nonnull NSDate *)date withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

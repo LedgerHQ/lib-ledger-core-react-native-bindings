@@ -6,5 +6,10 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>
 
+/**
+ * Estimation size (minimum and maximum).
+ *
+ * This is typically used to estimate size (in bytes) of raw transactions.
+ */
 @interface RCTCoreLGEstimatedSize : RCTCoreBaseModule <RCTBridgeModule>
 @end

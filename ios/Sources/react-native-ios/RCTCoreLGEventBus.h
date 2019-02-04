@@ -12,6 +12,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class representing an event bus through which a receiver gets notified */
+/** Class representing an event bus through which a receiver gets notified. */
 @interface RCTCoreLGEventBus : RCTCoreBaseModule <RCTBridgeModule>
 @end

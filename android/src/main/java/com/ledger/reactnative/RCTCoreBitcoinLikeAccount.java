@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing a Bitcoin account */
+/** Class representing a Bitcoin account. */
 public class RCTCoreBitcoinLikeAccount extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -128,10 +128,10 @@ public class RCTCoreBitcoinLikeAccount extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Get UTXOs of account in a given range
-     *@param from, integer, lower bound for account's UTXO's index
-     *@param to, integer, upper bound for account's UTXO's index
-     *@param callback, ListCallback object which returns a list of BitcoinLikeOutput if getUTXO succeed
+     * Get UTXOs of account in a given range.
+     * @param from, integer, lower bound for account's UTXO's index
+     * @param to, integer, upper bound for account's UTXO's index
+     * @param callback, ListCallback object which returns a list of BitcoinLikeOutput if getUTXO succeed
      */
     @ReactMethod
     public void getUTXO(ReadableMap currentInstance, int from, int to, Promise promise) {
@@ -150,8 +150,8 @@ public class RCTCoreBitcoinLikeAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get UTXOs count of account
-     *@param callback, Callback object which returns number of UTXO owned by this account
+     * Get UTXOs count of account.
+     * @param callback, Callback object which returns number of UTXO owned by this account
      */
     @ReactMethod
     public void getUTXOCount(ReadableMap currentInstance, Promise promise) {

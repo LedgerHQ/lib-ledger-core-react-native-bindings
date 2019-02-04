@@ -8,5 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
+/** Available API to use with observers. */
 @interface RCTCoreLGBlockchainObserverEngines : RCTCoreBaseModule <RCTBridgeModule>
 @end

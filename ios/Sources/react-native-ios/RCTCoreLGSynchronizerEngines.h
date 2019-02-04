@@ -8,6 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class of constants representing the engines to rely on for synchronization */
+/** Class of constants representing the engines to rely on for synchronization. */
 @interface RCTCoreLGSynchronizerEngines : RCTCoreBaseModule <RCTBridgeModule>
 @end

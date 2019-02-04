@@ -15,6 +15,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class representing an event publisher */
+/** Class representing an event publisher. */
 @interface RCTCoreLGEventPublisher : RCTCoreBaseModule <RCTBridgeModule>
 @end

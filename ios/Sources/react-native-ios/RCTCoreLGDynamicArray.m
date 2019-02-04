@@ -47,8 +47,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Get count of stored references
- *@return 64 bits integer
+ * Get count of values.
+ * @return 64-bit integer
  */
 RCT_REMAP_METHOD(size,size:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -78,9 +78,9 @@ RCT_REMAP_METHOD(size,size:(NSDictionary *)currentInstance WithResolver:(RCTProm
 }
 
 /**
- *Push a 32 bits integer
- *@param value, 32 bits integer
- *@return DynamicArray with value stored in it
+ * Push a 32-bit integer.
+ * @param value, 32-bit integer
+ * @return DynamicArray with value stored in it
  */
 RCT_REMAP_METHOD(pushInt,pushInt:(NSDictionary *)currentInstance withParams:(int)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -116,9 +116,9 @@ RCT_REMAP_METHOD(pushInt,pushInt:(NSDictionary *)currentInstance withParams:(int
 }
 
 /**
- *Push a 64 bits integer
- *@param value, 64 bits integer
- *@return DynamicArray with value stored in it
+ * Push a 64-bit integer.
+ * @param value, 64-bit integer
+ * @return DynamicArray with value stored in it
  */
 RCT_REMAP_METHOD(pushLong,pushLong:(NSDictionary *)currentInstance withParams:(int)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -154,9 +154,9 @@ RCT_REMAP_METHOD(pushLong,pushLong:(NSDictionary *)currentInstance withParams:(i
 }
 
 /**
- *Push a string
- *@param value, string
- *@return DynamicArray with value stored in it
+ * Push a string.
+ * @param value, string
+ * @return DynamicArray with value stored in it
  */
 RCT_REMAP_METHOD(pushString,pushString:(NSDictionary *)currentInstance withParams:(nonnull NSString *)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -192,9 +192,9 @@ RCT_REMAP_METHOD(pushString,pushString:(NSDictionary *)currentInstance withParam
 }
 
 /**
- *Push a double
- *@param value, double
- *@return DynamicArray with value stored in it
+ * Push a double.
+ * @param value, double
+ * @return DynamicArray with value stored in it
  */
 RCT_REMAP_METHOD(pushDouble,pushDouble:(NSDictionary *)currentInstance withParams:(double)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -230,9 +230,9 @@ RCT_REMAP_METHOD(pushDouble,pushDouble:(NSDictionary *)currentInstance withParam
 }
 
 /**
- *Push a binary
- *@param value, binary
- *@return DynamicArray with value stored in it
+ * Push a binary.
+ * @param value, binary
+ * @return DynamicArray with value stored in it
  */
 RCT_REMAP_METHOD(pushData,pushData:(NSDictionary *)currentInstance withParams:(NSString *)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -270,9 +270,9 @@ RCT_REMAP_METHOD(pushData,pushData:(NSDictionary *)currentInstance withParams:(N
 }
 
 /**
- *Push a bool
- *@param value, bool
- *@return DynamicArray with value stored in it
+ * Push a bool.
+ * @param value, bool
+ * @return DynamicArray with value stored in it
  */
 RCT_REMAP_METHOD(pushBoolean,pushBoolean:(NSDictionary *)currentInstance withParams:(BOOL)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -308,9 +308,9 @@ RCT_REMAP_METHOD(pushBoolean,pushBoolean:(NSDictionary *)currentInstance withPar
 }
 
 /**
- *Push a DynamicObject object
- *@param value, DynamicObject
- *@return DynamicArray with value stored in it
+ * Push a dynamic object.
+ * @param value, DynamicObject
+ * @return DynamicArray with value stored in it
  */
 RCT_REMAP_METHOD(pushObject,pushObject:(NSDictionary *)currentInstance withParams:(NSDictionary *)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -348,9 +348,9 @@ RCT_REMAP_METHOD(pushObject,pushObject:(NSDictionary *)currentInstance withParam
 }
 
 /**
- *Push a DynamicArray object
- *@param value, DynamicArray
- *@return DynamicArray with value stored in it
+ * Push a dynamic array.
+ * @param value, DynamicArray
+ * @return DynamicArray with value stored in it
  */
 RCT_REMAP_METHOD(pushArray,pushArray:(NSDictionary *)currentInstance withParams:(NSDictionary *)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -388,9 +388,9 @@ RCT_REMAP_METHOD(pushArray,pushArray:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Get string at a given index
- *@param index, 64 bits integer
- *@return Optional string
+ * Get a string at a given index.
+ * @param index, 64-bit integer
+ * @return Optional string
  */
 RCT_REMAP_METHOD(getString,getString:(NSDictionary *)currentInstance withParams:(int)index withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -420,9 +420,9 @@ RCT_REMAP_METHOD(getString,getString:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Get 32 bits integer at a given index
- *@param index, 64 bits integer
- *@return Optional 32 bits integer
+ * Get 32-bit integer at a given index.
+ * @param index, 64-bit integer
+ * @return Optional 32-bit integer
  */
 RCT_REMAP_METHOD(getInt,getInt:(NSDictionary *)currentInstance withParams:(int)index withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -452,9 +452,9 @@ RCT_REMAP_METHOD(getInt,getInt:(NSDictionary *)currentInstance withParams:(int)i
 }
 
 /**
- *Get 64 bits integer at a given index
- *@param index, 64 bits integer
- *@return Optional 64 bits integer
+ * Get 64-bit integer at a given index.
+ * @param index, 64-bit integer
+ * @return Optional 64-bit integer
  */
 RCT_REMAP_METHOD(getLong,getLong:(NSDictionary *)currentInstance withParams:(int)index withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -484,9 +484,9 @@ RCT_REMAP_METHOD(getLong,getLong:(NSDictionary *)currentInstance withParams:(int
 }
 
 /**
- *Get double at a given index
- *@param index, 64 bits integer
- *@return Optional double
+ * Get double at a given index.
+ * @param index, 64-bit integer
+ * @return Optional double
  */
 RCT_REMAP_METHOD(getDouble,getDouble:(NSDictionary *)currentInstance withParams:(int)index withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -516,9 +516,9 @@ RCT_REMAP_METHOD(getDouble,getDouble:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Get binary at a given index
- *@param index, 64 bits integer
- *@return Optional binary
+ * Get binary at a given index.
+ * @param index, 64-bit integer
+ * @return Optional binary
  */
 RCT_REMAP_METHOD(getData,getData:(NSDictionary *)currentInstance withParams:(int)index withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -548,9 +548,9 @@ RCT_REMAP_METHOD(getData,getData:(NSDictionary *)currentInstance withParams:(int
 }
 
 /**
- *Get bool at a given index
- *@param index, 64 bits integer
- *@return Optional bool
+ * Get bool at a given index.
+ * @param index, 64-bit integer
+ * @return Optional bool
  */
 RCT_REMAP_METHOD(getBoolean,getBoolean:(NSDictionary *)currentInstance withParams:(int)index withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -580,9 +580,9 @@ RCT_REMAP_METHOD(getBoolean,getBoolean:(NSDictionary *)currentInstance withParam
 }
 
 /**
- *Get DynamicObject object at a given index
- *@param index, 64 bits integer
- *@return Optional DynamicObject
+ * Get DynamicObject object at a given index.
+ * @param index, 64-bit integer
+ * @return Optional DynamicObject
  */
 RCT_REMAP_METHOD(getObject,getObject:(NSDictionary *)currentInstance withParams:(int)index withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -621,9 +621,9 @@ RCT_REMAP_METHOD(getObject,getObject:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Get DynamicArray object at a given index
- *@param index, 64 bits integer
- *@return Optional DynamicArray
+ * Get DynamicArray object at a given index.
+ * @param index, 64-bit integer
+ * @return Optional DynamicArray
  */
 RCT_REMAP_METHOD(getArray,getArray:(NSDictionary *)currentInstance withParams:(int)index withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -662,9 +662,9 @@ RCT_REMAP_METHOD(getArray,getArray:(NSDictionary *)currentInstance withParams:(i
 }
 
 /**
- *Concatenate current DynamicArray with another one
- *@param array, DynamicArray object to concatenate with
- *@return DynamicArray object, concatenated DynamicArray
+ * Concatenate current DynamicArray with another one.
+ * @param array, DynamicArray object to concatenate with
+ * @return DynamicArray object, concatenated DynamicArray
  */
 RCT_REMAP_METHOD(concat,concat:(NSDictionary *)currentInstance withParams:(NSDictionary *)array withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -702,9 +702,9 @@ RCT_REMAP_METHOD(concat,concat:(NSDictionary *)currentInstance withParams:(NSDic
 }
 
 /**
- *Get type of value stored at a given index
- *@param index, 64 bits integer
- *@return Optional DynamicType enum entry
+ * Get type of value stored at a given index.
+ * @param index, 64 bits integer
+ * @return Optional DynamicType enum entry
  */
 RCT_REMAP_METHOD(getType,getType:(NSDictionary *)currentInstance withParams:(int)index withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -734,9 +734,9 @@ RCT_REMAP_METHOD(getType,getType:(NSDictionary *)currentInstance withParams:(int
 }
 
 /**
- *Delete value stored at given index
- *@param index, 64 bits integer
- *@return bool, true if deletion succeeded
+ * Delete value stored at given index.
+ * @param index, 64 bits integer
+ * @return bool, true if deletion succeeded
  */
 RCT_REMAP_METHOD(remove,remove:(NSDictionary *)currentInstance withParams:(int)index withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -766,8 +766,8 @@ RCT_REMAP_METHOD(remove,remove:(NSDictionary *)currentInstance withParams:(int)i
 }
 
 /**
- *Dump whole object's content as string
- *@return string
+ * Dump whole object's content as string.
+ * @return string, the string representation of the array
  */
 RCT_REMAP_METHOD(dump,dump:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -797,8 +797,8 @@ RCT_REMAP_METHOD(dump,dump:(NSDictionary *)currentInstance WithResolver:(RCTProm
 }
 
 /**
- *Serialize whole object to a binary
- *@return binary
+ * Serialize whole object to a binary.
+ * @return binary, the serialized array
  */
 RCT_REMAP_METHOD(serialize,serialize:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -828,8 +828,8 @@ RCT_REMAP_METHOD(serialize,serialize:(NSDictionary *)currentInstance WithResolve
 }
 
 /**
- *Get readonly status of object
- *@param bool
+ * Get readonly status of object.
+ * @return bool, whether the array is in read-only mode
  */
 RCT_REMAP_METHOD(isReadOnly,isReadOnly:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -859,8 +859,8 @@ RCT_REMAP_METHOD(isReadOnly,isReadOnly:(NSDictionary *)currentInstance WithResol
 }
 
 /**
- *Create a new instance of DynamicArray class
- *@return DynamicArray instance
+ * Create a new instance of DynamicArray class.
+ * @return DynamicArray, a brand new instance of a dynamic array
  */
 RCT_REMAP_METHOD(newInstance,newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGDynamicArray * objcResult = [LGDynamicArray newInstance];
@@ -884,9 +884,9 @@ RCT_REMAP_METHOD(newInstance,newInstanceWithResolver:(RCTPromiseResolveBlock)res
 }
 
 /**
- *Parse a binary to a DynamicArray
- *@param serialized, binary to parse
- *@return Optional DynamicArray
+ * Parse a binary to a DynamicArray.
+ * @param serialized, binary to parse
+ * @return Optional, the unserialized dynamic array
  */
 RCT_REMAP_METHOD(load,loadwithParams:(NSString *)serialized withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSData *objcParam_0 = [self hexStringToData:serialized];

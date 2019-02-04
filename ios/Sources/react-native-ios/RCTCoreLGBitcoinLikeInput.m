@@ -46,7 +46,7 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     return data;
 }
 
-/** Returns the address of the input (if an address can be computed) */
+/** Returns the address of the input (if an address can be computed). */
 RCT_REMAP_METHOD(getAddress,getAddress:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -105,7 +105,7 @@ RCT_REMAP_METHOD(getPublicKeys,getPublicKeys:(NSDictionary *)currentInstance Wit
 
 }
 
-/** Returns the derivation path of this input if the address is owned by the wallet */
+/** Returns the derivation path of this input if the address is owned by the wallet. */
 RCT_REMAP_METHOD(getDerivationPath,getDerivationPath:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -186,7 +186,7 @@ RCT_REMAP_METHOD(getValue,getValue:(NSDictionary *)currentInstance WithResolver:
 
 /**
  * Get the transaction hash of the output spent by this input. The result can be NULL if the output is not owned by
- * the wallet
+ * the wallet.
  */
 RCT_REMAP_METHOD(getPreviousTxHash,getPreviousTxHash:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -216,10 +216,8 @@ RCT_REMAP_METHOD(getPreviousTxHash,getPreviousTxHash:(NSDictionary *)currentInst
 }
 
 /**
- * Get the index at which the output is located in the transaction output spent by this input. The result can be
- * NULL if the input does not belong to the wallet
- *Check whether input
- *@return Boolean, true if input belongs to coinbase transaction (reward for mining a block)
+ * Check whether input is for a coinbase.
+ * @return Boolean, true if input belongs to coinbase transaction (reward for mining a block)
  */
 RCT_REMAP_METHOD(isCoinbase,isCoinbase:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -249,8 +247,8 @@ RCT_REMAP_METHOD(isCoinbase,isCoinbase:(NSDictionary *)currentInstance WithResol
 }
 
 /**
- *Stored data cointained in coinbase
- *@return Optional String
+ * Stored data cointained in coinbase.
+ * @return Optional String
  */
 RCT_REMAP_METHOD(getCoinbase,getCoinbase:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -280,8 +278,8 @@ RCT_REMAP_METHOD(getCoinbase,getCoinbase:(NSDictionary *)currentInstance WithRes
 }
 
 /**
- *Get output index, it identifies which UTXO from tht transaction to spend
- *@return Optional 32 bits integer, index of previous transaction
+ * Get output index, it identifies which UTXO from tht transaction to spend.
+ * @return Optional 32 bits integer, index of previous transaction
  */
 RCT_REMAP_METHOD(getPreviousOutputIndex,getPreviousOutputIndex:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -377,7 +375,7 @@ RCT_REMAP_METHOD(getScriptSig,getScriptSig:(NSDictionary *)currentInstance WithR
 
 }
 
-/** Parse the script sig to a [[BitcoinLikeScript]] */
+/** Parse the script sig to a [[BitcoinLikeScript]]. */
 RCT_REMAP_METHOD(parseScriptSig,parseScriptSig:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -412,7 +410,7 @@ RCT_REMAP_METHOD(parseScriptSig,parseScriptSig:(NSDictionary *)currentInstance W
 }
 
 /**
- * Set the ScriptS to the given value
+ * Set the ScriptS to the given value.
  * @param scriptSig The ScriptSig to use for this input
  */
 RCT_REMAP_METHOD(setScriptSig,setScriptSig:(NSDictionary *)currentInstance withParams:(NSString *)scriptSig withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -434,7 +432,7 @@ RCT_REMAP_METHOD(setScriptSig,setScriptSig:(NSDictionary *)currentInstance withP
 
 }
 
-/** Push data to the end of the current ScriptSig */
+/** Push data to the end of the current ScriptSig. */
 RCT_REMAP_METHOD(pushToScriptSig,pushToScriptSig:(NSDictionary *)currentInstance withParams:(NSString *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -454,7 +452,7 @@ RCT_REMAP_METHOD(pushToScriptSig,pushToScriptSig:(NSDictionary *)currentInstance
 
 }
 
-/** Set the sequence number of this input */
+/** Set the sequence number of this input. */
 RCT_REMAP_METHOD(setSequence,setSequence:(NSDictionary *)currentInstance withParams:(int)sequence withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -472,7 +470,7 @@ RCT_REMAP_METHOD(setSequence,setSequence:(NSDictionary *)currentInstance withPar
 
 }
 
-/** Get the sequence number of this input */
+/** Get the sequence number of this input. */
 RCT_REMAP_METHOD(getSequence,getSequence:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -500,6 +498,7 @@ RCT_REMAP_METHOD(getSequence,getSequence:(NSDictionary *)currentInstance WithRes
 
 }
 
+/** Get the previous transaction associated with the input. */
 RCT_REMAP_METHOD(getPreviousTransaction,getPreviousTransaction:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -518,7 +517,7 @@ RCT_REMAP_METHOD(getPreviousTransaction,getPreviousTransaction:(NSDictionary *)c
 
 }
 
-/** Easy way to set the P2PKH script signature. Shorthand for input.pushToScriptSig(input.getPublicKeys()[0], signature) */
+/** Easy way to set the P2PKH script signature. Shorthand for input.pushToScriptSig(input.getPublicKeys()[0], signature). */
 RCT_REMAP_METHOD(setP2PKHSigScript,setP2PKHSigScript:(NSDictionary *)currentInstance withParams:(NSString *)signature withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {

@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/** An Ethereum-like wallet. */
 public class RCTCoreEthereumLikeWallet extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**TODO */
+/** Formatting rules to format amounts to strings. */
 public class RCTCoreFormatRules extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, FormatRules> javaObjects;

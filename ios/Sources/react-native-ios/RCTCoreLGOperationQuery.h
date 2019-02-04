@@ -14,6 +14,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class respresenting a query for a set of operations */
+/** Class respresenting a query for a set of operations. */
 @interface RCTCoreLGOperationQuery : RCTCoreBaseModule <RCTBridgeModule>
 @end

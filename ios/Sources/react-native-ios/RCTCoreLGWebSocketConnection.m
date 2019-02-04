@@ -32,6 +32,10 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
 
+/**
+ * Callback to call upon successful connection.
+ * @param connectionId, the ID of the Web Socket connection
+ */
 RCT_REMAP_METHOD(onConnect,onConnect:(NSDictionary *)currentInstance withParams:(int)connectionId withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -49,6 +53,7 @@ RCT_REMAP_METHOD(onConnect,onConnect:(NSDictionary *)currentInstance withParams:
 
 }
 
+/** Callback to call upon successful disconnection. */
 RCT_REMAP_METHOD(onClose,onClose:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -66,6 +71,10 @@ RCT_REMAP_METHOD(onClose,onClose:(NSDictionary *)currentInstance WithResolver:(R
 
 }
 
+/**
+ * Callback to call upon each incoming message.
+ * @param data, the attached data to the input message
+ */
 RCT_REMAP_METHOD(onMessage,onMessage:(NSDictionary *)currentInstance withParams:(nonnull NSString *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -83,6 +92,11 @@ RCT_REMAP_METHOD(onMessage,onMessage:(NSDictionary *)currentInstance withParams:
 
 }
 
+/**
+ * Callback to call when a Web Socket error occurs.
+ * @param code, the error code
+ * @param message, a description of the reason of the error
+ */
 RCT_REMAP_METHOD(onError,onError:(NSDictionary *)currentInstance withParams:(int)code
                                                                     message:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

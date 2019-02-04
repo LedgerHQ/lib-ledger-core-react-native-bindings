@@ -10,6 +10,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class respresenting an event receiver */
+/** Class respresenting an event receiver. */
 @interface RCTCoreLGEventReceiver : RCTCoreBaseModule <RCTBridgeModule>
 @end

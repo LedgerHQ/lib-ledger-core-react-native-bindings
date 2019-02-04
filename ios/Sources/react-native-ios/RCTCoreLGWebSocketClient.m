@@ -32,6 +32,11 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
 
+/**
+ * Connect to a given URL via a Web Socket connection.
+ * @param url, the URL to connect to
+ * @connection, the Web Socket connection to use
+ */
 RCT_REMAP_METHOD(connect,connect:(NSDictionary *)currentInstance withParams:(nonnull NSString *)url
                                                                  connection:(NSDictionary *)connection withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -52,6 +57,11 @@ RCT_REMAP_METHOD(connect,connect:(NSDictionary *)currentInstance withParams:(non
 
 }
 
+/**
+ * Send a message to a given client.
+ * @connection, the Web Socket connection to use
+ * @data, the message to send
+ */
 RCT_REMAP_METHOD(send,send:(NSDictionary *)currentInstance withParams:(NSDictionary *)connection
                                                                  data:(nonnull NSString *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -72,6 +82,10 @@ RCT_REMAP_METHOD(send,send:(NSDictionary *)currentInstance withParams:(NSDiction
 
 }
 
+/**
+ * Disconnect a client.
+ * @connection, the Web Socket connection to use
+ */
 RCT_REMAP_METHOD(disconnect,disconnect:(NSDictionary *)currentInstance withParams:(NSDictionary *)connection withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {

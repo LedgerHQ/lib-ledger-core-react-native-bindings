@@ -6,6 +6,6 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>
 
-/**Structure of a block in the blockchain */
+/** Structure of a block in the blockchain. */
 @interface RCTCoreLGBlock : RCTCoreBaseModule <RCTBridgeModule>
 @end

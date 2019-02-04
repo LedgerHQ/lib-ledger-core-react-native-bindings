@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class to print logs to console */
+/** Class to print logs to console. */
 public class RCTCoreLogger extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -99,9 +99,9 @@ public class RCTCoreLogger extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Print debug message to console
-     *@param tag, string
-     *@param message, string
+     * Print debug message to console.
+     * @param tag, string
+     * @param message, string
      */
     @ReactMethod
     public void d(ReadableMap currentInstance, String tag, String message, Promise promise) {
@@ -119,9 +119,9 @@ public class RCTCoreLogger extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Print information message to console
-     *@param tag, string
-     *@param message, string
+     * Print information message to console.
+     * @param tag, string
+     * @param message, string
      */
     @ReactMethod
     public void i(ReadableMap currentInstance, String tag, String message, Promise promise) {
@@ -139,9 +139,9 @@ public class RCTCoreLogger extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Print error message to console
-     *@param tag, string
-     *@param message, string
+     * Print error message to console.
+     * @param tag, string
+     * @param message, string
      */
     @ReactMethod
     public void e(ReadableMap currentInstance, String tag, String message, Promise promise) {
@@ -159,9 +159,9 @@ public class RCTCoreLogger extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Print warning message to console
-     *@param tag, string
-     *@param message, string
+     * Print warning message to console.
+     * @param tag, string
+     * @param message, string
      */
     @ReactMethod
     public void w(ReadableMap currentInstance, String tag, String message, Promise promise) {
@@ -179,9 +179,9 @@ public class RCTCoreLogger extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Print critical error message to console
-     *@param tag, string
-     *@param message, string
+     * Print critical error message to console.
+     * @param tag, string
+     * @param message, string
      */
     @ReactMethod
     public void c(ReadableMap currentInstance, String tag, String message, Promise promise) {

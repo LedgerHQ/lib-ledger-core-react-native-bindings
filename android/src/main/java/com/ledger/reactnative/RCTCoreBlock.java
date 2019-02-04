@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Structure of a block in the blockchain */
+/** Structure of a block in the blockchain. */
 public class RCTCoreBlock extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, Block> javaObjects;

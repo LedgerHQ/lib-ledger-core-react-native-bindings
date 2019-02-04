@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing a wallet pool builder (to instanciate a wallet pool) */
+/** Class representing a wallet pool builder (to instanciate a wallet pool). */
 public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -108,9 +108,9 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Set http client to be used for wallet pool build
-     *@param client, HttpClient
-     *@return WalletPoolBuilder object, instance with wallet pool http client set
+     * Set http client to be used for wallet pool build.
+     * @param client, HttpClient
+     * @return WalletPoolBuilder object, instance with wallet pool http client set
      */
     @ReactMethod
     public void setHttpClient(ReadableMap currentInstance, ReadableMap client, Promise promise) {
@@ -139,9 +139,9 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Set web socket client, through which wallet pool will listen and get notified (by explorers, DBs...)
-     *@param client, WebSocketClient object
-     *@reutnr WalletPoolBuilder object, instance with wallet pool web socket client set
+     * Set web socket client, through which wallet pool will listen and get notified (by explorers, DBs...).
+     * @param client, WebSocketClient object
+     * @reutnr WalletPoolBuilder object, instance with wallet pool web socket client set
      */
     @ReactMethod
     public void setWebsocketClient(ReadableMap currentInstance, ReadableMap client, Promise promise) {
@@ -170,9 +170,9 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Set path resolver that will be used for wallet pool creation to resolve wallet pool's (DB's, logs, preferences ...) paths
-     *@param pathResolver, Pathresolver object
-     *@param WalletPoolBuilder object, instance with wallet pool path resolver set
+     * Set path resolver that will be used for wallet pool creation to resolve wallet pool's (DB's, logs, preferences ...) paths.
+     * @param pathResolver, Pathresolver object
+     * @param WalletPoolBuilder object, instance with wallet pool path resolver set
      */
     @ReactMethod
     public void setPathResolver(ReadableMap currentInstance, ReadableMap pathResolver, Promise promise) {
@@ -201,9 +201,9 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Set log printer that will be used for wallet pool creation to dump wallet pool's logs (for debug purposes)
-     *@param printer, LogPrinter object
-     *@param WalletPoolBuilder object, instance with wallet pool logger set
+     * Set log printer that will be used for wallet pool creation to dump wallet pool's logs (for debug purposes).
+     * @param printer, LogPrinter object
+     * @param WalletPoolBuilder object, instance with wallet pool logger set
      */
     @ReactMethod
     public void setLogPrinter(ReadableMap currentInstance, ReadableMap printer, Promise promise) {
@@ -232,9 +232,9 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Set thread dispatcher that will be used for wallet pool creation to dispatch wallet pool's tasks through different threads
-     *@param dispatcher, ThreadDispatcher object
-     *@param WalletPoolBuilder object, instance with wallet pool thread dispatcher set
+     * Set thread dispatcher that will be used for wallet pool creation to dispatch wallet pool's tasks through different threads.
+     * @param dispatcher, ThreadDispatcher object
+     * @param WalletPoolBuilder object, instance with wallet pool thread dispatcher set
      */
     @ReactMethod
     public void setThreadDispatcher(ReadableMap currentInstance, ReadableMap dispatcher, Promise promise) {
@@ -263,9 +263,9 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Set name that will be used for wallet pool creation
-     *@param name, string
-     *@return WalletPoolBuilder object, instance with wallet pool name set
+     * Set name that will be used for wallet pool creation.
+     * @param name, string
+     * @return WalletPoolBuilder object, instance with wallet pool name set
      */
     @ReactMethod
     public void setName(ReadableMap currentInstance, String name, Promise promise) {
@@ -292,9 +292,9 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Set password that will be used for wallet pool creation
-     *@param password, string
-     *@return WalletPoolBuilder object, with wallet pool password set
+     * Set password that will be used for wallet pool creation.
+     * @param password, string
+     * @return WalletPoolBuilder object, with wallet pool password set
      */
     @ReactMethod
     public void setPassword(ReadableMap currentInstance, String password, Promise promise) {
@@ -321,9 +321,9 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Set random number generator that will be used for wallet pool creation
-     *@param rng, RandomNumberGenerator object
-     *@return WalletPoolBuilder object, with wallet pool random number generator set
+     * Set random number generator that will be used for wallet pool creation.
+     * @param rng, RandomNumberGenerator object
+     * @return WalletPoolBuilder object, with wallet pool random number generator set
      */
     @ReactMethod
     public void setRandomNumberGenerator(ReadableMap currentInstance, ReadableMap rng, Promise promise) {
@@ -352,9 +352,9 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Set database that will be used for wallet pool creation, it will store all wallet pool's data (created wallets, accounts, preferences ...)
-     *@param backend, DatabaseBackend object
-     *@return WalletPoolBuilder object, with wallet pool database set
+     * Set database that will be used for wallet pool creation, it will store all wallet pool's data (created wallets, accounts, preferences ...).
+     * @param backend, DatabaseBackend object
+     * @return WalletPoolBuilder object, with wallet pool database set
      */
     @ReactMethod
     public void setDatabaseBackend(ReadableMap currentInstance, ReadableMap backend, Promise promise) {
@@ -383,9 +383,9 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Set configuration that will be used for wallet pool creation
-     *@param configuration, DynamicObject object
-     *@return WalletPoolBuilder object, with wallet pool configuration set
+     * Set configuration that will be used for wallet pool creation.
+     * @param configuration, DynamicObject object
+     * @return WalletPoolBuilder object, with wallet pool configuration set
      */
     @ReactMethod
     public void setConfiguration(ReadableMap currentInstance, ReadableMap configuration, Promise promise) {
@@ -414,8 +414,8 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Create wallet pool
-     *@param callback, Callback object returning a WalletPool instance
+     * Create wallet pool.
+     * @param callback, Callback object returning a WalletPool instance
      */
     @ReactMethod
     public void build(ReadableMap currentInstance, Promise promise) {
@@ -434,8 +434,8 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Create an instance of the wallet pool builder
-     *@return WalletPoolBuilder object
+     * Create an instance of the wallet pool builder.
+     * @return WalletPoolBuilder object
      */
     @ReactMethod
     public void createInstance(Promise promise) {

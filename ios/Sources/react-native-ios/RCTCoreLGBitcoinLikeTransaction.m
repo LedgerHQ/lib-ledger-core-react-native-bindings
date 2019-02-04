@@ -60,7 +60,7 @@ RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(R
 
 }
 
-/** Get the input of the transaction */
+/** Get the input of the transaction. */
 RCT_REMAP_METHOD(getInputs,getInputs:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -99,7 +99,7 @@ RCT_REMAP_METHOD(getInputs,getInputs:(NSDictionary *)currentInstance WithResolve
 
 }
 
-/** Get the output of the transaction */
+/** Get the output of the transaction. */
 RCT_REMAP_METHOD(getOutputs,getOutputs:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -239,7 +239,7 @@ RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(R
 
 /**
  * Get the time when the transaction was issued or the time of the block including
- * this transaction
+ * this transaction.
  */
 RCT_REMAP_METHOD(getTime,getTime:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -298,7 +298,7 @@ RCT_REMAP_METHOD(getTimestamp,getTimestamp:(NSDictionary *)currentInstance WithR
 
 }
 
-/** Get Transaction version */
+/** Get Transaction version. */
 RCT_REMAP_METHOD(getVersion,getVersion:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {

@@ -12,9 +12,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**
- *Class representing an object that holds references to different types of objects,
- *those references are appended dynamically in an array like structure and can be retrieved by their index
- */
+/** A collection of dynamic values in an array. Values can be retrieved via their indexes. */
 @interface RCTCoreLGDynamicArray : RCTCoreBaseModule <RCTBridgeModule>
 @end

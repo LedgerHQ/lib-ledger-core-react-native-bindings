@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing an event bus through which a receiver gets notified */
+/** Class representing an event bus through which a receiver gets notified. */
 public class RCTCoreEventBus extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -101,9 +101,9 @@ public class RCTCoreEventBus extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Subscribe an event receiver to the event bus
-     *@param context, ExecutionContext object, execution context in which receiver will be notified
-     *@param reveiver, EventReceiver object, receiver that event bu will notify
+     * Subscribe an event receiver to the event bus.
+     * @param context, ExecutionContext object, execution context in which receiver will be notified
+     * @param reveiver, EventReceiver object, receiver that event bu will notify
      */
     @ReactMethod
     public void subscribe(ReadableMap currentInstance, ReadableMap context, ReadableMap receiver, Promise promise) {
@@ -129,8 +129,8 @@ public class RCTCoreEventBus extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Unsubscribe an event receiver from the event bus
-     *@param receiver, EventReceiver object, receiver to unsubscribe
+     * Unsubscribe an event receiver from the event bus.
+     * @param receiver, EventReceiver object, receiver to unsubscribe
      */
     @ReactMethod
     public void unsubscribe(ReadableMap currentInstance, ReadableMap receiver, Promise promise) {

@@ -10,7 +10,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>
 
-/**Structure representing a bitcoin transaction request */
+/** Structure representing a bitcoin transaction request. */
 @interface RCTCoreLGBitcoinLikeTransactionRequest : RCTCoreBaseModule <RCTBridgeModule>
 -(void)mapImplementationsData:(NSDictionary *)currentInstance;
 @end

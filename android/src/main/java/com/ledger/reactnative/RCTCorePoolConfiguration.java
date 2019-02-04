@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**TODO */
+/** Configuration of wallet pools. */
 public class RCTCorePoolConfiguration extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

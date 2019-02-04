@@ -25,6 +25,11 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Estimation size (minimum and maximum).
+ *
+ * This is typically used to estimate size (in bytes) of raw transactions.
+ */
 public class RCTCoreEstimatedSize extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, EstimatedSize> javaObjects;

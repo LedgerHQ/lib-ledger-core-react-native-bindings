@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/** A connection to a Web Socket. */
 public class RCTCoreWebSocketConnection extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -98,6 +99,10 @@ public class RCTCoreWebSocketConnection extends ReactContextBaseJavaModule {
         promise.resolve(true);
     }
 
+    /**
+     * Callback to call upon successful connection.
+     * @param connectionId, the ID of the Web Socket connection
+     */
     @ReactMethod
     public void onConnect(ReadableMap currentInstance, int connectionId, Promise promise) {
         try
@@ -113,6 +118,7 @@ public class RCTCoreWebSocketConnection extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Callback to call upon successful disconnection. */
     @ReactMethod
     public void onClose(ReadableMap currentInstance, Promise promise) {
         try
@@ -128,6 +134,10 @@ public class RCTCoreWebSocketConnection extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /**
+     * Callback to call upon each incoming message.
+     * @param data, the attached data to the input message
+     */
     @ReactMethod
     public void onMessage(ReadableMap currentInstance, String data, Promise promise) {
         try
@@ -143,6 +153,11 @@ public class RCTCoreWebSocketConnection extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /**
+     * Callback to call when a Web Socket error occurs.
+     * @param code, the error code
+     * @param message, a description of the reason of the error
+     */
     @ReactMethod
     public void onError(ReadableMap currentInstance, int code, String message, Promise promise) {
         try

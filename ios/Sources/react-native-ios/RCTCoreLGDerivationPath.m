@@ -147,7 +147,7 @@ RCT_REMAP_METHOD(isHardened,isHardened:(NSDictionary *)currentInstance withParam
 
 }
 
-/** Serialize the given path to a human readable string like "44'/0'/0'/0/0" */
+/** Serialize the given path to a human readable string like "44'/0'/0'/0/0". */
 RCT_REMAP_METHOD(toString,toString:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -177,7 +177,7 @@ RCT_REMAP_METHOD(toString,toString:(NSDictionary *)currentInstance WithResolver:
 
 /**
  * Return a derivation path without the last element, e.g. the parent of "44'/0'/0'/0/0" is
- * "44'/0'/0'/0"
+ * "44'/0'/0'/0".
  */
 RCT_REMAP_METHOD(getParent,getParent:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

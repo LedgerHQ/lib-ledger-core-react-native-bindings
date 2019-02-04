@@ -10,5 +10,6 @@
 #import <React/RCTBridgeModule.h>
 
 
+/** A connected client via Web Socket. */
 @interface RCTCoreLGWebSocketClient : RCTCoreBaseModule <RCTBridgeModule>
 @end

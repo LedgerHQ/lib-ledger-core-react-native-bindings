@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**TODO */
+/** Default values you might want to use if you don’t know what values you should use. */
 public class RCTCoreConfigurationDefaults extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

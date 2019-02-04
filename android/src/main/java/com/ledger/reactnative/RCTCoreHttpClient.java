@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing the http client performing the http requests */
+/** Class representing the http client performing the http requests. */
 public class RCTCoreHttpClient extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -111,8 +111,8 @@ public class RCTCoreHttpClient extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Execute a giver Http request\
-     *@param request, HttpRequest object, requestr to execute
+     * Execute a giver Http request.
+     * @param request, HttpRequest object, requestr to execute
      */
     @ReactMethod
     public void execute(ReadableMap currentInstance, ReadableMap request, Promise promise) {

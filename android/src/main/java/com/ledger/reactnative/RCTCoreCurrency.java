@@ -6,6 +6,7 @@ package com.ledger.reactnative;
 import co.ledger.core.BitcoinLikeNetworkParameters;
 import co.ledger.core.Currency;
 import co.ledger.core.CurrencyUnit;
+import co.ledger.core.EthereumLikeNetworkParameters;
 import co.ledger.core.WalletType;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -28,7 +29,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Structure of cryptocurrency */
+/** Structure of cryptocurrency. */
 public class RCTCoreCurrency extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, Currency> javaObjects;
@@ -103,7 +104,7 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void init(int walletType, String name, int bip44CoinType, String paymentUriScheme, ReadableArray units, Optional<ReadableMap> bitcoinLikeNetworkParameters, Promise promise) {
+    public void init(int walletType, String name, int bip44CoinType, String paymentUriScheme, ReadableArray units, Optional<ReadableMap> bitcoinLikeNetworkParameters, Optional<ReadableMap> ethereumLikeNetworkParameters, Promise promise) {
         WritableNativeMap implementationsData = new WritableNativeMap();
         if (walletType < 0 || WalletType.values().length <= walletType)
         {
@@ -127,7 +128,10 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         RCTCoreBitcoinLikeNetworkParameters rctParam_bitcoinLikeNetworkParameters = this.reactContext.getNativeModule(RCTCoreBitcoinLikeNetworkParameters.class);
         BitcoinLikeNetworkParameters javaParam_5 = rctParam_bitcoinLikeNetworkParameters.getJavaObjects().get(bitcoinLikeNetworkParameters.get().getString("uid"));
         implementationsData.putString("bitcoinLikeNetworkParameters", bitcoinLikeNetworkParameters.get().getString("uid"));
-        Currency javaResult = new Currency(javaParam_0, name, bip44CoinType, paymentUriScheme, javaParam_4, javaParam_5);
+        RCTCoreEthereumLikeNetworkParameters rctParam_ethereumLikeNetworkParameters = this.reactContext.getNativeModule(RCTCoreEthereumLikeNetworkParameters.class);
+        EthereumLikeNetworkParameters javaParam_6 = rctParam_ethereumLikeNetworkParameters.getJavaObjects().get(ethereumLikeNetworkParameters.get().getString("uid"));
+        implementationsData.putString("ethereumLikeNetworkParameters", ethereumLikeNetworkParameters.get().getString("uid"));
+        Currency javaResult = new Currency(javaParam_0, name, bip44CoinType, paymentUriScheme, javaParam_4, javaParam_5, javaParam_6);
 
         String uuid = UUID.randomUUID().toString();
         this.javaObjects.put(uuid, javaResult);
@@ -163,6 +167,14 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         converted_field_5.putString("type","RCTCoreBitcoinLikeNetworkParameters");
         converted_field_5.putString("uid",field_5_uuid);
         implementationsData.putMap("bitcoinLikeNetworkParameters", converted_field_5);
+        EthereumLikeNetworkParameters field_6 = javaImpl.getEthereumLikeNetworkParameters();
+        String field_6_uuid = UUID.randomUUID().toString();
+        RCTCoreEthereumLikeNetworkParameters rctImpl_field_6 = this.reactContext.getNativeModule(RCTCoreEthereumLikeNetworkParameters.class);
+        rctImpl_field_6.getJavaObjects().put(field_6_uuid, field_6);
+        WritableNativeMap converted_field_6 = new WritableNativeMap();
+        converted_field_6.putString("type","RCTCoreEthereumLikeNetworkParameters");
+        converted_field_6.putString("uid",field_6_uuid);
+        implementationsData.putMap("ethereumLikeNetworkParameters", converted_field_6);
         this.implementationsData.putMap(currentInstanceUid, implementationsData);
     }
     @ReactMethod
@@ -282,6 +294,27 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         else
         {
             promise.reject("Failed to call RCTCoreCurrency::getBitcoinLikeNetworkParameters", "First parameter of RCTCoreCurrency::getBitcoinLikeNetworkParameters should be an instance of RCTCoreCurrency");
+        }
+    }
+
+    @ReactMethod
+    public void getEthereumLikeNetworkParameters(ReadableMap currentInstance, Promise promise)
+    {
+        String uid = currentInstance.getString("uid");
+        if (uid.length() > 0)
+        {
+            if (!this.implementationsData.hasKey(uid))
+            {
+                this.mapImplementationsData(currentInstance);
+            }
+            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            WritableNativeMap result = new WritableNativeMap();
+            result.merge(data.getMap("ethereumLikeNetworkParameters"));
+            promise.resolve(result);
+        }
+        else
+        {
+            promise.reject("Failed to call RCTCoreCurrency::getEthereumLikeNetworkParameters", "First parameter of RCTCoreCurrency::getEthereumLikeNetworkParameters should be an instance of RCTCoreCurrency");
         }
     }
 

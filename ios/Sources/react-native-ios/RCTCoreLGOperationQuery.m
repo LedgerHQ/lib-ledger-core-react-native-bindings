@@ -33,10 +33,10 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Apply given order to query's operation
- *@param key, OperationOrderKey object which defines order
- *@param descending, bool
- *@return OperationQuery object, new ordered operation
+ * Apply given order to query's operation.
+ * @param key, OperationOrderKey object which defines order
+ * @param descending, bool
+ * @return OperationQuery object, new ordered operation
  */
 RCT_REMAP_METHOD(addOrder,addOrder:(NSDictionary *)currentInstance withParams:(int)key
                                                                    descending:(BOOL)descending withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -73,8 +73,8 @@ RCT_REMAP_METHOD(addOrder,addOrder:(NSDictionary *)currentInstance withParams:(i
 }
 
 /**
- *Get applied filter on operation query
- *@return QueryFilter object
+ * Get applied filter on operation query.
+ * @return QueryFilter object
  */
 RCT_REMAP_METHOD(filter,filter:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -110,8 +110,8 @@ RCT_REMAP_METHOD(filter,filter:(NSDictionary *)currentInstance WithResolver:(RCT
 }
 
 /**
- *Add offset to the operation query
- *@param from, 64 bits integer
+ * Add offset to the operation query.
+ * @param from, 64-bit integer
  */
 RCT_REMAP_METHOD(offset,offset:(NSDictionary *)currentInstance withParams:(int)from withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -147,8 +147,8 @@ RCT_REMAP_METHOD(offset,offset:(NSDictionary *)currentInstance withParams:(int)f
 }
 
 /**
- *Add limit to the operation query results
- *@param count, 64 bits integer
+ * Add limit to the operation query results.
+ * @param count, 64-bit integer
  */
 RCT_REMAP_METHOD(limit,limit:(NSDictionary *)currentInstance withParams:(int)count withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -185,7 +185,7 @@ RCT_REMAP_METHOD(limit,limit:(NSDictionary *)currentInstance withParams:(int)cou
 
 /**
  *TODO
- *Complete the operation query
+ * Complete the operation query.
  */
 RCT_REMAP_METHOD(complete,complete:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -255,8 +255,8 @@ RCT_REMAP_METHOD(partial,partial:(NSDictionary *)currentInstance WithResolver:(R
 }
 
 /**
- *Execute query to retrieve operations
- *@param callback, if execute method succeed, ListCallback object returning a List of Operation objects
+ * Execute query to retrieve operations.
+ * @param callback, if execute method succeed, ListCallback object returning a List of Operation objects
  */
 RCT_REMAP_METHOD(execute,execute:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

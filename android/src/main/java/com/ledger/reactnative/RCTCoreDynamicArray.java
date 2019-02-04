@@ -27,10 +27,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**
- *Class representing an object that holds references to different types of objects,
- *those references are appended dynamically in an array like structure and can be retrieved by their index
- */
+/** A collection of dynamic values in an array. Values can be retrieved via their indexes. */
 public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -128,8 +125,8 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Get count of stored references
-     *@return 64 bits integer
+     * Get count of values.
+     * @return 64-bit integer
      */
     @ReactMethod
     public void size(ReadableMap currentInstance, Promise promise) {
@@ -151,9 +148,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Push a 32 bits integer
-     *@param value, 32 bits integer
-     *@return DynamicArray with value stored in it
+     * Push a 32-bit integer.
+     * @param value, 32-bit integer
+     * @return DynamicArray with value stored in it
      */
     @ReactMethod
     public void pushInt(ReadableMap currentInstance, int value, Promise promise) {
@@ -180,9 +177,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Push a 64 bits integer
-     *@param value, 64 bits integer
-     *@return DynamicArray with value stored in it
+     * Push a 64-bit integer.
+     * @param value, 64-bit integer
+     * @return DynamicArray with value stored in it
      */
     @ReactMethod
     public void pushLong(ReadableMap currentInstance, long value, Promise promise) {
@@ -209,9 +206,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Push a string
-     *@param value, string
-     *@return DynamicArray with value stored in it
+     * Push a string.
+     * @param value, string
+     * @return DynamicArray with value stored in it
      */
     @ReactMethod
     public void pushString(ReadableMap currentInstance, String value, Promise promise) {
@@ -238,9 +235,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Push a double
-     *@param value, double
-     *@return DynamicArray with value stored in it
+     * Push a double.
+     * @param value, double
+     * @return DynamicArray with value stored in it
      */
     @ReactMethod
     public void pushDouble(ReadableMap currentInstance, double value, Promise promise) {
@@ -267,9 +264,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Push a binary
-     *@param value, binary
-     *@return DynamicArray with value stored in it
+     * Push a binary.
+     * @param value, binary
+     * @return DynamicArray with value stored in it
      */
     @ReactMethod
     public void pushData(ReadableMap currentInstance, String value, Promise promise) {
@@ -298,9 +295,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Push a bool
-     *@param value, bool
-     *@return DynamicArray with value stored in it
+     * Push a bool.
+     * @param value, bool
+     * @return DynamicArray with value stored in it
      */
     @ReactMethod
     public void pushBoolean(ReadableMap currentInstance, boolean value, Promise promise) {
@@ -327,9 +324,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Push a DynamicObject object
-     *@param value, DynamicObject
-     *@return DynamicArray with value stored in it
+     * Push a dynamic object.
+     * @param value, DynamicObject
+     * @return DynamicArray with value stored in it
      */
     @ReactMethod
     public void pushObject(ReadableMap currentInstance, ReadableMap value, Promise promise) {
@@ -358,9 +355,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Push a DynamicArray object
-     *@param value, DynamicArray
-     *@return DynamicArray with value stored in it
+     * Push a dynamic array.
+     * @param value, DynamicArray
+     * @return DynamicArray with value stored in it
      */
     @ReactMethod
     public void pushArray(ReadableMap currentInstance, ReadableMap value, Promise promise) {
@@ -389,9 +386,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get string at a given index
-     *@param index, 64 bits integer
-     *@return Optional string
+     * Get a string at a given index.
+     * @param index, 64-bit integer
+     * @return Optional string
      */
     @ReactMethod
     public void getString(ReadableMap currentInstance, long index, Promise promise) {
@@ -413,9 +410,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get 32 bits integer at a given index
-     *@param index, 64 bits integer
-     *@return Optional 32 bits integer
+     * Get 32-bit integer at a given index.
+     * @param index, 64-bit integer
+     * @return Optional 32-bit integer
      */
     @ReactMethod
     public void getInt(ReadableMap currentInstance, long index, Promise promise) {
@@ -442,9 +439,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get 64 bits integer at a given index
-     *@param index, 64 bits integer
-     *@return Optional 64 bits integer
+     * Get 64-bit integer at a given index.
+     * @param index, 64-bit integer
+     * @return Optional 64-bit integer
      */
     @ReactMethod
     public void getLong(ReadableMap currentInstance, long index, Promise promise) {
@@ -471,9 +468,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get double at a given index
-     *@param index, 64 bits integer
-     *@return Optional double
+     * Get double at a given index.
+     * @param index, 64-bit integer
+     * @return Optional double
      */
     @ReactMethod
     public void getDouble(ReadableMap currentInstance, long index, Promise promise) {
@@ -500,9 +497,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get binary at a given index
-     *@param index, 64 bits integer
-     *@return Optional binary
+     * Get binary at a given index.
+     * @param index, 64-bit integer
+     * @return Optional binary
      */
     @ReactMethod
     public void getData(ReadableMap currentInstance, long index, Promise promise) {
@@ -525,9 +522,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get bool at a given index
-     *@param index, 64 bits integer
-     *@return Optional bool
+     * Get bool at a given index.
+     * @param index, 64-bit integer
+     * @return Optional bool
      */
     @ReactMethod
     public void getBoolean(ReadableMap currentInstance, long index, Promise promise) {
@@ -554,9 +551,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get DynamicObject object at a given index
-     *@param index, 64 bits integer
-     *@return Optional DynamicObject
+     * Get DynamicObject object at a given index.
+     * @param index, 64-bit integer
+     * @return Optional DynamicObject
      */
     @ReactMethod
     public void getObject(ReadableMap currentInstance, long index, Promise promise) {
@@ -583,9 +580,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get DynamicArray object at a given index
-     *@param index, 64 bits integer
-     *@return Optional DynamicArray
+     * Get DynamicArray object at a given index.
+     * @param index, 64-bit integer
+     * @return Optional DynamicArray
      */
     @ReactMethod
     public void getArray(ReadableMap currentInstance, long index, Promise promise) {
@@ -612,9 +609,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Concatenate current DynamicArray with another one
-     *@param array, DynamicArray object to concatenate with
-     *@return DynamicArray object, concatenated DynamicArray
+     * Concatenate current DynamicArray with another one.
+     * @param array, DynamicArray object to concatenate with
+     * @return DynamicArray object, concatenated DynamicArray
      */
     @ReactMethod
     public void concat(ReadableMap currentInstance, ReadableMap array, Promise promise) {
@@ -643,9 +640,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get type of value stored at a given index
-     *@param index, 64 bits integer
-     *@return Optional DynamicType enum entry
+     * Get type of value stored at a given index.
+     * @param index, 64 bits integer
+     * @return Optional DynamicType enum entry
      */
     @ReactMethod
     public void getType(ReadableMap currentInstance, long index, Promise promise) {
@@ -668,9 +665,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Delete value stored at given index
-     *@param index, 64 bits integer
-     *@return bool, true if deletion succeeded
+     * Delete value stored at given index.
+     * @param index, 64 bits integer
+     * @return bool, true if deletion succeeded
      */
     @ReactMethod
     public void remove(ReadableMap currentInstance, long index, Promise promise) {
@@ -692,8 +689,8 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Dump whole object's content as string
-     *@return string
+     * Dump whole object's content as string.
+     * @return string, the string representation of the array
      */
     @ReactMethod
     public void dump(ReadableMap currentInstance, Promise promise) {
@@ -715,8 +712,8 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Serialize whole object to a binary
-     *@return binary
+     * Serialize whole object to a binary.
+     * @return binary, the serialized array
      */
     @ReactMethod
     public void serialize(ReadableMap currentInstance, Promise promise) {
@@ -739,8 +736,8 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get readonly status of object
-     *@param bool
+     * Get readonly status of object.
+     * @return bool, whether the array is in read-only mode
      */
     @ReactMethod
     public void isReadOnly(ReadableMap currentInstance, Promise promise) {
@@ -762,8 +759,8 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Create a new instance of DynamicArray class
-     *@return DynamicArray instance
+     * Create a new instance of DynamicArray class.
+     * @return DynamicArray, a brand new instance of a dynamic array
      */
     @ReactMethod
     public void newInstance(Promise promise) {
@@ -786,9 +783,9 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Parse a binary to a DynamicArray
-     *@param serialized, binary to parse
-     *@return Optional DynamicArray
+     * Parse a binary to a DynamicArray.
+     * @param serialized, binary to parse
+     * @return Optional, the unserialized dynamic array
      */
     @ReactMethod
     public void load(String serialized, Promise promise) {

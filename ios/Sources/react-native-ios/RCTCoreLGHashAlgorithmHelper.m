@@ -47,9 +47,9 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *RACE Integrity Primitives Evaluation Message Digest (used in Bitcoin)
- *@param data in bytes, message to hash
- *@return 160 bits hashed message
+ * RACE Integrity Primitives Evaluation Message Digest (used in Bitcoin).
+ * @param data in bytes, message to hash
+ * @return 160 bits hashed message
  */
 RCT_REMAP_METHOD(ripemd160,ripemd160:(NSDictionary *)currentInstance withParams:(NSString *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -81,9 +81,9 @@ RCT_REMAP_METHOD(ripemd160,ripemd160:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Secure Hash Algorithm (used in Bitcoin)
- *@param data in bytes, message to hash
- *@return 256 bits hashed message
+ * Secure Hash Algorithm (used in Bitcoin).
+ * @param data in bytes, message to hash
+ * @return 256 bits hashed message
  */
 RCT_REMAP_METHOD(sha256,sha256:(NSDictionary *)currentInstance withParams:(NSString *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -115,9 +115,9 @@ RCT_REMAP_METHOD(sha256,sha256:(NSDictionary *)currentInstance withParams:(NSStr
 }
 
 /**
- *Hash algorithm used in ethereum
- *@param data in bytes, message to hash
- *@return 256 bits hashed message
+ * Hash algorithm used in ethereum.
+ * @param data in bytes, message to hash
+ * @return 256 bits hashed message
  */
 RCT_REMAP_METHOD(keccak256,keccak256:(NSDictionary *)currentInstance withParams:(NSString *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

@@ -11,10 +11,7 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**
- *Callback triggered by main completed task,
- *returns optional result as list of template type T
- */
+/** Callback triggered by main completed task, returning optional result as list of template type T. */
 @interface RCTCoreLGAmountListCallback : NSObject <LGAmountListCallback>
 @property (nonatomic, strong) RCTPromiseResolveBlock resolve;
 @property (nonatomic, strong) RCTPromiseRejectBlock reject;

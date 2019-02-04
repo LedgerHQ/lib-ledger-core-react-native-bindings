@@ -8,6 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class to print logs to console */
+/** Class to print logs to console. */
 @interface RCTCoreLGLogger : RCTCoreBaseModule <RCTBridgeModule>
 @end

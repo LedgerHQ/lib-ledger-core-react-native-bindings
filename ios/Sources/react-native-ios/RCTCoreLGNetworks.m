@@ -32,6 +32,7 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
 
+/** The Bitcoin network parameters. */
 RCT_REMAP_METHOD(bitcoin,bitcoinWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGBitcoinLikeNetworkParameters * objcResult = [LGNetworks bitcoin];
 
@@ -48,6 +49,28 @@ RCT_REMAP_METHOD(bitcoin,bitcoinWithResolver:(RCTPromiseResolveBlock)resolve rej
     else
     {
         reject(@"impl_call_error", @"Error while calling LGNetworks::bitcoin", nil);
+        return;
+    }
+
+}
+
+/** The Ethereum network parameters. */
+RCT_REMAP_METHOD(ethereum,ethereumWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    LGEthereumLikeNetworkParameters * objcResult = [LGNetworks ethereum];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGEthereumLikeNetworkParameters *rctImpl_objcResult = (RCTCoreLGEthereumLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGEthereumLikeNetworkParameters"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGEthereumLikeNetworkParameters", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGNetworks::ethereum", nil);
         return;
     }
 

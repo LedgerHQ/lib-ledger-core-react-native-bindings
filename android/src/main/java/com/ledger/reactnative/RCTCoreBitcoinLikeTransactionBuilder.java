@@ -159,7 +159,7 @@ public class RCTCoreBitcoinLikeTransactionBuilder extends ReactContextBaseJavaMo
         }
     }
     /**
-     * Add the given output to the final transaction
+     * Add the given output to the final transaction.
      * @return A reference on the same builder in order to chain calls.
      */
     @ReactMethod
@@ -249,7 +249,10 @@ public class RCTCoreBitcoinLikeTransactionBuilder extends ReactContextBaseJavaMo
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** @return A reference on the same builder in order to chain calls. */
+    /**
+     * Set the the number of change addresses in the transaction builder.
+     * @return A reference on the same builder in order to chain calls.
+     */
     @ReactMethod
     public void setNumberOfChangeAddresses(ReadableMap currentInstance, int count, Promise promise) {
         try
@@ -507,7 +510,7 @@ public class RCTCoreBitcoinLikeTransactionBuilder extends ReactContextBaseJavaMo
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Reset the current instance to its initial state */
+    /** Reset the current instance to its initial state. */
     @ReactMethod
     public void reset(ReadableMap currentInstance, Promise promise) {
         try
@@ -524,7 +527,7 @@ public class RCTCoreBitcoinLikeTransactionBuilder extends ReactContextBaseJavaMo
         }
     }
     /**
-     * Parsing unsigned transaction
+     * Parsing unsigned transaction.
      * parsing a tx might change depending on block height we are on (if an update is effective starting from a given hight)
      */
     @ReactMethod

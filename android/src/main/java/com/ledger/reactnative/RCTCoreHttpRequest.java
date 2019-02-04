@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing an Http request */
+/** Class representing an Http request. */
 public class RCTCoreHttpRequest extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -126,8 +126,8 @@ public class RCTCoreHttpRequest extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Get method of request
-     *@return HttpMethod enum entry
+     * Get method of request.
+     * @return HttpMethod enum entry
      */
     @ReactMethod
     public void getMethod(ReadableMap currentInstance, Promise promise) {
@@ -150,8 +150,8 @@ public class RCTCoreHttpRequest extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get headers set in the request
-     *@return Map with key and value of type string
+     * Get headers set in the request.
+     * @return Map with key and value of type string
      */
     @ReactMethod
     public void getHeaders(ReadableMap currentInstance, Promise promise) {
@@ -179,8 +179,8 @@ public class RCTCoreHttpRequest extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get body of request
-     *@return binary
+     * Get body of request.
+     * @return binary
      */
     @ReactMethod
     public void getBody(ReadableMap currentInstance, Promise promise) {
@@ -203,8 +203,8 @@ public class RCTCoreHttpRequest extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get Url of request
-     *@return string
+     * Get Url of request.
+     * @return string
      */
     @ReactMethod
     public void getUrl(ReadableMap currentInstance, Promise promise) {
@@ -226,9 +226,9 @@ public class RCTCoreHttpRequest extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Method called when reauest is completed
-     *@param response, Optional HttpUrlConnection object, response of request if succeed
-     *@param error, optional Error structure, error returned in case of request failure
+     * Method called when reauest is completed.
+     * @param response, Optional HttpUrlConnection object, response of request if succeed
+     * @param error, optional Error structure, error returned in case of request failure
      */
     @ReactMethod
     public void complete(ReadableMap currentInstance, Optional<ReadableMap> response, Optional<ReadableMap> error, Promise promise) {

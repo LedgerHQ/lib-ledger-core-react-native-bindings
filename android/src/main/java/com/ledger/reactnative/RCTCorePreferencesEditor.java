@@ -355,4 +355,20 @@ public class RCTCorePreferencesEditor extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Clear all preferences. */
+    @ReactMethod
+    public void clear(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            PreferencesEditor currentInstanceObj = this.javaObjects.get(sUid);
+
+            currentInstanceObj.clear();
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
 }

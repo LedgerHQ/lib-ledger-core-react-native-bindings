@@ -27,6 +27,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/** A callback called when an Ethereum-like wallet is available after issuing a get command. */
 public class RCTCoreGetEthreumLikeWalletCallback extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

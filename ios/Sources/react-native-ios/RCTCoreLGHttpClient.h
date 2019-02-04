@@ -10,6 +10,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class representing the http client performing the http requests */
+/** Class representing the http client performing the http requests. */
 @interface RCTCoreLGHttpClient : RCTCoreBaseModule <RCTBridgeModule>
 @end

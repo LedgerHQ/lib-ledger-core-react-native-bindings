@@ -8,6 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**TODO */
+/** Default values you might want to use if you don’t know what values you should use. */
 @interface RCTCoreLGConfigurationDefaults : RCTCoreBaseModule <RCTBridgeModule>
 @end

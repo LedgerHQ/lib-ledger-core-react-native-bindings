@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing an event */
+/** Class representing an event. */
 public class RCTCoreEvent extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -101,8 +101,8 @@ public class RCTCoreEvent extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Get event code (for more details, please refer to EventCode enum)
-     *@return EventCode enum entry
+     * Get event code (for more details, please refer to EventCode enum).
+     * @return EventCode enum entry
      */
     @ReactMethod
     public void getCode(ReadableMap currentInstance, Promise promise) {
@@ -125,8 +125,8 @@ public class RCTCoreEvent extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get payload of event
-     *@return DynamicObject object
+     * Get payload of event.
+     * @return DynamicObject object
      */
     @ReactMethod
     public void getPayload(ReadableMap currentInstance, Promise promise) {
@@ -153,8 +153,8 @@ public class RCTCoreEvent extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Know if event is sticky one
-     *@return bool
+     * Tell whether the event is a sticky one.
+     * @return bool
      */
     @ReactMethod
     public void isSticky(ReadableMap currentInstance, Promise promise) {
@@ -176,8 +176,8 @@ public class RCTCoreEvent extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *If event is sticky, return sticky tag
-     *@return 32 bits integer
+     * If event is sticky, return sticky tag.
+     * @return 32 bits integer
      */
     @ReactMethod
     public void getStickyTag(ReadableMap currentInstance, Promise promise) {
@@ -199,10 +199,10 @@ public class RCTCoreEvent extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Create a new instance of Event class
-     *@param code, EventCode enum entry
-     *@param payload, DynamicObject object
-     *@return Event instance
+     * Create a new instance of Event class.
+     * @param code, EventCode enum entry
+     * @param payload, DynamicObject object
+     * @return Event instance
      */
     @ReactMethod
     public void newInstance(int code, ReadableMap payload, Promise promise) {

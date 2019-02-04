@@ -4,6 +4,7 @@
 #import "LGAmount.h"
 #import "LGBitcoinLikeOperation.h"
 #import "LGCurrency.h"
+#import "LGEthereumLikeOperation.h"
 #import "LGOperation.h"
 #import "LGOperationType.h"
 #import "LGPreferences.h"
@@ -13,6 +14,7 @@
 #import "RCTCoreLGAmount.h"
 #import "RCTCoreLGBitcoinLikeOperation.h"
 #import "RCTCoreLGCurrency.h"
+#import "RCTCoreLGEthereumLikeOperation.h"
 #import "RCTCoreLGPreferences.h"
 #import "RCTCoreLGTrustIndicator.h"
 #import <Foundation/Foundation.h>
@@ -20,6 +22,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class representing an operation */
+/** Class representing an operation. */
 @interface RCTCoreLGOperation : RCTCoreBaseModule <RCTBridgeModule>
 @end

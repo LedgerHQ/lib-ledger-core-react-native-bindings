@@ -18,6 +18,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class representing a Bitcoin transaction */
+/** Class representing a Bitcoin transaction. */
 @interface RCTCoreLGBitcoinLikeTransaction : RCTCoreBaseModule <RCTBridgeModule>
 @end

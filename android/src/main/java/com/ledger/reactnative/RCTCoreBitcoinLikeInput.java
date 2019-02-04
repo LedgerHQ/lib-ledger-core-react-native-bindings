@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing Bitcoin inputs */
+/** Class representing Bitcoin inputs. */
 public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -127,7 +127,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
         return hexStringBuilder.toString();
     }
 
-    /** Returns the address of the input (if an address can be computed) */
+    /** Returns the address of the input (if an address can be computed). */
     @ReactMethod
     public void getAddress(ReadableMap currentInstance, Promise promise) {
         try
@@ -176,7 +176,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Returns the derivation path of this input if the address is owned by the wallet */
+    /** Returns the derivation path of this input if the address is owned by the wallet. */
     @ReactMethod
     public void getDerivationPath(ReadableMap currentInstance, Promise promise) {
         try
@@ -236,7 +236,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
     }
     /**
      * Get the transaction hash of the output spent by this input. The result can be NULL if the output is not owned by
-     * the wallet
+     * the wallet.
      */
     @ReactMethod
     public void getPreviousTxHash(ReadableMap currentInstance, Promise promise) {
@@ -258,10 +258,8 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * Get the index at which the output is located in the transaction output spent by this input. The result can be
-     * NULL if the input does not belong to the wallet
-     *Check whether input
-     *@return Boolean, true if input belongs to coinbase transaction (reward for mining a block)
+     * Check whether input is for a coinbase.
+     * @return Boolean, true if input belongs to coinbase transaction (reward for mining a block)
      */
     @ReactMethod
     public void isCoinbase(ReadableMap currentInstance, Promise promise) {
@@ -283,8 +281,8 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Stored data cointained in coinbase
-     *@return Optional String
+     * Stored data cointained in coinbase.
+     * @return Optional String
      */
     @ReactMethod
     public void getCoinbase(ReadableMap currentInstance, Promise promise) {
@@ -306,8 +304,8 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get output index, it identifies which UTXO from tht transaction to spend
-     *@return Optional 32 bits integer, index of previous transaction
+     * Get output index, it identifies which UTXO from tht transaction to spend.
+     * @return Optional 32 bits integer, index of previous transaction
      */
     @ReactMethod
     public void getPreviousOutputIndex(ReadableMap currentInstance, Promise promise) {
@@ -384,7 +382,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Parse the script sig to a [[BitcoinLikeScript]] */
+    /** Parse the script sig to a [[BitcoinLikeScript]]. */
     @ReactMethod
     public void parseScriptSig(ReadableMap currentInstance, Promise promise) {
         try
@@ -410,7 +408,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * Set the ScriptS to the given value
+     * Set the ScriptS to the given value.
      * @param scriptSig The ScriptSig to use for this input
      */
     @ReactMethod
@@ -430,7 +428,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Push data to the end of the current ScriptSig */
+    /** Push data to the end of the current ScriptSig. */
     @ReactMethod
     public void pushToScriptSig(ReadableMap currentInstance, String data, Promise promise) {
         try
@@ -448,7 +446,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Set the sequence number of this input */
+    /** Set the sequence number of this input. */
     @ReactMethod
     public void setSequence(ReadableMap currentInstance, int sequence, Promise promise) {
         try
@@ -464,7 +462,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Get the sequence number of this input */
+    /** Get the sequence number of this input. */
     @ReactMethod
     public void getSequence(ReadableMap currentInstance, Promise promise) {
         try
@@ -484,6 +482,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Get the previous transaction associated with the input. */
     @ReactMethod
     public void getPreviousTransaction(ReadableMap currentInstance, Promise promise) {
         try
@@ -500,7 +499,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Easy way to set the P2PKH script signature. Shorthand for input.pushToScriptSig(input.getPublicKeys()[0], signature) */
+    /** Easy way to set the P2PKH script signature. Shorthand for input.pushToScriptSig(input.getPublicKeys()[0], signature). */
     @ReactMethod
     public void setP2PKHSigScript(ReadableMap currentInstance, String signature, Promise promise) {
         try

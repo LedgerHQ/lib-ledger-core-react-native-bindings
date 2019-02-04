@@ -33,8 +33,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Get event code (for more details, please refer to EventCode enum)
- *@return EventCode enum entry
+ * Get event code (for more details, please refer to EventCode enum).
+ * @return EventCode enum entry
  */
 RCT_REMAP_METHOD(getCode,getCode:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -64,8 +64,8 @@ RCT_REMAP_METHOD(getCode,getCode:(NSDictionary *)currentInstance WithResolver:(R
 }
 
 /**
- *Get payload of event
- *@return DynamicObject object
+ * Get payload of event.
+ * @return DynamicObject object
  */
 RCT_REMAP_METHOD(getPayload,getPayload:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -101,8 +101,8 @@ RCT_REMAP_METHOD(getPayload,getPayload:(NSDictionary *)currentInstance WithResol
 }
 
 /**
- *Know if event is sticky one
- *@return bool
+ * Tell whether the event is a sticky one.
+ * @return bool
  */
 RCT_REMAP_METHOD(isSticky,isSticky:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -132,8 +132,8 @@ RCT_REMAP_METHOD(isSticky,isSticky:(NSDictionary *)currentInstance WithResolver:
 }
 
 /**
- *If event is sticky, return sticky tag
- *@return 32 bits integer
+ * If event is sticky, return sticky tag.
+ * @return 32 bits integer
  */
 RCT_REMAP_METHOD(getStickyTag,getStickyTag:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -163,10 +163,10 @@ RCT_REMAP_METHOD(getStickyTag,getStickyTag:(NSDictionary *)currentInstance WithR
 }
 
 /**
- *Create a new instance of Event class
- *@param code, EventCode enum entry
- *@param payload, DynamicObject object
- *@return Event instance
+ * Create a new instance of Event class.
+ * @param code, EventCode enum entry
+ * @param payload, DynamicObject object
+ * @return Event instance
  */
 RCT_REMAP_METHOD(newInstance,newInstancewithParams:(int)code
                                            payload:(NSDictionary *)payload withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {

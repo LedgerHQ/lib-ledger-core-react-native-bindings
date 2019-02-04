@@ -276,7 +276,7 @@ RCT_REMAP_METHOD(pow,pow:(NSDictionary *)currentInstance withParams:(int)exponen
 }
 
 /**
- * Formats this BigInt to a decimal string (e.g. BigInt("12345").toDecimalString(1, ".", ",") => "1,234.5")
+ * Formats this BigInt to a decimal string (e.g. BigInt("12345").toDecimalString(1, ".", ",") => "1,234.5").
  * @params precision The power of ten by wich this BigInt is divided
  * @params decimalSeparator The separator to use between the integer part and the decimal part
  * @params thousandSeparator The separator to use between each group of thousand units
@@ -410,7 +410,7 @@ RCT_REMAP_METHOD(compare,compare:(NSDictionary *)currentInstance withParams:(NSD
 
 /**
  * Creates a BigInt with a decimal string (e.g. "1.2000"). Note that every non numeric characters (except the decimal separator)
- * are ignored (e.g. "1ledger000" will be equal to "1000")
+ * are ignored (e.g. "1ledger000" will be equal to "1000").
  * @param s The string with the decimal representation of the BigInt
  * @param precision The power of ten by which your decimal number must be multiplied in order to get his integer representation
  * @params decimalSeparator The decimal separator used by this string representation
@@ -468,7 +468,7 @@ RCT_REMAP_METHOD(fromIntegerString,fromIntegerStringwithParams:(nonnull NSString
 }
 
 /**
- * Creates a BigInt from a int64 value
+ * Creates a BigInt from a int64 value.
  * @param l The value to convert
  * @return The created BigInt
  */

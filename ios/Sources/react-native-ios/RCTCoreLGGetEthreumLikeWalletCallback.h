@@ -12,5 +12,6 @@
 #import <React/RCTBridgeModule.h>
 
 
+/** A callback called when an Ethereum-like wallet is available after issuing a get command. */
 @interface RCTCoreLGGetEthreumLikeWalletCallback : RCTCoreBaseModule <RCTBridgeModule>
 @end

@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/** Available API to use with observers. */
 public class RCTCoreBlockchainObserverEngines extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

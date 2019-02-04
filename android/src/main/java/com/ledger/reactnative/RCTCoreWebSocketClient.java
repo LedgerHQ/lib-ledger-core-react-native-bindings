@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/** A connected client via Web Socket. */
 public class RCTCoreWebSocketClient extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -109,6 +110,11 @@ public class RCTCoreWebSocketClient extends ReactContextBaseJavaModule {
         promise.resolve(true);
     }
 
+    /**
+     * Connect to a given URL via a Web Socket connection.
+     * @param url, the URL to connect to
+     * @connection, the Web Socket connection to use
+     */
     @ReactMethod
     public void connect(ReadableMap currentInstance, String url, ReadableMap connection, Promise promise) {
         try
@@ -126,6 +132,11 @@ public class RCTCoreWebSocketClient extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /**
+     * Send a message to a given client.
+     * @connection, the Web Socket connection to use
+     * @data, the message to send
+     */
     @ReactMethod
     public void send(ReadableMap currentInstance, ReadableMap connection, String data, Promise promise) {
         try
@@ -143,6 +154,10 @@ public class RCTCoreWebSocketClient extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /**
+     * Disconnect a client.
+     * @connection, the Web Socket connection to use
+     */
     @ReactMethod
     public void disconnect(ReadableMap currentInstance, ReadableMap connection, Promise promise) {
         try

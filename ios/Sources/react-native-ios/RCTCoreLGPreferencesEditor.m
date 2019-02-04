@@ -343,4 +343,22 @@ RCT_REMAP_METHOD(commit,commit:(NSDictionary *)currentInstance WithResolver:(RCT
     [currentInstanceObj commit];
 
 }
+
+/** Clear all preferences. */
+RCT_REMAP_METHOD(clear,clear:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesEditor::clear, first argument should be an instance of LGPreferencesEditor", nil);
+        return;
+    }
+    LGPreferencesEditor *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesEditor::clear, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    [currentInstanceObj clear];
+
+}
 @end

@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Structure representing a prepared bitcoin transaction (ready to be used with device) */
+/** Structure representing a prepared bitcoin transaction (ready to be used with device). */
 public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, BitcoinLikePreparedTransaction> javaObjects;
