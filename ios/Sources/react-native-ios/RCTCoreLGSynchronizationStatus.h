@@ -8,6 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class of synchronization status constants */
+/** Class of synchronization status constants. */
 @interface RCTCoreLGSynchronizationStatus : RCTCoreBaseModule <RCTBridgeModule>
 @end

@@ -8,5 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
+/** A bitcoin-like wallet. */
 @interface RCTCoreLGBitcoinLikeWallet : RCTCoreBaseModule <RCTBridgeModule>
 @end

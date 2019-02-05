@@ -33,7 +33,7 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- * Gets the HTTP response status code
+ * Gets the HTTP response status code.
  * @return The HTTP response status code
  */
 RCT_REMAP_METHOD(getStatusCode,getStatusCode:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -64,7 +64,7 @@ RCT_REMAP_METHOD(getStatusCode,getStatusCode:(NSDictionary *)currentInstance Wit
 }
 
 /**
- * Gets the HTTP response status text
+ * Gets the HTTP response status text.
  * @return The HTTP response status text
  */
 RCT_REMAP_METHOD(getStatusText,getStatusText:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -95,7 +95,7 @@ RCT_REMAP_METHOD(getStatusText,getStatusText:(NSDictionary *)currentInstance Wit
 }
 
 /**
- * Gets the HTTP response headers
+ * Gets the HTTP response headers.
  * @return The HTTP response headers
  */
 RCT_REMAP_METHOD(getHeaders,getHeaders:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {

@@ -8,5 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
+/** Overall configuration. */
 @interface RCTCoreLGConfiguration : RCTCoreBaseModule <RCTBridgeModule>
 @end

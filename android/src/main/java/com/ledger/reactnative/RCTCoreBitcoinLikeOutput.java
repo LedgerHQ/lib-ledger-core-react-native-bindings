@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing Bitcoin outputs */
+/** Class representing Bitcoin outputs. */
 public class RCTCoreBitcoinLikeOutput extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -126,8 +126,8 @@ public class RCTCoreBitcoinLikeOutput extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Get transaction hash in which output was 'created'
-     *@return String, transaction hash containing output
+     * Get transaction hash in which output was 'created'.
+     * @return String, transaction hash containing output
      */
     @ReactMethod
     public void getTransactionHash(ReadableMap currentInstance, Promise promise) {
@@ -149,8 +149,8 @@ public class RCTCoreBitcoinLikeOutput extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get index of output in list of all outputs contained in same transaction
-     *@return 32 bits integer, index of output
+     * Get index of output in list of all outputs contained in same transaction.
+     * @return 32 bits integer, index of output
      */
     @ReactMethod
     public void getOutputIndex(ReadableMap currentInstance, Promise promise) {
@@ -172,8 +172,8 @@ public class RCTCoreBitcoinLikeOutput extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get amount of output
-     *@return Amount object, amount of output
+     * Get amount of output.
+     * @return Amount object, amount of output
      */
     @ReactMethod
     public void getValue(ReadableMap currentInstance, Promise promise) {
@@ -200,8 +200,8 @@ public class RCTCoreBitcoinLikeOutput extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get script (witness script) cryptographic puzzle that determines the conditions to spend the output
-     *@return in Bytes (variable size depending on type of script P2PKH, P2SH), locking script to spend UTXO
+     * Get script (witness script) cryptographic puzzle that determines the conditions to spend the output.
+     * @return in Bytes (variable size depending on type of script P2PKH, P2SH), locking script to spend UTXO
      */
     @ReactMethod
     public void getScript(ReadableMap currentInstance, Promise promise) {
@@ -248,8 +248,8 @@ public class RCTCoreBitcoinLikeOutput extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get address that spent the output
-     *@return Optional String, address that spent
+     * Get address that spent the output.
+     * @return Optional String, address that spent
      */
     @ReactMethod
     public void getAddress(ReadableMap currentInstance, Promise promise) {

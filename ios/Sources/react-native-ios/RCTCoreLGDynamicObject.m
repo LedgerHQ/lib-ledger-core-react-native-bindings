@@ -47,10 +47,10 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Store a string with a given key
- *@param key, string, key to access stored value
- *@param value, string
- *@return DynamicObject object with value stored in it
+ * Store a string with a given key.
+ * @param key, string, key to access stored value
+ * @param value, string
+ * @return DynamicObject object with value stored in it
  */
 RCT_REMAP_METHOD(putString,putString:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key
                                                                           value:(nonnull NSString *)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -87,10 +87,10 @@ RCT_REMAP_METHOD(putString,putString:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Store a 32 bits integer with a given key
- *@param key, string, key to access stored value
- *@param value, 32 bits integer
- *@return DynamicObject object with value stored in it
+ * Store a 32-bit integer with a given key.
+ * @param key, string, key to access stored value
+ * @param value, 32-bit integer
+ * @return DynamicObject object with value stored in it
  */
 RCT_REMAP_METHOD(putInt,putInt:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key
                                                                     value:(int)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -127,10 +127,10 @@ RCT_REMAP_METHOD(putInt,putInt:(NSDictionary *)currentInstance withParams:(nonnu
 }
 
 /**
- *Store a 64 bits integer with a given key
- *@param key, string, key to access stored value
- *@param value, 64 bits integer
- *@return DynamicObject object with value stored in it
+ * Store a 64-bit integer with a given key.
+ * @param key, string, key to access stored value
+ * @param value, 64-bit integer
+ * @return DynamicObject object with value stored in it
  */
 RCT_REMAP_METHOD(putLong,putLong:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key
                                                                       value:(int)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -167,10 +167,10 @@ RCT_REMAP_METHOD(putLong,putLong:(NSDictionary *)currentInstance withParams:(non
 }
 
 /**
- *Store a double with a given key
- *@param key, string, key to access stored value
- *@param value, double
- *@return DynamicObject object with value stored in it
+ * Store a double with a given key.
+ * @param key, string, key to access stored value
+ * @param value, double
+ * @return DynamicObject object with value stored in it
  */
 RCT_REMAP_METHOD(putDouble,putDouble:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key
                                                                           value:(double)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -207,10 +207,10 @@ RCT_REMAP_METHOD(putDouble,putDouble:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Store a binary integer with a given key
- *@param key, string, key to access stored value
- *@param value, binary
- *@return DynamicObject object with value stored in it
+ * Store a binary integer with a given key.
+ * @param key, string, key to access stored value
+ * @param value, binary
+ * @return DynamicObject object with value stored in it
  */
 RCT_REMAP_METHOD(putData,putData:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key
                                                                       value:(NSString *)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -249,10 +249,10 @@ RCT_REMAP_METHOD(putData,putData:(NSDictionary *)currentInstance withParams:(non
 }
 
 /**
- *Store a boolean integer with a given key
- *@param key, string, key to access stored value
- *@param value, bool
- *@return DynamicObject object with value stored in it
+ * Store a boolean integer with a given key.
+ * @param key, string, key to access stored value
+ * @param value, bool
+ * @return DynamicObject object with value stored in it
  */
 RCT_REMAP_METHOD(putBoolean,putBoolean:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key
                                                                             value:(BOOL)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -289,9 +289,9 @@ RCT_REMAP_METHOD(putBoolean,putBoolean:(NSDictionary *)currentInstance withParam
 }
 
 /**
- *Store another DynamicObject object with a given key
- *@param key, string, key to access stored value
- *@return DynamicObject object with value stored in it
+ * Store another DynamicObject object with a given key.
+ * @param key, string, key to access stored value
+ * @return DynamicObject object with value stored in it
  */
 RCT_REMAP_METHOD(putObject,putObject:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key
                                                                           value:(NSDictionary *)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -330,9 +330,9 @@ RCT_REMAP_METHOD(putObject,putObject:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Store a DynamicArray object with a given key
- *@param key, string, key to access stored reference
- *@return DynamicArray object with value stored in it
+ * Store a DynamicArray object with a given key.
+ * @param key, string, key to access stored reference
+ * @return DynamicArray object with value stored in it
  */
 RCT_REMAP_METHOD(putArray,putArray:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key
                                                                         value:(NSDictionary *)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -371,9 +371,9 @@ RCT_REMAP_METHOD(putArray,putArray:(NSDictionary *)currentInstance withParams:(n
 }
 
 /**
- *Get, if exists, stored string having a specific key
- *@param key, string, key of string to look for
- *@return Optional string
+ * Get, if exists, stored string having a specific key.
+ * @param key, string, key of string to look for
+ * @return Optional string
  */
 RCT_REMAP_METHOD(getString,getString:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -403,9 +403,9 @@ RCT_REMAP_METHOD(getString,getString:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Get, if exists, stored 32 bits integer having a specific key
- *@param key, string, key of 32 bits integer to look for
- *@return Optional 32 bits integer
+ * Get, if exists, stored 32 bits integer having a specific key.
+ * @param key, string, key of 32 bits integer to look for
+ * @return Optional 32 bits integer
  */
 RCT_REMAP_METHOD(getInt,getInt:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -435,9 +435,9 @@ RCT_REMAP_METHOD(getInt,getInt:(NSDictionary *)currentInstance withParams:(nonnu
 }
 
 /**
- *Get, if exists, stored 64 bits integer having a specific key
- *@param key, string, key of 64 bits integer to look for
- *@return Optional 64 bits integer
+ * Get, if exists, stored 64 bits integer having a specific key.
+ * @param key, string, key of 64 bits integer to look for
+ * @return Optional 64 bits integer
  */
 RCT_REMAP_METHOD(getLong,getLong:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -467,9 +467,9 @@ RCT_REMAP_METHOD(getLong,getLong:(NSDictionary *)currentInstance withParams:(non
 }
 
 /**
- *Get, if exists, stored double having a specific key
- *@param key, string, key of double to look for
- *@return Optional double
+ * Get, if exists, stored double having a specific key.
+ * @param key, string, key of double to look for
+ * @return Optional double
  */
 RCT_REMAP_METHOD(getDouble,getDouble:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -499,9 +499,9 @@ RCT_REMAP_METHOD(getDouble,getDouble:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Get, if exists, stored binary having a specific key
- *@param key, string, key of binary to look for
- *@return Optional binary
+ * Get, if exists, stored binary having a specific key.
+ * @param key, string, key of binary to look for
+ * @return Optional binary
  */
 RCT_REMAP_METHOD(getData,getData:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -531,9 +531,9 @@ RCT_REMAP_METHOD(getData,getData:(NSDictionary *)currentInstance withParams:(non
 }
 
 /**
- *Get, if exists, stored bool having a specific key
- *@param key, string, key of bool to look for
- *@return Optional bool
+ * Get, if exists, stored bool having a specific key.
+ * @param key, string, key of bool to look for
+ * @return Optional bool
  */
 RCT_REMAP_METHOD(getBoolean,getBoolean:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -563,9 +563,9 @@ RCT_REMAP_METHOD(getBoolean,getBoolean:(NSDictionary *)currentInstance withParam
 }
 
 /**
- *Get, if exists, stored DynamicObject having a specific key
- *@param key, string, key of DynamicObject to look for
- *@return Optional DynamicObject
+ * Get, if exists, stored DynamicObject having a specific key.
+ * @param key, string, key of DynamicObject to look for
+ * @return Optional DynamicObject
  */
 RCT_REMAP_METHOD(getObject,getObject:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -604,9 +604,9 @@ RCT_REMAP_METHOD(getObject,getObject:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Get, if exists, stored DynamicArray having a specific key
- *@param key, string, key of DynamicArray to look for
- *@return Optional DynamicArray
+ * Get, if exists, stored DynamicArray having a specific key.
+ * @param key, string, key of DynamicArray to look for
+ * @return Optional DynamicArray
  */
 RCT_REMAP_METHOD(getArray,getArray:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -645,9 +645,9 @@ RCT_REMAP_METHOD(getArray,getArray:(NSDictionary *)currentInstance withParams:(n
 }
 
 /**
- *Check if a key was used to store a value
- *@param key, string, key to look for
- *@return bool
+ * Check if a key was used to store a value.
+ * @param key, string, key to look for
+ * @return bool
  */
 RCT_REMAP_METHOD(contains,contains:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -677,9 +677,9 @@ RCT_REMAP_METHOD(contains,contains:(NSDictionary *)currentInstance withParams:(n
 }
 
 /**
- *Delete key and value stored with it
- *@param key, string, key to look for
- *@return bool, true if key exists and deletion succeeded, false otherwise
+ * Delete key and value stored with it.
+ * @param key, string, key to look for
+ * @return bool, true if key exists and deletion succeeded, false otherwise
  */
 RCT_REMAP_METHOD(remove,remove:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -709,8 +709,8 @@ RCT_REMAP_METHOD(remove,remove:(NSDictionary *)currentInstance withParams:(nonnu
 }
 
 /**
- *Get list of keys
- *@return list of string, list all stored keys
+ * Get list of keys.
+ * @return list of string, list all stored keys
  */
 RCT_REMAP_METHOD(getKeys,getKeys:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -740,9 +740,9 @@ RCT_REMAP_METHOD(getKeys,getKeys:(NSDictionary *)currentInstance WithResolver:(R
 }
 
 /**
- *Get type of object stored with specific key
- *@param key, string, key to look for
- *@return Optional DynamicType enum entry
+ * Get type of object stored with specific key.
+ * @param key, string, key to look for
+ * @return Optional DynamicType enum entry
  */
 RCT_REMAP_METHOD(getType,getType:(NSDictionary *)currentInstance withParams:(nonnull NSString *)key withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -772,8 +772,8 @@ RCT_REMAP_METHOD(getType,getType:(NSDictionary *)currentInstance withParams:(non
 }
 
 /**
- *Dump whole object's content as string
- *@return string
+ * Dump whole object's content as string.
+ * @return string
  */
 RCT_REMAP_METHOD(dump,dump:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -803,8 +803,8 @@ RCT_REMAP_METHOD(dump,dump:(NSDictionary *)currentInstance WithResolver:(RCTProm
 }
 
 /**
- *Serialize whole object to a binary
- *@return binary
+ * Serialize whole object to a binary.
+ * @return binary
  */
 RCT_REMAP_METHOD(serialize,serialize:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -834,8 +834,8 @@ RCT_REMAP_METHOD(serialize,serialize:(NSDictionary *)currentInstance WithResolve
 }
 
 /**
- *Get readonly status of object
- *@param bool
+ * Get readonly status of object.
+ * @param bool
  */
 RCT_REMAP_METHOD(isReadOnly,isReadOnly:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -865,8 +865,8 @@ RCT_REMAP_METHOD(isReadOnly,isReadOnly:(NSDictionary *)currentInstance WithResol
 }
 
 /**
- *Get count of stored references
- *@return 64 bits integer
+ * Get count of stored references.
+ * @return 64 bits integer
  */
 RCT_REMAP_METHOD(size,size:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -896,8 +896,8 @@ RCT_REMAP_METHOD(size,size:(NSDictionary *)currentInstance WithResolver:(RCTProm
 }
 
 /**
- *Create a new instance of DynamicObject class
- *@return DynamicObject instance
+ * Create a new instance of DynamicObject class.
+ * @return DynamicObject instance
  */
 RCT_REMAP_METHOD(newInstance,newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGDynamicObject * objcResult = [LGDynamicObject newInstance];
@@ -921,9 +921,9 @@ RCT_REMAP_METHOD(newInstance,newInstanceWithResolver:(RCTPromiseResolveBlock)res
 }
 
 /**
- *Parse a binary to a DynamicObject
- *@param serialized, binary to parse
- *@return Optional DynamicObject
+ * Parse a binary to a DynamicObject.
+ * @param serialized, binary to parse
+ * @return Optional DynamicObject
  */
 RCT_REMAP_METHOD(load,loadwithParams:(NSString *)serialized withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSData *objcParam_0 = [self hexStringToData:serialized];

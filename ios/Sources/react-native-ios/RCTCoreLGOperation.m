@@ -33,8 +33,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Get id's operation
- *@return string
+ * Get id's operation.
+ * @return string
  */
 RCT_REMAP_METHOD(getUid,getUid:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -64,8 +64,8 @@ RCT_REMAP_METHOD(getUid,getUid:(NSDictionary *)currentInstance WithResolver:(RCT
 }
 
 /**
- *Get account's index in user's wallet
- *@return 32 bits integer
+ * Get account's index in user's wallet.
+ * @return 32-bit integer
  */
 RCT_REMAP_METHOD(getAccountIndex,getAccountIndex:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -95,8 +95,8 @@ RCT_REMAP_METHOD(getAccountIndex,getAccountIndex:(NSDictionary *)currentInstance
 }
 
 /**
- *Get type of operation
- *@return OperationType object (for more details refer to OperationType)
+ * Get type of operation.
+ * @return OperationType object (for more details refer to OperationType)
  */
 RCT_REMAP_METHOD(getOperationType,getOperationType:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -126,8 +126,8 @@ RCT_REMAP_METHOD(getOperationType,getOperationType:(NSDictionary *)currentInstan
 }
 
 /**
- *Return date on which operation was issued
- *@return date object
+ * Return date on which operation was issued.
+ * @return date object
  */
 RCT_REMAP_METHOD(getDate,getDate:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -159,8 +159,8 @@ RCT_REMAP_METHOD(getDate,getDate:(NSDictionary *)currentInstance WithResolver:(R
 }
 
 /**
- *Get senders of operation
- *@return List of string, list of all senders
+ * Get senders of operation.
+ * @return List of string, list of all senders
  */
 RCT_REMAP_METHOD(getSenders,getSenders:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -190,8 +190,8 @@ RCT_REMAP_METHOD(getSenders,getSenders:(NSDictionary *)currentInstance WithResol
 }
 
 /**
- *Get recipients of operation
- *@return List of string, list of all recipients
+ * Get recipients of operation.
+ * @return List of string, list of all recipients
  */
 RCT_REMAP_METHOD(getRecipients,getRecipients:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -221,8 +221,8 @@ RCT_REMAP_METHOD(getRecipients,getRecipients:(NSDictionary *)currentInstance Wit
 }
 
 /**
- *Get amount of operation
- *@return Amount object
+ * Get amount of operation.
+ * @return Amount object
  */
 RCT_REMAP_METHOD(getAmount,getAmount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -258,8 +258,8 @@ RCT_REMAP_METHOD(getAmount,getAmount:(NSDictionary *)currentInstance WithResolve
 }
 
 /**
- *Get fees of operation
- *@return Optional Amount object
+ * Get fees of operation.
+ * @return Optional Amount object
  */
 RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -298,8 +298,8 @@ RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(R
 }
 
 /**
- *Get preferences of operation
- *@return Prefences object
+ * Get preferences of operation.
+ * @return Prefences object
  */
 RCT_REMAP_METHOD(getPreferences,getPreferences:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -335,8 +335,8 @@ RCT_REMAP_METHOD(getPreferences,getPreferences:(NSDictionary *)currentInstance W
 }
 
 /**
- *Get trust indicator of operation
- *@return TrustIndicator object
+ * Get trust indicator of operation.
+ * @return TrustIndicator object
  */
 RCT_REMAP_METHOD(getTrust,getTrust:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -372,8 +372,8 @@ RCT_REMAP_METHOD(getTrust,getTrust:(NSDictionary *)currentInstance WithResolver:
 }
 
 /**
- *Get block height on which operation was included
- *@return Optional 64 bits integer, height of block in which operation was validated
+ * Get block height on which operation was included.
+ * @return Optional 64-bit integer, height of block in which operation was validated
  */
 RCT_REMAP_METHOD(getBlockHeight,getBlockHeight:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -403,8 +403,8 @@ RCT_REMAP_METHOD(getBlockHeight,getBlockHeight:(NSDictionary *)currentInstance W
 }
 
 /**
- *Convert operation as Bitcoin operation
- *@return BitcoinLikeOperation object
+ * Convert operation as Bitcoin operation.
+ * @return BitcoinLikeOperation object
  */
 RCT_REMAP_METHOD(asBitcoinLikeOperation,asBitcoinLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -439,6 +439,44 @@ RCT_REMAP_METHOD(asBitcoinLikeOperation,asBitcoinLikeOperation:(NSDictionary *)c
 
 }
 
+/**
+ * Convert operation as Ethereum operation.
+ * @return EthereumLikeOperation object
+ */
+RCT_REMAP_METHOD(asEthereumLikeOperation,asEthereumLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::asEthereumLikeOperation, first argument should be an instance of LGOperation", nil);
+        return;
+    }
+    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::asEthereumLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGEthereumLikeOperation * objcResult = [currentInstanceObj asEthereumLikeOperation];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGEthereumLikeOperation *rctImpl_objcResult = (RCTCoreLGEthereumLikeOperation *)[self.bridge moduleForName:@"CoreLGEthereumLikeOperation"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGEthereumLikeOperation", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGOperation::asEthereumLikeOperation", nil);
+        return;
+    }
+
+}
+
+/** Is this an instance of a Bitcoin-like operation? */
 RCT_REMAP_METHOD(isInstanceOfBitcoinLikeOperation,isInstanceOfBitcoinLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -466,11 +504,7 @@ RCT_REMAP_METHOD(isInstanceOfBitcoinLikeOperation,isInstanceOfBitcoinLikeOperati
 
 }
 
-/**
- *Same as asBitcoinLikeOperation for ethereum
- *# asEthereumLikeOperation(): Callback<EthereumLikeOperation>;
- *Same as isInstanceOfBitcoinLikeOperation for ethereum
- */
+/** Same as isInstanceOfBitcoinLikeOperation for ethereum. */
 RCT_REMAP_METHOD(isInstanceOfEthereumLikeOperation,isInstanceOfEthereumLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -498,11 +532,7 @@ RCT_REMAP_METHOD(isInstanceOfEthereumLikeOperation,isInstanceOfEthereumLikeOpera
 
 }
 
-/**
- *Same as asBitcoinLikeOperation for ripple
- *# asRippleLikeOperation(): Callback<RippleLikeOperation>;
- *Same as isInstanceOfBitcoinLikeOperation for ripple
- */
+/** Same as isInstanceOfBitcoinLikeOperation for ripple. */
 RCT_REMAP_METHOD(isInstanceOfRippleLikeOperation,isInstanceOfRippleLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -531,8 +561,8 @@ RCT_REMAP_METHOD(isInstanceOfRippleLikeOperation,isInstanceOfRippleLikeOperation
 }
 
 /**
- *Tells if the operation is complete
- *@return boolean
+ * Tells if the operation is complete.
+ * @return boolean
  */
 RCT_REMAP_METHOD(isComplete,isComplete:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -562,8 +592,8 @@ RCT_REMAP_METHOD(isComplete,isComplete:(NSDictionary *)currentInstance WithResol
 }
 
 /**
- *Get type of wallet from which operation was issued
- *@return WalletType object
+ * Get type of wallet from which operation was issued.
+ * @return WalletType object
  */
 RCT_REMAP_METHOD(getWalletType,getWalletType:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -592,6 +622,7 @@ RCT_REMAP_METHOD(getWalletType,getWalletType:(NSDictionary *)currentInstance Wit
 
 }
 
+/** Get the currency this operation is about. */
 RCT_REMAP_METHOD(getCurrency,getCurrency:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {

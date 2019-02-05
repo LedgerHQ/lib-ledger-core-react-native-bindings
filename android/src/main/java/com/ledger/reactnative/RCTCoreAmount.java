@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing amount of transaction, output, inputs ... */
+/** Class representing amount of transaction, output, inputs… */
 public class RCTCoreAmount extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -104,8 +104,8 @@ public class RCTCoreAmount extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Get amount as a BitInt
-     *@return BitInt
+     * Get amount as a BigInt.
+     * @return BigInt
      */
     @ReactMethod
     public void toBigInt(ReadableMap currentInstance, Promise promise) {
@@ -132,8 +132,8 @@ public class RCTCoreAmount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get currency in which amount was computed
-     *@return Currency object
+     * Get currency in which amount was computed.
+     * @return Currency object
      */
     @ReactMethod
     public void getCurrency(ReadableMap currentInstance, Promise promise) {
@@ -160,8 +160,8 @@ public class RCTCoreAmount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get currency unit in which amount was computed
-     *@return CurrencyUnit object
+     * Get currency unit in which amount was computed.
+     * @return CurrencyUnit object
      */
     @ReactMethod
     public void getUnit(ReadableMap currentInstance, Promise promise) {
@@ -188,9 +188,9 @@ public class RCTCoreAmount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Convert amount in another currency unit
-     *@param CurrencyUnit object, target currency unit
-     *@return Amount object, amount in target currency unit
+     * Convert amount in another currency unit.
+     * @param CurrencyUnit object, target currency unit
+     * @return Amount object, amount in target currency unit
      */
     @ReactMethod
     public void toUnit(ReadableMap currentInstance, ReadableMap unit, Promise promise) {
@@ -218,7 +218,7 @@ public class RCTCoreAmount extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /**TODO */
+    /** Get an amount that is equal to the given magnitude in the units system. */
     @ReactMethod
     public void toMagnitude(ReadableMap currentInstance, int magnitude, Promise promise) {
         try
@@ -244,8 +244,8 @@ public class RCTCoreAmount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get amount as string
-     *@return string
+     * Get amount as string
+     * @return string
      */
     @ReactMethod
     public void toString(ReadableMap currentInstance, Promise promise) {
@@ -267,8 +267,8 @@ public class RCTCoreAmount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get amount as long
-     *@reutrn 64 bits integer
+     * Get amount as long
+     * @return 64 bits integer
      */
     @ReactMethod
     public void toLong(ReadableMap currentInstance, Promise promise) {
@@ -290,8 +290,8 @@ public class RCTCoreAmount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get amount as double
-     *@return double
+     * Get amount as double
+     * @return double
      */
     @ReactMethod
     public void toDouble(ReadableMap currentInstance, Promise promise) {
@@ -312,7 +312,7 @@ public class RCTCoreAmount extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /**TODO */
+    /** Format an amount with a locale and some formatting rules. */
     @ReactMethod
     public void format(ReadableMap currentInstance, ReadableMap locale, Optional<ReadableMap> rules, Promise promise) {
         try
@@ -336,6 +336,7 @@ public class RCTCoreAmount extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Transform an hexadecimal string into an amount (expressed in the given currency). */
     @ReactMethod
     public void fromHex(ReadableMap currency, String hex, Promise promise) {
         try
@@ -358,6 +359,7 @@ public class RCTCoreAmount extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Transform a 64-bit number into an amount (expressed in the given currency). */
     @ReactMethod
     public void fromLong(ReadableMap currency, long value, Promise promise) {
         try

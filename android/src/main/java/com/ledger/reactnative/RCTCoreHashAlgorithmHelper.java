@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/** Helper class for commonly used crypto algorithms */
+/** Helper class for commonly used crypto algorithms. */
 public class RCTCoreHashAlgorithmHelper extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -134,9 +134,9 @@ public class RCTCoreHashAlgorithmHelper extends ReactContextBaseJavaModule {
     }
 
     /**
-     *RACE Integrity Primitives Evaluation Message Digest (used in Bitcoin)
-     *@param data in bytes, message to hash
-     *@return 160 bits hashed message
+     * RACE Integrity Primitives Evaluation Message Digest (used in Bitcoin).
+     * @param data in bytes, message to hash
+     * @return 160 bits hashed message
      */
     @ReactMethod
     public void ripemd160(ReadableMap currentInstance, String data, Promise promise) {
@@ -161,9 +161,9 @@ public class RCTCoreHashAlgorithmHelper extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Secure Hash Algorithm (used in Bitcoin)
-     *@param data in bytes, message to hash
-     *@return 256 bits hashed message
+     * Secure Hash Algorithm (used in Bitcoin).
+     * @param data in bytes, message to hash
+     * @return 256 bits hashed message
      */
     @ReactMethod
     public void sha256(ReadableMap currentInstance, String data, Promise promise) {
@@ -188,9 +188,9 @@ public class RCTCoreHashAlgorithmHelper extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Hash algorithm used in ethereum
-     *@param data in bytes, message to hash
-     *@return 256 bits hashed message
+     * Hash algorithm used in ethereum.
+     * @param data in bytes, message to hash
+     * @return 256 bits hashed message
      */
     @ReactMethod
     public void keccak256(ReadableMap currentInstance, String data, Promise promise) {

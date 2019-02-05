@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/** The xPUB definition for Bitcoin. */
 public class RCTCoreBitcoinLikeExtendedPublicKey extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -122,6 +123,7 @@ public class RCTCoreBitcoinLikeExtendedPublicKey extends ReactContextBaseJavaMod
         return hexStringBuilder.toString();
     }
 
+    /** Derive an address from an xPUB and a path. */
     @ReactMethod
     public void derive(ReadableMap currentInstance, String path, Promise promise) {
         try
@@ -146,6 +148,7 @@ public class RCTCoreBitcoinLikeExtendedPublicKey extends ReactContextBaseJavaMod
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Derive a public key from an xPUB and a path. */
     @ReactMethod
     public void derivePublicKey(ReadableMap currentInstance, String path, Promise promise) {
         try
@@ -166,6 +169,7 @@ public class RCTCoreBitcoinLikeExtendedPublicKey extends ReactContextBaseJavaMod
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Derive a shorten version of a public key (SHA256 + RIPEMD160) from an xPUB and a path. */
     @ReactMethod
     public void deriveHash160(ReadableMap currentInstance, String path, Promise promise) {
         try
@@ -186,6 +190,7 @@ public class RCTCoreBitcoinLikeExtendedPublicKey extends ReactContextBaseJavaMod
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Get the xPUB in base 58. */
     @ReactMethod
     public void toBase58(ReadableMap currentInstance, Promise promise) {
         try
@@ -205,6 +210,7 @@ public class RCTCoreBitcoinLikeExtendedPublicKey extends ReactContextBaseJavaMod
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Get the root path of the xPUB. */
     @ReactMethod
     public void getRootPath(ReadableMap currentInstance, Promise promise) {
         try

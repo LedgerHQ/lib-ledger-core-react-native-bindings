@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing an Http connection */
+/** Class representing an Http connection. */
 public class RCTCoreHttpUrlConnection extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -111,7 +111,7 @@ public class RCTCoreHttpUrlConnection extends ReactContextBaseJavaModule {
     }
 
     /**
-     * Gets the HTTP response status code
+     * Gets the HTTP response status code.
      * @return The HTTP response status code
      */
     @ReactMethod
@@ -134,7 +134,7 @@ public class RCTCoreHttpUrlConnection extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * Gets the HTTP response status text
+     * Gets the HTTP response status text.
      * @return The HTTP response status text
      */
     @ReactMethod
@@ -157,7 +157,7 @@ public class RCTCoreHttpUrlConnection extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * Gets the HTTP response headers
+     * Gets the HTTP response headers.
      * @return The HTTP response headers
      */
     @ReactMethod

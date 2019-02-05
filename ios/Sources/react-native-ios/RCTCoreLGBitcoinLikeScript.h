@@ -11,5 +11,6 @@
 #import <React/RCTBridgeModule.h>
 
 
+/** A general purpose script. */
 @interface RCTCoreLGBitcoinLikeScript : RCTCoreBaseModule <RCTBridgeModule>
 @end

@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class respresenting a query for a set of operations */
+/** Class respresenting a query for a set of operations. */
 public class RCTCoreOperationQuery extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -102,10 +102,10 @@ public class RCTCoreOperationQuery extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Apply given order to query's operation
-     *@param key, OperationOrderKey object which defines order
-     *@param descending, bool
-     *@return OperationQuery object, new ordered operation
+     * Apply given order to query's operation.
+     * @param key, OperationOrderKey object which defines order
+     * @param descending, bool
+     * @return OperationQuery object, new ordered operation
      */
     @ReactMethod
     public void addOrder(ReadableMap currentInstance, int key, boolean descending, Promise promise) {
@@ -138,8 +138,8 @@ public class RCTCoreOperationQuery extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get applied filter on operation query
-     *@return QueryFilter object
+     * Get applied filter on operation query.
+     * @return QueryFilter object
      */
     @ReactMethod
     public void filter(ReadableMap currentInstance, Promise promise) {
@@ -166,8 +166,8 @@ public class RCTCoreOperationQuery extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Add offset to the operation query
-     *@param from, 64 bits integer
+     * Add offset to the operation query.
+     * @param from, 64-bit integer
      */
     @ReactMethod
     public void offset(ReadableMap currentInstance, long from, Promise promise) {
@@ -194,8 +194,8 @@ public class RCTCoreOperationQuery extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Add limit to the operation query results
-     *@param count, 64 bits integer
+     * Add limit to the operation query results.
+     * @param count, 64-bit integer
      */
     @ReactMethod
     public void limit(ReadableMap currentInstance, long count, Promise promise) {
@@ -223,7 +223,7 @@ public class RCTCoreOperationQuery extends ReactContextBaseJavaModule {
     }
     /**
      *TODO
-     *Complete the operation query
+     * Complete the operation query.
      */
     @ReactMethod
     public void complete(ReadableMap currentInstance, Promise promise) {
@@ -275,8 +275,8 @@ public class RCTCoreOperationQuery extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Execute query to retrieve operations
-     *@param callback, if execute method succeed, ListCallback object returning a List of Operation objects
+     * Execute query to retrieve operations.
+     * @param callback, if execute method succeed, ListCallback object returning a List of Operation objects
      */
     @ReactMethod
     public void execute(ReadableMap currentInstance, Promise promise) {

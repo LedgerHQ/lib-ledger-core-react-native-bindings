@@ -6,6 +6,6 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>
 
-/**Structure of cryptocurrency unit */
+/** Structure of cryptocurrency unit. */
 @interface RCTCoreLGCurrencyUnit : RCTCoreBaseModule <RCTBridgeModule>
 @end

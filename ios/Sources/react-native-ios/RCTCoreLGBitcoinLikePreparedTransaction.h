@@ -8,7 +8,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>
 
-/**Structure representing a prepared bitcoin transaction (ready to be used with device) */
+/** Structure representing a prepared bitcoin transaction (ready to be used with device). */
 @interface RCTCoreLGBitcoinLikePreparedTransaction : RCTCoreBaseModule <RCTBridgeModule>
 -(void)mapImplementationsData:(NSDictionary *)currentInstance;
 @end

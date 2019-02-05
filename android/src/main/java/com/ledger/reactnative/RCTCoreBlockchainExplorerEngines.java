@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**TODO */
+/** Available API to use with explorers. */
 public class RCTCoreBlockchainExplorerEngines extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

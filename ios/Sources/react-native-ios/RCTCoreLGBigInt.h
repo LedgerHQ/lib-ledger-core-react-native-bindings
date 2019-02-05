@@ -9,6 +9,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/** Immutable class representing a potentially very long number */
+/** Immutable class representing a potentially very long number. */
 @interface RCTCoreLGBigInt : RCTCoreBaseModule <RCTBridgeModule>
 @end

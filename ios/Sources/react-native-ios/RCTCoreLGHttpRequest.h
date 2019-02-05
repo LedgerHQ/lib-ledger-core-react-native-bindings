@@ -13,6 +13,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class representing an Http request */
+/** Class representing an Http request. */
 @interface RCTCoreLGHttpRequest : RCTCoreBaseModule <RCTBridgeModule>
 @end

@@ -13,8 +13,9 @@
 
 
 /**
- *Class representing an object that stores values of different types of objects,
- *those values are appended dynamically in a map like structure with a given key through which they can be retreived
+ * Class representing an object that stores values of different types of objects,
+ * those values are appended dynamically in a map like structure with a given key through which they
+ * can be retreived.
  */
 @interface RCTCoreLGDynamicObject : RCTCoreBaseModule <RCTBridgeModule>
 @end

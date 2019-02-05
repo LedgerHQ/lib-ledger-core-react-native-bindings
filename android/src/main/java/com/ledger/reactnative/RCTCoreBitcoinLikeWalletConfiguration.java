@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class of constants to set Bitcoin like wallet configurations */
+/** Class of constants to set Bitcoin like wallet configurations. */
 public class RCTCoreBitcoinLikeWalletConfiguration extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

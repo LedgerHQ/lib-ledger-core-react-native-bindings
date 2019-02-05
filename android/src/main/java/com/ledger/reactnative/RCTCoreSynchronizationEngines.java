@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**TODO */
+/** Available synchronization mechanisms. */
 public class RCTCoreSynchronizationEngines extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

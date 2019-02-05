@@ -47,6 +47,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class respresenting a pool of wallets */
+/** Class respresenting a pool of wallets. */
 @interface RCTCoreLGWalletPool : RCTCoreBaseModule <RCTBridgeModule>
 @end

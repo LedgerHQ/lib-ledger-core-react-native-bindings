@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing Bitcoin block */
+/** Class representing Bitcoin block */
 public class RCTCoreBitcoinLikeBlock extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -99,8 +99,8 @@ public class RCTCoreBitcoinLikeBlock extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Hash of block
-     *@return string representing hash of this block
+     * Hash of block.
+     * @return string representing hash of this block
      */
     @ReactMethod
     public void getHash(ReadableMap currentInstance, Promise promise) {
@@ -122,8 +122,8 @@ public class RCTCoreBitcoinLikeBlock extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Height of block in blockchain
-     *@return 64 bits integer, height of block
+     * Height of block in blockchain.
+     * @return 64 bits integer, height of block
      */
     @ReactMethod
     public void getHeight(ReadableMap currentInstance, Promise promise) {
@@ -145,8 +145,8 @@ public class RCTCoreBitcoinLikeBlock extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Timestamp when block was mined
-     *@return Date object, date when block was appended to blockchain
+     * Timestamp when block was mined.
+     * @return Date object, date when block was appended to blockchain
      */
     @ReactMethod
     public void getTime(ReadableMap currentInstance, Promise promise) {

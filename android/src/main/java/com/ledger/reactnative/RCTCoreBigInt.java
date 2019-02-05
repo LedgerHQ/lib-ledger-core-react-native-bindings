@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/** Immutable class representing a potentially very long number */
+/** Immutable class representing a potentially very long number. */
 public class RCTCoreBigInt extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -288,7 +288,7 @@ public class RCTCoreBigInt extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * Formats this BigInt to a decimal string (e.g. BigInt("12345").toDecimalString(1, ".", ",") => "1,234.5")
+     * Formats this BigInt to a decimal string (e.g. BigInt("12345").toDecimalString(1, ".", ",") => "1,234.5").
      * @params precision The power of ten by wich this BigInt is divided
      * @params decimalSeparator The separator to use between the integer part and the decimal part
      * @params thousandSeparator The separator to use between each group of thousand units
@@ -388,7 +388,7 @@ public class RCTCoreBigInt extends ReactContextBaseJavaModule {
     }
     /**
      * Creates a BigInt with a decimal string (e.g. "1.2000"). Note that every non numeric characters (except the decimal separator)
-     * are ignored (e.g. "1ledger000" will be equal to "1000")
+     * are ignored (e.g. "1ledger000" will be equal to "1000").
      * @param s The string with the decimal representation of the BigInt
      * @param precision The power of ten by which your decimal number must be multiplied in order to get his integer representation
      * @params decimalSeparator The decimal separator used by this string representation
@@ -441,7 +441,7 @@ public class RCTCoreBigInt extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * Creates a BigInt from a int64 value
+     * Creates a BigInt from a int64 value.
      * @param l The value to convert
      * @return The created BigInt
      */

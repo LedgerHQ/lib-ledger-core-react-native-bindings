@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Structure of informations needed for account creation */
+/** Structure of informations needed for account creation. */
 public class RCTCoreAccountCreationInfo extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, AccountCreationInfo> javaObjects;

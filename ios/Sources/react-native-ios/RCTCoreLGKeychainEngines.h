@@ -8,5 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
+/** Available keychains policies. */
 @interface RCTCoreLGKeychainEngines : RCTCoreBaseModule <RCTBridgeModule>
 @end

@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Structure representing Http response body */
+/** Structure representing Http response body. */
 public class RCTCoreHttpReadBodyResult extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, HttpReadBodyResult> javaObjects;

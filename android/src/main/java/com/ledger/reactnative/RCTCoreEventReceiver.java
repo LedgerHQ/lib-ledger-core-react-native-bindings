@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class respresenting an event receiver */
+/** Class respresenting an event receiver. */
 public class RCTCoreEventReceiver extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -111,8 +111,8 @@ public class RCTCoreEventReceiver extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Method triggered when an event occurs
-     *@param event, Event object that triggers this method
+     * Method triggered when an event occurs.
+     * @param event, Event object that triggers this method
      */
     @ReactMethod
     public void onEvent(ReadableMap currentInstance, ReadableMap event, Promise promise) {

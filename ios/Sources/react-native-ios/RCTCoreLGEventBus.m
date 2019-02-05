@@ -33,9 +33,9 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Subscribe an event receiver to the event bus
- *@param context, ExecutionContext object, execution context in which receiver will be notified
- *@param reveiver, EventReceiver object, receiver that event bu will notify
+ * Subscribe an event receiver to the event bus.
+ * @param context, ExecutionContext object, execution context in which receiver will be notified
+ * @param reveiver, EventReceiver object, receiver that event bu will notify
  */
 RCT_REMAP_METHOD(subscribe,subscribe:(NSDictionary *)currentInstance withParams:(NSDictionary *)context
                                                                        receiver:(NSDictionary *)receiver withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -72,8 +72,8 @@ RCT_REMAP_METHOD(subscribe,subscribe:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Unsubscribe an event receiver from the event bus
- *@param receiver, EventReceiver object, receiver to unsubscribe
+ * Unsubscribe an event receiver from the event bus.
+ * @param receiver, EventReceiver object, receiver to unsubscribe
  */
 RCT_REMAP_METHOD(unsubscribe,unsubscribe:(NSDictionary *)currentInstance withParams:(NSDictionary *)receiver withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

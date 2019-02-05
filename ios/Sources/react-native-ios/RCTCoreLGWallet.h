@@ -37,6 +37,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class representing a wallet */
+/** Class representing a wallet. */
 @interface RCTCoreLGWallet : RCTCoreBaseModule <RCTBridgeModule>
 @end

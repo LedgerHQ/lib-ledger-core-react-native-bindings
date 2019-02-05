@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class of synchronization status constants */
+/** Class of synchronization status constants. */
 public class RCTCoreSynchronizationStatus extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

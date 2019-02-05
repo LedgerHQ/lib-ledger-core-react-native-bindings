@@ -10,6 +10,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class representing a Bitcoin Operation */
+/** Class representing a Bitcoin Operation. */
 @interface RCTCoreLGBitcoinLikeOperation : RCTCoreBaseModule <RCTBridgeModule>
 @end

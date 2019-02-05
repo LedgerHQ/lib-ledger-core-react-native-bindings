@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/** Overall configuration. */
 public class RCTCoreConfiguration extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

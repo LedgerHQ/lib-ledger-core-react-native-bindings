@@ -33,8 +33,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Get operation's transaction
- *@return BitcoinLikeTransaction object
+ * Get operation's transaction.
+ * @return BitcoinLikeTransaction object
  */
 RCT_REMAP_METHOD(getTransaction,getTransaction:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

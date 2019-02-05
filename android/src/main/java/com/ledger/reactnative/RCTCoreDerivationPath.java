@@ -180,7 +180,7 @@ public class RCTCoreDerivationPath extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Serialize the given path to a human readable string like "44'/0'/0'/0/0" */
+    /** Serialize the given path to a human readable string like "44'/0'/0'/0/0". */
     @ReactMethod
     public void toString(ReadableMap currentInstance, Promise promise) {
         try
@@ -202,7 +202,7 @@ public class RCTCoreDerivationPath extends ReactContextBaseJavaModule {
     }
     /**
      * Return a derivation path without the last element, e.g. the parent of "44'/0'/0'/0/0" is
-     * "44'/0'/0'/0"
+     * "44'/0'/0'/0".
      */
     @ReactMethod
     public void getParent(ReadableMap currentInstance, Promise promise) {

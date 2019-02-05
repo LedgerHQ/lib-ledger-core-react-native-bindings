@@ -7,6 +7,6 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>
 
-/**TODO */
+/** Formatting rules to format amounts to strings. */
 @interface RCTCoreLGFormatRules : RCTCoreBaseModule <RCTBridgeModule>
 @end

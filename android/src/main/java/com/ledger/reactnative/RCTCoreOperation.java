@@ -6,6 +6,7 @@ package com.ledger.reactnative;
 import co.ledger.core.Amount;
 import co.ledger.core.BitcoinLikeOperation;
 import co.ledger.core.Currency;
+import co.ledger.core.EthereumLikeOperation;
 import co.ledger.core.Operation;
 import co.ledger.core.OperationType;
 import co.ledger.core.Preferences;
@@ -32,7 +33,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing an operation */
+/** Class representing an operation. */
 public class RCTCoreOperation extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -106,8 +107,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Get id's operation
-     *@return string
+     * Get id's operation.
+     * @return string
      */
     @ReactMethod
     public void getUid(ReadableMap currentInstance, Promise promise) {
@@ -129,8 +130,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get account's index in user's wallet
-     *@return 32 bits integer
+     * Get account's index in user's wallet.
+     * @return 32-bit integer
      */
     @ReactMethod
     public void getAccountIndex(ReadableMap currentInstance, Promise promise) {
@@ -152,8 +153,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get type of operation
-     *@return OperationType object (for more details refer to OperationType)
+     * Get type of operation.
+     * @return OperationType object (for more details refer to OperationType)
      */
     @ReactMethod
     public void getOperationType(ReadableMap currentInstance, Promise promise) {
@@ -176,8 +177,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Return date on which operation was issued
-     *@return date object
+     * Return date on which operation was issued.
+     * @return date object
      */
     @ReactMethod
     public void getDate(ReadableMap currentInstance, Promise promise) {
@@ -201,8 +202,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get senders of operation
-     *@return List of string, list of all senders
+     * Get senders of operation.
+     * @return List of string, list of all senders
      */
     @ReactMethod
     public void getSenders(ReadableMap currentInstance, Promise promise) {
@@ -229,8 +230,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get recipients of operation
-     *@return List of string, list of all recipients
+     * Get recipients of operation.
+     * @return List of string, list of all recipients
      */
     @ReactMethod
     public void getRecipients(ReadableMap currentInstance, Promise promise) {
@@ -257,8 +258,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get amount of operation
-     *@return Amount object
+     * Get amount of operation.
+     * @return Amount object
      */
     @ReactMethod
     public void getAmount(ReadableMap currentInstance, Promise promise) {
@@ -285,8 +286,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get fees of operation
-     *@return Optional Amount object
+     * Get fees of operation.
+     * @return Optional Amount object
      */
     @ReactMethod
     public void getFees(ReadableMap currentInstance, Promise promise) {
@@ -313,8 +314,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get preferences of operation
-     *@return Prefences object
+     * Get preferences of operation.
+     * @return Prefences object
      */
     @ReactMethod
     public void getPreferences(ReadableMap currentInstance, Promise promise) {
@@ -341,8 +342,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get trust indicator of operation
-     *@return TrustIndicator object
+     * Get trust indicator of operation.
+     * @return TrustIndicator object
      */
     @ReactMethod
     public void getTrust(ReadableMap currentInstance, Promise promise) {
@@ -369,8 +370,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get block height on which operation was included
-     *@return Optional 64 bits integer, height of block in which operation was validated
+     * Get block height on which operation was included.
+     * @return Optional 64-bit integer, height of block in which operation was validated
      */
     @ReactMethod
     public void getBlockHeight(ReadableMap currentInstance, Promise promise) {
@@ -397,8 +398,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Convert operation as Bitcoin operation
-     *@return BitcoinLikeOperation object
+     * Convert operation as Bitcoin operation.
+     * @return BitcoinLikeOperation object
      */
     @ReactMethod
     public void asBitcoinLikeOperation(ReadableMap currentInstance, Promise promise) {
@@ -424,6 +425,35 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /**
+     * Convert operation as Ethereum operation.
+     * @return EthereumLikeOperation object
+     */
+    @ReactMethod
+    public void asEthereumLikeOperation(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Operation currentInstanceObj = this.javaObjects.get(sUid);
+
+            EthereumLikeOperation javaResult = currentInstanceObj.asEthereumLikeOperation();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreEthereumLikeOperation rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreEthereumLikeOperation.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreEthereumLikeOperation");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Is this an instance of a Bitcoin-like operation? */
     @ReactMethod
     public void isInstanceOfBitcoinLikeOperation(ReadableMap currentInstance, Promise promise) {
         try
@@ -443,11 +473,7 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /**
-     *Same as asBitcoinLikeOperation for ethereum
-     *# asEthereumLikeOperation(): Callback<EthereumLikeOperation>;
-     *Same as isInstanceOfBitcoinLikeOperation for ethereum
-     */
+    /** Same as isInstanceOfBitcoinLikeOperation for ethereum. */
     @ReactMethod
     public void isInstanceOfEthereumLikeOperation(ReadableMap currentInstance, Promise promise) {
         try
@@ -467,11 +493,7 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /**
-     *Same as asBitcoinLikeOperation for ripple
-     *# asRippleLikeOperation(): Callback<RippleLikeOperation>;
-     *Same as isInstanceOfBitcoinLikeOperation for ripple
-     */
+    /** Same as isInstanceOfBitcoinLikeOperation for ripple. */
     @ReactMethod
     public void isInstanceOfRippleLikeOperation(ReadableMap currentInstance, Promise promise) {
         try
@@ -492,8 +514,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Tells if the operation is complete
-     *@return boolean
+     * Tells if the operation is complete.
+     * @return boolean
      */
     @ReactMethod
     public void isComplete(ReadableMap currentInstance, Promise promise) {
@@ -515,8 +537,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get type of wallet from which operation was issued
-     *@return WalletType object
+     * Get type of wallet from which operation was issued.
+     * @return WalletType object
      */
     @ReactMethod
     public void getWalletType(ReadableMap currentInstance, Promise promise) {
@@ -538,6 +560,7 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Get the currency this operation is about. */
     @ReactMethod
     public void getCurrency(ReadableMap currentInstance, Promise promise) {
         try

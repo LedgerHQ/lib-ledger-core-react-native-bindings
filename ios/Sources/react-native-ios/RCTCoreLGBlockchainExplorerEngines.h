@@ -8,6 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**TODO */
+/** Available API to use with explorers. */
 @interface RCTCoreLGBlockchainExplorerEngines : RCTCoreBaseModule <RCTBridgeModule>
 @end

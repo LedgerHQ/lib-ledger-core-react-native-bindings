@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/** A general purpose script. */
 public class RCTCoreBitcoinLikeScript extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -122,6 +123,10 @@ public class RCTCoreBitcoinLikeScript extends ReactContextBaseJavaModule {
         return hexStringBuilder.toString();
     }
 
+    /**
+     * Get the head of the script. Scripts are organized by chunks, so you get an iterator-like
+     * interface.
+     */
     @ReactMethod
     public void head(ReadableMap currentInstance, Promise promise) {
         try
@@ -146,6 +151,7 @@ public class RCTCoreBitcoinLikeScript extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Turn the script into a string representation. */
     @ReactMethod
     public void toString(ReadableMap currentInstance, Promise promise) {
         try
@@ -165,6 +171,7 @@ public class RCTCoreBitcoinLikeScript extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Parse data into a script. */
     @ReactMethod
     public void parse(String data, Promise promise) {
         try

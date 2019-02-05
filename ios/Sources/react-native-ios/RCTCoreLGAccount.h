@@ -8,6 +8,7 @@
 #import "LGBitcoinLikeAccount.h"
 #import "LGBlockCallback.h"
 #import "LGErrorCodeCallback.h"
+#import "LGEthereumLikeAccount.h"
 #import "LGEventBus.h"
 #import "LGLogger.h"
 #import "LGOperationQuery.h"
@@ -21,6 +22,7 @@
 #import "RCTCoreLGBitcoinLikeAccount.h"
 #import "RCTCoreLGBlockCallback.h"
 #import "RCTCoreLGErrorCodeCallback.h"
+#import "RCTCoreLGEthereumLikeAccount.h"
 #import "RCTCoreLGEventBus.h"
 #import "RCTCoreLGLogger.h"
 #import "RCTCoreLGOperationQuery.h"
@@ -30,6 +32,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class representing an account */
+/** Class representing an account. */
 @interface RCTCoreLGAccount : RCTCoreBaseModule <RCTBridgeModule>
 @end

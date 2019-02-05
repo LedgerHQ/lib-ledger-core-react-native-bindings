@@ -7,5 +7,6 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>
 
+/** Bitcoin network parameters. */
 @interface RCTCoreLGBitcoinLikeNetworkParameters : RCTCoreBaseModule <RCTBridgeModule>
 @end

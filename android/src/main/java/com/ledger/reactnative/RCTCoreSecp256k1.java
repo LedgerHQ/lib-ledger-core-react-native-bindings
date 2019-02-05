@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class implementing secp256k1 used in Bitcoin */
+/**Class implementing secp256k1 used in Bitcoin. */
 public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -123,7 +123,7 @@ public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
     }
 
     /**
-     * Create an instance of Secp256k1
+     * Create an instance of Secp256k1.
      * @return Secp256k1 instance
      */
     @ReactMethod
@@ -175,7 +175,34 @@ public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * Signs message using a given private key
+     * Generates uncompressed public key from compressed public key.
+     * @param pubKey 33 byte private key (starting with 02 or 03)
+     * @return uncompressed public key (65 bytes starting with 04)
+     */
+    @ReactMethod
+    public void computeUncompressedPubKey(ReadableMap currentInstance, String pubKey, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Secp256k1 currentInstanceObj = this.javaObjects.get(sUid);
+
+            byte [] javaParam_0 = hexStringToByteArray(pubKey);
+
+            byte[] javaResult = currentInstanceObj.computeUncompressedPubKey(javaParam_0);
+            WritableNativeMap result = new WritableNativeMap();
+            String finalJavaResult = byteArrayToHexString(javaResult);
+            result.putString("value", finalJavaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Signs message using a given private key.
      * @param privKey 32 bytes private key
      * @param data 32 bytes message to sign
      * @return 32 bytes signed message
@@ -205,7 +232,7 @@ public class RCTCoreSecp256k1 extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * Check if message was signed with given signature and public key
+     * Check if message was signed with given signature and public key.
      * @param data 32 bytes signed message
      * @param signature 32 bytes signature (generated from private key)
      * @param oubkey 32 bytes public key

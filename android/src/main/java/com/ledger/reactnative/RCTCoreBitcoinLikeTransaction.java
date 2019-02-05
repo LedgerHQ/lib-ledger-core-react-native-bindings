@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing a Bitcoin transaction */
+/** Class representing a Bitcoin transaction. */
 public class RCTCoreBitcoinLikeTransaction extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -147,7 +147,7 @@ public class RCTCoreBitcoinLikeTransaction extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Get the input of the transaction */
+    /** Get the input of the transaction. */
     @ReactMethod
     public void getInputs(ReadableMap currentInstance, Promise promise) {
         try
@@ -177,7 +177,7 @@ public class RCTCoreBitcoinLikeTransaction extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Get the output of the transaction */
+    /** Get the output of the transaction. */
     @ReactMethod
     public void getOutputs(ReadableMap currentInstance, Promise promise) {
         try
@@ -279,7 +279,7 @@ public class RCTCoreBitcoinLikeTransaction extends ReactContextBaseJavaModule {
     }
     /**
      * Get the time when the transaction was issued or the time of the block including
-     * this transaction
+     * this transaction.
      */
     @ReactMethod
     public void getTime(ReadableMap currentInstance, Promise promise) {
@@ -327,7 +327,7 @@ public class RCTCoreBitcoinLikeTransaction extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Get Transaction version */
+    /** Get Transaction version. */
     @ReactMethod
     public void getVersion(ReadableMap currentInstance, Promise promise) {
         try

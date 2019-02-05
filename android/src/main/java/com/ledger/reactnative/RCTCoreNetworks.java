@@ -4,6 +4,7 @@
 package com.ledger.reactnative;
 
 import co.ledger.core.BitcoinLikeNetworkParameters;
+import co.ledger.core.EthereumLikeNetworkParameters;
 import co.ledger.core.Networks;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -26,6 +27,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/** All available blockchain networks parameters. */
 public class RCTCoreNetworks extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -98,6 +100,7 @@ public class RCTCoreNetworks extends ReactContextBaseJavaModule {
         promise.resolve(true);
     }
 
+    /** The Bitcoin network parameters. */
     @ReactMethod
     public void bitcoin(Promise promise) {
         try
@@ -109,6 +112,27 @@ public class RCTCoreNetworks extends ReactContextBaseJavaModule {
             rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreBitcoinLikeNetworkParameters");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** The Ethereum network parameters. */
+    @ReactMethod
+    public void ethereum(Promise promise) {
+        try
+        {
+            EthereumLikeNetworkParameters javaResult = Networks.ethereum();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreEthereumLikeNetworkParameters rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreEthereumLikeNetworkParameters.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreEthereumLikeNetworkParameters");
             result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);

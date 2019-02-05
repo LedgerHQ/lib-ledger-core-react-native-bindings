@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/** A bitcoin-like wallet. */
 public class RCTCoreBitcoinLikeWallet extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

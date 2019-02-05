@@ -9,6 +9,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class implementing secp256k1 used in Bitcoin */
+/**Class implementing secp256k1 used in Bitcoin. */
 @interface RCTCoreLGSecp256k1 : RCTCoreBaseModule <RCTBridgeModule>
 @end

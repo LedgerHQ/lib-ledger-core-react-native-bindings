@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/** Class to generate random numbers */
+/** Class to generate random numbers. */
 public class RCTCoreRandomNumberGenerator extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

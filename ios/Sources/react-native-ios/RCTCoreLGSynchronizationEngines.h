@@ -8,6 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**TODO */
+/** Available synchronization mechanisms. */
 @interface RCTCoreLGSynchronizationEngines : RCTCoreBaseModule <RCTBridgeModule>
 @end

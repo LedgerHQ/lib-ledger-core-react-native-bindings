@@ -12,6 +12,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class representing an event */
+/** Class representing an event. */
 @interface RCTCoreLGEvent : RCTCoreBaseModule <RCTBridgeModule>
 @end

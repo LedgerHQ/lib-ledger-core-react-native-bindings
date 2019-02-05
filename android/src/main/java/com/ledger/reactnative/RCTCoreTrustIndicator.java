@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**TODO */
+/** The trust indicator of an operation. */
 public class RCTCoreTrustIndicator extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

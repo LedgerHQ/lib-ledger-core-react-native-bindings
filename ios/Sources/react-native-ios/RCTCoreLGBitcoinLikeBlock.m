@@ -33,8 +33,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Hash of block
- *@return string representing hash of this block
+ * Hash of block.
+ * @return string representing hash of this block
  */
 RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -64,8 +64,8 @@ RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(R
 }
 
 /**
- *Height of block in blockchain
- *@return 64 bits integer, height of block
+ * Height of block in blockchain.
+ * @return 64 bits integer, height of block
  */
 RCT_REMAP_METHOD(getHeight,getHeight:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -95,8 +95,8 @@ RCT_REMAP_METHOD(getHeight,getHeight:(NSDictionary *)currentInstance WithResolve
 }
 
 /**
- *Timestamp when block was mined
- *@return Date object, date when block was appended to blockchain
+ * Timestamp when block was mined.
+ * @return Date object, date when block was appended to blockchain
  */
 RCT_REMAP_METHOD(getTime,getTime:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

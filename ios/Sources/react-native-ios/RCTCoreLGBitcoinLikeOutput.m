@@ -33,8 +33,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Get transaction hash in which output was 'created'
- *@return String, transaction hash containing output
+ * Get transaction hash in which output was 'created'.
+ * @return String, transaction hash containing output
  */
 RCT_REMAP_METHOD(getTransactionHash,getTransactionHash:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -64,8 +64,8 @@ RCT_REMAP_METHOD(getTransactionHash,getTransactionHash:(NSDictionary *)currentIn
 }
 
 /**
- *Get index of output in list of all outputs contained in same transaction
- *@return 32 bits integer, index of output
+ * Get index of output in list of all outputs contained in same transaction.
+ * @return 32 bits integer, index of output
  */
 RCT_REMAP_METHOD(getOutputIndex,getOutputIndex:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -95,8 +95,8 @@ RCT_REMAP_METHOD(getOutputIndex,getOutputIndex:(NSDictionary *)currentInstance W
 }
 
 /**
- *Get amount of output
- *@return Amount object, amount of output
+ * Get amount of output.
+ * @return Amount object, amount of output
  */
 RCT_REMAP_METHOD(getValue,getValue:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -132,8 +132,8 @@ RCT_REMAP_METHOD(getValue,getValue:(NSDictionary *)currentInstance WithResolver:
 }
 
 /**
- *Get script (witness script) cryptographic puzzle that determines the conditions to spend the output
- *@return in Bytes (variable size depending on type of script P2PKH, P2SH), locking script to spend UTXO
+ * Get script (witness script) cryptographic puzzle that determines the conditions to spend the output.
+ * @return in Bytes (variable size depending on type of script P2PKH, P2SH), locking script to spend UTXO
  */
 RCT_REMAP_METHOD(getScript,getScript:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -196,8 +196,8 @@ RCT_REMAP_METHOD(parseScript,parseScript:(NSDictionary *)currentInstance WithRes
 }
 
 /**
- *Get address that spent the output
- *@return Optional String, address that spent
+ * Get address that spent the output.
+ * @return Optional String, address that spent
  */
 RCT_REMAP_METHOD(getAddress,getAddress:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

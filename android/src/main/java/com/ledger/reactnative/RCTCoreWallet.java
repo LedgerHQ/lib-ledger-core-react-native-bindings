@@ -40,7 +40,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing a wallet */
+/** Class representing a wallet. */
 public class RCTCoreWallet extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -114,8 +114,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Get name of wallet
-     *@return string
+     * Get name of wallet.
+     * @return string
      */
     @ReactMethod
     public void getName(ReadableMap currentInstance, Promise promise) {
@@ -137,9 +137,9 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get account with specific index
-     *@param index, 32 bits integer, index of account in wallet
-     *@param callback, Callback returning, if getAccount succeed, an Account object with given index
+     * Get account with specific index.
+     * @param index, 32-bit integer, index of account in wallet
+     * @param callback, Callback returning, if getAccount succeed, an Account object with given index
      */
     @ReactMethod
     public void getAccount(ReadableMap currentInstance, int index, Promise promise) {
@@ -158,8 +158,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get number of accounts instanciated under wallet
-     *@param callback, Callback returning, if getAccountCount succeed, a 32 bits integer representing number of accounts
+     * Get number of accounts instanciated under wallet.
+     * @param callback, Callback returning, if getAccountCount succeed, a 32-bit integer representing number of accounts
      */
     @ReactMethod
     public void getAccountCount(ReadableMap currentInstance, Promise promise) {
@@ -178,10 +178,10 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get list of accounts instanciated under wallet in a given range
-     *@param offset, 32 bits integer from which we retrieve accounts
-     *@param count, 32 bits integer, number of accounts to retrieve
-     *@param callback, ListCallback returning, if getAccounts succeed, list of Accounts object
+     * Get list of accounts instanciated under wallet in a given range.
+     * @param offset, 32-bit integer from which we retrieve accounts
+     * @param count, 32-bit integer, number of accounts to retrieve
+     * @param callback, ListCallback returning, if getAccounts succeed, list of Accounts object
      */
     @ReactMethod
     public void getAccounts(ReadableMap currentInstance, int offset, int count, Promise promise) {
@@ -200,8 +200,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get index of next account to create
-     *@return callback, Callback returning a 32 bits integer
+     * Get index of next account to create.
+     * @return callback, Callback returning a 32-bit integer
      */
     @ReactMethod
     public void getNextAccountIndex(ReadableMap currentInstance, Promise promise) {
@@ -220,8 +220,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Return event bus through which wallet synchronizes it's accounts and interact with blockchain
-     *@return EventBus object
+     * Return event bus through which wallet synchronizes it's accounts and interact with blockchain.
+     * @return EventBus object
      */
     @ReactMethod
     public void getEventBus(ReadableMap currentInstance, Promise promise) {
@@ -248,8 +248,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Return synchronization status wallet, true if at least one of accounts is synchronizing
-     *@return bool
+     * Return synchronization status wallet, true if at least one of accounts is synchronizing.
+     * @return bool
      */
     @ReactMethod
     public void isSynchronizing(ReadableMap currentInstance, Promise promise) {
@@ -271,8 +271,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Start synchronization of all accounts under wallet
-     *@return EventBus object through which wallet get notified of account's synchronization status
+     * Start synchronization of all accounts under wallet.
+     * @return EventBus object through which wallet get notified of account's synchronization status
      */
     @ReactMethod
     public void synchronize(ReadableMap currentInstance, Promise promise) {
@@ -299,8 +299,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get wallet preferences
-     *@return Preferences object
+     * Get wallet preferences.
+     * @return Preferences object
      */
     @ReactMethod
     public void getPreferences(ReadableMap currentInstance, Promise promise) {
@@ -327,8 +327,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Return account's logger which provides all needed (e.g. database) logs
-     *@return Logger Object
+     * Return account's logger which provides all needed (e.g. database) logs.
+     * @return Logger Object
      */
     @ReactMethod
     public void getLogger(ReadableMap currentInstance, Promise promise) {
@@ -355,9 +355,9 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get preferences of specific account
-     *@param index, 32 bits integer, account's index
-     *@return Preferences object
+     * Get preferences of specific account.
+     * @param index, 32-bit integer, account's index
+     * @return Preferences object
      */
     @ReactMethod
     public void getAccountPreferences(ReadableMap currentInstance, int index, Promise promise) {
@@ -384,11 +384,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * asBitcoinLikeWallet(): Callback<BitcoinLikeWallet>;
-     * asEthereumLikeWallet(): Callback<EthereumLikeWallet>;
-     * asRippleLikeWallet(): Callback<RippleLikeWallet>;
-     *Convert wallet to a Bitcoin one
-     *@return BitcoinWallet object
+     * Convert wallet to a Bitcoin one.
+     * @return BitcoinWallet object
      */
     @ReactMethod
     public void asBitcoinLikeWallet(ReadableMap currentInstance, Promise promise) {
@@ -415,8 +412,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get currency of wallet
-     *@return Currency object
+     * Get currency of wallet.
+     * @return Currency object
      */
     @ReactMethod
     public void getCurrency(ReadableMap currentInstance, Promise promise) {
@@ -443,8 +440,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Know if wallet is a Bitcoin one
-     *@return bool
+     * Tell whether wallet is a Bitcoin one.
+     * @return bool
      */
     @ReactMethod
     public void isInstanceOfBitcoinLikeWallet(ReadableMap currentInstance, Promise promise) {
@@ -466,8 +463,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Know if wallet is a Ethereum one
-     *@return bool
+     * Tell whether wallet is a Ethereum one.
+     * @return bool
      */
     @ReactMethod
     public void isInstanceOfEthereumLikeWallet(ReadableMap currentInstance, Promise promise) {
@@ -489,8 +486,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Know if wallet is a Ripple one
-     *@return bool
+     * Tell whether wallet is a Ripple one.
+     * @return bool
      */
     @ReactMethod
     public void isInstanceOfRippleLikeWallet(ReadableMap currentInstance, Promise promise) {
@@ -512,8 +509,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get wallet type
-     *@return WalletType object
+     * Get wallet type.
+     * @return WalletType object
      */
     @ReactMethod
     public void getWalletType(ReadableMap currentInstance, Promise promise) {
@@ -536,8 +533,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get last block of blockchain the wallet operates on
-     *@param callback, Callback returning a Block object
+     * Get last block of blockchain the wallet operates on.
+     * @param callback, Callback returning a Block object
      */
     @ReactMethod
     public void getLastBlock(ReadableMap currentInstance, Promise promise) {
@@ -556,9 +553,9 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Return infos about the creation of specific account
-     *@param accountIndex, 32 bits account, index of account in wallet
-     *@param callback, Callback returning an AccountCreationInfo
+     * Return infos about the creation of specific account.
+     * @param accountIndex, 32-bit account, index of account in wallet
+     * @param callback, Callback returning an AccountCreationInfo
      */
     @ReactMethod
     public void getAccountCreationInfo(ReadableMap currentInstance, int accountIndex, Promise promise) {
@@ -594,8 +591,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Return infos about the next created account
-     *@param callback, Callback returning an AccountCreationInfo
+     * Return infos about the next created account.
+     * @param callback, Callback returning an AccountCreationInfo
      */
     @ReactMethod
     public void getNextAccountCreationInfo(ReadableMap currentInstance, Promise promise) {
@@ -631,9 +628,9 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get account from given account creation infos
-     *@param accountCreationInfo, AccountCreationInfo object
-     *@param callback, Callback returning an Account object with given creation infos
+     * Get account from given account creation infos.
+     * @param accountCreationInfo, AccountCreationInfo object
+     * @param callback, Callback returning an Account object with given creation infos
      */
     @ReactMethod
     public void newAccountWithInfo(ReadableMap currentInstance, ReadableMap accountCreationInfo, Promise promise) {
@@ -673,8 +670,8 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Erase data (in user's DB) relative to wallet since given date
-     *@param date, start date of data deletion
+     * Erase data (in user's DB) relative to wallet since given date.
+     * @param date, start date of data deletion
      */
     @ReactMethod
     public void eraseDataSince(ReadableMap currentInstance, Date date, Promise promise) {

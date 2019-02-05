@@ -33,8 +33,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Get event bus through which publisher broadcast its events
- *@return EventBus object
+ * Get event bus through which publisher broadcast its events.
+ * @return EventBus object
  */
 RCT_REMAP_METHOD(getEventBus,getEventBus:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -70,8 +70,8 @@ RCT_REMAP_METHOD(getEventBus,getEventBus:(NSDictionary *)currentInstance WithRes
 }
 
 /**
- *Broadcast an event through eventbus (to all subscribed receivers to this EventBus)
- *@param event, Event object
+ * Broadcast an event through eventbus (to all subscribed receivers to this EventBus).
+ * @param event, Event object
  */
 RCT_REMAP_METHOD(post,post:(NSDictionary *)currentInstance withParams:(NSDictionary *)event withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -93,9 +93,9 @@ RCT_REMAP_METHOD(post,post:(NSDictionary *)currentInstance withParams:(NSDiction
 }
 
 /**
- *Same as post method but with an sticky event
- *@param event, Event object
- *@param tag, 32 bits integer, tag of sticky event
+ * Same as post method but with an sticky event.
+ * @param event, Event object
+ * @param tag, 32 bits integer, tag of sticky event
  */
 RCT_REMAP_METHOD(postSticky,postSticky:(NSDictionary *)currentInstance withParams:(NSDictionary *)event
                                                                               tag:(int)tag withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -118,8 +118,8 @@ RCT_REMAP_METHOD(postSticky,postSticky:(NSDictionary *)currentInstance withParam
 }
 
 /**
- *Relay an event to another EventBus (other than EventPublisher's event bus)
- *@param bus, EventBus object, through which we want to broadcast EventPublisher's event to EventPublisher's receiver
+ * Relay an event to another EventBus (other than EventPublisher's event bus).
+ * @param bus, EventBus object, through which we want to broadcast EventPublisher's event to EventPublisher's receiver
  */
 RCT_REMAP_METHOD(relay,relay:(NSDictionary *)currentInstance withParams:(NSDictionary *)bus withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -141,8 +141,8 @@ RCT_REMAP_METHOD(relay,relay:(NSDictionary *)currentInstance withParams:(NSDicti
 }
 
 /**
- *Create a new instance of EventPublisher class
- *@param context, executionContext object, context in which event publisher broadcast its events
+ * Create a new instance of EventPublisher class.
+ * @param context, executionContext object, context in which event publisher broadcast its events
  */
 RCT_REMAP_METHOD(newInstance,newInstancewithParams:(NSDictionary *)context withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     RCTCoreLGExecutionContext *rctParam_context = (RCTCoreLGExecutionContext *)[self.bridge moduleForName:@"CoreLGExecutionContext"];

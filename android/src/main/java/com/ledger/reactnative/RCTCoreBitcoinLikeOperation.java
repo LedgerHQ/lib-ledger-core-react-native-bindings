@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing a Bitcoin Operation */
+/** Class representing a Bitcoin Operation. */
 public class RCTCoreBitcoinLikeOperation extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -100,8 +100,8 @@ public class RCTCoreBitcoinLikeOperation extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Get operation's transaction
-     *@return BitcoinLikeTransaction object
+     * Get operation's transaction.
+     * @return BitcoinLikeTransaction object
      */
     @ReactMethod
     public void getTransaction(ReadableMap currentInstance, Promise promise) {

@@ -33,8 +33,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Get amount as a BitInt
- *@return BitInt
+ * Get amount as a BigInt.
+ * @return BigInt
  */
 RCT_REMAP_METHOD(toBigInt,toBigInt:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -70,8 +70,8 @@ RCT_REMAP_METHOD(toBigInt,toBigInt:(NSDictionary *)currentInstance WithResolver:
 }
 
 /**
- *Get currency in which amount was computed
- *@return Currency object
+ * Get currency in which amount was computed.
+ * @return Currency object
  */
 RCT_REMAP_METHOD(getCurrency,getCurrency:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -107,8 +107,8 @@ RCT_REMAP_METHOD(getCurrency,getCurrency:(NSDictionary *)currentInstance WithRes
 }
 
 /**
- *Get currency unit in which amount was computed
- *@return CurrencyUnit object
+ * Get currency unit in which amount was computed.
+ * @return CurrencyUnit object
  */
 RCT_REMAP_METHOD(getUnit,getUnit:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -144,9 +144,9 @@ RCT_REMAP_METHOD(getUnit,getUnit:(NSDictionary *)currentInstance WithResolver:(R
 }
 
 /**
- *Convert amount in another currency unit
- *@param CurrencyUnit object, target currency unit
- *@return Amount object, amount in target currency unit
+ * Convert amount in another currency unit.
+ * @param CurrencyUnit object, target currency unit
+ * @return Amount object, amount in target currency unit
  */
 RCT_REMAP_METHOD(toUnit,toUnit:(NSDictionary *)currentInstance withParams:(NSDictionary *)unit withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -183,7 +183,7 @@ RCT_REMAP_METHOD(toUnit,toUnit:(NSDictionary *)currentInstance withParams:(NSDic
 
 }
 
-/**TODO */
+/** Get an amount that is equal to the given magnitude in the units system. */
 RCT_REMAP_METHOD(toMagnitude,toMagnitude:(NSDictionary *)currentInstance withParams:(int)magnitude withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -218,8 +218,8 @@ RCT_REMAP_METHOD(toMagnitude,toMagnitude:(NSDictionary *)currentInstance withPar
 }
 
 /**
- *Get amount as string
- *@return string
+ * Get amount as string
+ * @return string
  */
 RCT_REMAP_METHOD(toString,toString:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -249,8 +249,8 @@ RCT_REMAP_METHOD(toString,toString:(NSDictionary *)currentInstance WithResolver:
 }
 
 /**
- *Get amount as long
- *@reutrn 64 bits integer
+ * Get amount as long
+ * @return 64 bits integer
  */
 RCT_REMAP_METHOD(toLong,toLong:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -280,8 +280,8 @@ RCT_REMAP_METHOD(toLong,toLong:(NSDictionary *)currentInstance WithResolver:(RCT
 }
 
 /**
- *Get amount as double
- *@return double
+ * Get amount as double
+ * @return double
  */
 RCT_REMAP_METHOD(toDouble,toDouble:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -310,7 +310,7 @@ RCT_REMAP_METHOD(toDouble,toDouble:(NSDictionary *)currentInstance WithResolver:
 
 }
 
-/**TODO */
+/** Format an amount with a locale and some formatting rules. */
 RCT_REMAP_METHOD(format,format:(NSDictionary *)currentInstance withParams:(NSDictionary *)locale
                                                                     rules:(nullable NSDictionary *)rules withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -343,6 +343,7 @@ RCT_REMAP_METHOD(format,format:(NSDictionary *)currentInstance withParams:(NSDic
 
 }
 
+/** Transform an hexadecimal string into an amount (expressed in the given currency). */
 RCT_REMAP_METHOD(fromHex,fromHexwithParams:(NSDictionary *)currency
                                        hex:(nonnull NSString *)hex withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     RCTCoreLGCurrency *rctParam_currency = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
@@ -367,6 +368,7 @@ RCT_REMAP_METHOD(fromHex,fromHexwithParams:(NSDictionary *)currency
 
 }
 
+/** Transform a 64-bit number into an amount (expressed in the given currency). */
 RCT_REMAP_METHOD(fromLong,fromLongwithParams:(NSDictionary *)currency
                                        value:(int)value withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     RCTCoreLGCurrency *rctParam_currency = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];

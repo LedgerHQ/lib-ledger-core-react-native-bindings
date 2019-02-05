@@ -33,9 +33,9 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Set http client to be used for wallet pool build
- *@param client, HttpClient
- *@return WalletPoolBuilder object, instance with wallet pool http client set
+ * Set http client to be used for wallet pool build.
+ * @param client, HttpClient
+ * @return WalletPoolBuilder object, instance with wallet pool http client set
  */
 RCT_REMAP_METHOD(setHttpClient,setHttpClient:(NSDictionary *)currentInstance withParams:(NSDictionary *)client withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -73,9 +73,9 @@ RCT_REMAP_METHOD(setHttpClient,setHttpClient:(NSDictionary *)currentInstance wit
 }
 
 /**
- *Set web socket client, through which wallet pool will listen and get notified (by explorers, DBs...)
- *@param client, WebSocketClient object
- *@reutnr WalletPoolBuilder object, instance with wallet pool web socket client set
+ * Set web socket client, through which wallet pool will listen and get notified (by explorers, DBs...).
+ * @param client, WebSocketClient object
+ * @reutnr WalletPoolBuilder object, instance with wallet pool web socket client set
  */
 RCT_REMAP_METHOD(setWebsocketClient,setWebsocketClient:(NSDictionary *)currentInstance withParams:(NSDictionary *)client withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -113,9 +113,9 @@ RCT_REMAP_METHOD(setWebsocketClient,setWebsocketClient:(NSDictionary *)currentIn
 }
 
 /**
- *Set path resolver that will be used for wallet pool creation to resolve wallet pool's (DB's, logs, preferences ...) paths
- *@param pathResolver, Pathresolver object
- *@param WalletPoolBuilder object, instance with wallet pool path resolver set
+ * Set path resolver that will be used for wallet pool creation to resolve wallet pool's (DB's, logs, preferences ...) paths.
+ * @param pathResolver, Pathresolver object
+ * @param WalletPoolBuilder object, instance with wallet pool path resolver set
  */
 RCT_REMAP_METHOD(setPathResolver,setPathResolver:(NSDictionary *)currentInstance withParams:(NSDictionary *)pathResolver withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -153,9 +153,9 @@ RCT_REMAP_METHOD(setPathResolver,setPathResolver:(NSDictionary *)currentInstance
 }
 
 /**
- *Set log printer that will be used for wallet pool creation to dump wallet pool's logs (for debug purposes)
- *@param printer, LogPrinter object
- *@param WalletPoolBuilder object, instance with wallet pool logger set
+ * Set log printer that will be used for wallet pool creation to dump wallet pool's logs (for debug purposes).
+ * @param printer, LogPrinter object
+ * @param WalletPoolBuilder object, instance with wallet pool logger set
  */
 RCT_REMAP_METHOD(setLogPrinter,setLogPrinter:(NSDictionary *)currentInstance withParams:(NSDictionary *)printer withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -193,9 +193,9 @@ RCT_REMAP_METHOD(setLogPrinter,setLogPrinter:(NSDictionary *)currentInstance wit
 }
 
 /**
- *Set thread dispatcher that will be used for wallet pool creation to dispatch wallet pool's tasks through different threads
- *@param dispatcher, ThreadDispatcher object
- *@param WalletPoolBuilder object, instance with wallet pool thread dispatcher set
+ * Set thread dispatcher that will be used for wallet pool creation to dispatch wallet pool's tasks through different threads.
+ * @param dispatcher, ThreadDispatcher object
+ * @param WalletPoolBuilder object, instance with wallet pool thread dispatcher set
  */
 RCT_REMAP_METHOD(setThreadDispatcher,setThreadDispatcher:(NSDictionary *)currentInstance withParams:(NSDictionary *)dispatcher withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -233,9 +233,9 @@ RCT_REMAP_METHOD(setThreadDispatcher,setThreadDispatcher:(NSDictionary *)current
 }
 
 /**
- *Set name that will be used for wallet pool creation
- *@param name, string
- *@return WalletPoolBuilder object, instance with wallet pool name set
+ * Set name that will be used for wallet pool creation.
+ * @param name, string
+ * @return WalletPoolBuilder object, instance with wallet pool name set
  */
 RCT_REMAP_METHOD(setName,setName:(NSDictionary *)currentInstance withParams:(nonnull NSString *)name withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -271,9 +271,9 @@ RCT_REMAP_METHOD(setName,setName:(NSDictionary *)currentInstance withParams:(non
 }
 
 /**
- *Set password that will be used for wallet pool creation
- *@param password, string
- *@return WalletPoolBuilder object, with wallet pool password set
+ * Set password that will be used for wallet pool creation.
+ * @param password, string
+ * @return WalletPoolBuilder object, with wallet pool password set
  */
 RCT_REMAP_METHOD(setPassword,setPassword:(NSDictionary *)currentInstance withParams:(nonnull NSString *)password withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -309,9 +309,9 @@ RCT_REMAP_METHOD(setPassword,setPassword:(NSDictionary *)currentInstance withPar
 }
 
 /**
- *Set random number generator that will be used for wallet pool creation
- *@param rng, RandomNumberGenerator object
- *@return WalletPoolBuilder object, with wallet pool random number generator set
+ * Set random number generator that will be used for wallet pool creation.
+ * @param rng, RandomNumberGenerator object
+ * @return WalletPoolBuilder object, with wallet pool random number generator set
  */
 RCT_REMAP_METHOD(setRandomNumberGenerator,setRandomNumberGenerator:(NSDictionary *)currentInstance withParams:(NSDictionary *)rng withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -349,9 +349,9 @@ RCT_REMAP_METHOD(setRandomNumberGenerator,setRandomNumberGenerator:(NSDictionary
 }
 
 /**
- *Set database that will be used for wallet pool creation, it will store all wallet pool's data (created wallets, accounts, preferences ...)
- *@param backend, DatabaseBackend object
- *@return WalletPoolBuilder object, with wallet pool database set
+ * Set database that will be used for wallet pool creation, it will store all wallet pool's data (created wallets, accounts, preferences ...).
+ * @param backend, DatabaseBackend object
+ * @return WalletPoolBuilder object, with wallet pool database set
  */
 RCT_REMAP_METHOD(setDatabaseBackend,setDatabaseBackend:(NSDictionary *)currentInstance withParams:(NSDictionary *)backend withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -389,9 +389,9 @@ RCT_REMAP_METHOD(setDatabaseBackend,setDatabaseBackend:(NSDictionary *)currentIn
 }
 
 /**
- *Set configuration that will be used for wallet pool creation
- *@param configuration, DynamicObject object
- *@return WalletPoolBuilder object, with wallet pool configuration set
+ * Set configuration that will be used for wallet pool creation.
+ * @param configuration, DynamicObject object
+ * @return WalletPoolBuilder object, with wallet pool configuration set
  */
 RCT_REMAP_METHOD(setConfiguration,setConfiguration:(NSDictionary *)currentInstance withParams:(NSDictionary *)configuration withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -429,8 +429,8 @@ RCT_REMAP_METHOD(setConfiguration,setConfiguration:(NSDictionary *)currentInstan
 }
 
 /**
- *Create wallet pool
- *@param callback, Callback object returning a WalletPool instance
+ * Create wallet pool.
+ * @param callback, Callback object returning a WalletPool instance
  */
 RCT_REMAP_METHOD(build,build:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -451,8 +451,8 @@ RCT_REMAP_METHOD(build,build:(NSDictionary *)currentInstance WithResolver:(RCTPr
 }
 
 /**
- *Create an instance of the wallet pool builder
- *@return WalletPoolBuilder object
+ * Create an instance of the wallet pool builder.
+ * @return WalletPoolBuilder object
  */
 RCT_REMAP_METHOD(createInstance,createInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGWalletPoolBuilder * objcResult = [LGWalletPoolBuilder createInstance];

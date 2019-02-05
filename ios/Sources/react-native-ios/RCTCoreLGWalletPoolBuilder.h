@@ -27,6 +27,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/**Class representing a wallet pool builder (to instanciate a wallet pool) */
+/** Class representing a wallet pool builder (to instanciate a wallet pool). */
 @interface RCTCoreLGWalletPoolBuilder : RCTCoreBaseModule <RCTBridgeModule>
 @end

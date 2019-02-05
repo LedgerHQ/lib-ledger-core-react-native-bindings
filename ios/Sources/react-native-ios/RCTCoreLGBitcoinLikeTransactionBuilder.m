@@ -89,7 +89,7 @@ RCT_REMAP_METHOD(addInput,addInput:(NSDictionary *)currentInstance withParams:(n
 }
 
 /**
- * Add the given output to the final transaction
+ * Add the given output to the final transaction.
  * @return A reference on the same builder in order to chain calls.
  */
 RCT_REMAP_METHOD(addOutput,addOutput:(NSDictionary *)currentInstance withParams:(NSDictionary *)amount
@@ -208,7 +208,10 @@ RCT_REMAP_METHOD(excludeUtxo,excludeUtxo:(NSDictionary *)currentInstance withPar
 
 }
 
-/** @return A reference on the same builder in order to chain calls. */
+/**
+ * Set the the number of change addresses in the transaction builder.
+ * @return A reference on the same builder in order to chain calls.
+ */
 RCT_REMAP_METHOD(setNumberOfChangeAddresses,setNumberOfChangeAddresses:(NSDictionary *)currentInstance withParams:(int)count withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -536,7 +539,7 @@ RCT_REMAP_METHOD(clone,clone:(NSDictionary *)currentInstance WithResolver:(RCTPr
 
 }
 
-/** Reset the current instance to its initial state */
+/** Reset the current instance to its initial state. */
 RCT_REMAP_METHOD(reset,reset:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -555,7 +558,7 @@ RCT_REMAP_METHOD(reset,reset:(NSDictionary *)currentInstance WithResolver:(RCTPr
 }
 
 /**
- * Parsing unsigned transaction
+ * Parsing unsigned transaction.
  * parsing a tx might change depending on block height we are on (if an update is effective starting from a given hight)
  */
 RCT_REMAP_METHOD(parseRawUnsignedTransaction,parseRawUnsignedTransactionwithParams:(NSDictionary *)currency

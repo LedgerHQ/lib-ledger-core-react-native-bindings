@@ -33,8 +33,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 
 /**
- *Print different encountered errors
- *@param message, string
+ * Print different encountered errors.
+ * @param message, string
  */
 RCT_REMAP_METHOD(printError,printError:(NSDictionary *)currentInstance withParams:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -54,8 +54,8 @@ RCT_REMAP_METHOD(printError,printError:(NSDictionary *)currentInstance withParam
 }
 
 /**
- *Print useful information messages
- *@param message, string
+ * Print useful information messages.
+ * @param message, string
  */
 RCT_REMAP_METHOD(printInfo,printInfo:(NSDictionary *)currentInstance withParams:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -75,8 +75,8 @@ RCT_REMAP_METHOD(printInfo,printInfo:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Print debug messages
- *@param message string
+ * Print debug messages.
+ * @param message string
  */
 RCT_REMAP_METHOD(printDebug,printDebug:(NSDictionary *)currentInstance withParams:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -96,8 +96,8 @@ RCT_REMAP_METHOD(printDebug,printDebug:(NSDictionary *)currentInstance withParam
 }
 
 /**
- *Print warning messages
- *@param message, string
+ * Print warning messages.
+ * @param message, string
  */
 RCT_REMAP_METHOD(printWarning,printWarning:(NSDictionary *)currentInstance withParams:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -117,8 +117,8 @@ RCT_REMAP_METHOD(printWarning,printWarning:(NSDictionary *)currentInstance withP
 }
 
 /**
- *Print messages from APDU comand interpretation loop
- *@param message, string
+ * Print messages from APDU comand interpretation loop.
+ * @param message, string
  */
 RCT_REMAP_METHOD(printApdu,printApdu:(NSDictionary *)currentInstance withParams:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -138,8 +138,8 @@ RCT_REMAP_METHOD(printApdu,printApdu:(NSDictionary *)currentInstance withParams:
 }
 
 /**
- *Print critical errors causing a core dump or error from which recovery is impossible
- *@param message, string
+ * Print critical errors causing a core dump or error from which recovery is impossible.
+ * @param message, string
  */
 RCT_REMAP_METHOD(printCriticalError,printCriticalError:(NSDictionary *)currentInstance withParams:(nonnull NSString *)message withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -159,8 +159,8 @@ RCT_REMAP_METHOD(printCriticalError,printCriticalError:(NSDictionary *)currentIn
 }
 
 /**
- *Get context in which printer is executed (print)
- *@return ExecutionContext object
+ * Get context in which printer is executed (print).
+ * @return ExecutionContext object
  */
 RCT_REMAP_METHOD(getContext,getContext:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

@@ -10,6 +10,7 @@ import co.ledger.core.AmountListCallback;
 import co.ledger.core.BitcoinLikeAccount;
 import co.ledger.core.BlockCallback;
 import co.ledger.core.ErrorCodeCallback;
+import co.ledger.core.EthereumLikeAccount;
 import co.ledger.core.EventBus;
 import co.ledger.core.Logger;
 import co.ledger.core.OperationQuery;
@@ -37,7 +38,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing an account */
+/** Class representing an account. */
 public class RCTCoreAccount extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -111,8 +112,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
     }
 
     /**
-     *Get index of account in user's wallet
-     *32 bits integer
+     * Get index of account in user's wallet
+     * 32-bit integer
      */
     @ReactMethod
     public void getIndex(ReadableMap currentInstance, Promise promise) {
@@ -133,7 +134,7 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /**TODO */
+    /** Get the list of all operations. */
     @ReactMethod
     public void queryOperations(ReadableMap currentInstance, Promise promise) {
         try
@@ -159,8 +160,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get balance of account
-     *@param callback, if getBalacne, Callback returning an Amount object which represents account's balance
+     * Get balance of account.
+     * @param callback, if getBalacne, Callback returning an Amount object which represents account's balance
      */
     @ReactMethod
     public void getBalance(ReadableMap currentInstance, Promise promise) {
@@ -179,11 +180,11 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get balance of account at a precise interval with a certain granularity
-     *@param start, lower bound of search range
-     *@param end, upper bound of search range
-     *@param precision, granularity at which we want results
-     *@param callback, ListCallback returning a list of Amount object which represents account's balance
+     * Get balance of account at a precise interval with a certain granularity.
+     * @param start, lower bound of search range
+     * @param end, upper bound of search range
+     * @param precision, granularity at which we want results
+     * @param callback, ListCallback returning a list of Amount object which represents account's balance
      */
     @ReactMethod
     public void getBalanceHistory(ReadableMap currentInstance, String start, String end, int period, Promise promise) {
@@ -208,8 +209,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get synchronization status of account
-     *@return bool
+     * Get synchronization status of account.
+     * @return bool
      */
     @ReactMethod
     public void isSynchronizing(ReadableMap currentInstance, Promise promise) {
@@ -231,8 +232,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Start synchronization of account
-     *@return EventBus, handler will be notified of synchronization outcome
+     * Start synchronization of account.
+     * @return EventBus, handler will be notified of synchronization outcome
      */
     @ReactMethod
     public void synchronize(ReadableMap currentInstance, Promise promise) {
@@ -259,8 +260,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Return account's preferences
-     *@return Preferences object
+     * Return account's preferences.
+     * @return Preferences object
      */
     @ReactMethod
     public void getPreferences(ReadableMap currentInstance, Promise promise) {
@@ -287,8 +288,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Return account's logger which provides all needed (e.g. database) logs
-     *@return Logger Object
+     * Return account's logger which provides all needed (e.g. database) logs.
+     * @return Logger Object
      */
     @ReactMethod
     public void getLogger(ReadableMap currentInstance, Promise promise) {
@@ -315,11 +316,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Return preferences of specific operation
-     *@param uid, string of operation id
-     *@return Preferences
-     *Return operation for a specific operation
-     *@param uid, string of operation id
+     * Return operation for a specific operation.
+     * @param uid, string of operation id
      */
     @ReactMethod
     public void getOperationPreferences(ReadableMap currentInstance, String uid, Promise promise) {
@@ -345,6 +343,10 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /**
+     * Turn the account into an Bitcoin one, allowing operations to be performerd on the Bitcoin
+     * network.
+     */
     @ReactMethod
     public void asBitcoinLikeAccount(ReadableMap currentInstance, Promise promise) {
         try
@@ -370,10 +372,36 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * asEthereumLikeAccount(): Callback<EthereumLikeAccount>;
-     * asRippleLikeAccount(): Callback<RippleLikeAccount>;
-     *Check if account is a Bitcoin one
-     *@return bool
+     * Turn the account into an Ethereum one, allowing operations to be performerd on the Ethereum
+     * network.
+     */
+    @ReactMethod
+    public void asEthereumLikeAccount(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Account currentInstanceObj = this.javaObjects.get(sUid);
+
+            EthereumLikeAccount javaResult = currentInstanceObj.asEthereumLikeAccount();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreEthereumLikeAccount rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreEthereumLikeAccount.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreEthereumLikeAccount");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Check if account is a Bitcoin one.
+     * @return bool
      */
     @ReactMethod
     public void isInstanceOfBitcoinLikeAccount(ReadableMap currentInstance, Promise promise) {
@@ -395,8 +423,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Check if account is an Ethereum one
-     *@return bool
+     * Check if account is an Ethereum one.
+     * @return bool
      */
     @ReactMethod
     public void isInstanceOfEthereumLikeAccount(ReadableMap currentInstance, Promise promise) {
@@ -418,8 +446,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Check if account is a Ripple one
-     *@return bool
+     * Check if account is a Ripple one.
+     * @return bool
      */
     @ReactMethod
     public void isInstanceOfRippleLikeAccount(ReadableMap currentInstance, Promise promise) {
@@ -458,8 +486,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get type of wallet to which account belongs
-     *@return WalletType object
+     * Get type of wallet to which account belongs.
+     * @return WalletType object
      */
     @ReactMethod
     public void getWalletType(ReadableMap currentInstance, Promise promise) {
@@ -482,8 +510,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get event bus through which account is notified on synchronization status
-     *@return EventBus object
+     * Get event bus through which account is notified on synchronization status.
+     * @return EventBus object
      */
     @ReactMethod
     public void getEventBus(ReadableMap currentInstance, Promise promise) {
@@ -509,7 +537,7 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /**Start observing blockchain on which account synchronizes and send/receive transactions */
+    /** Start observing blockchain on which account synchronizes and send/receive transactions. */
     @ReactMethod
     public void startBlockchainObservation(ReadableMap currentInstance, Promise promise) {
         try
@@ -525,7 +553,7 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /**Stop observing blockchain */
+    /** Stop observing blockchain. */
     @ReactMethod
     public void stopBlockchainObservation(ReadableMap currentInstance, Promise promise) {
         try
@@ -542,8 +570,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get account's observation status
-     *@return boolean
+     * Get account's observation status.
+     * @return boolean
      */
     @ReactMethod
     public void isObservingBlockchain(ReadableMap currentInstance, Promise promise) {
@@ -565,8 +593,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Get Last block of blockchain on which account operates
-     *@param callback, Callback returning, if getLastBlock succeeds, a Block object
+     * Get Last block of blockchain on which account operates.
+     * @param callback, Callback returning, if getLastBlock succeeds, a Block object
      */
     @ReactMethod
     public void getLastBlock(ReadableMap currentInstance, Promise promise) {
@@ -584,7 +612,7 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Get the key used to generate the account */
+    /** Get the key used to generate the account. */
     @ReactMethod
     public void getRestoreKey(ReadableMap currentInstance, Promise promise) {
         try
@@ -605,8 +633,8 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     *Erase data (in user's DB) relative to wallet since given date
-     *@param date, start date of data deletion
+     * Erase data (in user's DB) relative to wallet since given date.
+     * @param date, start date of data deletion
      */
     @ReactMethod
     public void eraseDataSince(ReadableMap currentInstance, Date date, Promise promise) {
