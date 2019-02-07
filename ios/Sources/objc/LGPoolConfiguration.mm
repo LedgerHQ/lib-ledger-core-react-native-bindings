@@ -5,3 +5,5 @@
 
 
 NSString * __nonnull const LGPoolConfigurationDATABASENAME = @"DATABASE_NAME";
+
+NSString * __nonnull const LGPoolConfigurationENABLEINTERNALLOGGING = @"ENABLE_INTERNAL_LOGGING";

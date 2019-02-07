@@ -6,6 +6,7 @@
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
 #import "LGBitcoinLikeNetworkParameters+Private.h"
+#import "LGEthereumLikeNetworkParameters+Private.h"
 #include <exception>
 #include <stdexcept>
 #include <utility>
@@ -34,6 +35,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = ::ledger::core::api::Networks::bitcoin();
         return ::djinni_generated::BitcoinLikeNetworkParameters::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
++ (nonnull LGEthereumLikeNetworkParameters *)ethereum {
+    try {
+        auto objcpp_result_ = ::ledger::core::api::Networks::ethereum();
+        return ::djinni_generated::EthereumLikeNetworkParameters::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

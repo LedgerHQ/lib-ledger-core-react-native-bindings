@@ -14,8 +14,8 @@ enum class BitcoinLikeFeePolicy : int {
     PER_BYTE,
     PER_KBYTE,
 };
-std::string to_string(const BitcoinLikeFeePolicy& bitcoinLikeFeePolicy);
-std::ostream &operator<<(std::ostream &os, const BitcoinLikeFeePolicy &o);
+ std::string to_string(const BitcoinLikeFeePolicy& bitcoinLikeFeePolicy);
+ std::ostream &operator<<(std::ostream &os, const BitcoinLikeFeePolicy &o);
 
 } } }  // namespace ledger::core::api
 

@@ -8,7 +8,7 @@
 
 namespace ledger { namespace core { namespace api {
 
-/**TODO */
+/** Available API to use with explorers. */
 class BlockchainExplorerEngines {
 public:
     virtual ~BlockchainExplorerEngines() {}

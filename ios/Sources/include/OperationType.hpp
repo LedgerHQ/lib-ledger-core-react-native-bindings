@@ -14,8 +14,8 @@ enum class OperationType : int {
     SEND,
     RECEIVE,
 };
-std::string to_string(const OperationType& operationType);
-std::ostream &operator<<(std::ostream &os, const OperationType &o);
+ std::string to_string(const OperationType& operationType);
+ std::ostream &operator<<(std::ostream &os, const OperationType &o);
 
 } } }  // namespace ledger::core::api
 

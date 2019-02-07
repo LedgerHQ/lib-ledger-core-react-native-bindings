@@ -6,6 +6,7 @@
 
 namespace ledger { namespace core { namespace api {
 
+/** An Ethereum-like wallet. */
 class EthereumLikeWallet {
 public:
     virtual ~EthereumLikeWallet() {}

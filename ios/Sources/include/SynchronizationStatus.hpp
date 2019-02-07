@@ -8,7 +8,7 @@
 
 namespace ledger { namespace core { namespace api {
 
-/**Class of synchronization status constants */
+/** Class of synchronization status constants. */
 class SynchronizationStatus {
 public:
     virtual ~SynchronizationStatus() {}

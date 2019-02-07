@@ -9,16 +9,16 @@
 @class LGBitcoinLikeOutput;
 
 
-/**Class representing a Bitcoin transaction */
+/** Class representing a Bitcoin transaction. */
 @interface LGBitcoinLikeTransaction : NSObject
 
 /** Get the hash of the transaction. */
 - (nonnull NSString *)getHash;
 
-/** Get the input of the transaction */
+/** Get the input of the transaction. */
 - (nonnull NSArray<LGBitcoinLikeInput *> *)getInputs;
 
-/** Get the output of the transaction */
+/** Get the output of the transaction. */
 - (nonnull NSArray<LGBitcoinLikeOutput *> *)getOutputs;
 
 /** Get the block in which the transaction is inserted if the transaction is confirmed. */
@@ -32,14 +32,14 @@
 
 /**
  * Get the time when the transaction was issued or the time of the block including
- * this transaction
+ * this transaction.
  */
 - (nonnull NSDate *)getTime;
 
 /** Get the timestamps serialized in the raw transaction if the underlying currency handles it. */
 - (nullable NSNumber *)getTimestamp;
 
-/** Get Transaction version */
+/** Get Transaction version. */
 - (int32_t)getVersion;
 
 /** Serialize the transaction to its raw format. */

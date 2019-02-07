@@ -25,7 +25,7 @@
                                               sequence:(int32_t)sequence;
 
 /**
- * Add the given output to the final transaction
+ * Add the given output to the final transaction.
  * @return A reference on the same builder in order to chain calls.
  */
 - (nullable LGBitcoinLikeTransactionBuilder *)addOutput:(nullable LGAmount *)amount
@@ -47,7 +47,10 @@
 - (nullable LGBitcoinLikeTransactionBuilder *)excludeUtxo:(nonnull NSString *)transactionHash
                                               outputIndex:(int32_t)outputIndex;
 
-/** @return A reference on the same builder in order to chain calls. */
+/**
+ * Set the the number of change addresses in the transaction builder.
+ * @return A reference on the same builder in order to chain calls.
+ */
 - (nullable LGBitcoinLikeTransactionBuilder *)setNumberOfChangeAddresses:(int32_t)count;
 
 /**
@@ -103,11 +106,11 @@
  */
 - (nullable LGBitcoinLikeTransactionBuilder *)clone;
 
-/** Reset the current instance to its initial state */
+/** Reset the current instance to its initial state. */
 - (void)reset;
 
 /**
- * Parsing unsigned transaction
+ * Parsing unsigned transaction.
  * parsing a tx might change depending on block height we are on (if an update is effective starting from a given hight)
  */
 + (nullable LGBitcoinLikeTransaction *)parseRawUnsignedTransaction:(nonnull LGCurrency *)currency

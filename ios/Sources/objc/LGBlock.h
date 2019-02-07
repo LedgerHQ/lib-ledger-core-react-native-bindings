@@ -3,7 +3,7 @@
 
 #import <Foundation/Foundation.h>
 
-/**Structure of a block in the blockchain */
+/** Structure of a block in the blockchain. */
 @interface LGBlock : NSObject
 - (nonnull instancetype)initWithBlockHash:(nonnull NSString *)blockHash
                                       uid:(nonnull NSString *)uid
@@ -16,19 +16,19 @@
                               currencyName:(nonnull NSString *)currencyName
                                     height:(int64_t)height;
 
-/**String, block's hash */
+/** String, block's hash. */
 @property (nonatomic, readonly, nonnull) NSString * blockHash;
 
-/**String, id of block (usually height of block) */
+/** String, id of block (usually height of block). */
 @property (nonatomic, readonly, nonnull) NSString * uid;
 
-/**Date on which block was mined */
+/** Date on which block was mined. */
 @property (nonatomic, readonly, nonnull) NSDate * time;
 
-/**String, currency's name of blockchain the block belongs to */
+/** String, currency's name of blockchain the block belongs to. */
 @property (nonatomic, readonly, nonnull) NSString * currencyName;
 
-/**64 bits integer, height of block in the blockchain */
+/** 64-bit integer, height of block in the blockchain. */
 @property (nonatomic, readonly) int64_t height;
 
 @end

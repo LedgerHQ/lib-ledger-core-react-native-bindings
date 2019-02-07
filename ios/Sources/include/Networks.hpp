@@ -7,12 +7,18 @@
 namespace ledger { namespace core { namespace api {
 
 struct BitcoinLikeNetworkParameters;
+struct EthereumLikeNetworkParameters;
 
+/** All available blockchain networks parameters. */
 class Networks {
 public:
     virtual ~Networks() {}
 
+    /** The Bitcoin network parameters. */
     static BitcoinLikeNetworkParameters bitcoin();
+
+    /** The Ethereum network parameters. */
+    static EthereumLikeNetworkParameters ethereum();
 };
 
 } } }  // namespace ledger::core::api

@@ -6,12 +6,19 @@
 @class LGBitcoinLikeScriptChunk;
 
 
+/** A general purpose script. */
 @interface LGBitcoinLikeScript : NSObject
 
+/**
+ * Get the head of the script. Scripts are organized by chunks, so you get an iterator-like
+ * interface.
+ */
 - (nullable LGBitcoinLikeScriptChunk *)head;
 
+/** Turn the script into a string representation. */
 - (nonnull NSString *)toString;
 
+/** Parse data into a script. */
 + (nullable LGBitcoinLikeScript *)parse:(nonnull NSData *)data;
 
 @end

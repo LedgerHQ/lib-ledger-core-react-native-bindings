@@ -16,8 +16,8 @@ enum class TrustLevel : int {
     UNTRUSTED,
     DROPPED,
 };
-std::string to_string(const TrustLevel& trustLevel);
-std::ostream &operator<<(std::ostream &os, const TrustLevel &o);
+ std::string to_string(const TrustLevel& trustLevel);
+ std::ostream &operator<<(std::ostream &os, const TrustLevel &o);
 
 } } }  // namespace ledger::core::api
 

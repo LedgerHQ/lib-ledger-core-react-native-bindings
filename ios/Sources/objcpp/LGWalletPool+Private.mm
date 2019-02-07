@@ -168,6 +168,12 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (void)freshResetAll:(nullable id<LGErrorCodeCallback>)callback {
+    try {
+        _cppRefHandle.get()->freshResetAll(::djinni_generated::ErrorCodeCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 namespace djinni_generated {
 
 auto WalletPool::toCpp(ObjcType objc) -> CppType

@@ -5,6 +5,7 @@
 
 extern NSString * __nonnull const LGBlockchainObserverEnginesLEDGERAPI;
 
+/** Available API to use with observers. */
 @interface LGBlockchainObserverEngines : NSObject
 
 @end

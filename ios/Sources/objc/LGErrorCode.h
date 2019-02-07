@@ -3,6 +3,7 @@
 
 #import <Foundation/Foundation.h>
 
+/** List of errors that might occur when using the API. */
 typedef NS_ENUM(NSInteger, LGErrorCode)
 {
     /**
@@ -35,6 +36,7 @@ typedef NS_ENUM(NSInteger, LGErrorCode)
     LGErrorCodeCurrencyUnitNotFound,
     /** Others */
     LGErrorCodeInvalidBase58Format,
+    LGErrorCodeInvalidEIP55Format,
     LGErrorCodeInvalidChecksum,
     LGErrorCodeInvalidVersion,
     /** DeterministicPublicKey */
@@ -78,6 +80,8 @@ typedef NS_ENUM(NSInteger, LGErrorCode)
     LGErrorCodeUnknownBlockchainExplorerEngine,
     LGErrorCodeUnknownBlockchainObserverEngine,
     LGErrorCodeUnknownSynchronizationEngine,
+    /** Database error */
+    LGErrorCodeDatabaseException,
     /** Wallet transaction */
     LGErrorCodeNotEnoughFunds,
     /** Bad cast */

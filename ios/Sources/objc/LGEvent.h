@@ -7,38 +7,38 @@
 @class LGEvent;
 
 
-/**Class representing an event */
+/** Class representing an event. */
 @interface LGEvent : NSObject
 
 /**
- *Get event code (for more details, please refer to EventCode enum)
- *@return EventCode enum entry
+ * Get event code (for more details, please refer to EventCode enum).
+ * @return EventCode enum entry
  */
 - (LGEventCode)getCode;
 
 /**
- *Get payload of event
- *@return DynamicObject object
+ * Get payload of event.
+ * @return DynamicObject object
  */
 - (nullable LGDynamicObject *)getPayload;
 
 /**
- *Know if event is sticky one
- *@return bool
+ * Tell whether the event is a sticky one.
+ * @return bool
  */
 - (BOOL)isSticky;
 
 /**
- *If event is sticky, return sticky tag
- *@return 32 bits integer
+ * If event is sticky, return sticky tag.
+ * @return 32 bits integer
  */
 - (int32_t)getStickyTag;
 
 /**
- *Create a new instance of Event class
- *@param code, EventCode enum entry
- *@param payload, DynamicObject object
- *@return Event instance
+ * Create a new instance of Event class.
+ * @param code, EventCode enum entry
+ * @param payload, DynamicObject object
+ * @return Event instance
  */
 + (nullable LGEvent *)newInstance:(LGEventCode)code
                           payload:(nullable LGDynamicObject *)payload;

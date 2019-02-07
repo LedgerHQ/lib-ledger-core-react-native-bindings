@@ -3,7 +3,7 @@
 
 #import <Foundation/Foundation.h>
 
-/**Structure of informations needed for account creation */
+/** Structure of informations needed for account creation. */
 @interface LGAccountCreationInfo : NSObject
 - (nonnull instancetype)initWithIndex:(int32_t)index
                                owners:(nonnull NSArray<NSString *> *)owners
@@ -16,16 +16,16 @@
                                           publicKeys:(nonnull NSArray<NSData *> *)publicKeys
                                           chainCodes:(nonnull NSArray<NSData *> *)chainCodes;
 
-/**32 bits integer, index of account in user's wallet */
+/** 32-bit integer, index of account in user's wallet. */
 @property (nonatomic, readonly) int32_t index;
 
-/**List of string, account's owners */
+/** List of string, account's owners. */
 @property (nonatomic, readonly, nonnull) NSArray<NSString *> * owners;
 
-/**List of string, list of account's derivations */
+/** List of string, list of account's derivations. */
 @property (nonatomic, readonly, nonnull) NSArray<NSString *> * derivations;
 
-/**List of 32 bytes, list of public keys owning the account */
+/** List of 32 bytes, list of public keys owning the account. */
 @property (nonatomic, readonly, nonnull) NSArray<NSData *> * publicKeys;
 
 /**TODO */

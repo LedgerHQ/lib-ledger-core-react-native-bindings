@@ -3,7 +3,7 @@
 
 #import <Foundation/Foundation.h>
 
-/**Enumeration of available http methods */
+/** Enumeration of available http methods. */
 typedef NS_ENUM(NSInteger, LGHttpMethod)
 {
     LGHttpMethodGET,

@@ -5,11 +5,11 @@
 @class LGSecp256k1;
 
 
-/**Class implementing secp256k1 used in Bitcoin */
+/**Class implementing secp256k1 used in Bitcoin. */
 @interface LGSecp256k1 : NSObject
 
 /**
- * Create an instance of Secp256k1
+ * Create an instance of Secp256k1.
  * @return Secp256k1 instance
  */
 + (nullable LGSecp256k1 *)createInstance;
@@ -24,7 +24,14 @@
                          compress:(BOOL)compress;
 
 /**
- * Signs message using a given private key
+ * Generates uncompressed public key from compressed public key.
+ * @param pubKey 33 byte private key (starting with 02 or 03)
+ * @return uncompressed public key (65 bytes starting with 04)
+ */
+- (nonnull NSData *)computeUncompressedPubKey:(nonnull NSData *)pubKey;
+
+/**
+ * Signs message using a given private key.
  * @param privKey 32 bytes private key
  * @param data 32 bytes message to sign
  * @return 32 bytes signed message
@@ -33,7 +40,7 @@
                     data:(nonnull NSData *)data;
 
 /**
- * Check if message was signed with given signature and public key
+ * Check if message was signed with given signature and public key.
  * @param data 32 bytes signed message
  * @param signature 32 bytes signature (generated from private key)
  * @param oubkey 32 bytes public key

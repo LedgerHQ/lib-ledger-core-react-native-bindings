@@ -139,6 +139,37 @@
 		B9D85870214805F20007703A /* LGBinaryCallbackImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D8584C214805F20007703A /* LGBinaryCallbackImpl.m */; };
 		B9D85871214805F20007703A /* LGRandomNumberGeneratorImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D8584E214805F20007703A /* LGRandomNumberGeneratorImpl.m */; };
 		B9D85872214805F20007703A /* LGWalletCallbackImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D85850214805F20007703A /* LGWalletCallbackImpl.m */; };
+		E57413AD220B13AE0015005C /* RCTCoreLGEthereumLikeTransactionCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = E5741383220B13A90015005C /* RCTCoreLGEthereumLikeTransactionCallback.m */; };
+		E57413AE220B13AE0015005C /* RCTCoreLGDatabaseConnectionPool.m in Sources */ = {isa = PBXBuildFile; fileRef = E5741384220B13AA0015005C /* RCTCoreLGDatabaseConnectionPool.m */; };
+		E57413B7220B13AE0015005C /* RCTCoreLGERC20LikeAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E5741396220B13AC0015005C /* RCTCoreLGERC20LikeAccount.m */; };
+		E57413B8220B13AE0015005C /* RCTCoreLGERC20LikeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5741397220B13AC0015005C /* RCTCoreLGERC20LikeOperation.m */; };
+		E57413BA220B13AE0015005C /* RCTCoreLGEthereumLikeBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E574139B220B13AC0015005C /* RCTCoreLGEthereumLikeBlock.m */; };
+		E57413C1220B13AE0015005C /* RCTCoreLGEthereumLikeExtendedPublicKey.m in Sources */ = {isa = PBXBuildFile; fileRef = E57413AB220B13AE0015005C /* RCTCoreLGEthereumLikeExtendedPublicKey.m */; };
+		E57CFC2F220B2ED100E15511 /* LGDatabaseConnectionPoolImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFC2E220B2ED100E15511 /* LGDatabaseConnectionPoolImpl.m */; };
+		E57CFC35220B38FC00E15511 /* LGDatabaseConnectionImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFC34220B38FC00E15511 /* LGDatabaseConnectionImpl.m */; };
+		E57CFC3B220B3EC000E15511 /* LGDatabaseBlobImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFC3A220B3EC000E15511 /* LGDatabaseBlobImpl.m */; };
+		E57CFC40220C36D600E15511 /* LGDatabaseStatementImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFC3F220C36D600E15511 /* LGDatabaseStatementImpl.m */; };
+		E57CFC45220C3B1600E15511 /* LGDatabaseColumnImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFC44220C3B1600E15511 /* LGDatabaseColumnImpl.m */; };
+		E57CFC4B220C40E800E15511 /* LGDatabaseResultSetImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFC4A220C40E800E15511 /* LGDatabaseResultSetImpl.m */; };
+		E57CFC4E220C41AD00E15511 /* LGDatabaseResultRowImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFC4D220C41AD00E15511 /* LGDatabaseResultRowImpl.m */; };
+		E57CFC51220C440200E15511 /* LGDatabaseErrorImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFC50220C440200E15511 /* LGDatabaseErrorImpl.m */; };
+		E57CFC76220C763900E15511 /* LGDatabaseEngineImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFC75220C763900E15511 /* LGDatabaseEngineImpl.m */; };
+		E57CFC79220C76C200E15511 /* LGEthereumLikeTransactionCallbackImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFC78220C76C200E15511 /* LGEthereumLikeTransactionCallbackImpl.m */; };
+		E57CFD05220C7F5400E15511 /* RCTCoreLGEthereumLikeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCE1220C7F5100E15511 /* RCTCoreLGEthereumLikeOperation.m */; };
+		E57CFD06220C7F5400E15511 /* RCTCoreLGEthereumLikeNetworkParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCE2220C7F5100E15511 /* RCTCoreLGEthereumLikeNetworkParameters.m */; };
+		E57CFD07220C7F5400E15511 /* RCTCoreLGDatabaseResultRow.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCE4220C7F5100E15511 /* RCTCoreLGDatabaseResultRow.m */; };
+		E57CFD08220C7F5400E15511 /* RCTCoreLGDatabaseResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCE6220C7F5200E15511 /* RCTCoreLGDatabaseResultSet.m */; };
+		E57CFD09220C7F5400E15511 /* RCTCoreLGEthereumLikeTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCEA220C7F5200E15511 /* RCTCoreLGEthereumLikeTransaction.m */; };
+		E57CFD0A220C7F5400E15511 /* RCTCoreLGDatabaseEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCEB220C7F5200E15511 /* RCTCoreLGDatabaseEngine.m */; };
+		E57CFD0B220C7F5400E15511 /* RCTCoreLGDatabaseColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCEC220C7F5200E15511 /* RCTCoreLGDatabaseColumn.m */; };
+		E57CFD0C220C7F5400E15511 /* RCTCoreLGEthereumLikeTransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCED220C7F5200E15511 /* RCTCoreLGEthereumLikeTransactionBuilder.m */; };
+		E57CFD0D220C7F5400E15511 /* RCTCoreLGDatabaseStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCEE220C7F5200E15511 /* RCTCoreLGDatabaseStatement.m */; };
+		E57CFD0E220C7F5400E15511 /* RCTCoreLGDatabaseError.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCF2220C7F5200E15511 /* RCTCoreLGDatabaseError.m */; };
+		E57CFD0F220C7F5400E15511 /* RCTCoreLGERC20Token.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCF5220C7F5300E15511 /* RCTCoreLGERC20Token.m */; };
+		E57CFD10220C7F5400E15511 /* RCTCoreLGEthereumLikeAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCF6220C7F5300E15511 /* RCTCoreLGEthereumLikeAddress.m */; };
+		E57CFD11220C7F5400E15511 /* RCTCoreLGDatabaseConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCF9220C7F5300E15511 /* RCTCoreLGDatabaseConnection.m */; };
+		E57CFD12220C7F5400E15511 /* RCTCoreLGDatabaseBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFCFB220C7F5300E15511 /* RCTCoreLGDatabaseBlob.m */; };
+		E57CFD13220C7F5400E15511 /* RCTCoreLGEthereumLikeAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CFD00220C7F5300E15511 /* RCTCoreLGEthereumLikeAccount.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -555,6 +586,68 @@
 		B9D8584F214805F20007703A /* LGHttpUrlConnectionImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGHttpUrlConnectionImpl.h; path = "Sources/objc-impl/LGHttpUrlConnectionImpl.h"; sourceTree = "<group>"; };
 		B9D85850214805F20007703A /* LGWalletCallbackImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LGWalletCallbackImpl.m; path = "Sources/objc-impl/LGWalletCallbackImpl.m"; sourceTree = "<group>"; };
 		B9D85851214805F20007703A /* LGAddressListCallbackImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGAddressListCallbackImpl.h; path = "Sources/objc-impl/LGAddressListCallbackImpl.h"; sourceTree = "<group>"; };
+		E5741383220B13A90015005C /* RCTCoreLGEthereumLikeTransactionCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGEthereumLikeTransactionCallback.m; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeTransactionCallback.m"; sourceTree = "<group>"; };
+		E5741384220B13AA0015005C /* RCTCoreLGDatabaseConnectionPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGDatabaseConnectionPool.m; path = "Sources/react-native-ios/RCTCoreLGDatabaseConnectionPool.m"; sourceTree = "<group>"; };
+		E5741396220B13AC0015005C /* RCTCoreLGERC20LikeAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGERC20LikeAccount.m; path = "Sources/react-native-ios/RCTCoreLGERC20LikeAccount.m"; sourceTree = "<group>"; };
+		E5741397220B13AC0015005C /* RCTCoreLGERC20LikeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGERC20LikeOperation.m; path = "Sources/react-native-ios/RCTCoreLGERC20LikeOperation.m"; sourceTree = "<group>"; };
+		E574139B220B13AC0015005C /* RCTCoreLGEthereumLikeBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGEthereumLikeBlock.m; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeBlock.m"; sourceTree = "<group>"; };
+		E57413AB220B13AE0015005C /* RCTCoreLGEthereumLikeExtendedPublicKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGEthereumLikeExtendedPublicKey.m; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeExtendedPublicKey.m"; sourceTree = "<group>"; };
+		E57CFC2D220B2ED100E15511 /* LGDatabaseConnectionPoolImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGDatabaseConnectionPoolImpl.h; path = "Sources/objc-impl/LGDatabaseConnectionPoolImpl.h"; sourceTree = "<group>"; };
+		E57CFC2E220B2ED100E15511 /* LGDatabaseConnectionPoolImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGDatabaseConnectionPoolImpl.m; path = "Sources/objc-impl/LGDatabaseConnectionPoolImpl.m"; sourceTree = "<group>"; };
+		E57CFC33220B38FC00E15511 /* LGDatabaseConnectionImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGDatabaseConnectionImpl.h; path = "Sources/objc-impl/LGDatabaseConnectionImpl.h"; sourceTree = "<group>"; };
+		E57CFC34220B38FC00E15511 /* LGDatabaseConnectionImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGDatabaseConnectionImpl.m; path = "Sources/objc-impl/LGDatabaseConnectionImpl.m"; sourceTree = "<group>"; };
+		E57CFC39220B3EC000E15511 /* LGDatabaseBlobImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGDatabaseBlobImpl.h; path = "Sources/objc-impl/LGDatabaseBlobImpl.h"; sourceTree = "<group>"; };
+		E57CFC3A220B3EC000E15511 /* LGDatabaseBlobImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGDatabaseBlobImpl.m; path = "Sources/objc-impl/LGDatabaseBlobImpl.m"; sourceTree = "<group>"; };
+		E57CFC3E220C36D600E15511 /* LGDatabaseStatementImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGDatabaseStatementImpl.h; path = "Sources/objc-impl/LGDatabaseStatementImpl.h"; sourceTree = "<group>"; };
+		E57CFC3F220C36D600E15511 /* LGDatabaseStatementImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGDatabaseStatementImpl.m; path = "Sources/objc-impl/LGDatabaseStatementImpl.m"; sourceTree = "<group>"; };
+		E57CFC43220C3B1600E15511 /* LGDatabaseColumnImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGDatabaseColumnImpl.h; path = "Sources/objc-impl/LGDatabaseColumnImpl.h"; sourceTree = "<group>"; };
+		E57CFC44220C3B1600E15511 /* LGDatabaseColumnImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGDatabaseColumnImpl.m; path = "Sources/objc-impl/LGDatabaseColumnImpl.m"; sourceTree = "<group>"; };
+		E57CFC49220C40E800E15511 /* LGDatabaseResultSetImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGDatabaseResultSetImpl.h; path = "Sources/objc-impl/LGDatabaseResultSetImpl.h"; sourceTree = "<group>"; };
+		E57CFC4A220C40E800E15511 /* LGDatabaseResultSetImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGDatabaseResultSetImpl.m; path = "Sources/objc-impl/LGDatabaseResultSetImpl.m"; sourceTree = "<group>"; };
+		E57CFC4C220C41AD00E15511 /* LGDatabaseResultRowImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGDatabaseResultRowImpl.h; path = "Sources/objc-impl/LGDatabaseResultRowImpl.h"; sourceTree = "<group>"; };
+		E57CFC4D220C41AD00E15511 /* LGDatabaseResultRowImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGDatabaseResultRowImpl.m; path = "Sources/objc-impl/LGDatabaseResultRowImpl.m"; sourceTree = "<group>"; };
+		E57CFC4F220C440200E15511 /* LGDatabaseErrorImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGDatabaseErrorImpl.h; path = "Sources/objc-impl/LGDatabaseErrorImpl.h"; sourceTree = "<group>"; };
+		E57CFC50220C440200E15511 /* LGDatabaseErrorImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGDatabaseErrorImpl.m; path = "Sources/objc-impl/LGDatabaseErrorImpl.m"; sourceTree = "<group>"; };
+		E57CFC74220C763900E15511 /* LGDatabaseEngineImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGDatabaseEngineImpl.h; path = "Sources/objc-impl/LGDatabaseEngineImpl.h"; sourceTree = "<group>"; };
+		E57CFC75220C763900E15511 /* LGDatabaseEngineImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGDatabaseEngineImpl.m; path = "Sources/objc-impl/LGDatabaseEngineImpl.m"; sourceTree = "<group>"; };
+		E57CFC77220C76C200E15511 /* LGEthereumLikeTransactionCallbackImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGEthereumLikeTransactionCallbackImpl.h; path = "Sources/objc-impl/LGEthereumLikeTransactionCallbackImpl.h"; sourceTree = "<group>"; };
+		E57CFC78220C76C200E15511 /* LGEthereumLikeTransactionCallbackImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGEthereumLikeTransactionCallbackImpl.m; path = "Sources/objc-impl/LGEthereumLikeTransactionCallbackImpl.m"; sourceTree = "<group>"; };
+		E57CFCE1220C7F5100E15511 /* RCTCoreLGEthereumLikeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGEthereumLikeOperation.m; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeOperation.m"; sourceTree = "<group>"; };
+		E57CFCE2220C7F5100E15511 /* RCTCoreLGEthereumLikeNetworkParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGEthereumLikeNetworkParameters.m; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeNetworkParameters.m"; sourceTree = "<group>"; };
+		E57CFCE3220C7F5100E15511 /* RCTCoreLGERC20Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGERC20Token.h; path = "Sources/react-native-ios/RCTCoreLGERC20Token.h"; sourceTree = "<group>"; };
+		E57CFCE4220C7F5100E15511 /* RCTCoreLGDatabaseResultRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGDatabaseResultRow.m; path = "Sources/react-native-ios/RCTCoreLGDatabaseResultRow.m"; sourceTree = "<group>"; };
+		E57CFCE5220C7F5100E15511 /* RCTCoreLGDatabaseBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGDatabaseBlob.h; path = "Sources/react-native-ios/RCTCoreLGDatabaseBlob.h"; sourceTree = "<group>"; };
+		E57CFCE6220C7F5200E15511 /* RCTCoreLGDatabaseResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGDatabaseResultSet.m; path = "Sources/react-native-ios/RCTCoreLGDatabaseResultSet.m"; sourceTree = "<group>"; };
+		E57CFCE7220C7F5200E15511 /* RCTCoreLGDatabaseEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGDatabaseEngine.h; path = "Sources/react-native-ios/RCTCoreLGDatabaseEngine.h"; sourceTree = "<group>"; };
+		E57CFCE8220C7F5200E15511 /* RCTCoreLGEthereumLikeExtendedPublicKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGEthereumLikeExtendedPublicKey.h; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeExtendedPublicKey.h"; sourceTree = "<group>"; };
+		E57CFCE9220C7F5200E15511 /* RCTCoreLGDatabaseConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGDatabaseConnection.h; path = "Sources/react-native-ios/RCTCoreLGDatabaseConnection.h"; sourceTree = "<group>"; };
+		E57CFCEA220C7F5200E15511 /* RCTCoreLGEthereumLikeTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGEthereumLikeTransaction.m; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeTransaction.m"; sourceTree = "<group>"; };
+		E57CFCEB220C7F5200E15511 /* RCTCoreLGDatabaseEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGDatabaseEngine.m; path = "Sources/react-native-ios/RCTCoreLGDatabaseEngine.m"; sourceTree = "<group>"; };
+		E57CFCEC220C7F5200E15511 /* RCTCoreLGDatabaseColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGDatabaseColumn.m; path = "Sources/react-native-ios/RCTCoreLGDatabaseColumn.m"; sourceTree = "<group>"; };
+		E57CFCED220C7F5200E15511 /* RCTCoreLGEthereumLikeTransactionBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGEthereumLikeTransactionBuilder.m; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeTransactionBuilder.m"; sourceTree = "<group>"; };
+		E57CFCEE220C7F5200E15511 /* RCTCoreLGDatabaseStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGDatabaseStatement.m; path = "Sources/react-native-ios/RCTCoreLGDatabaseStatement.m"; sourceTree = "<group>"; };
+		E57CFCEF220C7F5200E15511 /* RCTCoreLGEthereumLikeNetworkParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGEthereumLikeNetworkParameters.h; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeNetworkParameters.h"; sourceTree = "<group>"; };
+		E57CFCF0220C7F5200E15511 /* RCTCoreLGDatabaseResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGDatabaseResultSet.h; path = "Sources/react-native-ios/RCTCoreLGDatabaseResultSet.h"; sourceTree = "<group>"; };
+		E57CFCF1220C7F5200E15511 /* RCTCoreLGEthereumLikeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGEthereumLikeOperation.h; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeOperation.h"; sourceTree = "<group>"; };
+		E57CFCF2220C7F5200E15511 /* RCTCoreLGDatabaseError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGDatabaseError.m; path = "Sources/react-native-ios/RCTCoreLGDatabaseError.m"; sourceTree = "<group>"; };
+		E57CFCF3220C7F5200E15511 /* RCTCoreLGDatabaseConnectionPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGDatabaseConnectionPool.h; path = "Sources/react-native-ios/RCTCoreLGDatabaseConnectionPool.h"; sourceTree = "<group>"; };
+		E57CFCF4220C7F5300E15511 /* RCTCoreLGDatabaseStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGDatabaseStatement.h; path = "Sources/react-native-ios/RCTCoreLGDatabaseStatement.h"; sourceTree = "<group>"; };
+		E57CFCF5220C7F5300E15511 /* RCTCoreLGERC20Token.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGERC20Token.m; path = "Sources/react-native-ios/RCTCoreLGERC20Token.m"; sourceTree = "<group>"; };
+		E57CFCF6220C7F5300E15511 /* RCTCoreLGEthereumLikeAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGEthereumLikeAddress.m; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeAddress.m"; sourceTree = "<group>"; };
+		E57CFCF7220C7F5300E15511 /* RCTCoreLGDatabaseError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGDatabaseError.h; path = "Sources/react-native-ios/RCTCoreLGDatabaseError.h"; sourceTree = "<group>"; };
+		E57CFCF8220C7F5300E15511 /* RCTCoreLGERC20LikeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGERC20LikeOperation.h; path = "Sources/react-native-ios/RCTCoreLGERC20LikeOperation.h"; sourceTree = "<group>"; };
+		E57CFCF9220C7F5300E15511 /* RCTCoreLGDatabaseConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGDatabaseConnection.m; path = "Sources/react-native-ios/RCTCoreLGDatabaseConnection.m"; sourceTree = "<group>"; };
+		E57CFCFA220C7F5300E15511 /* RCTCoreLGEthereumLikeTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGEthereumLikeTransaction.h; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeTransaction.h"; sourceTree = "<group>"; };
+		E57CFCFB220C7F5300E15511 /* RCTCoreLGDatabaseBlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGDatabaseBlob.m; path = "Sources/react-native-ios/RCTCoreLGDatabaseBlob.m"; sourceTree = "<group>"; };
+		E57CFCFC220C7F5300E15511 /* RCTCoreLGEthereumLikeBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGEthereumLikeBlock.h; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeBlock.h"; sourceTree = "<group>"; };
+		E57CFCFD220C7F5300E15511 /* RCTCoreLGEthereumLikeTransactionCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGEthereumLikeTransactionCallback.h; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeTransactionCallback.h"; sourceTree = "<group>"; };
+		E57CFCFE220C7F5300E15511 /* RCTCoreLGERC20LikeAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGERC20LikeAccount.h; path = "Sources/react-native-ios/RCTCoreLGERC20LikeAccount.h"; sourceTree = "<group>"; };
+		E57CFCFF220C7F5300E15511 /* RCTCoreLGEthereumLikeAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGEthereumLikeAccount.h; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeAccount.h"; sourceTree = "<group>"; };
+		E57CFD00220C7F5300E15511 /* RCTCoreLGEthereumLikeAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGEthereumLikeAccount.m; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeAccount.m"; sourceTree = "<group>"; };
+		E57CFD01220C7F5300E15511 /* RCTCoreLGEthereumLikeTransactionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGEthereumLikeTransactionBuilder.h; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeTransactionBuilder.h"; sourceTree = "<group>"; };
+		E57CFD02220C7F5400E15511 /* RCTCoreLGEthereumLikeAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGEthereumLikeAddress.h; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeAddress.h"; sourceTree = "<group>"; };
+		E57CFD03220C7F5400E15511 /* RCTCoreLGDatabaseColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGDatabaseColumn.h; path = "Sources/react-native-ios/RCTCoreLGDatabaseColumn.h"; sourceTree = "<group>"; };
+		E57CFD04220C7F5400E15511 /* RCTCoreLGDatabaseResultRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGDatabaseResultRow.h; path = "Sources/react-native-ios/RCTCoreLGDatabaseResultRow.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -584,6 +677,7 @@
 				8FA6ED9321232945008DE63D /* Libraries */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				8FE62F5C212329BD006089C1 /* Frameworks */,
+				E57CFC6D220C6F6E00E15511 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -630,6 +724,42 @@
 		8FA6ED9A21232967008DE63D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E57CFCE5220C7F5100E15511 /* RCTCoreLGDatabaseBlob.h */,
+				E57CFCFB220C7F5300E15511 /* RCTCoreLGDatabaseBlob.m */,
+				E57CFD03220C7F5400E15511 /* RCTCoreLGDatabaseColumn.h */,
+				E57CFCEC220C7F5200E15511 /* RCTCoreLGDatabaseColumn.m */,
+				E57CFCE9220C7F5200E15511 /* RCTCoreLGDatabaseConnection.h */,
+				E57CFCF9220C7F5300E15511 /* RCTCoreLGDatabaseConnection.m */,
+				E57CFCF3220C7F5200E15511 /* RCTCoreLGDatabaseConnectionPool.h */,
+				E57CFCE7220C7F5200E15511 /* RCTCoreLGDatabaseEngine.h */,
+				E57CFCEB220C7F5200E15511 /* RCTCoreLGDatabaseEngine.m */,
+				E57CFCF7220C7F5300E15511 /* RCTCoreLGDatabaseError.h */,
+				E57CFCF2220C7F5200E15511 /* RCTCoreLGDatabaseError.m */,
+				E57CFD04220C7F5400E15511 /* RCTCoreLGDatabaseResultRow.h */,
+				E57CFCE4220C7F5100E15511 /* RCTCoreLGDatabaseResultRow.m */,
+				E57CFCF0220C7F5200E15511 /* RCTCoreLGDatabaseResultSet.h */,
+				E57CFCE6220C7F5200E15511 /* RCTCoreLGDatabaseResultSet.m */,
+				E57CFCF4220C7F5300E15511 /* RCTCoreLGDatabaseStatement.h */,
+				E57CFCEE220C7F5200E15511 /* RCTCoreLGDatabaseStatement.m */,
+				E57CFCFE220C7F5300E15511 /* RCTCoreLGERC20LikeAccount.h */,
+				E57CFCF8220C7F5300E15511 /* RCTCoreLGERC20LikeOperation.h */,
+				E57CFCE3220C7F5100E15511 /* RCTCoreLGERC20Token.h */,
+				E57CFCF5220C7F5300E15511 /* RCTCoreLGERC20Token.m */,
+				E57CFCFF220C7F5300E15511 /* RCTCoreLGEthereumLikeAccount.h */,
+				E57CFD00220C7F5300E15511 /* RCTCoreLGEthereumLikeAccount.m */,
+				E57CFD02220C7F5400E15511 /* RCTCoreLGEthereumLikeAddress.h */,
+				E57CFCF6220C7F5300E15511 /* RCTCoreLGEthereumLikeAddress.m */,
+				E57CFCFC220C7F5300E15511 /* RCTCoreLGEthereumLikeBlock.h */,
+				E57CFCE8220C7F5200E15511 /* RCTCoreLGEthereumLikeExtendedPublicKey.h */,
+				E57CFCEF220C7F5200E15511 /* RCTCoreLGEthereumLikeNetworkParameters.h */,
+				E57CFCE2220C7F5100E15511 /* RCTCoreLGEthereumLikeNetworkParameters.m */,
+				E57CFCF1220C7F5200E15511 /* RCTCoreLGEthereumLikeOperation.h */,
+				E57CFCE1220C7F5100E15511 /* RCTCoreLGEthereumLikeOperation.m */,
+				E57CFCFA220C7F5300E15511 /* RCTCoreLGEthereumLikeTransaction.h */,
+				E57CFCEA220C7F5200E15511 /* RCTCoreLGEthereumLikeTransaction.m */,
+				E57CFD01220C7F5300E15511 /* RCTCoreLGEthereumLikeTransactionBuilder.h */,
+				E57CFCED220C7F5200E15511 /* RCTCoreLGEthereumLikeTransactionBuilder.m */,
+				E57CFCFD220C7F5300E15511 /* RCTCoreLGEthereumLikeTransactionCallback.h */,
 				B93A3E5821B7CDAF00247CA8 /* RCTCoreBaseModule.h */,
 				B93A3E5921B7CDAF00247CA8 /* RCTCoreBaseModule.m */,
 				B9D857AD214805D80007703A /* RCTCoreLGAccount.h */,
@@ -907,8 +1037,41 @@
 				B9D8582D214805ED0007703A /* LGWalletPoolCallbackImpl.m */,
 				B9D8582C214805ED0007703A /* LGWebSocketClientImpl.h */,
 				B9D8581A214805EB0007703A /* LGWebSocketClientImpl.m */,
+				E57CFC2D220B2ED100E15511 /* LGDatabaseConnectionPoolImpl.h */,
+				E57CFC2E220B2ED100E15511 /* LGDatabaseConnectionPoolImpl.m */,
+				E57CFC33220B38FC00E15511 /* LGDatabaseConnectionImpl.h */,
+				E57CFC34220B38FC00E15511 /* LGDatabaseConnectionImpl.m */,
+				E57CFC39220B3EC000E15511 /* LGDatabaseBlobImpl.h */,
+				E57CFC3A220B3EC000E15511 /* LGDatabaseBlobImpl.m */,
+				E57CFC3E220C36D600E15511 /* LGDatabaseStatementImpl.h */,
+				E57CFC3F220C36D600E15511 /* LGDatabaseStatementImpl.m */,
+				E57CFC43220C3B1600E15511 /* LGDatabaseColumnImpl.h */,
+				E57CFC44220C3B1600E15511 /* LGDatabaseColumnImpl.m */,
+				E57CFC49220C40E800E15511 /* LGDatabaseResultSetImpl.h */,
+				E57CFC4A220C40E800E15511 /* LGDatabaseResultSetImpl.m */,
+				E57CFC4C220C41AD00E15511 /* LGDatabaseResultRowImpl.h */,
+				E57CFC4D220C41AD00E15511 /* LGDatabaseResultRowImpl.m */,
+				E57CFC4F220C440200E15511 /* LGDatabaseErrorImpl.h */,
+				E57CFC50220C440200E15511 /* LGDatabaseErrorImpl.m */,
+				E57CFC74220C763900E15511 /* LGDatabaseEngineImpl.h */,
+				E57CFC75220C763900E15511 /* LGDatabaseEngineImpl.m */,
+				E57CFC77220C76C200E15511 /* LGEthereumLikeTransactionCallbackImpl.h */,
+				E57CFC78220C76C200E15511 /* LGEthereumLikeTransactionCallbackImpl.m */,
 			);
 			name = "objc-impl";
+			sourceTree = "<group>";
+		};
+		E57CFC6D220C6F6E00E15511 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				E5741383220B13A90015005C /* RCTCoreLGEthereumLikeTransactionCallback.m */,
+				E5741396220B13AC0015005C /* RCTCoreLGERC20LikeAccount.m */,
+				E574139B220B13AC0015005C /* RCTCoreLGEthereumLikeBlock.m */,
+				E57413AB220B13AE0015005C /* RCTCoreLGEthereumLikeExtendedPublicKey.m */,
+				E5741397220B13AC0015005C /* RCTCoreLGERC20LikeOperation.m */,
+				E5741384220B13AA0015005C /* RCTCoreLGDatabaseConnectionPool.m */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1103,24 +1266,35 @@
 			files = (
 				B9D8580C214805D90007703A /* RCTCoreLGBitcoinLikeScriptChunk.m in Sources */,
 				B9D85862214805F20007703A /* LGLockImpl.m in Sources */,
+				E57CFD0E220C7F5400E15511 /* RCTCoreLGDatabaseError.m in Sources */,
 				B9D857E6214805D90007703A /* RCTCoreLGOperationQuery.m in Sources */,
 				B9D857B7214805D90007703A /* RCTCoreLGError.m in Sources */,
 				B9D857D8214805D90007703A /* RCTCoreLGEstimatedSize.m in Sources */,
+				E57CFC76220C763900E15511 /* LGDatabaseEngineImpl.m in Sources */,
 				B9D857BB214805D90007703A /* RCTCoreLGAccount.m in Sources */,
 				B9D857FF214805D90007703A /* RCTCoreLGCurrencyCallback.m in Sources */,
 				B9D857C9214805D90007703A /* RCTCoreLGStringCallback.m in Sources */,
 				B9D857B2214805D90007703A /* RCTCoreLGSynchronizationStatus.m in Sources */,
+				E57413AD220B13AE0015005C /* RCTCoreLGEthereumLikeTransactionCallback.m in Sources */,
+				E57CFC3B220B3EC000E15511 /* LGDatabaseBlobImpl.m in Sources */,
 				B9D857E3214805D90007703A /* RCTCoreLGDynamicObject.m in Sources */,
 				B9D857E0214805D90007703A /* RCTCoreLGWalletListCallback.m in Sources */,
+				E57CFC51220C440200E15511 /* LGDatabaseErrorImpl.m in Sources */,
 				B9D857B1214805D90007703A /* RCTCoreLGOperation.m in Sources */,
+				E57413B7220B13AE0015005C /* RCTCoreLGERC20LikeAccount.m in Sources */,
+				E57CFC45220C3B1600E15511 /* LGDatabaseColumnImpl.m in Sources */,
 				B9D85807214805D90007703A /* RCTCoreLGPreferences.m in Sources */,
 				B9D857BC214805D90007703A /* RCTCoreLGLock.m in Sources */,
 				B9D8586A214805F20007703A /* LGBitcoinLikeTransactionCallbackImpl.m in Sources */,
 				B9D857C5214805D90007703A /* RCTCoreLGSynchronizerEngines.m in Sources */,
+				E57CFD0A220C7F5400E15511 /* RCTCoreLGDatabaseEngine.m in Sources */,
 				B9D8585A214805F20007703A /* LGCurrencyCallbackImpl.m in Sources */,
 				B9D85867214805F20007703A /* LGStringCallbackImpl.m in Sources */,
 				B9D857F7214805D90007703A /* RCTCoreLGGetEthreumLikeWalletCallback.m in Sources */,
+				E57CFC4B220C40E800E15511 /* LGDatabaseResultSetImpl.m in Sources */,
+				E57413BA220B13AE0015005C /* RCTCoreLGEthereumLikeBlock.m in Sources */,
 				B9D8586D214805F20007703A /* LGWalletListCallbackImpl.m in Sources */,
+				E57CFD09220C7F5400E15511 /* RCTCoreLGEthereumLikeTransaction.m in Sources */,
 				B9D85856214805F20007703A /* LGWebSocketClientImpl.m in Sources */,
 				B9D85801214805D90007703A /* RCTCoreLGBlockCallback.m in Sources */,
 				B9D857D7214805D90007703A /* RCTCoreLGDerivationPath.m in Sources */,
@@ -1156,15 +1330,21 @@
 				B9D85871214805F20007703A /* LGRandomNumberGeneratorImpl.m in Sources */,
 				B9D85809214805D90007703A /* RCTCoreLGLogger.m in Sources */,
 				B9D8585D214805F20007703A /* LGPathResolverImpl.m in Sources */,
+				E57CFD11220C7F5400E15511 /* RCTCoreLGDatabaseConnection.m in Sources */,
 				B9D8586F214805F20007703A /* LGExecutionContextImpl.m in Sources */,
 				B9D857EB214805D90007703A /* RCTCoreLGDatabaseBackend.m in Sources */,
 				B9D857B3214805D90007703A /* RCTCoreLGBitcoinLikeAccount.m in Sources */,
 				B9D857F5214805D90007703A /* RCTCoreLGI32Callback.m in Sources */,
+				E57413C1220B13AE0015005C /* RCTCoreLGEthereumLikeExtendedPublicKey.m in Sources */,
+				E57CFC4E220C41AD00E15511 /* LGDatabaseResultRowImpl.m in Sources */,
+				E57413B8220B13AE0015005C /* RCTCoreLGERC20LikeOperation.m in Sources */,
 				B9D857D9214805D90007703A /* RCTCoreLGEthereumLikeWallet.m in Sources */,
 				B9D85872214805F20007703A /* LGWalletCallbackImpl.m in Sources */,
+				E57CFD0B220C7F5400E15511 /* RCTCoreLGDatabaseColumn.m in Sources */,
 				B9D857F9214805D90007703A /* RCTCoreLGExecutionContext.m in Sources */,
 				B9D85863214805F20007703A /* LGI32CallbackImpl.m in Sources */,
 				B9D8580F214805D90007703A /* RCTCoreLGSynchronizationEngines.m in Sources */,
+				E57CFC2F220B2ED100E15511 /* LGDatabaseConnectionPoolImpl.m in Sources */,
 				B9D857D5214805D90007703A /* RCTCoreLGBigInt.m in Sources */,
 				B9D85805214805D90007703A /* RCTCoreLGBitcoinLikeOperator.m in Sources */,
 				B9D857CE214805D90007703A /* RCTCoreLGWalletCallback.m in Sources */,
@@ -1176,6 +1356,7 @@
 				B9D857E4214805D90007703A /* RCTCoreLGAddressListCallback.m in Sources */,
 				B9D8585E214805F20007703A /* LGAmountListCallbackImpl.m in Sources */,
 				B9D857E7214805D90007703A /* RCTCoreLGAmount.m in Sources */,
+				E57CFD12220C7F5400E15511 /* RCTCoreLGDatabaseBlob.m in Sources */,
 				B9D85870214805F20007703A /* LGBinaryCallbackImpl.m in Sources */,
 				B9D857ED214805D90007703A /* RCTCoreLGExtendedKeyAccountCreationInfo.m in Sources */,
 				B9D85804214805D90007703A /* RCTCoreLGAmountCallback.m in Sources */,
@@ -1186,6 +1367,7 @@
 				B9D85853214805F20007703A /* LGAccountListCallbackImpl.m in Sources */,
 				B9D857B6214805D90007703A /* RCTCoreLGPathResolver.m in Sources */,
 				B9D85808214805D90007703A /* RCTCoreLGAmountListCallback.m in Sources */,
+				E57CFD10220C7F5400E15511 /* RCTCoreLGEthereumLikeAddress.m in Sources */,
 				B9D85865214805F20007703A /* LGGetEthreumLikeWalletCallbackImpl.m in Sources */,
 				B9D857E1214805D90007703A /* RCTCoreLGHashAlgorithmHelper.m in Sources */,
 				B9D85854214805F20007703A /* LGCurrencyListCallbackImpl.m in Sources */,
@@ -1197,33 +1379,45 @@
 				B9D857D2214805D90007703A /* RCTCoreLGRunnable.m in Sources */,
 				B9D857C6214805D90007703A /* RCTCoreLGConfiguration.m in Sources */,
 				B9D857CF214805D90007703A /* RCTCoreLGDynamicArray.m in Sources */,
+				E57CFD06220C7F5400E15511 /* RCTCoreLGEthereumLikeNetworkParameters.m in Sources */,
 				B9D8586C214805F20007703A /* LGAccountCallbackImpl.m in Sources */,
 				B9D857BE214805D90007703A /* RCTCoreLGAccountCreationInfo.m in Sources */,
+				E57CFD08220C7F5400E15511 /* RCTCoreLGDatabaseResultSet.m in Sources */,
 				B9D857B9214805D90007703A /* RCTCoreLGBitcoinLikeWalletConfiguration.m in Sources */,
 				B9D857D3214805D90007703A /* RCTCoreLGCurrencyListCallback.m in Sources */,
 				B9D857EF214805D90007703A /* RCTCoreLGAccountListCallback.m in Sources */,
 				B9D857D1214805D90007703A /* RCTCoreLGWebSocketConnection.m in Sources */,
 				B9D857DD214805D90007703A /* RCTCoreLGBlock.m in Sources */,
 				B9D857F2214805D90007703A /* RCTCoreLGBitcoinLikeWallet.m in Sources */,
+				E57413AE220B13AE0015005C /* RCTCoreLGDatabaseConnectionPool.m in Sources */,
+				E57CFC40220C36D600E15511 /* LGDatabaseStatementImpl.m in Sources */,
 				B9D857DC214805D90007703A /* RCTCoreLGLedgerCore.m in Sources */,
 				B9D85869214805F20007703A /* LGLogPrinterImpl.m in Sources */,
+				E57CFD13220C7F5400E15511 /* RCTCoreLGEthereumLikeAccount.m in Sources */,
 				B9D85857214805F20007703A /* LGHttpUrlConnectionImpl.m in Sources */,
 				B9D857CC214805D90007703A /* RCTCoreLGEventReceiver.m in Sources */,
 				B9D857B8214805D90007703A /* RCTCoreLGEthereumPublicKeyProvider.m in Sources */,
 				B9D857FD214805D90007703A /* RCTCoreLGHttpReadBodyResult.m in Sources */,
 				B9D857FC214805D90007703A /* RCTCoreLGBitcoinLikeOutput.m in Sources */,
 				B9D857E2214805D90007703A /* RCTCoreLGBitcoinLikeOutputListCallback.m in Sources */,
+				E57CFD0F220C7F5400E15511 /* RCTCoreLGERC20Token.m in Sources */,
 				B9D857E5214805D90007703A /* RCTCoreLGBitcoinLikeNetworkParameters.m in Sources */,
+				E57CFD0C220C7F5400E15511 /* RCTCoreLGEthereumLikeTransactionBuilder.m in Sources */,
+				E57CFC79220C76C200E15511 /* LGEthereumLikeTransactionCallbackImpl.m in Sources */,
+				E57CFD0D220C7F5400E15511 /* RCTCoreLGDatabaseStatement.m in Sources */,
 				B9D85803214805D90007703A /* RCTCoreLGQueryFilter.m in Sources */,
 				B9D857C0214805D90007703A /* RCTCoreLGWalletPool.m in Sources */,
 				B9D857AF214805D90007703A /* RCTCoreLGBlockchainExplorerEngines.m in Sources */,
 				B9D857C3214805D90007703A /* RCTCoreLGHttpClient.m in Sources */,
 				B9D857D4214805D90007703A /* RCTCoreLGErrorCodeCallback.m in Sources */,
 				B9D857D6214805D90007703A /* RCTCoreLGAccountCallback.m in Sources */,
+				E57CFD05220C7F5400E15511 /* RCTCoreLGEthereumLikeOperation.m in Sources */,
+				E57CFD07220C7F5400E15511 /* RCTCoreLGDatabaseResultRow.m in Sources */,
 				B9D857F6214805D90007703A /* RCTCoreLGConfigurationDefaults.m in Sources */,
 				B9D857EC214805D90007703A /* RCTCoreLGBitcoinLikeAddress.m in Sources */,
 				B9D857F1214805D90007703A /* RCTCoreLGAccountCreationInfoCallback.m in Sources */,
 				B9D85802214805D90007703A /* RCTCoreLGThreadDispatcher.m in Sources */,
+				E57CFC35220B38FC00E15511 /* LGDatabaseConnectionImpl.m in Sources */,
 				B9D857CD214805D90007703A /* RCTCoreLGFormatRules.m in Sources */,
 				B9D85858214805F20007703A /* LGExtendedKeyAccountCreationInfoCallbackImpl.m in Sources */,
 				B9D8585B214805F20007703A /* LGBlockCallbackImpl.m in Sources */,

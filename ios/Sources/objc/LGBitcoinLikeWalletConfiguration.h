@@ -3,24 +3,24 @@
 
 #import <Foundation/Foundation.h>
 
-/**String keychain's name */
+/** String keychain's name. */
 extern NSString * __nonnull const LGBitcoinLikeWalletConfigurationKEYCHAIN;
-/**String observer's name */
+/** String observer's name. */
 extern NSString * __nonnull const LGBitcoinLikeWalletConfigurationOBSERVER;
-/**String explorer's name */
+/** String explorer's name. */
 extern NSString * __nonnull const LGBitcoinLikeWalletConfigurationEXPLORER;
-/**String synchronizer's name */
+/** String synchronizer's name. */
 extern NSString * __nonnull const LGBitcoinLikeWalletConfigurationSYNCHRONIZER;
-/**String with Payment Script type and BIP on which hierarchical wallet is based */
+/** String with Payment Script type and BIP on which hierarchical wallet is based. */
 extern NSString * __nonnull const LGBitcoinLikeWalletConfigurationKEYCHAINP2PKHBIP44;
-/**String websocket on which observer receives notifications from explorer */
+/** String websocket on which observer receives notifications from explorer. */
 extern NSString * __nonnull const LGBitcoinLikeWalletConfigurationOBSERVERLEDGERWEBSOCKET;
-/**String explorer api */
+/** String explorer api. */
 extern NSString * __nonnull const LGBitcoinLikeWalletConfigurationEXPLORERLEDGERAPI;
-/**TODO */
+/** String synchronizer by default. */
 extern NSString * __nonnull const LGBitcoinLikeWalletConfigurationSYNCHRONIZERDEFAULT;
 
-/**Class of constants to set Bitcoin like wallet configurations */
+/** Class of constants to set Bitcoin like wallet configurations. */
 @interface LGBitcoinLikeWalletConfiguration : NSObject
 
 @end

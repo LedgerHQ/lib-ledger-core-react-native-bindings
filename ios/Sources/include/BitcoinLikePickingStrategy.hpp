@@ -15,8 +15,8 @@ enum class BitcoinLikePickingStrategy : int {
     OPTIMIZE_SIZE,
     MERGE_OUTPUTS,
 };
-std::string to_string(const BitcoinLikePickingStrategy& bitcoinLikePickingStrategy);
-std::ostream &operator<<(std::ostream &os, const BitcoinLikePickingStrategy &o);
+ std::string to_string(const BitcoinLikePickingStrategy& bitcoinLikePickingStrategy);
+ std::ostream &operator<<(std::ostream &os, const BitcoinLikePickingStrategy &o);
 
 } } }  // namespace ledger::core::api
 

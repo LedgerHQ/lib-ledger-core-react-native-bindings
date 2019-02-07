@@ -9,10 +9,10 @@
 @protocol LGBinaryCallback;
 
 
-/**Class representing Bitcoin inputs */
+/** Class representing Bitcoin inputs. */
 @interface LGBitcoinLikeInput : NSObject
 
-/** Returns the address of the input (if an address can be computed) */
+/** Returns the address of the input (if an address can be computed). */
 - (nullable NSString *)getAddress;
 
 /**
@@ -21,7 +21,7 @@
  */
 - (nonnull NSArray<NSData *> *)getPublicKeys;
 
-/** Returns the derivation path of this input if the address is owned by the wallet */
+/** Returns the derivation path of this input if the address is owned by the wallet. */
 - (nonnull NSArray<LGDerivationPath *> *)getDerivationPath;
 
 /**
@@ -32,27 +32,25 @@
 
 /**
  * Get the transaction hash of the output spent by this input. The result can be NULL if the output is not owned by
- * the wallet
+ * the wallet.
  */
 - (nullable NSString *)getPreviousTxHash;
 
 /**
- * Get the index at which the output is located in the transaction output spent by this input. The result can be
- * NULL if the input does not belong to the wallet
- *Check whether input
- *@return Boolean, true if input belongs to coinbase transaction (reward for mining a block)
+ * Check whether input is for a coinbase.
+ * @return Boolean, true if input belongs to coinbase transaction (reward for mining a block)
  */
 - (BOOL)isCoinbase;
 
 /**
- *Stored data cointained in coinbase
- *@return Optional String
+ * Stored data cointained in coinbase.
+ * @return Optional String
  */
 - (nullable NSString *)getCoinbase;
 
 /**
- *Get output index, it identifies which UTXO from tht transaction to spend
- *@return Optional 32 bits integer, index of previous transaction
+ * Get output index, it identifies which UTXO from tht transaction to spend.
+ * @return Optional 32 bits integer, index of previous transaction
  */
 - (nullable NSNumber *)getPreviousOutputIndex;
 
@@ -67,27 +65,28 @@
 /** Get ScriptSig of this input. The scriptsig is the first half of a script necessary to spend a previous output. */
 - (nonnull NSData *)getScriptSig;
 
-/** Parse the script sig to a [[BitcoinLikeScript]] */
+/** Parse the script sig to a [[BitcoinLikeScript]]. */
 - (nullable LGBitcoinLikeScript *)parseScriptSig;
 
 /**
- * Set the ScriptS to the given value
+ * Set the ScriptS to the given value.
  * @param scriptSig The ScriptSig to use for this input
  */
 - (void)setScriptSig:(nonnull NSData *)scriptSig;
 
-/** Push data to the end of the current ScriptSig */
+/** Push data to the end of the current ScriptSig. */
 - (void)pushToScriptSig:(nonnull NSData *)data;
 
-/** Set the sequence number of this input */
+/** Set the sequence number of this input. */
 - (void)setSequence:(int32_t)sequence;
 
-/** Get the sequence number of this input */
+/** Get the sequence number of this input. */
 - (int64_t)getSequence;
 
+/** Get the previous transaction associated with the input. */
 - (void)getPreviousTransaction:(nullable id<LGBinaryCallback>)callback;
 
-/** Easy way to set the P2PKH script signature. Shorthand for input.pushToScriptSig(input.getPublicKeys()[0], signature) */
+/** Easy way to set the P2PKH script signature. Shorthand for input.pushToScriptSig(input.getPublicKeys()[0], signature). */
 - (void)setP2PKHSigScript:(nonnull NSData *)signature;
 
 @end

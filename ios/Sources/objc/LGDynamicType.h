@@ -3,16 +3,25 @@
 
 #import <Foundation/Foundation.h>
 
-/**Enumeration of supported types in DynamicArray and DynamicObject */
+/** Enumeration of supported types in DynamicArray and DynamicObject. */
 typedef NS_ENUM(NSInteger, LGDynamicType)
 {
+    /** A dynamic object, composed of DynamicType indexed by strings. */
     LGDynamicTypeOBJECT,
+    /** A 32-bit integer. */
     LGDynamicTypeINT32,
+    /** A 64-bit integer. */
     LGDynamicTypeINT64,
+    /** A double-precision floating point number. */
     LGDynamicTypeDOUBLE,
+    /** A boolean. */
     LGDynamicTypeBOOLEAN,
+    /** A contiguous, unsized bytes array. */
     LGDynamicTypeDATA,
+    /** An array of DynamicType values. */
     LGDynamicTypeARRAY,
+    /** A string. */
     LGDynamicTypeSTRING,
+    /** Just an undefined value. */
     LGDynamicTypeUNDEFINED,
 };

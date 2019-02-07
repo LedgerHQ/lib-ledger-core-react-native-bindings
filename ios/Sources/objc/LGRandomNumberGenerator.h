@@ -4,7 +4,7 @@
 #import <Foundation/Foundation.h>
 
 
-/** Class to generate random numbers */
+/** Class to generate random numbers. */
 @protocol LGRandomNumberGenerator
 
 /**
