@@ -15,8 +15,8 @@ enum class TimePeriod : int {
     WEEK,
     MONTH,
 };
-std::string to_string(const TimePeriod& timePeriod);
-std::ostream &operator<<(std::ostream &os, const TimePeriod &o);
+ std::string to_string(const TimePeriod& timePeriod);
+ std::ostream &operator<<(std::ostream &os, const TimePeriod &o);
 
 } } }  // namespace ledger::core::api
 

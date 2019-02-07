@@ -5,14 +5,29 @@
 #import <Foundation/Foundation.h>
 
 
+/** A connection to a Web Socket. */
 @interface LGWebSocketConnection : NSObject
 
+/**
+ * Callback to call upon successful connection.
+ * @param connectionId, the ID of the Web Socket connection
+ */
 - (void)onConnect:(int32_t)connectionId;
 
+/** Callback to call upon successful disconnection. */
 - (void)onClose;
 
+/**
+ * Callback to call upon each incoming message.
+ * @param data, the attached data to the input message
+ */
 - (void)onMessage:(nonnull NSString *)data;
 
+/**
+ * Callback to call when a Web Socket error occurs.
+ * @param code, the error code
+ * @param message, a description of the reason of the error
+ */
 - (void)onError:(LGErrorCode)code
         message:(nonnull NSString *)message;
 

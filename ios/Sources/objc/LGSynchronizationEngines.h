@@ -3,9 +3,10 @@
 
 #import <Foundation/Foundation.h>
 
+/** Synchronize via blockchain explorers. */
 extern NSString * __nonnull const LGSynchronizationEnginesBLOCKCHAINEXPLORERSYNCHRONIZATION;
 
-/**TODO */
+/** Available synchronization mechanisms. */
 @interface LGSynchronizationEngines : NSObject
 
 @end

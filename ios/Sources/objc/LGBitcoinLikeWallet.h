@@ -4,6 +4,7 @@
 #import <Foundation/Foundation.h>
 
 
+/** A bitcoin-like wallet. */
 @interface LGBitcoinLikeWallet : NSObject
 
 @end

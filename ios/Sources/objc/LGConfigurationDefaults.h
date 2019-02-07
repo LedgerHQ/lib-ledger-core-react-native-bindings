@@ -3,13 +3,18 @@
 
 #import <Foundation/Foundation.h>
 
+/** The default Ledger API endpoint for the explorers. */
 extern NSString * __nonnull const LGConfigurationDefaultsBLOCKCHAINDEFAULTAPIENDPOINT;
+/** The default Ledger API endpoint for the observers. */
 extern NSString * __nonnull const LGConfigurationDefaultsBLOCKCHAINOBSERVERWSENDPOINT;
+/** The default derivation scheme for BIP44 derivation. */
 extern NSString * __nonnull const LGConfigurationDefaultsBIP44DERIVATIONSCHEME;
+/** Default keychain policy. */
 extern NSString * __nonnull const LGConfigurationDefaultsDEFAULTKEYCHAIN;
+/** Default trust limit (block height). */
 extern int32_t const LGConfigurationDefaultsDEFAULTTRUSTLIMIT;
 
-/**TODO */
+/** Default values you might want to use if you don’t know what values you should use. */
 @interface LGConfigurationDefaults : NSObject
 
 @end

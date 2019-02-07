@@ -6,6 +6,7 @@
 @class LGEthereumLikeWallet;
 
 
+/** A callback called when an Ethereum-like wallet is available after issuing a get command. */
 @protocol LGGetEthreumLikeWalletCallback
 
 - (void)onSuccess:(nullable LGEthereumLikeWallet *)wallet

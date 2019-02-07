@@ -4,15 +4,17 @@
 #import "LGRoundingMode.h"
 #import <Foundation/Foundation.h>
 
-/**TODO */
+/** Formatting rules to format amounts to strings. */
 @interface LGFormatRules : NSObject
 - (nonnull instancetype)initWithRoundingMode:(LGRoundingMode)roundingMode
                          maxNumberOfDecimals:(int32_t)maxNumberOfDecimals;
 + (nonnull instancetype)FormatRulesWithRoundingMode:(LGRoundingMode)roundingMode
                                 maxNumberOfDecimals:(int32_t)maxNumberOfDecimals;
 
+/** How should we round decimal values? */
 @property (nonatomic, readonly) LGRoundingMode roundingMode;
 
+/** The maximum number of decimals formatted decimals will have. */
 @property (nonatomic, readonly) int32_t maxNumberOfDecimals;
 
 @end

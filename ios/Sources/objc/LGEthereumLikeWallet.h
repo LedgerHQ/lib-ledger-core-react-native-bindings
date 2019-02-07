@@ -4,6 +4,7 @@
 #import <Foundation/Foundation.h>
 
 
+/** An Ethereum-like wallet. */
 @interface LGEthereumLikeWallet : NSObject
 
 @end

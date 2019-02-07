@@ -3,6 +3,11 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Estimation size (minimum and maximum).
+ *
+ * This is typically used to estimate size (in bytes) of raw transactions.
+ */
 @interface LGEstimatedSize : NSObject
 - (nonnull instancetype)initWithMin:(int32_t)Min
                                 Max:(int32_t)Max;

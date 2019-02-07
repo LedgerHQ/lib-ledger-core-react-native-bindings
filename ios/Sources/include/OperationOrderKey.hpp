@@ -20,8 +20,8 @@ enum class OperationOrderKey : int {
     FEES,
     BLOCK_HEIGHT,
 };
-std::string to_string(const OperationOrderKey& operationOrderKey);
-std::ostream &operator<<(std::ostream &os, const OperationOrderKey &o);
+ std::string to_string(const OperationOrderKey& operationOrderKey);
+ std::ostream &operator<<(std::ostream &os, const OperationOrderKey &o);
 
 } } }  // namespace ledger::core::api
 

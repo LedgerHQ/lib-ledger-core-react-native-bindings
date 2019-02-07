@@ -3,7 +3,11 @@
 
 #import <Foundation/Foundation.h>
 
-/**Enum of operation types */
+/**
+ * Type of operation.
+ *
+ * It’s possible to either send funds or receive ones.
+ */
 typedef NS_ENUM(NSInteger, LGOperationType)
 {
     LGOperationTypeSend,

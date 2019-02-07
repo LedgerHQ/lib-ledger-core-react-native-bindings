@@ -8,12 +8,20 @@
 
 namespace ledger { namespace core { namespace api {
 
-/**TODO */
+/** Configuration of wallet pools. */
 class PoolConfiguration {
 public:
     virtual ~PoolConfiguration() {}
 
+    /** Name to use for the database. */
     static std::string const DATABASE_NAME;
+
+    /**
+     * Enable internal logging.
+     *
+     * Set to true by default.
+     */
+    static std::string const ENABLE_INTERNAL_LOGGING;
 };
 
 } } }  // namespace ledger::core::api

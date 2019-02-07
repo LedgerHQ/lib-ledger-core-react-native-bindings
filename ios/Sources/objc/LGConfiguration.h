@@ -3,26 +3,30 @@
 
 #import <Foundation/Foundation.h>
 
-/** Selects the keychain engine (P2PKH, P2SH...) */
+/** Selects the keychain engine (P2PKH, P2SH...). */
 extern NSString * __nonnull const LGConfigurationKEYCHAINENGINE;
-/** Sets the derivation scheme for the KEYCHAIN (defaults 44'/<coin_type>'/<account>'/<node>/<address>) */
+/** Sets the derivation scheme for the KEYCHAIN (defaults 44'/<coin_type>'/<account>'/<node>/<address>). */
 extern NSString * __nonnull const LGConfigurationKEYCHAINDERIVATIONSCHEME;
-/** Sets the observable range for HD keychains (BIP32 based) */
+/** Sets the observable range for HD keychains (BIP32 based). */
 extern NSString * __nonnull const LGConfigurationKEYCHAINOBSERVABLERANGE;
-/** Selects the blockchain explorer engine (Ledger's API, Electrum server, RPC) */
+/** Selects the blockchain explorer engine (Ledger's API, Electrum server, RPC): */
 extern NSString * __nonnull const LGConfigurationBLOCKCHAINEXPLORERENGINE;
-/** Sets the API endpoint for API based engine (Ledger's API) */
+/** Sets the API endpoint for API based engine (Ledger's API). */
 extern NSString * __nonnull const LGConfigurationBLOCKCHAINEXPLORERAPIENDPOINT;
-/** Selects the blockchain observer engine (Ledger's API) */
+/** Sets the API version. */
+extern NSString * __nonnull const LGConfigurationBLOCKCHAINEXPLORERVERSION;
+/** Selects the blockchain observer engine (Ledger's API). */
 extern NSString * __nonnull const LGConfigurationBLOCKCHAINOBSERVERENGINE;
+/** Selects the blockchain observer engine (Ledger's API; Websocket version). */
 extern NSString * __nonnull const LGConfigurationBLOCKCHAINOBSERVERWSENDPOINT;
-/** Selects the synchronization engine */
+/** Selects the synchronization engine. */
 extern NSString * __nonnull const LGConfigurationSYNCHRONIZATIONENGINE;
-/** Sets the half batch size (default: 20) */
+/** Sets the half batch size (default: 20). */
 extern NSString * __nonnull const LGConfigurationSYNCHRONIZATIONHALFBATCHSIZE;
-/** Operation trust */
+/** Operation trust. */
 extern NSString * __nonnull const LGConfigurationTRUSTLIMIT;
 
+/** Overall configuration. */
 @interface LGConfiguration : NSObject
 
 @end

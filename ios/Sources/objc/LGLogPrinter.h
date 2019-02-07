@@ -6,50 +6,50 @@
 
 
 /**
- *Class representing a printer of errors, warnings, infos ... (at runtime)
- *Printed logs are stored in path set by PathResolver::resolveLogFilePath
+ * Class representing a printer of errors, warnings, infos ... (at runtime).
+ * Printed logs are stored in path set by PathResolver::resolveLogFilePath.
  */
 @protocol LGLogPrinter
 
 /**
- *Print different encountered errors
- *@param message, string
+ * Print different encountered errors.
+ * @param message, string
  */
 - (void)printError:(nonnull NSString *)message;
 
 /**
- *Print useful information messages
- *@param message, string
+ * Print useful information messages.
+ * @param message, string
  */
 - (void)printInfo:(nonnull NSString *)message;
 
 /**
- *Print debug messages
- *@param message string
+ * Print debug messages.
+ * @param message string
  */
 - (void)printDebug:(nonnull NSString *)message;
 
 /**
- *Print warning messages
- *@param message, string
+ * Print warning messages.
+ * @param message, string
  */
 - (void)printWarning:(nonnull NSString *)message;
 
 /**
- *Print messages from APDU comand interpretation loop
- *@param message, string
+ * Print messages from APDU comand interpretation loop.
+ * @param message, string
  */
 - (void)printApdu:(nonnull NSString *)message;
 
 /**
- *Print critical errors causing a core dump or error from which recovery is impossible
- *@param message, string
+ * Print critical errors causing a core dump or error from which recovery is impossible.
+ * @param message, string
  */
 - (void)printCriticalError:(nonnull NSString *)message;
 
 /**
- *Get context in which printer is executed (print)
- *@return ExecutionContext object
+ * Get context in which printer is executed (print).
+ * @return ExecutionContext object
  */
 - (nullable id<LGExecutionContext>)getContext;
 

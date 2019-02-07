@@ -3,9 +3,16 @@
 
 #import <Foundation/Foundation.h>
 
+/** Name to use for the database. */
 extern NSString * __nonnull const LGPoolConfigurationDATABASENAME;
+/**
+ * Enable internal logging.
+ *
+ * Set to true by default.
+ */
+extern NSString * __nonnull const LGPoolConfigurationENABLEINTERNALLOGGING;
 
-/**TODO */
+/** Configuration of wallet pools. */
 @interface LGPoolConfiguration : NSObject
 
 @end

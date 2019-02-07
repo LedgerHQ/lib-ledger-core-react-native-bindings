@@ -3,11 +3,15 @@
 
 #import <Foundation/Foundation.h>
 
-/**Enum listing supported cryptocurrencies' families */
+/** Enum listing supported cryptocurrencies' families. */
 typedef NS_ENUM(NSInteger, LGWalletType)
 {
+    /** A Bitcoin-like wallet. */
     LGWalletTypeBitcoin,
+    /** An Ethereum-like wallet. */
     LGWalletTypeEthereum,
+    /** A Ripple-like wallet. */
     LGWalletTypeRipple,
+    /** A Monero-like wallet. */
     LGWalletTypeMonero,
 };

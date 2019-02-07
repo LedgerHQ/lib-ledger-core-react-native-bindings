@@ -9,6 +9,7 @@
 #import "LGAmount+Private.h"
 #import "LGBitcoinLikeOperation+Private.h"
 #import "LGCurrency+Private.h"
+#import "LGEthereumLikeOperation+Private.h"
 #import "LGOperationType+Private.h"
 #import "LGPreferences+Private.h"
 #import "LGTrustIndicator+Private.h"
@@ -118,6 +119,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->asBitcoinLikeOperation();
         return ::djinni_generated::BitcoinLikeOperation::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGEthereumLikeOperation *)asEthereumLikeOperation {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->asEthereumLikeOperation();
+        return ::djinni_generated::EthereumLikeOperation::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

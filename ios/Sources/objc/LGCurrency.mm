@@ -12,6 +12,7 @@
                           paymentUriScheme:(nonnull NSString *)paymentUriScheme
                                      units:(nonnull NSArray<LGCurrencyUnit *> *)units
               bitcoinLikeNetworkParameters:(nullable LGBitcoinLikeNetworkParameters *)bitcoinLikeNetworkParameters
+             ethereumLikeNetworkParameters:(nullable LGEthereumLikeNetworkParameters *)ethereumLikeNetworkParameters
 {
     if (self = [super init]) {
         _walletType = walletType;
@@ -20,6 +21,7 @@
         _paymentUriScheme = [paymentUriScheme copy];
         _units = [units copy];
         _bitcoinLikeNetworkParameters = bitcoinLikeNetworkParameters;
+        _ethereumLikeNetworkParameters = ethereumLikeNetworkParameters;
     }
     return self;
 }
@@ -30,18 +32,20 @@
                               paymentUriScheme:(nonnull NSString *)paymentUriScheme
                                          units:(nonnull NSArray<LGCurrencyUnit *> *)units
                   bitcoinLikeNetworkParameters:(nullable LGBitcoinLikeNetworkParameters *)bitcoinLikeNetworkParameters
+                 ethereumLikeNetworkParameters:(nullable LGEthereumLikeNetworkParameters *)ethereumLikeNetworkParameters
 {
     return [[self alloc] initWithWalletType:walletType
                                        name:name
                               bip44CoinType:bip44CoinType
                            paymentUriScheme:paymentUriScheme
                                       units:units
-               bitcoinLikeNetworkParameters:bitcoinLikeNetworkParameters];
+               bitcoinLikeNetworkParameters:bitcoinLikeNetworkParameters
+              ethereumLikeNetworkParameters:ethereumLikeNetworkParameters];
 }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ %p walletType:%@ name:%@ bip44CoinType:%@ paymentUriScheme:%@ units:%@ bitcoinLikeNetworkParameters:%@>", self.class, (void *)self, @(self.walletType), self.name, @(self.bip44CoinType), self.paymentUriScheme, self.units, self.bitcoinLikeNetworkParameters];
+    return [NSString stringWithFormat:@"<%@ %p walletType:%@ name:%@ bip44CoinType:%@ paymentUriScheme:%@ units:%@ bitcoinLikeNetworkParameters:%@ ethereumLikeNetworkParameters:%@>", self.class, (void *)self, @(self.walletType), self.name, @(self.bip44CoinType), self.paymentUriScheme, self.units, self.bitcoinLikeNetworkParameters, self.ethereumLikeNetworkParameters];
 }
 
 @end

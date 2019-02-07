@@ -5,7 +5,7 @@
 
 extern NSString * __nonnull const LGBlockchainExplorerEnginesLEDGERAPI;
 
-/**TODO */
+/** Available API to use with explorers. */
 @interface LGBlockchainExplorerEngines : NSObject
 
 @end

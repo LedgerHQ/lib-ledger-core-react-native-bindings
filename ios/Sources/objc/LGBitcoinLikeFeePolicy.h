@@ -3,6 +3,11 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Strategy used to compute the amount of fees of transactions.
+ *
+ * This basically gives the unit in which the fee amount will be expressed.
+ */
 typedef NS_ENUM(NSInteger, LGBitcoinLikeFeePolicy)
 {
     LGBitcoinLikeFeePolicyPERBYTE,

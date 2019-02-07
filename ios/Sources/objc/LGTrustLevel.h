@@ -3,7 +3,18 @@
 
 #import <Foundation/Foundation.h>
 
-/**Enum of transaction level of trust */
+/**
+ * Level of trust for transactions.
+ *
+ * A transaction is pending when it’s not mined yet.
+ *
+ * A transaction is unstrusted when it belongs to a block that is not 5-block old yet (0—4).
+ *
+ * A transaction is trusted when it belongs to a block that is at least 5-block old.
+ *
+ * A transaction is dropped when it has been removed from the block it was originally in. That might
+ * happen if the block was dropped by peers while a reorganization was happening, for instance.
+ */
 typedef NS_ENUM(NSInteger, LGTrustLevel)
 {
     LGTrustLevelTrusted,

@@ -5,12 +5,12 @@
 @class LGHttpRequest;
 
 
-/**Class representing the http client performing the http requests */
+/** Class representing the http client performing the http requests. */
 @protocol LGHttpClient
 
 /**
- *Execute a giver Http request\
- *@param request, HttpRequest object, requestr to execute
+ * Execute a giver Http request.
+ * @param request, HttpRequest object, requestr to execute
  */
 - (void)execute:(nullable LGHttpRequest *)request;
 

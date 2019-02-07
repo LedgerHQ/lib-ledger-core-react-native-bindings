@@ -46,6 +46,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (nonnull NSData *)computeUncompressedPubKey:(nonnull NSData *)pubKey {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->computeUncompressedPubKey(::djinni::Binary::toCpp(pubKey));
+        return ::djinni::Binary::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (nonnull NSData *)sign:(nonnull NSData *)privKey
                     data:(nonnull NSData *)data {
     try {

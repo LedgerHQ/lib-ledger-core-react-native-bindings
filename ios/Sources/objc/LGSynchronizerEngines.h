@@ -4,9 +4,9 @@
 #import <Foundation/Foundation.h>
 
 /**
- *String, rely on blockchain explorers to synchronize,
- *For example to condsider a transaction valid, it should, first, be included in a block,
- *then spent UTXOs by this transaction, should be 'valid' through the whole blockchain
+ * String, rely on blockchain explorers to synchronize,
+ * For example to consider a transaction valid, it should, first, be included in a block,
+ * then spent UTXOs by this transaction, should be 'valid' through the whole blockchain.
  */
 extern NSString * __nonnull const LGSynchronizerEnginesBLOCKCHAINEXPLORER;
 /**
@@ -15,7 +15,7 @@ extern NSString * __nonnull const LGSynchronizerEnginesBLOCKCHAINEXPLORER;
  */
 extern NSString * __nonnull const LGSynchronizerEnginesSPV;
 
-/**Class of constants representing the engines to rely on for synchronization */
+/** Class of constants representing the engines to rely on for synchronization. */
 @interface LGSynchronizerEngines : NSObject
 
 @end

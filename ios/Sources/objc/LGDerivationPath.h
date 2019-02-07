@@ -22,12 +22,12 @@
 /** Return true if the given index in the path is an hardened child num. */
 - (BOOL)isHardened:(int32_t)index;
 
-/** Serialize the given path to a human readable string like "44'/0'/0'/0/0" */
+/** Serialize the given path to a human readable string like "44'/0'/0'/0/0". */
 - (nonnull NSString *)toString;
 
 /**
  * Return a derivation path without the last element, e.g. the parent of "44'/0'/0'/0/0" is
- * "44'/0'/0'/0"
+ * "44'/0'/0'/0".
  */
 - (nullable LGDerivationPath *)getParent;
 

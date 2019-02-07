@@ -16,8 +16,8 @@ enum class HttpMethod : int {
     PUT,
     DEL,
 };
-std::string to_string(const HttpMethod& httpMethod);
-std::ostream &operator<<(std::ostream &os, const HttpMethod &o);
+ std::string to_string(const HttpMethod& httpMethod);
+ std::ostream &operator<<(std::ostream &os, const HttpMethod &o);
 
 } } }  // namespace ledger::core::api
 

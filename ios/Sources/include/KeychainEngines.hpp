@@ -8,6 +8,7 @@
 
 namespace ledger { namespace core { namespace api {
 
+/** Available keychains policies. */
 class KeychainEngines {
 public:
     virtual ~KeychainEngines() {}

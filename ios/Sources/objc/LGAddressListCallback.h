@@ -6,14 +6,11 @@
 @class LGAddress;
 
 
-/**
- *Callback triggered by main completed task,
- *returns optional result as list of template type T
- */
+/** Callback triggered by main completed task, returning optional result as list of template type T. */
 @protocol LGAddressListCallback
 
 /**
- * Method triggered when main task complete
+ * Method triggered when main task complete.
  * @params result optional of type list<T>, non null if main task failed
  * @params error optional of type Error, non null if main task succeeded
  */

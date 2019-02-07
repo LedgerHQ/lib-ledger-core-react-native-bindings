@@ -11,16 +11,23 @@
 namespace ledger { namespace core { namespace api {
 
 enum class EventCode : int {
+    /** An unknown event code. */
     UNDEFINED,
+    /** A new operation event. */
     NEW_OPERATION,
+    /** A new block event. */
     NEW_BLOCK,
+    /** Event emitted when a wallet synchronization started. */
     SYNCHRONIZATION_STARTED,
+    /** Event emitted when a wallet synchronization failed. */
     SYNCHRONIZATION_FAILED,
+    /** Event emitted when a wallet synchronization succeeded. */
     SYNCHRONIZATION_SUCCEED,
+    /** Event emitted when a wallet synchronization succeeded on the previously empty account. */
     SYNCHRONIZATION_SUCCEED_ON_PREVIOUSLY_EMPTY_ACCOUNT,
 };
-std::string to_string(const EventCode& eventCode);
-std::ostream &operator<<(std::ostream &os, const EventCode &o);
+ std::string to_string(const EventCode& eventCode);
+ std::ostream &operator<<(std::ostream &os, const EventCode &o);
 
 } } }  // namespace ledger::core::api
 

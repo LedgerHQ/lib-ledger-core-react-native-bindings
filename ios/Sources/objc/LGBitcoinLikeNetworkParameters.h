@@ -4,6 +4,7 @@
 #import "LGBitcoinLikeFeePolicy.h"
 #import <Foundation/Foundation.h>
 
+/** Bitcoin network parameters. */
 @interface LGBitcoinLikeNetworkParameters : NSObject
 - (nonnull instancetype)initWithIdentifier:(nonnull NSString *)Identifier
                               P2PKHVersion:(nonnull NSData *)P2PKHVersion
@@ -28,26 +29,37 @@
                                                            SigHash:(nonnull NSData *)SigHash
                                                     AdditionalBIPs:(nonnull NSArray<NSString *> *)AdditionalBIPs;
 
+/** Name of the network. */
 @property (nonatomic, readonly, nonnull) NSString * Identifier;
 
+/** Version of the Pay To Public Hash standard. */
 @property (nonatomic, readonly, nonnull) NSData * P2PKHVersion;
 
+/** Version of the Pay To Script Hash standard. */
 @property (nonatomic, readonly, nonnull) NSData * P2SHVersion;
 
+/** Version of the Extended Public Key standard. */
 @property (nonatomic, readonly, nonnull) NSData * XPUBVersion;
 
+/** Policy to use when expressing fee amount. */
 @property (nonatomic, readonly) LGBitcoinLikeFeePolicy FeePolicy;
 
+/** Minimal amount a UTXO should have before being considered BTC dust. */
 @property (nonatomic, readonly) int64_t DustAmount;
 
+/** Constant prefix to prepend all signature messages. */
 @property (nonatomic, readonly, nonnull) NSString * MessagePrefix;
 
+/** Are transactions encoded with timestamp? */
 @property (nonatomic, readonly) BOOL UsesTimestampedTransaction;
 
+/** Delay applied to all timestamps. Used to debounce transactions. */
 @property (nonatomic, readonly) int64_t TimestampDelay;
 
+/** Bitcoin signature flag indicating what part of a transaction a signature signs. */
 @property (nonatomic, readonly, nonnull) NSData * SigHash;
 
+/** Addition BIPs enabled for this network. */
 @property (nonatomic, readonly, nonnull) NSArray<NSString *> * AdditionalBIPs;
 
 @end

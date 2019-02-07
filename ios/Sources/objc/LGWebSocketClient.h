@@ -5,14 +5,29 @@
 @class LGWebSocketConnection;
 
 
+/** A connected client via Web Socket. */
 @protocol LGWebSocketClient
 
+/**
+ * Connect to a given URL via a Web Socket connection.
+ * @param url, the URL to connect to
+ * @connection, the Web Socket connection to use
+ */
 - (void)connect:(nonnull NSString *)url
      connection:(nullable LGWebSocketConnection *)connection;
 
+/**
+ * Send a message to a given client.
+ * @connection, the Web Socket connection to use
+ * @data, the message to send
+ */
 - (void)send:(nullable LGWebSocketConnection *)connection
         data:(nonnull NSString *)data;
 
+/**
+ * Disconnect a client.
+ * @connection, the Web Socket connection to use
+ */
 - (void)disconnect:(nullable LGWebSocketConnection *)connection;
 
 @end

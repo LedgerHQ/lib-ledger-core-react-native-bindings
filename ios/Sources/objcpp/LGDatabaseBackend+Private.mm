@@ -6,6 +6,7 @@
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
 #import "DJIMarshal+Private.h"
+#import "LGDatabaseEngine+Private.h"
 #include <exception>
 #include <stdexcept>
 #include <utility>
@@ -30,73 +31,10 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     return self;
 }
 
-- (nullable LGDatabaseBackend *)setUsername:(nonnull NSString *)username {
+- (int32_t)getConnectionPoolSize {
     try {
-        auto objcpp_result_ = _cppRefHandle.get()->setUsername(::djinni::String::toCpp(username));
-        return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nullable LGDatabaseBackend *)setPassword:(nonnull NSString *)pwd {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->setPassword(::djinni::String::toCpp(pwd));
-        return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nullable LGDatabaseBackend *)setHost:(nonnull NSString *)host {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->setHost(::djinni::String::toCpp(host));
-        return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nullable LGDatabaseBackend *)setHostAddr:(nonnull NSString *)hostAddr {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->setHostAddr(::djinni::String::toCpp(hostAddr));
-        return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nullable LGDatabaseBackend *)setPort:(nonnull NSString *)port {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->setPort(::djinni::String::toCpp(port));
-        return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nullable LGDatabaseBackend *)setOptions:(nonnull NSString *)opts {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->setOptions(::djinni::String::toCpp(opts));
-        return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nullable LGDatabaseBackend *)setSslMode:(nonnull NSString *)mode {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->setSslMode(::djinni::String::toCpp(mode));
-        return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nullable LGDatabaseBackend *)setKerberosName:(nonnull NSString *)name {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->setKerberosName(::djinni::String::toCpp(name));
-        return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nullable LGDatabaseBackend *)setService:(nonnull NSString *)service {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->setService(::djinni::String::toCpp(service));
-        return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nullable LGDatabaseBackend *)setConnectionPoolSize:(int32_t)size {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->setConnectionPoolSize(::djinni::I32::toCpp(size));
-        return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
+        auto objcpp_result_ = _cppRefHandle.get()->getConnectionPoolSize();
+        return ::djinni::I32::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
@@ -104,76 +42,6 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->enableQueryLogging(::djinni::Bool::toCpp(enable));
         return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nonnull NSString *)getUsername {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->getUsername();
-        return ::djinni::String::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nonnull NSString *)getPassword {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->getPassword();
-        return ::djinni::String::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nonnull NSString *)getHost {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->getHost();
-        return ::djinni::String::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nonnull NSString *)getHostAddr {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->getHostAddr();
-        return ::djinni::String::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nonnull NSString *)getPort {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->getPort();
-        return ::djinni::String::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nonnull NSString *)getOptions {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->getOptions();
-        return ::djinni::String::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nonnull NSString *)getSslMode {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->getSslMode();
-        return ::djinni::String::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nonnull NSString *)getKerberosName {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->getKerberosName();
-        return ::djinni::String::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nonnull NSString *)getService {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->getService();
-        return ::djinni::String::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (int32_t)getConnectionPoolSize {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->getConnectionPoolSize();
-        return ::djinni::I32::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
@@ -191,9 +59,9 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (nullable LGDatabaseBackend *)getPostgreSQLBackend {
++ (nullable LGDatabaseBackend *)createBackendFromEngine:(nullable id<LGDatabaseEngine>)engine {
     try {
-        auto objcpp_result_ = ::ledger::core::api::DatabaseBackend::getPostgreSQLBackend();
+        auto objcpp_result_ = ::ledger::core::api::DatabaseBackend::createBackendFromEngine(::djinni_generated::DatabaseEngine::toCpp(engine));
         return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

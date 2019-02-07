@@ -12,6 +12,7 @@
 #import "LGBitcoinLikeAccount+Private.h"
 #import "LGBlockCallback+Private.h"
 #import "LGErrorCodeCallback+Private.h"
+#import "LGEthereumLikeAccount+Private.h"
 #import "LGEventBus+Private.h"
 #import "LGLogger+Private.h"
 #import "LGOperationQuery+Private.h"
@@ -113,6 +114,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->asBitcoinLikeAccount();
         return ::djinni_generated::BitcoinLikeAccount::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGEthereumLikeAccount *)asEthereumLikeAccount {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->asEthereumLikeAccount();
+        return ::djinni_generated::EthereumLikeAccount::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

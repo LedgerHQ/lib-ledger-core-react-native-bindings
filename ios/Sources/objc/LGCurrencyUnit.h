@@ -3,7 +3,7 @@
 
 #import <Foundation/Foundation.h>
 
-/**Structure of cryptocurrency unit */
+/** Structure of cryptocurrency unit. */
 @interface LGCurrencyUnit : NSObject
 - (nonnull instancetype)initWithName:(nonnull NSString *)name
                               symbol:(nonnull NSString *)symbol
@@ -14,16 +14,16 @@
                                         code:(nonnull NSString *)code
                              numberOfDecimal:(int32_t)numberOfDecimal;
 
-/**Currency name, e.g. milli-bitcoin */
+/** Currency name, e.g. milli-bitcoin. */
 @property (nonatomic, readonly, nonnull) NSString * name;
 
-/**UTF-8 (hex) currency symbol, e.g. hex code for m₿ */
+/** UTF-8 (hex) currency symbol, e.g. hex code for m₿. */
 @property (nonatomic, readonly, nonnull) NSString * symbol;
 
-/**Currency code, e.g. mBTC */
+/** Currency code, e.g. mBTC. */
 @property (nonatomic, readonly, nonnull) NSString * code;
 
-/**Number of decimal to display */
+/** Number of decimal to display. */
 @property (nonatomic, readonly) int32_t numberOfDecimal;
 
 @end

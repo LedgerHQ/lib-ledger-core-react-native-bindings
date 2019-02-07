@@ -72,4 +72,7 @@
 /** Persists the changes to the Preferences. */
 - (void)commit;
 
+/** Clear all preferences. */
+- (void)clear;
+
 @end

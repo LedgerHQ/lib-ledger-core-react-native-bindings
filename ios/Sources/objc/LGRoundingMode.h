@@ -3,11 +3,18 @@
 
 #import <Foundation/Foundation.h>
 
-/**TODO */
+/** Rounding strategy when cutting dealing with decimals. */
 typedef NS_ENUM(NSInteger, LGRoundingMode)
 {
+    /** The extra decimals are just dropped. */
     LGRoundingModeTruncated,
+    /** The extra decimals are dropped and the new last decimal is rounded half down (x.0). */
     LGRoundingModeRoundHalfDown,
+    /**
+     * The extra decimals are dropped and the new last decimal is rounded half down or middle
+     * according to the fractional part (x.0 or (x+1).0).
+     */
     LGRoundingModeRoundHalfEven,
+    /** The extra decimals are dropped and the new last decimal is rounded half up ((x+1).0). */
     LGRoundingModeRoundHalfUp,
 };
