@@ -27,7 +27,10 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/** ResultSet is a cursor over a query result. It allows user to iterate through query rows. */
+/**
+ * ResultSet is a cursor over a query result. It allows user to iterate through query rows. When you start iterating through
+ * result the cursor is placed before the first element of the set.
+ */
 public class RCTCoreDatabaseResultSet extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -160,52 +163,6 @@ public class RCTCoreDatabaseResultSet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * Get the number of row retrieved
-     * @return The number of rows retrieved by the query
-     */
-    @ReactMethod
-    public void getRowNumber(ReadableMap currentInstance, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            DatabaseResultSetImpl currentInstanceObj = this.javaObjects.get(sUid);
-
-            int javaResult = currentInstanceObj.getRowNumber();
-            WritableNativeMap result = new WritableNativeMap();
-            result.putInt("value", javaResult);
-
-            promise.resolve(result);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /**
-     * Returns the number of remaining rows to get before the end of the result set.
-     * @return The number of rows remaining rows to get before the end of the result set.
-     */
-    @ReactMethod
-    public void available(ReadableMap currentInstance, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            DatabaseResultSetImpl currentInstanceObj = this.javaObjects.get(sUid);
-
-            int javaResult = currentInstanceObj.available();
-            WritableNativeMap result = new WritableNativeMap();
-            result.putInt("value", javaResult);
-
-            promise.resolve(result);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /**
      * Returns true if the result set has at least one remaining row to get.
      * @return true if the result set has at least one remaining row to get, false otherwise.
      */
@@ -229,7 +186,30 @@ public class RCTCoreDatabaseResultSet extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * Move the result set to the next available result. This method may fail if there is now further row to fetch.
+     * Returns the number of remaining rows before the result set needs to load more rows
+     * @return The number of remaining rows before the result set needs to load more rows.
+     */
+    @ReactMethod
+    public void available(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            DatabaseResultSetImpl currentInstanceObj = this.javaObjects.get(sUid);
+
+            int javaResult = currentInstanceObj.available();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putInt("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Internally move the result set to the next available row. This method may fail if there is no further row to fetch.
      * @return Return a result set pointing to the next row.
      */
     @ReactMethod
@@ -240,16 +220,7 @@ public class RCTCoreDatabaseResultSet extends ReactContextBaseJavaModule {
 
             DatabaseResultSetImpl currentInstanceObj = this.javaObjects.get(sUid);
 
-            DatabaseResultSet javaResult = currentInstanceObj.next();
-
-            String javaResult_uuid = UUID.randomUUID().toString();
-            RCTCoreDatabaseResultSet rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreDatabaseResultSet.class);
-            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, (DatabaseResultSetImpl)javaResult);
-            WritableNativeMap result = new WritableNativeMap();
-            result.putString("type","RCTCoreDatabaseResultSet");
-            result.putString("uid",javaResult_uuid);
-
-            promise.resolve(result);
+            currentInstanceObj.next();
         }
         catch(Exception e)
         {

@@ -161,4 +161,17 @@
  */
 - (void)freshResetAll:(nullable id<LGErrorCodeCallback>)callback;
 
+/**
+ * Change Database password.
+ *
+ * Allow to change password of database holding all informations about
+ * accounts, wallets, transactions ...
+ *
+ * WARNING: be carefull to have no other instances of WalletPool using
+ * same database
+ */
+- (void)changePassword:(nonnull NSString *)oldPassword
+           newPassword:(nonnull NSString *)newPassword
+              callback:(nullable id<LGErrorCodeCallback>)callback;
+
 @end

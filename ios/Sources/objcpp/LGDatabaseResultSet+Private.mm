@@ -34,11 +34,11 @@ public:
             return ::djinni::I32::toCpp(objcpp_result_);
         }
     }
-    int32_t getRowNumber() override
+    bool hasNext() override
     {
         @autoreleasepool {
-            auto objcpp_result_ = [djinni_private_get_proxied_objc_object() getRowNumber];
-            return ::djinni::I32::toCpp(objcpp_result_);
+            auto objcpp_result_ = [djinni_private_get_proxied_objc_object() hasNext];
+            return ::djinni::Bool::toCpp(objcpp_result_);
         }
     }
     int32_t available() override
@@ -48,18 +48,10 @@ public:
             return ::djinni::I32::toCpp(objcpp_result_);
         }
     }
-    bool hasNext() override
+    void next() override
     {
         @autoreleasepool {
-            auto objcpp_result_ = [djinni_private_get_proxied_objc_object() hasNext];
-            return ::djinni::Bool::toCpp(objcpp_result_);
-        }
-    }
-    std::shared_ptr<::ledger::core::api::DatabaseResultSet> next() override
-    {
-        @autoreleasepool {
-            auto objcpp_result_ = [djinni_private_get_proxied_objc_object() next];
-            return ::djinni_generated::DatabaseResultSet::toCpp(objcpp_result_);
+            [djinni_private_get_proxied_objc_object() next];
         }
     }
     void close() override

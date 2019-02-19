@@ -460,4 +460,32 @@ RCT_REMAP_METHOD(freshResetAll,freshResetAll:(NSDictionary *)currentInstance Wit
     [currentInstanceObj freshResetAll:objcParam_0];
 
 }
+
+/**
+ * Change Database password.
+ *
+ * Allow to change password of database holding all informations about
+ * accounts, wallets, transactions ...
+ *
+ * WARNING: be carefull to have no other instances of WalletPool using
+ * same database
+ */
+RCT_REMAP_METHOD(changePassword,changePassword:(NSDictionary *)currentInstance withParams:(nonnull NSString *)oldPassword
+                                                                              newPassword:(nonnull NSString *)newPassword withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::changePassword, first argument should be an instance of LGWalletPool", nil);
+        return;
+    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::changePassword, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGErrorCodeCallback *objcParam_2 = [[RCTCoreLGErrorCodeCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj changePassword:oldPassword newPassword:newPassword callback:objcParam_2];
+
+}
 @end
