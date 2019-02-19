@@ -480,4 +480,29 @@ public class RCTCoreWalletPool extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /**
+     * Change Database password.
+     *
+     * Allow to change password of database holding all informations about
+     * accounts, wallets, transactions ...
+     *
+     * WARNING: be carefull to have no other instances of WalletPool using
+     * same database
+     */
+    @ReactMethod
+    public void changePassword(ReadableMap currentInstance, String oldPassword, String newPassword, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            WalletPool currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreErrorCodeCallback javaParam_2 = RCTCoreErrorCodeCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.changePassword(oldPassword, newPassword, javaParam_2);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
 }

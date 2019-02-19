@@ -3,17 +3,18 @@
 
 #import "LGDatabaseError.h"
 #import "LGDatabaseResultRow.h"
-#import "LGDatabaseResultSet.h"
 #import "LGDatabaseResultSetImpl.h"
 #import "RCTCoreBaseModule.h"
 #import "RCTCoreLGDatabaseError.h"
 #import "RCTCoreLGDatabaseResultRow.h"
-#import "RCTCoreLGDatabaseResultSet.h"
 #import <Foundation/Foundation.h>
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>
 
 
-/** ResultSet is a cursor over a query result. It allows user to iterate through query rows. */
+/**
+ * ResultSet is a cursor over a query result. It allows user to iterate through query rows. When you start iterating through
+ * result the cursor is placed before the first element of the set.
+ */
 @interface RCTCoreLGDatabaseResultSet : RCTCoreBaseModule <RCTBridgeModule>
 @end

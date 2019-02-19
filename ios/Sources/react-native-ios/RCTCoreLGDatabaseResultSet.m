@@ -98,68 +98,6 @@ RCT_REMAP_METHOD(getUpdateCount,getUpdateCount:(NSDictionary *)currentInstance W
 }
 
 /**
- * Get the number of row retrieved
- * @return The number of rows retrieved by the query
- */
-RCT_REMAP_METHOD(getRowNumber,getRowNumber:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
-    {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseResultSet::getRowNumber, first argument should be an instance of LGDatabaseResultSetImpl", nil);
-        return;
-    }
-    LGDatabaseResultSetImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    if (!currentInstanceObj)
-    {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseResultSetImpl::getRowNumber, instance of uid %@ not found", currentInstance[@"uid"]];
-        reject(@"impl_call_error", error, nil);
-        return;
-    }
-    NSInteger objcResult = [currentInstanceObj getRowNumber];
-    NSDictionary *result = @{@"value" : @(objcResult)};
-    if(result)
-    {
-        resolve(result);
-    }
-    else
-    {
-        reject(@"impl_call_error", @"Error while calling LGDatabaseResultSetImpl::getRowNumber", nil);
-        return;
-    }
-
-}
-
-/**
- * Returns the number of remaining rows to get before the end of the result set.
- * @return The number of rows remaining rows to get before the end of the result set.
- */
-RCT_REMAP_METHOD(available,available:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
-    {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseResultSet::available, first argument should be an instance of LGDatabaseResultSetImpl", nil);
-        return;
-    }
-    LGDatabaseResultSetImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    if (!currentInstanceObj)
-    {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseResultSetImpl::available, instance of uid %@ not found", currentInstance[@"uid"]];
-        reject(@"impl_call_error", error, nil);
-        return;
-    }
-    NSInteger objcResult = [currentInstanceObj available];
-    NSDictionary *result = @{@"value" : @(objcResult)};
-    if(result)
-    {
-        resolve(result);
-    }
-    else
-    {
-        reject(@"impl_call_error", @"Error while calling LGDatabaseResultSetImpl::available", nil);
-        return;
-    }
-
-}
-
-/**
  * Returns true if the result set has at least one remaining row to get.
  * @return true if the result set has at least one remaining row to get, false otherwise.
  */
@@ -191,7 +129,38 @@ RCT_REMAP_METHOD(hasNext,hasNext:(NSDictionary *)currentInstance WithResolver:(R
 }
 
 /**
- * Move the result set to the next available result. This method may fail if there is now further row to fetch.
+ * Returns the number of remaining rows before the result set needs to load more rows
+ * @return The number of remaining rows before the result set needs to load more rows.
+ */
+RCT_REMAP_METHOD(available,available:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseResultSet::available, first argument should be an instance of LGDatabaseResultSetImpl", nil);
+        return;
+    }
+    LGDatabaseResultSetImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseResultSetImpl::available, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSInteger objcResult = [currentInstanceObj available];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGDatabaseResultSetImpl::available", nil);
+        return;
+    }
+
+}
+
+/**
+ * Internally move the result set to the next available row. This method may fail if there is no further row to fetch.
  * @return Return a result set pointing to the next row.
  */
 RCT_REMAP_METHOD(next,next:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -207,23 +176,7 @@ RCT_REMAP_METHOD(next,next:(NSDictionary *)currentInstance WithResolver:(RCTProm
         reject(@"impl_call_error", error, nil);
         return;
     }
-    id<LGDatabaseResultSet> objcResult = [currentInstanceObj next];
-
-    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
-    RCTCoreLGDatabaseResultSet *rctImpl_objcResult = (RCTCoreLGDatabaseResultSet *)[self.bridge moduleForName:@"CoreLGDatabaseResultSet"];
-    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
-    [rctImpl_objcResult baseSetObject:objcResult_array];
-    NSDictionary *result = @{@"type" : @"CoreLGDatabaseResultSet", @"uid" : objcResult_uuid };
-
-    if(result)
-    {
-        resolve(result);
-    }
-    else
-    {
-        reject(@"impl_call_error", @"Error while calling LGDatabaseResultSetImpl::next", nil);
-        return;
-    }
+    [currentInstanceObj next];
 
 }
 
