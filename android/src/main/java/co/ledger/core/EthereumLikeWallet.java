@@ -5,6 +5,7 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/** An Ethereum-like wallet. */
 public abstract class EthereumLikeWallet {
 
     private static final class CppProxy extends EthereumLikeWallet

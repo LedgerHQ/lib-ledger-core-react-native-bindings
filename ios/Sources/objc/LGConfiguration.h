@@ -15,7 +15,9 @@ extern NSString * __nonnull const LGConfigurationBLOCKCHAINEXPLORERENGINE;
 extern NSString * __nonnull const LGConfigurationBLOCKCHAINEXPLORERAPIENDPOINT;
 /** Sets the API version. */
 extern NSString * __nonnull const LGConfigurationBLOCKCHAINEXPLORERVERSION;
-/** Selects the blockchain observer engine (Ledger's API). */
+/** Sets the API port (e.g. for XRP it is 51234) */
+extern NSString * __nonnull const LGConfigurationBLOCKCHAINEXPLORERPORT;
+/** Selects the blockchain observer engine (Ledger's API) */
 extern NSString * __nonnull const LGConfigurationBLOCKCHAINOBSERVERENGINE;
 /** Selects the blockchain observer engine (Ledger's API; Websocket version). */
 extern NSString * __nonnull const LGConfigurationBLOCKCHAINOBSERVERWSENDPOINT;

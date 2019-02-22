@@ -8,6 +8,7 @@ import co.ledger.core.ERC20LikeAccount;
 import co.ledger.core.ERC20LikeOperation;
 import co.ledger.core.ERC20Token;
 import co.ledger.core.OperationQuery;
+import co.ledger.core.TimePeriod;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
@@ -188,6 +189,45 @@ public class RCTCoreERC20LikeAccount extends ReactContextBaseJavaModule {
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreBigInt");
             result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Get the balance history of this ERC20 account from a starting date (included) to an ending
+     * date (included).
+     */
+    @ReactMethod
+    public void getBalanceHistoryFor(ReadableMap currentInstance, Date start, Date end, int period, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            ERC20LikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            if (period < 0 || TimePeriod.values().length <= period)
+            {
+                promise.reject("Enum error", "Failed to get enum TimePeriod");
+                return;
+            }
+            TimePeriod javaParam_2 = TimePeriod.values()[period];
+            ArrayList<BigInt> javaResult = currentInstanceObj.getBalanceHistoryFor(start, end, javaParam_2);
+
+            WritableNativeArray result = new WritableNativeArray();
+            for (BigInt javaResult_elem : javaResult)
+            {
+                String javaResult_elem_uuid = UUID.randomUUID().toString();
+                RCTCoreBigInt rctImpl_javaResult_elem = this.reactContext.getNativeModule(RCTCoreBigInt.class);
+                rctImpl_javaResult_elem.getJavaObjects().put(javaResult_elem_uuid, javaResult_elem);
+                WritableNativeMap result_elem = new WritableNativeMap();
+                result_elem.putString("type","RCTCoreBigInt");
+                result_elem.putString("uid",javaResult_elem_uuid);
+                result.pushMap(result_elem);
+            }
 
             promise.resolve(result);
         }

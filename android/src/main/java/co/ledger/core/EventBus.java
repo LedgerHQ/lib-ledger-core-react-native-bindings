@@ -5,18 +5,18 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**Class representing an event bus through which a receiver gets notified */
+/** Class representing an event bus through which a receiver gets notified. */
 public abstract class EventBus {
     /**
-     *Subscribe an event receiver to the event bus
-     *@param context, ExecutionContext object, execution context in which receiver will be notified
-     *@param reveiver, EventReceiver object, receiver that event bu will notify
+     * Subscribe an event receiver to the event bus.
+     * @param context, ExecutionContext object, execution context in which receiver will be notified
+     * @param reveiver, EventReceiver object, receiver that event bu will notify
      */
     public abstract void subscribe(ExecutionContext context, EventReceiver receiver);
 
     /**
-     *Unsubscribe an event receiver from the event bus
-     *@param receiver, EventReceiver object, receiver to unsubscribe
+     * Unsubscribe an event receiver from the event bus.
+     * @param receiver, EventReceiver object, receiver to unsubscribe
      */
     public abstract void unsubscribe(EventReceiver receiver);
 

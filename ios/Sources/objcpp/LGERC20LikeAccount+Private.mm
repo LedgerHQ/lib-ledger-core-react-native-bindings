@@ -10,6 +10,7 @@
 #import "LGERC20LikeOperation+Private.h"
 #import "LGERC20Token+Private.h"
 #import "LGOperationQuery+Private.h"
+#import "LGTimePeriod+Private.h"
 #include <exception>
 #include <stdexcept>
 #include <utility>
@@ -52,6 +53,17 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->getBalance();
         return ::djinni_generated::BigInt::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nonnull NSArray<LGBigInt *> *)getBalanceHistoryFor:(nonnull NSDate *)start
+                                                  end:(nonnull NSDate *)end
+                                               period:(LGTimePeriod)period {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getBalanceHistoryFor(::djinni::Date::toCpp(start),
+                                                                        ::djinni::Date::toCpp(end),
+                                                                        ::djinni::Enum<::ledger::core::api::TimePeriod, LGTimePeriod>::toCpp(period));
+        return ::djinni::List<::djinni_generated::BigInt>::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

@@ -165,10 +165,10 @@
  * Change Database password.
  *
  * Allow to change password of database holding all informations about
- * accounts, wallets, transactions ...
+ * accounts, wallets, transactions etc. and the wallet pool preferences.
  *
- * WARNING: be carefull to have no other instances of WalletPool using
- * same database
+ * WARNING: be careful to have no other instances of WalletPool using
+ * same database / preferences.
  */
 - (void)changePassword:(nonnull NSString *)oldPassword
            newPassword:(nonnull NSString *)newPassword

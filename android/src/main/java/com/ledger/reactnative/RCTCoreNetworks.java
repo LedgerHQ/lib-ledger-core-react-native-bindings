@@ -6,6 +6,7 @@ package com.ledger.reactnative;
 import co.ledger.core.BitcoinLikeNetworkParameters;
 import co.ledger.core.EthereumLikeNetworkParameters;
 import co.ledger.core.Networks;
+import co.ledger.core.RippleLikeNetworkParameters;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
@@ -133,6 +134,27 @@ public class RCTCoreNetworks extends ReactContextBaseJavaModule {
             rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreEthereumLikeNetworkParameters");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** The Ripple network parameters. */
+    @ReactMethod
+    public void ripple(Promise promise) {
+        try
+        {
+            RippleLikeNetworkParameters javaResult = Networks.ripple();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreRippleLikeNetworkParameters rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreRippleLikeNetworkParameters.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreRippleLikeNetworkParameters");
             result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);

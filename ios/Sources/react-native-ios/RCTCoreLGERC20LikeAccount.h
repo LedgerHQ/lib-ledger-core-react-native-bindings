@@ -6,6 +6,7 @@
 #import "LGERC20LikeOperation.h"
 #import "LGERC20Token.h"
 #import "LGOperationQuery.h"
+#import "LGTimePeriod.h"
 #import "RCTCoreBaseModule.h"
 #import "RCTCoreLGBigInt.h"
 #import "RCTCoreLGERC20LikeOperation.h"

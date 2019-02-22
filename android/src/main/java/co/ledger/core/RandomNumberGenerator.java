@@ -3,7 +3,7 @@
 
 package co.ledger.core;
 
-/** Class to generate random numbers */
+/** Class to generate random numbers. */
 public abstract class RandomNumberGenerator {
     /**
      * Generates random bytes.

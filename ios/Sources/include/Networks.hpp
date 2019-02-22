@@ -8,6 +8,7 @@ namespace ledger { namespace core { namespace api {
 
 struct BitcoinLikeNetworkParameters;
 struct EthereumLikeNetworkParameters;
+struct RippleLikeNetworkParameters;
 
 /** All available blockchain networks parameters. */
 class Networks {
@@ -19,6 +20,9 @@ public:
 
     /** The Ethereum network parameters. */
     static EthereumLikeNetworkParameters ethereum();
+
+    /** The Ripple network parameters. */
+    static RippleLikeNetworkParameters ripple();
 };
 
 } } }  // namespace ledger::core::api

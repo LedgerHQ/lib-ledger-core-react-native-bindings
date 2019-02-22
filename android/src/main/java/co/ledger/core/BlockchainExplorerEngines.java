@@ -5,9 +5,13 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**TODO */
+/** Available API to use with explorers. */
 public abstract class BlockchainExplorerEngines {
     public static final String LEDGER_API = "LEDGER_API";
+
+    public static final String RIPPLE_API = "RIPPLE_API";
+
+    public static final String RIPPLE_NODE = "RIPPLE_NODE";
 
 
     private static final class CppProxy extends BlockchainExplorerEngines

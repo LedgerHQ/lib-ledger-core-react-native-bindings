@@ -22,12 +22,12 @@ public abstract class DerivationPath {
     /** Return true if the given index in the path is an hardened child num. */
     public abstract boolean isHardened(int index);
 
-    /** Serialize the given path to a human readable string like "44'/0'/0'/0/0" */
+    /** Serialize the given path to a human readable string like "44'/0'/0'/0/0". */
     public abstract String toString();
 
     /**
      * Return a derivation path without the last element, e.g. the parent of "44'/0'/0'/0/0" is
-     * "44'/0'/0'/0"
+     * "44'/0'/0'/0".
      */
     public abstract DerivationPath getParent();
 

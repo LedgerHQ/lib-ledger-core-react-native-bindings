@@ -16,7 +16,7 @@ public abstract class BitcoinLikeTransactionBuilder {
     public abstract BitcoinLikeTransactionBuilder addInput(String transactionHash, int index, int sequence);
 
     /**
-     * Add the given output to the final transaction
+     * Add the given output to the final transaction.
      * @return A reference on the same builder in order to chain calls.
      */
     public abstract BitcoinLikeTransactionBuilder addOutput(Amount amount, BitcoinLikeScript script);
@@ -36,7 +36,10 @@ public abstract class BitcoinLikeTransactionBuilder {
      */
     public abstract BitcoinLikeTransactionBuilder excludeUtxo(String transactionHash, int outputIndex);
 
-    /** @return A reference on the same builder in order to chain calls. */
+    /**
+     * Set the the number of change addresses in the transaction builder.
+     * @return A reference on the same builder in order to chain calls.
+     */
     public abstract BitcoinLikeTransactionBuilder setNumberOfChangeAddresses(int count);
 
     /**
@@ -90,11 +93,11 @@ public abstract class BitcoinLikeTransactionBuilder {
      */
     public abstract BitcoinLikeTransactionBuilder clone();
 
-    /** Reset the current instance to its initial state */
+    /** Reset the current instance to its initial state. */
     public abstract void reset();
 
     /**
-     * Parsing unsigned transaction
+     * Parsing unsigned transaction.
      * parsing a tx might change depending on block height we are on (if an update is effective starting from a given hight)
      */
     public static native BitcoinLikeTransaction parseRawUnsignedTransaction(Currency currency, byte[] rawTransaction, Integer currentBlockHeight);

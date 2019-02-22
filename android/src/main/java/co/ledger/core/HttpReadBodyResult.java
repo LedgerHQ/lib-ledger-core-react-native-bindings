@@ -3,27 +3,27 @@
 
 package co.ledger.core;
 
-/**Structure representing Http response body */
+/** Structure representing Http response body. */
 public final class HttpReadBodyResult {
 
 
-    /*package*/ final co.ledger.core.Error error;
+    /*package*/ final Error error;
 
     /*package*/ final byte[] data;
 
     public HttpReadBodyResult(
-            co.ledger.core.Error error,
+            Error error,
             byte[] data) {
         this.error = error;
         this.data = data;
     }
 
-    /**Optional Error structure, error in case of http request failure */
+    /** Optional Error structure, error in case of http request failure. */
     public Error getError() {
         return error;
     }
 
-    /**Optional binary, data returned by http request in case of success */
+    /** Optional binary, data returned by http request in case of success. */
     public byte[] getData() {
         return data;
     }

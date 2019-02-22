@@ -3,13 +3,10 @@
 
 package co.ledger.core;
 
-/**
- *Callback triggered by main completed task,
- *returns optional result of template type T
- */
+/** Callback triggered by main completed task, returning optional result of template type T. */
 public abstract class AccountCreationInfoCallback {
     /**
-     * Method triggered when main task complete
+     * Method triggered when main task complete.
      * @params result optional of type T, non null if main task failed
      * @params error optional of type Error, non null if main task succeeded
      */

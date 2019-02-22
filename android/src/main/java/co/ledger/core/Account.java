@@ -6,20 +6,20 @@ package co.ledger.core;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**Class representing an account */
+/** Class representing an account. */
 public abstract class Account {
     /**
-     *Key of the synchronization duration time in the synchronize event payload.
-     *The value is stored in a int 64 time expressed in miliseconds.
+     * Key of the synchronization duration time in the synchronize event payload.
+     * The value is stored in a int 64 time expressed in miliseconds.
      */
     public static final String EV_SYNC_DURATION_MS = "EV_SYNC_DURATION_MS";
 
-    /**Key of the synchronization error code. The code is a stringified version of the value in the ErrorCode enum. */
+    /** Key of the synchronization error code. The code is a stringified version of the value in the ErrorCode enum. */
     public static final String EV_SYNC_ERROR_CODE = "EV_SYNC_ERROR_CODE";
 
     public static final String EV_SYNC_ERROR_CODE_INT = "EV_SYNC_ERROR_CODE_INT";
 
-    /**Key of the synchronization error message. The message is stored as a string. */
+    /** Key of the synchronization error message. The message is stored as a string. */
     public static final String EV_SYNC_ERROR_MESSAGE = "EV_SYNC_ERROR_MESSAGE";
 
     /**TODO */
@@ -37,81 +37,86 @@ public abstract class Account {
     public static final String EV_NEW_OP_UID = "EV_NEW_OP_UID";
 
     /**
-     *Get index of account in user's wallet
-     *32 bits integer
+     * Get index of account in user's wallet
+     * 32-bit integer
      */
     public abstract int getIndex();
 
-    /**TODO */
+    /** Get the list of all operations. */
     public abstract OperationQuery queryOperations();
 
     /**
-     *Get balance of account
-     *@param callback, if getBalacne, Callback returning an Amount object which represents account's balance
+     * Get balance of account.
+     * @param callback, if getBalacne, Callback returning an Amount object which represents account's balance
      */
     public abstract void getBalance(AmountCallback callback);
 
     /**
-     *Get balance of account at a precise interval with a certain granularity
-     *@param start, lower bound of search range
-     *@param end, upper bound of search range
-     *@param precision, granularity at which we want results
-     *@param callback, ListCallback returning a list of Amount object which represents account's balance
+     * Get balance of account at a precise interval with a certain granularity.
+     * @param start, lower bound of search range
+     * @param end, upper bound of search range
+     * @param precision, granularity at which we want results
+     * @param callback, ListCallback returning a list of Amount object which represents account's balance
      */
     public abstract void getBalanceHistory(String start, String end, TimePeriod period, AmountListCallback callback);
 
     /**
-     *Get synchronization status of account
-     *@return bool
+     * Get synchronization status of account.
+     * @return bool
      */
     public abstract boolean isSynchronizing();
 
     /**
-     *Start synchronization of account
-     *@return EventBus, handler will be notified of synchronization outcome
+     * Start synchronization of account.
+     * @return EventBus, handler will be notified of synchronization outcome
      */
     public abstract EventBus synchronize();
 
     /**
-     *Return account's preferences
-     *@return Preferences object
+     * Return account's preferences.
+     * @return Preferences object
      */
     public abstract Preferences getPreferences();
 
     /**
-     *Return account's logger which provides all needed (e.g. database) logs
-     *@return Logger Object
+     * Return account's logger which provides all needed (e.g. database) logs.
+     * @return Logger Object
      */
     public abstract Logger getLogger();
 
     /**
-     *Return preferences of specific operation
-     *@param uid, string of operation id
-     *@return Preferences
-     *Return operation for a specific operation
-     *@param uid, string of operation id
+     * Return operation for a specific operation.
+     * @param uid, string of operation id
      */
     public abstract Preferences getOperationPreferences(String uid);
 
+    /**
+     * Turn the account into an Bitcoin one, allowing operations to be performerd on the Bitcoin
+     * network.
+     */
     public abstract BitcoinLikeAccount asBitcoinLikeAccount();
 
     /**
-     * asEthereumLikeAccount(): Callback<EthereumLikeAccount>;
-     * asRippleLikeAccount(): Callback<RippleLikeAccount>;
-     *Check if account is a Bitcoin one
-     *@return bool
+     * Turn the account into an Ethereum one, allowing operations to be performerd on the Ethereum
+     * network.
+     */
+    public abstract EthereumLikeAccount asEthereumLikeAccount();
+
+    /**
+     * Check if account is a Bitcoin one.
+     * @return bool
      */
     public abstract boolean isInstanceOfBitcoinLikeAccount();
 
     /**
-     *Check if account is an Ethereum one
-     *@return bool
+     * Check if account is an Ethereum one.
+     * @return bool
      */
     public abstract boolean isInstanceOfEthereumLikeAccount();
 
     /**
-     *Check if account is a Ripple one
-     *@return bool
+     * Check if account is a Ripple one.
+     * @return bool
      */
     public abstract boolean isInstanceOfRippleLikeAccount();
 
@@ -119,41 +124,41 @@ public abstract class Account {
     public abstract void getFreshPublicAddresses(AddressListCallback callback);
 
     /**
-     *Get type of wallet to which account belongs
-     *@return WalletType object
+     * Get type of wallet to which account belongs.
+     * @return WalletType object
      */
     public abstract WalletType getWalletType();
 
     /**
-     *Get event bus through which account is notified on synchronization status
-     *@return EventBus object
+     * Get event bus through which account is notified on synchronization status.
+     * @return EventBus object
      */
     public abstract EventBus getEventBus();
 
-    /**Start observing blockchain on which account synchronizes and send/receive transactions */
+    /** Start observing blockchain on which account synchronizes and send/receive transactions. */
     public abstract void startBlockchainObservation();
 
-    /**Stop observing blockchain */
+    /** Stop observing blockchain. */
     public abstract void stopBlockchainObservation();
 
     /**
-     *Get account's observation status
-     *@return boolean
+     * Get account's observation status.
+     * @return boolean
      */
     public abstract boolean isObservingBlockchain();
 
     /**
-     *Get Last block of blockchain on which account operates
-     *@param callback, Callback returning, if getLastBlock succeeds, a Block object
+     * Get Last block of blockchain on which account operates.
+     * @param callback, Callback returning, if getLastBlock succeeds, a Block object
      */
     public abstract void getLastBlock(BlockCallback callback);
 
-    /** Get the key used to generate the account */
+    /** Get the key used to generate the account. */
     public abstract String getRestoreKey();
 
     /**
-     *Erase data (in user's DB) relative to wallet since given date
-     *@param date, start date of data deletion
+     * Erase data (in user's DB) relative to wallet since given date.
+     * @param date, start date of data deletion
      */
     public abstract void eraseDataSince(Date date, ErrorCodeCallback callback);
 
@@ -259,6 +264,14 @@ public abstract class Account {
             return native_asBitcoinLikeAccount(this.nativeRef);
         }
         private native BitcoinLikeAccount native_asBitcoinLikeAccount(long _nativeRef);
+
+        @Override
+        public EthereumLikeAccount asEthereumLikeAccount()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asEthereumLikeAccount(this.nativeRef);
+        }
+        private native EthereumLikeAccount native_asEthereumLikeAccount(long _nativeRef);
 
         @Override
         public boolean isInstanceOfBitcoinLikeAccount()

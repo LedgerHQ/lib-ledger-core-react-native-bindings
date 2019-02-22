@@ -4,11 +4,13 @@
 #import "LGBitcoinLikeNetworkParameters.h"
 #import "LGCurrencyUnit.h"
 #import "LGEthereumLikeNetworkParameters.h"
+#import "LGRippleLikeNetworkParameters.h"
 #import "LGWalletType.h"
 #import "RCTCoreBaseModule.h"
 #import "RCTCoreLGBitcoinLikeNetworkParameters.h"
 #import "RCTCoreLGCurrencyUnit.h"
 #import "RCTCoreLGEthereumLikeNetworkParameters.h"
+#import "RCTCoreLGRippleLikeNetworkParameters.h"
 #import <Foundation/Foundation.h>
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>

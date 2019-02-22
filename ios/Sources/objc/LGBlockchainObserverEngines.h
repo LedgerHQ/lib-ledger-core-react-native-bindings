@@ -4,6 +4,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * __nonnull const LGBlockchainObserverEnginesLEDGERAPI;
+extern NSString * __nonnull const LGBlockchainObserverEnginesRIPPLENODE;
 
 /** Available API to use with observers. */
 @interface LGBlockchainObserverEngines : NSObject

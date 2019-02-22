@@ -75,4 +75,26 @@ RCT_REMAP_METHOD(ethereum,ethereumWithResolver:(RCTPromiseResolveBlock)resolve r
     }
 
 }
+
+/** The Ripple network parameters. */
+RCT_REMAP_METHOD(ripple,rippleWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    LGRippleLikeNetworkParameters * objcResult = [LGNetworks ripple];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGRippleLikeNetworkParameters *rctImpl_objcResult = (RCTCoreLGRippleLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGRippleLikeNetworkParameters"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGRippleLikeNetworkParameters", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGNetworks::ripple", nil);
+        return;
+    }
+
+}
 @end

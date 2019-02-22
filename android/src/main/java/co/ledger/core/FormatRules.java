@@ -3,7 +3,7 @@
 
 package co.ledger.core;
 
-/**TODO */
+/** Formatting rules to format amounts to strings. */
 public final class FormatRules {
 
 
@@ -18,10 +18,12 @@ public final class FormatRules {
         this.maxNumberOfDecimals = maxNumberOfDecimals;
     }
 
+    /** How should we round decimal values? */
     public RoundingMode getRoundingMode() {
         return roundingMode;
     }
 
+    /** The maximum number of decimals formatted decimals will have. */
     public int getMaxNumberOfDecimals() {
         return maxNumberOfDecimals;
     }
