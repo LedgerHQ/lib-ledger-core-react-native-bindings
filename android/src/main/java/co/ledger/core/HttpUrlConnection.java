@@ -5,22 +5,22 @@ package co.ledger.core;
 
 import java.util.HashMap;
 
-/**Class representing an Http connection */
+/** Class representing an Http connection. */
 public abstract class HttpUrlConnection {
     /**
-     * Gets the HTTP response status code
+     * Gets the HTTP response status code.
      * @return The HTTP response status code
      */
     public abstract int getStatusCode();
 
     /**
-     * Gets the HTTP response status text
+     * Gets the HTTP response status text.
      * @return The HTTP response status text
      */
     public abstract String getStatusText();
 
     /**
-     * Gets the HTTP response headers
+     * Gets the HTTP response headers.
      * @return The HTTP response headers
      */
     public abstract HashMap<String, String> getHeaders();

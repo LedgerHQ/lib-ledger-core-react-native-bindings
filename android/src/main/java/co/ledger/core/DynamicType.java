@@ -3,16 +3,25 @@
 
 package co.ledger.core;
 
-/**Enumeration of supported types in DynamicArray and DynamicObject */
+/** Enumeration of supported types in DynamicArray and DynamicObject. */
 public enum DynamicType {
+    /** A dynamic object, composed of DynamicType indexed by strings. */
     OBJECT,
+    /** A 32-bit integer. */
     INT32,
+    /** A 64-bit integer. */
     INT64,
+    /** A double-precision floating point number. */
     DOUBLE,
+    /** A boolean. */
     BOOLEAN,
+    /** A contiguous, unsized bytes array. */
     DATA,
+    /** An array of DynamicType values. */
     ARRAY,
+    /** A string. */
     STRING,
+    /** Just an undefined value. */
     UNDEFINED,
     ;
 }

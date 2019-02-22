@@ -5,11 +5,11 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**Class representing a Bitcoin Operation */
+/** Class representing a Bitcoin Operation. */
 public abstract class BitcoinLikeOperation {
     /**
-     *Get operation's transaction
-     *@return BitcoinLikeTransaction object
+     * Get operation's transaction.
+     * @return BitcoinLikeTransaction object
      */
     public abstract BitcoinLikeTransaction getTransaction();
 

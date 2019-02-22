@@ -5,9 +5,17 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**TODO */
+/** Configuration of wallet pools. */
 public abstract class PoolConfiguration {
+    /** Name to use for the database. */
     public static final String DATABASE_NAME = "DATABASE_NAME";
+
+    /**
+     * Enable internal logging.
+     *
+     * Set to true by default.
+     */
+    public static final String ENABLE_INTERNAL_LOGGING = "ENABLE_INTERNAL_LOGGING";
 
 
     private static final class CppProxy extends PoolConfiguration

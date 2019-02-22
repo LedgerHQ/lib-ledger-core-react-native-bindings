@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**Class representing a Bitcoin transaction */
+/** Class representing a Bitcoin transaction. */
 public abstract class BitcoinLikeTransaction {
     /** Get the hash of the transaction. */
     public abstract String getHash();
 
-    /** Get the input of the transaction */
+    /** Get the input of the transaction. */
     public abstract ArrayList<BitcoinLikeInput> getInputs();
 
-    /** Get the output of the transaction */
+    /** Get the output of the transaction. */
     public abstract ArrayList<BitcoinLikeOutput> getOutputs();
 
     /** Get the block in which the transaction is inserted if the transaction is confirmed. */
@@ -29,14 +29,14 @@ public abstract class BitcoinLikeTransaction {
 
     /**
      * Get the time when the transaction was issued or the time of the block including
-     * this transaction
+     * this transaction.
      */
     public abstract Date getTime();
 
     /** Get the timestamps serialized in the raw transaction if the underlying currency handles it. */
     public abstract Integer getTimestamp();
 
-    /** Get Transaction version */
+    /** Get Transaction version. */
     public abstract int getVersion();
 
     /** Serialize the transaction to its raw format. */

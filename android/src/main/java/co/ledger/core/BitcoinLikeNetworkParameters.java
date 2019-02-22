@@ -5,6 +5,7 @@ package co.ledger.core;
 
 import java.util.ArrayList;
 
+/** Bitcoin network parameters. */
 public final class BitcoinLikeNetworkParameters {
 
 
@@ -55,46 +56,57 @@ public final class BitcoinLikeNetworkParameters {
         this.AdditionalBIPs = AdditionalBIPs;
     }
 
+    /** Name of the network. */
     public String getIdentifier() {
         return Identifier;
     }
 
+    /** Version of the Pay To Public Hash standard. */
     public byte[] getP2PKHVersion() {
         return P2PKHVersion;
     }
 
+    /** Version of the Pay To Script Hash standard. */
     public byte[] getP2SHVersion() {
         return P2SHVersion;
     }
 
+    /** Version of the Extended Public Key standard. */
     public byte[] getXPUBVersion() {
         return XPUBVersion;
     }
 
+    /** Policy to use when expressing fee amount. */
     public BitcoinLikeFeePolicy getFeePolicy() {
         return FeePolicy;
     }
 
+    /** Minimal amount a UTXO should have before being considered BTC dust. */
     public long getDustAmount() {
         return DustAmount;
     }
 
+    /** Constant prefix to prepend all signature messages. */
     public String getMessagePrefix() {
         return MessagePrefix;
     }
 
+    /** Are transactions encoded with timestamp? */
     public boolean getUsesTimestampedTransaction() {
         return UsesTimestampedTransaction;
     }
 
+    /** Delay applied to all timestamps. Used to debounce transactions. */
     public long getTimestampDelay() {
         return TimestampDelay;
     }
 
+    /** Bitcoin signature flag indicating what part of a transaction a signature signs. */
     public byte[] getSigHash() {
         return SigHash;
     }
 
+    /** Addition BIPs enabled for this network. */
     public ArrayList<String> getAdditionalBIPs() {
         return AdditionalBIPs;
     }

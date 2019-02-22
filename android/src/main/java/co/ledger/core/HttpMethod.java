@@ -3,7 +3,7 @@
 
 package co.ledger.core;
 
-/**Enumeration of available http methods */
+/** Enumeration of available http methods. */
 public enum HttpMethod {
     GET,
     POST,

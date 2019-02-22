@@ -5,178 +5,175 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- *Class representing an object that holds references to different types of objects,
- *those references are appended dynamically in an array like structure and can be retrieved by their index
- */
+/** A collection of dynamic values in an array. Values can be retrieved via their indexes. */
 public abstract class DynamicArray {
     /**
-     *Get count of stored references
-     *@return 64 bits integer
+     * Get count of values.
+     * @return 64-bit integer
      */
     public abstract long size();
 
     /**
-     *Push a 32 bits integer
-     *@param value, 32 bits integer
-     *@return DynamicArray with value stored in it
+     * Push a 32-bit integer.
+     * @param value, 32-bit integer
+     * @return DynamicArray with value stored in it
      */
     public abstract DynamicArray pushInt(int value);
 
     /**
-     *Push a 64 bits integer
-     *@param value, 64 bits integer
-     *@return DynamicArray with value stored in it
+     * Push a 64-bit integer.
+     * @param value, 64-bit integer
+     * @return DynamicArray with value stored in it
      */
     public abstract DynamicArray pushLong(long value);
 
     /**
-     *Push a string
-     *@param value, string
-     *@return DynamicArray with value stored in it
+     * Push a string.
+     * @param value, string
+     * @return DynamicArray with value stored in it
      */
     public abstract DynamicArray pushString(String value);
 
     /**
-     *Push a double
-     *@param value, double
-     *@return DynamicArray with value stored in it
+     * Push a double.
+     * @param value, double
+     * @return DynamicArray with value stored in it
      */
     public abstract DynamicArray pushDouble(double value);
 
     /**
-     *Push a binary
-     *@param value, binary
-     *@return DynamicArray with value stored in it
+     * Push a binary.
+     * @param value, binary
+     * @return DynamicArray with value stored in it
      */
     public abstract DynamicArray pushData(byte[] value);
 
     /**
-     *Push a bool
-     *@param value, bool
-     *@return DynamicArray with value stored in it
+     * Push a bool.
+     * @param value, bool
+     * @return DynamicArray with value stored in it
      */
     public abstract DynamicArray pushBoolean(boolean value);
 
     /**
-     *Push a DynamicObject object
-     *@param value, DynamicObject
-     *@return DynamicArray with value stored in it
+     * Push a dynamic object.
+     * @param value, DynamicObject
+     * @return DynamicArray with value stored in it
      */
     public abstract DynamicArray pushObject(DynamicObject value);
 
     /**
-     *Push a DynamicArray object
-     *@param value, DynamicArray
-     *@return DynamicArray with value stored in it
+     * Push a dynamic array.
+     * @param value, DynamicArray
+     * @return DynamicArray with value stored in it
      */
     public abstract DynamicArray pushArray(DynamicArray value);
 
     /**
-     *Get string at a given index
-     *@param index, 64 bits integer
-     *@return Optional string
+     * Get a string at a given index.
+     * @param index, 64-bit integer
+     * @return Optional string
      */
     public abstract String getString(long index);
 
     /**
-     *Get 32 bits integer at a given index
-     *@param index, 64 bits integer
-     *@return Optional 32 bits integer
+     * Get 32-bit integer at a given index.
+     * @param index, 64-bit integer
+     * @return Optional 32-bit integer
      */
     public abstract Integer getInt(long index);
 
     /**
-     *Get 64 bits integer at a given index
-     *@param index, 64 bits integer
-     *@return Optional 64 bits integer
+     * Get 64-bit integer at a given index.
+     * @param index, 64-bit integer
+     * @return Optional 64-bit integer
      */
     public abstract Long getLong(long index);
 
     /**
-     *Get double at a given index
-     *@param index, 64 bits integer
-     *@return Optional double
+     * Get double at a given index.
+     * @param index, 64-bit integer
+     * @return Optional double
      */
     public abstract Double getDouble(long index);
 
     /**
-     *Get binary at a given index
-     *@param index, 64 bits integer
-     *@return Optional binary
+     * Get binary at a given index.
+     * @param index, 64-bit integer
+     * @return Optional binary
      */
     public abstract byte[] getData(long index);
 
     /**
-     *Get bool at a given index
-     *@param index, 64 bits integer
-     *@return Optional bool
+     * Get bool at a given index.
+     * @param index, 64-bit integer
+     * @return Optional bool
      */
     public abstract Boolean getBoolean(long index);
 
     /**
-     *Get DynamicObject object at a given index
-     *@param index, 64 bits integer
-     *@return Optional DynamicObject
+     * Get DynamicObject object at a given index.
+     * @param index, 64-bit integer
+     * @return Optional DynamicObject
      */
     public abstract DynamicObject getObject(long index);
 
     /**
-     *Get DynamicArray object at a given index
-     *@param index, 64 bits integer
-     *@return Optional DynamicArray
+     * Get DynamicArray object at a given index.
+     * @param index, 64-bit integer
+     * @return Optional DynamicArray
      */
     public abstract DynamicArray getArray(long index);
 
     /**
-     *Concatenate current DynamicArray with another one
-     *@param array, DynamicArray object to concatenate with
-     *@return DynamicArray object, concatenated DynamicArray
+     * Concatenate current DynamicArray with another one.
+     * @param array, DynamicArray object to concatenate with
+     * @return DynamicArray object, concatenated DynamicArray
      */
     public abstract DynamicArray concat(DynamicArray array);
 
     /**
-     *Get type of value stored at a given index
-     *@param index, 64 bits integer
-     *@return Optional DynamicType enum entry
+     * Get type of value stored at a given index.
+     * @param index, 64 bits integer
+     * @return Optional DynamicType enum entry
      */
     public abstract DynamicType getType(long index);
 
     /**
-     *Delete value stored at given index
-     *@param index, 64 bits integer
-     *@return bool, true if deletion succeeded
+     * Delete value stored at given index.
+     * @param index, 64 bits integer
+     * @return bool, true if deletion succeeded
      */
     public abstract boolean remove(long index);
 
     /**
-     *Dump whole object's content as string
-     *@return string
+     * Dump whole object's content as string.
+     * @return string, the string representation of the array
      */
     public abstract String dump();
 
     /**
-     *Serialize whole object to a binary
-     *@return binary
+     * Serialize whole object to a binary.
+     * @return binary, the serialized array
      */
     public abstract byte[] serialize();
 
     /**
-     *Get readonly status of object
-     *@param bool
+     * Get readonly status of object.
+     * @return bool, whether the array is in read-only mode
      */
     public abstract boolean isReadOnly();
 
     /**
-     *Create a new instance of DynamicArray class
-     *@return DynamicArray instance
+     * Create a new instance of DynamicArray class.
+     * @return DynamicArray, a brand new instance of a dynamic array
      */
     public static native DynamicArray newInstance();
 
     /**
-     *Parse a binary to a DynamicArray
-     *@param serialized, binary to parse
-     *@return Optional DynamicArray
+     * Parse a binary to a DynamicArray.
+     * @param serialized, binary to parse
+     * @return Optional, the unserialized dynamic array
      */
     public static native DynamicArray load(byte[] serialized);
 

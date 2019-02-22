@@ -5,6 +5,7 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/** Available keychains policies. */
 public abstract class KeychainEngines {
     public static final String BIP32_P2PKH = "BIP32_P2PKH";
 

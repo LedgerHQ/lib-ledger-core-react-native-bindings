@@ -5,7 +5,7 @@ package co.ledger.core;
 
 import java.util.ArrayList;
 
-/**Structure of cryptocurrency */
+/** Structure of cryptocurrency. */
 public final class Currency {
 
 
@@ -21,52 +21,64 @@ public final class Currency {
 
     /*package*/ final BitcoinLikeNetworkParameters bitcoinLikeNetworkParameters;
 
+    /*package*/ final EthereumLikeNetworkParameters ethereumLikeNetworkParameters;
+
     public Currency(
             WalletType walletType,
             String name,
             int bip44CoinType,
             String paymentUriScheme,
             ArrayList<CurrencyUnit> units,
-            BitcoinLikeNetworkParameters bitcoinLikeNetworkParameters) {
+            BitcoinLikeNetworkParameters bitcoinLikeNetworkParameters,
+            EthereumLikeNetworkParameters ethereumLikeNetworkParameters) {
         this.walletType = walletType;
         this.name = name;
         this.bip44CoinType = bip44CoinType;
         this.paymentUriScheme = paymentUriScheme;
         this.units = units;
         this.bitcoinLikeNetworkParameters = bitcoinLikeNetworkParameters;
+        this.ethereumLikeNetworkParameters = ethereumLikeNetworkParameters;
     }
 
-    /**WalletType object defining the type of wallet the currency belongs to */
+    /** WalletType object defining the type of wallet the currency belongs to. */
     public WalletType getWalletType() {
         return walletType;
     }
 
-    /**String which represents currency name */
+    /** String which represents currency name. */
     public String getName() {
         return name;
     }
 
     /**
-     *Integer cointype, part of BIP32 path
-     *One can refer to https://github.com/satoshilabs/slips/blob/master/slip-0044.md
+     * Integer cointype, part of BIP32 path.
+     * One can refer to https://github.com/satoshilabs/slips/blob/master/slip-0044.md.
      */
     public int getBip44CoinType() {
         return bip44CoinType;
     }
 
-    /**String representing schemes allowing to send money to a cryptocurrency address (e.g. bitcoin) */
+    /** String representing schemes allowing to send money to a cryptocurrency address (e.g. bitcoin). */
     public String getPaymentUriScheme() {
         return paymentUriScheme;
     }
 
-    /**List of CurrencyUnit objects (e.g. BTC, mBTC ...) */
+    /** List of CurrencyUnit objects (e.g. BTC, mBTC ...). */
     public ArrayList<CurrencyUnit> getUnits() {
         return units;
     }
 
-    /**Optional BitcoinLikeNetworkParameters, for more details refer to BitcoinLikeNetworkParameters doc */
+    /**
+     *TODO: find a better solution to have only a networkParameters
+     * Optional BitcoinLikeNetworkParameters, for more details refer to BitcoinLikeNetworkParameters doc
+     */
     public BitcoinLikeNetworkParameters getBitcoinLikeNetworkParameters() {
         return bitcoinLikeNetworkParameters;
+    }
+
+    /** Optional EthereumLikeNetworkParameters, for more details refer to EthereumLikeNetworkParameters doc */
+    public EthereumLikeNetworkParameters getEthereumLikeNetworkParameters() {
+        return ethereumLikeNetworkParameters;
     }
 
     @Override
@@ -78,6 +90,7 @@ public final class Currency {
                 "," + "paymentUriScheme=" + paymentUriScheme +
                 "," + "units=" + units +
                 "," + "bitcoinLikeNetworkParameters=" + bitcoinLikeNetworkParameters +
+                "," + "ethereumLikeNetworkParameters=" + ethereumLikeNetworkParameters +
         "}";
     }
 

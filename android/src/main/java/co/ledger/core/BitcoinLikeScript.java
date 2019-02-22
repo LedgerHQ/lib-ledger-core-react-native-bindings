@@ -5,11 +5,18 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/** A general purpose script. */
 public abstract class BitcoinLikeScript {
+    /**
+     * Get the head of the script. Scripts are organized by chunks, so you get an iterator-like
+     * interface.
+     */
     public abstract BitcoinLikeScriptChunk head();
 
+    /** Turn the script into a string representation. */
     public abstract String toString();
 
+    /** Parse data into a script. */
     public static native BitcoinLikeScript parse(byte[] data);
 
     private static final class CppProxy extends BitcoinLikeScript

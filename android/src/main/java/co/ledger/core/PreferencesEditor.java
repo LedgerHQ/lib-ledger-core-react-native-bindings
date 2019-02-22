@@ -66,6 +66,9 @@ public abstract class PreferencesEditor {
     /** Persists the changes to the Preferences. */
     public abstract void commit();
 
+    /** Clear all preferences. */
+    public abstract void clear();
+
     private static final class CppProxy extends PreferencesEditor
     {
         private final long nativeRef;
@@ -152,5 +155,13 @@ public abstract class PreferencesEditor {
             native_commit(this.nativeRef);
         }
         private native void native_commit(long _nativeRef);
+
+        @Override
+        public void clear()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_clear(this.nativeRef);
+        }
+        private native void native_clear(long _nativeRef);
     }
 }

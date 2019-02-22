@@ -6,9 +6,9 @@ package co.ledger.core;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**Class representing Bitcoin inputs */
+/** Class representing Bitcoin inputs. */
 public abstract class BitcoinLikeInput {
-    /** Returns the address of the input (if an address can be computed) */
+    /** Returns the address of the input (if an address can be computed). */
     public abstract String getAddress();
 
     /**
@@ -17,7 +17,7 @@ public abstract class BitcoinLikeInput {
      */
     public abstract ArrayList<byte[]> getPublicKeys();
 
-    /** Returns the derivation path of this input if the address is owned by the wallet */
+    /** Returns the derivation path of this input if the address is owned by the wallet. */
     public abstract ArrayList<DerivationPath> getDerivationPath();
 
     /**
@@ -28,27 +28,25 @@ public abstract class BitcoinLikeInput {
 
     /**
      * Get the transaction hash of the output spent by this input. The result can be NULL if the output is not owned by
-     * the wallet
+     * the wallet.
      */
     public abstract String getPreviousTxHash();
 
     /**
-     * Get the index at which the output is located in the transaction output spent by this input. The result can be
-     * NULL if the input does not belong to the wallet
-     *Check whether input
-     *@return Boolean, true if input belongs to coinbase transaction (reward for mining a block)
+     * Check whether input is for a coinbase.
+     * @return Boolean, true if input belongs to coinbase transaction (reward for mining a block)
      */
     public abstract boolean isCoinbase();
 
     /**
-     *Stored data cointained in coinbase
-     *@return Optional String
+     * Stored data cointained in coinbase.
+     * @return Optional String
      */
     public abstract String getCoinbase();
 
     /**
-     *Get output index, it identifies which UTXO from tht transaction to spend
-     *@return Optional 32 bits integer, index of previous transaction
+     * Get output index, it identifies which UTXO from tht transaction to spend.
+     * @return Optional 32 bits integer, index of previous transaction
      */
     public abstract Integer getPreviousOutputIndex();
 
@@ -63,27 +61,28 @@ public abstract class BitcoinLikeInput {
     /** Get ScriptSig of this input. The scriptsig is the first half of a script necessary to spend a previous output. */
     public abstract byte[] getScriptSig();
 
-    /** Parse the script sig to a [[BitcoinLikeScript]] */
+    /** Parse the script sig to a [[BitcoinLikeScript]]. */
     public abstract BitcoinLikeScript parseScriptSig();
 
     /**
-     * Set the ScriptS to the given value
+     * Set the ScriptS to the given value.
      * @param scriptSig The ScriptSig to use for this input
      */
     public abstract void setScriptSig(byte[] scriptSig);
 
-    /** Push data to the end of the current ScriptSig */
+    /** Push data to the end of the current ScriptSig. */
     public abstract void pushToScriptSig(byte[] data);
 
-    /** Set the sequence number of this input */
+    /** Set the sequence number of this input. */
     public abstract void setSequence(int sequence);
 
-    /** Get the sequence number of this input */
+    /** Get the sequence number of this input. */
     public abstract long getSequence();
 
+    /** Get the previous transaction associated with the input. */
     public abstract void getPreviousTransaction(BinaryCallback callback);
 
-    /** Easy way to set the P2PKH script signature. Shorthand for input.pushToScriptSig(input.getPublicKeys()[0], signature) */
+    /** Easy way to set the P2PKH script signature. Shorthand for input.pushToScriptSig(input.getPublicKeys()[0], signature). */
     public abstract void setP2PKHSigScript(byte[] signature);
 
     private static final class CppProxy extends BitcoinLikeInput

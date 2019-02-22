@@ -5,13 +5,28 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/** A connection to a Web Socket. */
 public abstract class WebSocketConnection {
+    /**
+     * Callback to call upon successful connection.
+     * @param connectionId, the ID of the Web Socket connection
+     */
     public abstract void onConnect(int connectionId);
 
+    /** Callback to call upon successful disconnection. */
     public abstract void onClose();
 
+    /**
+     * Callback to call upon each incoming message.
+     * @param data, the attached data to the input message
+     */
     public abstract void onMessage(String data);
 
+    /**
+     * Callback to call when a Web Socket error occurs.
+     * @param code, the error code
+     * @param message, a description of the reason of the error
+     */
     public abstract void onError(ErrorCode code, String message);
 
     public abstract int getConnectionId();
