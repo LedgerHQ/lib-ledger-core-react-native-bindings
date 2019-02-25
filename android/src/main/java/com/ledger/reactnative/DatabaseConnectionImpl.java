@@ -3,8 +3,15 @@ package com.ledger.reactnative;
 import co.ledger.core.DatabaseBlob;
 import co.ledger.core.DatabaseConnection;
 import co.ledger.core.DatabaseStatement;
+import com.facebook.react.bridge.ReactApplicationContext;
 
 public class DatabaseConnectionImpl extends DatabaseConnection {
+    private ReactApplicationContext reactContext;
+
+    public DatabaseConnectionImpl(ReactApplicationContext reactContext) {
+        this.reactContext = reactContext;
+    }
+
     public DatabaseStatement prepareStatement(String query, boolean repeatable) {
         throw new AssertionError("missing implementation");
     }

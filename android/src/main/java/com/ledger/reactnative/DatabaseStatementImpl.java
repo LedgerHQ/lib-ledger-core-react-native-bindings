@@ -4,8 +4,15 @@ import co.ledger.core.DatabaseBlob;
 import co.ledger.core.DatabaseColumn;
 import co.ledger.core.DatabaseResultSet;
 import co.ledger.core.DatabaseStatement;
+import com.facebook.react.bridge.ReactApplicationContext;
 
 public class DatabaseStatementImpl extends DatabaseStatement {
+    private ReactApplicationContext reactContext;
+
+    public DatabaseStatementImpl(ReactApplicationContext reactContext) {
+        this.reactContext = reactContext;
+    }
+
     public void bindShort(int pos, short value) {
         throw new AssertionError("missing implementation");
     }
