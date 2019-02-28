@@ -13,6 +13,9 @@ public abstract class Networks {
     /** The Ethereum network parameters. */
     public static native EthereumLikeNetworkParameters ethereum();
 
+    /** The Ripple network parameters. */
+    public static native RippleLikeNetworkParameters ripple();
+
     private static final class CppProxy extends Networks
     {
         private final long nativeRef;

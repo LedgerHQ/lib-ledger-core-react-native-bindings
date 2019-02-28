@@ -4,6 +4,7 @@
 package co.ledger.core;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /** ERC20-like accounts class. */
@@ -16,6 +17,12 @@ public abstract class ERC20LikeAccount {
 
     /** Get the current balance of this ERC20 account. */
     public abstract BigInt getBalance();
+
+    /**
+     * Get the balance history of this ERC20 account from a starting date (included) to an ending
+     * date (included).
+     */
+    public abstract ArrayList<BigInt> getBalanceHistoryFor(Date start, Date end, TimePeriod period);
 
     /** Get the list of operations performed on this ERC20 account. */
     public abstract ArrayList<ERC20LikeOperation> getOperations();
@@ -71,6 +78,14 @@ public abstract class ERC20LikeAccount {
             return native_getBalance(this.nativeRef);
         }
         private native BigInt native_getBalance(long _nativeRef);
+
+        @Override
+        public ArrayList<BigInt> getBalanceHistoryFor(Date start, Date end, TimePeriod period)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getBalanceHistoryFor(this.nativeRef, start, end, period);
+        }
+        private native ArrayList<BigInt> native_getBalanceHistoryFor(long _nativeRef, Date start, Date end, TimePeriod period);
 
         @Override
         public ArrayList<ERC20LikeOperation> getOperations()

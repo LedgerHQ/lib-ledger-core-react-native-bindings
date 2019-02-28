@@ -12,6 +12,7 @@
 #import "LGEthereumLikeOperation+Private.h"
 #import "LGOperationType+Private.h"
 #import "LGPreferences+Private.h"
+#import "LGRippleLikeOperation+Private.h"
 #import "LGTrustIndicator+Private.h"
 #import "LGWalletType+Private.h"
 #include <exception>
@@ -126,6 +127,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->asEthereumLikeOperation();
         return ::djinni_generated::EthereumLikeOperation::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGRippleLikeOperation *)asRippleLikeOperation {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->asRippleLikeOperation();
+        return ::djinni_generated::RippleLikeOperation::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

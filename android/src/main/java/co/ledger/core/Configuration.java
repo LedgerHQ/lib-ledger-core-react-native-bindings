@@ -25,7 +25,10 @@ public abstract class Configuration {
     /** Sets the API version. */
     public static final String BLOCKCHAIN_EXPLORER_VERSION = "BLOCKCHAIN_EXPLORER_VERSION";
 
-    /** Selects the blockchain observer engine (Ledger's API). */
+    /** Sets the API port (e.g. for XRP it is 51234) */
+    public static final String BLOCKCHAIN_EXPLORER_PORT = "BLOCKCHAIN_EXPLORER_PORT";
+
+    /** Selects the blockchain observer engine (Ledger's API) */
     public static final String BLOCKCHAIN_OBSERVER_ENGINE = "BLOCKCHAIN_OBSERVER_ENGINE";
 
     /** Selects the blockchain observer engine (Ledger's API; Websocket version). */

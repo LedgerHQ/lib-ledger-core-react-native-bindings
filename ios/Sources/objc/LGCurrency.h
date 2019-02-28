@@ -4,6 +4,7 @@
 #import "LGBitcoinLikeNetworkParameters.h"
 #import "LGCurrencyUnit.h"
 #import "LGEthereumLikeNetworkParameters.h"
+#import "LGRippleLikeNetworkParameters.h"
 #import "LGWalletType.h"
 #import <Foundation/Foundation.h>
 
@@ -15,14 +16,16 @@
                           paymentUriScheme:(nonnull NSString *)paymentUriScheme
                                      units:(nonnull NSArray<LGCurrencyUnit *> *)units
               bitcoinLikeNetworkParameters:(nullable LGBitcoinLikeNetworkParameters *)bitcoinLikeNetworkParameters
-             ethereumLikeNetworkParameters:(nullable LGEthereumLikeNetworkParameters *)ethereumLikeNetworkParameters;
+             ethereumLikeNetworkParameters:(nullable LGEthereumLikeNetworkParameters *)ethereumLikeNetworkParameters
+               rippleLikeNetworkParameters:(nullable LGRippleLikeNetworkParameters *)rippleLikeNetworkParameters;
 + (nonnull instancetype)CurrencyWithWalletType:(LGWalletType)walletType
                                           name:(nonnull NSString *)name
                                  bip44CoinType:(int32_t)bip44CoinType
                               paymentUriScheme:(nonnull NSString *)paymentUriScheme
                                          units:(nonnull NSArray<LGCurrencyUnit *> *)units
                   bitcoinLikeNetworkParameters:(nullable LGBitcoinLikeNetworkParameters *)bitcoinLikeNetworkParameters
-                 ethereumLikeNetworkParameters:(nullable LGEthereumLikeNetworkParameters *)ethereumLikeNetworkParameters;
+                 ethereumLikeNetworkParameters:(nullable LGEthereumLikeNetworkParameters *)ethereumLikeNetworkParameters
+                   rippleLikeNetworkParameters:(nullable LGRippleLikeNetworkParameters *)rippleLikeNetworkParameters;
 
 /** WalletType object defining the type of wallet the currency belongs to. */
 @property (nonatomic, readonly) LGWalletType walletType;
@@ -50,5 +53,8 @@
 
 /** Optional EthereumLikeNetworkParameters, for more details refer to EthereumLikeNetworkParameters doc */
 @property (nonatomic, readonly, nullable) LGEthereumLikeNetworkParameters * ethereumLikeNetworkParameters;
+
+/**Optional EthereumLikeNetworkParameters, for more details refer to EthereumLikeNetworkParameters doc */
+@property (nonatomic, readonly, nullable) LGRippleLikeNetworkParameters * rippleLikeNetworkParameters;
 
 @end

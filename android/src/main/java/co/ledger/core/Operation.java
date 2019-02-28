@@ -87,7 +87,12 @@ public abstract class Operation {
      */
     public abstract EthereumLikeOperation asEthereumLikeOperation();
 
-    /** Is this an instance of a Bitcoin-like operation? */
+    /**
+     *Convert operation as Ripple operation
+     *@return RippleLikeOperation object
+     */
+    public abstract RippleLikeOperation asRippleLikeOperation();
+
     public abstract boolean isInstanceOfBitcoinLikeOperation();
 
     /** Same as isInstanceOfBitcoinLikeOperation for ethereum. */
@@ -237,6 +242,14 @@ public abstract class Operation {
             return native_asEthereumLikeOperation(this.nativeRef);
         }
         private native EthereumLikeOperation native_asEthereumLikeOperation(long _nativeRef);
+
+        @Override
+        public RippleLikeOperation asRippleLikeOperation()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asRippleLikeOperation(this.nativeRef);
+        }
+        private native RippleLikeOperation native_asRippleLikeOperation(long _nativeRef);
 
         @Override
         public boolean isInstanceOfBitcoinLikeOperation()

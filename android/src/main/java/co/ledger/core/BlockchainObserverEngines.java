@@ -9,6 +9,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class BlockchainObserverEngines {
     public static final String LEDGER_API = "LEDGER_API";
 
+    public static final String RIPPLE_NODE = "RIPPLE_NODE";
+
 
     private static final class CppProxy extends BlockchainObserverEngines
     {

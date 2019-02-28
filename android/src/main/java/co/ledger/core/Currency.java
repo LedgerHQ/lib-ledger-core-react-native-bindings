@@ -23,6 +23,8 @@ public final class Currency {
 
     /*package*/ final EthereumLikeNetworkParameters ethereumLikeNetworkParameters;
 
+    /*package*/ final RippleLikeNetworkParameters rippleLikeNetworkParameters;
+
     public Currency(
             WalletType walletType,
             String name,
@@ -30,7 +32,8 @@ public final class Currency {
             String paymentUriScheme,
             ArrayList<CurrencyUnit> units,
             BitcoinLikeNetworkParameters bitcoinLikeNetworkParameters,
-            EthereumLikeNetworkParameters ethereumLikeNetworkParameters) {
+            EthereumLikeNetworkParameters ethereumLikeNetworkParameters,
+            RippleLikeNetworkParameters rippleLikeNetworkParameters) {
         this.walletType = walletType;
         this.name = name;
         this.bip44CoinType = bip44CoinType;
@@ -38,6 +41,7 @@ public final class Currency {
         this.units = units;
         this.bitcoinLikeNetworkParameters = bitcoinLikeNetworkParameters;
         this.ethereumLikeNetworkParameters = ethereumLikeNetworkParameters;
+        this.rippleLikeNetworkParameters = rippleLikeNetworkParameters;
     }
 
     /** WalletType object defining the type of wallet the currency belongs to. */
@@ -81,6 +85,11 @@ public final class Currency {
         return ethereumLikeNetworkParameters;
     }
 
+    /**Optional EthereumLikeNetworkParameters, for more details refer to EthereumLikeNetworkParameters doc */
+    public RippleLikeNetworkParameters getRippleLikeNetworkParameters() {
+        return rippleLikeNetworkParameters;
+    }
+
     @Override
     public String toString() {
         return "Currency{" +
@@ -91,6 +100,7 @@ public final class Currency {
                 "," + "units=" + units +
                 "," + "bitcoinLikeNetworkParameters=" + bitcoinLikeNetworkParameters +
                 "," + "ethereumLikeNetworkParameters=" + ethereumLikeNetworkParameters +
+                "," + "rippleLikeNetworkParameters=" + rippleLikeNetworkParameters +
         "}";
     }
 

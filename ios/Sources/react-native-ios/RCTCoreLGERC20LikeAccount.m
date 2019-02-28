@@ -128,6 +128,50 @@ RCT_REMAP_METHOD(getBalance,getBalance:(NSDictionary *)currentInstance WithResol
 
 }
 
+/**
+ * Get the balance history of this ERC20 account from a starting date (included) to an ending
+ * date (included).
+ */
+RCT_REMAP_METHOD(getBalanceHistoryFor,getBalanceHistoryFor:(NSDictionary *)currentInstance withParams:(nonnull NSDate *)start
+                                                                                                  end:(nonnull NSDate *)end
+                                                                                               period:(int)period withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeAccount::getBalanceHistoryFor, first argument should be an instance of LGERC20LikeAccount", nil);
+        return;
+    }
+    LGERC20LikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeAccount::getBalanceHistoryFor, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSArray<LGBigInt *> * objcResult = [currentInstanceObj getBalanceHistoryFor:start end:end period:(LGTimePeriod)period];
+
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (id objcResult_elem in objcResult)
+    {
+        NSString *objcResult_elem_uuid = [[NSUUID UUID] UUIDString];
+        RCTCoreLGBigInt *rctImpl_objcResult_elem = (RCTCoreLGBigInt *)[self.bridge moduleForName:@"CoreLGBigInt"];
+        NSArray *objcResult_elem_array = [[NSArray alloc] initWithObjects:objcResult_elem, objcResult_elem_uuid, nil];
+        [rctImpl_objcResult_elem baseSetObject:objcResult_elem_array];
+        NSDictionary *result_elem = @{@"type" : @"CoreLGBigInt", @"uid" : objcResult_elem_uuid };
+        [result addObject:result_elem];
+    }
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGERC20LikeAccount::getBalanceHistoryFor", nil);
+        return;
+    }
+
+}
+
 /** Get the list of operations performed on this ERC20 account. */
 RCT_REMAP_METHOD(getOperations,getOperations:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

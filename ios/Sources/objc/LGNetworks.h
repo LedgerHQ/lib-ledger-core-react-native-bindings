@@ -3,6 +3,7 @@
 
 #import "LGBitcoinLikeNetworkParameters.h"
 #import "LGEthereumLikeNetworkParameters.h"
+#import "LGRippleLikeNetworkParameters.h"
 #import <Foundation/Foundation.h>
 
 
@@ -14,5 +15,8 @@
 
 /** The Ethereum network parameters. */
 + (nonnull LGEthereumLikeNetworkParameters *)ethereum;
+
+/** The Ripple network parameters. */
++ (nonnull LGRippleLikeNetworkParameters *)ripple;
 
 @end
