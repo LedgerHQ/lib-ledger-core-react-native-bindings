@@ -191,7 +191,7 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
 
             Date javaResult = currentInstanceObj.getDate();
             WritableNativeMap result = new WritableNativeMap();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
             String finalJavaResult = dateFormat.format(javaResult);
             result.putString("value", finalJavaResult);
 
