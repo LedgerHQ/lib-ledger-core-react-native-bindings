@@ -5,3 +5,5 @@
 
 
 NSString * __nonnull const LGBlockchainObserverEnginesLEDGERAPI = @"LEDGER_API";
+
+NSString * __nonnull const LGBlockchainObserverEnginesRIPPLENODE = @"RIPPLE_NODE";

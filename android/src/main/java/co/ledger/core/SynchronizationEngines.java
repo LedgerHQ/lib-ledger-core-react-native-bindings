@@ -5,8 +5,9 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**TODO */
+/** Available synchronization mechanisms. */
 public abstract class SynchronizationEngines {
+    /** Synchronize via blockchain explorers. */
     public static final String BLOCKCHAIN_EXPLORER_SYNCHRONIZATION = "BLOCKCHAIN_EXPLORER_SYNCHRONIZATION";
 
 

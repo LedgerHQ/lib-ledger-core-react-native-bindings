@@ -41,6 +41,7 @@ buck-out/
 /android/.idea/
 /android/libs/
 /android/*.iml
+/android/local.properties
 
 # iOS
 /ios/Libraries

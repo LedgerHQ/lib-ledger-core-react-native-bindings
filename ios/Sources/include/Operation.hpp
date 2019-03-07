@@ -17,6 +17,7 @@ class Amount;
 class BitcoinLikeOperation;
 class EthereumLikeOperation;
 class Preferences;
+class RippleLikeOperation;
 class TrustIndicator;
 enum class OperationType;
 enum class WalletType;
@@ -105,7 +106,12 @@ public:
      */
     virtual std::shared_ptr<EthereumLikeOperation> asEthereumLikeOperation() = 0;
 
-    /** Is this an instance of a Bitcoin-like operation? */
+    /**
+     *Convert operation as Ripple operation
+     *@return RippleLikeOperation object
+     */
+    virtual std::shared_ptr<RippleLikeOperation> asRippleLikeOperation() = 0;
+
     virtual bool isInstanceOfBitcoinLikeOperation() = 0;
 
     /** Same as isInstanceOfBitcoinLikeOperation for ethereum. */

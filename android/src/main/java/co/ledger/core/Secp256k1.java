@@ -5,7 +5,7 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**Class implementing secp256k1 used in Bitcoin */
+/**Class implementing secp256k1 used in Bitcoin. */
 public abstract class Secp256k1 {
     /**
      * Generates public key from private key.
@@ -16,7 +16,14 @@ public abstract class Secp256k1 {
     public abstract byte[] computePubKey(byte[] privKey, boolean compress);
 
     /**
-     * Signs message using a given private key
+     * Generates uncompressed public key from compressed public key.
+     * @param pubKey 33 byte private key (starting with 02 or 03)
+     * @return uncompressed public key (65 bytes starting with 04)
+     */
+    public abstract byte[] computeUncompressedPubKey(byte[] pubKey);
+
+    /**
+     * Signs message using a given private key.
      * @param privKey 32 bytes private key
      * @param data 32 bytes message to sign
      * @return 32 bytes signed message
@@ -24,7 +31,7 @@ public abstract class Secp256k1 {
     public abstract byte[] sign(byte[] privKey, byte[] data);
 
     /**
-     * Check if message was signed with given signature and public key
+     * Check if message was signed with given signature and public key.
      * @param data 32 bytes signed message
      * @param signature 32 bytes signature (generated from private key)
      * @param oubkey 32 bytes public key
@@ -33,7 +40,7 @@ public abstract class Secp256k1 {
     public abstract boolean verify(byte[] data, byte[] signature, byte[] pubKey);
 
     /**
-     * Create an instance of Secp256k1
+     * Create an instance of Secp256k1.
      * @return Secp256k1 instance
      */
     public static native Secp256k1 createInstance();
@@ -70,6 +77,14 @@ public abstract class Secp256k1 {
             return native_computePubKey(this.nativeRef, privKey, compress);
         }
         private native byte[] native_computePubKey(long _nativeRef, byte[] privKey, boolean compress);
+
+        @Override
+        public byte[] computeUncompressedPubKey(byte[] pubKey)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_computeUncompressedPubKey(this.nativeRef, pubKey);
+        }
+        private native byte[] native_computeUncompressedPubKey(long _nativeRef, byte[] pubKey);
 
         @Override
         public byte[] sign(byte[] privKey, byte[] data)

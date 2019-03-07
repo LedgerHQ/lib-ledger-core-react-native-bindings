@@ -3,6 +3,11 @@
 
 package co.ledger.core;
 
+/**
+ * Strategy used to compute the amount of fees of transactions.
+ *
+ * This basically gives the unit in which the fee amount will be expressed.
+ */
 public enum BitcoinLikeFeePolicy {
     PER_BYTE,
     PER_KBYTE,

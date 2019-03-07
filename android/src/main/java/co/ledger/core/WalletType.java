@@ -3,11 +3,15 @@
 
 package co.ledger.core;
 
-/**Enum listing supported cryptocurrencies' families */
+/** Enum listing supported cryptocurrencies' families. */
 public enum WalletType {
+    /** A Bitcoin-like wallet. */
     BITCOIN,
+    /** An Ethereum-like wallet. */
     ETHEREUM,
+    /** A Ripple-like wallet. */
     RIPPLE,
+    /** A Monero-like wallet. */
     MONERO,
     ;
 }

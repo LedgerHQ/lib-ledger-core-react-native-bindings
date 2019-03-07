@@ -3,7 +3,11 @@
 
 package co.ledger.core;
 
-/**Enum of operation types */
+/**
+ * Type of operation.
+ *
+ * It’s possible to either send funds or receive ones.
+ */
 public enum OperationType {
     SEND,
     RECEIVE,

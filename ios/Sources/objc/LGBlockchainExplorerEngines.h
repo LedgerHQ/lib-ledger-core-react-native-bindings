@@ -4,6 +4,8 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * __nonnull const LGBlockchainExplorerEnginesLEDGERAPI;
+extern NSString * __nonnull const LGBlockchainExplorerEnginesRIPPLEAPI;
+extern NSString * __nonnull const LGBlockchainExplorerEnginesRIPPLENODE;
 
 /** Available API to use with explorers. */
 @interface LGBlockchainExplorerEngines : NSObject

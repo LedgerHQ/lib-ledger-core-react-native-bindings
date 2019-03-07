@@ -3,6 +3,7 @@
 
 package co.ledger.core;
 
+/** List of errors that might occur when using the API. */
 public enum ErrorCode {
     /**
      * Pool errors
@@ -34,6 +35,7 @@ public enum ErrorCode {
     CURRENCY_UNIT_NOT_FOUND,
     /** Others */
     INVALID_BASE58_FORMAT,
+    INVALID_EIP55_FORMAT,
     INVALID_CHECKSUM,
     INVALID_VERSION,
     /** DeterministicPublicKey */
@@ -77,6 +79,8 @@ public enum ErrorCode {
     UNKNOWN_BLOCKCHAIN_EXPLORER_ENGINE,
     UNKNOWN_BLOCKCHAIN_OBSERVER_ENGINE,
     UNKNOWN_SYNCHRONIZATION_ENGINE,
+    /** Database error */
+    DATABASE_EXCEPTION,
     /** Wallet transaction */
     NOT_ENOUGH_FUNDS,
     /** Bad cast */

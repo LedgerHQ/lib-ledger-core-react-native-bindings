@@ -7,6 +7,7 @@ import co.ledger.core.BitcoinLikeNetworkParameters;
 import co.ledger.core.Currency;
 import co.ledger.core.CurrencyUnit;
 import co.ledger.core.EthereumLikeNetworkParameters;
+import co.ledger.core.RippleLikeNetworkParameters;
 import co.ledger.core.WalletType;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -104,7 +105,7 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void init(int walletType, String name, int bip44CoinType, String paymentUriScheme, ReadableArray units, Optional<ReadableMap> bitcoinLikeNetworkParameters, Optional<ReadableMap> ethereumLikeNetworkParameters, Promise promise) {
+    public void init(int walletType, String name, int bip44CoinType, String paymentUriScheme, ReadableArray units, Optional<ReadableMap> bitcoinLikeNetworkParameters, Optional<ReadableMap> ethereumLikeNetworkParameters, Optional<ReadableMap> rippleLikeNetworkParameters, Promise promise) {
         WritableNativeMap implementationsData = new WritableNativeMap();
         if (walletType < 0 || WalletType.values().length <= walletType)
         {
@@ -131,7 +132,10 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         RCTCoreEthereumLikeNetworkParameters rctParam_ethereumLikeNetworkParameters = this.reactContext.getNativeModule(RCTCoreEthereumLikeNetworkParameters.class);
         EthereumLikeNetworkParameters javaParam_6 = rctParam_ethereumLikeNetworkParameters.getJavaObjects().get(ethereumLikeNetworkParameters.get().getString("uid"));
         implementationsData.putString("ethereumLikeNetworkParameters", ethereumLikeNetworkParameters.get().getString("uid"));
-        Currency javaResult = new Currency(javaParam_0, name, bip44CoinType, paymentUriScheme, javaParam_4, javaParam_5, javaParam_6);
+        RCTCoreRippleLikeNetworkParameters rctParam_rippleLikeNetworkParameters = this.reactContext.getNativeModule(RCTCoreRippleLikeNetworkParameters.class);
+        RippleLikeNetworkParameters javaParam_7 = rctParam_rippleLikeNetworkParameters.getJavaObjects().get(rippleLikeNetworkParameters.get().getString("uid"));
+        implementationsData.putString("rippleLikeNetworkParameters", rippleLikeNetworkParameters.get().getString("uid"));
+        Currency javaResult = new Currency(javaParam_0, name, bip44CoinType, paymentUriScheme, javaParam_4, javaParam_5, javaParam_6, javaParam_7);
 
         String uuid = UUID.randomUUID().toString();
         this.javaObjects.put(uuid, javaResult);
@@ -175,6 +179,14 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         converted_field_6.putString("type","RCTCoreEthereumLikeNetworkParameters");
         converted_field_6.putString("uid",field_6_uuid);
         implementationsData.putMap("ethereumLikeNetworkParameters", converted_field_6);
+        RippleLikeNetworkParameters field_7 = javaImpl.getRippleLikeNetworkParameters();
+        String field_7_uuid = UUID.randomUUID().toString();
+        RCTCoreRippleLikeNetworkParameters rctImpl_field_7 = this.reactContext.getNativeModule(RCTCoreRippleLikeNetworkParameters.class);
+        rctImpl_field_7.getJavaObjects().put(field_7_uuid, field_7);
+        WritableNativeMap converted_field_7 = new WritableNativeMap();
+        converted_field_7.putString("type","RCTCoreRippleLikeNetworkParameters");
+        converted_field_7.putString("uid",field_7_uuid);
+        implementationsData.putMap("rippleLikeNetworkParameters", converted_field_7);
         this.implementationsData.putMap(currentInstanceUid, implementationsData);
     }
     @ReactMethod
@@ -315,6 +327,27 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         else
         {
             promise.reject("Failed to call RCTCoreCurrency::getEthereumLikeNetworkParameters", "First parameter of RCTCoreCurrency::getEthereumLikeNetworkParameters should be an instance of RCTCoreCurrency");
+        }
+    }
+
+    @ReactMethod
+    public void getRippleLikeNetworkParameters(ReadableMap currentInstance, Promise promise)
+    {
+        String uid = currentInstance.getString("uid");
+        if (uid.length() > 0)
+        {
+            if (!this.implementationsData.hasKey(uid))
+            {
+                this.mapImplementationsData(currentInstance);
+            }
+            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            WritableNativeMap result = new WritableNativeMap();
+            result.merge(data.getMap("rippleLikeNetworkParameters"));
+            promise.resolve(result);
+        }
+        else
+        {
+            promise.reject("Failed to call RCTCoreCurrency::getRippleLikeNetworkParameters", "First parameter of RCTCoreCurrency::getRippleLikeNetworkParameters should be an instance of RCTCoreCurrency");
         }
     }
 

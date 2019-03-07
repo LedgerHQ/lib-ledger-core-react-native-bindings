@@ -5,16 +5,21 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**TODO */
+/** Default values you might want to use if you don’t know what values you should use. */
 public abstract class ConfigurationDefaults {
+    /** The default Ledger API endpoint for the explorers. */
     public static final String BLOCKCHAIN_DEFAULT_API_ENDPOINT = "https://explorers.api.live.ledger.com";
 
+    /** The default Ledger API endpoint for the observers. */
     public static final String BLOCKCHAIN_OBSERVER_WS_ENDPOINT = "wss://ws.ledgerwallet.com/blockchain/v2/{}/ws";
 
+    /** The default derivation scheme for BIP44 derivation. */
     public static final String BIP44_DERIVATION_SCHEME = "44'/<coin_type>'/<account>'/<node>/<address>";
 
+    /** Default keychain policy. */
     public static final String DEFAULT_KEYCHAIN = "BIP32_P2PKH";
 
+    /** Default trust limit (block height). */
     public static final int DEFAULT_TRUST_LIMIT = 3;
 
 

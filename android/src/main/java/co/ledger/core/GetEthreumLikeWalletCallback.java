@@ -3,6 +3,7 @@
 
 package co.ledger.core;
 
+/** A callback called when an Ethereum-like wallet is available after issuing a get command. */
 public abstract class GetEthreumLikeWalletCallback {
     public abstract void onSuccess(EthereumLikeWallet wallet, boolean isCreated);
 

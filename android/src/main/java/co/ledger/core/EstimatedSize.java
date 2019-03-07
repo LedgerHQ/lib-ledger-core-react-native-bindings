@@ -3,6 +3,11 @@
 
 package co.ledger.core;
 
+/**
+ * Estimation size (minimum and maximum).
+ *
+ * This is typically used to estimate size (in bytes) of raw transactions.
+ */
 public final class EstimatedSize {
 
 

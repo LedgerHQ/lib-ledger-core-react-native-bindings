@@ -7,108 +7,113 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**Class representing an operation */
+/** Class representing an operation. */
 public abstract class Operation {
     /**
-     *Get id's operation
-     *@return string
+     * Get id's operation.
+     * @return string
      */
     public abstract String getUid();
 
     /**
-     *Get account's index in user's wallet
-     *@return 32 bits integer
+     * Get account's index in user's wallet.
+     * @return 32-bit integer
      */
     public abstract int getAccountIndex();
 
     /**
-     *Get type of operation
-     *@return OperationType object (for more details refer to OperationType)
+     * Get type of operation.
+     * @return OperationType object (for more details refer to OperationType)
      */
     public abstract OperationType getOperationType();
 
     /**
-     *Return date on which operation was issued
-     *@return date object
+     * Return date on which operation was issued.
+     * @return date object
      */
     public abstract Date getDate();
 
     /**
-     *Get senders of operation
-     *@return List of string, list of all senders
+     * Get senders of operation.
+     * @return List of string, list of all senders
      */
     public abstract ArrayList<String> getSenders();
 
     /**
-     *Get recipients of operation
-     *@return List of string, list of all recipients
+     * Get recipients of operation.
+     * @return List of string, list of all recipients
      */
     public abstract ArrayList<String> getRecipients();
 
     /**
-     *Get amount of operation
-     *@return Amount object
+     * Get amount of operation.
+     * @return Amount object
      */
     public abstract Amount getAmount();
 
     /**
-     *Get fees of operation
-     *@return Optional Amount object
+     * Get fees of operation.
+     * @return Optional Amount object
      */
     public abstract Amount getFees();
 
     /**
-     *Get preferences of operation
-     *@return Prefences object
+     * Get preferences of operation.
+     * @return Prefences object
      */
     public abstract Preferences getPreferences();
 
     /**
-     *Get trust indicator of operation
-     *@return TrustIndicator object
+     * Get trust indicator of operation.
+     * @return TrustIndicator object
      */
     public abstract TrustIndicator getTrust();
 
     /**
-     *Get block height on which operation was included
-     *@return Optional 64 bits integer, height of block in which operation was validated
+     * Get block height on which operation was included.
+     * @return Optional 64-bit integer, height of block in which operation was validated
      */
     public abstract Long getBlockHeight();
 
     /**
-     *Convert operation as Bitcoin operation
-     *@return BitcoinLikeOperation object
+     * Convert operation as Bitcoin operation.
+     * @return BitcoinLikeOperation object
      */
     public abstract BitcoinLikeOperation asBitcoinLikeOperation();
 
+    /**
+     * Convert operation as Ethereum operation.
+     * @return EthereumLikeOperation object
+     */
+    public abstract EthereumLikeOperation asEthereumLikeOperation();
+
+    /**
+     *Convert operation as Ripple operation
+     *@return RippleLikeOperation object
+     */
+    public abstract RippleLikeOperation asRippleLikeOperation();
+
     public abstract boolean isInstanceOfBitcoinLikeOperation();
 
-    /**
-     *Same as asBitcoinLikeOperation for ethereum
-     *# asEthereumLikeOperation(): Callback<EthereumLikeOperation>;
-     *Same as isInstanceOfBitcoinLikeOperation for ethereum
-     */
+    /** Same as isInstanceOfBitcoinLikeOperation for ethereum. */
     public abstract boolean isInstanceOfEthereumLikeOperation();
 
-    /**
-     *Same as asBitcoinLikeOperation for ripple
-     *# asRippleLikeOperation(): Callback<RippleLikeOperation>;
-     *Same as isInstanceOfBitcoinLikeOperation for ripple
-     */
+    /** Same as isInstanceOfBitcoinLikeOperation for ripple. */
     public abstract boolean isInstanceOfRippleLikeOperation();
 
     /**
-     *Tells if the operation is complete
-     *@return boolean
+     * Tells if the operation is complete.
+     * @return boolean
      */
     public abstract boolean isComplete();
 
     /**
-     *Get type of wallet from which operation was issued
-     *@return WalletType object
+     * Get type of wallet from which operation was issued.
+     * @return WalletType object
      */
     public abstract WalletType getWalletType();
 
+    /** Get the currency this operation is about. */
     public abstract Currency getCurrency();
 
     private static final class CppProxy extends Operation
@@ -229,6 +234,22 @@ public abstract class Operation {
             return native_asBitcoinLikeOperation(this.nativeRef);
         }
         private native BitcoinLikeOperation native_asBitcoinLikeOperation(long _nativeRef);
+
+        @Override
+        public EthereumLikeOperation asEthereumLikeOperation()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asEthereumLikeOperation(this.nativeRef);
+        }
+        private native EthereumLikeOperation native_asEthereumLikeOperation(long _nativeRef);
+
+        @Override
+        public RippleLikeOperation asRippleLikeOperation()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asRippleLikeOperation(this.nativeRef);
+        }
+        private native RippleLikeOperation native_asRippleLikeOperation(long _nativeRef);
 
         @Override
         public boolean isInstanceOfBitcoinLikeOperation()

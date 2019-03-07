@@ -9,6 +9,7 @@
 @class LGBitcoinLikeOperation;
 @class LGEthereumLikeOperation;
 @class LGPreferences;
+@class LGRippleLikeOperation;
 @class LGTrustIndicator;
 
 
@@ -93,7 +94,12 @@
  */
 - (nullable LGEthereumLikeOperation *)asEthereumLikeOperation;
 
-/** Is this an instance of a Bitcoin-like operation? */
+/**
+ *Convert operation as Ripple operation
+ *@return RippleLikeOperation object
+ */
+- (nullable LGRippleLikeOperation *)asRippleLikeOperation;
+
 - (BOOL)isInstanceOfBitcoinLikeOperation;
 
 /** Same as isInstanceOfBitcoinLikeOperation for ethereum. */

@@ -476,7 +476,43 @@ RCT_REMAP_METHOD(asEthereumLikeOperation,asEthereumLikeOperation:(NSDictionary *
 
 }
 
-/** Is this an instance of a Bitcoin-like operation? */
+/**
+ *Convert operation as Ripple operation
+ *@return RippleLikeOperation object
+ */
+RCT_REMAP_METHOD(asRippleLikeOperation,asRippleLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::asRippleLikeOperation, first argument should be an instance of LGOperation", nil);
+        return;
+    }
+    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::asRippleLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGRippleLikeOperation * objcResult = [currentInstanceObj asRippleLikeOperation];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGRippleLikeOperation *rctImpl_objcResult = (RCTCoreLGRippleLikeOperation *)[self.bridge moduleForName:@"CoreLGRippleLikeOperation"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGRippleLikeOperation", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGOperation::asRippleLikeOperation", nil);
+        return;
+    }
+
+}
+
 RCT_REMAP_METHOD(isInstanceOfBitcoinLikeOperation,isInstanceOfBitcoinLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {

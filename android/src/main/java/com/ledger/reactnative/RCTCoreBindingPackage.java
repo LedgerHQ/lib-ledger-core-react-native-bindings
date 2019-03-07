@@ -16,7 +16,13 @@ public class RCTCoreBindingPackage implements ReactPackage
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext)
     {
-        return Arrays.<NativeModule>asList(new RCTCoreSecp256k1(reactContext),
+        return Arrays.<NativeModule>asList(new RCTCoreRippleLikeTransaction(reactContext),
+        new RCTCoreRippleLikeOperation(reactContext),
+        new RCTCoreRippleLikeBlock(reactContext),
+        new RCTCoreRippleLikeTransactionBuilder(reactContext),
+        new RCTCoreRippleLikeAccount(reactContext),
+        new RCTCoreRippleConfigurationDefaults(reactContext),
+        new RCTCoreSecp256k1(reactContext),
         new RCTCoreNetworks(reactContext),
         new RCTCoreHashAlgorithmHelper(reactContext),
         new RCTCoreEvent(reactContext),
@@ -71,6 +77,9 @@ public class RCTCoreBindingPackage implements ReactPackage
         new RCTCoreBitcoinLikeScriptChunk(reactContext),
         new RCTCoreBitcoinLikeScript(reactContext),
         new RCTCoreLocale(reactContext),
+        new RCTCoreRippleLikeNetworkParameters(reactContext),
+        new RCTCoreRippleLikeAddress(reactContext),
+        new RCTCoreRippleLikeExtendedPublicKey(reactContext),
         new RCTCoreEthereumLikeNetworkParameters(reactContext),
         new RCTCoreEthereumLikeAddress(reactContext),
         new RCTCoreEthereumLikeExtendedPublicKey(reactContext),

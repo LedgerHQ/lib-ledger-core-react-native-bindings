@@ -5,8 +5,16 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/** All available blockchain networks parameters. */
 public abstract class Networks {
+    /** The Bitcoin network parameters. */
     public static native BitcoinLikeNetworkParameters bitcoin();
+
+    /** The Ethereum network parameters. */
+    public static native EthereumLikeNetworkParameters ethereum();
+
+    /** The Ripple network parameters. */
+    public static native RippleLikeNetworkParameters ripple();
 
     private static final class CppProxy extends Networks
     {

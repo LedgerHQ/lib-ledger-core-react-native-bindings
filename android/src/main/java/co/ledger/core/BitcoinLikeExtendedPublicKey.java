@@ -5,15 +5,21 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/** The xPUB definition for Bitcoin. */
 public abstract class BitcoinLikeExtendedPublicKey {
+    /** Derive an address from an xPUB and a path. */
     public abstract BitcoinLikeAddress derive(String path);
 
+    /** Derive a public key from an xPUB and a path. */
     public abstract byte[] derivePublicKey(String path);
 
+    /** Derive a shorten version of a public key (SHA256 + RIPEMD160) from an xPUB and a path. */
     public abstract byte[] deriveHash160(String path);
 
+    /** Get the xPUB in base 58. */
     public abstract String toBase58();
 
+    /** Get the root path of the xPUB. */
     public abstract String getRootPath();
 
     private static final class CppProxy extends BitcoinLikeExtendedPublicKey

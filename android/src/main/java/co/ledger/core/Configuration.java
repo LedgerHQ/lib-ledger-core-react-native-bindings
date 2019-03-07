@@ -5,34 +5,42 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/** Overall configuration. */
 public abstract class Configuration {
-    /** Selects the keychain engine (P2PKH, P2SH...) */
+    /** Selects the keychain engine (P2PKH, P2SH...). */
     public static final String KEYCHAIN_ENGINE = "KEYCHAIN_ENGINE";
 
-    /** Sets the derivation scheme for the KEYCHAIN (defaults 44'/<coin_type>'/<account>'/<node>/<address>) */
+    /** Sets the derivation scheme for the KEYCHAIN (defaults 44'/<coin_type>'/<account>'/<node>/<address>). */
     public static final String KEYCHAIN_DERIVATION_SCHEME = "KEYCHAIN_DERIVATION_SCHEME";
 
-    /** Sets the observable range for HD keychains (BIP32 based) */
+    /** Sets the observable range for HD keychains (BIP32 based). */
     public static final String KEYCHAIN_OBSERVABLE_RANGE = "KEYCHAIN_OBSERVABLE_RANGE";
 
-    /** Selects the blockchain explorer engine (Ledger's API, Electrum server, RPC) */
+    /** Selects the blockchain explorer engine (Ledger's API, Electrum server, RPC): */
     public static final String BLOCKCHAIN_EXPLORER_ENGINE = "BLOCKCHAIN_EXPLORER_ENGINE";
 
-    /** Sets the API endpoint for API based engine (Ledger's API) */
+    /** Sets the API endpoint for API based engine (Ledger's API). */
     public static final String BLOCKCHAIN_EXPLORER_API_ENDPOINT = "BLOCKCHAIN_EXPLORER_API_ENDPOINT";
+
+    /** Sets the API version. */
+    public static final String BLOCKCHAIN_EXPLORER_VERSION = "BLOCKCHAIN_EXPLORER_VERSION";
+
+    /** Sets the API port (e.g. for XRP it is 51234) */
+    public static final String BLOCKCHAIN_EXPLORER_PORT = "BLOCKCHAIN_EXPLORER_PORT";
 
     /** Selects the blockchain observer engine (Ledger's API) */
     public static final String BLOCKCHAIN_OBSERVER_ENGINE = "BLOCKCHAIN_OBSERVER_ENGINE";
 
+    /** Selects the blockchain observer engine (Ledger's API; Websocket version). */
     public static final String BLOCKCHAIN_OBSERVER_WS_ENDPOINT = "BLOCKCHAIN_OBSERVER_WS_ENDPOINT";
 
-    /** Selects the synchronization engine */
+    /** Selects the synchronization engine. */
     public static final String SYNCHRONIZATION_ENGINE = "SYNCHRONIZATION_ENGINE";
 
-    /** Sets the half batch size (default: 20) */
+    /** Sets the half batch size (default: 20). */
     public static final String SYNCHRONIZATION_HALF_BATCH_SIZE = "SYNCHRONIZATION_HALF_BATCH_SIZE";
 
-    /** Operation trust */
+    /** Operation trust. */
     public static final String TRUST_LIMIT = "TRUST_LIMIT";
 
 

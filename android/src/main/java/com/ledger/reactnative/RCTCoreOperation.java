@@ -10,6 +10,7 @@ import co.ledger.core.EthereumLikeOperation;
 import co.ledger.core.Operation;
 import co.ledger.core.OperationType;
 import co.ledger.core.Preferences;
+import co.ledger.core.RippleLikeOperation;
 import co.ledger.core.TrustIndicator;
 import co.ledger.core.WalletType;
 import com.facebook.react.bridge.Promise;
@@ -453,7 +454,34 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Is this an instance of a Bitcoin-like operation? */
+    /**
+     *Convert operation as Ripple operation
+     *@return RippleLikeOperation object
+     */
+    @ReactMethod
+    public void asRippleLikeOperation(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Operation currentInstanceObj = this.javaObjects.get(sUid);
+
+            RippleLikeOperation javaResult = currentInstanceObj.asRippleLikeOperation();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreRippleLikeOperation rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreRippleLikeOperation.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreRippleLikeOperation");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
     @ReactMethod
     public void isInstanceOfBitcoinLikeOperation(ReadableMap currentInstance, Promise promise) {
         try
