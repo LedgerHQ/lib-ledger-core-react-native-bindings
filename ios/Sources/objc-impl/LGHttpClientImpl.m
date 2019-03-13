@@ -30,7 +30,7 @@
         LGHttpUrlConnectionImpl *urlConnection = [[LGHttpUrlConnectionImpl alloc] initWithData:data url:response andError:error];
         LGError *objcError = nil;
         if (error) {
-            objcError = [[LGError alloc] initWithCode:(LGErrorCode)[error code] message:[error description]];
+            objcError = [[LGError alloc] initWithCode:(LGErrorCode)[error code] message:[error localizedDescription]];
         }
         [request complete:urlConnection error:objcError];
     }] resume];
