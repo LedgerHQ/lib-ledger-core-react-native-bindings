@@ -3,4 +3,5 @@
 
 @interface LGPathResolverImpl : NSObject<LGPathResolver>
 @property(nonatomic, strong) NSString *rootPath;
+@property(nonatomic, strong) NSString *majorVersion;
 @end
