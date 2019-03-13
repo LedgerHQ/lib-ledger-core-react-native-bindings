@@ -50,14 +50,17 @@ public class RCTCoreWalletPoolCallback extends WalletPoolCallback {
             {
                 this.promise.reject(error.toString(), error.getMessage());
             }
-            String result_uuid = UUID.randomUUID().toString();
-            RCTCoreWalletPool rctImpl_result = this.reactContext.getNativeModule(RCTCoreWalletPool.class);
-            rctImpl_result.getJavaObjects().put(result_uuid, result);
-            WritableNativeMap converted_result = new WritableNativeMap();
-            converted_result.putString("type","RCTCoreWalletPool");
-            converted_result.putString("uid",result_uuid);
+            else
+            {
+                String result_uuid = UUID.randomUUID().toString();
+                RCTCoreWalletPool rctImpl_result = this.reactContext.getNativeModule(RCTCoreWalletPool.class);
+                rctImpl_result.getJavaObjects().put(result_uuid, result);
+                WritableNativeMap converted_result = new WritableNativeMap();
+                converted_result.putString("type","RCTCoreWalletPool");
+                converted_result.putString("uid",result_uuid);
 
-            this.promise.resolve(converted_result);
+                this.promise.resolve(converted_result);
+            }
         }
         catch(Exception e)
         {

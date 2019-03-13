@@ -50,14 +50,17 @@ public class RCTCoreExtendedKeyAccountCreationInfoCallback extends ExtendedKeyAc
             {
                 this.promise.reject(error.toString(), error.getMessage());
             }
-            String result_uuid = UUID.randomUUID().toString();
-            RCTCoreExtendedKeyAccountCreationInfo rctImpl_result = this.reactContext.getNativeModule(RCTCoreExtendedKeyAccountCreationInfo.class);
-            rctImpl_result.getJavaObjects().put(result_uuid, result);
-            WritableNativeMap converted_result = new WritableNativeMap();
-            converted_result.putString("type","RCTCoreExtendedKeyAccountCreationInfo");
-            converted_result.putString("uid",result_uuid);
+            else
+            {
+                String result_uuid = UUID.randomUUID().toString();
+                RCTCoreExtendedKeyAccountCreationInfo rctImpl_result = this.reactContext.getNativeModule(RCTCoreExtendedKeyAccountCreationInfo.class);
+                rctImpl_result.getJavaObjects().put(result_uuid, result);
+                WritableNativeMap converted_result = new WritableNativeMap();
+                converted_result.putString("type","RCTCoreExtendedKeyAccountCreationInfo");
+                converted_result.putString("uid",result_uuid);
 
-            this.promise.resolve(converted_result);
+                this.promise.resolve(converted_result);
+            }
         }
         catch(Exception e)
         {

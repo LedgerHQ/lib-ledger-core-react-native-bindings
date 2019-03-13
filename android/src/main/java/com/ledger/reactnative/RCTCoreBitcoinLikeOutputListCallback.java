@@ -50,19 +50,22 @@ public class RCTCoreBitcoinLikeOutputListCallback extends BitcoinLikeOutputListC
             {
                 this.promise.reject(error.toString(), error.getMessage());
             }
-            WritableNativeArray converted_result = new WritableNativeArray();
-            for (BitcoinLikeOutput result_elem : result)
+            else
             {
-                String result_elem_uuid = UUID.randomUUID().toString();
-                RCTCoreBitcoinLikeOutput rctImpl_result_elem = this.reactContext.getNativeModule(RCTCoreBitcoinLikeOutput.class);
-                rctImpl_result_elem.getJavaObjects().put(result_elem_uuid, result_elem);
-                WritableNativeMap converted_result_elem = new WritableNativeMap();
-                converted_result_elem.putString("type","RCTCoreBitcoinLikeOutput");
-                converted_result_elem.putString("uid",result_elem_uuid);
-                converted_result.pushMap(converted_result_elem);
-            }
+                WritableNativeArray converted_result = new WritableNativeArray();
+                for (BitcoinLikeOutput result_elem : result)
+                {
+                    String result_elem_uuid = UUID.randomUUID().toString();
+                    RCTCoreBitcoinLikeOutput rctImpl_result_elem = this.reactContext.getNativeModule(RCTCoreBitcoinLikeOutput.class);
+                    rctImpl_result_elem.getJavaObjects().put(result_elem_uuid, result_elem);
+                    WritableNativeMap converted_result_elem = new WritableNativeMap();
+                    converted_result_elem.putString("type","RCTCoreBitcoinLikeOutput");
+                    converted_result_elem.putString("uid",result_elem_uuid);
+                    converted_result.pushMap(converted_result_elem);
+                }
 
-            this.promise.resolve(converted_result);
+                this.promise.resolve(converted_result);
+            }
         }
         catch(Exception e)
         {

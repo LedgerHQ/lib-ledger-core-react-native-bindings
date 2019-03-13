@@ -50,8 +50,11 @@ public class RCTCoreErrorCodeCallback extends ErrorCodeCallback {
             {
                 this.promise.reject(error.toString(), error.getMessage());
             }
+            else
+            {
 
-            this.promise.resolve(result);
+                this.promise.resolve(result);
+            }
         }
         catch(Exception e)
         {

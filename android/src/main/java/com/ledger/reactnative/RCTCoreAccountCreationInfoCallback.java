@@ -50,14 +50,17 @@ public class RCTCoreAccountCreationInfoCallback extends AccountCreationInfoCallb
             {
                 this.promise.reject(error.toString(), error.getMessage());
             }
-            String result_uuid = UUID.randomUUID().toString();
-            RCTCoreAccountCreationInfo rctImpl_result = this.reactContext.getNativeModule(RCTCoreAccountCreationInfo.class);
-            rctImpl_result.getJavaObjects().put(result_uuid, result);
-            WritableNativeMap converted_result = new WritableNativeMap();
-            converted_result.putString("type","RCTCoreAccountCreationInfo");
-            converted_result.putString("uid",result_uuid);
+            else
+            {
+                String result_uuid = UUID.randomUUID().toString();
+                RCTCoreAccountCreationInfo rctImpl_result = this.reactContext.getNativeModule(RCTCoreAccountCreationInfo.class);
+                rctImpl_result.getJavaObjects().put(result_uuid, result);
+                WritableNativeMap converted_result = new WritableNativeMap();
+                converted_result.putString("type","RCTCoreAccountCreationInfo");
+                converted_result.putString("uid",result_uuid);
 
-            this.promise.resolve(converted_result);
+                this.promise.resolve(converted_result);
+            }
         }
         catch(Exception e)
         {
