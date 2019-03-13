@@ -1,5 +1,6 @@
 package com.ledger.reactnative;
 
+import co.ledger.core.LedgerCore;
 import android.content.Context;
 import android.content.SyncStats;
 
@@ -13,8 +14,12 @@ import java.io.File;
  */
 public class PathResolverImpl extends co.ledger.core.PathResolver {
     private ReactApplicationContext reactContext;
+    private String versionMajor;
+
     public PathResolverImpl(ReactApplicationContext reactContext) {
         this.reactContext = reactContext;
+        String version = LedgerCore.getStringVersion();
+        this.versionMajor = version.substring(0, version.indexOf("."));
     }
     /**
      * Resolves the path for a SQLite database file.
@@ -22,7 +27,7 @@ public class PathResolverImpl extends co.ledger.core.PathResolver {
      * @return The resolved path.
      */
     public String resolveDatabasePath(String path) {
-        String base = "/database_".concat(path.replace("/", "__"));
+        String base = "/database_".concat(this.versionMajor).concat("_").concat(path.replace("/", "__"));
         File file = this.reactContext.getFilesDir();
         String modifiedPath = file.getAbsolutePath();
         String finalPath = modifiedPath.concat(base);
@@ -35,7 +40,7 @@ public class PathResolverImpl extends co.ledger.core.PathResolver {
      * @return The resolved path.
      */
     public String resolveLogFilePath(String path) {
-        String base = "/log_file_".concat(path.replace("/", "__"));
+        String base = "/log_file_".concat(this.versionMajor).concat("_").concat(path.replace("/", "__"));
         File file = this.reactContext.getFilesDir();
         String modifiedPath = file.getAbsolutePath();
         return modifiedPath.concat(base);
@@ -47,7 +52,7 @@ public class PathResolverImpl extends co.ledger.core.PathResolver {
      * @return The resolved path.
      */
     public String resolvePreferencesPath(String path) {
-        String base = "/preferences_".concat(path.replace("/", "__"));
+        String base = "/preferences_".concat(this.versionMajor).concat("_").concat(path.replace("/", "__"));
         File file = this.reactContext.getFilesDir();
         String modifiedPath = file.getAbsolutePath();
         return modifiedPath.concat(base);
