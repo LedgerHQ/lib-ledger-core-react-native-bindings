@@ -63,9 +63,12 @@ public class RCTCoreBinaryCallback extends BinaryCallback {
             {
                 this.promise.reject(error.toString(), error.getMessage());
             }
-            String converted_result = byteArrayToHexString(result);
+            else
+            {
+                String converted_result = byteArrayToHexString(result);
 
-            this.promise.resolve(converted_result);
+                this.promise.resolve(converted_result);
+            }
         }
         catch(Exception e)
         {

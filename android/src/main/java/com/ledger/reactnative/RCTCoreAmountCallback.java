@@ -50,14 +50,17 @@ public class RCTCoreAmountCallback extends AmountCallback {
             {
                 this.promise.reject(error.toString(), error.getMessage());
             }
-            String result_uuid = UUID.randomUUID().toString();
-            RCTCoreAmount rctImpl_result = this.reactContext.getNativeModule(RCTCoreAmount.class);
-            rctImpl_result.getJavaObjects().put(result_uuid, result);
-            WritableNativeMap converted_result = new WritableNativeMap();
-            converted_result.putString("type","RCTCoreAmount");
-            converted_result.putString("uid",result_uuid);
+            else
+            {
+                String result_uuid = UUID.randomUUID().toString();
+                RCTCoreAmount rctImpl_result = this.reactContext.getNativeModule(RCTCoreAmount.class);
+                rctImpl_result.getJavaObjects().put(result_uuid, result);
+                WritableNativeMap converted_result = new WritableNativeMap();
+                converted_result.putString("type","RCTCoreAmount");
+                converted_result.putString("uid",result_uuid);
 
-            this.promise.resolve(converted_result);
+                this.promise.resolve(converted_result);
+            }
         }
         catch(Exception e)
         {

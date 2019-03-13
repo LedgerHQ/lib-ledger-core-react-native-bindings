@@ -50,19 +50,22 @@ public class RCTCoreWalletListCallback extends WalletListCallback {
             {
                 this.promise.reject(error.toString(), error.getMessage());
             }
-            WritableNativeArray converted_result = new WritableNativeArray();
-            for (Wallet result_elem : result)
+            else
             {
-                String result_elem_uuid = UUID.randomUUID().toString();
-                RCTCoreWallet rctImpl_result_elem = this.reactContext.getNativeModule(RCTCoreWallet.class);
-                rctImpl_result_elem.getJavaObjects().put(result_elem_uuid, result_elem);
-                WritableNativeMap converted_result_elem = new WritableNativeMap();
-                converted_result_elem.putString("type","RCTCoreWallet");
-                converted_result_elem.putString("uid",result_elem_uuid);
-                converted_result.pushMap(converted_result_elem);
-            }
+                WritableNativeArray converted_result = new WritableNativeArray();
+                for (Wallet result_elem : result)
+                {
+                    String result_elem_uuid = UUID.randomUUID().toString();
+                    RCTCoreWallet rctImpl_result_elem = this.reactContext.getNativeModule(RCTCoreWallet.class);
+                    rctImpl_result_elem.getJavaObjects().put(result_elem_uuid, result_elem);
+                    WritableNativeMap converted_result_elem = new WritableNativeMap();
+                    converted_result_elem.putString("type","RCTCoreWallet");
+                    converted_result_elem.putString("uid",result_elem_uuid);
+                    converted_result.pushMap(converted_result_elem);
+                }
 
-            this.promise.resolve(converted_result);
+                this.promise.resolve(converted_result);
+            }
         }
         catch(Exception e)
         {
