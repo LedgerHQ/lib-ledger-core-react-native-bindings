@@ -1,4 +1,5 @@
 #import "LGPathResolverImpl.h"
+#import "RCTCoreLGLedgerCore.h"
 
 @implementation LGPathResolverImpl
 
@@ -8,9 +9,11 @@
     if (self) {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
         if ([paths count] > 0) {
-            NSLog(@"======init resolvePreferencesPath: %@", paths[0]);
-    
-            self.rootPath = paths[0];
+            NSString *version = [LGLedgerCore getStringVersion];
+            NSString *majorVersion = [version componentsSeparatedByString:@"."][0];
+            NSString *rootPath = [NSString stringWithFormat:@"%@_%@", paths[0], majorVersion];
+            NSLog(@"======init resolvePreferencesPath: %@", rootPath);
+            self.rootPath = rootPath;
         }
     }
     return self;
