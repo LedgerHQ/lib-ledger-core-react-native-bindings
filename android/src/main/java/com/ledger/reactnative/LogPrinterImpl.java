@@ -14,7 +14,7 @@ public class LogPrinterImpl extends co.ledger.core.LogPrinter {
     private com.ledger.reactnative.ExecutionContextImpl executionContext;
     public LogPrinterImpl(ReactApplicationContext reactContext) {
         this.logger = Logger.getLogger("ledger.reactnative");
-        this.executionContext = new com.ledger.reactnative.ExecutionContextImpl(reactContext,"__logger__");
+        this.executionContext = new com.ledger.reactnative.ExecutionContextImpl(reactContext,1);
     }
     /**
      *Print different encountered errors
