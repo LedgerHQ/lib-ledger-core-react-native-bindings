@@ -9,10 +9,12 @@ import java.util.Map;
 /**Class representing a thread dispatcher */
 public class ThreadDispatcherImpl extends co.ledger.core.ThreadDispatcher {
     private ReactApplicationContext reactContext;
-    private Map<String, com.ledger.reactnative.ExecutionContextImpl> contexts;
+    private com.ledger.reactnative.ExecutionContextImpl serialContext;
+    private com.ledger.reactnative.ExecutionContextImpl poolThreadContext;
     public ThreadDispatcherImpl(ReactApplicationContext reactContext) {
         this.reactContext = reactContext;
-        this.contexts = new HashMap<>();
+        this.serialContext = new com.ledger.reactnative.ExecutionContextImpl(this.reactContext, 1);
+        this.poolThreadContext = new com.ledger.reactnative.ExecutionContextImpl(this.reactContext, 3);
     }
 
     /**
@@ -21,12 +23,7 @@ public class ThreadDispatcherImpl extends co.ledger.core.ThreadDispatcher {
      *@return ExecutionContext object
      */
     public co.ledger.core.ExecutionContext getSerialExecutionContext(String name) {
-        com.ledger.reactnative.ExecutionContextImpl context = this.contexts.get(name);
-        if (context == null) {
-            context = new com.ledger.reactnative.ExecutionContextImpl(this.reactContext,name);
-            this.contexts.put(name, context);
-        }
-        return context;
+        return serialContext;
     }
 
     /**
@@ -36,8 +33,7 @@ public class ThreadDispatcherImpl extends co.ledger.core.ThreadDispatcher {
      *@return ExecutionContext object
      */
     public co.ledger.core.ExecutionContext getThreadPoolExecutionContext(String name) {
-
-        return getSerialExecutionContext(name);
+        return poolThreadContext;
     }
 
     /**
@@ -45,8 +41,7 @@ public class ThreadDispatcherImpl extends co.ledger.core.ThreadDispatcher {
      *@return ExecutionContext object
      */
     public co.ledger.core.ExecutionContext getMainExecutionContext() {
-
-        return getSerialExecutionContext("__main__");
+        return serialContext;
     }
 
     /**
