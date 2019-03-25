@@ -21,6 +21,10 @@ public class ExecutionContextImpl extends co.ledger.core.ExecutionContext {
         pool = Executors.newFixedThreadPool(numberOfThreads);
     }
 
+    public ExecutionContextImpl(ReactApplicationContext reactContext) {
+        this(reactContext, 1);
+    }
+
 //    @Override
 //    protected void finalize() throws Throwable {
 //        super.finalize();
@@ -36,7 +40,6 @@ public class ExecutionContextImpl extends co.ledger.core.ExecutionContext {
      *Execute a given runnable
      *@param runnalbe, Runnable object
      */
-
     public void execute(final co.ledger.core.Runnable runnable) {
         pool.execute(new java.lang.Runnable() {
             @Override
