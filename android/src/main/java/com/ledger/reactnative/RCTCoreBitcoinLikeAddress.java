@@ -223,11 +223,34 @@ public class RCTCoreBitcoinLikeAddress extends ReactContextBaseJavaModule {
         }
     }
     /**
+     * Get the Bech32 encoded address (with respect to BIP173)
+     * @return The Bech32 encoded address
+     */
+    @ReactMethod
+    public void toBech32(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            BitcoinLikeAddress currentInstanceObj = this.javaObjects.get(sUid);
+
+            String javaResult = currentInstanceObj.toBech32();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
      * Serializes the hash160 to a payment uri (i.e bitcoin:16UwLL9Risc3QfPqBUvKofHmBQ7wMtjvM)
      * @return A payment uri to this address
      * toPaymentUri(): string;
      * Checks if the given address is a P2SH address
-     * @return True if the version byte matches the P2SH byte version of the address network parameters
+     * @return True if the keychain engine is P2SH
      */
     @ReactMethod
     public void isP2SH(ReadableMap currentInstance, Promise promise) {
@@ -250,7 +273,7 @@ public class RCTCoreBitcoinLikeAddress extends ReactContextBaseJavaModule {
     }
     /**
      * Checks if the given address is a P2PKH address
-     * @return True if the version byte matches the P2PKH byte version of the address network parameters
+     * @return if the keychain engine is P2PKH
      */
     @ReactMethod
     public void isP2PKH(ReadableMap currentInstance, Promise promise) {
@@ -261,6 +284,52 @@ public class RCTCoreBitcoinLikeAddress extends ReactContextBaseJavaModule {
             BitcoinLikeAddress currentInstanceObj = this.javaObjects.get(sUid);
 
             boolean javaResult = currentInstanceObj.isP2PKH();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putBoolean("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Checks if the given address is a P2WSH address
+     * @return True if the keychain engine is P2WSH
+     */
+    @ReactMethod
+    public void isP2WSH(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            BitcoinLikeAddress currentInstanceObj = this.javaObjects.get(sUid);
+
+            boolean javaResult = currentInstanceObj.isP2WSH();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putBoolean("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Checks if the given address is a P2WPKH address
+     * @return True if the keychain engine is P2WPKH
+     */
+    @ReactMethod
+    public void isP2WPKH(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            BitcoinLikeAddress currentInstanceObj = this.javaObjects.get(sUid);
+
+            boolean javaResult = currentInstanceObj.isP2WPKH();
             WritableNativeMap result = new WritableNativeMap();
             result.putBoolean("value", javaResult);
 

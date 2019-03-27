@@ -310,6 +310,32 @@ public class RCTCoreWalletPool extends ReactContextBaseJavaModule {
         }
     }
     /**
+     * Update wallet configuration
+     * @param name, string, name of wallet to update
+     * @param configuration, DynamicObject object, configuration object with fields to update
+     * @param callback, Callback object returns the error code, returns ErrorCode::FUTURE_WAS_SUCCESSFULL if everything is fine
+     * > Note: other fields that are not passed in 'configuration' parameter
+     * > that might have been created before remain intact
+     */
+    @ReactMethod
+    public void updateWalletConfig(ReadableMap currentInstance, String name, ReadableMap configuration, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            WalletPool currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreDynamicObject rctParam_configuration = this.reactContext.getNativeModule(RCTCoreDynamicObject.class);
+            DynamicObject javaParam_1 = rctParam_configuration.getJavaObjects().get(configuration.getString("uid"));
+            RCTCoreErrorCodeCallback javaParam_2 = RCTCoreErrorCodeCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.updateWalletConfig(name, javaParam_1, javaParam_2);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
      * Instanciate a new wallet under wallet pool.
      * @param name, string, name of newly created wallet
      * @param currency, Currency object, currency of the wallet

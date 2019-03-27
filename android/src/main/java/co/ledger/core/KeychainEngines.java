@@ -11,6 +11,10 @@ public abstract class KeychainEngines {
 
     public static final String BIP49_P2SH = "BIP49_P2SH";
 
+    public static final String BIP173_P2WPKH = "BIP173_P2WPKH";
+
+    public static final String BIP173_P2WSH = "BIP173_P2WSH";
+
 
     private static final class CppProxy extends KeychainEngines
     {

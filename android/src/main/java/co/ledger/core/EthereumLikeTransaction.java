@@ -35,6 +35,9 @@ public abstract class EthereumLikeTransaction {
     /** Get binary data payload. */
     public abstract byte[] getData();
 
+    /** Get status of transaction: equals to 1 if succeeded, 0 otherwise */
+    public abstract int getStatus();
+
     /** Serialize the transaction to its raw format. */
     public abstract byte[] serialize();
 
@@ -148,6 +151,14 @@ public abstract class EthereumLikeTransaction {
             return native_getData(this.nativeRef);
         }
         private native byte[] native_getData(long _nativeRef);
+
+        @Override
+        public int getStatus()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getStatus(this.nativeRef);
+        }
+        private native int native_getStatus(long _nativeRef);
 
         @Override
         public byte[] serialize()

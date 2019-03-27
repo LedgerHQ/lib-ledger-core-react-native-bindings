@@ -88,4 +88,6 @@ typedef NS_ENUM(NSInteger, LGErrorCode)
     LGErrorCodeBadCast,
     /** Query build */
     LGErrorCodeLinkNonTailFilter,
+    /** Invalid bech32 format */
+    LGErrorCodeInvalidBech32Format,
 };

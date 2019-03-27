@@ -59,6 +59,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (nonnull NSString *)toBech32 {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->toBech32();
+        return ::djinni::String::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (BOOL)isP2SH {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->isP2SH();
@@ -69,6 +76,20 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 - (BOOL)isP2PKH {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->isP2PKH();
+        return ::djinni::Bool::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (BOOL)isP2WSH {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->isP2WSH();
+        return ::djinni::Bool::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (BOOL)isP2WPKH {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->isP2WPKH();
         return ::djinni::Bool::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

@@ -93,6 +93,8 @@ enum class ErrorCode : int {
     BAD_CAST,
     /** Query build */
     LINK_NON_TAIL_FILTER,
+    /** Invalid bech32 format */
+    INVALID_BECH32_FORMAT,
 };
  std::string to_string(const ErrorCode& errorCode);
  std::ostream &operator<<(std::ostream &os, const ErrorCode &o);
