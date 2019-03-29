@@ -334,6 +334,34 @@ RCT_REMAP_METHOD(getData,getData:(NSDictionary *)currentInstance WithResolver:(R
 
 }
 
+/** Get status of transaction: equals to 1 if succeeded, 0 otherwise */
+RCT_REMAP_METHOD(getStatus,getStatus:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::getStatus, first argument should be an instance of LGEthereumLikeTransaction", nil);
+        return;
+    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::getStatus, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSInteger objcResult = [currentInstanceObj getStatus];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGEthereumLikeTransaction::getStatus", nil);
+        return;
+    }
+
+}
+
 /** Serialize the transaction to its raw format. */
 RCT_REMAP_METHOD(serialize,serialize:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

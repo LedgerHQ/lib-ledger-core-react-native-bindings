@@ -95,6 +95,18 @@
          callback:(nullable id<LGWalletCallback>)callback;
 
 /**
+ * Update wallet configuration
+ * @param name, string, name of wallet to update
+ * @param configuration, DynamicObject object, configuration object with fields to update
+ * @param callback, Callback object returns the error code, returns ErrorCode::FUTURE_WAS_SUCCESSFULL if everything is fine
+ * > Note: other fields that are not passed in 'configuration' parameter
+ * > that might have been created before remain intact
+ */
+- (void)updateWalletConfig:(nonnull NSString *)name
+             configuration:(nullable LGDynamicObject *)configuration
+                  callback:(nullable id<LGErrorCodeCallback>)callback;
+
+/**
  * Instanciate a new wallet under wallet pool.
  * @param name, string, name of newly created wallet
  * @param currency, Currency object, currency of the wallet

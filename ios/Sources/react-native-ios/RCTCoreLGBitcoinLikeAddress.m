@@ -163,11 +163,42 @@ RCT_REMAP_METHOD(toBase58,toBase58:(NSDictionary *)currentInstance WithResolver:
 }
 
 /**
+ * Get the Bech32 encoded address (with respect to BIP173)
+ * @return The Bech32 encoded address
+ */
+RCT_REMAP_METHOD(toBech32,toBech32:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAddress::toBech32, first argument should be an instance of LGBitcoinLikeAddress", nil);
+        return;
+    }
+    LGBitcoinLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAddress::toBech32, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSString * objcResult = [currentInstanceObj toBech32];
+    NSDictionary *result = @{@"value" : objcResult};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGBitcoinLikeAddress::toBech32", nil);
+        return;
+    }
+
+}
+
+/**
  * Serializes the hash160 to a payment uri (i.e bitcoin:16UwLL9Risc3QfPqBUvKofHmBQ7wMtjvM)
  * @return A payment uri to this address
  * toPaymentUri(): string;
  * Checks if the given address is a P2SH address
- * @return True if the version byte matches the P2SH byte version of the address network parameters
+ * @return True if the keychain engine is P2SH
  */
 RCT_REMAP_METHOD(isP2SH,isP2SH:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -198,7 +229,7 @@ RCT_REMAP_METHOD(isP2SH,isP2SH:(NSDictionary *)currentInstance WithResolver:(RCT
 
 /**
  * Checks if the given address is a P2PKH address
- * @return True if the version byte matches the P2PKH byte version of the address network parameters
+ * @return if the keychain engine is P2PKH
  */
 RCT_REMAP_METHOD(isP2PKH,isP2PKH:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -222,6 +253,68 @@ RCT_REMAP_METHOD(isP2PKH,isP2PKH:(NSDictionary *)currentInstance WithResolver:(R
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeAddress::isP2PKH", nil);
+        return;
+    }
+
+}
+
+/**
+ * Checks if the given address is a P2WSH address
+ * @return True if the keychain engine is P2WSH
+ */
+RCT_REMAP_METHOD(isP2WSH,isP2WSH:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAddress::isP2WSH, first argument should be an instance of LGBitcoinLikeAddress", nil);
+        return;
+    }
+    LGBitcoinLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAddress::isP2WSH, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    BOOL objcResult = [currentInstanceObj isP2WSH];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGBitcoinLikeAddress::isP2WSH", nil);
+        return;
+    }
+
+}
+
+/**
+ * Checks if the given address is a P2WPKH address
+ * @return True if the keychain engine is P2WPKH
+ */
+RCT_REMAP_METHOD(isP2WPKH,isP2WPKH:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAddress::isP2WPKH, first argument should be an instance of LGBitcoinLikeAddress", nil);
+        return;
+    }
+    LGBitcoinLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAddress::isP2WPKH, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    BOOL objcResult = [currentInstanceObj isP2WPKH];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGBitcoinLikeAddress::isP2WPKH", nil);
         return;
     }
 

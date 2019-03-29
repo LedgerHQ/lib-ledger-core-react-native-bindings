@@ -119,6 +119,16 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (void)updateWalletConfig:(nonnull NSString *)name
+             configuration:(nullable LGDynamicObject *)configuration
+                  callback:(nullable id<LGErrorCodeCallback>)callback {
+    try {
+        _cppRefHandle.get()->updateWalletConfig(::djinni::String::toCpp(name),
+                                                ::djinni_generated::DynamicObject::toCpp(configuration),
+                                                ::djinni_generated::ErrorCodeCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (void)createWallet:(nonnull NSString *)name
             currency:(nonnull LGCurrency *)currency
        configuration:(nullable LGDynamicObject *)configuration

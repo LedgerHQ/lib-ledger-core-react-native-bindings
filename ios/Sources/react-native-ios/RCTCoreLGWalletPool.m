@@ -268,6 +268,35 @@ RCT_REMAP_METHOD(getWallet,getWallet:(NSDictionary *)currentInstance withParams:
 }
 
 /**
+ * Update wallet configuration
+ * @param name, string, name of wallet to update
+ * @param configuration, DynamicObject object, configuration object with fields to update
+ * @param callback, Callback object returns the error code, returns ErrorCode::FUTURE_WAS_SUCCESSFULL if everything is fine
+ * > Note: other fields that are not passed in 'configuration' parameter
+ * > that might have been created before remain intact
+ */
+RCT_REMAP_METHOD(updateWalletConfig,updateWalletConfig:(NSDictionary *)currentInstance withParams:(nonnull NSString *)name
+                                                                                    configuration:(NSDictionary *)configuration withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::updateWalletConfig, first argument should be an instance of LGWalletPool", nil);
+        return;
+    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::updateWalletConfig, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGDynamicObject *rctParam_configuration = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
+    LGDynamicObject *objcParam_1 = (LGDynamicObject *)[rctParam_configuration.objcImplementations objectForKey:configuration[@"uid"]];
+    RCTCoreLGErrorCodeCallback *objcParam_2 = [[RCTCoreLGErrorCodeCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj updateWalletConfig:name configuration:objcParam_1 callback:objcParam_2];
+
+}
+
+/**
  * Instanciate a new wallet under wallet pool.
  * @param name, string, name of newly created wallet
  * @param currency, Currency object, currency of the wallet

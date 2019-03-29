@@ -37,6 +37,9 @@
 /** Get binary data payload. */
 - (nullable NSData *)getData;
 
+/** Get status of transaction: equals to 1 if succeeded, 0 otherwise */
+- (int32_t)getStatus;
+
 /** Serialize the transaction to its raw format. */
 - (nonnull NSData *)serialize;
 

@@ -48,6 +48,16 @@ public abstract class WalletPool {
     public abstract void getWallet(String name, WalletCallback callback);
 
     /**
+     * Update wallet configuration
+     * @param name, string, name of wallet to update
+     * @param configuration, DynamicObject object, configuration object with fields to update
+     * @param callback, Callback object returns the error code, returns ErrorCode::FUTURE_WAS_SUCCESSFULL if everything is fine
+     * > Note: other fields that are not passed in 'configuration' parameter
+     * > that might have been created before remain intact
+     */
+    public abstract void updateWalletConfig(String name, DynamicObject configuration, ErrorCodeCallback callback);
+
+    /**
      * Instanciate a new wallet under wallet pool.
      * @param name, string, name of newly created wallet
      * @param currency, Currency object, currency of the wallet
@@ -205,6 +215,14 @@ public abstract class WalletPool {
             native_getWallet(this.nativeRef, name, callback);
         }
         private native void native_getWallet(long _nativeRef, String name, WalletCallback callback);
+
+        @Override
+        public void updateWalletConfig(String name, DynamicObject configuration, ErrorCodeCallback callback)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_updateWalletConfig(this.nativeRef, name, configuration, callback);
+        }
+        private native void native_updateWalletConfig(long _nativeRef, String name, DynamicObject configuration, ErrorCodeCallback callback);
 
         @Override
         public void createWallet(String name, Currency currency, DynamicObject configuration, WalletCallback callback)

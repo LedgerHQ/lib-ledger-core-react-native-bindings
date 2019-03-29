@@ -32,19 +32,37 @@ public abstract class BitcoinLikeAddress {
     public abstract String toBase58();
 
     /**
+     * Get the Bech32 encoded address (with respect to BIP173)
+     * @return The Bech32 encoded address
+     */
+    public abstract String toBech32();
+
+    /**
      * Serializes the hash160 to a payment uri (i.e bitcoin:16UwLL9Risc3QfPqBUvKofHmBQ7wMtjvM)
      * @return A payment uri to this address
      * toPaymentUri(): string;
      * Checks if the given address is a P2SH address
-     * @return True if the version byte matches the P2SH byte version of the address network parameters
+     * @return True if the keychain engine is P2SH
      */
     public abstract boolean isP2SH();
 
     /**
      * Checks if the given address is a P2PKH address
-     * @return True if the version byte matches the P2PKH byte version of the address network parameters
+     * @return if the keychain engine is P2PKH
      */
     public abstract boolean isP2PKH();
+
+    /**
+     * Checks if the given address is a P2WSH address
+     * @return True if the keychain engine is P2WSH
+     */
+    public abstract boolean isP2WSH();
+
+    /**
+     * Checks if the given address is a P2WPKH address
+     * @return True if the keychain engine is P2WPKH
+     */
+    public abstract boolean isP2WPKH();
 
     private static final class CppProxy extends BitcoinLikeAddress
     {
@@ -102,6 +120,14 @@ public abstract class BitcoinLikeAddress {
         private native String native_toBase58(long _nativeRef);
 
         @Override
+        public String toBech32()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_toBech32(this.nativeRef);
+        }
+        private native String native_toBech32(long _nativeRef);
+
+        @Override
         public boolean isP2SH()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
@@ -116,5 +142,21 @@ public abstract class BitcoinLikeAddress {
             return native_isP2PKH(this.nativeRef);
         }
         private native boolean native_isP2PKH(long _nativeRef);
+
+        @Override
+        public boolean isP2WSH()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_isP2WSH(this.nativeRef);
+        }
+        private native boolean native_isP2WSH(long _nativeRef);
+
+        @Override
+        public boolean isP2WPKH()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_isP2WPKH(this.nativeRef);
+        }
+        private native boolean native_isP2WPKH(long _nativeRef);
     }
 }

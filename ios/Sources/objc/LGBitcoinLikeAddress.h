@@ -33,18 +33,36 @@
 - (nonnull NSString *)toBase58;
 
 /**
+ * Get the Bech32 encoded address (with respect to BIP173)
+ * @return The Bech32 encoded address
+ */
+- (nonnull NSString *)toBech32;
+
+/**
  * Serializes the hash160 to a payment uri (i.e bitcoin:16UwLL9Risc3QfPqBUvKofHmBQ7wMtjvM)
  * @return A payment uri to this address
  * toPaymentUri(): string;
  * Checks if the given address is a P2SH address
- * @return True if the version byte matches the P2SH byte version of the address network parameters
+ * @return True if the keychain engine is P2SH
  */
 - (BOOL)isP2SH;
 
 /**
  * Checks if the given address is a P2PKH address
- * @return True if the version byte matches the P2PKH byte version of the address network parameters
+ * @return if the keychain engine is P2PKH
  */
 - (BOOL)isP2PKH;
+
+/**
+ * Checks if the given address is a P2WSH address
+ * @return True if the keychain engine is P2WSH
+ */
+- (BOOL)isP2WSH;
+
+/**
+ * Checks if the given address is a P2WPKH address
+ * @return True if the keychain engine is P2WPKH
+ */
+- (BOOL)isP2WPKH;
 
 @end

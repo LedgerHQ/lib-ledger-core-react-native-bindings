@@ -5,6 +5,8 @@
 
 extern NSString * __nonnull const LGKeychainEnginesBIP32P2PKH;
 extern NSString * __nonnull const LGKeychainEnginesBIP49P2SH;
+extern NSString * __nonnull const LGKeychainEnginesBIP173P2WPKH;
+extern NSString * __nonnull const LGKeychainEnginesBIP173P2WSH;
 
 /** Available keychains policies. */
 @interface LGKeychainEngines : NSObject
