@@ -3,6 +3,7 @@
 
 package com.ledger.reactnative;
 
+import co.ledger.core.BigIntListCallback;
 import co.ledger.core.BitcoinLikeAccount;
 import co.ledger.core.BitcoinLikeOutputListCallback;
 import co.ledger.core.BitcoinLikeTransaction;
@@ -223,6 +224,29 @@ public class RCTCoreBitcoinLikeAccount extends ReactContextBaseJavaModule {
             result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Get fees from network, fees are ordered in descending order (i.e. fastest to slowest confirmation)
+     * Note: it would have been better to have this method on BitcoinLikeWallet
+     * but since BitcoinLikeWallet is not used anywhere, it's better to keep all
+     * specific methods under the same specific class so it will be easy to segratate
+     * when the right time comes !
+     */
+    @ReactMethod
+    public void getFees(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            BitcoinLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreBigIntListCallback javaParam_0 = RCTCoreBigIntListCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getFees(javaParam_0);
         }
         catch(Exception e)
         {

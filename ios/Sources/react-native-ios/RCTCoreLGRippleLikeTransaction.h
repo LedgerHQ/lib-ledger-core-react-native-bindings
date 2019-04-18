@@ -4,11 +4,13 @@
 #import "LGAmount.h"
 #import "LGBigInt.h"
 #import "LGRippleLikeAddress.h"
+#import "LGRippleLikeMemo.h"
 #import "LGRippleLikeTransaction.h"
 #import "RCTCoreBaseModule.h"
 #import "RCTCoreLGAmount.h"
 #import "RCTCoreLGBigInt.h"
 #import "RCTCoreLGRippleLikeAddress.h"
+#import "RCTCoreLGRippleLikeMemo.h"
 #import <Foundation/Foundation.h>
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>

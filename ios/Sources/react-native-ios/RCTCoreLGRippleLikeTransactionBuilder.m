@@ -165,6 +165,45 @@ RCT_REMAP_METHOD(setFees,setFees:(NSDictionary *)currentInstance withParams:(NSD
 
 }
 
+/**
+ * Add a memo.
+ * @return A reference on the same builder in order to chain calls.
+ */
+RCT_REMAP_METHOD(addMemo,addMemo:(NSDictionary *)currentInstance withParams:(NSDictionary *)memo withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransactionBuilder::addMemo, first argument should be an instance of LGRippleLikeTransactionBuilder", nil);
+        return;
+    }
+    LGRippleLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransactionBuilder::addMemo, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGRippleLikeMemo *rctParam_memo = (RCTCoreLGRippleLikeMemo *)[self.bridge moduleForName:@"CoreLGRippleLikeMemo"];
+    LGRippleLikeMemo *objcParam_0 = (LGRippleLikeMemo *)[rctParam_memo.objcImplementations objectForKey:memo[@"uid"]];
+    LGRippleLikeTransactionBuilder * objcResult = [currentInstanceObj addMemo:objcParam_0];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGRippleLikeTransactionBuilder *rctImpl_objcResult = (RCTCoreLGRippleLikeTransactionBuilder *)[self.bridge moduleForName:@"CoreLGRippleLikeTransactionBuilder"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGRippleLikeTransactionBuilder", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGRippleLikeTransactionBuilder::addMemo", nil);
+        return;
+    }
+
+}
+
 /** Build a transaction from the given builder parameters. */
 RCT_REMAP_METHOD(build,build:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

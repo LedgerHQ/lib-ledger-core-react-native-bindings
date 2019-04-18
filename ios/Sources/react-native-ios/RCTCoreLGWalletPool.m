@@ -35,7 +35,7 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 /**
  * Create a new instance of WalletPool object.
  * @param name, string, name of the wallet pool
- * @param password, optional string, password to lock wallet pool
+ * @param password, string, password to lock wallet pool (empty string means no password)
  * @param http, HttpClient object, http client used for all calls made by wallet pool (and aggregated wallets)
  * @param webSocketClient, WebSocketClient object, socket through which wallet pool observe and get notified (explorer, DBs ...)
  * @param pathResolver, PathResolver Object, resolve paths to logs, databases, preferences ...

@@ -50,7 +50,7 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 }
 
 + (nullable LGWalletPool *)newInstance:(nonnull NSString *)name
-                              password:(nullable NSString *)password
+                              password:(nonnull NSString *)password
                             httpClient:(nullable id<LGHttpClient>)httpClient
                        webSocketClient:(nullable id<LGWebSocketClient>)webSocketClient
                           pathResolver:(nullable id<LGPathResolver>)pathResolver
@@ -61,7 +61,7 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
                          configuration:(nullable LGDynamicObject *)configuration {
     try {
         auto objcpp_result_ = ::ledger::core::api::WalletPool::newInstance(::djinni::String::toCpp(name),
-                                                                           ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(password),
+                                                                           ::djinni::String::toCpp(password),
                                                                            ::djinni_generated::HttpClient::toCpp(httpClient),
                                                                            ::djinni_generated::WebSocketClient::toCpp(webSocketClient),
                                                                            ::djinni_generated::PathResolver::toCpp(pathResolver),

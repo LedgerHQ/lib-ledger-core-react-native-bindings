@@ -412,4 +412,63 @@ RCT_REMAP_METHOD(getSigningPubKey,getSigningPubKey:(NSDictionary *)currentInstan
     }
 
 }
+
+/** Get all memos associated with the transaction. */
+RCT_REMAP_METHOD(getMemos,getMemos:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getMemos, first argument should be an instance of LGRippleLikeTransaction", nil);
+        return;
+    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getMemos, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSArray<LGRippleLikeMemo *> * objcResult = [currentInstanceObj getMemos];
+
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (id objcResult_elem in objcResult)
+    {
+        NSString *objcResult_elem_uuid = [[NSUUID UUID] UUIDString];
+        RCTCoreLGRippleLikeMemo *rctImpl_objcResult_elem = (RCTCoreLGRippleLikeMemo *)[self.bridge moduleForName:@"CoreLGRippleLikeMemo"];
+        NSArray *objcResult_elem_array = [[NSArray alloc] initWithObjects:objcResult_elem, objcResult_elem_uuid, nil];
+        [rctImpl_objcResult_elem baseSetObject:objcResult_elem_array];
+        NSDictionary *result_elem = @{@"type" : @"CoreLGRippleLikeMemo", @"uid" : objcResult_elem_uuid };
+        [result addObject:result_elem];
+    }
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGRippleLikeTransaction::getMemos", nil);
+        return;
+    }
+
+}
+
+/** Add a memo to a transaction. */
+RCT_REMAP_METHOD(addMemo,addMemo:(NSDictionary *)currentInstance withParams:(NSDictionary *)memo withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::addMemo, first argument should be an instance of LGRippleLikeTransaction", nil);
+        return;
+    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::addMemo, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGRippleLikeMemo *rctParam_memo = (RCTCoreLGRippleLikeMemo *)[self.bridge moduleForName:@"CoreLGRippleLikeMemo"];
+    LGRippleLikeMemo *objcParam_0 = (LGRippleLikeMemo *)[rctParam_memo.objcImplementations objectForKey:memo[@"uid"]];
+    [currentInstanceObj addMemo:objcParam_0];
+
+}
 @end

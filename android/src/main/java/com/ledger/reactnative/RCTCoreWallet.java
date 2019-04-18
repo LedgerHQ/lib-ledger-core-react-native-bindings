@@ -10,6 +10,7 @@ import co.ledger.core.AccountListCallback;
 import co.ledger.core.BitcoinLikeWallet;
 import co.ledger.core.BlockCallback;
 import co.ledger.core.Currency;
+import co.ledger.core.DynamicObject;
 import co.ledger.core.ErrorCodeCallback;
 import co.ledger.core.EventBus;
 import co.ledger.core.ExtendedKeyAccountCreationInfo;
@@ -683,6 +684,31 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
 
             RCTCoreErrorCodeCallback javaParam_1 = RCTCoreErrorCodeCallback.initWithPromise(promise, this.reactContext);
             currentInstanceObj.eraseDataSince(date, javaParam_1);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Return wallet's configuration */
+    @ReactMethod
+    public void getConfiguration(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Wallet currentInstanceObj = this.javaObjects.get(sUid);
+
+            DynamicObject javaResult = currentInstanceObj.getConfiguration();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreDynamicObject rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreDynamicObject.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreDynamicObject");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
         }
         catch(Exception e)
         {

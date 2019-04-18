@@ -742,4 +742,38 @@ RCT_REMAP_METHOD(eraseDataSince,eraseDataSince:(NSDictionary *)currentInstance w
     [currentInstanceObj eraseDataSince:date callback:objcParam_1];
 
 }
+
+/** Return wallet's configuration */
+RCT_REMAP_METHOD(getConfiguration,getConfiguration:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGWallet::getConfiguration, first argument should be an instance of LGWallet", nil);
+        return;
+    }
+    LGWallet *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGWallet::getConfiguration, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGDynamicObject * objcResult = [currentInstanceObj getConfiguration];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGDynamicObject *rctImpl_objcResult = (RCTCoreLGDynamicObject *)[self.bridge moduleForName:@"CoreLGDynamicObject"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGDynamicObject", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGWallet::getConfiguration", nil);
+        return;
+    }
+
+}
 @end

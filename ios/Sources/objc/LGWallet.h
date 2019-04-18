@@ -7,6 +7,7 @@
 #import "LGWalletType.h"
 #import <Foundation/Foundation.h>
 @class LGBitcoinLikeWallet;
+@class LGDynamicObject;
 @class LGEventBus;
 @class LGLogger;
 @class LGPreferences;
@@ -176,5 +177,8 @@
  */
 - (void)eraseDataSince:(nonnull NSDate *)date
               callback:(nullable id<LGErrorCodeCallback>)callback;
+
+/** Return wallet's configuration */
+- (nullable LGDynamicObject *)getConfiguration;
 
 @end

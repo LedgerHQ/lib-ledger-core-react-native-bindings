@@ -402,4 +402,35 @@ RCT_REMAP_METHOD(getStatus,getStatus:(NSDictionary *)currentInstance WithResolve
     }
 
 }
+
+/**
+ * Get block height on which operation was included.
+ * @return Optional 64-bit integer, height of block in which operation was validated
+ */
+RCT_REMAP_METHOD(getBlockHeight,getBlockHeight:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getBlockHeight, first argument should be an instance of LGERC20LikeOperation", nil);
+        return;
+    }
+    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getBlockHeight, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSNumber * objcResult = [currentInstanceObj getBlockHeight];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGERC20LikeOperation::getBlockHeight", nil);
+        return;
+    }
+
+}
 @end

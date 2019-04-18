@@ -9,6 +9,7 @@
 #import "LGAmount+Private.h"
 #import "LGBigInt+Private.h"
 #import "LGRippleLikeAddress+Private.h"
+#import "LGRippleLikeMemo+Private.h"
 #include <exception>
 #include <stdexcept>
 #include <utility>
@@ -114,6 +115,19 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->getSigningPubKey();
         return ::djinni::Binary::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nonnull NSArray<LGRippleLikeMemo *> *)getMemos {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getMemos();
+        return ::djinni::List<::djinni_generated::RippleLikeMemo>::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)addMemo:(nonnull LGRippleLikeMemo *)memo {
+    try {
+        _cppRefHandle.get()->addMemo(::djinni_generated::RippleLikeMemo::toCpp(memo));
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

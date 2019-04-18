@@ -27,6 +27,15 @@ public abstract class BitcoinLikeAccount {
 
     public abstract BitcoinLikeTransactionBuilder buildTransaction(Boolean partial);
 
+    /**
+     * Get fees from network, fees are ordered in descending order (i.e. fastest to slowest confirmation)
+     * Note: it would have been better to have this method on BitcoinLikeWallet
+     * but since BitcoinLikeWallet is not used anywhere, it's better to keep all
+     * specific methods under the same specific class so it will be easy to segratate
+     * when the right time comes !
+     */
+    public abstract void getFees(BigIntListCallback callback);
+
     private static final class CppProxy extends BitcoinLikeAccount
     {
         private final long nativeRef;
@@ -89,5 +98,13 @@ public abstract class BitcoinLikeAccount {
             return native_buildTransaction(this.nativeRef, partial);
         }
         private native BitcoinLikeTransactionBuilder native_buildTransaction(long _nativeRef, Boolean partial);
+
+        @Override
+        public void getFees(BigIntListCallback callback)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_getFees(this.nativeRef, callback);
+        }
+        private native void native_getFees(long _nativeRef, BigIntListCallback callback);
     }
 }

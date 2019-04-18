@@ -13,6 +13,7 @@
 #import "LGBitcoinLikeWallet+Private.h"
 #import "LGBlockCallback+Private.h"
 #import "LGCurrency+Private.h"
+#import "LGDynamicObject+Private.h"
 #import "LGErrorCodeCallback+Private.h"
 #import "LGEventBus+Private.h"
 #import "LGExtendedKeyAccountCreationInfo+Private.h"
@@ -221,6 +222,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         _cppRefHandle.get()->eraseDataSince(::djinni::Date::toCpp(date),
                                             ::djinni_generated::ErrorCodeCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGDynamicObject *)getConfiguration {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getConfiguration();
+        return ::djinni_generated::DynamicObject::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

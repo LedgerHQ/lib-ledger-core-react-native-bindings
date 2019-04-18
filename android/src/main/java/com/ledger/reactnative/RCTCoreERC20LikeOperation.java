@@ -396,4 +396,32 @@ public class RCTCoreERC20LikeOperation extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /**
+     * Get block height on which operation was included.
+     * @return Optional 64-bit integer, height of block in which operation was validated
+     */
+    @ReactMethod
+    public void getBlockHeight(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            ERC20LikeOperation currentInstanceObj = this.javaObjects.get(sUid);
+
+            Long javaResult = currentInstanceObj.getBlockHeight();
+            WritableNativeMap result = new WritableNativeMap();
+            if (javaResult == null)
+            {
+                promise.resolve(javaResult);
+                return;
+            }
+            result.putDouble("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
 }

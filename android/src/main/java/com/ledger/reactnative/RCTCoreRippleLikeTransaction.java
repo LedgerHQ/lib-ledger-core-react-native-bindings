@@ -6,6 +6,7 @@ package com.ledger.reactnative;
 import co.ledger.core.Amount;
 import co.ledger.core.BigInt;
 import co.ledger.core.RippleLikeAddress;
+import co.ledger.core.RippleLikeMemo;
 import co.ledger.core.RippleLikeTransaction;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -401,6 +402,54 @@ public class RCTCoreRippleLikeTransaction extends ReactContextBaseJavaModule {
             result.putString("value", finalJavaResult);
 
             promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Get all memos associated with the transaction. */
+    @ReactMethod
+    public void getMemos(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            RippleLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+
+            ArrayList<RippleLikeMemo> javaResult = currentInstanceObj.getMemos();
+
+            WritableNativeArray result = new WritableNativeArray();
+            for (RippleLikeMemo javaResult_elem : javaResult)
+            {
+                String javaResult_elem_uuid = UUID.randomUUID().toString();
+                RCTCoreRippleLikeMemo rctImpl_javaResult_elem = this.reactContext.getNativeModule(RCTCoreRippleLikeMemo.class);
+                rctImpl_javaResult_elem.getJavaObjects().put(javaResult_elem_uuid, javaResult_elem);
+                WritableNativeMap result_elem = new WritableNativeMap();
+                result_elem.putString("type","RCTCoreRippleLikeMemo");
+                result_elem.putString("uid",javaResult_elem_uuid);
+                result.pushMap(result_elem);
+            }
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Add a memo to a transaction. */
+    @ReactMethod
+    public void addMemo(ReadableMap currentInstance, ReadableMap memo, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            RippleLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreRippleLikeMemo rctParam_memo = this.reactContext.getNativeModule(RCTCoreRippleLikeMemo.class);
+            RippleLikeMemo javaParam_0 = rctParam_memo.getJavaObjects().get(memo.getString("uid"));
+            currentInstanceObj.addMemo(javaParam_0);
         }
         catch(Exception e)
         {
