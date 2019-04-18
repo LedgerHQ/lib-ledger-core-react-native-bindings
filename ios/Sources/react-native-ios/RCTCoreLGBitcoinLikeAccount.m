@@ -165,4 +165,29 @@ RCT_REMAP_METHOD(buildTransaction,buildTransaction:(NSDictionary *)currentInstan
     }
 
 }
+
+/**
+ * Get fees from network, fees are ordered in descending order (i.e. fastest to slowest confirmation)
+ * Note: it would have been better to have this method on BitcoinLikeWallet
+ * but since BitcoinLikeWallet is not used anywhere, it's better to keep all
+ * specific methods under the same specific class so it will be easy to segratate
+ * when the right time comes !
+ */
+RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::getFees, first argument should be an instance of LGBitcoinLikeAccount", nil);
+        return;
+    }
+    LGBitcoinLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAccount::getFees, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGBigIntListCallback *objcParam_0 = [[RCTCoreLGBigIntListCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getFees:objcParam_0];
+
+}
 @end

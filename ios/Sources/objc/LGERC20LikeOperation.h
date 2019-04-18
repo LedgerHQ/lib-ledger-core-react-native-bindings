@@ -48,4 +48,10 @@
 /** Get opration status : pending or confirmed. */
 - (int32_t)getStatus;
 
+/**
+ * Get block height on which operation was included.
+ * @return Optional 64-bit integer, height of block in which operation was validated
+ */
+- (nullable NSNumber *)getBlockHeight;
+
 @end

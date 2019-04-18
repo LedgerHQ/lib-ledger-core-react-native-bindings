@@ -16,7 +16,8 @@ public class RCTCoreBindingPackage implements ReactPackage
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext)
     {
-        return Arrays.<NativeModule>asList(new RCTCoreRippleLikeTransaction(reactContext),
+        return Arrays.<NativeModule>asList(new RCTCoreRippleLikeMemo(reactContext),
+        new RCTCoreRippleLikeTransaction(reactContext),
         new RCTCoreRippleLikeOperation(reactContext),
         new RCTCoreRippleLikeBlock(reactContext),
         new RCTCoreRippleLikeTransactionBuilder(reactContext),

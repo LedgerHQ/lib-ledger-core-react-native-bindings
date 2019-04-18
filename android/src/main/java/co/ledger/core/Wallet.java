@@ -155,6 +155,9 @@ public abstract class Wallet {
      */
     public abstract void eraseDataSince(Date date, ErrorCodeCallback callback);
 
+    /** Return wallet's configuration */
+    public abstract DynamicObject getConfiguration();
+
     private static final class CppProxy extends Wallet
     {
         private final long nativeRef;
@@ -377,5 +380,13 @@ public abstract class Wallet {
             native_eraseDataSince(this.nativeRef, date, callback);
         }
         private native void native_eraseDataSince(long _nativeRef, Date date, ErrorCodeCallback callback);
+
+        @Override
+        public DynamicObject getConfiguration()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getConfiguration(this.nativeRef);
+        }
+        private native DynamicObject native_getConfiguration(long _nativeRef);
     }
 }

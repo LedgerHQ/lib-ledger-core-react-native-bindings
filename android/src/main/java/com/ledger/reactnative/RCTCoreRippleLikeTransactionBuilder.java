@@ -5,6 +5,7 @@ package com.ledger.reactnative;
 
 import co.ledger.core.Amount;
 import co.ledger.core.Currency;
+import co.ledger.core.RippleLikeMemo;
 import co.ledger.core.RippleLikeTransaction;
 import co.ledger.core.RippleLikeTransactionBuilder;
 import co.ledger.core.RippleLikeTransactionCallback;
@@ -201,6 +202,36 @@ public class RCTCoreRippleLikeTransactionBuilder extends ReactContextBaseJavaMod
             RCTCoreAmount rctParam_fees = this.reactContext.getNativeModule(RCTCoreAmount.class);
             Amount javaParam_0 = rctParam_fees.getJavaObjects().get(fees.getString("uid"));
             RippleLikeTransactionBuilder javaResult = currentInstanceObj.setFees(javaParam_0);
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreRippleLikeTransactionBuilder rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreRippleLikeTransactionBuilder.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreRippleLikeTransactionBuilder");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Add a memo.
+     * @return A reference on the same builder in order to chain calls.
+     */
+    @ReactMethod
+    public void addMemo(ReadableMap currentInstance, ReadableMap memo, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            RippleLikeTransactionBuilder currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreRippleLikeMemo rctParam_memo = this.reactContext.getNativeModule(RCTCoreRippleLikeMemo.class);
+            RippleLikeMemo javaParam_0 = rctParam_memo.getJavaObjects().get(memo.getString("uid"));
+            RippleLikeTransactionBuilder javaResult = currentInstanceObj.addMemo(javaParam_0);
 
             String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreRippleLikeTransactionBuilder rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreRippleLikeTransactionBuilder.class);

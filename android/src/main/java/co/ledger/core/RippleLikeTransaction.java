@@ -3,6 +3,7 @@
 
 package co.ledger.core;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -53,6 +54,12 @@ public abstract class RippleLikeTransaction {
 
     /** Get Signing public Key */
     public abstract byte[] getSigningPubKey();
+
+    /** Get all memos associated with the transaction. */
+    public abstract ArrayList<RippleLikeMemo> getMemos();
+
+    /** Add a memo to a transaction. */
+    public abstract void addMemo(RippleLikeMemo memo);
 
     private static final class CppProxy extends RippleLikeTransaction
     {
@@ -172,5 +179,21 @@ public abstract class RippleLikeTransaction {
             return native_getSigningPubKey(this.nativeRef);
         }
         private native byte[] native_getSigningPubKey(long _nativeRef);
+
+        @Override
+        public ArrayList<RippleLikeMemo> getMemos()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getMemos(this.nativeRef);
+        }
+        private native ArrayList<RippleLikeMemo> native_getMemos(long _nativeRef);
+
+        @Override
+        public void addMemo(RippleLikeMemo memo)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_addMemo(this.nativeRef, memo);
+        }
+        private native void native_addMemo(long _nativeRef, RippleLikeMemo memo);
     }
 }

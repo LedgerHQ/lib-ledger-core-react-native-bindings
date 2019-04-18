@@ -27,6 +27,12 @@ public abstract class RippleLikeTransactionBuilder {
      */
     public abstract RippleLikeTransactionBuilder setFees(Amount fees);
 
+    /**
+     * Add a memo.
+     * @return A reference on the same builder in order to chain calls.
+     */
+    public abstract RippleLikeTransactionBuilder addMemo(RippleLikeMemo memo);
+
     /** Build a transaction from the given builder parameters. */
     public abstract void build(RippleLikeTransactionCallback callback);
 
@@ -89,6 +95,14 @@ public abstract class RippleLikeTransactionBuilder {
             return native_setFees(this.nativeRef, fees);
         }
         private native RippleLikeTransactionBuilder native_setFees(long _nativeRef, Amount fees);
+
+        @Override
+        public RippleLikeTransactionBuilder addMemo(RippleLikeMemo memo)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_addMemo(this.nativeRef, memo);
+        }
+        private native RippleLikeTransactionBuilder native_addMemo(long _nativeRef, RippleLikeMemo memo);
 
         @Override
         public void build(RippleLikeTransactionCallback callback)

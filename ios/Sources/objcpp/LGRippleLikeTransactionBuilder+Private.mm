@@ -8,6 +8,7 @@
 #import "DJIMarshal+Private.h"
 #import "LGAmount+Private.h"
 #import "LGCurrency+Private.h"
+#import "LGRippleLikeMemo+Private.h"
 #import "LGRippleLikeTransaction+Private.h"
 #import "LGRippleLikeTransactionCallback+Private.h"
 #include <exception>
@@ -53,6 +54,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 - (nullable LGRippleLikeTransactionBuilder *)setFees:(nullable LGAmount *)fees {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->setFees(::djinni_generated::Amount::toCpp(fees));
+        return ::djinni_generated::RippleLikeTransactionBuilder::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGRippleLikeTransactionBuilder *)addMemo:(nonnull LGRippleLikeMemo *)memo {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->addMemo(::djinni_generated::RippleLikeMemo::toCpp(memo));
         return ::djinni_generated::RippleLikeTransactionBuilder::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

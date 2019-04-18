@@ -15,6 +15,7 @@ class Amount;
 class RippleLikeTransaction;
 class RippleLikeTransactionCallback;
 struct Currency;
+struct RippleLikeMemo;
 
 class RippleLikeTransactionBuilder {
 public:
@@ -40,6 +41,12 @@ public:
      * @return A reference on the same builder in order to chain calls.
      */
     virtual std::shared_ptr<RippleLikeTransactionBuilder> setFees(const std::shared_ptr<Amount> & fees) = 0;
+
+    /**
+     * Add a memo.
+     * @return A reference on the same builder in order to chain calls.
+     */
+    virtual std::shared_ptr<RippleLikeTransactionBuilder> addMemo(const RippleLikeMemo & memo) = 0;
 
     /** Build a transaction from the given builder parameters. */
     virtual void build(const std::shared_ptr<RippleLikeTransactionCallback> & callback) = 0;

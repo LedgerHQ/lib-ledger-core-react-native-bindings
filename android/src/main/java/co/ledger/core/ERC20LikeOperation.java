@@ -47,6 +47,12 @@ public abstract class ERC20LikeOperation {
     /** Get opration status : pending or confirmed. */
     public abstract int getStatus();
 
+    /**
+     * Get block height on which operation was included.
+     * @return Optional 64-bit integer, height of block in which operation was validated
+     */
+    public abstract Long getBlockHeight();
+
     private static final class CppProxy extends ERC20LikeOperation
     {
         private final long nativeRef;
@@ -165,5 +171,13 @@ public abstract class ERC20LikeOperation {
             return native_getStatus(this.nativeRef);
         }
         private native int native_getStatus(long _nativeRef);
+
+        @Override
+        public Long getBlockHeight()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getBlockHeight(this.nativeRef);
+        }
+        private native Long native_getBlockHeight(long _nativeRef);
     }
 }
