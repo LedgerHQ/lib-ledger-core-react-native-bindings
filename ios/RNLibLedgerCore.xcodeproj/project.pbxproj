@@ -140,6 +140,19 @@
 		B9D85871214805F20007703A /* LGRandomNumberGeneratorImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D8584E214805F20007703A /* LGRandomNumberGeneratorImpl.m */; };
 		B9D85872214805F20007703A /* LGWalletCallbackImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D85850214805F20007703A /* LGWalletCallbackImpl.m */; };
 		B9D8980A2268C0F3004986A9 /* LGBigIntListCallbackImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D898092268C0F3004986A9 /* LGBigIntListCallbackImpl.m */; };
+		B9F34E162269141A00B74041 /* RCTCoreLGRippleLikeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F34E002269141800B74041 /* RCTCoreLGRippleLikeOperation.m */; };
+		B9F34E172269141A00B74041 /* RCTCoreLGRippleLikeTransactionCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F34E012269141800B74041 /* RCTCoreLGRippleLikeTransactionCallback.m */; };
+		B9F34E182269141A00B74041 /* RCTCoreLGRippleLikeBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F34E032269141900B74041 /* RCTCoreLGRippleLikeBlock.m */; };
+		B9F34E192269141A00B74041 /* RCTCoreLGRippleLikeMemo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F34E062269141900B74041 /* RCTCoreLGRippleLikeMemo.m */; };
+		B9F34E1A2269141A00B74041 /* RCTCoreLGBigIntListCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F34E0A2269141900B74041 /* RCTCoreLGBigIntListCallback.m */; };
+		B9F34E1B2269141A00B74041 /* RCTCoreLGRippleLikeAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F34E0B2269141900B74041 /* RCTCoreLGRippleLikeAccount.m */; };
+		B9F34E1C2269141A00B74041 /* RCTCoreLGRippleConfigurationDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F34E0D2269141900B74041 /* RCTCoreLGRippleConfigurationDefaults.m */; };
+		B9F34E1D2269141A00B74041 /* RCTCoreLGRippleLikeTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F34E0E2269141900B74041 /* RCTCoreLGRippleLikeTransaction.m */; };
+		B9F34E1E2269141A00B74041 /* RCTCoreLGRippleLikeTransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F34E0F2269141900B74041 /* RCTCoreLGRippleLikeTransactionBuilder.m */; };
+		B9F34E1F2269141A00B74041 /* RCTCoreLGRippleLikeNetworkParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F34E102269141A00B74041 /* RCTCoreLGRippleLikeNetworkParameters.m */; };
+		B9F34E202269141A00B74041 /* RCTCoreLGRippleLikeAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F34E142269141A00B74041 /* RCTCoreLGRippleLikeAddress.m */; };
+		B9F34E212269141A00B74041 /* RCTCoreLGRippleLikeExtendedPublicKey.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F34E152269141A00B74041 /* RCTCoreLGRippleLikeExtendedPublicKey.m */; };
+		B9F34E242269143900B74041 /* LGRippleLikeTransactionCallbackImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F34E232269143900B74041 /* LGRippleLikeTransactionCallbackImpl.m */; };
 		E57413AD220B13AE0015005C /* RCTCoreLGEthereumLikeTransactionCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = E5741383220B13A90015005C /* RCTCoreLGEthereumLikeTransactionCallback.m */; };
 		E57413AE220B13AE0015005C /* RCTCoreLGDatabaseConnectionPool.m in Sources */ = {isa = PBXBuildFile; fileRef = E5741384220B13AA0015005C /* RCTCoreLGDatabaseConnectionPool.m */; };
 		E57413B7220B13AE0015005C /* RCTCoreLGERC20LikeAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E5741396220B13AC0015005C /* RCTCoreLGERC20LikeAccount.m */; };
@@ -589,6 +602,32 @@
 		B9D85851214805F20007703A /* LGAddressListCallbackImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGAddressListCallbackImpl.h; path = "Sources/objc-impl/LGAddressListCallbackImpl.h"; sourceTree = "<group>"; };
 		B9D898082268C0F3004986A9 /* LGBigIntListCallbackImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGBigIntListCallbackImpl.h; path = "Sources/objc-impl/LGBigIntListCallbackImpl.h"; sourceTree = "<group>"; };
 		B9D898092268C0F3004986A9 /* LGBigIntListCallbackImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGBigIntListCallbackImpl.m; path = "Sources/objc-impl/LGBigIntListCallbackImpl.m"; sourceTree = "<group>"; };
+		B9F34DFE2269141800B74041 /* RCTCoreLGRippleLikeTransactionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGRippleLikeTransactionBuilder.h; path = "Sources/react-native-ios/RCTCoreLGRippleLikeTransactionBuilder.h"; sourceTree = "<group>"; };
+		B9F34DFF2269141800B74041 /* RCTCoreLGRippleLikeTransactionCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGRippleLikeTransactionCallback.h; path = "Sources/react-native-ios/RCTCoreLGRippleLikeTransactionCallback.h"; sourceTree = "<group>"; };
+		B9F34E002269141800B74041 /* RCTCoreLGRippleLikeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGRippleLikeOperation.m; path = "Sources/react-native-ios/RCTCoreLGRippleLikeOperation.m"; sourceTree = "<group>"; };
+		B9F34E012269141800B74041 /* RCTCoreLGRippleLikeTransactionCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGRippleLikeTransactionCallback.m; path = "Sources/react-native-ios/RCTCoreLGRippleLikeTransactionCallback.m"; sourceTree = "<group>"; };
+		B9F34E022269141800B74041 /* RCTCoreLGRippleLikeBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGRippleLikeBlock.h; path = "Sources/react-native-ios/RCTCoreLGRippleLikeBlock.h"; sourceTree = "<group>"; };
+		B9F34E032269141900B74041 /* RCTCoreLGRippleLikeBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGRippleLikeBlock.m; path = "Sources/react-native-ios/RCTCoreLGRippleLikeBlock.m"; sourceTree = "<group>"; };
+		B9F34E042269141900B74041 /* RCTCoreLGRippleLikeNetworkParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGRippleLikeNetworkParameters.h; path = "Sources/react-native-ios/RCTCoreLGRippleLikeNetworkParameters.h"; sourceTree = "<group>"; };
+		B9F34E052269141900B74041 /* RCTCoreLGRippleLikeAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGRippleLikeAccount.h; path = "Sources/react-native-ios/RCTCoreLGRippleLikeAccount.h"; sourceTree = "<group>"; };
+		B9F34E062269141900B74041 /* RCTCoreLGRippleLikeMemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGRippleLikeMemo.m; path = "Sources/react-native-ios/RCTCoreLGRippleLikeMemo.m"; sourceTree = "<group>"; };
+		B9F34E072269141900B74041 /* RCTCoreLGRippleLikeMemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGRippleLikeMemo.h; path = "Sources/react-native-ios/RCTCoreLGRippleLikeMemo.h"; sourceTree = "<group>"; };
+		B9F34E082269141900B74041 /* RCTCoreLGRippleLikeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGRippleLikeOperation.h; path = "Sources/react-native-ios/RCTCoreLGRippleLikeOperation.h"; sourceTree = "<group>"; };
+		B9F34E092269141900B74041 /* RCTCoreLGRippleConfigurationDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGRippleConfigurationDefaults.h; path = "Sources/react-native-ios/RCTCoreLGRippleConfigurationDefaults.h"; sourceTree = "<group>"; };
+		B9F34E0A2269141900B74041 /* RCTCoreLGBigIntListCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGBigIntListCallback.m; path = "Sources/react-native-ios/RCTCoreLGBigIntListCallback.m"; sourceTree = "<group>"; };
+		B9F34E0B2269141900B74041 /* RCTCoreLGRippleLikeAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGRippleLikeAccount.m; path = "Sources/react-native-ios/RCTCoreLGRippleLikeAccount.m"; sourceTree = "<group>"; };
+		B9F34E0C2269141900B74041 /* RCTCoreLGRippleLikeAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGRippleLikeAddress.h; path = "Sources/react-native-ios/RCTCoreLGRippleLikeAddress.h"; sourceTree = "<group>"; };
+		B9F34E0D2269141900B74041 /* RCTCoreLGRippleConfigurationDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGRippleConfigurationDefaults.m; path = "Sources/react-native-ios/RCTCoreLGRippleConfigurationDefaults.m"; sourceTree = "<group>"; };
+		B9F34E0E2269141900B74041 /* RCTCoreLGRippleLikeTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGRippleLikeTransaction.m; path = "Sources/react-native-ios/RCTCoreLGRippleLikeTransaction.m"; sourceTree = "<group>"; };
+		B9F34E0F2269141900B74041 /* RCTCoreLGRippleLikeTransactionBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGRippleLikeTransactionBuilder.m; path = "Sources/react-native-ios/RCTCoreLGRippleLikeTransactionBuilder.m"; sourceTree = "<group>"; };
+		B9F34E102269141A00B74041 /* RCTCoreLGRippleLikeNetworkParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGRippleLikeNetworkParameters.m; path = "Sources/react-native-ios/RCTCoreLGRippleLikeNetworkParameters.m"; sourceTree = "<group>"; };
+		B9F34E112269141A00B74041 /* RCTCoreLGRippleLikeExtendedPublicKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGRippleLikeExtendedPublicKey.h; path = "Sources/react-native-ios/RCTCoreLGRippleLikeExtendedPublicKey.h"; sourceTree = "<group>"; };
+		B9F34E122269141A00B74041 /* RCTCoreLGRippleLikeTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGRippleLikeTransaction.h; path = "Sources/react-native-ios/RCTCoreLGRippleLikeTransaction.h"; sourceTree = "<group>"; };
+		B9F34E132269141A00B74041 /* RCTCoreLGBigIntListCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGBigIntListCallback.h; path = "Sources/react-native-ios/RCTCoreLGBigIntListCallback.h"; sourceTree = "<group>"; };
+		B9F34E142269141A00B74041 /* RCTCoreLGRippleLikeAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGRippleLikeAddress.m; path = "Sources/react-native-ios/RCTCoreLGRippleLikeAddress.m"; sourceTree = "<group>"; };
+		B9F34E152269141A00B74041 /* RCTCoreLGRippleLikeExtendedPublicKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGRippleLikeExtendedPublicKey.m; path = "Sources/react-native-ios/RCTCoreLGRippleLikeExtendedPublicKey.m"; sourceTree = "<group>"; };
+		B9F34E222269143900B74041 /* LGRippleLikeTransactionCallbackImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGRippleLikeTransactionCallbackImpl.h; path = "Sources/objc-impl/LGRippleLikeTransactionCallbackImpl.h"; sourceTree = "<group>"; };
+		B9F34E232269143900B74041 /* LGRippleLikeTransactionCallbackImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LGRippleLikeTransactionCallbackImpl.m; path = "Sources/objc-impl/LGRippleLikeTransactionCallbackImpl.m"; sourceTree = "<group>"; };
 		E5741383220B13A90015005C /* RCTCoreLGEthereumLikeTransactionCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGEthereumLikeTransactionCallback.m; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeTransactionCallback.m"; sourceTree = "<group>"; };
 		E5741384220B13AA0015005C /* RCTCoreLGDatabaseConnectionPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGDatabaseConnectionPool.m; path = "Sources/react-native-ios/RCTCoreLGDatabaseConnectionPool.m"; sourceTree = "<group>"; };
 		E5741396220B13AC0015005C /* RCTCoreLGERC20LikeAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGERC20LikeAccount.m; path = "Sources/react-native-ios/RCTCoreLGERC20LikeAccount.m"; sourceTree = "<group>"; };
@@ -727,6 +766,30 @@
 		8FA6ED9A21232967008DE63D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B9F34E132269141A00B74041 /* RCTCoreLGBigIntListCallback.h */,
+				B9F34E0A2269141900B74041 /* RCTCoreLGBigIntListCallback.m */,
+				B9F34E092269141900B74041 /* RCTCoreLGRippleConfigurationDefaults.h */,
+				B9F34E0D2269141900B74041 /* RCTCoreLGRippleConfigurationDefaults.m */,
+				B9F34E052269141900B74041 /* RCTCoreLGRippleLikeAccount.h */,
+				B9F34E0B2269141900B74041 /* RCTCoreLGRippleLikeAccount.m */,
+				B9F34E0C2269141900B74041 /* RCTCoreLGRippleLikeAddress.h */,
+				B9F34E142269141A00B74041 /* RCTCoreLGRippleLikeAddress.m */,
+				B9F34E022269141800B74041 /* RCTCoreLGRippleLikeBlock.h */,
+				B9F34E032269141900B74041 /* RCTCoreLGRippleLikeBlock.m */,
+				B9F34E112269141A00B74041 /* RCTCoreLGRippleLikeExtendedPublicKey.h */,
+				B9F34E152269141A00B74041 /* RCTCoreLGRippleLikeExtendedPublicKey.m */,
+				B9F34E072269141900B74041 /* RCTCoreLGRippleLikeMemo.h */,
+				B9F34E062269141900B74041 /* RCTCoreLGRippleLikeMemo.m */,
+				B9F34E042269141900B74041 /* RCTCoreLGRippleLikeNetworkParameters.h */,
+				B9F34E102269141A00B74041 /* RCTCoreLGRippleLikeNetworkParameters.m */,
+				B9F34E082269141900B74041 /* RCTCoreLGRippleLikeOperation.h */,
+				B9F34E002269141800B74041 /* RCTCoreLGRippleLikeOperation.m */,
+				B9F34E122269141A00B74041 /* RCTCoreLGRippleLikeTransaction.h */,
+				B9F34E0E2269141900B74041 /* RCTCoreLGRippleLikeTransaction.m */,
+				B9F34DFE2269141800B74041 /* RCTCoreLGRippleLikeTransactionBuilder.h */,
+				B9F34E0F2269141900B74041 /* RCTCoreLGRippleLikeTransactionBuilder.m */,
+				B9F34DFF2269141800B74041 /* RCTCoreLGRippleLikeTransactionCallback.h */,
+				B9F34E012269141800B74041 /* RCTCoreLGRippleLikeTransactionCallback.m */,
 				E57CFCE5220C7F5100E15511 /* RCTCoreLGDatabaseBlob.h */,
 				E57CFCFB220C7F5300E15511 /* RCTCoreLGDatabaseBlob.m */,
 				E57CFD03220C7F5400E15511 /* RCTCoreLGDatabaseColumn.h */,
@@ -974,6 +1037,8 @@
 		B98A00FD2135FB4F006D12F6 /* objc-impl */ = {
 			isa = PBXGroup;
 			children = (
+				B9F34E222269143900B74041 /* LGRippleLikeTransactionCallbackImpl.h */,
+				B9F34E232269143900B74041 /* LGRippleLikeTransactionCallbackImpl.m */,
 				B9D8581B214805EB0007703A /* LGAccountCallbackImpl.h */,
 				B9D85841214805F00007703A /* LGAccountCallbackImpl.m */,
 				B9D85848214805F10007703A /* LGAccountCreationInfoCallbackImpl.h */,
@@ -1285,12 +1350,15 @@
 				B9D857E3214805D90007703A /* RCTCoreLGDynamicObject.m in Sources */,
 				B9D857E0214805D90007703A /* RCTCoreLGWalletListCallback.m in Sources */,
 				E57CFC51220C440200E15511 /* LGDatabaseErrorImpl.m in Sources */,
+				B9F34E1F2269141A00B74041 /* RCTCoreLGRippleLikeNetworkParameters.m in Sources */,
 				B9D857B1214805D90007703A /* RCTCoreLGOperation.m in Sources */,
 				E57413B7220B13AE0015005C /* RCTCoreLGERC20LikeAccount.m in Sources */,
 				E57CFC45220C3B1600E15511 /* LGDatabaseColumnImpl.m in Sources */,
+				B9F34E1A2269141A00B74041 /* RCTCoreLGBigIntListCallback.m in Sources */,
 				B9D85807214805D90007703A /* RCTCoreLGPreferences.m in Sources */,
 				B9D857BC214805D90007703A /* RCTCoreLGLock.m in Sources */,
 				B9D8586A214805F20007703A /* LGBitcoinLikeTransactionCallbackImpl.m in Sources */,
+				B9F34E192269141A00B74041 /* RCTCoreLGRippleLikeMemo.m in Sources */,
 				B9D857C5214805D90007703A /* RCTCoreLGSynchronizerEngines.m in Sources */,
 				E57CFD0A220C7F5400E15511 /* RCTCoreLGDatabaseEngine.m in Sources */,
 				B9D8585A214805F20007703A /* LGCurrencyCallbackImpl.m in Sources */,
@@ -1320,6 +1388,7 @@
 				B9D8585C214805F20007703A /* LGAmountCallbackImpl.m in Sources */,
 				B9D857FB214805D90007703A /* RCTCoreLGWalletPoolBuilder.m in Sources */,
 				B9D857F3214805D90007703A /* RCTCoreLGCurrencyUnit.m in Sources */,
+				B9F34E172269141A00B74041 /* RCTCoreLGRippleLikeTransactionCallback.m in Sources */,
 				B9D8580A214805D90007703A /* RCTCoreLGNetworks.m in Sources */,
 				B9D857DF214805D90007703A /* RCTCoreLGBitcoinLikePreparedTransaction.m in Sources */,
 				B9D857B5214805D90007703A /* RCTCoreLGWalletPoolCallback.m in Sources */,
@@ -1350,6 +1419,7 @@
 				B9D857F9214805D90007703A /* RCTCoreLGExecutionContext.m in Sources */,
 				B9D85863214805F20007703A /* LGI32CallbackImpl.m in Sources */,
 				B9D8580F214805D90007703A /* RCTCoreLGSynchronizationEngines.m in Sources */,
+				B9F34E202269141A00B74041 /* RCTCoreLGRippleLikeAddress.m in Sources */,
 				E57CFC2F220B2ED100E15511 /* LGDatabaseConnectionPoolImpl.m in Sources */,
 				B9D857D5214805D90007703A /* RCTCoreLGBigInt.m in Sources */,
 				B9D85805214805D90007703A /* RCTCoreLGBitcoinLikeOperator.m in Sources */,
@@ -1357,6 +1427,7 @@
 				B9D857C4214805D90007703A /* RCTCoreLGHttpUrlConnection.m in Sources */,
 				B9D857DB214805D90007703A /* RCTCoreLGPreferencesEditor.m in Sources */,
 				B9D857D0214805D90007703A /* RCTCoreLGLocale.m in Sources */,
+				B9F34E162269141A00B74041 /* RCTCoreLGRippleLikeOperation.m in Sources */,
 				B9D8585F214805F20007703A /* LGWalletPoolCallbackImpl.m in Sources */,
 				B93A3E5A21B7CDAF00247CA8 /* RCTCoreBaseModule.m in Sources */,
 				B9D857E4214805D90007703A /* RCTCoreLGAddressListCallback.m in Sources */,
@@ -1374,7 +1445,9 @@
 				B9D857B6214805D90007703A /* RCTCoreLGPathResolver.m in Sources */,
 				B9D85808214805D90007703A /* RCTCoreLGAmountListCallback.m in Sources */,
 				E57CFD10220C7F5400E15511 /* RCTCoreLGEthereumLikeAddress.m in Sources */,
+				B9F34E1E2269141A00B74041 /* RCTCoreLGRippleLikeTransactionBuilder.m in Sources */,
 				B9D85865214805F20007703A /* LGGetEthreumLikeWalletCallbackImpl.m in Sources */,
+				B9F34E182269141A00B74041 /* RCTCoreLGRippleLikeBlock.m in Sources */,
 				B9D857E1214805D90007703A /* RCTCoreLGHashAlgorithmHelper.m in Sources */,
 				B9D85854214805F20007703A /* LGCurrencyListCallbackImpl.m in Sources */,
 				B9D85859214805F20007703A /* LGErrorCodeCallbackImpl.m in Sources */,
@@ -1382,6 +1455,7 @@
 				B9D8586E214805F20007703A /* LGEthereumPublicKeyProviderImpl.m in Sources */,
 				B9D857C8214805D90007703A /* RCTCoreLGExtendedKeyAccountCreationInfoCallback.m in Sources */,
 				B9D857DA214805D90007703A /* RCTCoreLGCurrency.m in Sources */,
+				B9F34E1C2269141A00B74041 /* RCTCoreLGRippleConfigurationDefaults.m in Sources */,
 				B9D857D2214805D90007703A /* RCTCoreLGRunnable.m in Sources */,
 				B9D857C6214805D90007703A /* RCTCoreLGConfiguration.m in Sources */,
 				B9D857CF214805D90007703A /* RCTCoreLGDynamicArray.m in Sources */,
@@ -1412,6 +1486,8 @@
 				E57CFC79220C76C200E15511 /* LGEthereumLikeTransactionCallbackImpl.m in Sources */,
 				E57CFD0D220C7F5400E15511 /* RCTCoreLGDatabaseStatement.m in Sources */,
 				B9D85803214805D90007703A /* RCTCoreLGQueryFilter.m in Sources */,
+				B9F34E1D2269141A00B74041 /* RCTCoreLGRippleLikeTransaction.m in Sources */,
+				B9F34E242269143900B74041 /* LGRippleLikeTransactionCallbackImpl.m in Sources */,
 				B9D857C0214805D90007703A /* RCTCoreLGWalletPool.m in Sources */,
 				B9D857AF214805D90007703A /* RCTCoreLGBlockchainExplorerEngines.m in Sources */,
 				B9D857C3214805D90007703A /* RCTCoreLGHttpClient.m in Sources */,
@@ -1420,6 +1496,7 @@
 				E57CFD05220C7F5400E15511 /* RCTCoreLGEthereumLikeOperation.m in Sources */,
 				E57CFD07220C7F5400E15511 /* RCTCoreLGDatabaseResultRow.m in Sources */,
 				B9D857F6214805D90007703A /* RCTCoreLGConfigurationDefaults.m in Sources */,
+				B9F34E212269141A00B74041 /* RCTCoreLGRippleLikeExtendedPublicKey.m in Sources */,
 				B9D857EC214805D90007703A /* RCTCoreLGBitcoinLikeAddress.m in Sources */,
 				B9D857F1214805D90007703A /* RCTCoreLGAccountCreationInfoCallback.m in Sources */,
 				B9D85802214805D90007703A /* RCTCoreLGThreadDispatcher.m in Sources */,
@@ -1427,6 +1504,7 @@
 				B9D857CD214805D90007703A /* RCTCoreLGFormatRules.m in Sources */,
 				B9D85858214805F20007703A /* LGExtendedKeyAccountCreationInfoCallbackImpl.m in Sources */,
 				B9D8585B214805F20007703A /* LGBlockCallbackImpl.m in Sources */,
+				B9F34E1B2269141A00B74041 /* RCTCoreLGRippleLikeAccount.m in Sources */,
 				B9D857E8214805D90007703A /* RCTCoreLGBitcoinLikeBlock.m in Sources */,
 				B9D857E9214805D90007703A /* RCTCoreLGEventPublisher.m in Sources */,
 				B9D857C7214805D90007703A /* RCTCoreLGBitcoinLikeOperation.m in Sources */,
