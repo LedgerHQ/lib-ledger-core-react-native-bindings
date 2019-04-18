@@ -91,6 +91,9 @@
 		B7BB1731803896DCFDB69CAB /* LGWalletListCallback+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13505A7D1B32ED5A76A8F05D /* LGWalletListCallback+Private.mm */; };
 		B91C431921641EB400E250AB /* ledger-core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91C431821641EB400E250AB /* ledger-core.framework */; };
 		B9D8594D2148E5DB0007703A /* libdjinni_objc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D859482148E5BE0007703A /* libdjinni_objc.a */; };
+		B9D898012268C099004986A9 /* LGRippleLikeMemo.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9D897FF2268C098004986A9 /* LGRippleLikeMemo.mm */; };
+		B9D898062268C0A9004986A9 /* LGBigIntListCallback+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9D898022268C0A9004986A9 /* LGBigIntListCallback+Private.mm */; };
+		B9D898072268C0A9004986A9 /* LGRippleLikeMemo+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9D898042268C0A9004986A9 /* LGRippleLikeMemo+Private.mm */; };
 		BAC39CE7DB8E7DAD8D95A3F1 /* LGBlock.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1EC23935F23B7279C6DA6D0C /* LGBlock.mm */; };
 		BD080C7FD06AD3E190B01510 /* LGLogger+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DEFB8BE6776C8E26C7384 /* LGLogger+Private.mm */; };
 		BF003C241AC26F5D4733D7A0 /* LGEventReceiver+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9FC49D36A2E44FF99287D8B /* LGEventReceiver+Private.mm */; };
@@ -437,6 +440,13 @@
 		B91C431821641EB400E250AB /* ledger-core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "ledger-core.framework"; path = "ios/Frameworks/universal/ledger-core.framework"; sourceTree = "<group>"; };
 		B9A7AE98E340303D912B1D74 /* LGEthereumLikeWallet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGEthereumLikeWallet.h; sourceTree = "<group>"; };
 		B9D859432148E5BD0007703A /* support_lib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = support_lib.xcodeproj; path = "build_ios/support-lib/support_lib.xcodeproj"; sourceTree = "<group>"; };
+		B9D897FD2268C098004986A9 /* LGRippleLikeMemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGRippleLikeMemo.h; sourceTree = "<group>"; };
+		B9D897FF2268C098004986A9 /* LGRippleLikeMemo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LGRippleLikeMemo.mm; sourceTree = "<group>"; };
+		B9D898002268C098004986A9 /* LGBigIntListCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGBigIntListCallback.h; sourceTree = "<group>"; };
+		B9D898022268C0A9004986A9 /* LGBigIntListCallback+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGBigIntListCallback+Private.mm"; sourceTree = "<group>"; };
+		B9D898032268C0A9004986A9 /* LGRippleLikeMemo+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGRippleLikeMemo+Private.h"; sourceTree = "<group>"; };
+		B9D898042268C0A9004986A9 /* LGRippleLikeMemo+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGRippleLikeMemo+Private.mm"; sourceTree = "<group>"; };
+		B9D898052268C0A9004986A9 /* LGBigIntListCallback+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGBigIntListCallback+Private.h"; sourceTree = "<group>"; };
 		B9DE47E4ED6BA1D34CE568B5 /* LGRoundingMode+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LGRoundingMode+Private.h"; sourceTree = "<group>"; };
 		BA919BEDAB614162AD8C83D5 /* LGSynchronizerEngines.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LGSynchronizerEngines.mm; sourceTree = "<group>"; };
 		BABBC03A7D7447E0C935347D /* LGSynchronizerEngines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSynchronizerEngines.h; sourceTree = "<group>"; };
@@ -661,6 +671,9 @@
 		7AEC0E73370A64CCF756FFD3 /* objc */ = {
 			isa = PBXGroup;
 			children = (
+				B9D898002268C098004986A9 /* LGBigIntListCallback.h */,
+				B9D897FD2268C098004986A9 /* LGRippleLikeMemo.h */,
+				B9D897FF2268C098004986A9 /* LGRippleLikeMemo.mm */,
 				E5D47C4F22301E3500FBA595 /* LGRippleConfigurationDefaults.h */,
 				E5D47C5022301E3600FBA595 /* LGRippleConfigurationDefaults.mm */,
 				E5D47C5822301E3600FBA595 /* LGRippleLikeAccount.h */,
@@ -870,6 +883,10 @@
 		D7EC854A25A7F1FAB3F8F398 /* objcpp */ = {
 			isa = PBXGroup;
 			children = (
+				B9D898052268C0A9004986A9 /* LGBigIntListCallback+Private.h */,
+				B9D898022268C0A9004986A9 /* LGBigIntListCallback+Private.mm */,
+				B9D898032268C0A9004986A9 /* LGRippleLikeMemo+Private.h */,
+				B9D898042268C0A9004986A9 /* LGRippleLikeMemo+Private.mm */,
 				E5D47C5F22301E4400FBA595 /* LGRippleConfigurationDefaults+Private.h */,
 				E5D47C6422301E4500FBA595 /* LGRippleConfigurationDefaults+Private.mm */,
 				E5D47C6622301E4500FBA595 /* LGRippleLikeAccount+Private.h */,
@@ -1242,7 +1259,9 @@
 				E57CFCD2220C7F1B00E15511 /* LGDatabaseResultSet+Private.mm in Sources */,
 				5260DFA81858198AAFDA4CB0 /* LGBitcoinLikePreparedTransaction.mm in Sources */,
 				1EF15C69B3963F2B3264748A /* LGSynchronizerEngines.mm in Sources */,
+				B9D898012268C099004986A9 /* LGRippleLikeMemo.mm in Sources */,
 				EF17DDF7FE77531FF4EA72BD /* LGBitcoinLikeNetworkParameters.mm in Sources */,
+				B9D898072268C0A9004986A9 /* LGRippleLikeMemo+Private.mm in Sources */,
 				7A4C6C56FB195C4C33505A07 /* LGBlockchainObserverEngines.mm in Sources */,
 				E57CFCD7220C7F1B00E15511 /* LGDatabaseColumn+Private.mm in Sources */,
 				BAC39CE7DB8E7DAD8D95A3F1 /* LGBlock.mm in Sources */,
@@ -1328,6 +1347,7 @@
 				62E89F6F576CAA72C45F8520 /* LGBitcoinLikeScript+Private.mm in Sources */,
 				58EED1F1D6E3CB44D70EA650 /* LGThreadDispatcher+Private.mm in Sources */,
 				9D574D28AC5C09D62BE4119A /* LGPathResolver+Private.mm in Sources */,
+				B9D898062268C0A9004986A9 /* LGBigIntListCallback+Private.mm in Sources */,
 				E57CFCDC220C7F1B00E15511 /* LGEthereumLikeBlock+Private.mm in Sources */,
 				3065BED79A57DE6CEC8A6F76 /* LGEventBus+Private.mm in Sources */,
 				E5D47C5922301E3600FBA595 /* LGRippleConfigurationDefaults.mm in Sources */,

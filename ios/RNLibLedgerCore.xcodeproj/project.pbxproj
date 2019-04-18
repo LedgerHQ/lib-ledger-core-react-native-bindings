@@ -139,6 +139,7 @@
 		B9D85870214805F20007703A /* LGBinaryCallbackImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D8584C214805F20007703A /* LGBinaryCallbackImpl.m */; };
 		B9D85871214805F20007703A /* LGRandomNumberGeneratorImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D8584E214805F20007703A /* LGRandomNumberGeneratorImpl.m */; };
 		B9D85872214805F20007703A /* LGWalletCallbackImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D85850214805F20007703A /* LGWalletCallbackImpl.m */; };
+		B9D8980A2268C0F3004986A9 /* LGBigIntListCallbackImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D898092268C0F3004986A9 /* LGBigIntListCallbackImpl.m */; };
 		E57413AD220B13AE0015005C /* RCTCoreLGEthereumLikeTransactionCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = E5741383220B13A90015005C /* RCTCoreLGEthereumLikeTransactionCallback.m */; };
 		E57413AE220B13AE0015005C /* RCTCoreLGDatabaseConnectionPool.m in Sources */ = {isa = PBXBuildFile; fileRef = E5741384220B13AA0015005C /* RCTCoreLGDatabaseConnectionPool.m */; };
 		E57413B7220B13AE0015005C /* RCTCoreLGERC20LikeAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E5741396220B13AC0015005C /* RCTCoreLGERC20LikeAccount.m */; };
@@ -586,6 +587,8 @@
 		B9D8584F214805F20007703A /* LGHttpUrlConnectionImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGHttpUrlConnectionImpl.h; path = "Sources/objc-impl/LGHttpUrlConnectionImpl.h"; sourceTree = "<group>"; };
 		B9D85850214805F20007703A /* LGWalletCallbackImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LGWalletCallbackImpl.m; path = "Sources/objc-impl/LGWalletCallbackImpl.m"; sourceTree = "<group>"; };
 		B9D85851214805F20007703A /* LGAddressListCallbackImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LGAddressListCallbackImpl.h; path = "Sources/objc-impl/LGAddressListCallbackImpl.h"; sourceTree = "<group>"; };
+		B9D898082268C0F3004986A9 /* LGBigIntListCallbackImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGBigIntListCallbackImpl.h; path = "Sources/objc-impl/LGBigIntListCallbackImpl.h"; sourceTree = "<group>"; };
+		B9D898092268C0F3004986A9 /* LGBigIntListCallbackImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGBigIntListCallbackImpl.m; path = "Sources/objc-impl/LGBigIntListCallbackImpl.m"; sourceTree = "<group>"; };
 		E5741383220B13A90015005C /* RCTCoreLGEthereumLikeTransactionCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGEthereumLikeTransactionCallback.m; path = "Sources/react-native-ios/RCTCoreLGEthereumLikeTransactionCallback.m"; sourceTree = "<group>"; };
 		E5741384220B13AA0015005C /* RCTCoreLGDatabaseConnectionPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGDatabaseConnectionPool.m; path = "Sources/react-native-ios/RCTCoreLGDatabaseConnectionPool.m"; sourceTree = "<group>"; };
 		E5741396220B13AC0015005C /* RCTCoreLGERC20LikeAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGERC20LikeAccount.m; path = "Sources/react-native-ios/RCTCoreLGERC20LikeAccount.m"; sourceTree = "<group>"; };
@@ -1057,6 +1060,8 @@
 				E57CFC75220C763900E15511 /* LGDatabaseEngineImpl.m */,
 				E57CFC77220C76C200E15511 /* LGEthereumLikeTransactionCallbackImpl.h */,
 				E57CFC78220C76C200E15511 /* LGEthereumLikeTransactionCallbackImpl.m */,
+				B9D898082268C0F3004986A9 /* LGBigIntListCallbackImpl.h */,
+				B9D898092268C0F3004986A9 /* LGBigIntListCallbackImpl.m */,
 			);
 			name = "objc-impl";
 			sourceTree = "<group>";
@@ -1319,6 +1324,7 @@
 				B9D857DF214805D90007703A /* RCTCoreLGBitcoinLikePreparedTransaction.m in Sources */,
 				B9D857B5214805D90007703A /* RCTCoreLGWalletPoolCallback.m in Sources */,
 				B9D857B0214805D90007703A /* RCTCoreLGSecp256k1.m in Sources */,
+				B9D8980A2268C0F3004986A9 /* LGBigIntListCallbackImpl.m in Sources */,
 				B9D857C2214805D90007703A /* RCTCoreLGBitcoinLikeScript.m in Sources */,
 				B9D857FE214805D90007703A /* RCTCoreLGBinaryCallback.m in Sources */,
 				B9D85852214805F20007703A /* LGAddressListCallbackImpl.m in Sources */,
