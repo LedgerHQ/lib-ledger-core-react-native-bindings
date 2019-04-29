@@ -5,6 +5,7 @@
 @class LGERC20LikeAccount;
 @class LGEthereumLikeTransaction;
 @class LGEthereumLikeTransactionBuilder;
+@protocol LGBigIntCallback;
 @protocol LGStringCallback;
 
 
@@ -24,5 +25,20 @@
 
 /** Get the list of ERC20 accounts associated with this Ethereum account. */
 - (nonnull NSArray<LGERC20LikeAccount *> *)getERC20Accounts;
+
+/**
+ * Get gas price from network
+ * Note: same note as for getFees method on BitcoinLikeAccount
+ */
+- (void)getGasPrice:(nullable id<LGBigIntCallback>)callback;
+
+/**
+ * Get estimated gas limit to set so the transaction will succeed
+ * The passed address could be EOA or contract
+ * This estimation is based on X last incoming txs (to address) that succeeded
+ * Note: same note as for getFees method on BitcoinLikeAccount
+ */
+- (void)getEstimatedGasLimit:(nonnull NSString *)address
+                    callback:(nullable id<LGBigIntCallback>)callback;
 
 @end

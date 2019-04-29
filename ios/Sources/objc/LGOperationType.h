@@ -12,4 +12,5 @@ typedef NS_ENUM(NSInteger, LGOperationType)
 {
     LGOperationTypeSend,
     LGOperationTypeReceive,
+    LGOperationTypeNone,
 };

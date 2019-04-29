@@ -15,6 +15,7 @@ import com.facebook.react.bridge.ReadableNativeArray;
 import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.module.annotations.ReactModule;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ import java.util.UUID;
  *Class representing a runnable object
  *A runnable, needs a specific execution context (refer to ExecutionContext) to run
  */
+@ReactModule(name = "RCTCoreRunnable")
 public class RCTCoreRunnable extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

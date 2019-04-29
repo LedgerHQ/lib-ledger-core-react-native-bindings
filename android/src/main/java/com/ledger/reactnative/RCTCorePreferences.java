@@ -16,6 +16,7 @@ import com.facebook.react.bridge.ReadableNativeArray;
 import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.module.annotations.ReactModule;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ import java.util.UUID;
  * attach application data to the libledger-core modules (i.e. a wallet pool, a wallet, an account, an operation). This interface
  * is highly inspired by Android SharedPreferences.
  */
+@ReactModule(name = "RCTCorePreferences")
 public class RCTCorePreferences extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
