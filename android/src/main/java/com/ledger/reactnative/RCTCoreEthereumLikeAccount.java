@@ -3,6 +3,7 @@
 
 package com.ledger.reactnative;
 
+import co.ledger.core.BigIntCallback;
 import co.ledger.core.ERC20LikeAccount;
 import co.ledger.core.EthereumLikeAccount;
 import co.ledger.core.EthereumLikeTransaction;
@@ -19,6 +20,7 @@ import com.facebook.react.bridge.ReadableNativeArray;
 import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.module.annotations.ReactModule;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 /** Class representing a Ethereum account. */
+@ReactModule(name = "RCTCoreEthereumLikeAccount")
 public class RCTCoreEthereumLikeAccount extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -213,6 +216,48 @@ public class RCTCoreEthereumLikeAccount extends ReactContextBaseJavaModule {
             }
 
             promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Get gas price from network
+     * Note: same note as for getFees method on BitcoinLikeAccount
+     */
+    @ReactMethod
+    public void getGasPrice(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            EthereumLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreBigIntCallback javaParam_0 = RCTCoreBigIntCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getGasPrice(javaParam_0);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Get estimated gas limit to set so the transaction will succeed
+     * The passed address could be EOA or contract
+     * This estimation is based on X last incoming txs (to address) that succeeded
+     * Note: same note as for getFees method on BitcoinLikeAccount
+     */
+    @ReactMethod
+    public void getEstimatedGasLimit(ReadableMap currentInstance, String address, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            EthereumLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreBigIntCallback javaParam_1 = RCTCoreBigIntCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getEstimatedGasLimit(address, javaParam_1);
         }
         catch(Exception e)
         {

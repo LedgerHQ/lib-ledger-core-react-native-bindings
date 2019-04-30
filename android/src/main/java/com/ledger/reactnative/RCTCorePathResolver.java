@@ -15,6 +15,7 @@ import com.facebook.react.bridge.ReadableNativeArray;
 import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.module.annotations.ReactModule;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ import java.util.UUID;
  * Module used to resolve file paths. libledger-core has its own iternal representation of the file system that may not
  * be adapted for the runtime platform. All path given to the PathResolver are absolute.
  */
+@ReactModule(name = "RCTCorePathResolver")
 public class RCTCorePathResolver extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

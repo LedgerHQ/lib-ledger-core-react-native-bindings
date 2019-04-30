@@ -17,6 +17,7 @@ import com.facebook.react.bridge.ReadableNativeArray;
 import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.module.annotations.ReactModule;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ import java.util.UUID;
  * those values are appended dynamically in a map like structure with a given key through which they
  * can be retreived.
  */
+@ReactModule(name = "RCTCoreDynamicObject")
 public class RCTCoreDynamicObject extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

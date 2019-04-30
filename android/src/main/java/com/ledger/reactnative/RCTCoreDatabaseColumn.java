@@ -16,6 +16,7 @@ import com.facebook.react.bridge.ReadableNativeArray;
 import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.module.annotations.ReactModule;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 /** An object holding metadata information about a single SQL column (type, name...). */
+@ReactModule(name = "RCTCoreDatabaseColumn")
 public class RCTCoreDatabaseColumn extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

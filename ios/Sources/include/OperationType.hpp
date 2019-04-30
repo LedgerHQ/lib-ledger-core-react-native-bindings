@@ -13,6 +13,7 @@ namespace ledger { namespace core { namespace api {
 enum class OperationType : int {
     SEND,
     RECEIVE,
+    NONE,
 };
  std::string to_string(const OperationType& operationType);
  std::ostream &operator<<(std::ostream &os, const OperationType &o);

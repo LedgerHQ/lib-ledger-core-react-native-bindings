@@ -160,4 +160,50 @@ RCT_REMAP_METHOD(getERC20Accounts,getERC20Accounts:(NSDictionary *)currentInstan
     }
 
 }
+
+/**
+ * Get gas price from network
+ * Note: same note as for getFees method on BitcoinLikeAccount
+ */
+RCT_REMAP_METHOD(getGasPrice,getGasPrice:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::getGasPrice, first argument should be an instance of LGEthereumLikeAccount", nil);
+        return;
+    }
+    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::getGasPrice, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGBigIntCallback *objcParam_0 = [[RCTCoreLGBigIntCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getGasPrice:objcParam_0];
+
+}
+
+/**
+ * Get estimated gas limit to set so the transaction will succeed
+ * The passed address could be EOA or contract
+ * This estimation is based on X last incoming txs (to address) that succeeded
+ * Note: same note as for getFees method on BitcoinLikeAccount
+ */
+RCT_REMAP_METHOD(getEstimatedGasLimit,getEstimatedGasLimit:(NSDictionary *)currentInstance withParams:(nonnull NSString *)address withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::getEstimatedGasLimit, first argument should be an instance of LGEthereumLikeAccount", nil);
+        return;
+    }
+    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::getEstimatedGasLimit, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGBigIntCallback *objcParam_1 = [[RCTCoreLGBigIntCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getEstimatedGasLimit:address callback:objcParam_1];
+
+}
 @end

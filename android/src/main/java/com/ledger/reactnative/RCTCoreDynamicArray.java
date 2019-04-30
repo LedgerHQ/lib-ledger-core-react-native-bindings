@@ -17,6 +17,7 @@ import com.facebook.react.bridge.ReadableNativeArray;
 import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.module.annotations.ReactModule;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 /** A collection of dynamic values in an array. Values can be retrieved via their indexes. */
+@ReactModule(name = "RCTCoreDynamicArray")
 public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

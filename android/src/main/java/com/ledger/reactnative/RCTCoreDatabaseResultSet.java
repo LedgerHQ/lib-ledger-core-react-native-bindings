@@ -17,6 +17,7 @@ import com.facebook.react.bridge.ReadableNativeArray;
 import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.module.annotations.ReactModule;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ import java.util.UUID;
  * ResultSet is a cursor over a query result. It allows user to iterate through query rows. When you start iterating through
  * result the cursor is placed before the first element of the set.
  */
+@ReactModule(name = "RCTCoreDatabaseResultSet")
 public class RCTCoreDatabaseResultSet extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

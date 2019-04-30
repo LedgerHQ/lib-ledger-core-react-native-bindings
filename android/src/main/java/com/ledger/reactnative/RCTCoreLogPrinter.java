@@ -16,6 +16,7 @@ import com.facebook.react.bridge.ReadableNativeArray;
 import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.module.annotations.ReactModule;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ import java.util.UUID;
  * Class representing a printer of errors, warnings, infos ... (at runtime).
  * Printed logs are stored in path set by PathResolver::resolveLogFilePath.
  */
+@ReactModule(name = "RCTCoreLogPrinter")
 public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;

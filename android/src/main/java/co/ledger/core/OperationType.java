@@ -11,5 +11,6 @@ package co.ledger.core;
 public enum OperationType {
     SEND,
     RECEIVE,
+    NONE,
     ;
 }

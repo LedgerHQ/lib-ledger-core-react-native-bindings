@@ -17,6 +17,7 @@ import com.facebook.react.bridge.ReadableNativeArray;
 import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.module.annotations.ReactModule;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 /** Structure representing a bitcoin transaction request. */
+@ReactModule(name = "RCTCoreBitcoinLikeTransactionRequest")
 public class RCTCoreBitcoinLikeTransactionRequest extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, BitcoinLikeTransactionRequest> javaObjects;

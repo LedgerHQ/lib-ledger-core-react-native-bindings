@@ -18,6 +18,7 @@ import com.facebook.react.bridge.ReadableNativeArray;
 import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.module.annotations.ReactModule;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ import java.util.UUID;
  * A wrapper object around prepared SQL statements. lib-ledger-core will use placeholders when it needs to pass
  * parameters to a query. It will then  bind each parameter at a given position to a given value.
  */
+@ReactModule(name = "RCTCoreDatabaseStatement")
 public class RCTCoreDatabaseStatement extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
