@@ -61,6 +61,9 @@ public abstract class RippleLikeTransaction {
     /** Add a memo to a transaction. */
     public abstract void addMemo(RippleLikeMemo memo);
 
+    /** An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account */
+    public abstract Long getDestinationTag();
+
     private static final class CppProxy extends RippleLikeTransaction
     {
         private final long nativeRef;
@@ -195,5 +198,13 @@ public abstract class RippleLikeTransaction {
             native_addMemo(this.nativeRef, memo);
         }
         private native void native_addMemo(long _nativeRef, RippleLikeMemo memo);
+
+        @Override
+        public Long getDestinationTag()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getDestinationTag(this.nativeRef);
+        }
+        private native Long native_getDestinationTag(long _nativeRef);
     }
 }

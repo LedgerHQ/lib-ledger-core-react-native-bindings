@@ -53,8 +53,9 @@ public class RCTCoreErrorCodeCallback extends ErrorCodeCallback {
             }
             else
             {
+                int converted_result = result.ordinal();
 
-                this.promise.resolve(result);
+                this.promise.resolve(converted_result);
             }
         }
         catch(Exception e)

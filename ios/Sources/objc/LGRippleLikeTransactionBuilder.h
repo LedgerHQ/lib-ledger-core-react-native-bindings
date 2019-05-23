@@ -40,6 +40,9 @@
  */
 - (nullable LGRippleLikeTransactionBuilder *)addMemo:(nonnull LGRippleLikeMemo *)memo;
 
+/** An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account */
+- (nullable LGRippleLikeTransactionBuilder *)setDestinationTag:(int64_t)tag;
+
 /** Build a transaction from the given builder parameters. */
 - (void)build:(nullable id<LGRippleLikeTransactionCallback>)callback;
 

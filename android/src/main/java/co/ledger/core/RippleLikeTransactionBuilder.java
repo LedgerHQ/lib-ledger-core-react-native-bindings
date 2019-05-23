@@ -33,6 +33,9 @@ public abstract class RippleLikeTransactionBuilder {
      */
     public abstract RippleLikeTransactionBuilder addMemo(RippleLikeMemo memo);
 
+    /** An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account */
+    public abstract RippleLikeTransactionBuilder setDestinationTag(long tag);
+
     /** Build a transaction from the given builder parameters. */
     public abstract void build(RippleLikeTransactionCallback callback);
 
@@ -103,6 +106,14 @@ public abstract class RippleLikeTransactionBuilder {
             return native_addMemo(this.nativeRef, memo);
         }
         private native RippleLikeTransactionBuilder native_addMemo(long _nativeRef, RippleLikeMemo memo);
+
+        @Override
+        public RippleLikeTransactionBuilder setDestinationTag(long tag)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_setDestinationTag(this.nativeRef, tag);
+        }
+        private native RippleLikeTransactionBuilder native_setDestinationTag(long _nativeRef, long tag);
 
         @Override
         public void build(RippleLikeTransactionCallback callback)

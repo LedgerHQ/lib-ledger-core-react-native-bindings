@@ -64,4 +64,7 @@
 /** Add a memo to a transaction. */
 - (void)addMemo:(nonnull LGRippleLikeMemo *)memo;
 
+/** An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account */
+- (nullable NSNumber *)getDestinationTag;
+
 @end

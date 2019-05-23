@@ -471,4 +471,32 @@ RCT_REMAP_METHOD(addMemo,addMemo:(NSDictionary *)currentInstance withParams:(NSD
     [currentInstanceObj addMemo:objcParam_0];
 
 }
+
+/** An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account */
+RCT_REMAP_METHOD(getDestinationTag,getDestinationTag:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getDestinationTag, first argument should be an instance of LGRippleLikeTransaction", nil);
+        return;
+    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getDestinationTag, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSNumber * objcResult = [currentInstanceObj getDestinationTag];
+    NSDictionary *result = @{@"value" : @([objcResult intValue])};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGRippleLikeTransaction::getDestinationTag", nil);
+        return;
+    }
+
+}
 @end

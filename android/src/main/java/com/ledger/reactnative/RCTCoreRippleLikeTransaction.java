@@ -458,4 +458,29 @@ public class RCTCoreRippleLikeTransaction extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account */
+    @ReactMethod
+    public void getDestinationTag(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            RippleLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+
+            Long javaResult = currentInstanceObj.getDestinationTag();
+            WritableNativeMap result = new WritableNativeMap();
+            if (javaResult == null)
+            {
+                promise.resolve(javaResult);
+                return;
+            }
+            result.putDouble("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
 }
