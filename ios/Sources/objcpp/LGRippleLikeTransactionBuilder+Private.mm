@@ -65,6 +65,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (nullable LGRippleLikeTransactionBuilder *)setDestinationTag:(int64_t)tag {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->setDestinationTag(::djinni::I64::toCpp(tag));
+        return ::djinni_generated::RippleLikeTransactionBuilder::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (void)build:(nullable id<LGRippleLikeTransactionCallback>)callback {
     try {
         _cppRefHandle.get()->build(::djinni_generated::RippleLikeTransactionCallback::toCpp(callback));

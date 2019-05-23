@@ -249,6 +249,31 @@ public class RCTCoreRippleLikeTransactionBuilder extends ReactContextBaseJavaMod
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account */
+    @ReactMethod
+    public void setDestinationTag(ReadableMap currentInstance, long tag, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            RippleLikeTransactionBuilder currentInstanceObj = this.javaObjects.get(sUid);
+
+            RippleLikeTransactionBuilder javaResult = currentInstanceObj.setDestinationTag(tag);
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreRippleLikeTransactionBuilder rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreRippleLikeTransactionBuilder.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreRippleLikeTransactionBuilder");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
     /** Build a transaction from the given builder parameters. */
     @ReactMethod
     public void build(ReadableMap currentInstance, Promise promise) {
