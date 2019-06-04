@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LedgerHQ/lib-ledger-core-node-bindings"
+    "url": "https://github.com/LedgerHQ/lib-ledger-core-react-native-bindings"
   },
   "main": "index.js",
   "scripts": {
