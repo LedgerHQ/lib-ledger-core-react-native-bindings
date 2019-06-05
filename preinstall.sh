@@ -6,7 +6,7 @@
 #                              Preinstall script
 #
 
-LIB_CORE_VERSION="2.7.0-rc-6cc3ea"
+LIB_CORE_VERSION="2.7.0-rc-663496"
 BASE_URL="https://s3-eu-west-1.amazonaws.com/ledger-lib-ledger-core"
 
 function main() {
@@ -21,6 +21,7 @@ function main() {
   dl "ledger-core.framework/ledger-core"  "ios/universal"         "ios/Frameworks"
   dl "ledger-core.framework/Info.plist"   "ios/universal"         "ios/Frameworks"
   dl "libledger-core.so"                  "android/x86"           "android/libs"
+  dl "libledger-core.so"                  "android/x86_64"        "android/libs"
   dl "libledger-core.so"                  "android/armeabi-v7a"   "android/libs"
   dl "libledger-core.so"                  "android/arm64-v8a"     "android/libs"
 }
