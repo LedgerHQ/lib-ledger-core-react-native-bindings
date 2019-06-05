@@ -5,14 +5,14 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LedgerHQ/lib-ledger-core-node-bindings"
+    "url": "https://github.com/LedgerHQ/lib-ledger-core-react-native-bindings"
   },
   "main": "index.js",
   "scripts": {
     "preinstall": "bash preinstall.sh"
   },
   "peerDependencies": {
-    "react-native": "0.55.4"
+    "react-native": "^0.59.0"
   },
   "devDependencies": {}
 }
