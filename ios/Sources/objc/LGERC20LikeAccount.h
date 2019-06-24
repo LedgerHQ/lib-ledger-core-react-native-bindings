@@ -7,6 +7,8 @@
 @class LGBigInt;
 @class LGERC20LikeOperation;
 @class LGOperationQuery;
+@protocol LGBigIntCallback;
+@protocol LGBinaryCallback;
 
 
 /** ERC20-like accounts class. */
@@ -19,7 +21,7 @@
 - (nonnull NSString *)getAddress;
 
 /** Get the current balance of this ERC20 account. */
-- (nullable LGBigInt *)getBalance;
+- (void)getBalance:(nullable id<LGBigIntCallback>)callback;
 
 /**
  * Get the balance history of this ERC20 account from a starting date (included) to an ending
@@ -33,8 +35,9 @@
 - (nonnull NSArray<LGERC20LikeOperation *> *)getOperations;
 
 /** Retrieve raw data concerning a transaction of a given amount to a given address. */
-- (nonnull NSData *)getTransferToAddressData:(nullable LGBigInt *)amount
-                                     address:(nonnull NSString *)address;
+- (void)getTransferToAddressData:(nullable LGBigInt *)amount
+                         address:(nonnull NSString *)address
+                            data:(nullable id<LGBinaryCallback>)data;
 
 - (nullable LGOperationQuery *)queryOperations;
 

@@ -6,7 +6,7 @@ package co.ledger.core;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/** Class representing Bitcoin block. */
+/** Class representing Ethereum block. */
 public abstract class EthereumLikeBlock {
     /**
      * Hash of block.

@@ -7,6 +7,8 @@
 #import "DJIError.h"
 #import "DJIMarshal+Private.h"
 #import "LGBigInt+Private.h"
+#import "LGBigIntCallback+Private.h"
+#import "LGBinaryCallback+Private.h"
 #import "LGERC20LikeOperation+Private.h"
 #import "LGERC20Token+Private.h"
 #import "LGOperationQuery+Private.h"
@@ -49,10 +51,9 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (nullable LGBigInt *)getBalance {
+- (void)getBalance:(nullable id<LGBigIntCallback>)callback {
     try {
-        auto objcpp_result_ = _cppRefHandle.get()->getBalance();
-        return ::djinni_generated::BigInt::fromCpp(objcpp_result_);
+        _cppRefHandle.get()->getBalance(::djinni_generated::BigIntCallback::toCpp(callback));
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
@@ -74,12 +75,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (nonnull NSData *)getTransferToAddressData:(nullable LGBigInt *)amount
-                                     address:(nonnull NSString *)address {
+- (void)getTransferToAddressData:(nullable LGBigInt *)amount
+                         address:(nonnull NSString *)address
+                            data:(nullable id<LGBinaryCallback>)data {
     try {
-        auto objcpp_result_ = _cppRefHandle.get()->getTransferToAddressData(::djinni_generated::BigInt::toCpp(amount),
-                                                                            ::djinni::String::toCpp(address));
-        return ::djinni::Binary::fromCpp(objcpp_result_);
+        _cppRefHandle.get()->getTransferToAddressData(::djinni_generated::BigInt::toCpp(amount),
+                                                      ::djinni::String::toCpp(address),
+                                                      ::djinni_generated::BinaryCallback::toCpp(data));
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

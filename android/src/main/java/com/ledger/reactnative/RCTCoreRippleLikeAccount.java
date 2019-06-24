@@ -3,6 +3,7 @@
 
 package com.ledger.reactnative;
 
+import co.ledger.core.AmountCallback;
 import co.ledger.core.RippleLikeAccount;
 import co.ledger.core.RippleLikeTransaction;
 import co.ledger.core.RippleLikeTransactionBuilder;
@@ -181,6 +182,49 @@ public class RCTCoreRippleLikeAccount extends ReactContextBaseJavaModule {
             result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Get fees from network
+     * Note: it would have been better to have this method on RippleLikeWallet
+     * but since RippleLikeWallet is not used anywhere, it's better to keep all
+     * specific methods under the same specific class so it will be easy to segratate
+     * when the right time comes !
+     */
+    @ReactMethod
+    public void getFees(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            RippleLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreAmountCallback javaParam_0 = RCTCoreAmountCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getFees(javaParam_0);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Get base reserve (dust to leave on an XRP account) from network
+     * Note: same note as above
+     */
+    @ReactMethod
+    public void getBaseReserve(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            RippleLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreAmountCallback javaParam_0 = RCTCoreAmountCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getBaseReserve(javaParam_0);
         }
         catch(Exception e)
         {

@@ -163,7 +163,10 @@ RCT_REMAP_METHOD(getERC20Accounts,getERC20Accounts:(NSDictionary *)currentInstan
 
 /**
  * Get gas price from network
- * Note: same note as for getFees method on BitcoinLikeAccount
+ * Note: it would have been better to have this method on EthereumLikeWallet
+ * but since EthereumLikeWallet is not used anywhere, it's better to keep all
+ * specific methods under the same specific class so it will be easy to segratate
+ * when the right time comes !
  */
 RCT_REMAP_METHOD(getGasPrice,getGasPrice:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -187,7 +190,7 @@ RCT_REMAP_METHOD(getGasPrice,getGasPrice:(NSDictionary *)currentInstance WithRes
  * Get estimated gas limit to set so the transaction will succeed
  * The passed address could be EOA or contract
  * This estimation is based on X last incoming txs (to address) that succeeded
- * Note: same note as for getFees method on BitcoinLikeAccount
+ * Note: same note as above
  */
 RCT_REMAP_METHOD(getEstimatedGasLimit,getEstimatedGasLimit:(NSDictionary *)currentInstance withParams:(nonnull NSString *)address withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -204,6 +207,29 @@ RCT_REMAP_METHOD(getEstimatedGasLimit,getEstimatedGasLimit:(NSDictionary *)curre
     }
     RCTCoreLGBigIntCallback *objcParam_1 = [[RCTCoreLGBigIntCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj getEstimatedGasLimit:address callback:objcParam_1];
+
+}
+
+/**
+ * Get balance of ERC20 token
+ * The passed address is an ERC20 account
+ * Note: same note as above
+ */
+RCT_REMAP_METHOD(getERC20Balance,getERC20Balance:(NSDictionary *)currentInstance withParams:(nonnull NSString *)erc20Address withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::getERC20Balance, first argument should be an instance of LGEthereumLikeAccount", nil);
+        return;
+    }
+    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::getERC20Balance, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGBigIntCallback *objcParam_1 = [[RCTCoreLGBigIntCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getERC20Balance:erc20Address callback:objcParam_1];
 
 }
 @end

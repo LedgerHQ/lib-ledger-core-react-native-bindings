@@ -22,7 +22,10 @@ public abstract class EthereumLikeAccount {
 
     /**
      * Get gas price from network
-     * Note: same note as for getFees method on BitcoinLikeAccount
+     * Note: it would have been better to have this method on EthereumLikeWallet
+     * but since EthereumLikeWallet is not used anywhere, it's better to keep all
+     * specific methods under the same specific class so it will be easy to segratate
+     * when the right time comes !
      */
     public abstract void getGasPrice(BigIntCallback callback);
 
@@ -30,9 +33,16 @@ public abstract class EthereumLikeAccount {
      * Get estimated gas limit to set so the transaction will succeed
      * The passed address could be EOA or contract
      * This estimation is based on X last incoming txs (to address) that succeeded
-     * Note: same note as for getFees method on BitcoinLikeAccount
+     * Note: same note as above
      */
     public abstract void getEstimatedGasLimit(String address, BigIntCallback callback);
+
+    /**
+     * Get balance of ERC20 token
+     * The passed address is an ERC20 account
+     * Note: same note as above
+     */
+    public abstract void getERC20Balance(String erc20Address, BigIntCallback callback);
 
     private static final class CppProxy extends EthereumLikeAccount
     {
@@ -104,5 +114,13 @@ public abstract class EthereumLikeAccount {
             native_getEstimatedGasLimit(this.nativeRef, address, callback);
         }
         private native void native_getEstimatedGasLimit(long _nativeRef, String address, BigIntCallback callback);
+
+        @Override
+        public void getERC20Balance(String erc20Address, BigIntCallback callback)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_getERC20Balance(this.nativeRef, erc20Address, callback);
+        }
+        private native void native_getERC20Balance(long _nativeRef, String erc20Address, BigIntCallback callback);
     }
 }
