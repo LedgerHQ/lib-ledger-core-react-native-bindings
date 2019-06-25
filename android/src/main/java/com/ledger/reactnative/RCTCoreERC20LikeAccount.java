@@ -4,6 +4,8 @@
 package com.ledger.reactnative;
 
 import co.ledger.core.BigInt;
+import co.ledger.core.BigIntCallback;
+import co.ledger.core.BinaryCallback;
 import co.ledger.core.ERC20LikeAccount;
 import co.ledger.core.ERC20LikeOperation;
 import co.ledger.core.ERC20Token;
@@ -104,30 +106,6 @@ public class RCTCoreERC20LikeAccount extends ReactContextBaseJavaModule {
         }
         promise.resolve(true);
     }
-    public static byte[] hexStringToByteArray(String hexString)
-    {
-        int hexStringLength = hexString.length();
-        byte[] data = new byte[hexStringLength / 2];
-        for (int i = 0; i < hexStringLength; i += 2)
-        {
-            data[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4) + Character.digit(hexString.charAt(i+1), 16));
-        }
-        return data;
-    }
-    static final String HEXES = "0123456789ABCDEF";
-    public static String byteArrayToHexString( byte [] data)
-    {
-        if (data == null)
-        {
-            return null;
-        }
-        final StringBuilder hexStringBuilder = new StringBuilder( 2 * data.length );
-        for ( final byte b : data )
-        {
-            hexStringBuilder.append(HEXES.charAt((b & 0xF0) >> 4)).append(HEXES.charAt((b & 0x0F)));
-        }
-        return hexStringBuilder.toString();
-    }
 
     /** Get an ERC20 token. */
     @ReactMethod
@@ -183,16 +161,8 @@ public class RCTCoreERC20LikeAccount extends ReactContextBaseJavaModule {
 
             ERC20LikeAccount currentInstanceObj = this.javaObjects.get(sUid);
 
-            BigInt javaResult = currentInstanceObj.getBalance();
-
-            String javaResult_uuid = UUID.randomUUID().toString();
-            RCTCoreBigInt rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreBigInt.class);
-            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
-            WritableNativeMap result = new WritableNativeMap();
-            result.putString("type","RCTCoreBigInt");
-            result.putString("uid",javaResult_uuid);
-
-            promise.resolve(result);
+            RCTCoreBigIntCallback javaParam_0 = RCTCoreBigIntCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getBalance(javaParam_0);
         }
         catch(Exception e)
         {
@@ -279,12 +249,8 @@ public class RCTCoreERC20LikeAccount extends ReactContextBaseJavaModule {
 
             RCTCoreBigInt rctParam_amount = this.reactContext.getNativeModule(RCTCoreBigInt.class);
             BigInt javaParam_0 = rctParam_amount.getJavaObjects().get(amount.getString("uid"));
-            byte[] javaResult = currentInstanceObj.getTransferToAddressData(javaParam_0, address);
-            WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = byteArrayToHexString(javaResult);
-            result.putString("value", finalJavaResult);
-
-            promise.resolve(result);
+            RCTCoreBinaryCallback javaParam_2 = RCTCoreBinaryCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getTransferToAddressData(javaParam_0, address, javaParam_2);
         }
         catch(Exception e)
         {

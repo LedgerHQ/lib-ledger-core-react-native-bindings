@@ -8,6 +8,6 @@
 #import <React/RCTBridgeModule.h>
 
 
-/** Class representing Bitcoin block. */
+/** Class representing Ethereum block. */
 @interface RCTCoreLGEthereumLikeBlock : RCTCoreBaseModule <RCTBridgeModule>
 @end

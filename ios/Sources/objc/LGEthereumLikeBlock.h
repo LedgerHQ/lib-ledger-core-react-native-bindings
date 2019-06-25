@@ -4,7 +4,7 @@
 #import <Foundation/Foundation.h>
 
 
-/** Class representing Bitcoin block. */
+/** Class representing Ethereum block. */
 @interface LGEthereumLikeBlock : NSObject
 
 /**

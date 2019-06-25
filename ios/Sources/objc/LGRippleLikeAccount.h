@@ -4,6 +4,7 @@
 #import <Foundation/Foundation.h>
 @class LGRippleLikeTransaction;
 @class LGRippleLikeTransactionBuilder;
+@protocol LGAmountCallback;
 @protocol LGStringCallback;
 
 
@@ -17,5 +18,20 @@
                     callback:(nullable id<LGStringCallback>)callback;
 
 - (nullable LGRippleLikeTransactionBuilder *)buildTransaction;
+
+/**
+ * Get fees from network
+ * Note: it would have been better to have this method on RippleLikeWallet
+ * but since RippleLikeWallet is not used anywhere, it's better to keep all
+ * specific methods under the same specific class so it will be easy to segratate
+ * when the right time comes !
+ */
+- (void)getFees:(nullable id<LGAmountCallback>)callback;
+
+/**
+ * Get base reserve (dust to leave on an XRP account) from network
+ * Note: same note as above
+ */
+- (void)getBaseReserve:(nullable id<LGAmountCallback>)callback;
 
 @end

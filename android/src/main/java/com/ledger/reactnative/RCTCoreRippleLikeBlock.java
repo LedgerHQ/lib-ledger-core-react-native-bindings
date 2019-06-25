@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/**Class representing Bitcoin block */
+/**Class representing Ripple block */
 @ReactModule(name = "RCTCoreRippleLikeBlock")
 public class RCTCoreRippleLikeBlock extends ReactContextBaseJavaModule {
 

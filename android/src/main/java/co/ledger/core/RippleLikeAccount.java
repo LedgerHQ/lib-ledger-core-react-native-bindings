@@ -13,6 +13,21 @@ public abstract class RippleLikeAccount {
 
     public abstract RippleLikeTransactionBuilder buildTransaction();
 
+    /**
+     * Get fees from network
+     * Note: it would have been better to have this method on RippleLikeWallet
+     * but since RippleLikeWallet is not used anywhere, it's better to keep all
+     * specific methods under the same specific class so it will be easy to segratate
+     * when the right time comes !
+     */
+    public abstract void getFees(AmountCallback callback);
+
+    /**
+     * Get base reserve (dust to leave on an XRP account) from network
+     * Note: same note as above
+     */
+    public abstract void getBaseReserve(AmountCallback callback);
+
     private static final class CppProxy extends RippleLikeAccount
     {
         private final long nativeRef;
@@ -59,5 +74,21 @@ public abstract class RippleLikeAccount {
             return native_buildTransaction(this.nativeRef);
         }
         private native RippleLikeTransactionBuilder native_buildTransaction(long _nativeRef);
+
+        @Override
+        public void getFees(AmountCallback callback)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_getFees(this.nativeRef, callback);
+        }
+        private native void native_getFees(long _nativeRef, AmountCallback callback);
+
+        @Override
+        public void getBaseReserve(AmountCallback callback)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_getBaseReserve(this.nativeRef, callback);
+        }
+        private native void native_getBaseReserve(long _nativeRef, AmountCallback callback);
     }
 }

@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-/** Class representing Bitcoin block. */
+/** Class representing Ethereum block. */
 @ReactModule(name = "RCTCoreEthereumLikeBlock")
 public class RCTCoreEthereumLikeBlock extends ReactContextBaseJavaModule {
 

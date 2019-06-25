@@ -108,23 +108,8 @@ RCT_REMAP_METHOD(getBalance,getBalance:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", error, nil);
         return;
     }
-    LGBigInt * objcResult = [currentInstanceObj getBalance];
-
-    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
-    RCTCoreLGBigInt *rctImpl_objcResult = (RCTCoreLGBigInt *)[self.bridge moduleForName:@"CoreLGBigInt"];
-    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
-    [rctImpl_objcResult baseSetObject:objcResult_array];
-    NSDictionary *result = @{@"type" : @"CoreLGBigInt", @"uid" : objcResult_uuid };
-
-    if(result)
-    {
-        resolve(result);
-    }
-    else
-    {
-        reject(@"impl_call_error", @"Error while calling LGERC20LikeAccount::getBalance", nil);
-        return;
-    }
+    RCTCoreLGBigIntCallback *objcParam_0 = [[RCTCoreLGBigIntCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getBalance:objcParam_0];
 
 }
 
@@ -228,17 +213,8 @@ RCT_REMAP_METHOD(getTransferToAddressData,getTransferToAddressData:(NSDictionary
     }
     RCTCoreLGBigInt *rctParam_amount = (RCTCoreLGBigInt *)[self.bridge moduleForName:@"CoreLGBigInt"];
     LGBigInt *objcParam_0 = (LGBigInt *)[rctParam_amount.objcImplementations objectForKey:amount[@"uid"]];
-    NSData * objcResult = [currentInstanceObj getTransferToAddressData:objcParam_0 address:address];
-    NSDictionary *result = @{@"value" : objcResult.description};
-    if(result)
-    {
-        resolve(result);
-    }
-    else
-    {
-        reject(@"impl_call_error", @"Error while calling LGERC20LikeAccount::getTransferToAddressData", nil);
-        return;
-    }
+    RCTCoreLGBinaryCallback *objcParam_2 = [[RCTCoreLGBinaryCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getTransferToAddressData:objcParam_0 address:address data:objcParam_2];
 
 }
 

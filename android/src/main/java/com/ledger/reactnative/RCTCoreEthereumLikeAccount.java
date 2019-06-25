@@ -224,7 +224,10 @@ public class RCTCoreEthereumLikeAccount extends ReactContextBaseJavaModule {
     }
     /**
      * Get gas price from network
-     * Note: same note as for getFees method on BitcoinLikeAccount
+     * Note: it would have been better to have this method on EthereumLikeWallet
+     * but since EthereumLikeWallet is not used anywhere, it's better to keep all
+     * specific methods under the same specific class so it will be easy to segratate
+     * when the right time comes !
      */
     @ReactMethod
     public void getGasPrice(ReadableMap currentInstance, Promise promise) {
@@ -246,7 +249,7 @@ public class RCTCoreEthereumLikeAccount extends ReactContextBaseJavaModule {
      * Get estimated gas limit to set so the transaction will succeed
      * The passed address could be EOA or contract
      * This estimation is based on X last incoming txs (to address) that succeeded
-     * Note: same note as for getFees method on BitcoinLikeAccount
+     * Note: same note as above
      */
     @ReactMethod
     public void getEstimatedGasLimit(ReadableMap currentInstance, String address, Promise promise) {
@@ -258,6 +261,27 @@ public class RCTCoreEthereumLikeAccount extends ReactContextBaseJavaModule {
 
             RCTCoreBigIntCallback javaParam_1 = RCTCoreBigIntCallback.initWithPromise(promise, this.reactContext);
             currentInstanceObj.getEstimatedGasLimit(address, javaParam_1);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Get balance of ERC20 token
+     * The passed address is an ERC20 account
+     * Note: same note as above
+     */
+    @ReactMethod
+    public void getERC20Balance(ReadableMap currentInstance, String erc20Address, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            EthereumLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreBigIntCallback javaParam_1 = RCTCoreBigIntCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getERC20Balance(erc20Address, javaParam_1);
         }
         catch(Exception e)
         {

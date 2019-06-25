@@ -79,6 +79,14 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (void)getERC20Balance:(nonnull NSString *)erc20Address
+               callback:(nullable id<LGBigIntCallback>)callback {
+    try {
+        _cppRefHandle.get()->getERC20Balance(::djinni::String::toCpp(erc20Address),
+                                             ::djinni_generated::BigIntCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 namespace djinni_generated {
 
 auto EthereumLikeAccount::toCpp(ObjcType objc) -> CppType

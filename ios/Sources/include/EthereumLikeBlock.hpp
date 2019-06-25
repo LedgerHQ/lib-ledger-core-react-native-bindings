@@ -10,7 +10,7 @@
 
 namespace ledger { namespace core { namespace api {
 
-/** Class representing Bitcoin block. */
+/** Class representing Ethereum block. */
 class EthereumLikeBlock {
 public:
     virtual ~EthereumLikeBlock() {}

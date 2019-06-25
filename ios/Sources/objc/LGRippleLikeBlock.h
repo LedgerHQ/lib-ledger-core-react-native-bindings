@@ -4,7 +4,7 @@
 #import <Foundation/Foundation.h>
 
 
-/**Class representing Bitcoin block */
+/**Class representing Ripple block */
 @interface LGRippleLikeBlock : NSObject
 
 /**

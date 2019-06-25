@@ -118,4 +118,51 @@ RCT_REMAP_METHOD(buildTransaction,buildTransaction:(NSDictionary *)currentInstan
     }
 
 }
+
+/**
+ * Get fees from network
+ * Note: it would have been better to have this method on RippleLikeWallet
+ * but since RippleLikeWallet is not used anywhere, it's better to keep all
+ * specific methods under the same specific class so it will be easy to segratate
+ * when the right time comes !
+ */
+RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeAccount::getFees, first argument should be an instance of LGRippleLikeAccount", nil);
+        return;
+    }
+    LGRippleLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeAccount::getFees, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGAmountCallback *objcParam_0 = [[RCTCoreLGAmountCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getFees:objcParam_0];
+
+}
+
+/**
+ * Get base reserve (dust to leave on an XRP account) from network
+ * Note: same note as above
+ */
+RCT_REMAP_METHOD(getBaseReserve,getBaseReserve:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeAccount::getBaseReserve, first argument should be an instance of LGRippleLikeAccount", nil);
+        return;
+    }
+    LGRippleLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeAccount::getBaseReserve, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGAmountCallback *objcParam_0 = [[RCTCoreLGAmountCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getBaseReserve:objcParam_0];
+
+}
 @end

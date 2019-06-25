@@ -16,7 +16,7 @@ public abstract class ERC20LikeAccount {
     public abstract String getAddress();
 
     /** Get the current balance of this ERC20 account. */
-    public abstract BigInt getBalance();
+    public abstract void getBalance(BigIntCallback callback);
 
     /**
      * Get the balance history of this ERC20 account from a starting date (included) to an ending
@@ -28,7 +28,7 @@ public abstract class ERC20LikeAccount {
     public abstract ArrayList<ERC20LikeOperation> getOperations();
 
     /** Retrieve raw data concerning a transaction of a given amount to a given address. */
-    public abstract byte[] getTransferToAddressData(BigInt amount, String address);
+    public abstract void getTransferToAddressData(BigInt amount, String address, BinaryCallback data);
 
     public abstract OperationQuery queryOperations();
 
@@ -72,12 +72,12 @@ public abstract class ERC20LikeAccount {
         private native String native_getAddress(long _nativeRef);
 
         @Override
-        public BigInt getBalance()
+        public void getBalance(BigIntCallback callback)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_getBalance(this.nativeRef);
+            native_getBalance(this.nativeRef, callback);
         }
-        private native BigInt native_getBalance(long _nativeRef);
+        private native void native_getBalance(long _nativeRef, BigIntCallback callback);
 
         @Override
         public ArrayList<BigInt> getBalanceHistoryFor(Date start, Date end, TimePeriod period)
@@ -96,12 +96,12 @@ public abstract class ERC20LikeAccount {
         private native ArrayList<ERC20LikeOperation> native_getOperations(long _nativeRef);
 
         @Override
-        public byte[] getTransferToAddressData(BigInt amount, String address)
+        public void getTransferToAddressData(BigInt amount, String address, BinaryCallback data)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_getTransferToAddressData(this.nativeRef, amount, address);
+            native_getTransferToAddressData(this.nativeRef, amount, address, data);
         }
-        private native byte[] native_getTransferToAddressData(long _nativeRef, BigInt amount, String address);
+        private native void native_getTransferToAddressData(long _nativeRef, BigInt amount, String address, BinaryCallback data);
 
         @Override
         public OperationQuery queryOperations()
