@@ -351,6 +351,7 @@ public class RCTCorePreferencesEditor extends ReactContextBaseJavaModule {
             PreferencesEditor currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.commit();
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -367,6 +368,7 @@ public class RCTCorePreferencesEditor extends ReactContextBaseJavaModule {
             PreferencesEditor currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.clear();
+            promise.resolve(0);
         }
         catch(Exception e)
         {

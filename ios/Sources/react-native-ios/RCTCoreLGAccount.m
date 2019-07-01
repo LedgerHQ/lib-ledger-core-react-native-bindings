@@ -594,6 +594,7 @@ RCT_REMAP_METHOD(startBlockchainObservation,startBlockchainObservation:(NSDictio
         return;
     }
     [currentInstanceObj startBlockchainObservation];
+    resolve(@(YES));
 
 }
 
@@ -612,6 +613,7 @@ RCT_REMAP_METHOD(stopBlockchainObservation,stopBlockchainObservation:(NSDictiona
         return;
     }
     [currentInstanceObj stopBlockchainObservation];
+    resolve(@(YES));
 
 }
 

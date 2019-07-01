@@ -114,6 +114,7 @@ public class RCTCoreLogger extends ReactContextBaseJavaModule {
             Logger currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.d(tag, message);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -134,6 +135,7 @@ public class RCTCoreLogger extends ReactContextBaseJavaModule {
             Logger currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.i(tag, message);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -154,6 +156,7 @@ public class RCTCoreLogger extends ReactContextBaseJavaModule {
             Logger currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.e(tag, message);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -174,6 +177,7 @@ public class RCTCoreLogger extends ReactContextBaseJavaModule {
             Logger currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.w(tag, message);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -194,6 +198,7 @@ public class RCTCoreLogger extends ReactContextBaseJavaModule {
             Logger currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.c(tag, message);
+            promise.resolve(0);
         }
         catch(Exception e)
         {

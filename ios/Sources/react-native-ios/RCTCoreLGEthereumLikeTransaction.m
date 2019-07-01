@@ -413,6 +413,7 @@ RCT_REMAP_METHOD(setSignature,setSignature:(NSDictionary *)currentInstance withP
     NSData *objcParam_2 = [self hexStringToData:sSignature];
 
     [currentInstanceObj setSignature:objcParam_0 rSignature:objcParam_1 sSignature:objcParam_2];
+    resolve(@(YES));
 
 }
 
@@ -432,6 +433,7 @@ RCT_REMAP_METHOD(setDERSignature,setDERSignature:(NSDictionary *)currentInstance
     NSData *objcParam_0 = [self hexStringToData:signature];
 
     [currentInstanceObj setDERSignature:objcParam_0];
+    resolve(@(YES));
 
 }
 
@@ -451,6 +453,7 @@ RCT_REMAP_METHOD(setVSignature,setVSignature:(NSDictionary *)currentInstance wit
     NSData *objcParam_0 = [self hexStringToData:vSignature];
 
     [currentInstanceObj setVSignature:objcParam_0];
+    resolve(@(YES));
 
 }
 

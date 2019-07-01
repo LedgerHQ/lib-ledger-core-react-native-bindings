@@ -309,6 +309,7 @@ RCT_REMAP_METHOD(reset,reset:(NSDictionary *)currentInstance WithResolver:(RCTPr
         return;
     }
     [currentInstanceObj reset];
+    resolve(@(YES));
 
 }
 

@@ -124,6 +124,7 @@ public class RCTCoreGetEthreumLikeWalletCallback extends ReactContextBaseJavaMod
             RCTCoreEthereumLikeWallet rctParam_wallet = this.reactContext.getNativeModule(RCTCoreEthereumLikeWallet.class);
             EthereumLikeWallet javaParam_0 = rctParam_wallet.getJavaObjects().get(wallet.getString("uid"));
             currentInstanceObj.onSuccess(javaParam_0, isCreated);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -141,6 +142,7 @@ public class RCTCoreGetEthreumLikeWalletCallback extends ReactContextBaseJavaMod
             RCTCoreError rctParam_error = this.reactContext.getNativeModule(RCTCoreError.class);
             Error javaParam_0 = rctParam_error.getJavaObjects().get(error.getString("uid"));
             currentInstanceObj.onError(javaParam_0);
+            promise.resolve(0);
         }
         catch(Exception e)
         {

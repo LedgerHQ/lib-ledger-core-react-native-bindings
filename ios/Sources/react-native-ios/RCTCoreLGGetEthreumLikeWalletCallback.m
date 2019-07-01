@@ -49,6 +49,7 @@ RCT_REMAP_METHOD(onSuccess,onSuccess:(NSDictionary *)currentInstance withParams:
     RCTCoreLGEthereumLikeWallet *rctParam_wallet = (RCTCoreLGEthereumLikeWallet *)[self.bridge moduleForName:@"CoreLGEthereumLikeWallet"];
     LGEthereumLikeWallet *objcParam_0 = (LGEthereumLikeWallet *)[rctParam_wallet.objcImplementations objectForKey:wallet[@"uid"]];
     [currentInstanceObj onSuccess:objcParam_0 isCreated:isCreated];
+    resolve(@(YES));
 
 }
 
@@ -68,6 +69,7 @@ RCT_REMAP_METHOD(onError,onError:(NSDictionary *)currentInstance withParams:(NSD
     RCTCoreLGError *rctParam_error = (RCTCoreLGError *)[self.bridge moduleForName:@"CoreLGError"];
     LGError *objcParam_0 = (LGError *)[rctParam_error.objcImplementations objectForKey:error[@"uid"]];
     [currentInstanceObj onError:objcParam_0];
+    resolve(@(YES));
 
 }
 RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {

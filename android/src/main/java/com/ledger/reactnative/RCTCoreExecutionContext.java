@@ -127,6 +127,7 @@ public class RCTCoreExecutionContext extends ReactContextBaseJavaModule {
             RCTCoreRunnable rctParam_runnable = this.reactContext.getNativeModule(RCTCoreRunnable.class);
             Runnable javaParam_0 = rctParam_runnable.getJavaObjects().get(runnable.getString("uid"));
             currentInstanceObj.execute(javaParam_0);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -149,6 +150,7 @@ public class RCTCoreExecutionContext extends ReactContextBaseJavaModule {
             RCTCoreRunnable rctParam_runnable = this.reactContext.getNativeModule(RCTCoreRunnable.class);
             Runnable javaParam_0 = rctParam_runnable.getJavaObjects().get(runnable.getString("uid"));
             currentInstanceObj.delay(javaParam_0, millis);
+            promise.resolve(0);
         }
         catch(Exception e)
         {

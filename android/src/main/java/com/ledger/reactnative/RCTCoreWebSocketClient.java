@@ -128,6 +128,7 @@ public class RCTCoreWebSocketClient extends ReactContextBaseJavaModule {
             RCTCoreWebSocketConnection rctParam_connection = this.reactContext.getNativeModule(RCTCoreWebSocketConnection.class);
             WebSocketConnection javaParam_1 = rctParam_connection.getJavaObjects().get(connection.getString("uid"));
             currentInstanceObj.connect(url, javaParam_1);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -150,6 +151,7 @@ public class RCTCoreWebSocketClient extends ReactContextBaseJavaModule {
             RCTCoreWebSocketConnection rctParam_connection = this.reactContext.getNativeModule(RCTCoreWebSocketConnection.class);
             WebSocketConnection javaParam_0 = rctParam_connection.getJavaObjects().get(connection.getString("uid"));
             currentInstanceObj.send(javaParam_0, data);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -171,6 +173,7 @@ public class RCTCoreWebSocketClient extends ReactContextBaseJavaModule {
             RCTCoreWebSocketConnection rctParam_connection = this.reactContext.getNativeModule(RCTCoreWebSocketConnection.class);
             WebSocketConnection javaParam_0 = rctParam_connection.getJavaObjects().get(connection.getString("uid"));
             currentInstanceObj.disconnect(javaParam_0);
+            promise.resolve(0);
         }
         catch(Exception e)
         {

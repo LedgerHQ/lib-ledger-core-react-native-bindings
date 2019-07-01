@@ -50,6 +50,7 @@ RCT_REMAP_METHOD(onConnect,onConnect:(NSDictionary *)currentInstance withParams:
         return;
     }
     [currentInstanceObj onConnect:connectionId];
+    resolve(@(YES));
 
 }
 
@@ -68,6 +69,7 @@ RCT_REMAP_METHOD(onClose,onClose:(NSDictionary *)currentInstance WithResolver:(R
         return;
     }
     [currentInstanceObj onClose];
+    resolve(@(YES));
 
 }
 
@@ -89,6 +91,7 @@ RCT_REMAP_METHOD(onMessage,onMessage:(NSDictionary *)currentInstance withParams:
         return;
     }
     [currentInstanceObj onMessage:data];
+    resolve(@(YES));
 
 }
 
@@ -112,6 +115,7 @@ RCT_REMAP_METHOD(onError,onError:(NSDictionary *)currentInstance withParams:(int
         return;
     }
     [currentInstanceObj onError:(LGErrorCode)code message:message];
+    resolve(@(YES));
 
 }
 

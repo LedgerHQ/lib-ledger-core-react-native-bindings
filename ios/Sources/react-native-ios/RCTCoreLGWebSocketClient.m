@@ -54,6 +54,7 @@ RCT_REMAP_METHOD(connect,connect:(NSDictionary *)currentInstance withParams:(non
     RCTCoreLGWebSocketConnection *rctParam_connection = (RCTCoreLGWebSocketConnection *)[self.bridge moduleForName:@"CoreLGWebSocketConnection"];
     LGWebSocketConnection *objcParam_1 = (LGWebSocketConnection *)[rctParam_connection.objcImplementations objectForKey:connection[@"uid"]];
     [currentInstanceObj connect:url connection:objcParam_1];
+    resolve(@(YES));
 
 }
 
@@ -79,6 +80,7 @@ RCT_REMAP_METHOD(send,send:(NSDictionary *)currentInstance withParams:(NSDiction
     RCTCoreLGWebSocketConnection *rctParam_connection = (RCTCoreLGWebSocketConnection *)[self.bridge moduleForName:@"CoreLGWebSocketConnection"];
     LGWebSocketConnection *objcParam_0 = (LGWebSocketConnection *)[rctParam_connection.objcImplementations objectForKey:connection[@"uid"]];
     [currentInstanceObj send:objcParam_0 data:data];
+    resolve(@(YES));
 
 }
 
@@ -102,6 +104,7 @@ RCT_REMAP_METHOD(disconnect,disconnect:(NSDictionary *)currentInstance withParam
     RCTCoreLGWebSocketConnection *rctParam_connection = (RCTCoreLGWebSocketConnection *)[self.bridge moduleForName:@"CoreLGWebSocketConnection"];
     LGWebSocketConnection *objcParam_0 = (LGWebSocketConnection *)[rctParam_connection.objcImplementations objectForKey:connection[@"uid"]];
     [currentInstanceObj disconnect:objcParam_0];
+    resolve(@(YES));
 
 }
 RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {

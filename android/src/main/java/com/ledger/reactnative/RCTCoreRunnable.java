@@ -113,6 +113,7 @@ public class RCTCoreRunnable extends ReactContextBaseJavaModule {
             Runnable currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.run();
+            promise.resolve(0);
         }
         catch(Exception e)
         {

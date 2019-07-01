@@ -341,6 +341,7 @@ RCT_REMAP_METHOD(commit,commit:(NSDictionary *)currentInstance WithResolver:(RCT
         return;
     }
     [currentInstanceObj commit];
+    resolve(@(YES));
 
 }
 
@@ -359,6 +360,7 @@ RCT_REMAP_METHOD(clear,clear:(NSDictionary *)currentInstance WithResolver:(RCTPr
         return;
     }
     [currentInstanceObj clear];
+    resolve(@(YES));
 
 }
 @end

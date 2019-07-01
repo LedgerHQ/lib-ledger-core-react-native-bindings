@@ -131,6 +131,7 @@ public class RCTCoreDatabaseStatement extends ReactContextBaseJavaModule {
             DatabaseStatementImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.bindShort(pos, value);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -151,6 +152,7 @@ public class RCTCoreDatabaseStatement extends ReactContextBaseJavaModule {
             DatabaseStatementImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.bindInt(pos, value);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -171,6 +173,7 @@ public class RCTCoreDatabaseStatement extends ReactContextBaseJavaModule {
             DatabaseStatementImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.bindLong(pos, value);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -191,6 +194,7 @@ public class RCTCoreDatabaseStatement extends ReactContextBaseJavaModule {
             DatabaseStatementImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.bindFloat(pos, value);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -211,6 +215,7 @@ public class RCTCoreDatabaseStatement extends ReactContextBaseJavaModule {
             DatabaseStatementImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.bindDouble(pos, value);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -231,6 +236,7 @@ public class RCTCoreDatabaseStatement extends ReactContextBaseJavaModule {
             DatabaseStatementImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.bindString(pos, value);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -255,6 +261,7 @@ public class RCTCoreDatabaseStatement extends ReactContextBaseJavaModule {
             DatabaseBlobImpl javaParam_1_java = (DatabaseBlobImpl)javaParam_1;
             javaParam_1_java.setPromise(promise);
             currentInstanceObj.bindBlob(pos, javaParam_1);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -275,6 +282,7 @@ public class RCTCoreDatabaseStatement extends ReactContextBaseJavaModule {
             DatabaseStatementImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.bindNull(pos);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -371,6 +379,7 @@ public class RCTCoreDatabaseStatement extends ReactContextBaseJavaModule {
             DatabaseStatementImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.reset();
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -387,6 +396,7 @@ public class RCTCoreDatabaseStatement extends ReactContextBaseJavaModule {
             DatabaseStatementImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.close();
+            promise.resolve(0);
         }
         catch(Exception e)
         {

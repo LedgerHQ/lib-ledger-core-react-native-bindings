@@ -89,6 +89,7 @@ RCT_REMAP_METHOD(post,post:(NSDictionary *)currentInstance withParams:(NSDiction
     RCTCoreLGEvent *rctParam_event = (RCTCoreLGEvent *)[self.bridge moduleForName:@"CoreLGEvent"];
     LGEvent *objcParam_0 = (LGEvent *)[rctParam_event.objcImplementations objectForKey:event[@"uid"]];
     [currentInstanceObj post:objcParam_0];
+    resolve(@(YES));
 
 }
 
@@ -114,6 +115,7 @@ RCT_REMAP_METHOD(postSticky,postSticky:(NSDictionary *)currentInstance withParam
     RCTCoreLGEvent *rctParam_event = (RCTCoreLGEvent *)[self.bridge moduleForName:@"CoreLGEvent"];
     LGEvent *objcParam_0 = (LGEvent *)[rctParam_event.objcImplementations objectForKey:event[@"uid"]];
     [currentInstanceObj postSticky:objcParam_0 tag:tag];
+    resolve(@(YES));
 
 }
 
@@ -137,6 +139,7 @@ RCT_REMAP_METHOD(relay,relay:(NSDictionary *)currentInstance withParams:(NSDicti
     RCTCoreLGEventBus *rctParam_bus = (RCTCoreLGEventBus *)[self.bridge moduleForName:@"CoreLGEventBus"];
     LGEventBus *objcParam_0 = (LGEventBus *)[rctParam_bus.objcImplementations objectForKey:bus[@"uid"]];
     [currentInstanceObj relay:objcParam_0];
+    resolve(@(YES));
 
 }
 

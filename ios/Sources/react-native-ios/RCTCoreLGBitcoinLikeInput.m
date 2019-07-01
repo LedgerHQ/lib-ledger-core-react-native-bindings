@@ -429,6 +429,7 @@ RCT_REMAP_METHOD(setScriptSig,setScriptSig:(NSDictionary *)currentInstance withP
     NSData *objcParam_0 = [self hexStringToData:scriptSig];
 
     [currentInstanceObj setScriptSig:objcParam_0];
+    resolve(@(YES));
 
 }
 
@@ -449,6 +450,7 @@ RCT_REMAP_METHOD(pushToScriptSig,pushToScriptSig:(NSDictionary *)currentInstance
     NSData *objcParam_0 = [self hexStringToData:data];
 
     [currentInstanceObj pushToScriptSig:objcParam_0];
+    resolve(@(YES));
 
 }
 
@@ -467,6 +469,7 @@ RCT_REMAP_METHOD(setSequence,setSequence:(NSDictionary *)currentInstance withPar
         return;
     }
     [currentInstanceObj setSequence:sequence];
+    resolve(@(YES));
 
 }
 
@@ -534,6 +537,7 @@ RCT_REMAP_METHOD(setP2PKHSigScript,setP2PKHSigScript:(NSDictionary *)currentInst
     NSData *objcParam_0 = [self hexStringToData:signature];
 
     [currentInstanceObj setP2PKHSigScript:objcParam_0];
+    resolve(@(YES));
 
 }
 @end

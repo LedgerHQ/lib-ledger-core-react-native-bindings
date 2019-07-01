@@ -50,6 +50,7 @@ RCT_REMAP_METHOD(printError,printError:(NSDictionary *)currentInstance withParam
         return;
     }
     [currentInstanceObj printError:message];
+    resolve(@(YES));
 
 }
 
@@ -71,6 +72,7 @@ RCT_REMAP_METHOD(printInfo,printInfo:(NSDictionary *)currentInstance withParams:
         return;
     }
     [currentInstanceObj printInfo:message];
+    resolve(@(YES));
 
 }
 
@@ -92,6 +94,7 @@ RCT_REMAP_METHOD(printDebug,printDebug:(NSDictionary *)currentInstance withParam
         return;
     }
     [currentInstanceObj printDebug:message];
+    resolve(@(YES));
 
 }
 
@@ -113,6 +116,7 @@ RCT_REMAP_METHOD(printWarning,printWarning:(NSDictionary *)currentInstance withP
         return;
     }
     [currentInstanceObj printWarning:message];
+    resolve(@(YES));
 
 }
 
@@ -134,6 +138,7 @@ RCT_REMAP_METHOD(printApdu,printApdu:(NSDictionary *)currentInstance withParams:
         return;
     }
     [currentInstanceObj printApdu:message];
+    resolve(@(YES));
 
 }
 
@@ -155,6 +160,7 @@ RCT_REMAP_METHOD(printCriticalError,printCriticalError:(NSDictionary *)currentIn
         return;
     }
     [currentInstanceObj printCriticalError:message];
+    resolve(@(YES));
 
 }
 

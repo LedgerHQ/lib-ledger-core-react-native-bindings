@@ -223,6 +223,7 @@ public class RCTCoreDatabaseResultSet extends ReactContextBaseJavaModule {
             DatabaseResultSetImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.next();
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -239,6 +240,7 @@ public class RCTCoreDatabaseResultSet extends ReactContextBaseJavaModule {
             DatabaseResultSetImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.close();
+            promise.resolve(0);
         }
         catch(Exception e)
         {
