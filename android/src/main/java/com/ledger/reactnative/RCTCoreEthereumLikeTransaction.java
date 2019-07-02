@@ -395,6 +395,7 @@ public class RCTCoreEthereumLikeTransaction extends ReactContextBaseJavaModule {
             byte [] javaParam_2 = hexStringToByteArray(sSignature);
 
             currentInstanceObj.setSignature(javaParam_0, javaParam_1, javaParam_2);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -412,6 +413,7 @@ public class RCTCoreEthereumLikeTransaction extends ReactContextBaseJavaModule {
             byte [] javaParam_0 = hexStringToByteArray(signature);
 
             currentInstanceObj.setDERSignature(javaParam_0);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -429,6 +431,7 @@ public class RCTCoreEthereumLikeTransaction extends ReactContextBaseJavaModule {
             byte [] javaParam_0 = hexStringToByteArray(vSignature);
 
             currentInstanceObj.setVSignature(javaParam_0);
+            promise.resolve(0);
         }
         catch(Exception e)
         {

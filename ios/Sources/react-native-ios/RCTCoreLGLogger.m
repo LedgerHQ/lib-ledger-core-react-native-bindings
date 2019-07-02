@@ -52,6 +52,7 @@ RCT_REMAP_METHOD(d,d:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
         return;
     }
     [currentInstanceObj d:tag message:message];
+    resolve(@(YES));
 
 }
 
@@ -75,6 +76,7 @@ RCT_REMAP_METHOD(i,i:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
         return;
     }
     [currentInstanceObj i:tag message:message];
+    resolve(@(YES));
 
 }
 
@@ -98,6 +100,7 @@ RCT_REMAP_METHOD(e,e:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
         return;
     }
     [currentInstanceObj e:tag message:message];
+    resolve(@(YES));
 
 }
 
@@ -121,6 +124,7 @@ RCT_REMAP_METHOD(w,w:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
         return;
     }
     [currentInstanceObj w:tag message:message];
+    resolve(@(YES));
 
 }
 
@@ -144,6 +148,7 @@ RCT_REMAP_METHOD(c,c:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
         return;
     }
     [currentInstanceObj c:tag message:message];
+    resolve(@(YES));
 
 }
 @end

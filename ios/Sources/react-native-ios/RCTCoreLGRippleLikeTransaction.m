@@ -258,6 +258,7 @@ RCT_REMAP_METHOD(setSignature,setSignature:(NSDictionary *)currentInstance withP
     NSData *objcParam_1 = [self hexStringToData:sSignature];
 
     [currentInstanceObj setSignature:objcParam_0 sSignature:objcParam_1];
+    resolve(@(YES));
 
 }
 
@@ -277,6 +278,7 @@ RCT_REMAP_METHOD(setDERSignature,setDERSignature:(NSDictionary *)currentInstance
     NSData *objcParam_0 = [self hexStringToData:signature];
 
     [currentInstanceObj setDERSignature:objcParam_0];
+    resolve(@(YES));
 
 }
 
@@ -469,6 +471,7 @@ RCT_REMAP_METHOD(addMemo,addMemo:(NSDictionary *)currentInstance withParams:(NSD
     RCTCoreLGRippleLikeMemo *rctParam_memo = (RCTCoreLGRippleLikeMemo *)[self.bridge moduleForName:@"CoreLGRippleLikeMemo"];
     LGRippleLikeMemo *objcParam_0 = (LGRippleLikeMemo *)[rctParam_memo.objcImplementations objectForKey:memo[@"uid"]];
     [currentInstanceObj addMemo:objcParam_0];
+    resolve(@(YES));
 
 }
 

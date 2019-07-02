@@ -177,6 +177,7 @@ RCT_REMAP_METHOD(next,next:(NSDictionary *)currentInstance WithResolver:(RCTProm
         return;
     }
     [currentInstanceObj next];
+    resolve(@(YES));
 
 }
 
@@ -195,6 +196,7 @@ RCT_REMAP_METHOD(close,close:(NSDictionary *)currentInstance WithResolver:(RCTPr
         return;
     }
     [currentInstanceObj close];
+    resolve(@(YES));
 
 }
 

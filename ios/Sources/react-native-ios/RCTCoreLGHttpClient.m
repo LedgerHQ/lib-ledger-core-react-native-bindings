@@ -52,6 +52,7 @@ RCT_REMAP_METHOD(execute,execute:(NSDictionary *)currentInstance withParams:(NSD
     RCTCoreLGHttpRequest *rctParam_request = (RCTCoreLGHttpRequest *)[self.bridge moduleForName:@"CoreLGHttpRequest"];
     LGHttpRequest *objcParam_0 = (LGHttpRequest *)[rctParam_request.objcImplementations objectForKey:request[@"uid"]];
     [currentInstanceObj execute:objcParam_0];
+    resolve(@(YES));
 
 }
 RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {

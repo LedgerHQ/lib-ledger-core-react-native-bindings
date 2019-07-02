@@ -114,6 +114,7 @@ public class RCTCoreWebSocketConnection extends ReactContextBaseJavaModule {
             WebSocketConnection currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.onConnect(connectionId);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -130,6 +131,7 @@ public class RCTCoreWebSocketConnection extends ReactContextBaseJavaModule {
             WebSocketConnection currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.onClose();
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -149,6 +151,7 @@ public class RCTCoreWebSocketConnection extends ReactContextBaseJavaModule {
             WebSocketConnection currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.onMessage(data);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -175,6 +178,7 @@ public class RCTCoreWebSocketConnection extends ReactContextBaseJavaModule {
             }
             ErrorCode javaParam_0 = ErrorCode.values()[code];
             currentInstanceObj.onError(javaParam_0, message);
+            promise.resolve(0);
         }
         catch(Exception e)
         {

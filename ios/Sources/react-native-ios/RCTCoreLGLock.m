@@ -51,6 +51,7 @@ RCT_REMAP_METHOD(lock,lock:(NSDictionary *)currentInstance WithResolver:(RCTProm
         return;
     }
     [currentInstanceObj lock];
+    resolve(@(YES));
 
 }
 
@@ -102,6 +103,7 @@ RCT_REMAP_METHOD(unlock,unlock:(NSDictionary *)currentInstance WithResolver:(RCT
         return;
     }
     [currentInstanceObj unlock];
+    resolve(@(YES));
 
 }
 RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {

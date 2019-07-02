@@ -424,6 +424,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
             byte [] javaParam_0 = hexStringToByteArray(scriptSig);
 
             currentInstanceObj.setScriptSig(javaParam_0);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -442,6 +443,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
             byte [] javaParam_0 = hexStringToByteArray(data);
 
             currentInstanceObj.pushToScriptSig(javaParam_0);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -458,6 +460,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
             BitcoinLikeInput currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.setSequence(sequence);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -513,6 +516,7 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
             byte [] javaParam_0 = hexStringToByteArray(signature);
 
             currentInstanceObj.setP2PKHSigScript(javaParam_0);
+            promise.resolve(0);
         }
         catch(Exception e)
         {

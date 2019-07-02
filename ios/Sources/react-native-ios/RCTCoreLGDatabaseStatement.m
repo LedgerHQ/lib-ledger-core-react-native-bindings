@@ -52,6 +52,7 @@ RCT_REMAP_METHOD(bindShort,bindShort:(NSDictionary *)currentInstance withParams:
         return;
     }
     [currentInstanceObj bindShort:pos value:value];
+    resolve(@(YES));
 
 }
 
@@ -75,6 +76,7 @@ RCT_REMAP_METHOD(bindInt,bindInt:(NSDictionary *)currentInstance withParams:(int
         return;
     }
     [currentInstanceObj bindInt:pos value:value];
+    resolve(@(YES));
 
 }
 
@@ -98,6 +100,7 @@ RCT_REMAP_METHOD(bindLong,bindLong:(NSDictionary *)currentInstance withParams:(i
         return;
     }
     [currentInstanceObj bindLong:pos value:value];
+    resolve(@(YES));
 
 }
 
@@ -121,6 +124,7 @@ RCT_REMAP_METHOD(bindFloat,bindFloat:(NSDictionary *)currentInstance withParams:
         return;
     }
     [currentInstanceObj bindFloat:pos value:value];
+    resolve(@(YES));
 
 }
 
@@ -144,6 +148,7 @@ RCT_REMAP_METHOD(bindDouble,bindDouble:(NSDictionary *)currentInstance withParam
         return;
     }
     [currentInstanceObj bindDouble:pos value:value];
+    resolve(@(YES));
 
 }
 
@@ -167,6 +172,7 @@ RCT_REMAP_METHOD(bindString,bindString:(NSDictionary *)currentInstance withParam
         return;
     }
     [currentInstanceObj bindString:pos value:value];
+    resolve(@(YES));
 
 }
 
@@ -198,6 +204,7 @@ RCT_REMAP_METHOD(bindBlob,bindBlob:(NSDictionary *)currentInstance withParams:(i
         objcParam_1_objc.reject = reject;
     }
     [currentInstanceObj bindBlob:pos value:objcParam_1];
+    resolve(@(YES));
 
 }
 
@@ -220,6 +227,7 @@ RCT_REMAP_METHOD(bindNull,bindNull:(NSDictionary *)currentInstance withParams:(i
         return;
     }
     [currentInstanceObj bindNull:pos];
+    resolve(@(YES));
 
 }
 
@@ -344,6 +352,7 @@ RCT_REMAP_METHOD(reset,reset:(NSDictionary *)currentInstance WithResolver:(RCTPr
         return;
     }
     [currentInstanceObj reset];
+    resolve(@(YES));
 
 }
 
@@ -362,6 +371,7 @@ RCT_REMAP_METHOD(close,close:(NSDictionary *)currentInstance WithResolver:(RCTPr
         return;
     }
     [currentInstanceObj close];
+    resolve(@(YES));
 
 }
 RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {

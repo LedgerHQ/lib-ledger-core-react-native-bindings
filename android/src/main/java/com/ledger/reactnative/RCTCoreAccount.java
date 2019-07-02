@@ -549,6 +549,7 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             Account currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.startBlockchainObservation();
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -565,6 +566,7 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             Account currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.stopBlockchainObservation();
+            promise.resolve(0);
         }
         catch(Exception e)
         {

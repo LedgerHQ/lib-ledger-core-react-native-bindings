@@ -287,6 +287,7 @@ public class RCTCoreRippleLikeTransaction extends ReactContextBaseJavaModule {
             byte [] javaParam_1 = hexStringToByteArray(sSignature);
 
             currentInstanceObj.setSignature(javaParam_0, javaParam_1);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -304,6 +305,7 @@ public class RCTCoreRippleLikeTransaction extends ReactContextBaseJavaModule {
             byte [] javaParam_0 = hexStringToByteArray(signature);
 
             currentInstanceObj.setDERSignature(javaParam_0);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -452,6 +454,7 @@ public class RCTCoreRippleLikeTransaction extends ReactContextBaseJavaModule {
             RCTCoreRippleLikeMemo rctParam_memo = this.reactContext.getNativeModule(RCTCoreRippleLikeMemo.class);
             RippleLikeMemo javaParam_0 = rctParam_memo.getJavaObjects().get(memo.getString("uid"));
             currentInstanceObj.addMemo(javaParam_0);
+            promise.resolve(0);
         }
         catch(Exception e)
         {

@@ -128,6 +128,7 @@ public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
             LogPrinterImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.printError(message);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -147,6 +148,7 @@ public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
             LogPrinterImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.printInfo(message);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -166,6 +168,7 @@ public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
             LogPrinterImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.printDebug(message);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -185,6 +188,7 @@ public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
             LogPrinterImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.printWarning(message);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -204,6 +208,7 @@ public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
             LogPrinterImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.printApdu(message);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -223,6 +228,7 @@ public class RCTCoreLogPrinter extends ReactContextBaseJavaModule {
             LogPrinterImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.printCriticalError(message);
+            promise.resolve(0);
         }
         catch(Exception e)
         {

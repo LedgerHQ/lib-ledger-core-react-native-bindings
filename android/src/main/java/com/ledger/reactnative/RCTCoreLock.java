@@ -125,6 +125,7 @@ public class RCTCoreLock extends ReactContextBaseJavaModule {
             LockImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.lock();
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -166,6 +167,7 @@ public class RCTCoreLock extends ReactContextBaseJavaModule {
             LockImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.unlock();
+            promise.resolve(0);
         }
         catch(Exception e)
         {

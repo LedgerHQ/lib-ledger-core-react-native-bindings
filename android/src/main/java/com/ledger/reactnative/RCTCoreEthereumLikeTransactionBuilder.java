@@ -335,6 +335,7 @@ public class RCTCoreEthereumLikeTransactionBuilder extends ReactContextBaseJavaM
             EthereumLikeTransactionBuilder currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.reset();
+            promise.resolve(0);
         }
         catch(Exception e)
         {

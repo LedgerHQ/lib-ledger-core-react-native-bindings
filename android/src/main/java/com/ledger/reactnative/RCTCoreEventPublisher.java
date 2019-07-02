@@ -146,6 +146,7 @@ public class RCTCoreEventPublisher extends ReactContextBaseJavaModule {
             RCTCoreEvent rctParam_event = this.reactContext.getNativeModule(RCTCoreEvent.class);
             Event javaParam_0 = rctParam_event.getJavaObjects().get(event.getString("uid"));
             currentInstanceObj.post(javaParam_0);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -168,6 +169,7 @@ public class RCTCoreEventPublisher extends ReactContextBaseJavaModule {
             RCTCoreEvent rctParam_event = this.reactContext.getNativeModule(RCTCoreEvent.class);
             Event javaParam_0 = rctParam_event.getJavaObjects().get(event.getString("uid"));
             currentInstanceObj.postSticky(javaParam_0, tag);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -189,6 +191,7 @@ public class RCTCoreEventPublisher extends ReactContextBaseJavaModule {
             RCTCoreEventBus rctParam_bus = this.reactContext.getNativeModule(RCTCoreEventBus.class);
             EventBus javaParam_0 = rctParam_bus.getJavaObjects().get(bus.getString("uid"));
             currentInstanceObj.relay(javaParam_0);
+            promise.resolve(0);
         }
         catch(Exception e)
         {

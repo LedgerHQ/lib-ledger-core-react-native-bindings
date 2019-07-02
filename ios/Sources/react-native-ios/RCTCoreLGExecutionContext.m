@@ -52,6 +52,7 @@ RCT_REMAP_METHOD(execute,execute:(NSDictionary *)currentInstance withParams:(NSD
     RCTCoreLGRunnable *rctParam_runnable = (RCTCoreLGRunnable *)[self.bridge moduleForName:@"CoreLGRunnable"];
     LGRunnable *objcParam_0 = (LGRunnable *)[rctParam_runnable.objcImplementations objectForKey:runnable[@"uid"]];
     [currentInstanceObj execute:objcParam_0];
+    resolve(@(YES));
 
 }
 
@@ -77,6 +78,7 @@ RCT_REMAP_METHOD(delay,delay:(NSDictionary *)currentInstance withParams:(NSDicti
     RCTCoreLGRunnable *rctParam_runnable = (RCTCoreLGRunnable *)[self.bridge moduleForName:@"CoreLGRunnable"];
     LGRunnable *objcParam_0 = (LGRunnable *)[rctParam_runnable.objcImplementations objectForKey:runnable[@"uid"]];
     [currentInstanceObj delay:objcParam_0 millis:millis];
+    resolve(@(YES));
 
 }
 RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {

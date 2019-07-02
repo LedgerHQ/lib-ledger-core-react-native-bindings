@@ -47,6 +47,7 @@ RCT_REMAP_METHOD(run,run:(NSDictionary *)currentInstance WithResolver:(RCTPromis
         return;
     }
     [currentInstanceObj run];
+    resolve(@(YES));
 
 }
 @end

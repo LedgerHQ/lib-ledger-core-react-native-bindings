@@ -247,6 +247,7 @@ public class RCTCoreHttpRequest extends ReactContextBaseJavaModule {
             RCTCoreError rctParam_error = this.reactContext.getNativeModule(RCTCoreError.class);
             Error javaParam_1 = rctParam_error.getJavaObjects().get(error.get().getString("uid"));
             currentInstanceObj.complete(javaParam_0, javaParam_1);
+            promise.resolve(0);
         }
         catch(Exception e)
         {

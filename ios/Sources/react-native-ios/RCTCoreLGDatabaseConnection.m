@@ -87,6 +87,7 @@ RCT_REMAP_METHOD(begin,begin:(NSDictionary *)currentInstance WithResolver:(RCTPr
         return;
     }
     [currentInstanceObj begin];
+    resolve(@(YES));
 
 }
 
@@ -105,6 +106,7 @@ RCT_REMAP_METHOD(rollback,rollback:(NSDictionary *)currentInstance WithResolver:
         return;
     }
     [currentInstanceObj rollback];
+    resolve(@(YES));
 
 }
 
@@ -123,6 +125,7 @@ RCT_REMAP_METHOD(commit,commit:(NSDictionary *)currentInstance WithResolver:(RCT
         return;
     }
     [currentInstanceObj commit];
+    resolve(@(YES));
 
 }
 
@@ -141,6 +144,7 @@ RCT_REMAP_METHOD(close,close:(NSDictionary *)currentInstance WithResolver:(RCTPr
         return;
     }
     [currentInstanceObj close];
+    resolve(@(YES));
 
 }
 

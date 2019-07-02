@@ -52,6 +52,7 @@ RCT_REMAP_METHOD(onEvent,onEvent:(NSDictionary *)currentInstance withParams:(NSD
     RCTCoreLGEvent *rctParam_event = (RCTCoreLGEvent *)[self.bridge moduleForName:@"CoreLGEvent"];
     LGEvent *objcParam_0 = (LGEvent *)[rctParam_event.objcImplementations objectForKey:event[@"uid"]];
     [currentInstanceObj onEvent:objcParam_0];
+    resolve(@(YES));
 
 }
 RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {

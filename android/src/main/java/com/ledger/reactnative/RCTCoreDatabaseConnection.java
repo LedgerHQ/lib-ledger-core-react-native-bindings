@@ -157,6 +157,7 @@ public class RCTCoreDatabaseConnection extends ReactContextBaseJavaModule {
             DatabaseConnectionImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.begin();
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -173,6 +174,7 @@ public class RCTCoreDatabaseConnection extends ReactContextBaseJavaModule {
             DatabaseConnectionImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.rollback();
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -189,6 +191,7 @@ public class RCTCoreDatabaseConnection extends ReactContextBaseJavaModule {
             DatabaseConnectionImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.commit();
+            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -205,6 +208,7 @@ public class RCTCoreDatabaseConnection extends ReactContextBaseJavaModule {
             DatabaseConnectionImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.close();
+            promise.resolve(0);
         }
         catch(Exception e)
         {

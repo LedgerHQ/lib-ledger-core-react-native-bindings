@@ -522,6 +522,7 @@ public class RCTCoreBitcoinLikeTransactionBuilder extends ReactContextBaseJavaMo
             BitcoinLikeTransactionBuilder currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.reset();
+            promise.resolve(0);
         }
         catch(Exception e)
         {
