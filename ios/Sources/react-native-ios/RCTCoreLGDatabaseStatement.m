@@ -204,7 +204,6 @@ RCT_REMAP_METHOD(bindBlob,bindBlob:(NSDictionary *)currentInstance withParams:(i
         objcParam_1_objc.reject = reject;
     }
     [currentInstanceObj bindBlob:pos value:objcParam_1];
-    resolve(@(YES));
 
 }
 
