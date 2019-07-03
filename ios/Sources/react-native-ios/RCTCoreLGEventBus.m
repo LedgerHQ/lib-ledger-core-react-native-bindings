@@ -68,7 +68,6 @@ RCT_REMAP_METHOD(subscribe,subscribe:(NSDictionary *)currentInstance withParams:
         objcParam_1_objc.reject = reject;
     }
     [currentInstanceObj subscribe:objcParam_0 receiver:objcParam_1];
-    resolve(@(YES));
 
 }
 
@@ -98,7 +97,6 @@ RCT_REMAP_METHOD(unsubscribe,unsubscribe:(NSDictionary *)currentInstance withPar
         objcParam_0_objc.reject = reject;
     }
     [currentInstanceObj unsubscribe:objcParam_0];
-    resolve(@(YES));
 
 }
 @end

@@ -124,7 +124,6 @@ public class RCTCoreEventBus extends ReactContextBaseJavaModule {
             EventReceiverImpl javaParam_1_java = (EventReceiverImpl)javaParam_1;
             javaParam_1_java.setPromise(promise);
             currentInstanceObj.subscribe(javaParam_0, javaParam_1);
-            promise.resolve(0);
         }
         catch(Exception e)
         {
@@ -148,7 +147,6 @@ public class RCTCoreEventBus extends ReactContextBaseJavaModule {
             EventReceiverImpl javaParam_0_java = (EventReceiverImpl)javaParam_0;
             javaParam_0_java.setPromise(promise);
             currentInstanceObj.unsubscribe(javaParam_0);
-            promise.resolve(0);
         }
         catch(Exception e)
         {

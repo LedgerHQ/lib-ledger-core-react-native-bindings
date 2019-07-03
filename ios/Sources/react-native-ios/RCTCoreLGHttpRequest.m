@@ -186,7 +186,6 @@ RCT_REMAP_METHOD(complete,complete:(NSDictionary *)currentInstance withParams:(n
     RCTCoreLGError *rctParam_error = (RCTCoreLGError *)[self.bridge moduleForName:@"CoreLGError"];
     LGError *objcParam_1 = (LGError *)[rctParam_error.objcImplementations objectForKey:error[@"uid"]];
     [currentInstanceObj complete:objcParam_0 error:objcParam_1];
-    resolve(@(YES));
 
 }
 @end

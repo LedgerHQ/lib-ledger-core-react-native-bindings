@@ -261,7 +261,6 @@ public class RCTCoreDatabaseStatement extends ReactContextBaseJavaModule {
             DatabaseBlobImpl javaParam_1_java = (DatabaseBlobImpl)javaParam_1;
             javaParam_1_java.setPromise(promise);
             currentInstanceObj.bindBlob(pos, javaParam_1);
-            promise.resolve(0);
         }
         catch(Exception e)
         {
