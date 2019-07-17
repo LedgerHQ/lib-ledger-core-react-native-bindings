@@ -7,6 +7,7 @@ import co.ledger.core.BitcoinLikeNetworkParameters;
 import co.ledger.core.EthereumLikeNetworkParameters;
 import co.ledger.core.Networks;
 import co.ledger.core.RippleLikeNetworkParameters;
+import co.ledger.core.TezosLikeNetworkParameters;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
@@ -157,6 +158,27 @@ public class RCTCoreNetworks extends ReactContextBaseJavaModule {
             rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreRippleLikeNetworkParameters");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** The Tezos network parameters. */
+    @ReactMethod
+    public void tezos(Promise promise) {
+        try
+        {
+            TezosLikeNetworkParameters javaResult = Networks.tezos();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreTezosLikeNetworkParameters rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreTezosLikeNetworkParameters.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreTezosLikeNetworkParameters");
             result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);

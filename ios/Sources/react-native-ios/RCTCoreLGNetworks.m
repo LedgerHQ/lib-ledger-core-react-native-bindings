@@ -97,4 +97,26 @@ RCT_REMAP_METHOD(ripple,rippleWithResolver:(RCTPromiseResolveBlock)resolve rejec
     }
 
 }
+
+/** The Tezos network parameters. */
+RCT_REMAP_METHOD(tezos,tezosWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    LGTezosLikeNetworkParameters * objcResult = [LGNetworks tezos];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGTezosLikeNetworkParameters *rctImpl_objcResult = (RCTCoreLGTezosLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGTezosLikeNetworkParameters"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGTezosLikeNetworkParameters", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGNetworks::tezos", nil);
+        return;
+    }
+
+}
 @end

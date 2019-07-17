@@ -513,6 +513,44 @@ RCT_REMAP_METHOD(asRippleLikeOperation,asRippleLikeOperation:(NSDictionary *)cur
 
 }
 
+/**
+ *Convert operation as Tezos operation
+ *@return TezosLikeOperation object
+ */
+RCT_REMAP_METHOD(asTezosLikeOperation,asTezosLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::asTezosLikeOperation, first argument should be an instance of LGOperation", nil);
+        return;
+    }
+    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::asTezosLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGTezosLikeOperation * objcResult = [currentInstanceObj asTezosLikeOperation];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGTezosLikeOperation *rctImpl_objcResult = (RCTCoreLGTezosLikeOperation *)[self.bridge moduleForName:@"CoreLGTezosLikeOperation"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGTezosLikeOperation", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGOperation::asTezosLikeOperation", nil);
+        return;
+    }
+
+}
+
+/** Same as isInstanceOfBitcoinLikeOperation for bitcoin. */
 RCT_REMAP_METHOD(isInstanceOfBitcoinLikeOperation,isInstanceOfBitcoinLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -540,7 +578,7 @@ RCT_REMAP_METHOD(isInstanceOfBitcoinLikeOperation,isInstanceOfBitcoinLikeOperati
 
 }
 
-/** Same as isInstanceOfBitcoinLikeOperation for ethereum. */
+/** Same as isInstanceOfEthereumLikeOperation for ethereum. */
 RCT_REMAP_METHOD(isInstanceOfEthereumLikeOperation,isInstanceOfEthereumLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -568,7 +606,7 @@ RCT_REMAP_METHOD(isInstanceOfEthereumLikeOperation,isInstanceOfEthereumLikeOpera
 
 }
 
-/** Same as isInstanceOfBitcoinLikeOperation for ripple. */
+/** Same as isInstanceOfRippleLikeOperation for ripple. */
 RCT_REMAP_METHOD(isInstanceOfRippleLikeOperation,isInstanceOfRippleLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -591,6 +629,34 @@ RCT_REMAP_METHOD(isInstanceOfRippleLikeOperation,isInstanceOfRippleLikeOperation
     else
     {
         reject(@"impl_call_error", @"Error while calling LGOperation::isInstanceOfRippleLikeOperation", nil);
+        return;
+    }
+
+}
+
+/** Same as isInstanceOfTezosLikeOperation for tezos. */
+RCT_REMAP_METHOD(isInstanceOfTezosLikeOperation,isInstanceOfTezosLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::isInstanceOfTezosLikeOperation, first argument should be an instance of LGOperation", nil);
+        return;
+    }
+    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::isInstanceOfTezosLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    BOOL objcResult = [currentInstanceObj isInstanceOfTezosLikeOperation];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGOperation::isInstanceOfTezosLikeOperation", nil);
         return;
     }
 

@@ -13,5 +13,7 @@ public enum WalletType {
     RIPPLE,
     /** A Monero-like wallet. */
     MONERO,
+    /** A Tezos-like wallet. */
+    TEZOS,
     ;
 }

@@ -3,6 +3,7 @@
 
 package co.ledger.core;
 
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /** Class representing a Ethereum Operation. */
@@ -12,6 +13,9 @@ public abstract class EthereumLikeOperation {
      * @return EthereumLikeTransaction object
      */
     public abstract EthereumLikeTransaction getTransaction();
+
+    /** Get all actions triggered by this transaction */
+    public abstract ArrayList<InternalTransaction> getInternalTransactions();
 
     private static final class CppProxy extends EthereumLikeOperation
     {
@@ -43,5 +47,13 @@ public abstract class EthereumLikeOperation {
             return native_getTransaction(this.nativeRef);
         }
         private native EthereumLikeTransaction native_getTransaction(long _nativeRef);
+
+        @Override
+        public ArrayList<InternalTransaction> getInternalTransactions()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getInternalTransactions(this.nativeRef);
+        }
+        private native ArrayList<InternalTransaction> native_getInternalTransactions(long _nativeRef);
     }
 }

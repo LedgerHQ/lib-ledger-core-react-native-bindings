@@ -16,7 +16,14 @@ public class RCTCoreBindingPackage implements ReactPackage
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext)
     {
-        return Arrays.<NativeModule>asList(new RCTCoreRippleLikeMemo(reactContext),
+        return Arrays.<NativeModule>asList(new RCTCoreTezosLikeTransaction(reactContext),
+        new RCTCoreTezosLikeOperation(reactContext),
+        new RCTCoreTezosLikeBlock(reactContext),
+        new RCTCoreTezosLikeTransactionBuilder(reactContext),
+        new RCTCoreTezosLikeAccount(reactContext),
+        new RCTCoreTezosLikeOriginatedAccount(reactContext),
+        new RCTCoreTezosConfigurationDefaults(reactContext),
+        new RCTCoreRippleLikeMemo(reactContext),
         new RCTCoreRippleLikeTransaction(reactContext),
         new RCTCoreRippleLikeOperation(reactContext),
         new RCTCoreRippleLikeBlock(reactContext),
@@ -69,6 +76,7 @@ public class RCTCoreBindingPackage implements ReactPackage
         new RCTCoreERC20LikeOperation(reactContext),
         new RCTCoreEthereumLikeWallet(reactContext),
         new RCTCoreEthereumLikeTransaction(reactContext),
+        new RCTCoreInternalTransaction(reactContext),
         new RCTCoreEthereumLikeOperation(reactContext),
         new RCTCoreEthereumLikeBlock(reactContext),
         new RCTCoreEthereumLikeTransactionBuilder(reactContext),
@@ -78,6 +86,9 @@ public class RCTCoreBindingPackage implements ReactPackage
         new RCTCoreBitcoinLikeScriptChunk(reactContext),
         new RCTCoreBitcoinLikeScript(reactContext),
         new RCTCoreLocale(reactContext),
+        new RCTCoreTezosLikeNetworkParameters(reactContext),
+        new RCTCoreTezosLikeAddress(reactContext),
+        new RCTCoreTezosLikeExtendedPublicKey(reactContext),
         new RCTCoreRippleLikeNetworkParameters(reactContext),
         new RCTCoreRippleLikeAddress(reactContext),
         new RCTCoreRippleLikeExtendedPublicKey(reactContext),

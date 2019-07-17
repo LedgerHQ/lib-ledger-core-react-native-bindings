@@ -13,6 +13,8 @@ public abstract class BlockchainExplorerEngines {
 
     public static final String RIPPLE_NODE = "RIPPLE_NODE";
 
+    public static final String TEZOS_NODE = "TEZOS_NODE";
+
 
     private static final class CppProxy extends BlockchainExplorerEngines
     {

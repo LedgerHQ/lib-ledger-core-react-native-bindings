@@ -8,6 +8,7 @@
 #import "LGBitcoinLikeNetworkParameters+Private.h"
 #import "LGEthereumLikeNetworkParameters+Private.h"
 #import "LGRippleLikeNetworkParameters+Private.h"
+#import "LGTezosLikeNetworkParameters+Private.h"
 #include <exception>
 #include <stdexcept>
 #include <utility>
@@ -50,6 +51,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = ::ledger::core::api::Networks::ripple();
         return ::djinni_generated::RippleLikeNetworkParameters::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
++ (nonnull LGTezosLikeNetworkParameters *)tezos {
+    try {
+        auto objcpp_result_ = ::ledger::core::api::Networks::tezos();
+        return ::djinni_generated::TezosLikeNetworkParameters::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

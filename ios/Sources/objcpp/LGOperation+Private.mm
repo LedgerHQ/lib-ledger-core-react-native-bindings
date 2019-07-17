@@ -13,6 +13,7 @@
 #import "LGOperationType+Private.h"
 #import "LGPreferences+Private.h"
 #import "LGRippleLikeOperation+Private.h"
+#import "LGTezosLikeOperation+Private.h"
 #import "LGTrustIndicator+Private.h"
 #import "LGWalletType+Private.h"
 #include <exception>
@@ -137,6 +138,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (nullable LGTezosLikeOperation *)asTezosLikeOperation {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->asTezosLikeOperation();
+        return ::djinni_generated::TezosLikeOperation::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (BOOL)isInstanceOfBitcoinLikeOperation {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfBitcoinLikeOperation();
@@ -154,6 +162,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 - (BOOL)isInstanceOfRippleLikeOperation {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfRippleLikeOperation();
+        return ::djinni::Bool::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (BOOL)isInstanceOfTezosLikeOperation {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfTezosLikeOperation();
         return ::djinni::Bool::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

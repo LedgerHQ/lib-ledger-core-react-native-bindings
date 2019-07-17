@@ -7,6 +7,7 @@
 #import "LGCurrencyUnit+Private.h"
 #import "LGEthereumLikeNetworkParameters+Private.h"
 #import "LGRippleLikeNetworkParameters+Private.h"
+#import "LGTezosLikeNetworkParameters+Private.h"
 #import "LGWalletType+Private.h"
 #include <cassert>
 
@@ -22,7 +23,8 @@ auto Currency::toCpp(ObjcType obj) -> CppType
             ::djinni::List<::djinni_generated::CurrencyUnit>::toCpp(obj.units),
             ::djinni::Optional<std::experimental::optional, ::djinni_generated::BitcoinLikeNetworkParameters>::toCpp(obj.bitcoinLikeNetworkParameters),
             ::djinni::Optional<std::experimental::optional, ::djinni_generated::EthereumLikeNetworkParameters>::toCpp(obj.ethereumLikeNetworkParameters),
-            ::djinni::Optional<std::experimental::optional, ::djinni_generated::RippleLikeNetworkParameters>::toCpp(obj.rippleLikeNetworkParameters)};
+            ::djinni::Optional<std::experimental::optional, ::djinni_generated::RippleLikeNetworkParameters>::toCpp(obj.rippleLikeNetworkParameters),
+            ::djinni::Optional<std::experimental::optional, ::djinni_generated::TezosLikeNetworkParameters>::toCpp(obj.tezosLikeNetworkParameters)};
 }
 
 auto Currency::fromCpp(const CppType& cpp) -> ObjcType
@@ -34,7 +36,8 @@ auto Currency::fromCpp(const CppType& cpp) -> ObjcType
                                             units:(::djinni::List<::djinni_generated::CurrencyUnit>::fromCpp(cpp.units))
                      bitcoinLikeNetworkParameters:(::djinni::Optional<std::experimental::optional, ::djinni_generated::BitcoinLikeNetworkParameters>::fromCpp(cpp.bitcoinLikeNetworkParameters))
                     ethereumLikeNetworkParameters:(::djinni::Optional<std::experimental::optional, ::djinni_generated::EthereumLikeNetworkParameters>::fromCpp(cpp.ethereumLikeNetworkParameters))
-                      rippleLikeNetworkParameters:(::djinni::Optional<std::experimental::optional, ::djinni_generated::RippleLikeNetworkParameters>::fromCpp(cpp.rippleLikeNetworkParameters))];
+                      rippleLikeNetworkParameters:(::djinni::Optional<std::experimental::optional, ::djinni_generated::RippleLikeNetworkParameters>::fromCpp(cpp.rippleLikeNetworkParameters))
+                       tezosLikeNetworkParameters:(::djinni::Optional<std::experimental::optional, ::djinni_generated::TezosLikeNetworkParameters>::fromCpp(cpp.tezosLikeNetworkParameters))];
 }
 
 }  // namespace djinni_generated

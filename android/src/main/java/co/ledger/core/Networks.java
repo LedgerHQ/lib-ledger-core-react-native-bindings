@@ -16,6 +16,9 @@ public abstract class Networks {
     /** The Ripple network parameters. */
     public static native RippleLikeNetworkParameters ripple();
 
+    /** The Tezos network parameters. */
+    public static native TezosLikeNetworkParameters tezos();
+
     private static final class CppProxy extends Networks
     {
         private final long nativeRef;

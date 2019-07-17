@@ -131,6 +131,128 @@ package object implicits {
         }
     }
     private def arrayList2Array[T](a: Array[T]): java.util.ArrayList[T] = new java.util.ArrayList[T](a.toSeq.asInstanceOf[java.util.Collection[T]])
+    implicit class RichTezosLikeTransaction(val self: TezosLikeTransaction) {
+    }
+    implicit class RichTezosLikeOperation(val self: TezosLikeOperation) {
+    }
+    implicit class RichTezosLikeBlock(val self: TezosLikeBlock) {
+    }
+    implicit class RichTezosLikeTransactionBuilder(val self: TezosLikeTransactionBuilder) {
+        def build(): Future[TezosLikeTransaction] = {
+            val promise = Promise[TezosLikeTransaction]()
+            self.build(new TezosLikeTransactionCallback() {
+                override def onCallback(result: TezosLikeTransaction, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+    }
+    implicit class RichTezosLikeTransactionCallback(val self: TezosLikeTransactionCallback) {
+    }
+    implicit class RichTezosLikeAccount(val self: TezosLikeAccount) {
+        def broadcastRawTransaction(transaction: Array[Byte]): Future[String] = {
+            val promise = Promise[String]()
+            self.broadcastRawTransaction(transaction, new StringCallback() {
+                override def onCallback(result: String, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def broadcastTransaction(transaction: TezosLikeTransaction): Future[String] = {
+            val promise = Promise[String]()
+            self.broadcastTransaction(transaction, new StringCallback() {
+                override def onCallback(result: String, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getStorage(address: String): Future[BigInt] = {
+            val promise = Promise[BigInt]()
+            self.getStorage(address, new BigIntCallback() {
+                override def onCallback(result: BigInt, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getEstimatedGasLimit(address: String): Future[BigInt] = {
+            val promise = Promise[BigInt]()
+            self.getEstimatedGasLimit(address, new BigIntCallback() {
+                override def onCallback(result: BigInt, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+    }
+    implicit class RichStringCallback(val self: StringCallback) {
+    }
+    implicit class RichBigIntCallback(val self: BigIntCallback) {
+    }
+    implicit class RichTezosLikeOriginatedAccount(val self: TezosLikeOriginatedAccount) {
+        def getBalance(): Future[Amount] = {
+            val promise = Promise[Amount]()
+            self.getBalance(new AmountCallback() {
+                override def onCallback(result: Amount, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getBalanceHistory(start: Date, end: Date, period: TimePeriod): Future[ArrayList[Amount]] = {
+            val promise = Promise[ArrayList[Amount]]()
+            self.getBalanceHistory(start, end, period, new AmountListCallback() {
+                override def onCallback(result: ArrayList[Amount], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+    }
+    implicit class RichAmountCallback(val self: AmountCallback) {
+    }
+    implicit class RichAmountListCallback(val self: AmountListCallback) {
+    }
+    implicit class RichTezosConfigurationDefaults(val self: TezosConfigurationDefaults) {
+    }
     implicit class RichRippleLikeTransaction(val self: RippleLikeTransaction) {
     }
     implicit class RichRippleLikeOperation(val self: RippleLikeOperation) {
@@ -212,10 +334,6 @@ package object implicits {
             })
             promise.future
         }
-    }
-    implicit class RichStringCallback(val self: StringCallback) {
-    }
-    implicit class RichAmountCallback(val self: AmountCallback) {
     }
     implicit class RichRippleConfigurationDefaults(val self: RippleConfigurationDefaults) {
     }
@@ -334,8 +452,6 @@ package object implicits {
             })
             promise.future
         }
-    }
-    implicit class RichAmountListCallback(val self: AmountListCallback) {
     }
     implicit class RichAddressListCallback(val self: AddressListCallback) {
     }
@@ -597,8 +713,6 @@ package object implicits {
             promise.future
         }
     }
-    implicit class RichBigIntCallback(val self: BigIntCallback) {
-    }
     implicit class RichBinaryCallback(val self: BinaryCallback) {
     }
     implicit class RichERC20LikeOperation(val self: ERC20LikeOperation) {
@@ -608,6 +722,8 @@ package object implicits {
     implicit class RichEthereumLikeWallet(val self: EthereumLikeWallet) {
     }
     implicit class RichEthereumLikeTransaction(val self: EthereumLikeTransaction) {
+    }
+    implicit class RichInternalTransaction(val self: InternalTransaction) {
     }
     implicit class RichEthereumLikeOperation(val self: EthereumLikeOperation) {
     }
@@ -706,6 +822,10 @@ package object implicits {
     implicit class RichBitcoinLikeScriptChunk(val self: BitcoinLikeScriptChunk) {
     }
     implicit class RichBitcoinLikeScript(val self: BitcoinLikeScript) {
+    }
+    implicit class RichTezosLikeAddress(val self: TezosLikeAddress) {
+    }
+    implicit class RichTezosLikeExtendedPublicKey(val self: TezosLikeExtendedPublicKey) {
     }
     implicit class RichRippleLikeAddress(val self: RippleLikeAddress) {
     }

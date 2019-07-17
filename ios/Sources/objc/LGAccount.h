@@ -10,6 +10,7 @@
 @class LGLogger;
 @class LGOperationQuery;
 @class LGPreferences;
+@class LGRippleLikeAccount;
 @protocol LGAddressListCallback;
 @protocol LGAmountCallback;
 @protocol LGAmountListCallback;
@@ -96,16 +97,19 @@ extern NSString * __nonnull const LGAccountEVNEWOPUID;
 - (nullable LGPreferences *)getOperationPreferences:(nonnull NSString *)uid;
 
 /**
- * Turn the account into an Bitcoin one, allowing operations to be performerd on the Bitcoin
+ * Turn the account into an Bitcoin one, allowing operations to be performed on the Bitcoin
  * network.
  */
 - (nullable LGBitcoinLikeAccount *)asBitcoinLikeAccount;
 
 /**
- * Turn the account into an Ethereum one, allowing operations to be performerd on the Ethereum
+ * Turn the account into an Ethereum one, allowing operations to be performrd on the Ethereum
  * network.
  */
 - (nullable LGEthereumLikeAccount *)asEthereumLikeAccount;
+
+/** Turn the account into a Ripple one, allowing operations to be performed on the Ripple network. */
+- (nullable LGRippleLikeAccount *)asRippleLikeAccount;
 
 /**
  * Check if account is a Bitcoin one.

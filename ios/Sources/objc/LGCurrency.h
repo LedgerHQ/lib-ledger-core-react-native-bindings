@@ -5,6 +5,7 @@
 #import "LGCurrencyUnit.h"
 #import "LGEthereumLikeNetworkParameters.h"
 #import "LGRippleLikeNetworkParameters.h"
+#import "LGTezosLikeNetworkParameters.h"
 #import "LGWalletType.h"
 #import <Foundation/Foundation.h>
 
@@ -17,7 +18,8 @@
                                      units:(nonnull NSArray<LGCurrencyUnit *> *)units
               bitcoinLikeNetworkParameters:(nullable LGBitcoinLikeNetworkParameters *)bitcoinLikeNetworkParameters
              ethereumLikeNetworkParameters:(nullable LGEthereumLikeNetworkParameters *)ethereumLikeNetworkParameters
-               rippleLikeNetworkParameters:(nullable LGRippleLikeNetworkParameters *)rippleLikeNetworkParameters;
+               rippleLikeNetworkParameters:(nullable LGRippleLikeNetworkParameters *)rippleLikeNetworkParameters
+                tezosLikeNetworkParameters:(nullable LGTezosLikeNetworkParameters *)tezosLikeNetworkParameters;
 + (nonnull instancetype)CurrencyWithWalletType:(LGWalletType)walletType
                                           name:(nonnull NSString *)name
                                  bip44CoinType:(int32_t)bip44CoinType
@@ -25,7 +27,8 @@
                                          units:(nonnull NSArray<LGCurrencyUnit *> *)units
                   bitcoinLikeNetworkParameters:(nullable LGBitcoinLikeNetworkParameters *)bitcoinLikeNetworkParameters
                  ethereumLikeNetworkParameters:(nullable LGEthereumLikeNetworkParameters *)ethereumLikeNetworkParameters
-                   rippleLikeNetworkParameters:(nullable LGRippleLikeNetworkParameters *)rippleLikeNetworkParameters;
+                   rippleLikeNetworkParameters:(nullable LGRippleLikeNetworkParameters *)rippleLikeNetworkParameters
+                    tezosLikeNetworkParameters:(nullable LGTezosLikeNetworkParameters *)tezosLikeNetworkParameters;
 
 /** WalletType object defining the type of wallet the currency belongs to. */
 @property (nonatomic, readonly) LGWalletType walletType;
@@ -54,7 +57,10 @@
 /** Optional EthereumLikeNetworkParameters, for more details refer to EthereumLikeNetworkParameters doc */
 @property (nonatomic, readonly, nullable) LGEthereumLikeNetworkParameters * ethereumLikeNetworkParameters;
 
-/**Optional EthereumLikeNetworkParameters, for more details refer to EthereumLikeNetworkParameters doc */
+/**Optional RippleLikeNetworkParameters, for more details refer to RippleLikeNetworkParameters doc */
 @property (nonatomic, readonly, nullable) LGRippleLikeNetworkParameters * rippleLikeNetworkParameters;
+
+/**Optional TezosLikeNetworkParameters, for more details refer to TezosLikeNetworkParameters doc */
+@property (nonatomic, readonly, nullable) LGTezosLikeNetworkParameters * tezosLikeNetworkParameters;
 
 @end

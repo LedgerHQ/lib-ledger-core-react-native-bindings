@@ -91,16 +91,19 @@ public abstract class Account {
     public abstract Preferences getOperationPreferences(String uid);
 
     /**
-     * Turn the account into an Bitcoin one, allowing operations to be performerd on the Bitcoin
+     * Turn the account into an Bitcoin one, allowing operations to be performed on the Bitcoin
      * network.
      */
     public abstract BitcoinLikeAccount asBitcoinLikeAccount();
 
     /**
-     * Turn the account into an Ethereum one, allowing operations to be performerd on the Ethereum
+     * Turn the account into an Ethereum one, allowing operations to be performrd on the Ethereum
      * network.
      */
     public abstract EthereumLikeAccount asEthereumLikeAccount();
+
+    /** Turn the account into a Ripple one, allowing operations to be performed on the Ripple network. */
+    public abstract RippleLikeAccount asRippleLikeAccount();
 
     /**
      * Check if account is a Bitcoin one.
@@ -272,6 +275,14 @@ public abstract class Account {
             return native_asEthereumLikeAccount(this.nativeRef);
         }
         private native EthereumLikeAccount native_asEthereumLikeAccount(long _nativeRef);
+
+        @Override
+        public RippleLikeAccount asRippleLikeAccount()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asRippleLikeAccount(this.nativeRef);
+        }
+        private native RippleLikeAccount native_asRippleLikeAccount(long _nativeRef);
 
         @Override
         public boolean isInstanceOfBitcoinLikeAccount()

@@ -6,6 +6,7 @@
 extern NSString * __nonnull const LGBlockchainExplorerEnginesLEDGERAPI;
 extern NSString * __nonnull const LGBlockchainExplorerEnginesRIPPLEAPI;
 extern NSString * __nonnull const LGBlockchainExplorerEnginesRIPPLENODE;
+extern NSString * __nonnull const LGBlockchainExplorerEnginesTEZOSNODE;
 
 /** Available API to use with explorers. */
 @interface LGBlockchainExplorerEngines : NSObject
