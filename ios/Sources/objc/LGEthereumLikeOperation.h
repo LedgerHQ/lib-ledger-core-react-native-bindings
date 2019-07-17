@@ -3,6 +3,7 @@
 
 #import <Foundation/Foundation.h>
 @class LGEthereumLikeTransaction;
+@class LGInternalTransaction;
 
 
 /** Class representing a Ethereum Operation. */
@@ -13,5 +14,8 @@
  * @return EthereumLikeTransaction object
  */
 - (nullable LGEthereumLikeTransaction *)getTransaction;
+
+/** Get all actions triggered by this transaction */
+- (nonnull NSArray<LGInternalTransaction *> *)getInternalTransactions;
 
 @end

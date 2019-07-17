@@ -326,7 +326,7 @@ RCT_REMAP_METHOD(getOperationPreferences,getOperationPreferences:(NSDictionary *
 }
 
 /**
- * Turn the account into an Bitcoin one, allowing operations to be performerd on the Bitcoin
+ * Turn the account into an Bitcoin one, allowing operations to be performed on the Bitcoin
  * network.
  */
 RCT_REMAP_METHOD(asBitcoinLikeAccount,asBitcoinLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -363,7 +363,7 @@ RCT_REMAP_METHOD(asBitcoinLikeAccount,asBitcoinLikeAccount:(NSDictionary *)curre
 }
 
 /**
- * Turn the account into an Ethereum one, allowing operations to be performerd on the Ethereum
+ * Turn the account into an Ethereum one, allowing operations to be performrd on the Ethereum
  * network.
  */
 RCT_REMAP_METHOD(asEthereumLikeAccount,asEthereumLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -394,6 +394,40 @@ RCT_REMAP_METHOD(asEthereumLikeAccount,asEthereumLikeAccount:(NSDictionary *)cur
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::asEthereumLikeAccount", nil);
+        return;
+    }
+
+}
+
+/** Turn the account into a Ripple one, allowing operations to be performed on the Ripple network. */
+RCT_REMAP_METHOD(asRippleLikeAccount,asRippleLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::asRippleLikeAccount, first argument should be an instance of LGAccount", nil);
+        return;
+    }
+    LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::asRippleLikeAccount, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGRippleLikeAccount * objcResult = [currentInstanceObj asRippleLikeAccount];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGRippleLikeAccount *rctImpl_objcResult = (RCTCoreLGRippleLikeAccount *)[self.bridge moduleForName:@"CoreLGRippleLikeAccount"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGRippleLikeAccount", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGAccount::asRippleLikeAccount", nil);
         return;
     }
 

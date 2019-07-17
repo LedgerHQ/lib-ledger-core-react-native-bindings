@@ -4,6 +4,7 @@
 #import "LGBitcoinLikeNetworkParameters.h"
 #import "LGEthereumLikeNetworkParameters.h"
 #import "LGRippleLikeNetworkParameters.h"
+#import "LGTezosLikeNetworkParameters.h"
 #import <Foundation/Foundation.h>
 
 
@@ -18,5 +19,8 @@
 
 /** The Ripple network parameters. */
 + (nonnull LGRippleLikeNetworkParameters *)ripple;
+
+/** The Tezos network parameters. */
++ (nonnull LGTezosLikeNetworkParameters *)tezos;
 
 @end

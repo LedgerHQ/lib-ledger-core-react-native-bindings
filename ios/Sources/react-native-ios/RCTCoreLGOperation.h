@@ -9,6 +9,7 @@
 #import "LGOperationType.h"
 #import "LGPreferences.h"
 #import "LGRippleLikeOperation.h"
+#import "LGTezosLikeOperation.h"
 #import "LGTrustIndicator.h"
 #import "LGWalletType.h"
 #import "RCTCoreBaseModule.h"
@@ -18,6 +19,7 @@
 #import "RCTCoreLGEthereumLikeOperation.h"
 #import "RCTCoreLGPreferences.h"
 #import "RCTCoreLGRippleLikeOperation.h"
+#import "RCTCoreLGTezosLikeOperation.h"
 #import "RCTCoreLGTrustIndicator.h"
 #import <Foundation/Foundation.h>
 #import <React/RCTBridge.h>

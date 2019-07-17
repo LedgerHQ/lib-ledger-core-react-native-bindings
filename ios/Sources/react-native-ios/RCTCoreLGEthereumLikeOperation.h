@@ -3,8 +3,10 @@
 
 #import "LGEthereumLikeOperation.h"
 #import "LGEthereumLikeTransaction.h"
+#import "LGInternalTransaction.h"
 #import "RCTCoreBaseModule.h"
 #import "RCTCoreLGEthereumLikeTransaction.h"
+#import "RCTCoreLGInternalTransaction.h"
 #import <Foundation/Foundation.h>
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>

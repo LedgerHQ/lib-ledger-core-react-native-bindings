@@ -14,4 +14,6 @@ typedef NS_ENUM(NSInteger, LGWalletType)
     LGWalletTypeRipple,
     /** A Monero-like wallet. */
     LGWalletTypeMonero,
+    /** A Tezos-like wallet. */
+    LGWalletTypeTezos,
 };

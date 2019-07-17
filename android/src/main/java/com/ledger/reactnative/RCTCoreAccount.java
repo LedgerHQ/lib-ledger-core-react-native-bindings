@@ -15,6 +15,7 @@ import co.ledger.core.EventBus;
 import co.ledger.core.Logger;
 import co.ledger.core.OperationQuery;
 import co.ledger.core.Preferences;
+import co.ledger.core.RippleLikeAccount;
 import co.ledger.core.TimePeriod;
 import co.ledger.core.WalletType;
 import com.facebook.react.bridge.Promise;
@@ -346,7 +347,7 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * Turn the account into an Bitcoin one, allowing operations to be performerd on the Bitcoin
+     * Turn the account into an Bitcoin one, allowing operations to be performed on the Bitcoin
      * network.
      */
     @ReactMethod
@@ -374,7 +375,7 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * Turn the account into an Ethereum one, allowing operations to be performerd on the Ethereum
+     * Turn the account into an Ethereum one, allowing operations to be performrd on the Ethereum
      * network.
      */
     @ReactMethod
@@ -392,6 +393,31 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreEthereumLikeAccount");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Turn the account into a Ripple one, allowing operations to be performed on the Ripple network. */
+    @ReactMethod
+    public void asRippleLikeAccount(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Account currentInstanceObj = this.javaObjects.get(sUid);
+
+            RippleLikeAccount javaResult = currentInstanceObj.asRippleLikeAccount();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreRippleLikeAccount rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreRippleLikeAccount.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreRippleLikeAccount");
             result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);

@@ -90,6 +90,20 @@
 		B2B07C27A20B0BD0D83E968B /* LGHttpReadBodyResult.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24521FAE427632A4F71E4DDF /* LGHttpReadBodyResult.mm */; };
 		B7BB1731803896DCFDB69CAB /* LGWalletListCallback+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13505A7D1B32ED5A76A8F05D /* LGWalletListCallback+Private.mm */; };
 		B91C431921641EB400E250AB /* ledger-core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91C431821641EB400E250AB /* ledger-core.framework */; };
+		B96DBD3E22DF59EA00ACA85E /* LGTezosLikeExtendedPublicKey+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD2622DF59E700ACA85E /* LGTezosLikeExtendedPublicKey+Private.mm */; };
+		B96DBD3F22DF59EA00ACA85E /* LGTezosLikeBlock+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD2722DF59E800ACA85E /* LGTezosLikeBlock+Private.mm */; };
+		B96DBD4022DF59EA00ACA85E /* LGTezosConfigurationDefaults+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD2922DF59E800ACA85E /* LGTezosConfigurationDefaults+Private.mm */; };
+		B96DBD4122DF59EA00ACA85E /* LGTezosLikeAccount+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD2A22DF59E800ACA85E /* LGTezosLikeAccount+Private.mm */; };
+		B96DBD4222DF59EA00ACA85E /* LGTezosLikeAddress+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD2B22DF59E800ACA85E /* LGTezosLikeAddress+Private.mm */; };
+		B96DBD4322DF59EA00ACA85E /* LGTezosLikeTransactionBuilder+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD3022DF59E800ACA85E /* LGTezosLikeTransactionBuilder+Private.mm */; };
+		B96DBD4422DF59EA00ACA85E /* LGTezosLikeOperation+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD3122DF59E900ACA85E /* LGTezosLikeOperation+Private.mm */; };
+		B96DBD4522DF59EA00ACA85E /* LGTezosLikeNetworkParameters+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD3322DF59E900ACA85E /* LGTezosLikeNetworkParameters+Private.mm */; };
+		B96DBD4622DF59EA00ACA85E /* LGTezosLikeTransaction+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD3522DF59E900ACA85E /* LGTezosLikeTransaction+Private.mm */; };
+		B96DBD4722DF59EA00ACA85E /* LGInternalTransaction+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD3722DF59E900ACA85E /* LGInternalTransaction+Private.mm */; };
+		B96DBD4822DF59EA00ACA85E /* LGTezosLikeOriginatedAccount+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD3822DF59E900ACA85E /* LGTezosLikeOriginatedAccount+Private.mm */; };
+		B96DBD4922DF59EA00ACA85E /* LGTezosLikeTransactionCallback+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD3A22DF59E900ACA85E /* LGTezosLikeTransactionCallback+Private.mm */; };
+		B96DBD5A22DF5A1800ACA85E /* LGTezosConfigurationDefaults.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD4D22DF5A1700ACA85E /* LGTezosConfigurationDefaults.mm */; };
+		B96DBD5B22DF5A1800ACA85E /* LGTezosLikeNetworkParameters.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96DBD5122DF5A1800ACA85E /* LGTezosLikeNetworkParameters.mm */; };
 		B982737C22787BBA00761F5F /* LGBigIntCallback+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B982737B22787BBA00761F5F /* LGBigIntCallback+Private.mm */; };
 		B9D8594D2148E5DB0007703A /* libdjinni_objc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D859482148E5BE0007703A /* libdjinni_objc.a */; };
 		B9D898012268C099004986A9 /* LGRippleLikeMemo.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9D897FF2268C098004986A9 /* LGRippleLikeMemo.mm */; };
@@ -439,6 +453,48 @@
 		B8370405628B2C6983E3A6E9 /* LGHttpReadBodyResult+Private.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGHttpReadBodyResult+Private.mm"; sourceTree = "<group>"; };
 		B918E47ACD3D918733CB6FD9 /* LGBitcoinLikeExtendedPublicKey+Private.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGBitcoinLikeExtendedPublicKey+Private.mm"; sourceTree = "<group>"; };
 		B91C431821641EB400E250AB /* ledger-core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "ledger-core.framework"; path = "ios/Frameworks/universal/ledger-core.framework"; sourceTree = "<group>"; };
+		B96DBD2322DF59E700ACA85E /* LGInternalTransaction+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGInternalTransaction+Private.h"; sourceTree = "<group>"; };
+		B96DBD2522DF59E700ACA85E /* LGTezosLikeBlock+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGTezosLikeBlock+Private.h"; sourceTree = "<group>"; };
+		B96DBD2622DF59E700ACA85E /* LGTezosLikeExtendedPublicKey+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGTezosLikeExtendedPublicKey+Private.mm"; sourceTree = "<group>"; };
+		B96DBD2722DF59E800ACA85E /* LGTezosLikeBlock+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGTezosLikeBlock+Private.mm"; sourceTree = "<group>"; };
+		B96DBD2822DF59E800ACA85E /* LGTezosLikeOriginatedAccount+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGTezosLikeOriginatedAccount+Private.h"; sourceTree = "<group>"; };
+		B96DBD2922DF59E800ACA85E /* LGTezosConfigurationDefaults+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGTezosConfigurationDefaults+Private.mm"; sourceTree = "<group>"; };
+		B96DBD2A22DF59E800ACA85E /* LGTezosLikeAccount+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGTezosLikeAccount+Private.mm"; sourceTree = "<group>"; };
+		B96DBD2B22DF59E800ACA85E /* LGTezosLikeAddress+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGTezosLikeAddress+Private.mm"; sourceTree = "<group>"; };
+		B96DBD2C22DF59E800ACA85E /* LGTezosLikeAddress+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGTezosLikeAddress+Private.h"; sourceTree = "<group>"; };
+		B96DBD2D22DF59E800ACA85E /* LGTezosLikeOperation+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGTezosLikeOperation+Private.h"; sourceTree = "<group>"; };
+		B96DBD2E22DF59E800ACA85E /* LGTezosLikeNetworkParameters+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGTezosLikeNetworkParameters+Private.h"; sourceTree = "<group>"; };
+		B96DBD2F22DF59E800ACA85E /* LGTezosLikeExtendedPublicKey+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGTezosLikeExtendedPublicKey+Private.h"; sourceTree = "<group>"; };
+		B96DBD3022DF59E800ACA85E /* LGTezosLikeTransactionBuilder+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGTezosLikeTransactionBuilder+Private.mm"; sourceTree = "<group>"; };
+		B96DBD3122DF59E900ACA85E /* LGTezosLikeOperation+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGTezosLikeOperation+Private.mm"; sourceTree = "<group>"; };
+		B96DBD3222DF59E900ACA85E /* LGTezosLikeAccount+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGTezosLikeAccount+Private.h"; sourceTree = "<group>"; };
+		B96DBD3322DF59E900ACA85E /* LGTezosLikeNetworkParameters+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGTezosLikeNetworkParameters+Private.mm"; sourceTree = "<group>"; };
+		B96DBD3422DF59E900ACA85E /* LGTezosLikeTransaction+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGTezosLikeTransaction+Private.h"; sourceTree = "<group>"; };
+		B96DBD3522DF59E900ACA85E /* LGTezosLikeTransaction+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGTezosLikeTransaction+Private.mm"; sourceTree = "<group>"; };
+		B96DBD3622DF59E900ACA85E /* LGTezosCurve+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGTezosCurve+Private.h"; sourceTree = "<group>"; };
+		B96DBD3722DF59E900ACA85E /* LGInternalTransaction+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGInternalTransaction+Private.mm"; sourceTree = "<group>"; };
+		B96DBD3822DF59E900ACA85E /* LGTezosLikeOriginatedAccount+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGTezosLikeOriginatedAccount+Private.mm"; sourceTree = "<group>"; };
+		B96DBD3922DF59E900ACA85E /* LGTezosLikeTransactionCallback+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGTezosLikeTransactionCallback+Private.h"; sourceTree = "<group>"; };
+		B96DBD3A22DF59E900ACA85E /* LGTezosLikeTransactionCallback+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGTezosLikeTransactionCallback+Private.mm"; sourceTree = "<group>"; };
+		B96DBD3B22DF59E900ACA85E /* LGTezosOperationTag+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGTezosOperationTag+Private.h"; sourceTree = "<group>"; };
+		B96DBD3C22DF59EA00ACA85E /* LGTezosConfigurationDefaults+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGTezosConfigurationDefaults+Private.h"; sourceTree = "<group>"; };
+		B96DBD3D22DF59EA00ACA85E /* LGTezosLikeTransactionBuilder+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGTezosLikeTransactionBuilder+Private.h"; sourceTree = "<group>"; };
+		B96DBD4A22DF5A1700ACA85E /* LGTezosLikeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTezosLikeOperation.h; sourceTree = "<group>"; };
+		B96DBD4B22DF5A1700ACA85E /* LGTezosCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTezosCurve.h; sourceTree = "<group>"; };
+		B96DBD4C22DF5A1700ACA85E /* LGTezosConfigurationDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTezosConfigurationDefaults.h; sourceTree = "<group>"; };
+		B96DBD4D22DF5A1700ACA85E /* LGTezosConfigurationDefaults.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LGTezosConfigurationDefaults.mm; sourceTree = "<group>"; };
+		B96DBD4E22DF5A1700ACA85E /* LGInternalTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGInternalTransaction.h; sourceTree = "<group>"; };
+		B96DBD4F22DF5A1700ACA85E /* LGTezosLikeAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTezosLikeAddress.h; sourceTree = "<group>"; };
+		B96DBD5022DF5A1800ACA85E /* LGTezosLikeAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTezosLikeAccount.h; sourceTree = "<group>"; };
+		B96DBD5122DF5A1800ACA85E /* LGTezosLikeNetworkParameters.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LGTezosLikeNetworkParameters.mm; sourceTree = "<group>"; };
+		B96DBD5222DF5A1800ACA85E /* LGTezosLikeTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTezosLikeTransaction.h; sourceTree = "<group>"; };
+		B96DBD5322DF5A1800ACA85E /* LGTezosLikeTransactionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTezosLikeTransactionBuilder.h; sourceTree = "<group>"; };
+		B96DBD5422DF5A1800ACA85E /* LGTezosLikeExtendedPublicKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTezosLikeExtendedPublicKey.h; sourceTree = "<group>"; };
+		B96DBD5522DF5A1800ACA85E /* LGTezosLikeOriginatedAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTezosLikeOriginatedAccount.h; sourceTree = "<group>"; };
+		B96DBD5622DF5A1800ACA85E /* LGTezosLikeTransactionCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTezosLikeTransactionCallback.h; sourceTree = "<group>"; };
+		B96DBD5722DF5A1800ACA85E /* LGTezosOperationTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTezosOperationTag.h; sourceTree = "<group>"; };
+		B96DBD5822DF5A1800ACA85E /* LGTezosLikeBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTezosLikeBlock.h; sourceTree = "<group>"; };
+		B96DBD5922DF5A1800ACA85E /* LGTezosLikeNetworkParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTezosLikeNetworkParameters.h; sourceTree = "<group>"; };
 		B982737822787BAF00761F5F /* LGBigIntCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGBigIntCallback.h; sourceTree = "<group>"; };
 		B982737A22787BBA00761F5F /* LGBigIntCallback+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGBigIntCallback+Private.h"; sourceTree = "<group>"; };
 		B982737B22787BBA00761F5F /* LGBigIntCallback+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGBigIntCallback+Private.mm"; sourceTree = "<group>"; };
@@ -675,6 +731,22 @@
 		7AEC0E73370A64CCF756FFD3 /* objc */ = {
 			isa = PBXGroup;
 			children = (
+				B96DBD4E22DF5A1700ACA85E /* LGInternalTransaction.h */,
+				B96DBD4C22DF5A1700ACA85E /* LGTezosConfigurationDefaults.h */,
+				B96DBD4D22DF5A1700ACA85E /* LGTezosConfigurationDefaults.mm */,
+				B96DBD4B22DF5A1700ACA85E /* LGTezosCurve.h */,
+				B96DBD5022DF5A1800ACA85E /* LGTezosLikeAccount.h */,
+				B96DBD4F22DF5A1700ACA85E /* LGTezosLikeAddress.h */,
+				B96DBD5822DF5A1800ACA85E /* LGTezosLikeBlock.h */,
+				B96DBD5422DF5A1800ACA85E /* LGTezosLikeExtendedPublicKey.h */,
+				B96DBD5922DF5A1800ACA85E /* LGTezosLikeNetworkParameters.h */,
+				B96DBD5122DF5A1800ACA85E /* LGTezosLikeNetworkParameters.mm */,
+				B96DBD4A22DF5A1700ACA85E /* LGTezosLikeOperation.h */,
+				B96DBD5522DF5A1800ACA85E /* LGTezosLikeOriginatedAccount.h */,
+				B96DBD5222DF5A1800ACA85E /* LGTezosLikeTransaction.h */,
+				B96DBD5322DF5A1800ACA85E /* LGTezosLikeTransactionBuilder.h */,
+				B96DBD5622DF5A1800ACA85E /* LGTezosLikeTransactionCallback.h */,
+				B96DBD5722DF5A1800ACA85E /* LGTezosOperationTag.h */,
 				B982737822787BAF00761F5F /* LGBigIntCallback.h */,
 				B9D898002268C098004986A9 /* LGBigIntListCallback.h */,
 				B9D897FD2268C098004986A9 /* LGRippleLikeMemo.h */,
@@ -888,6 +960,32 @@
 		D7EC854A25A7F1FAB3F8F398 /* objcpp */ = {
 			isa = PBXGroup;
 			children = (
+				B96DBD2322DF59E700ACA85E /* LGInternalTransaction+Private.h */,
+				B96DBD3722DF59E900ACA85E /* LGInternalTransaction+Private.mm */,
+				B96DBD3C22DF59EA00ACA85E /* LGTezosConfigurationDefaults+Private.h */,
+				B96DBD2922DF59E800ACA85E /* LGTezosConfigurationDefaults+Private.mm */,
+				B96DBD3622DF59E900ACA85E /* LGTezosCurve+Private.h */,
+				B96DBD3222DF59E900ACA85E /* LGTezosLikeAccount+Private.h */,
+				B96DBD2A22DF59E800ACA85E /* LGTezosLikeAccount+Private.mm */,
+				B96DBD2C22DF59E800ACA85E /* LGTezosLikeAddress+Private.h */,
+				B96DBD2B22DF59E800ACA85E /* LGTezosLikeAddress+Private.mm */,
+				B96DBD2522DF59E700ACA85E /* LGTezosLikeBlock+Private.h */,
+				B96DBD2722DF59E800ACA85E /* LGTezosLikeBlock+Private.mm */,
+				B96DBD2F22DF59E800ACA85E /* LGTezosLikeExtendedPublicKey+Private.h */,
+				B96DBD2622DF59E700ACA85E /* LGTezosLikeExtendedPublicKey+Private.mm */,
+				B96DBD2E22DF59E800ACA85E /* LGTezosLikeNetworkParameters+Private.h */,
+				B96DBD3322DF59E900ACA85E /* LGTezosLikeNetworkParameters+Private.mm */,
+				B96DBD2D22DF59E800ACA85E /* LGTezosLikeOperation+Private.h */,
+				B96DBD3122DF59E900ACA85E /* LGTezosLikeOperation+Private.mm */,
+				B96DBD2822DF59E800ACA85E /* LGTezosLikeOriginatedAccount+Private.h */,
+				B96DBD3822DF59E900ACA85E /* LGTezosLikeOriginatedAccount+Private.mm */,
+				B96DBD3422DF59E900ACA85E /* LGTezosLikeTransaction+Private.h */,
+				B96DBD3522DF59E900ACA85E /* LGTezosLikeTransaction+Private.mm */,
+				B96DBD3D22DF59EA00ACA85E /* LGTezosLikeTransactionBuilder+Private.h */,
+				B96DBD3022DF59E800ACA85E /* LGTezosLikeTransactionBuilder+Private.mm */,
+				B96DBD3922DF59E900ACA85E /* LGTezosLikeTransactionCallback+Private.h */,
+				B96DBD3A22DF59E900ACA85E /* LGTezosLikeTransactionCallback+Private.mm */,
+				B96DBD3B22DF59E900ACA85E /* LGTezosOperationTag+Private.h */,
 				B982737A22787BBA00761F5F /* LGBigIntCallback+Private.h */,
 				B982737B22787BBA00761F5F /* LGBigIntCallback+Private.mm */,
 				B9D898052268C0A9004986A9 /* LGBigIntListCallback+Private.h */,
@@ -1244,11 +1342,13 @@
 				5E04745C95FAC256427E2C5E /* LGEstimatedSize.mm in Sources */,
 				C638ECF5218F6400F836F9C9 /* LGCurrency.mm in Sources */,
 				B2B07C27A20B0BD0D83E968B /* LGHttpReadBodyResult.mm in Sources */,
+				B96DBD4422DF59EA00ACA85E /* LGTezosLikeOperation+Private.mm in Sources */,
 				E80F8106374EC7B415FE6B91 /* LGLocale.mm in Sources */,
 				7D32AB1D78090B2AC3B089B6 /* LGSynchronizationStatus.mm in Sources */,
 				E57CFCDF220C7F1B00E15511 /* LGERC20Token+Private.mm in Sources */,
 				E4EC8120BEDE5BB6D868EFE8 /* LGKeychainEngines.mm in Sources */,
 				64DD14D811136AEDC4F4E883 /* LGError.mm in Sources */,
+				B96DBD5A22DF5A1800ACA85E /* LGTezosConfigurationDefaults.mm in Sources */,
 				CB528197BE9F50F4E01B9581 /* LGConfigurationDefaults.mm in Sources */,
 				E5D47C7522301E4500FBA595 /* LGRippleLikeAccount+Private.mm in Sources */,
 				F7E557F175C7B1B74942C9F6 /* LGBitcoinLikeTransactionRequest.mm in Sources */,
@@ -1266,6 +1366,7 @@
 				E57CFCD2220C7F1B00E15511 /* LGDatabaseResultSet+Private.mm in Sources */,
 				5260DFA81858198AAFDA4CB0 /* LGBitcoinLikePreparedTransaction.mm in Sources */,
 				1EF15C69B3963F2B3264748A /* LGSynchronizerEngines.mm in Sources */,
+				B96DBD4722DF59EA00ACA85E /* LGInternalTransaction+Private.mm in Sources */,
 				B9D898012268C099004986A9 /* LGRippleLikeMemo.mm in Sources */,
 				EF17DDF7FE77531FF4EA72BD /* LGBitcoinLikeNetworkParameters.mm in Sources */,
 				B9D898072268C0A9004986A9 /* LGRippleLikeMemo+Private.mm in Sources */,
@@ -1305,12 +1406,14 @@
 				03B4D391F28551990B332EBE /* LGQueryFilter+Private.mm in Sources */,
 				77A3340846643A10CD262B00 /* LGBitcoinLikeTransactionBuilder+Private.mm in Sources */,
 				E57CFCD5220C7F1B00E15511 /* LGDatabaseConnectionPool+Private.mm in Sources */,
+				B96DBD4322DF59EA00ACA85E /* LGTezosLikeTransactionBuilder+Private.mm in Sources */,
 				57F4C920915D2CE2C39E1E85 /* LGBlockCallback+Private.mm in Sources */,
 				0019D989C7C20C859C0031E3 /* LGEstimatedSize+Private.mm in Sources */,
 				E5D47C7422301E4500FBA595 /* LGRippleConfigurationDefaults+Private.mm in Sources */,
 				B7BB1731803896DCFDB69CAB /* LGWalletListCallback+Private.mm in Sources */,
 				E5D47C7722301E4500FBA595 /* LGRippleLikeBlock+Private.mm in Sources */,
 				0943BD56B0F4EAB2438C8500 /* LGExecutionContext+Private.mm in Sources */,
+				B96DBD4622DF59EA00ACA85E /* LGTezosLikeTransaction+Private.mm in Sources */,
 				7E2DCD346475305C60CB2DA0 /* LGAddress+Private.mm in Sources */,
 				9ED1DA6E206850A06E233239 /* LGBitcoinLikeOutputListCallback+Private.mm in Sources */,
 				3C160132245FBDC73270D078 /* LGAddressListCallback+Private.mm in Sources */,
@@ -1320,12 +1423,14 @@
 				48D9437F91124E00F7801722 /* LGConfiguration+Private.mm in Sources */,
 				6F2632FD51C7FA619107A6E4 /* LGWallet+Private.mm in Sources */,
 				0E0D8FB14A03607CA113798C /* LGLedgerCore+Private.mm in Sources */,
+				B96DBD4522DF59EA00ACA85E /* LGTezosLikeNetworkParameters+Private.mm in Sources */,
 				E5D47C7322301E4500FBA595 /* LGRippleLikeNetworkParameters+Private.mm in Sources */,
 				E57CFCCE220C7F1B00E15511 /* LGEthereumLikeOperation+Private.mm in Sources */,
 				A8B93D16BD3DEF3FEA12A46E /* LGCurrencyUnit+Private.mm in Sources */,
 				E5D47C5A22301E3600FBA595 /* LGRippleLikeNetworkParameters.mm in Sources */,
 				ABECC61410638A6DEC011E2B /* LGBitcoinLikeBlock+Private.mm in Sources */,
 				2AB7CCD6049A1EB3B2C97029 /* LGBitcoinLikePreparedTransaction+Private.mm in Sources */,
+				B96DBD3E22DF59EA00ACA85E /* LGTezosLikeExtendedPublicKey+Private.mm in Sources */,
 				5D6111AF8FAB0B51D34598C5 /* LGBlockchainExplorerEngines+Private.mm in Sources */,
 				BF003C241AC26F5D4733D7A0 /* LGEventReceiver+Private.mm in Sources */,
 				E57CFCD1220C7F1B00E15511 /* LGDatabaseBlob+Private.mm in Sources */,
@@ -1333,6 +1438,7 @@
 				414178FFBBB3DCBD04E8E0E9 /* LGAccountCreationInfoCallback+Private.mm in Sources */,
 				A4D0085CDEE527247CB9573A /* LGSynchronizationEngines+Private.mm in Sources */,
 				29D29592C3482C3E4F396F5D /* LGRunnable+Private.mm in Sources */,
+				B96DBD4022DF59EA00ACA85E /* LGTezosConfigurationDefaults+Private.mm in Sources */,
 				EC3E84B12B3C313CE7464ABD /* LGBitcoinLikeWallet+Private.mm in Sources */,
 				F2B47DD000BFBF3B9E6567C4 /* LGAmount+Private.mm in Sources */,
 				FEC20C97299CA057FEEC7200 /* LGBitcoinLikeExtendedPublicKey+Private.mm in Sources */,
@@ -1348,6 +1454,7 @@
 				892C4D3DD80B32A370D58AD7 /* LGBitcoinLikeOperator+Private.mm in Sources */,
 				D65C358981E45A295FABB325 /* LGBitcoinLikeOutput+Private.mm in Sources */,
 				1427F0711D3DB723DC4F7BF1 /* LGRandomNumberGenerator+Private.mm in Sources */,
+				B96DBD5B22DF5A1800ACA85E /* LGTezosLikeNetworkParameters.mm in Sources */,
 				E57CFCD9220C7F1B00E15511 /* LGEthereumLikeTransaction+Private.mm in Sources */,
 				859122C4180373188C928518 /* LGBitcoinLikeTransactionCallback+Private.mm in Sources */,
 				0726CAF54B7AFD8E9C052ADF /* LGOperationQuery+Private.mm in Sources */,
@@ -1357,6 +1464,7 @@
 				9D574D28AC5C09D62BE4119A /* LGPathResolver+Private.mm in Sources */,
 				B9D898062268C0A9004986A9 /* LGBigIntListCallback+Private.mm in Sources */,
 				E57CFCDC220C7F1B00E15511 /* LGEthereumLikeBlock+Private.mm in Sources */,
+				B96DBD4222DF59EA00ACA85E /* LGTezosLikeAddress+Private.mm in Sources */,
 				3065BED79A57DE6CEC8A6F76 /* LGEventBus+Private.mm in Sources */,
 				E5D47C5922301E3600FBA595 /* LGRippleConfigurationDefaults.mm in Sources */,
 				D1B9563A34B5AC10310012A0 /* LGLocale+Private.mm in Sources */,
@@ -1386,6 +1494,7 @@
 				549733F7CCF955783FEC0FFB /* LGEthereumLikeWallet+Private.mm in Sources */,
 				9B248DBBF6580B1E1ADB91C9 /* LGExtendedKeyAccountCreationInfoCallback+Private.mm in Sources */,
 				FEEF07CD2EF3B08BB97C46DE /* LGOperationListCallback+Private.mm in Sources */,
+				B96DBD4822DF59EA00ACA85E /* LGTezosLikeOriginatedAccount+Private.mm in Sources */,
 				DCC12C9DAC01D32F4C8AAB21 /* LGTrustIndicator+Private.mm in Sources */,
 				E5D47C7822301E4500FBA595 /* LGRippleLikeTransactionCallback+Private.mm in Sources */,
 				1B8D8F90C35C3DF7CCA00C1B /* LGAccount+Private.mm in Sources */,
@@ -1395,12 +1504,15 @@
 				52C8F225EF50984D453076B2 /* LGPoolConfiguration+Private.mm in Sources */,
 				F72C811114C5469BD6E4CDF6 /* LGAmountCallback+Private.mm in Sources */,
 				E57CFCD6220C7F1B00E15511 /* LGEthereumLikeExtendedPublicKey+Private.mm in Sources */,
+				B96DBD4922DF59EA00ACA85E /* LGTezosLikeTransactionCallback+Private.mm in Sources */,
 				D7384869B28CD4052B0D9872 /* LGCurrencyListCallback+Private.mm in Sources */,
 				A9FFF40690770D33C64871C1 /* LGDerivationPath+Private.mm in Sources */,
 				2689CDF3B427E9127B6B6C7F /* LGCurrencyCallback+Private.mm in Sources */,
 				227670239DA1D92077750E3A /* LGBitcoinLikeOperation+Private.mm in Sources */,
 				0D34E6ED8E661880C73AD7F6 /* LGBlock+Private.mm in Sources */,
+				B96DBD4122DF59EA00ACA85E /* LGTezosLikeAccount+Private.mm in Sources */,
 				33E6105C754C68903B910D7E /* LGSynchronizerEngines+Private.mm in Sources */,
+				B96DBD3F22DF59EA00ACA85E /* LGTezosLikeBlock+Private.mm in Sources */,
 				5E42FA63BC84D006C68EFCE0 /* LGBigInt+Private.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

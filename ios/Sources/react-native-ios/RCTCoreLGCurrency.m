@@ -38,7 +38,8 @@ RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
                                     units:(NSArray <NSDictionary *> *)units
              bitcoinLikeNetworkParameters:(nullable NSDictionary *)bitcoinLikeNetworkParameters
             ethereumLikeNetworkParameters:(nullable NSDictionary *)ethereumLikeNetworkParameters
-              rippleLikeNetworkParameters:(nullable NSDictionary *)rippleLikeNetworkParameters withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+              rippleLikeNetworkParameters:(nullable NSDictionary *)rippleLikeNetworkParameters
+               tezosLikeNetworkParameters:(nullable NSDictionary *)tezosLikeNetworkParameters withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSMutableDictionary *implementationsData = [[NSMutableDictionary alloc] init];
     NSMutableArray *field_4 = [[NSMutableArray alloc] init];
 
@@ -63,9 +64,12 @@ RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
     RCTCoreLGRippleLikeNetworkParameters *rctParam_rippleLikeNetworkParameters = (RCTCoreLGRippleLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGRippleLikeNetworkParameters"];
     LGRippleLikeNetworkParameters *field_7 = (LGRippleLikeNetworkParameters *)[rctParam_rippleLikeNetworkParameters.objcImplementations objectForKey:rippleLikeNetworkParameters[@"uid"]];
     [implementationsData setObject:rippleLikeNetworkParameters[@"uid"] forKey:@"rippleLikeNetworkParameters"];
+    RCTCoreLGTezosLikeNetworkParameters *rctParam_tezosLikeNetworkParameters = (RCTCoreLGTezosLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGTezosLikeNetworkParameters"];
+    LGTezosLikeNetworkParameters *field_8 = (LGTezosLikeNetworkParameters *)[rctParam_tezosLikeNetworkParameters.objcImplementations objectForKey:tezosLikeNetworkParameters[@"uid"]];
+    [implementationsData setObject:tezosLikeNetworkParameters[@"uid"] forKey:@"tezosLikeNetworkParameters"];
 
 
-    LGCurrency * finalResult = [[LGCurrency alloc] initWithWalletType:(LGWalletType)walletType name:name bip44CoinType:bip44CoinType paymentUriScheme:paymentUriScheme units:field_4 bitcoinLikeNetworkParameters:field_5 ethereumLikeNetworkParameters:field_6 rippleLikeNetworkParameters:field_7];
+    LGCurrency * finalResult = [[LGCurrency alloc] initWithWalletType:(LGWalletType)walletType name:name bip44CoinType:bip44CoinType paymentUriScheme:paymentUriScheme units:field_4 bitcoinLikeNetworkParameters:field_5 ethereumLikeNetworkParameters:field_6 rippleLikeNetworkParameters:field_7 tezosLikeNetworkParameters:field_8];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGCurrency *rctImpl = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
     NSArray *finalResultArray = [[NSArray alloc] initWithObjects:finalResult, uuid, nil];
@@ -124,6 +128,16 @@ RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
     }
     NSDictionary *converted_field_7 = @{@"type" : @"CoreLGRippleLikeNetworkParameters", @"uid" : field_7_uuid };
     [implementationsData setObject:converted_field_7 forKey:@"rippleLikeNetworkParameters"];
+    id field_8 = objcImpl.tezosLikeNetworkParameters;
+    NSString *field_8_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGTezosLikeNetworkParameters *rctImpl_field_8 = (RCTCoreLGTezosLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGTezosLikeNetworkParameters"];
+    if (field_8)
+    {
+        NSArray *field_8_array = [[NSArray alloc] initWithObjects:field_8, field_8_uuid, nil];
+        [rctImpl_field_8 baseSetObject:field_8_array];
+    }
+    NSDictionary *converted_field_8 = @{@"type" : @"CoreLGTezosLikeNetworkParameters", @"uid" : field_8_uuid };
+    [implementationsData setObject:converted_field_8 forKey:@"tezosLikeNetworkParameters"];
     [self.implementationsData setObject:implementationsData forKey:currentInstance[@"uid"]];
 }
 RCT_REMAP_METHOD(getWalletType, getWalletType:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
@@ -199,6 +213,18 @@ RCT_REMAP_METHOD(getRippleLikeNetworkParameters, getRippleLikeNetworkParameters:
         data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     }
     NSDictionary *result = [data objectForKey:@"rippleLikeNetworkParameters"];
+    resolve(result);
+}
+
+RCT_REMAP_METHOD(getTezosLikeNetworkParameters, getTezosLikeNetworkParameters:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
+{
+    NSDictionary *data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
+    if (!data)
+    {
+        [self mapImplementationsData:currentInstance];
+        data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
+    }
+    NSDictionary *result = [data objectForKey:@"tezosLikeNetworkParameters"];
     resolve(result);
 }
 

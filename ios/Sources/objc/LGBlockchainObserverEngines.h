@@ -5,6 +5,7 @@
 
 extern NSString * __nonnull const LGBlockchainObserverEnginesLEDGERAPI;
 extern NSString * __nonnull const LGBlockchainObserverEnginesRIPPLENODE;
+extern NSString * __nonnull const LGBlockchainObserverEnginesTEZOSNODE;
 
 /** Available API to use with observers. */
 @interface LGBlockchainObserverEngines : NSObject

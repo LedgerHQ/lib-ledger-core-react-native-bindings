@@ -9,3 +9,5 @@ NSString * __nonnull const LGBlockchainExplorerEnginesLEDGERAPI = @"LEDGER_API";
 NSString * __nonnull const LGBlockchainExplorerEnginesRIPPLEAPI = @"RIPPLE_API";
 
 NSString * __nonnull const LGBlockchainExplorerEnginesRIPPLENODE = @"RIPPLE_NODE";
+
+NSString * __nonnull const LGBlockchainExplorerEnginesTEZOSNODE = @"TEZOS_NODE";

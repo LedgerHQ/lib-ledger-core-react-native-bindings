@@ -25,6 +25,8 @@ public final class Currency {
 
     /*package*/ final RippleLikeNetworkParameters rippleLikeNetworkParameters;
 
+    /*package*/ final TezosLikeNetworkParameters tezosLikeNetworkParameters;
+
     public Currency(
             WalletType walletType,
             String name,
@@ -33,7 +35,8 @@ public final class Currency {
             ArrayList<CurrencyUnit> units,
             BitcoinLikeNetworkParameters bitcoinLikeNetworkParameters,
             EthereumLikeNetworkParameters ethereumLikeNetworkParameters,
-            RippleLikeNetworkParameters rippleLikeNetworkParameters) {
+            RippleLikeNetworkParameters rippleLikeNetworkParameters,
+            TezosLikeNetworkParameters tezosLikeNetworkParameters) {
         this.walletType = walletType;
         this.name = name;
         this.bip44CoinType = bip44CoinType;
@@ -42,6 +45,7 @@ public final class Currency {
         this.bitcoinLikeNetworkParameters = bitcoinLikeNetworkParameters;
         this.ethereumLikeNetworkParameters = ethereumLikeNetworkParameters;
         this.rippleLikeNetworkParameters = rippleLikeNetworkParameters;
+        this.tezosLikeNetworkParameters = tezosLikeNetworkParameters;
     }
 
     /** WalletType object defining the type of wallet the currency belongs to. */
@@ -85,9 +89,14 @@ public final class Currency {
         return ethereumLikeNetworkParameters;
     }
 
-    /**Optional EthereumLikeNetworkParameters, for more details refer to EthereumLikeNetworkParameters doc */
+    /**Optional RippleLikeNetworkParameters, for more details refer to RippleLikeNetworkParameters doc */
     public RippleLikeNetworkParameters getRippleLikeNetworkParameters() {
         return rippleLikeNetworkParameters;
+    }
+
+    /**Optional TezosLikeNetworkParameters, for more details refer to TezosLikeNetworkParameters doc */
+    public TezosLikeNetworkParameters getTezosLikeNetworkParameters() {
+        return tezosLikeNetworkParameters;
     }
 
     @Override
@@ -101,6 +110,7 @@ public final class Currency {
                 "," + "bitcoinLikeNetworkParameters=" + bitcoinLikeNetworkParameters +
                 "," + "ethereumLikeNetworkParameters=" + ethereumLikeNetworkParameters +
                 "," + "rippleLikeNetworkParameters=" + rippleLikeNetworkParameters +
+                "," + "tezosLikeNetworkParameters=" + tezosLikeNetworkParameters +
         "}";
     }
 

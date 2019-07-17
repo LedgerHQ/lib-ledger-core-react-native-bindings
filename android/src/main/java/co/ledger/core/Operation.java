@@ -93,13 +93,23 @@ public abstract class Operation {
      */
     public abstract RippleLikeOperation asRippleLikeOperation();
 
+    /**
+     *Convert operation as Tezos operation
+     *@return TezosLikeOperation object
+     */
+    public abstract TezosLikeOperation asTezosLikeOperation();
+
+    /** Same as isInstanceOfBitcoinLikeOperation for bitcoin. */
     public abstract boolean isInstanceOfBitcoinLikeOperation();
 
-    /** Same as isInstanceOfBitcoinLikeOperation for ethereum. */
+    /** Same as isInstanceOfEthereumLikeOperation for ethereum. */
     public abstract boolean isInstanceOfEthereumLikeOperation();
 
-    /** Same as isInstanceOfBitcoinLikeOperation for ripple. */
+    /** Same as isInstanceOfRippleLikeOperation for ripple. */
     public abstract boolean isInstanceOfRippleLikeOperation();
+
+    /** Same as isInstanceOfTezosLikeOperation for tezos. */
+    public abstract boolean isInstanceOfTezosLikeOperation();
 
     /**
      * Tells if the operation is complete.
@@ -252,6 +262,14 @@ public abstract class Operation {
         private native RippleLikeOperation native_asRippleLikeOperation(long _nativeRef);
 
         @Override
+        public TezosLikeOperation asTezosLikeOperation()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asTezosLikeOperation(this.nativeRef);
+        }
+        private native TezosLikeOperation native_asTezosLikeOperation(long _nativeRef);
+
+        @Override
         public boolean isInstanceOfBitcoinLikeOperation()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
@@ -274,6 +292,14 @@ public abstract class Operation {
             return native_isInstanceOfRippleLikeOperation(this.nativeRef);
         }
         private native boolean native_isInstanceOfRippleLikeOperation(long _nativeRef);
+
+        @Override
+        public boolean isInstanceOfTezosLikeOperation()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_isInstanceOfTezosLikeOperation(this.nativeRef);
+        }
+        private native boolean native_isInstanceOfTezosLikeOperation(long _nativeRef);
 
         @Override
         public boolean isComplete()

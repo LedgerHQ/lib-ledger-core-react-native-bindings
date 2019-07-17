@@ -68,4 +68,43 @@ RCT_REMAP_METHOD(getTransaction,getTransaction:(NSDictionary *)currentInstance W
     }
 
 }
+
+/** Get all actions triggered by this transaction */
+RCT_REMAP_METHOD(getInternalTransactions,getInternalTransactions:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeOperation::getInternalTransactions, first argument should be an instance of LGEthereumLikeOperation", nil);
+        return;
+    }
+    LGEthereumLikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeOperation::getInternalTransactions, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSArray<LGInternalTransaction *> * objcResult = [currentInstanceObj getInternalTransactions];
+
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (id objcResult_elem in objcResult)
+    {
+        NSString *objcResult_elem_uuid = [[NSUUID UUID] UUIDString];
+        RCTCoreLGInternalTransaction *rctImpl_objcResult_elem = (RCTCoreLGInternalTransaction *)[self.bridge moduleForName:@"CoreLGInternalTransaction"];
+        NSArray *objcResult_elem_array = [[NSArray alloc] initWithObjects:objcResult_elem, objcResult_elem_uuid, nil];
+        [rctImpl_objcResult_elem baseSetObject:objcResult_elem_array];
+        NSDictionary *result_elem = @{@"type" : @"CoreLGInternalTransaction", @"uid" : objcResult_elem_uuid };
+        [result addObject:result_elem];
+    }
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGEthereumLikeOperation::getInternalTransactions", nil);
+        return;
+    }
+
+}
 @end

@@ -5,6 +5,7 @@ package com.ledger.reactnative;
 
 import co.ledger.core.EthereumLikeOperation;
 import co.ledger.core.EthereumLikeTransaction;
+import co.ledger.core.InternalTransaction;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
@@ -121,6 +122,36 @@ public class RCTCoreEthereumLikeOperation extends ReactContextBaseJavaModule {
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreEthereumLikeTransaction");
             result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Get all actions triggered by this transaction */
+    @ReactMethod
+    public void getInternalTransactions(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            EthereumLikeOperation currentInstanceObj = this.javaObjects.get(sUid);
+
+            ArrayList<InternalTransaction> javaResult = currentInstanceObj.getInternalTransactions();
+
+            WritableNativeArray result = new WritableNativeArray();
+            for (InternalTransaction javaResult_elem : javaResult)
+            {
+                String javaResult_elem_uuid = UUID.randomUUID().toString();
+                RCTCoreInternalTransaction rctImpl_javaResult_elem = this.reactContext.getNativeModule(RCTCoreInternalTransaction.class);
+                rctImpl_javaResult_elem.getJavaObjects().put(javaResult_elem_uuid, javaResult_elem);
+                WritableNativeMap result_elem = new WritableNativeMap();
+                result_elem.putString("type","RCTCoreInternalTransaction");
+                result_elem.putString("uid",javaResult_elem_uuid);
+                result.pushMap(result_elem);
+            }
 
             promise.resolve(result);
         }
