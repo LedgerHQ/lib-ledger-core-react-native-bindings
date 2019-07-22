@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TimeZone;
 import java.util.UUID;
 
 /** Class representing Bitcoin block */
@@ -161,6 +162,7 @@ public class RCTCoreBitcoinLikeBlock extends ReactContextBaseJavaModule {
             Date javaResult = currentInstanceObj.getTime();
             WritableNativeMap result = new WritableNativeMap();
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
             String finalJavaResult = dateFormat.format(javaResult);
             result.putString("value", finalJavaResult);
 

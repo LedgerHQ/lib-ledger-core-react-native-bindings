@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TimeZone;
 import java.util.UUID;
 
 /** Structure of a block in the blockchain. */
@@ -155,6 +156,7 @@ public class RCTCoreBlock extends ReactContextBaseJavaModule {
             Block javaObj = this.javaObjects.get(uid);
             Date result = javaObj.getTime();
             DateFormat resultDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            resultDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
             String converted_result = resultDateFormat.format(result);
             promise.resolve(converted_result);
         }
