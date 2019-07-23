@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TimeZone;
 import java.util.UUID;
 
 /**
@@ -327,6 +328,7 @@ public class RCTCoreRippleLikeTransaction extends ReactContextBaseJavaModule {
             Date javaResult = currentInstanceObj.getDate();
             WritableNativeMap result = new WritableNativeMap();
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
             String finalJavaResult = dateFormat.format(javaResult);
             result.putString("value", finalJavaResult);
 
