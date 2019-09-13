@@ -167,6 +167,25 @@ RCT_REMAP_METHOD(getEstimatedGasLimit,getEstimatedGasLimit:(NSDictionary *)curre
 
 }
 
+/** Get fees from network */
+RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeAccount::getFees, first argument should be an instance of LGTezosLikeAccount", nil);
+        return;
+    }
+    LGTezosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeAccount::getFees, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGBigIntCallback *objcParam_0 = [[RCTCoreLGBigIntCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getFees:objcParam_0];
+
+}
+
 /** Get originated accounts by current account */
 RCT_REMAP_METHOD(getOriginatedAccounts,getOriginatedAccounts:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

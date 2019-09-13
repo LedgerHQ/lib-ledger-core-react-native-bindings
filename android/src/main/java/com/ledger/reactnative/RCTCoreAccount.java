@@ -16,6 +16,7 @@ import co.ledger.core.Logger;
 import co.ledger.core.OperationQuery;
 import co.ledger.core.Preferences;
 import co.ledger.core.RippleLikeAccount;
+import co.ledger.core.TezosLikeAccount;
 import co.ledger.core.TimePeriod;
 import co.ledger.core.WalletType;
 import com.facebook.react.bridge.Promise;
@@ -38,6 +39,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TimeZone;
 import java.util.UUID;
 
 /** Class representing an account. */
@@ -418,6 +420,31 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreRippleLikeAccount");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Turn the account into a Tezos one, allowing operations to be performed on the Tezos network. */
+    @ReactMethod
+    public void asTezosLikeAccount(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Account currentInstanceObj = this.javaObjects.get(sUid);
+
+            TezosLikeAccount javaResult = currentInstanceObj.asTezosLikeAccount();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreTezosLikeAccount rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreTezosLikeAccount.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreTezosLikeAccount");
             result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);

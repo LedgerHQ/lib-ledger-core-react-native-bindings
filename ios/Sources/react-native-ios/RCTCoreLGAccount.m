@@ -433,6 +433,40 @@ RCT_REMAP_METHOD(asRippleLikeAccount,asRippleLikeAccount:(NSDictionary *)current
 
 }
 
+/** Turn the account into a Tezos one, allowing operations to be performed on the Tezos network. */
+RCT_REMAP_METHOD(asTezosLikeAccount,asTezosLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::asTezosLikeAccount, first argument should be an instance of LGAccount", nil);
+        return;
+    }
+    LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::asTezosLikeAccount, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGTezosLikeAccount * objcResult = [currentInstanceObj asTezosLikeAccount];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGTezosLikeAccount *rctImpl_objcResult = (RCTCoreLGTezosLikeAccount *)[self.bridge moduleForName:@"CoreLGTezosLikeAccount"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGTezosLikeAccount", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGAccount::asTezosLikeAccount", nil);
+        return;
+    }
+
+}
+
 /**
  * Check if account is a Bitcoin one.
  * @return bool

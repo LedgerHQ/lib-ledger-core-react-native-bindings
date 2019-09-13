@@ -212,6 +212,20 @@ package object implicits {
             })
             promise.future
         }
+        def getFees(): Future[BigInt] = {
+            val promise = Promise[BigInt]()
+            self.getFees(new BigIntCallback() {
+                override def onCallback(result: BigInt, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
     }
     implicit class RichStringCallback(val self: StringCallback) {
     }

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TimeZone;
 import java.util.UUID;
 
 /** Class representing Bitcoin outputs. */
@@ -288,6 +289,30 @@ public class RCTCoreBitcoinLikeOutput extends ReactContextBaseJavaModule {
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreDerivationPath");
             result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    @ReactMethod
+    public void getBlockHeight(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            BitcoinLikeOutput currentInstanceObj = this.javaObjects.get(sUid);
+
+            Long javaResult = currentInstanceObj.getBlockHeight();
+            WritableNativeMap result = new WritableNativeMap();
+            if (javaResult == null)
+            {
+                promise.resolve(javaResult);
+                return;
+            }
+            result.putDouble("value", javaResult);
 
             promise.resolve(result);
         }

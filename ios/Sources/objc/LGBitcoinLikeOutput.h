@@ -44,4 +44,6 @@
 
 - (nullable LGDerivationPath *)getDerivationPath;
 
+- (nullable NSNumber *)getBlockHeight;
+
 @end

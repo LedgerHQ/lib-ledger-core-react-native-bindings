@@ -30,6 +30,9 @@ public abstract class TezosLikeAccount {
      */
     public abstract void getEstimatedGasLimit(String address, BigIntCallback callback);
 
+    /** Get fees from network */
+    public abstract void getFees(BigIntCallback callback);
+
     /** Get originated accounts by current account */
     public abstract ArrayList<TezosLikeOriginatedAccount> getOriginatedAccounts();
 
@@ -95,6 +98,14 @@ public abstract class TezosLikeAccount {
             native_getEstimatedGasLimit(this.nativeRef, address, callback);
         }
         private native void native_getEstimatedGasLimit(long _nativeRef, String address, BigIntCallback callback);
+
+        @Override
+        public void getFees(BigIntCallback callback)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_getFees(this.nativeRef, callback);
+        }
+        private native void native_getFees(long _nativeRef, BigIntCallback callback);
 
         @Override
         public ArrayList<TezosLikeOriginatedAccount> getOriginatedAccounts()

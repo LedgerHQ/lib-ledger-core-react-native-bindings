@@ -105,6 +105,9 @@ public abstract class Account {
     /** Turn the account into a Ripple one, allowing operations to be performed on the Ripple network. */
     public abstract RippleLikeAccount asRippleLikeAccount();
 
+    /** Turn the account into a Tezos one, allowing operations to be performed on the Tezos network. */
+    public abstract TezosLikeAccount asTezosLikeAccount();
+
     /**
      * Check if account is a Bitcoin one.
      * @return bool
@@ -283,6 +286,14 @@ public abstract class Account {
             return native_asRippleLikeAccount(this.nativeRef);
         }
         private native RippleLikeAccount native_asRippleLikeAccount(long _nativeRef);
+
+        @Override
+        public TezosLikeAccount asTezosLikeAccount()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asTezosLikeAccount(this.nativeRef);
+        }
+        private native TezosLikeAccount native_asTezosLikeAccount(long _nativeRef);
 
         @Override
         public boolean isInstanceOfBitcoinLikeAccount()

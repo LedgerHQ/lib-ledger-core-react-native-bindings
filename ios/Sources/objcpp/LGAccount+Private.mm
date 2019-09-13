@@ -18,6 +18,7 @@
 #import "LGOperationQuery+Private.h"
 #import "LGPreferences+Private.h"
 #import "LGRippleLikeAccount+Private.h"
+#import "LGTezosLikeAccount+Private.h"
 #import "LGTimePeriod+Private.h"
 #import "LGWalletType+Private.h"
 #include <exception>
@@ -129,6 +130,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->asRippleLikeAccount();
         return ::djinni_generated::RippleLikeAccount::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGTezosLikeAccount *)asTezosLikeAccount {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->asTezosLikeAccount();
+        return ::djinni_generated::TezosLikeAccount::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
