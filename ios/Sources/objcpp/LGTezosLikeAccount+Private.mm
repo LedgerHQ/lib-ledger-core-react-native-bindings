@@ -74,6 +74,12 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (void)getFees:(nullable id<LGBigIntCallback>)callback {
+    try {
+        _cppRefHandle.get()->getFees(::djinni_generated::BigIntCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (nonnull NSArray<LGTezosLikeOriginatedAccount *> *)getOriginatedAccounts {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->getOriginatedAccounts();

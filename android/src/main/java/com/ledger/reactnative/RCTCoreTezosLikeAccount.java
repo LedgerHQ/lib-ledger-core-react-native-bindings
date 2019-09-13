@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TimeZone;
 import java.util.UUID;
 
 /**Class representing a Tezos account */
@@ -227,6 +228,23 @@ public class RCTCoreTezosLikeAccount extends ReactContextBaseJavaModule {
 
             RCTCoreBigIntCallback javaParam_1 = RCTCoreBigIntCallback.initWithPromise(promise, this.reactContext);
             currentInstanceObj.getEstimatedGasLimit(address, javaParam_1);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Get fees from network */
+    @ReactMethod
+    public void getFees(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            TezosLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreBigIntCallback javaParam_0 = RCTCoreBigIntCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getFees(javaParam_0);
         }
         catch(Exception e)
         {

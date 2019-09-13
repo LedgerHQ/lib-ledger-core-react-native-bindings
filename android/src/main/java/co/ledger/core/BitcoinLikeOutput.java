@@ -41,6 +41,8 @@ public abstract class BitcoinLikeOutput {
 
     public abstract DerivationPath getDerivationPath();
 
+    public abstract Long getBlockHeight();
+
     private static final class CppProxy extends BitcoinLikeOutput
     {
         private final long nativeRef;
@@ -119,5 +121,13 @@ public abstract class BitcoinLikeOutput {
             return native_getDerivationPath(this.nativeRef);
         }
         private native DerivationPath native_getDerivationPath(long _nativeRef);
+
+        @Override
+        public Long getBlockHeight()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getBlockHeight(this.nativeRef);
+        }
+        private native Long native_getBlockHeight(long _nativeRef);
     }
 }

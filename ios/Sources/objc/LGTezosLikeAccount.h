@@ -38,6 +38,9 @@
 - (void)getEstimatedGasLimit:(nonnull NSString *)address
                     callback:(nullable id<LGBigIntCallback>)callback;
 
+/** Get fees from network */
+- (void)getFees:(nullable id<LGBigIntCallback>)callback;
+
 /** Get originated accounts by current account */
 - (nonnull NSArray<LGTezosLikeOriginatedAccount *> *)getOriginatedAccounts;
 

@@ -14,6 +14,7 @@
 #import "LGOperationQuery.h"
 #import "LGPreferences.h"
 #import "LGRippleLikeAccount.h"
+#import "LGTezosLikeAccount.h"
 #import "LGTimePeriod.h"
 #import "LGWalletType.h"
 #import "RCTCoreBaseModule.h"
@@ -29,6 +30,7 @@
 #import "RCTCoreLGOperationQuery.h"
 #import "RCTCoreLGPreferences.h"
 #import "RCTCoreLGRippleLikeAccount.h"
+#import "RCTCoreLGTezosLikeAccount.h"
 #import <Foundation/Foundation.h>
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>

@@ -11,6 +11,7 @@
 @class LGOperationQuery;
 @class LGPreferences;
 @class LGRippleLikeAccount;
+@class LGTezosLikeAccount;
 @protocol LGAddressListCallback;
 @protocol LGAmountCallback;
 @protocol LGAmountListCallback;
@@ -110,6 +111,9 @@ extern NSString * __nonnull const LGAccountEVNEWOPUID;
 
 /** Turn the account into a Ripple one, allowing operations to be performed on the Ripple network. */
 - (nullable LGRippleLikeAccount *)asRippleLikeAccount;
+
+/** Turn the account into a Tezos one, allowing operations to be performed on the Tezos network. */
+- (nullable LGTezosLikeAccount *)asTezosLikeAccount;
 
 /**
  * Check if account is a Bitcoin one.
