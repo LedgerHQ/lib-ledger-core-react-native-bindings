@@ -463,7 +463,6 @@ public class RCTCoreBitcoinLikeTransaction extends ReactContextBaseJavaModule {
                 ReadableMap signatures_elem = signatures.getMap(i);
                 RCTCoreBitcoinLikeSignature rctParam_signatures_elem = this.reactContext.getNativeModule(RCTCoreBitcoinLikeSignature.class);
                 BitcoinLikeSignature javaParam_0_elem = rctParam_signatures_elem.getJavaObjects().get(signatures_elem.getString("uid"));
-                javaParam_0_data.pushString(signatures_elem.getString("uid"));
                 javaParam_0.add(javaParam_0_elem);
             }
             BitcoinLikeSignatureState javaResult = currentInstanceObj.setSignatures(javaParam_0, override);
