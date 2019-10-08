@@ -83,17 +83,9 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (void)setSignature:(nonnull NSData *)rSignature
-          sSignature:(nonnull NSData *)sSignature {
+- (void)setSignature:(nonnull NSData *)signature {
     try {
-        _cppRefHandle.get()->setSignature(::djinni::Binary::toCpp(rSignature),
-                                          ::djinni::Binary::toCpp(sSignature));
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (void)setDERSignature:(nonnull NSData *)signature {
-    try {
-        _cppRefHandle.get()->setDERSignature(::djinni::Binary::toCpp(signature));
+        _cppRefHandle.get()->setSignature(::djinni::Binary::toCpp(signature));
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

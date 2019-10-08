@@ -10,6 +10,8 @@
 #import "LGBitcoinLikeBlock+Private.h"
 #import "LGBitcoinLikeInput+Private.h"
 #import "LGBitcoinLikeOutput+Private.h"
+#import "LGBitcoinLikeSignature+Private.h"
+#import "LGBitcoinLikeSignatureState+Private.h"
 #import "LGEstimatedSize+Private.h"
 #include <exception>
 #include <stdexcept>
@@ -123,6 +125,24 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->getEstimatedSize();
         return ::djinni_generated::EstimatedSize::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (LGBitcoinLikeSignatureState)setSignatures:(nonnull NSArray<LGBitcoinLikeSignature *> *)signatures
+                                    override:(BOOL)override {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->setSignatures(::djinni::List<::djinni_generated::BitcoinLikeSignature>::toCpp(signatures),
+                                                                 ::djinni::Bool::toCpp(override));
+        return ::djinni::Enum<::ledger::core::api::BitcoinLikeSignatureState, LGBitcoinLikeSignatureState>::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (LGBitcoinLikeSignatureState)setDERSignatures:(nonnull NSArray<NSData *> *)signatures
+                                       override:(BOOL)override {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->setDERSignatures(::djinni::List<::djinni::Binary>::toCpp(signatures),
+                                                                    ::djinni::Bool::toCpp(override));
+        return ::djinni::Enum<::ledger::core::api::BitcoinLikeSignatureState, LGBitcoinLikeSignatureState>::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

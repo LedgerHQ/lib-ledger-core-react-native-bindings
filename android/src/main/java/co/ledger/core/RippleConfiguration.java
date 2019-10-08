@@ -5,23 +5,11 @@ package co.ledger.core;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class RippleConfigurationDefaults {
-    public static final String RIPPLE_DEFAULT_API_ENDPOINT = "https://data.ripple.com";
-
-    public static final String RIPPLE_OBSERVER_NODE_ENDPOINT_S2 = "https://s2.ripple.com";
-
-    public static final String RIPPLE_OBSERVER_NODE_ENDPOINT_S3 = "https://s3.ripple.com";
-
-    public static final String RIPPLE_OBSERVER_WS_ENDPOINT_S2 = "wss://s2.ripple.com";
-
-    public static final String RIPPLE_OBSERVER_WS_ENDPOINT_S3 = "wss://s3.ripple.com";
-
-    public static final String RIPPLE_DEFAULT_PORT = "51234";
-
-    public static final int RIPPLE_DEFAULT_LAST_LEDGER_SEQUENCE_OFFSET = 4;
+public abstract class RippleConfiguration {
+    public static final String RIPPLE_LAST_LEDGER_SEQUENCE_OFFSET = "RIPPLE_LAST_LEDGER_SEQUENCE_OFFSET";
 
 
-    private static final class CppProxy extends RippleConfigurationDefaults
+    private static final class CppProxy extends RippleConfiguration
     {
         private final long nativeRef;
         private final AtomicBoolean destroyed = new AtomicBoolean(false);

@@ -33,10 +33,7 @@
 - (nonnull NSData *)serialize;
 
 /** Set signature of transaction, when a signature is set serialize method gives back serialized Tx */
-- (void)setSignature:(nonnull NSData *)rSignature
-          sSignature:(nonnull NSData *)sSignature;
-
-- (void)setDERSignature:(nonnull NSData *)signature;
+- (void)setSignature:(nonnull NSData *)signature;
 
 /**
  * Get the time when the transaction was issued or the time of the block including

@@ -31,6 +31,20 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 {
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
+-(NSData *) hexStringToData: (NSString *)hexString 
+{
+    NSMutableData *data= [[NSMutableData alloc] init];
+    unsigned char byte;
+    char byteChars[3] = {'\0','\0','\0'};
+    for (int i = 0; i < ([hexString length] / 2); i++)
+    {
+        byteChars[0] = [hexString characterAtIndex: i*2];
+        byteChars[1] = [hexString characterAtIndex: i*2 + 1];
+        byte = strtol(byteChars, NULL, 16);
+        [data appendBytes:&byte length:1];
+    }
+    return data;
+}
 
 /** Get the hash of the transaction. */
 RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -442,6 +456,75 @@ RCT_REMAP_METHOD(getEstimatedSize,getEstimatedSize:(NSDictionary *)currentInstan
     else
     {
         reject(@"impl_call_error", @"Error while calling LGBitcoinLikeTransaction::getEstimatedSize", nil);
+        return;
+    }
+
+}
+
+/**
+ * Sign all inputs for given transaction. 
+ * Build DER encoded signature from RSV data.
+ * @return SIGNING_SUCCEED if succeed case else refers to BitcoinLikeSignatureState enumeration
+ */
+RCT_REMAP_METHOD(setSignatures,setSignatures:(NSDictionary *)currentInstance withParams:(NSArray <NSDictionary *> *)signatures
+                                                                               override:(BOOL)override withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransaction::setSignatures, first argument should be an instance of LGBitcoinLikeTransaction", nil);
+        return;
+    }
+    LGBitcoinLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransaction::setSignatures, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGBitcoinLikeSignature *rctParam_signatures = (RCTCoreLGBitcoinLikeSignature *)[self.bridge moduleForName:@"CoreLGBitcoinLikeSignature"];
+    LGBitcoinLikeSignature *objcParam_0 = (LGBitcoinLikeSignature *)[rctParam_signatures.objcImplementations objectForKey:signatures[@"uid"]];
+    LGBitcoinLikeSignatureState objcResult = [currentInstanceObj setSignatures:objcParam_0 override:override];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGBitcoinLikeTransaction::setSignatures", nil);
+        return;
+    }
+
+}
+
+/**
+ * Sign all inputs for given transaction. 
+ * @return SIGNING_SUCCEED if succeed case else refers to BitcoinLikeSignatureState enumeration
+ */
+RCT_REMAP_METHOD(setDERSignatures,setDERSignatures:(NSDictionary *)currentInstance withParams:(NSArray<NSString *> *)signatures
+                                                                                     override:(BOOL)override withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransaction::setDERSignatures, first argument should be an instance of LGBitcoinLikeTransaction", nil);
+        return;
+    }
+    LGBitcoinLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransaction::setDERSignatures, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSData *objcParam_0 = [self hexStringToData:signatures];
+
+    LGBitcoinLikeSignatureState objcResult = [currentInstanceObj setDERSignatures:objcParam_0 override:override];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGBitcoinLikeTransaction::setDERSignatures", nil);
         return;
     }
 
