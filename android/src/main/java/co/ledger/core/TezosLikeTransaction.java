@@ -30,9 +30,7 @@ public abstract class TezosLikeTransaction {
     public abstract byte[] serialize();
 
     /** Set signature of transaction, when a signature is set serialize method gives back serialized Tx */
-    public abstract void setSignature(byte[] rSignature, byte[] sSignature);
-
-    public abstract void setDERSignature(byte[] signature);
+    public abstract void setSignature(byte[] signature);
 
     /**
      * Get the time when the transaction was issued or the time of the block including
@@ -132,20 +130,12 @@ public abstract class TezosLikeTransaction {
         private native byte[] native_serialize(long _nativeRef);
 
         @Override
-        public void setSignature(byte[] rSignature, byte[] sSignature)
+        public void setSignature(byte[] signature)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_setSignature(this.nativeRef, rSignature, sSignature);
+            native_setSignature(this.nativeRef, signature);
         }
-        private native void native_setSignature(long _nativeRef, byte[] rSignature, byte[] sSignature);
-
-        @Override
-        public void setDERSignature(byte[] signature)
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_setDERSignature(this.nativeRef, signature);
-        }
-        private native void native_setDERSignature(long _nativeRef, byte[] signature);
+        private native void native_setSignature(long _nativeRef, byte[] signature);
 
         @Override
         public Date getDate()

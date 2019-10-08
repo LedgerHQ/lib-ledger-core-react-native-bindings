@@ -15,3 +15,5 @@ NSString * __nonnull const LGRippleConfigurationDefaultsRIPPLEOBSERVERWSENDPOINT
 NSString * __nonnull const LGRippleConfigurationDefaultsRIPPLEOBSERVERWSENDPOINTS3 = @"wss://s3.ripple.com";
 
 NSString * __nonnull const LGRippleConfigurationDefaultsRIPPLEDEFAULTPORT = @"51234";
+
+int32_t const LGRippleConfigurationDefaultsRIPPLEDEFAULTLASTLEDGERSEQUENCEOFFSET = 4;

@@ -5,6 +5,8 @@
 #import "LGBitcoinLikeBlock.h"
 #import "LGBitcoinLikeInput.h"
 #import "LGBitcoinLikeOutput.h"
+#import "LGBitcoinLikeSignature.h"
+#import "LGBitcoinLikeSignatureState.h"
 #import "LGBitcoinLikeTransaction.h"
 #import "LGEstimatedSize.h"
 #import "RCTCoreBaseModule.h"
@@ -12,6 +14,7 @@
 #import "RCTCoreLGBitcoinLikeBlock.h"
 #import "RCTCoreLGBitcoinLikeInput.h"
 #import "RCTCoreLGBitcoinLikeOutput.h"
+#import "RCTCoreLGBitcoinLikeSignature.h"
 #import "RCTCoreLGEstimatedSize.h"
 #import <Foundation/Foundation.h>
 #import <React/RCTBridge.h>

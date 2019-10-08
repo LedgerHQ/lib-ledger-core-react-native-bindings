@@ -7,6 +7,8 @@ import co.ledger.core.Amount;
 import co.ledger.core.BitcoinLikeBlock;
 import co.ledger.core.BitcoinLikeInput;
 import co.ledger.core.BitcoinLikeOutput;
+import co.ledger.core.BitcoinLikeSignature;
+import co.ledger.core.BitcoinLikeSignatureState;
 import co.ledger.core.BitcoinLikeTransaction;
 import co.ledger.core.EstimatedSize;
 import com.facebook.react.bridge.Promise;
@@ -434,6 +436,72 @@ public class RCTCoreBitcoinLikeTransaction extends ReactContextBaseJavaModule {
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreEstimatedSize");
             result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Sign all inputs for given transaction. 
+     * Build DER encoded signature from RSV data.
+     * @return SIGNING_SUCCEED if succeed case else refers to BitcoinLikeSignatureState enumeration
+     */
+    @ReactMethod
+    public void setSignatures(ReadableMap currentInstance, ReadableArray signatures, boolean override, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            BitcoinLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+
+            ArrayList<BitcoinLikeSignature> javaParam_0 = new ArrayList<BitcoinLikeSignature>();
+            for (int i = 0; i <  signatures.size(); i++)
+            {
+                ReadableMap signatures_elem = signatures.getMap(i);
+                RCTCoreBitcoinLikeSignature rctParam_signatures_elem = this.reactContext.getNativeModule(RCTCoreBitcoinLikeSignature.class);
+                BitcoinLikeSignature javaParam_0_elem = rctParam_signatures_elem.getJavaObjects().get(signatures_elem.getString("uid"));
+                javaParam_0_data.pushString(signatures_elem.getString("uid"));
+                javaParam_0.add(javaParam_0_elem);
+            }
+            BitcoinLikeSignatureState javaResult = currentInstanceObj.setSignatures(javaParam_0, override);
+            WritableNativeMap result = new WritableNativeMap();
+            int finalJavaResult = javaResult.ordinal();
+            result.putInt("value", finalJavaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Sign all inputs for given transaction. 
+     * @return SIGNING_SUCCEED if succeed case else refers to BitcoinLikeSignatureState enumeration
+     */
+    @ReactMethod
+    public void setDERSignatures(ReadableMap currentInstance, ReadableArray signatures, boolean override, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            BitcoinLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+
+            ArrayList<byte[]> javaParam_0 = new ArrayList<byte[]>();
+            for (int i = 0; i <  signatures.size(); i++)
+            {
+                String signatures_elem = signatures.getString(i);
+                byte [] javaParam_0_elem = hexStringToByteArray(signatures_elem);
+
+                javaParam_0.add(javaParam_0_elem);
+            }
+            BitcoinLikeSignatureState javaResult = currentInstanceObj.setDERSignatures(javaParam_0, override);
+            WritableNativeMap result = new WritableNativeMap();
+            int finalJavaResult = javaResult.ordinal();
+            result.putInt("value", finalJavaResult);
 
             promise.resolve(result);
         }

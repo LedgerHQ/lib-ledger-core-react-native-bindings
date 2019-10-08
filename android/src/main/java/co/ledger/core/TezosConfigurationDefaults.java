@@ -6,7 +6,7 @@ package co.ledger.core;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class TezosConfigurationDefaults {
-    public static final String TEZOS_DEFAULT_API_ENDPOINT = "https://api6.tzscan.io";
+    public static final String TEZOS_DEFAULT_API_ENDPOINT = "https://explorers.api.live.ledger.com";
 
     public static final String TEZOS_DEFAULT_API_VERSION = "v3";
 
@@ -17,6 +17,17 @@ public abstract class TezosConfigurationDefaults {
     public static final String TEZOS_OBSERVER_WS_ENDPOINT_S2 = "wss://s2.tezos.com";
 
     public static final String TEZOS_OBSERVER_WS_ENDPOINT_S3 = "wss://s3.tezos.com";
+
+    public static final String TEZOS_XPUB_CURVE_ED25519 = "ED25519";
+
+    public static final String TEZOS_XPUB_CURVE_SECP256K1 = "SECP256K1";
+
+    /** Taken from some existing XTZ wallets */
+    public static final String TEZOS_DEFAULT_FEES = "1420";
+
+    public static final String TEZOS_DEFAULT_GAS_LIMIT = "10600";
+
+    public static final String TEZOS_DEFAULT_STORAGE_LIMIT = "300";
 
 
     private static final class CppProxy extends TezosConfigurationDefaults

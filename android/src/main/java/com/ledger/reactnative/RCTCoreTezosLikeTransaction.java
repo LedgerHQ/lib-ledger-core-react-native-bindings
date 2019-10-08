@@ -293,27 +293,7 @@ public class RCTCoreTezosLikeTransaction extends ReactContextBaseJavaModule {
     }
     /** Set signature of transaction, when a signature is set serialize method gives back serialized Tx */
     @ReactMethod
-    public void setSignature(ReadableMap currentInstance, String rSignature, String sSignature, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            TezosLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
-
-            byte [] javaParam_0 = hexStringToByteArray(rSignature);
-
-            byte [] javaParam_1 = hexStringToByteArray(sSignature);
-
-            currentInstanceObj.setSignature(javaParam_0, javaParam_1);
-            promise.resolve(0);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    @ReactMethod
-    public void setDERSignature(ReadableMap currentInstance, String signature, Promise promise) {
+    public void setSignature(ReadableMap currentInstance, String signature, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
@@ -322,7 +302,7 @@ public class RCTCoreTezosLikeTransaction extends ReactContextBaseJavaModule {
 
             byte [] javaParam_0 = hexStringToByteArray(signature);
 
-            currentInstanceObj.setDERSignature(javaParam_0);
+            currentInstanceObj.setSignature(javaParam_0);
             promise.resolve(0);
         }
         catch(Exception e)

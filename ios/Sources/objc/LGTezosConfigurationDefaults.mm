@@ -4,7 +4,7 @@
 #import "LGTezosConfigurationDefaults.h"
 
 
-NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIENDPOINT = @"https://api6.tzscan.io";
+NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIENDPOINT = @"https://explorers.api.live.ledger.com";
 
 NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIVERSION = @"v3";
 
@@ -15,3 +15,13 @@ NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERNODEENDPOINT
 NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERWSENDPOINTS2 = @"wss://s2.tezos.com";
 
 NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERWSENDPOINTS3 = @"wss://s3.tezos.com";
+
+NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSXPUBCURVEED25519 = @"ED25519";
+
+NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSXPUBCURVESECP256K1 = @"SECP256K1";
+
+NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTFEES = @"1420";
+
+NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTGASLIMIT = @"10600";
+
+NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTSTORAGELIMIT = @"300";

@@ -273,8 +273,7 @@ RCT_REMAP_METHOD(serialize,serialize:(NSDictionary *)currentInstance WithResolve
 }
 
 /** Set signature of transaction, when a signature is set serialize method gives back serialized Tx */
-RCT_REMAP_METHOD(setSignature,setSignature:(NSDictionary *)currentInstance withParams:(NSString *)rSignature
-                                                                           sSignature:(NSString *)sSignature withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_REMAP_METHOD(setSignature,setSignature:(NSDictionary *)currentInstance withParams:(NSString *)signature withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::setSignature, first argument should be an instance of LGTezosLikeTransaction", nil);
@@ -287,31 +286,9 @@ RCT_REMAP_METHOD(setSignature,setSignature:(NSDictionary *)currentInstance withP
         reject(@"impl_call_error", error, nil);
         return;
     }
-    NSData *objcParam_0 = [self hexStringToData:rSignature];
-
-    NSData *objcParam_1 = [self hexStringToData:sSignature];
-
-    [currentInstanceObj setSignature:objcParam_0 sSignature:objcParam_1];
-    resolve(@(YES));
-
-}
-
-RCT_REMAP_METHOD(setDERSignature,setDERSignature:(NSDictionary *)currentInstance withParams:(NSString *)signature withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
-    {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::setDERSignature, first argument should be an instance of LGTezosLikeTransaction", nil);
-        return;
-    }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    if (!currentInstanceObj)
-    {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::setDERSignature, instance of uid %@ not found", currentInstance[@"uid"]];
-        reject(@"impl_call_error", error, nil);
-        return;
-    }
     NSData *objcParam_0 = [self hexStringToData:signature];
 
-    [currentInstanceObj setDERSignature:objcParam_0];
+    [currentInstanceObj setSignature:objcParam_0];
     resolve(@(YES));
 
 }

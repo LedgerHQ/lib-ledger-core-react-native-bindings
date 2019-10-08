@@ -9,6 +9,7 @@ extern NSString * __nonnull const LGRippleConfigurationDefaultsRIPPLEOBSERVERNOD
 extern NSString * __nonnull const LGRippleConfigurationDefaultsRIPPLEOBSERVERWSENDPOINTS2;
 extern NSString * __nonnull const LGRippleConfigurationDefaultsRIPPLEOBSERVERWSENDPOINTS3;
 extern NSString * __nonnull const LGRippleConfigurationDefaultsRIPPLEDEFAULTPORT;
+extern int32_t const LGRippleConfigurationDefaultsRIPPLEDEFAULTLASTLEDGERSEQUENCEOFFSET;
 
 @interface LGRippleConfigurationDefaults : NSObject
 

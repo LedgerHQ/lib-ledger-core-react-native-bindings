@@ -9,6 +9,12 @@ extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERNODEE
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERNODEENDPOINTS3;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERWSENDPOINTS2;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERWSENDPOINTS3;
+extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSXPUBCURVEED25519;
+extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSXPUBCURVESECP256K1;
+/** Taken from some existing XTZ wallets */
+extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTFEES;
+extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTGASLIMIT;
+extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTSTORAGELIMIT;
 
 @interface LGTezosConfigurationDefaults : NSObject
 

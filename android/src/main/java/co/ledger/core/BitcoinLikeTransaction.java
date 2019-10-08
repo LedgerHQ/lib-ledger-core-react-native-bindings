@@ -54,6 +54,19 @@ public abstract class BitcoinLikeTransaction {
      */
     public abstract EstimatedSize getEstimatedSize();
 
+    /**
+     * Sign all inputs for given transaction. 
+     * Build DER encoded signature from RSV data.
+     * @return SIGNING_SUCCEED if succeed case else refers to BitcoinLikeSignatureState enumeration
+     */
+    public abstract BitcoinLikeSignatureState setSignatures(ArrayList<BitcoinLikeSignature> signatures, boolean override);
+
+    /**
+     * Sign all inputs for given transaction. 
+     * @return SIGNING_SUCCEED if succeed case else refers to BitcoinLikeSignatureState enumeration
+     */
+    public abstract BitcoinLikeSignatureState setDERSignatures(ArrayList<byte[]> signatures, boolean override);
+
     private static final class CppProxy extends BitcoinLikeTransaction
     {
         private final long nativeRef;
@@ -180,5 +193,21 @@ public abstract class BitcoinLikeTransaction {
             return native_getEstimatedSize(this.nativeRef);
         }
         private native EstimatedSize native_getEstimatedSize(long _nativeRef);
+
+        @Override
+        public BitcoinLikeSignatureState setSignatures(ArrayList<BitcoinLikeSignature> signatures, boolean override)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_setSignatures(this.nativeRef, signatures, override);
+        }
+        private native BitcoinLikeSignatureState native_setSignatures(long _nativeRef, ArrayList<BitcoinLikeSignature> signatures, boolean override);
+
+        @Override
+        public BitcoinLikeSignatureState setDERSignatures(ArrayList<byte[]> signatures, boolean override)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_setDERSignatures(this.nativeRef, signatures, override);
+        }
+        private native BitcoinLikeSignatureState native_setDERSignatures(long _nativeRef, ArrayList<byte[]> signatures, boolean override);
     }
 }

@@ -265,6 +265,8 @@ package object implicits {
     }
     implicit class RichAmountListCallback(val self: AmountListCallback) {
     }
+    implicit class RichTezosConfiguration(val self: TezosConfiguration) {
+    }
     implicit class RichTezosConfigurationDefaults(val self: TezosConfigurationDefaults) {
     }
     implicit class RichRippleLikeTransaction(val self: RippleLikeTransaction) {
@@ -348,6 +350,8 @@ package object implicits {
             })
             promise.future
         }
+    }
+    implicit class RichRippleConfiguration(val self: RippleConfiguration) {
     }
     implicit class RichRippleConfigurationDefaults(val self: RippleConfigurationDefaults) {
     }
