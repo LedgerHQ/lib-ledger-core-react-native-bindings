@@ -480,8 +480,15 @@ RCT_REMAP_METHOD(setSignatures,setSignatures:(NSDictionary *)currentInstance wit
         reject(@"impl_call_error", error, nil);
         return;
     }
-    RCTCoreLGBitcoinLikeSignature *rctParam_signatures = (RCTCoreLGBitcoinLikeSignature *)[self.bridge moduleForName:@"CoreLGBitcoinLikeSignature"];
-    LGBitcoinLikeSignature *objcParam_0 = (LGBitcoinLikeSignature *)[rctParam_signatures.objcImplementations objectForKey:signatures[@"uid"]];
+    NSMutableArray *objcParam_0 = [[NSMutableArray alloc] init];
+
+    for (id signatures_elem in signatures)
+    {
+        RCTCoreLGBitcoinLikeSignature *rctParam_signatures_elem = (RCTCoreLGBitcoinLikeSignature *)[self.bridge moduleForName:@"CoreLGBitcoinLikeSignature"];
+        LGBitcoinLikeSignature *objcParam_0_elem = (LGBitcoinLikeSignature *)[rctParam_signatures_elem.objcImplementations objectForKey:signatures_elem[@"uid"]];
+        [objcParam_0 addObject:objcParam_0_elem];
+
+    }
     LGBitcoinLikeSignatureState objcResult = [currentInstanceObj setSignatures:objcParam_0 override:override];
     NSDictionary *result = @{@"value" : @(objcResult)};
     if(result)
@@ -514,8 +521,15 @@ RCT_REMAP_METHOD(setDERSignatures,setDERSignatures:(NSDictionary *)currentInstan
         reject(@"impl_call_error", error, nil);
         return;
     }
-    NSData *objcParam_0 = [self hexStringToData:signatures];
+    NSMutableArray *objcParam_0 = [[NSMutableArray alloc] init];
 
+    for (id signatures_elem in signatures)
+    {
+        NSData *objcParam_0_elem = [self hexStringToData:signatures_elem];
+
+        [objcParam_0 addObject:objcParam_0_elem];
+
+    }
     LGBitcoinLikeSignatureState objcResult = [currentInstanceObj setDERSignatures:objcParam_0 override:override];
     NSDictionary *result = @{@"value" : @(objcResult)};
     if(result)
