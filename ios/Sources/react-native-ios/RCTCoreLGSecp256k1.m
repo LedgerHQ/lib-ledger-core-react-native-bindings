@@ -45,6 +45,16 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     }
     return data;
 }
+-(NSString *) dataToHexString: (NSData *)data 
+{
+    const unsigned char *bytes = (const unsigned char *)data.bytes;
+    NSMutableString *hex = [NSMutableString new];
+    for (NSInteger i = 0; i < data.length; i++)
+    {
+        [hex appendFormat:@"%02x", bytes[i]];
+    }
+    return [hex copy];
+}
 
 /**
  * Create an instance of Secp256k1.
@@ -94,7 +104,8 @@ RCT_REMAP_METHOD(computePubKey,computePubKey:(NSDictionary *)currentInstance wit
     NSData *objcParam_0 = [self hexStringToData:privKey];
 
     NSData * objcResult = [currentInstanceObj computePubKey:objcParam_0 compress:compress];
-    NSDictionary *result = @{@"value" : objcResult.description};
+    NSString *objcResultData = [self dataToHexString:objcResult];
+    NSDictionary *result = @{@"value" : objcResultData};
     if(result)
     {
         resolve(result);
@@ -128,7 +139,8 @@ RCT_REMAP_METHOD(computeUncompressedPubKey,computeUncompressedPubKey:(NSDictiona
     NSData *objcParam_0 = [self hexStringToData:pubKey];
 
     NSData * objcResult = [currentInstanceObj computeUncompressedPubKey:objcParam_0];
-    NSDictionary *result = @{@"value" : objcResult.description};
+    NSString *objcResultData = [self dataToHexString:objcResult];
+    NSDictionary *result = @{@"value" : objcResultData};
     if(result)
     {
         resolve(result);
@@ -166,7 +178,8 @@ RCT_REMAP_METHOD(sign,sign:(NSDictionary *)currentInstance withParams:(NSString 
     NSData *objcParam_1 = [self hexStringToData:data];
 
     NSData * objcResult = [currentInstanceObj sign:objcParam_0 data:objcParam_1];
-    NSDictionary *result = @{@"value" : objcResult.description};
+    NSString *objcResultData = [self dataToHexString:objcResult];
+    NSDictionary *result = @{@"value" : objcResultData};
     if(result)
     {
         resolve(result);

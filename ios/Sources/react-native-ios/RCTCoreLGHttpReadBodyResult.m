@@ -45,6 +45,16 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     }
     return data;
 }
+-(NSString *) dataToHexString: (NSData *)data 
+{
+    const unsigned char *bytes = (const unsigned char *)data.bytes;
+    NSMutableString *hex = [NSMutableString new];
+    for (NSInteger i = 0; i < data.length; i++)
+    {
+        [hex appendFormat:@"%02x", bytes[i]];
+    }
+    return [hex copy];
+}
 RCT_REMAP_METHOD(init, initWithError:(nullable NSDictionary *)error
                                 data:(NSString *)data withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSMutableDictionary *implementationsData = [[NSMutableDictionary alloc] init];
@@ -99,7 +109,8 @@ RCT_REMAP_METHOD(getError, getError:(NSDictionary *)currentInstance withResolver
 RCT_REMAP_METHOD(getData, getData:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGHttpReadBodyResult *objcImpl = (LGHttpReadBodyResult *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : objcImpl.data.description};
+    NSString *objcImpldataHexString = [self dataToHexString:objcImpl.data];
+    NSDictionary *result = @{@"value" : objcImpldataHexString};
     resolve(result);
 }
 

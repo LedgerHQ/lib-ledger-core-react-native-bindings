@@ -45,6 +45,16 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     }
     return data;
 }
+-(NSString *) dataToHexString: (NSData *)data 
+{
+    const unsigned char *bytes = (const unsigned char *)data.bytes;
+    NSMutableString *hex = [NSMutableString new];
+    for (NSInteger i = 0; i < data.length; i++)
+    {
+        [hex appendFormat:@"%02x", bytes[i]];
+    }
+    return [hex copy];
+}
 RCT_REMAP_METHOD(init, initWithIdentifier:(nonnull NSString *)Identifier
                              P2PKHVersion:(NSString *)P2PKHVersion
                               P2SHVersion:(NSString *)P2SHVersion
@@ -88,21 +98,24 @@ RCT_REMAP_METHOD(getIdentifier, getIdentifier:(NSDictionary *)currentInstance wi
 RCT_REMAP_METHOD(getP2PKHVersion, getP2PKHVersion:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGBitcoinLikeNetworkParameters *objcImpl = (LGBitcoinLikeNetworkParameters *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : objcImpl.P2PKHVersion.description};
+    NSString *objcImplP2PKHVersionHexString = [self dataToHexString:objcImpl.P2PKHVersion];
+    NSDictionary *result = @{@"value" : objcImplP2PKHVersionHexString};
     resolve(result);
 }
 
 RCT_REMAP_METHOD(getP2SHVersion, getP2SHVersion:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGBitcoinLikeNetworkParameters *objcImpl = (LGBitcoinLikeNetworkParameters *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : objcImpl.P2SHVersion.description};
+    NSString *objcImplP2SHVersionHexString = [self dataToHexString:objcImpl.P2SHVersion];
+    NSDictionary *result = @{@"value" : objcImplP2SHVersionHexString};
     resolve(result);
 }
 
 RCT_REMAP_METHOD(getXPUBVersion, getXPUBVersion:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGBitcoinLikeNetworkParameters *objcImpl = (LGBitcoinLikeNetworkParameters *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : objcImpl.XPUBVersion.description};
+    NSString *objcImplXPUBVersionHexString = [self dataToHexString:objcImpl.XPUBVersion];
+    NSDictionary *result = @{@"value" : objcImplXPUBVersionHexString};
     resolve(result);
 }
 
@@ -144,7 +157,8 @@ RCT_REMAP_METHOD(getTimestampDelay, getTimestampDelay:(NSDictionary *)currentIns
 RCT_REMAP_METHOD(getSigHash, getSigHash:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGBitcoinLikeNetworkParameters *objcImpl = (LGBitcoinLikeNetworkParameters *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : objcImpl.SigHash.description};
+    NSString *objcImplSigHashHexString = [self dataToHexString:objcImpl.SigHash];
+    NSDictionary *result = @{@"value" : objcImplSigHashHexString};
     resolve(result);
 }
 

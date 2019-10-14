@@ -45,6 +45,16 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     }
     return data;
 }
+-(NSString *) dataToHexString: (NSData *)data 
+{
+    const unsigned char *bytes = (const unsigned char *)data.bytes;
+    NSMutableString *hex = [NSMutableString new];
+    for (NSInteger i = 0; i < data.length; i++)
+    {
+        [hex appendFormat:@"%02x", bytes[i]];
+    }
+    return [hex copy];
+}
 
 /** Get the hash of the transaction. */
 RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -355,7 +365,8 @@ RCT_REMAP_METHOD(serialize,serialize:(NSDictionary *)currentInstance WithResolve
         return;
     }
     NSData * objcResult = [currentInstanceObj serialize];
-    NSDictionary *result = @{@"value" : objcResult.description};
+    NSString *objcResultData = [self dataToHexString:objcResult];
+    NSDictionary *result = @{@"value" : objcResultData};
     if(result)
     {
         resolve(result);
@@ -383,7 +394,8 @@ RCT_REMAP_METHOD(serializeOutputs,serializeOutputs:(NSDictionary *)currentInstan
         return;
     }
     NSData * objcResult = [currentInstanceObj serializeOutputs];
-    NSDictionary *result = @{@"value" : objcResult.description};
+    NSString *objcResultData = [self dataToHexString:objcResult];
+    NSDictionary *result = @{@"value" : objcResultData};
     if(result)
     {
         resolve(result);
@@ -411,7 +423,8 @@ RCT_REMAP_METHOD(getWitness,getWitness:(NSDictionary *)currentInstance WithResol
         return;
     }
     NSData * objcResult = [currentInstanceObj getWitness];
-    NSDictionary *result = @{@"value" : objcResult.description};
+    NSString *objcResultData = [self dataToHexString:objcResult];
+    NSDictionary *result = @{@"value" : objcResultData};
     if(result)
     {
         resolve(result);

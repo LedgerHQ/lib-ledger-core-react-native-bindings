@@ -31,6 +31,30 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 {
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
+-(NSData *) hexStringToData: (NSString *)hexString 
+{
+    NSMutableData *data= [[NSMutableData alloc] init];
+    unsigned char byte;
+    char byteChars[3] = {'\0','\0','\0'};
+    for (int i = 0; i < ([hexString length] / 2); i++)
+    {
+        byteChars[0] = [hexString characterAtIndex: i*2];
+        byteChars[1] = [hexString characterAtIndex: i*2 + 1];
+        byte = strtol(byteChars, NULL, 16);
+        [data appendBytes:&byte length:1];
+    }
+    return data;
+}
+-(NSString *) dataToHexString: (NSData *)data 
+{
+    const unsigned char *bytes = (const unsigned char *)data.bytes;
+    NSMutableString *hex = [NSMutableString new];
+    for (NSInteger i = 0; i < data.length; i++)
+    {
+        [hex appendFormat:@"%02x", bytes[i]];
+    }
+    return [hex copy];
+}
 
 /** Derive an address from an xPUB and a path. */
 RCT_REMAP_METHOD(derive,derive:(NSDictionary *)currentInstance withParams:(nonnull NSString *)path withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -81,7 +105,8 @@ RCT_REMAP_METHOD(derivePublicKey,derivePublicKey:(NSDictionary *)currentInstance
         return;
     }
     NSData * objcResult = [currentInstanceObj derivePublicKey:path];
-    NSDictionary *result = @{@"value" : objcResult.description};
+    NSString *objcResultData = [self dataToHexString:objcResult];
+    NSDictionary *result = @{@"value" : objcResultData};
     if(result)
     {
         resolve(result);
@@ -109,7 +134,8 @@ RCT_REMAP_METHOD(deriveHash160,deriveHash160:(NSDictionary *)currentInstance wit
         return;
     }
     NSData * objcResult = [currentInstanceObj deriveHash160:path];
-    NSDictionary *result = @{@"value" : objcResult.description};
+    NSString *objcResultData = [self dataToHexString:objcResult];
+    NSDictionary *result = @{@"value" : objcResultData};
     if(result)
     {
         resolve(result);

@@ -45,6 +45,16 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     }
     return data;
 }
+-(NSString *) dataToHexString: (NSData *)data 
+{
+    const unsigned char *bytes = (const unsigned char *)data.bytes;
+    NSMutableString *hex = [NSMutableString new];
+    for (NSInteger i = 0; i < data.length; i++)
+    {
+        [hex appendFormat:@"%02x", bytes[i]];
+    }
+    return [hex copy];
+}
 
 /**
  * RACE Integrity Primitives Evaluation Message Digest (used in Bitcoin).
@@ -67,7 +77,8 @@ RCT_REMAP_METHOD(ripemd160,ripemd160:(NSDictionary *)currentInstance withParams:
     NSData *objcParam_0 = [self hexStringToData:data];
 
     NSData * objcResult = [currentInstanceObj ripemd160:objcParam_0];
-    NSDictionary *result = @{@"value" : objcResult.description};
+    NSString *objcResultData = [self dataToHexString:objcResult];
+    NSDictionary *result = @{@"value" : objcResultData};
     if(result)
     {
         resolve(result);
@@ -101,7 +112,8 @@ RCT_REMAP_METHOD(sha256,sha256:(NSDictionary *)currentInstance withParams:(NSStr
     NSData *objcParam_0 = [self hexStringToData:data];
 
     NSData * objcResult = [currentInstanceObj sha256:objcParam_0];
-    NSDictionary *result = @{@"value" : objcResult.description};
+    NSString *objcResultData = [self dataToHexString:objcResult];
+    NSDictionary *result = @{@"value" : objcResultData};
     if(result)
     {
         resolve(result);
@@ -135,7 +147,8 @@ RCT_REMAP_METHOD(keccak256,keccak256:(NSDictionary *)currentInstance withParams:
     NSData *objcParam_0 = [self hexStringToData:data];
 
     NSData * objcResult = [currentInstanceObj keccak256:objcParam_0];
-    NSDictionary *result = @{@"value" : objcResult.description};
+    NSString *objcResultData = [self dataToHexString:objcResult];
+    NSDictionary *result = @{@"value" : objcResultData};
     if(result)
     {
         resolve(result);

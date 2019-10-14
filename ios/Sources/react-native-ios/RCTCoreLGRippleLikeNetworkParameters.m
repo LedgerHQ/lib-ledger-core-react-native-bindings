@@ -45,6 +45,16 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     }
     return data;
 }
+-(NSString *) dataToHexString: (NSData *)data 
+{
+    const unsigned char *bytes = (const unsigned char *)data.bytes;
+    NSMutableString *hex = [NSMutableString new];
+    for (NSInteger i = 0; i < data.length; i++)
+    {
+        [hex appendFormat:@"%02x", bytes[i]];
+    }
+    return [hex copy];
+}
 RCT_REMAP_METHOD(init, initWithIdentifier:(nonnull NSString *)Identifier
                             MessagePrefix:(nonnull NSString *)MessagePrefix
                               XPUBVersion:(NSString *)XPUBVersion
@@ -83,7 +93,8 @@ RCT_REMAP_METHOD(getMessagePrefix, getMessagePrefix:(NSDictionary *)currentInsta
 RCT_REMAP_METHOD(getXPUBVersion, getXPUBVersion:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGRippleLikeNetworkParameters *objcImpl = (LGRippleLikeNetworkParameters *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : objcImpl.XPUBVersion.description};
+    NSString *objcImplXPUBVersionHexString = [self dataToHexString:objcImpl.XPUBVersion];
+    NSDictionary *result = @{@"value" : objcImplXPUBVersionHexString};
     resolve(result);
 }
 
