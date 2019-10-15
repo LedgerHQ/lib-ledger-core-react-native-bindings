@@ -34,6 +34,7 @@
 		B9CBABE1234CA75C0039D123 /* RCTCoreLGBitcoinLikeSignature.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CBABDC234CA75C0039D123 /* RCTCoreLGBitcoinLikeSignature.m */; };
 		B9CBABE2234CA75C0039D123 /* RCTCoreLGRippleConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CBABDE234CA75C0039D123 /* RCTCoreLGRippleConfiguration.m */; };
 		B9CBACED2356204A0039D123 /* RCTCoreLGBoolCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CBACEB2356204A0039D123 /* RCTCoreLGBoolCallback.m */; };
+		B9CBACF823562C870039D123 /* LGBoolCallbackImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CBACF723562C860039D123 /* LGBoolCallbackImpl.m */; };
 		B9D857AF214805D90007703A /* RCTCoreLGBlockchainExplorerEngines.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D856F0214805C50007703A /* RCTCoreLGBlockchainExplorerEngines.m */; };
 		B9D857B0214805D90007703A /* RCTCoreLGSecp256k1.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D856F3214805C50007703A /* RCTCoreLGSecp256k1.m */; };
 		B9D857B1214805D90007703A /* RCTCoreLGOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D856F4214805C50007703A /* RCTCoreLGOperation.m */; };
@@ -403,6 +404,8 @@
 		B9CBABDF234CA75C0039D123 /* RCTCoreLGTezosConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGTezosConfiguration.h; path = "Sources/react-native-ios/RCTCoreLGTezosConfiguration.h"; sourceTree = "<group>"; };
 		B9CBACEB2356204A0039D123 /* RCTCoreLGBoolCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCoreLGBoolCallback.m; path = "Sources/react-native-ios/RCTCoreLGBoolCallback.m"; sourceTree = "<group>"; };
 		B9CBACEC2356204A0039D123 /* RCTCoreLGBoolCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGBoolCallback.h; path = "Sources/react-native-ios/RCTCoreLGBoolCallback.h"; sourceTree = "<group>"; };
+		B9CBACF623562C860039D123 /* LGBoolCallbackImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGBoolCallbackImpl.h; path = "Sources/objc-impl/LGBoolCallbackImpl.h"; sourceTree = "<group>"; };
+		B9CBACF723562C860039D123 /* LGBoolCallbackImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGBoolCallbackImpl.m; path = "Sources/objc-impl/LGBoolCallbackImpl.m"; sourceTree = "<group>"; };
 		B9D856ED214805C40007703A /* RCTCoreLGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGConfiguration.h; path = "Sources/react-native-ios/RCTCoreLGConfiguration.h"; sourceTree = "<group>"; };
 		B9D856EE214805C40007703A /* RCTCoreLGOperationListCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGOperationListCallback.h; path = "Sources/react-native-ios/RCTCoreLGOperationListCallback.h"; sourceTree = "<group>"; };
 		B9D856EF214805C40007703A /* RCTCoreLGStringCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTCoreLGStringCallback.h; path = "Sources/react-native-ios/RCTCoreLGStringCallback.h"; sourceTree = "<group>"; };
@@ -1227,6 +1230,8 @@
 				B98273432277977C00761F5F /* LGBigIntCallbackImpl.m */,
 				B96DBD8022DF5B2700ACA85E /* LGTezosLikeTransactionCallbackImpl.h */,
 				B96DBD8122DF5B2700ACA85E /* LGTezosLikeTransactionCallbackImpl.m */,
+				B9CBACF623562C860039D123 /* LGBoolCallbackImpl.h */,
+				B9CBACF723562C860039D123 /* LGBoolCallbackImpl.m */,
 			);
 			name = "objc-impl";
 			sourceTree = "<group>";
@@ -1606,6 +1611,7 @@
 				B9D85802214805D90007703A /* RCTCoreLGThreadDispatcher.m in Sources */,
 				E57CFC35220B38FC00E15511 /* LGDatabaseConnectionImpl.m in Sources */,
 				B9D857CD214805D90007703A /* RCTCoreLGFormatRules.m in Sources */,
+				B9CBACF823562C870039D123 /* LGBoolCallbackImpl.m in Sources */,
 				B9D85858214805F20007703A /* LGExtendedKeyAccountCreationInfoCallbackImpl.m in Sources */,
 				B96DBD7522DF5A4300ACA85E /* RCTCoreLGTezosLikeExtendedPublicKey.m in Sources */,
 				B9D8585B214805F20007703A /* LGBlockCallbackImpl.m in Sources */,
