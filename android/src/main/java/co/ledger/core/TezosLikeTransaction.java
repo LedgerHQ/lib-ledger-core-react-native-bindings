@@ -45,7 +45,7 @@ public abstract class TezosLikeTransaction {
 
     public abstract Amount getGasLimit();
 
-    public abstract Amount getStorageLimit();
+    public abstract BigInt getStorageLimit();
 
     /** Get hash of block in which tx is included */
     public abstract String getBlockHash();
@@ -170,12 +170,12 @@ public abstract class TezosLikeTransaction {
         private native Amount native_getGasLimit(long _nativeRef);
 
         @Override
-        public Amount getStorageLimit()
+        public BigInt getStorageLimit()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
             return native_getStorageLimit(this.nativeRef);
         }
-        private native Amount native_getStorageLimit(long _nativeRef);
+        private native BigInt native_getStorageLimit(long _nativeRef);
 
         @Override
         public String getBlockHash()

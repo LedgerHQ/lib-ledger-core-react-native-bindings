@@ -350,6 +350,22 @@ package object implicits {
             })
             promise.future
         }
+        def isAddressActivated(address: String): Future[Bool] = {
+            val promise = Promise[Bool]()
+            self.isAddressActivated(address, new BoolCallback() {
+                override def onCallback(result: Bool, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+    }
+    implicit class RichBoolCallback(val self: BoolCallback) {
     }
     implicit class RichRippleConfiguration(val self: RippleConfiguration) {
     }

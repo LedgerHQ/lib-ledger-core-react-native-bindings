@@ -28,6 +28,15 @@ public abstract class RippleLikeAccount {
      */
     public abstract void getBaseReserve(AmountCallback callback);
 
+    /**
+     * Check whether an account has been activated or not
+     * Here activation, means that the XRP account received a first transaction with a minimum amount
+     * greater or equal to XRP base reserve
+     * @param: address to check
+     * @return: true if valid address and has been activated, false otherwise
+     */
+    public abstract void isAddressActivated(String address, BoolCallback isActivated);
+
     private static final class CppProxy extends RippleLikeAccount
     {
         private final long nativeRef;
@@ -90,5 +99,13 @@ public abstract class RippleLikeAccount {
             native_getBaseReserve(this.nativeRef, callback);
         }
         private native void native_getBaseReserve(long _nativeRef, AmountCallback callback);
+
+        @Override
+        public void isAddressActivated(String address, BoolCallback isActivated)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_isAddressActivated(this.nativeRef, address, isActivated);
+        }
+        private native void native_isAddressActivated(long _nativeRef, String address, BoolCallback isActivated);
     }
 }

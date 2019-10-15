@@ -175,4 +175,29 @@ RCT_REMAP_METHOD(getBaseReserve,getBaseReserve:(NSDictionary *)currentInstance W
     [currentInstanceObj getBaseReserve:objcParam_0];
 
 }
+
+/**
+ * Check whether an account has been activated or not
+ * Here activation, means that the XRP account received a first transaction with a minimum amount
+ * greater or equal to XRP base reserve
+ * @param: address to check
+ * @return: true if valid address and has been activated, false otherwise
+ */
+RCT_REMAP_METHOD(isAddressActivated,isAddressActivated:(NSDictionary *)currentInstance withParams:(nonnull NSString *)address withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeAccount::isAddressActivated, first argument should be an instance of LGRippleLikeAccount", nil);
+        return;
+    }
+    LGRippleLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeAccount::isAddressActivated, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGBoolCallback *objcParam_1 = [[RCTCoreLGBoolCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj isAddressActivated:address isActivated:objcParam_1];
+
+}
 @end
