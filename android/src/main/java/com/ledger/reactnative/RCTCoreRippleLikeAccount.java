@@ -4,6 +4,7 @@
 package com.ledger.reactnative;
 
 import co.ledger.core.AmountCallback;
+import co.ledger.core.BoolCallback;
 import co.ledger.core.RippleLikeAccount;
 import co.ledger.core.RippleLikeTransaction;
 import co.ledger.core.RippleLikeTransactionBuilder;
@@ -226,6 +227,29 @@ public class RCTCoreRippleLikeAccount extends ReactContextBaseJavaModule {
 
             RCTCoreAmountCallback javaParam_0 = RCTCoreAmountCallback.initWithPromise(promise, this.reactContext);
             currentInstanceObj.getBaseReserve(javaParam_0);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Check whether an account has been activated or not
+     * Here activation, means that the XRP account received a first transaction with a minimum amount
+     * greater or equal to XRP base reserve
+     * @param: address to check
+     * @return: true if valid address and has been activated, false otherwise
+     */
+    @ReactMethod
+    public void isAddressActivated(ReadableMap currentInstance, String address, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            RippleLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreBoolCallback javaParam_1 = RCTCoreBoolCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.isAddressActivated(address, javaParam_1);
         }
         catch(Exception e)
         {

@@ -5,6 +5,7 @@
 @class LGRippleLikeTransaction;
 @class LGRippleLikeTransactionBuilder;
 @protocol LGAmountCallback;
+@protocol LGBoolCallback;
 @protocol LGStringCallback;
 
 
@@ -33,5 +34,15 @@
  * Note: same note as above
  */
 - (void)getBaseReserve:(nullable id<LGAmountCallback>)callback;
+
+/**
+ * Check whether an account has been activated or not
+ * Here activation, means that the XRP account received a first transaction with a minimum amount
+ * greater or equal to XRP base reserve
+ * @param: address to check
+ * @return: true if valid address and has been activated, false otherwise
+ */
+- (void)isAddressActivated:(nonnull NSString *)address
+               isActivated:(nullable id<LGBoolCallback>)isActivated;
 
 @end

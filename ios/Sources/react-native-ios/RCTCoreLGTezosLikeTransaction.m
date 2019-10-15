@@ -445,13 +445,13 @@ RCT_REMAP_METHOD(getStorageLimit,getStorageLimit:(NSDictionary *)currentInstance
         reject(@"impl_call_error", error, nil);
         return;
     }
-    LGAmount * objcResult = [currentInstanceObj getStorageLimit];
+    LGBigInt * objcResult = [currentInstanceObj getStorageLimit];
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
-    RCTCoreLGAmount *rctImpl_objcResult = (RCTCoreLGAmount *)[self.bridge moduleForName:@"CoreLGAmount"];
+    RCTCoreLGBigInt *rctImpl_objcResult = (RCTCoreLGBigInt *)[self.bridge moduleForName:@"CoreLGBigInt"];
     NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
     [rctImpl_objcResult baseSetObject:objcResult_array];
-    NSDictionary *result = @{@"type" : @"CoreLGAmount", @"uid" : objcResult_uuid };
+    NSDictionary *result = @{@"type" : @"CoreLGBigInt", @"uid" : objcResult_uuid };
 
     if(result)
     {

@@ -48,7 +48,7 @@
 
 - (nullable LGAmount *)getGasLimit;
 
-- (nullable LGAmount *)getStorageLimit;
+- (nullable LGBigInt *)getStorageLimit;
 
 /** Get hash of block in which tx is included */
 - (nullable NSString *)getBlockHash;

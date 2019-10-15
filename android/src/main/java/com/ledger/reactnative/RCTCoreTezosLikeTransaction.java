@@ -413,13 +413,13 @@ public class RCTCoreTezosLikeTransaction extends ReactContextBaseJavaModule {
 
             TezosLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
 
-            Amount javaResult = currentInstanceObj.getStorageLimit();
+            BigInt javaResult = currentInstanceObj.getStorageLimit();
 
             String javaResult_uuid = UUID.randomUUID().toString();
-            RCTCoreAmount rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreAmount.class);
+            RCTCoreBigInt rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreBigInt.class);
             rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
-            result.putString("type","RCTCoreAmount");
+            result.putString("type","RCTCoreBigInt");
             result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);
