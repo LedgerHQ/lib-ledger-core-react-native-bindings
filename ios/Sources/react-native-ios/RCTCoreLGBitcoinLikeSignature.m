@@ -45,6 +45,16 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     }
     return data;
 }
+-(NSString *) dataToHexString: (NSData *)data 
+{
+    const unsigned char *bytes = (const unsigned char *)data.bytes;
+    NSMutableString *hex = [NSMutableString new];
+    for (NSInteger i = 0; i < data.length; i++)
+    {
+        [hex appendFormat:@"%02x", bytes[i]];
+    }
+    return [hex copy];
+}
 RCT_REMAP_METHOD(init, initWithR:(NSString *)r
                                s:(NSString *)s
                                v:(NSString *)v withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -71,21 +81,24 @@ RCT_REMAP_METHOD(init, initWithR:(NSString *)r
 RCT_REMAP_METHOD(getR, getR:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGBitcoinLikeSignature *objcImpl = (LGBitcoinLikeSignature *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : objcImpl.r.description};
+    NSString *objcImplrHexString = [self dataToHexString:objcImpl.r];
+    NSDictionary *result = @{@"value" : objcImplrHexString};
     resolve(result);
 }
 
 RCT_REMAP_METHOD(getS, getS:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGBitcoinLikeSignature *objcImpl = (LGBitcoinLikeSignature *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : objcImpl.s.description};
+    NSString *objcImplsHexString = [self dataToHexString:objcImpl.s];
+    NSDictionary *result = @{@"value" : objcImplsHexString};
     resolve(result);
 }
 
 RCT_REMAP_METHOD(getV, getV:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGBitcoinLikeSignature *objcImpl = (LGBitcoinLikeSignature *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : objcImpl.v.description};
+    NSString *objcImplvHexString = [self dataToHexString:objcImpl.v];
+    NSDictionary *result = @{@"value" : objcImplvHexString};
     resolve(result);
 }
 

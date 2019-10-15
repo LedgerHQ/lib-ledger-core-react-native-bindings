@@ -16,6 +16,16 @@
     }
     return self;
 }
+-(NSString *) dataToHexString: (NSData *)data 
+{
+    const unsigned char *bytes = (const unsigned char *)data.bytes;
+    NSMutableString *hex = [NSMutableString new];
+    for (NSInteger i = 0; i < data.length; i++)
+    {
+        [hex appendFormat:@"%02x", bytes[i]];
+    }
+    return [hex copy];
+}
 
 /**
  * Method triggered when main task complete.
@@ -31,7 +41,8 @@
     }
 
 
-    NSDictionary *callbackResult = @{@"value" : result.description};
+    NSString *objcResultData = [self dataToHexString:result];
+    NSDictionary *callbackResult = @{@"value" : objcResultData};
     self.resolve(callbackResult);
 
 }

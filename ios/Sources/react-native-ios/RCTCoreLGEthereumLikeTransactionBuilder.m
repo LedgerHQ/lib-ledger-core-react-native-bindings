@@ -45,6 +45,16 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     }
     return data;
 }
+-(NSString *) dataToHexString: (NSData *)data 
+{
+    const unsigned char *bytes = (const unsigned char *)data.bytes;
+    NSMutableString *hex = [NSMutableString new];
+    for (NSInteger i = 0; i < data.length; i++)
+    {
+        [hex appendFormat:@"%02x", bytes[i]];
+    }
+    return [hex copy];
+}
 
 /**
  * Send funds to the given address. This method can be called multiple times to send to multiple addresses.

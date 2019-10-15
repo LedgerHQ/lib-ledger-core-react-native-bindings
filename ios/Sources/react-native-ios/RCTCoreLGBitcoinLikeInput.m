@@ -45,6 +45,16 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     }
     return data;
 }
+-(NSString *) dataToHexString: (NSData *)data 
+{
+    const unsigned char *bytes = (const unsigned char *)data.bytes;
+    NSMutableString *hex = [NSMutableString new];
+    for (NSInteger i = 0; i < data.length; i++)
+    {
+        [hex appendFormat:@"%02x", bytes[i]];
+    }
+    return [hex copy];
+}
 
 /** Returns the address of the input (if an address can be computed). */
 RCT_REMAP_METHOD(getAddress,getAddress:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -362,7 +372,8 @@ RCT_REMAP_METHOD(getScriptSig,getScriptSig:(NSDictionary *)currentInstance WithR
         return;
     }
     NSData * objcResult = [currentInstanceObj getScriptSig];
-    NSDictionary *result = @{@"value" : objcResult.description};
+    NSString *objcResultData = [self dataToHexString:objcResult];
+    NSDictionary *result = @{@"value" : objcResultData};
     if(result)
     {
         resolve(result);
