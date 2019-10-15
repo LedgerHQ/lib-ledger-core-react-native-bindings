@@ -111,6 +111,7 @@
 		B9CBABD7234CA7300039D123 /* LGRippleConfiguration+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9CBABD3234CA7300039D123 /* LGRippleConfiguration+Private.mm */; };
 		B9CBABD8234CA7300039D123 /* LGBitcoinLikeSignature+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9CBABD4234CA7300039D123 /* LGBitcoinLikeSignature+Private.mm */; };
 		B9CBABD9234CA7300039D123 /* LGTezosConfiguration+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9CBABD5234CA7300039D123 /* LGTezosConfiguration+Private.mm */; };
+		B9CBACF2235620780039D123 /* LGBoolCallback+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9CBACF1235620780039D123 /* LGBoolCallback+Private.mm */; };
 		B9D8594D2148E5DB0007703A /* libdjinni_objc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D859482148E5BE0007703A /* libdjinni_objc.a */; };
 		B9D898012268C099004986A9 /* LGRippleLikeMemo.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9D897FF2268C098004986A9 /* LGRippleLikeMemo.mm */; };
 		B9D898062268C0A9004986A9 /* LGBigIntListCallback+Private.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9D898022268C0A9004986A9 /* LGBigIntListCallback+Private.mm */; };
@@ -519,6 +520,9 @@
 		B9CBABD4234CA7300039D123 /* LGBitcoinLikeSignature+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGBitcoinLikeSignature+Private.mm"; sourceTree = "<group>"; };
 		B9CBABD5234CA7300039D123 /* LGTezosConfiguration+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGTezosConfiguration+Private.mm"; sourceTree = "<group>"; };
 		B9CBABD6234CA7300039D123 /* LGBitcoinLikeSignature+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGBitcoinLikeSignature+Private.h"; sourceTree = "<group>"; };
+		B9CBACEE235620610039D123 /* LGBoolCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGBoolCallback.h; sourceTree = "<group>"; };
+		B9CBACF0235620780039D123 /* LGBoolCallback+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LGBoolCallback+Private.h"; sourceTree = "<group>"; };
+		B9CBACF1235620780039D123 /* LGBoolCallback+Private.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "LGBoolCallback+Private.mm"; sourceTree = "<group>"; };
 		B9D859432148E5BD0007703A /* support_lib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = support_lib.xcodeproj; path = "build_ios/support-lib/support_lib.xcodeproj"; sourceTree = "<group>"; };
 		B9D897FD2268C098004986A9 /* LGRippleLikeMemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGRippleLikeMemo.h; sourceTree = "<group>"; };
 		B9D897FF2268C098004986A9 /* LGRippleLikeMemo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LGRippleLikeMemo.mm; sourceTree = "<group>"; };
@@ -751,6 +755,7 @@
 		7AEC0E73370A64CCF756FFD3 /* objc */ = {
 			isa = PBXGroup;
 			children = (
+				B9CBACEE235620610039D123 /* LGBoolCallback.h */,
 				B9CBABC7234CA7130039D123 /* LGBitcoinLikeSignature.h */,
 				B9CBABCB234CA7130039D123 /* LGBitcoinLikeSignature.mm */,
 				B9CBABCC234CA7130039D123 /* LGBitcoinLikeSignatureState.h */,
@@ -987,6 +992,8 @@
 		D7EC854A25A7F1FAB3F8F398 /* objcpp */ = {
 			isa = PBXGroup;
 			children = (
+				B9CBACF0235620780039D123 /* LGBoolCallback+Private.h */,
+				B9CBACF1235620780039D123 /* LGBoolCallback+Private.mm */,
 				B9CBABD6234CA7300039D123 /* LGBitcoinLikeSignature+Private.h */,
 				B9CBABD4234CA7300039D123 /* LGBitcoinLikeSignature+Private.mm */,
 				B9CBABD1234CA7300039D123 /* LGBitcoinLikeSignatureState+Private.h */,
@@ -1500,6 +1507,7 @@
 				62E89F6F576CAA72C45F8520 /* LGBitcoinLikeScript+Private.mm in Sources */,
 				58EED1F1D6E3CB44D70EA650 /* LGThreadDispatcher+Private.mm in Sources */,
 				9D574D28AC5C09D62BE4119A /* LGPathResolver+Private.mm in Sources */,
+				B9CBACF2235620780039D123 /* LGBoolCallback+Private.mm in Sources */,
 				B9D898062268C0A9004986A9 /* LGBigIntListCallback+Private.mm in Sources */,
 				E57CFCDC220C7F1B00E15511 /* LGEthereumLikeBlock+Private.mm in Sources */,
 				B96DBD4222DF59EA00ACA85E /* LGTezosLikeAddress+Private.mm in Sources */,
