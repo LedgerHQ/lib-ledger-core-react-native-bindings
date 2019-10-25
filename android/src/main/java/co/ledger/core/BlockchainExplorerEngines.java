@@ -15,6 +15,8 @@ public abstract class BlockchainExplorerEngines {
 
     public static final String TEZOS_NODE = "TEZOS_NODE";
 
+    public static final String TZSTATS_API = "TZSTATS_API";
+
 
     private static final class CppProxy extends BlockchainExplorerEngines
     {

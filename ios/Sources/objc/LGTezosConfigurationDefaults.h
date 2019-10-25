@@ -5,7 +5,7 @@
 
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIENDPOINT;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIVERSION;
-extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERNODEENDPOINTS2;
+extern NSString * __nonnull const LGTezosConfigurationDefaultsTZSTATSAPIENDPOINT;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERNODEENDPOINTS3;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERWSENDPOINTS2;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERWSENDPOINTS3;
@@ -15,6 +15,7 @@ extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSXPUBCURVESECP
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTFEES;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTGASLIMIT;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTSTORAGELIMIT;
+extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSPROTOCOLUPDATEBABYLON;
 
 @interface LGTezosConfigurationDefaults : NSObject
 

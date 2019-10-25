@@ -8,6 +8,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class TezosConfiguration {
     public static final String TEZOS_XPUB_CURVE = "TEZOS_XPUB_CURVE";
 
+    public static final String TEZOS_PROTOCOL_UPDATE = "TEZOS_PROTOCOL_UPDATE";
+
 
     private static final class CppProxy extends TezosConfiguration
     {
