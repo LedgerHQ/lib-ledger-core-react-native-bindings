@@ -11,3 +11,5 @@ NSString * __nonnull const LGBlockchainExplorerEnginesRIPPLEAPI = @"RIPPLE_API";
 NSString * __nonnull const LGBlockchainExplorerEnginesRIPPLENODE = @"RIPPLE_NODE";
 
 NSString * __nonnull const LGBlockchainExplorerEnginesTEZOSNODE = @"TEZOS_NODE";
+
+NSString * __nonnull const LGBlockchainExplorerEnginesTZSTATSAPI = @"TZSTATS_API";

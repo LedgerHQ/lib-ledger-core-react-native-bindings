@@ -8,7 +8,7 @@ NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIENDPOINT =
 
 NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIVERSION = @"v3";
 
-NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERNODEENDPOINTS2 = @"https://s2.tezos.com";
+NSString * __nonnull const LGTezosConfigurationDefaultsTZSTATSAPIENDPOINT = @"https://api.tzstats.com/explorer";
 
 NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERNODEENDPOINTS3 = @"https://s3.tezos.com";
 
@@ -25,3 +25,5 @@ NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTFEES = @"1420
 NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTGASLIMIT = @"10600";
 
 NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTSTORAGELIMIT = @"300";
+
+NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSPROTOCOLUPDATEBABYLON = @"TEZOS_PROTOCOL_UPDATE_BABYLON";

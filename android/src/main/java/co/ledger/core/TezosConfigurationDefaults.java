@@ -10,7 +10,7 @@ public abstract class TezosConfigurationDefaults {
 
     public static final String TEZOS_DEFAULT_API_VERSION = "v3";
 
-    public static final String TEZOS_OBSERVER_NODE_ENDPOINT_S2 = "https://s2.tezos.com";
+    public static final String TZSTATS_API_ENDPOINT = "https://api.tzstats.com/explorer";
 
     public static final String TEZOS_OBSERVER_NODE_ENDPOINT_S3 = "https://s3.tezos.com";
 
@@ -28,6 +28,8 @@ public abstract class TezosConfigurationDefaults {
     public static final String TEZOS_DEFAULT_GAS_LIMIT = "10600";
 
     public static final String TEZOS_DEFAULT_STORAGE_LIMIT = "300";
+
+    public static final String TEZOS_PROTOCOL_UPDATE_BABYLON = "TEZOS_PROTOCOL_UPDATE_BABYLON";
 
 
     private static final class CppProxy extends TezosConfigurationDefaults
