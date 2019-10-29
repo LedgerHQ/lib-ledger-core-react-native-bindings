@@ -65,7 +65,7 @@ public class HttpClientImpl extends co.ledger.core.HttpClient {
                     }
 
                     int httpCode = connection.getResponseCode();
-                    String response = getString(connection.getInputStream(), "UTF-8");
+                    String response = getString(httpCode<400 ? connection.getInputStream() : connection.getErrorStream(), "UTF-8");
                     com.ledger.reactnative.HttpUrlConnectionImpl urlConnection = new com.ledger.reactnative.HttpUrlConnectionImpl(reactContext, response, httpCode, headers, null);
                     request.complete(urlConnection, null);
                     connection.disconnect();
