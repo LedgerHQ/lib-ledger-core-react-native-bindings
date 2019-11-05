@@ -53,4 +53,7 @@
 /** Get hash of block in which tx is included */
 - (nullable NSString *)getBlockHash;
 
+/** Get status of transaction: equals to 1 if succeeded, 0 otherwise */
+- (int32_t)getStatus;
+
 @end

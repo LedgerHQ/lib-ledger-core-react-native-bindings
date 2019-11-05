@@ -20,9 +20,9 @@ NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSXPUBCURVEED25519 = @
 
 NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSXPUBCURVESECP256K1 = @"SECP256K1";
 
-NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTFEES = @"1420";
+NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTFEES = @"2500";
 
-NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTGASLIMIT = @"10600";
+NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTGASLIMIT = @"18000";
 
 NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTSTORAGELIMIT = @"300";
 

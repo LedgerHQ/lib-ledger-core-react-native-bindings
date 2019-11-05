@@ -350,10 +350,10 @@ package object implicits {
             })
             promise.future
         }
-        def isAddressActivated(address: String): Future[Bool] = {
-            val promise = Promise[Bool]()
+        def isAddressActivated(address: String): Future[Boolean] = {
+            val promise = Promise[Boolean]()
             self.isAddressActivated(address, new BoolCallback() {
-                override def onCallback(result: Bool, error: co.ledger.core.Error): Unit =  {
+                override def onCallback(result: java.lang.Boolean, error: co.ledger.core.Error): Unit =  {
                     if (error != null) {
                         promise.failure(wrapLedgerCoreError(error))
                     }

@@ -449,4 +449,24 @@ public class RCTCoreTezosLikeTransaction extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Get status of transaction: equals to 1 if succeeded, 0 otherwise */
+    @ReactMethod
+    public void getStatus(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            TezosLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+
+            int javaResult = currentInstanceObj.getStatus();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putInt("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
 }
