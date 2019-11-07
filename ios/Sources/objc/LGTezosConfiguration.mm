@@ -7,3 +7,5 @@
 NSString * __nonnull const LGTezosConfigurationTEZOSXPUBCURVE = @"TEZOS_XPUB_CURVE";
 
 NSString * __nonnull const LGTezosConfigurationTEZOSPROTOCOLUPDATE = @"TEZOS_PROTOCOL_UPDATE";
+
+NSString * __nonnull const LGTezosConfigurationTEZOSNODE = @"TEZOS_NODE";

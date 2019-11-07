@@ -6,6 +6,7 @@
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIENDPOINT;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIVERSION;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTZSTATSAPIENDPOINT;
+extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTNODE;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERNODEENDPOINTS3;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERWSENDPOINTS2;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERWSENDPOINTS3;

@@ -10,6 +10,8 @@ public abstract class TezosConfiguration {
 
     public static final String TEZOS_PROTOCOL_UPDATE = "TEZOS_PROTOCOL_UPDATE";
 
+    public static final String TEZOS_NODE = "TEZOS_NODE";
+
 
     private static final class CppProxy extends TezosConfiguration
     {
