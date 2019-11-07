@@ -22,10 +22,13 @@ public abstract class TezosConfigurationDefaults {
 
     public static final String TEZOS_XPUB_CURVE_SECP256K1 = "SECP256K1";
 
-    /** Taken from some existing XTZ wallets */
-    public static final String TEZOS_DEFAULT_FEES = "1420";
+    /**
+     * Taken from some existing XTZ wallets
+     * http://tezos.gitlab.io/protocols/005_babylon.html#gas-cost-changes
+     */
+    public static final String TEZOS_DEFAULT_FEES = "2500";
 
-    public static final String TEZOS_DEFAULT_GAS_LIMIT = "10600";
+    public static final String TEZOS_DEFAULT_GAS_LIMIT = "18000";
 
     public static final String TEZOS_DEFAULT_STORAGE_LIMIT = "300";
 

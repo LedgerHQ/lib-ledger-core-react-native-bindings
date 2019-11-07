@@ -50,6 +50,9 @@ public abstract class TezosLikeTransaction {
     /** Get hash of block in which tx is included */
     public abstract String getBlockHash();
 
+    /** Get status of transaction: equals to 1 if succeeded, 0 otherwise */
+    public abstract int getStatus();
+
     private static final class CppProxy extends TezosLikeTransaction
     {
         private final long nativeRef;
@@ -184,5 +187,13 @@ public abstract class TezosLikeTransaction {
             return native_getBlockHash(this.nativeRef);
         }
         private native String native_getBlockHash(long _nativeRef);
+
+        @Override
+        public int getStatus()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getStatus(this.nativeRef);
+        }
+        private native int native_getStatus(long _nativeRef);
     }
 }

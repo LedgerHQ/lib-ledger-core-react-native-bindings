@@ -11,7 +11,10 @@ extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERWSEND
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERWSENDPOINTS3;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSXPUBCURVEED25519;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSXPUBCURVESECP256K1;
-/** Taken from some existing XTZ wallets */
+/**
+ * Taken from some existing XTZ wallets
+ * http://tezos.gitlab.io/protocols/005_babylon.html#gas-cost-changes
+ */
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTFEES;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTGASLIMIT;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTSTORAGELIMIT;

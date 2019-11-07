@@ -492,4 +492,32 @@ RCT_REMAP_METHOD(getBlockHash,getBlockHash:(NSDictionary *)currentInstance WithR
     }
 
 }
+
+/** Get status of transaction: equals to 1 if succeeded, 0 otherwise */
+RCT_REMAP_METHOD(getStatus,getStatus:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getStatus, first argument should be an instance of LGTezosLikeTransaction", nil);
+        return;
+    }
+    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getStatus, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSInteger objcResult = [currentInstanceObj getStatus];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGTezosLikeTransaction::getStatus", nil);
+        return;
+    }
+
+}
 @end
