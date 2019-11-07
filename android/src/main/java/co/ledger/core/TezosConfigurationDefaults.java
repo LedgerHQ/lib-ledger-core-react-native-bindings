@@ -12,6 +12,8 @@ public abstract class TezosConfigurationDefaults {
 
     public static final String TZSTATS_API_ENDPOINT = "https://api.tzstats.com/explorer";
 
+    public static final String TEZOS_DEFAULT_NODE = "https://mainnet.tezrpc.me";
+
     public static final String TEZOS_OBSERVER_NODE_ENDPOINT_S3 = "https://s3.tezos.com";
 
     public static final String TEZOS_OBSERVER_WS_ENDPOINT_S2 = "wss://s2.tezos.com";

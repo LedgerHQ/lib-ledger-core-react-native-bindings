@@ -5,6 +5,7 @@
 
 extern NSString * __nonnull const LGTezosConfigurationTEZOSXPUBCURVE;
 extern NSString * __nonnull const LGTezosConfigurationTEZOSPROTOCOLUPDATE;
+extern NSString * __nonnull const LGTezosConfigurationTEZOSNODE;
 
 @interface LGTezosConfiguration : NSObject
 

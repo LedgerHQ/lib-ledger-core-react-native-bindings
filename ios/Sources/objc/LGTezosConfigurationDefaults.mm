@@ -10,6 +10,8 @@ NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIVERSION = 
 
 NSString * __nonnull const LGTezosConfigurationDefaultsTZSTATSAPIENDPOINT = @"https://api.tzstats.com/explorer";
 
+NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTNODE = @"https://mainnet.tezrpc.me";
+
 NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERNODEENDPOINTS3 = @"https://s3.tezos.com";
 
 NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSOBSERVERWSENDPOINTS2 = @"wss://s2.tezos.com";
