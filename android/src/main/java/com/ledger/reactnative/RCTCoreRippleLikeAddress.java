@@ -44,7 +44,6 @@ public class RCTCoreRippleLikeAddress extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, RippleLikeAddress>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

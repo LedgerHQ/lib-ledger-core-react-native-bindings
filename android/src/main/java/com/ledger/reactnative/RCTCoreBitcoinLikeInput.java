@@ -48,7 +48,6 @@ public class RCTCoreBitcoinLikeInput extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikeInput>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

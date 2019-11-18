@@ -48,7 +48,6 @@ public class RCTCoreBitcoinLikeTransactionBuilder extends ReactContextBaseJavaMo
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikeTransactionBuilder>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

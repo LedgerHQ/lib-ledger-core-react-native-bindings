@@ -44,7 +44,6 @@ public class RCTCoreBitcoinLikeScript extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikeScript>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

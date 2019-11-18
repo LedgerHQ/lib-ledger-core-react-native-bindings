@@ -43,7 +43,6 @@ public class RCTCoreSynchronizerEngines extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, SynchronizerEngines>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

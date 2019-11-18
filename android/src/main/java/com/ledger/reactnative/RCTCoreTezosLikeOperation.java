@@ -44,7 +44,6 @@ public class RCTCoreTezosLikeOperation extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, TezosLikeOperation>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

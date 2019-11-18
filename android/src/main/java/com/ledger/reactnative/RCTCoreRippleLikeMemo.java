@@ -46,7 +46,6 @@ public class RCTCoreRippleLikeMemo extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, RippleLikeMemo>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

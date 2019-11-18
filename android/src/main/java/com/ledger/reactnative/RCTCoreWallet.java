@@ -59,7 +59,6 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Wallet>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

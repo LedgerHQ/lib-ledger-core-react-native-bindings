@@ -42,7 +42,6 @@ public class RCTCoreAccountCreationInfo extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, AccountCreationInfo>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

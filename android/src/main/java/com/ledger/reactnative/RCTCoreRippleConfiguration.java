@@ -42,7 +42,6 @@ public class RCTCoreRippleConfiguration extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, RippleConfiguration>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

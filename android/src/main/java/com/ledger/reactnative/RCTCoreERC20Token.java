@@ -42,7 +42,6 @@ public class RCTCoreERC20Token extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, ERC20Token>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

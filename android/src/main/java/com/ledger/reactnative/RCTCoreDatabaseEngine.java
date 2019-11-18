@@ -44,7 +44,6 @@ public class RCTCoreDatabaseEngine extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, DatabaseEngineImpl>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

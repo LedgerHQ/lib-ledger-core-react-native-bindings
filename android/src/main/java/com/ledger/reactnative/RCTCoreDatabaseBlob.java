@@ -43,7 +43,6 @@ public class RCTCoreDatabaseBlob extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, DatabaseBlobImpl>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

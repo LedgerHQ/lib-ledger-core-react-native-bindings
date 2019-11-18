@@ -46,7 +46,6 @@ public class RCTCoreEventPublisher extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, EventPublisher>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

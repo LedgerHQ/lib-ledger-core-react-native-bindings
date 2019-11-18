@@ -42,7 +42,6 @@ public class RCTCoreError extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Error>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

@@ -42,7 +42,6 @@ public class RCTCoreTezosConfigurationDefaults extends ReactContextBaseJavaModul
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, TezosConfigurationDefaults>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

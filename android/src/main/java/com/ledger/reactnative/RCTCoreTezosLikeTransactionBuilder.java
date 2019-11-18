@@ -48,7 +48,6 @@ public class RCTCoreTezosLikeTransactionBuilder extends ReactContextBaseJavaModu
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, TezosLikeTransactionBuilder>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

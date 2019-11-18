@@ -49,7 +49,6 @@ public class RCTCorePreferences extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Preferences>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

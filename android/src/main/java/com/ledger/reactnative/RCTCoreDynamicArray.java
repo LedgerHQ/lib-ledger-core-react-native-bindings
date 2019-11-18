@@ -45,7 +45,6 @@ public class RCTCoreDynamicArray extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, DynamicArray>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

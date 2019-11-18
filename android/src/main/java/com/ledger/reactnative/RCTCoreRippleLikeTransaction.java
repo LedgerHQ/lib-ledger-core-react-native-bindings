@@ -51,7 +51,6 @@ public class RCTCoreRippleLikeTransaction extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, RippleLikeTransaction>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

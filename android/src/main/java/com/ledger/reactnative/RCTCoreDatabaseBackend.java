@@ -44,7 +44,6 @@ public class RCTCoreDatabaseBackend extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, DatabaseBackend>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

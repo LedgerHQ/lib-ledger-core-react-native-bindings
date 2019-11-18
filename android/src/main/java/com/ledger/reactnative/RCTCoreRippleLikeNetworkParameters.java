@@ -41,7 +41,6 @@ public class RCTCoreRippleLikeNetworkParameters extends ReactContextBaseJavaModu
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, RippleLikeNetworkParameters>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

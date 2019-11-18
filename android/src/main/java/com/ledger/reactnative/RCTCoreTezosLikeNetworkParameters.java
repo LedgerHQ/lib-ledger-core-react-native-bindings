@@ -41,7 +41,6 @@ public class RCTCoreTezosLikeNetworkParameters extends ReactContextBaseJavaModul
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, TezosLikeNetworkParameters>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

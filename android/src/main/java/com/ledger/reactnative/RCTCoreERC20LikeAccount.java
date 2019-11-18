@@ -50,7 +50,6 @@ public class RCTCoreERC20LikeAccount extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, ERC20LikeAccount>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override
