@@ -43,7 +43,6 @@ public class RCTCoreRippleLikeBlock extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, RippleLikeBlock>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

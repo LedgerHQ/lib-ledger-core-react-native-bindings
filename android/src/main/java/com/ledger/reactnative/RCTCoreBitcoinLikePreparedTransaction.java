@@ -44,7 +44,6 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikePreparedTransaction>();
-        WritableNativeMap.setUseNativeAccessor(true);
         this.implementationsData = new WritableNativeMap();
     }
 

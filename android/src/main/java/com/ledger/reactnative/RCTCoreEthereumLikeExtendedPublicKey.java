@@ -44,7 +44,6 @@ public class RCTCoreEthereumLikeExtendedPublicKey extends ReactContextBaseJavaMo
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, EthereumLikeExtendedPublicKey>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

@@ -41,7 +41,6 @@ public class RCTCoreEthereumLikeNetworkParameters extends ReactContextBaseJavaMo
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, EthereumLikeNetworkParameters>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

@@ -49,7 +49,6 @@ public class RCTCoreDynamicObject extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, DynamicObject>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

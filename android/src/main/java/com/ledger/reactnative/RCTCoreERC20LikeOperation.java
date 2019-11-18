@@ -45,7 +45,6 @@ public class RCTCoreERC20LikeOperation extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, ERC20LikeOperation>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

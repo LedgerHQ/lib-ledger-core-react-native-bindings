@@ -43,7 +43,6 @@ public class RCTCoreBigInt extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BigInt>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

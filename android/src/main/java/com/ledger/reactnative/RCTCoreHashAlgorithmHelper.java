@@ -43,7 +43,6 @@ public class RCTCoreHashAlgorithmHelper extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, HashAlgorithmHelperImpl>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

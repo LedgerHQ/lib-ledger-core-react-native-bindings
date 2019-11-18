@@ -48,7 +48,6 @@ public class RCTCoreDatabaseResultSet extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, DatabaseResultSetImpl>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

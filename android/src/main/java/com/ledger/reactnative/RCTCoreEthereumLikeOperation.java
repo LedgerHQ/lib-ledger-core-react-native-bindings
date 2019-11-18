@@ -45,7 +45,6 @@ public class RCTCoreEthereumLikeOperation extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, EthereumLikeOperation>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

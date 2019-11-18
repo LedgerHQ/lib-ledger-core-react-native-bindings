@@ -52,7 +52,6 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, WalletPoolBuilder>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

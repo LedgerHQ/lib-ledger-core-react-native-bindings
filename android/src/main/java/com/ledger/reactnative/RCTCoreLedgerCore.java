@@ -42,7 +42,6 @@ public class RCTCoreLedgerCore extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, LedgerCore>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

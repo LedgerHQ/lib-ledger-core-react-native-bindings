@@ -44,7 +44,6 @@ public class RCTCoreTezosLikeAddress extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, TezosLikeAddress>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

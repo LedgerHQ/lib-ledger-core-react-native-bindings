@@ -46,7 +46,6 @@ public class RCTCoreRunnable extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Runnable>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

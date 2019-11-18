@@ -43,7 +43,6 @@ public class RCTCoreBlockchainObserverEngines extends ReactContextBaseJavaModule
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BlockchainObserverEngines>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

@@ -42,7 +42,6 @@ public class RCTCoreCurrencyUnit extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, CurrencyUnit>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

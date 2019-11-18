@@ -48,7 +48,6 @@ public class RCTCoreTezosLikeOriginatedAccount extends ReactContextBaseJavaModul
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, TezosLikeOriginatedAccount>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

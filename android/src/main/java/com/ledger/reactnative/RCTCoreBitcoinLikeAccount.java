@@ -49,7 +49,6 @@ public class RCTCoreBitcoinLikeAccount extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikeAccount>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

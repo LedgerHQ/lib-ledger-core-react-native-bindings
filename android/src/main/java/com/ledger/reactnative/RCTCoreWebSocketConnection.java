@@ -44,7 +44,6 @@ public class RCTCoreWebSocketConnection extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, WebSocketConnection>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

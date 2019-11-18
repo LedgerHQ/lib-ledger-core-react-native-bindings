@@ -43,7 +43,6 @@ public class RCTCoreRippleLikeExtendedPublicKey extends ReactContextBaseJavaModu
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, RippleLikeExtendedPublicKey>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

@@ -42,7 +42,6 @@ public class RCTCoreRippleConfigurationDefaults extends ReactContextBaseJavaModu
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, RippleConfigurationDefaults>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

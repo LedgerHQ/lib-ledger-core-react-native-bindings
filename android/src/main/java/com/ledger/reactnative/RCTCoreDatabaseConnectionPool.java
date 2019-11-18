@@ -44,7 +44,6 @@ public class RCTCoreDatabaseConnectionPool extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, DatabaseConnectionPoolImpl>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

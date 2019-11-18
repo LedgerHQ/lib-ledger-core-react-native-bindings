@@ -43,7 +43,6 @@ public class RCTCoreBitcoinLikeWallet extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikeWallet>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

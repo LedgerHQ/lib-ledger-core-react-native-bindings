@@ -49,7 +49,6 @@ public class RCTCoreDatabaseStatement extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, DatabaseStatementImpl>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

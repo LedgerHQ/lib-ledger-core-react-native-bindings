@@ -43,7 +43,6 @@ public class RCTCoreTezosLikeBlock extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, TezosLikeBlock>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override

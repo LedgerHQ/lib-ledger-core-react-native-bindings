@@ -44,7 +44,6 @@ public class RCTCoreExecutionContext extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, ExecutionContextImpl>();
-        WritableNativeMap.setUseNativeAccessor(true);
     }
 
     @Override
