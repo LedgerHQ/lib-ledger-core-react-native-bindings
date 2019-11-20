@@ -33,7 +33,7 @@ import java.util.UUID;
 public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, BitcoinLikePreparedTransaction> javaObjects;
-    private WritableNativeMap implementationsData;
+    private Map<String, Object> implementationsData;
     public Map<String, BitcoinLikePreparedTransaction> getJavaObjects()
     {
         return javaObjects;
@@ -44,7 +44,7 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, BitcoinLikePreparedTransaction>();
-        this.implementationsData = new WritableNativeMap();
+        this.implementationsData = new HashMap<>();
     }
 
     @Override
@@ -144,7 +144,7 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
         WritableNativeMap finalResult = new WritableNativeMap();
         finalResult.putString("type","RCTCoreBitcoinLikePreparedTransaction");
         finalResult.putString("uid",uuid);
-        this.implementationsData.putMap(uuid, implementationsData);
+        this.implementationsData.put(uuid, implementationsData);
         promise.resolve(finalResult);
     }
     public void mapImplementationsData(ReadableMap currentInstance)
@@ -178,7 +178,7 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
             converted_field_3.pushMap(converted_field_3_elem);
         }
         implementationsData.putArray("outputs", converted_field_3);
-        this.implementationsData.putMap(currentInstanceUid, implementationsData);
+        this.implementationsData.put(currentInstanceUid, implementationsData);
     }
     @ReactMethod
     public void getVersion(ReadableMap currentInstance, Promise promise)
@@ -204,11 +204,11 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
-            if (!this.implementationsData.hasKey(uid))
+            if (!this.implementationsData.containsKey(uid))
             {
                 this.mapImplementationsData(currentInstance);
             }
-            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            ReadableNativeMap data = (ReadableNativeMap)this.implementationsData.get(uid);
             ReadableArray resultTmp = data.getArray("inputs");
             WritableNativeArray result = new WritableNativeArray();
             for (int i = 0; i < resultTmp.size(); i++)
@@ -252,11 +252,11 @@ public class RCTCoreBitcoinLikePreparedTransaction extends ReactContextBaseJavaM
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
-            if (!this.implementationsData.hasKey(uid))
+            if (!this.implementationsData.containsKey(uid))
             {
                 this.mapImplementationsData(currentInstance);
             }
-            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            ReadableNativeMap data = (ReadableNativeMap)this.implementationsData.get(uid);
             ReadableArray resultTmp = data.getArray("outputs");
             WritableNativeArray result = new WritableNativeArray();
             for (int i = 0; i < resultTmp.size(); i++)

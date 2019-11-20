@@ -38,7 +38,7 @@ import java.util.UUID;
 public class RCTCoreCurrency extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, Currency> javaObjects;
-    private WritableNativeMap implementationsData;
+    private Map<String, Object> implementationsData;
     public Map<String, Currency> getJavaObjects()
     {
         return javaObjects;
@@ -49,7 +49,7 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, Currency>();
-        this.implementationsData = new WritableNativeMap();
+        this.implementationsData = new HashMap<>();
     }
 
     @Override
@@ -148,7 +148,7 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         WritableNativeMap finalResult = new WritableNativeMap();
         finalResult.putString("type","RCTCoreCurrency");
         finalResult.putString("uid",uuid);
-        this.implementationsData.putMap(uuid, implementationsData);
+        this.implementationsData.put(uuid, implementationsData);
         promise.resolve(finalResult);
     }
     public void mapImplementationsData(ReadableMap currentInstance)
@@ -201,7 +201,7 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         converted_field_8.putString("type","RCTCoreTezosLikeNetworkParameters");
         converted_field_8.putString("uid",field_8_uuid);
         implementationsData.putMap("tezosLikeNetworkParameters", converted_field_8);
-        this.implementationsData.putMap(currentInstanceUid, implementationsData);
+        this.implementationsData.put(currentInstanceUid, implementationsData);
     }
     @ReactMethod
     public void getWalletType(ReadableMap currentInstance, Promise promise)
@@ -281,11 +281,11 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
-            if (!this.implementationsData.hasKey(uid))
+            if (!this.implementationsData.containsKey(uid))
             {
                 this.mapImplementationsData(currentInstance);
             }
-            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            ReadableNativeMap data = (ReadableNativeMap)this.implementationsData.get(uid);
             ReadableArray resultTmp = data.getArray("units");
             WritableNativeArray result = new WritableNativeArray();
             for (int i = 0; i < resultTmp.size(); i++)
@@ -308,11 +308,11 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
-            if (!this.implementationsData.hasKey(uid))
+            if (!this.implementationsData.containsKey(uid))
             {
                 this.mapImplementationsData(currentInstance);
             }
-            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            ReadableNativeMap data = (ReadableNativeMap)this.implementationsData.get(uid);
             WritableNativeMap result = new WritableNativeMap();
             result.merge(data.getMap("bitcoinLikeNetworkParameters"));
             promise.resolve(result);
@@ -329,11 +329,11 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
-            if (!this.implementationsData.hasKey(uid))
+            if (!this.implementationsData.containsKey(uid))
             {
                 this.mapImplementationsData(currentInstance);
             }
-            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            ReadableNativeMap data = (ReadableNativeMap)this.implementationsData.get(uid);
             WritableNativeMap result = new WritableNativeMap();
             result.merge(data.getMap("ethereumLikeNetworkParameters"));
             promise.resolve(result);
@@ -350,11 +350,11 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
-            if (!this.implementationsData.hasKey(uid))
+            if (!this.implementationsData.containsKey(uid))
             {
                 this.mapImplementationsData(currentInstance);
             }
-            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            ReadableNativeMap data = (ReadableNativeMap)this.implementationsData.get(uid);
             WritableNativeMap result = new WritableNativeMap();
             result.merge(data.getMap("rippleLikeNetworkParameters"));
             promise.resolve(result);
@@ -371,11 +371,11 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
-            if (!this.implementationsData.hasKey(uid))
+            if (!this.implementationsData.containsKey(uid))
             {
                 this.mapImplementationsData(currentInstance);
             }
-            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            ReadableNativeMap data = (ReadableNativeMap)this.implementationsData.get(uid);
             WritableNativeMap result = new WritableNativeMap();
             result.merge(data.getMap("tezosLikeNetworkParameters"));
             promise.resolve(result);

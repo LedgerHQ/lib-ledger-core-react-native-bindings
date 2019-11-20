@@ -33,7 +33,7 @@ import java.util.UUID;
 public class RCTCoreHttpReadBodyResult extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private Map<String, HttpReadBodyResult> javaObjects;
-    private WritableNativeMap implementationsData;
+    private Map<String, Object> implementationsData;
     public Map<String, HttpReadBodyResult> getJavaObjects()
     {
         return javaObjects;
@@ -44,7 +44,7 @@ public class RCTCoreHttpReadBodyResult extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         this.javaObjects = new HashMap<String, HttpReadBodyResult>();
-        this.implementationsData = new WritableNativeMap();
+        this.implementationsData = new HashMap<>();
     }
 
     @Override
@@ -141,7 +141,7 @@ public class RCTCoreHttpReadBodyResult extends ReactContextBaseJavaModule {
         WritableNativeMap finalResult = new WritableNativeMap();
         finalResult.putString("type","RCTCoreHttpReadBodyResult");
         finalResult.putString("uid",uuid);
-        this.implementationsData.putMap(uuid, implementationsData);
+        this.implementationsData.put(uuid, implementationsData);
         promise.resolve(finalResult);
     }
     public void mapImplementationsData(ReadableMap currentInstance)
@@ -157,7 +157,7 @@ public class RCTCoreHttpReadBodyResult extends ReactContextBaseJavaModule {
         converted_field_0.putString("type","RCTCoreError");
         converted_field_0.putString("uid",field_0_uuid);
         implementationsData.putMap("error", converted_field_0);
-        this.implementationsData.putMap(currentInstanceUid, implementationsData);
+        this.implementationsData.put(currentInstanceUid, implementationsData);
     }
     @ReactMethod
     public void getError(ReadableMap currentInstance, Promise promise)
@@ -165,11 +165,11 @@ public class RCTCoreHttpReadBodyResult extends ReactContextBaseJavaModule {
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
-            if (!this.implementationsData.hasKey(uid))
+            if (!this.implementationsData.containsKey(uid))
             {
                 this.mapImplementationsData(currentInstance);
             }
-            ReadableNativeMap data = this.implementationsData.getMap(uid);
+            ReadableNativeMap data = (ReadableNativeMap)this.implementationsData.get(uid);
             WritableNativeMap result = new WritableNativeMap();
             result.merge(data.getMap("error"));
             promise.resolve(result);
