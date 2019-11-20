@@ -12,7 +12,7 @@
     "preinstall": "bash preinstall.sh"
   },
   "peerDependencies": {
-    "react-native": "^0.59.0"
+    "react-native": "^0.61.3"
   },
   "devDependencies": {}
 }
