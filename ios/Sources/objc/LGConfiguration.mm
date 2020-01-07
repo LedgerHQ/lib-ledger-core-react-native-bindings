@@ -27,3 +27,5 @@ NSString * __nonnull const LGConfigurationSYNCHRONIZATIONENGINE = @"SYNCHRONIZAT
 NSString * __nonnull const LGConfigurationSYNCHRONIZATIONHALFBATCHSIZE = @"SYNCHRONIZATION_HALF_BATCH_SIZE";
 
 NSString * __nonnull const LGConfigurationTRUSTLIMIT = @"TRUST_LIMIT";
+
+NSString * __nonnull const LGConfigurationTTLCACHE = @"TTL_CACHE";

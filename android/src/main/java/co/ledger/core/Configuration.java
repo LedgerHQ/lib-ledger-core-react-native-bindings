@@ -43,6 +43,9 @@ public abstract class Configuration {
     /** Operation trust. */
     public static final String TRUST_LIMIT = "TRUST_LIMIT";
 
+    /** Time to Live for block cache */
+    public static final String TTL_CACHE = "TTL_CACHE";
+
 
     private static final class CppProxy extends Configuration
     {

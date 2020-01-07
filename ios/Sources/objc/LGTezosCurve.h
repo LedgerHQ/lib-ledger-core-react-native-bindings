@@ -7,4 +7,5 @@ typedef NS_ENUM(NSInteger, LGTezosCurve)
 {
     LGTezosCurveEd25519,
     LGTezosCurveSecp256k1,
+    LGTezosCurveP256,
 };

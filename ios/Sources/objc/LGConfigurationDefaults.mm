@@ -13,3 +13,7 @@ NSString * __nonnull const LGConfigurationDefaultsBIP44DERIVATIONSCHEME = @"44'/
 NSString * __nonnull const LGConfigurationDefaultsDEFAULTKEYCHAIN = @"BIP32_P2PKH";
 
 int32_t const LGConfigurationDefaultsDEFAULTTRUSTLIMIT = 3;
+
+int32_t const LGConfigurationDefaultsKEYCHAINDEFAULTOBSERVABLERANGE = 20;
+
+int32_t const LGConfigurationDefaultsDEFAULTTTLCACHE = 30;

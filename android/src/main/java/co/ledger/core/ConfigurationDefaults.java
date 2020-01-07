@@ -22,6 +22,12 @@ public abstract class ConfigurationDefaults {
     /** Default trust limit (block height). */
     public static final int DEFAULT_TRUST_LIMIT = 3;
 
+    /** Default observable range for HD keychains */
+    public static final int KEYCHAIN_DEFAULT_OBSERVABLE_RANGE = 20;
+
+    /** Default TTL for cache */
+    public static final int DEFAULT_TTL_CACHE = 30;
+
 
     private static final class CppProxy extends ConfigurationDefaults
     {

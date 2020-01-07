@@ -44,6 +44,13 @@ public abstract class EthereumLikeAccount {
      */
     public abstract void getERC20Balance(String erc20Address, BigIntCallback callback);
 
+    /**
+     * Get balance of ERC20 tokens
+     * The passed addresses are ERC20 accounts
+     * Note: same note as above
+     */
+    public abstract void getERC20Balances(ArrayList<String> erc20Addresses, BigIntListCallback callback);
+
     private static final class CppProxy extends EthereumLikeAccount
     {
         private final long nativeRef;
@@ -122,5 +129,13 @@ public abstract class EthereumLikeAccount {
             native_getERC20Balance(this.nativeRef, erc20Address, callback);
         }
         private native void native_getERC20Balance(long _nativeRef, String erc20Address, BigIntCallback callback);
+
+        @Override
+        public void getERC20Balances(ArrayList<String> erc20Addresses, BigIntListCallback callback)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_getERC20Balances(this.nativeRef, erc20Addresses, callback);
+        }
+        private native void native_getERC20Balances(long _nativeRef, ArrayList<String> erc20Addresses, BigIntListCallback callback);
     }
 }
