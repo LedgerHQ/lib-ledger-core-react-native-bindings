@@ -852,6 +852,22 @@ package object implicits {
             })
             promise.future
         }
+        def getERC20Balances(erc20Addresses: Array[String]): Future[ArrayList[BigInt]] = {
+            val promise = Promise[ArrayList[BigInt]]()
+            self.getERC20Balances(arrayList2Array(erc20Addresses), new BigIntListCallback() {
+                override def onCallback(result: ArrayList[BigInt], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+    }
+    implicit class RichBigIntListCallback(val self: BigIntListCallback) {
     }
     implicit class RichBitcoinLikeScriptChunk(val self: BitcoinLikeScriptChunk) {
     }
@@ -996,8 +1012,6 @@ package object implicits {
         }
     }
     implicit class RichBitcoinLikeOutputListCallback(val self: BitcoinLikeOutputListCallback) {
-    }
-    implicit class RichBigIntListCallback(val self: BigIntListCallback) {
     }
     implicit class RichBitcoinLikeWallet(val self: BitcoinLikeWallet) {
     }

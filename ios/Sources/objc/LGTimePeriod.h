@@ -5,6 +5,7 @@
 
 typedef NS_ENUM(NSInteger, LGTimePeriod)
 {
+    LGTimePeriodHour,
     LGTimePeriodDay,
     LGTimePeriodWeek,
     LGTimePeriodMonth,

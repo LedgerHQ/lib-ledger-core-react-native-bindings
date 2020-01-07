@@ -6,6 +6,7 @@
 @class LGEthereumLikeTransaction;
 @class LGEthereumLikeTransactionBuilder;
 @protocol LGBigIntCallback;
+@protocol LGBigIntListCallback;
 @protocol LGStringCallback;
 
 
@@ -51,5 +52,13 @@
  */
 - (void)getERC20Balance:(nonnull NSString *)erc20Address
                callback:(nullable id<LGBigIntCallback>)callback;
+
+/**
+ * Get balance of ERC20 tokens
+ * The passed addresses are ERC20 accounts
+ * Note: same note as above
+ */
+- (void)getERC20Balances:(nonnull NSArray<NSString *> *)erc20Addresses
+                callback:(nullable id<LGBigIntListCallback>)callback;
 
 @end

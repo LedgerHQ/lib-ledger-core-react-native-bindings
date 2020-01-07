@@ -4,6 +4,7 @@
 package co.ledger.core;
 
 public enum TimePeriod {
+    HOUR,
     DAY,
     WEEK,
     MONTH,

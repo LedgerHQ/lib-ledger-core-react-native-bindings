@@ -4,6 +4,7 @@
 package com.ledger.reactnative;
 
 import co.ledger.core.BigIntCallback;
+import co.ledger.core.BigIntListCallback;
 import co.ledger.core.ERC20LikeAccount;
 import co.ledger.core.EthereumLikeAccount;
 import co.ledger.core.EthereumLikeTransaction;
@@ -282,6 +283,33 @@ public class RCTCoreEthereumLikeAccount extends ReactContextBaseJavaModule {
 
             RCTCoreBigIntCallback javaParam_1 = RCTCoreBigIntCallback.initWithPromise(promise, this.reactContext);
             currentInstanceObj.getERC20Balance(erc20Address, javaParam_1);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Get balance of ERC20 tokens
+     * The passed addresses are ERC20 accounts
+     * Note: same note as above
+     */
+    @ReactMethod
+    public void getERC20Balances(ReadableMap currentInstance, ReadableArray erc20Addresses, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            EthereumLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            ArrayList<String> javaParam_0 = new ArrayList<String>();
+            for (int i = 0; i <  erc20Addresses.size(); i++)
+            {
+                String erc20Addresses_elem = erc20Addresses.getString(i);
+                javaParam_0.add(erc20Addresses_elem);
+            }
+            RCTCoreBigIntListCallback javaParam_1 = RCTCoreBigIntListCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getERC20Balances(javaParam_0, javaParam_1);
         }
         catch(Exception e)
         {

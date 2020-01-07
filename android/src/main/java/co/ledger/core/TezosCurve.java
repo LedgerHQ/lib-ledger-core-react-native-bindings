@@ -6,5 +6,6 @@ package co.ledger.core;
 public enum TezosCurve {
     ED25519,
     SECP256K1,
+    P256,
     ;
 }

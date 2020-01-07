@@ -242,4 +242,27 @@ RCT_REMAP_METHOD(getERC20Balance,getERC20Balance:(NSDictionary *)currentInstance
     [currentInstanceObj getERC20Balance:erc20Address callback:objcParam_1];
 
 }
+
+/**
+ * Get balance of ERC20 tokens
+ * The passed addresses are ERC20 accounts
+ * Note: same note as above
+ */
+RCT_REMAP_METHOD(getERC20Balances,getERC20Balances:(NSDictionary *)currentInstance withParams:(nonnull NSArray<NSString *> *)erc20Addresses withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::getERC20Balances, first argument should be an instance of LGEthereumLikeAccount", nil);
+        return;
+    }
+    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::getERC20Balances, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGBigIntListCallback *objcParam_1 = [[RCTCoreLGBigIntListCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getERC20Balances:erc20Addresses callback:objcParam_1];
+
+}
 @end

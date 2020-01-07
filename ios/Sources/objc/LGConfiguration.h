@@ -27,6 +27,8 @@ extern NSString * __nonnull const LGConfigurationSYNCHRONIZATIONENGINE;
 extern NSString * __nonnull const LGConfigurationSYNCHRONIZATIONHALFBATCHSIZE;
 /** Operation trust. */
 extern NSString * __nonnull const LGConfigurationTRUSTLIMIT;
+/** Time to Live for block cache */
+extern NSString * __nonnull const LGConfigurationTTLCACHE;
 
 /** Overall configuration. */
 @interface LGConfiguration : NSObject

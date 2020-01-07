@@ -7,6 +7,7 @@
 #import "DJIError.h"
 #import "DJIMarshal+Private.h"
 #import "LGBigIntCallback+Private.h"
+#import "LGBigIntListCallback+Private.h"
 #import "LGERC20LikeAccount+Private.h"
 #import "LGEthereumLikeTransaction+Private.h"
 #import "LGEthereumLikeTransactionBuilder+Private.h"
@@ -84,6 +85,14 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         _cppRefHandle.get()->getERC20Balance(::djinni::String::toCpp(erc20Address),
                                              ::djinni_generated::BigIntCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)getERC20Balances:(nonnull NSArray<NSString *> *)erc20Addresses
+                callback:(nullable id<LGBigIntListCallback>)callback {
+    try {
+        _cppRefHandle.get()->getERC20Balances(::djinni::List<::djinni::String>::toCpp(erc20Addresses),
+                                              ::djinni_generated::BigIntListCallback::toCpp(callback));
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
