@@ -11,6 +11,7 @@
 @class LGOperationQuery;
 @class LGPreferences;
 @class LGRippleLikeAccount;
+@class LGStellarLikeAccount;
 @class LGTezosLikeAccount;
 @protocol LGAddressListCallback;
 @protocol LGAmountCallback;
@@ -116,6 +117,12 @@ extern NSString * __nonnull const LGAccountEVNEWOPUID;
 - (nullable LGTezosLikeAccount *)asTezosLikeAccount;
 
 /**
+ * Turn the account into a Stellar one, allowing operations to be performerd on the Stellar
+ * network.
+ */
+- (nullable LGStellarLikeAccount *)asStellarLikeAccount;
+
+/**
  * Check if account is a Bitcoin one.
  * @return bool
  */
@@ -126,6 +133,12 @@ extern NSString * __nonnull const LGAccountEVNEWOPUID;
  * @return bool
  */
 - (BOOL)isInstanceOfEthereumLikeAccount;
+
+/**
+ * Check if account is a Stellar one.
+ * @return bool
+ */
+- (BOOL)isInstanceOfStellarLikeAccount;
 
 /**
  * Check if account is a Ripple one.

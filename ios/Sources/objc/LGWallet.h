@@ -11,6 +11,7 @@
 @class LGEventBus;
 @class LGLogger;
 @class LGPreferences;
+@class LGStellarLikeWallet;
 @protocol LGAccountCallback;
 @protocol LGAccountCreationInfoCallback;
 @protocol LGAccountListCallback;
@@ -125,6 +126,15 @@
  * @return bool
  */
 - (BOOL)isInstanceOfRippleLikeWallet;
+
+/**
+ * Tell whether wallet is a Stellar one.
+ * @return bool
+ */
+- (BOOL)isInstanceOfStellarLikeWallet;
+
+/** Cast the instance to StellarLIkeWallet */
+- (nullable LGStellarLikeWallet *)asStellarLikeWallet;
 
 /**
  * Get wallet type.

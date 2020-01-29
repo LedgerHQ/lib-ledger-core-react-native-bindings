@@ -16,6 +16,7 @@
 #import "LGI32Callback.h"
 #import "LGLogger.h"
 #import "LGPreferences.h"
+#import "LGStellarLikeWallet.h"
 #import "LGWallet.h"
 #import "LGWalletType.h"
 #import "RCTCoreBaseModule.h"
@@ -34,6 +35,7 @@
 #import "RCTCoreLGI32Callback.h"
 #import "RCTCoreLGLogger.h"
 #import "RCTCoreLGPreferences.h"
+#import "RCTCoreLGStellarLikeWallet.h"
 #import <Foundation/Foundation.h>
 #import <React/RCTBridge.h>
 #import <React/RCTBridgeModule.h>
