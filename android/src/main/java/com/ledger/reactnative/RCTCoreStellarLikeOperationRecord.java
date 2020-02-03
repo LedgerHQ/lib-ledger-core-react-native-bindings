@@ -104,7 +104,7 @@ public class RCTCoreStellarLikeOperationRecord extends ReactContextBaseJavaModul
     }
 
     @ReactMethod
-    public void init(String hash, boolean successful, int operationType, String transactionHash, ReadableMap asset, Optional<ReadableMap> sourceAsset, Optional<ReadableMap> sourceAmount, Promise promise) {
+    public void init(String operationHash, boolean successful, int operationType, String transactionHash, ReadableMap asset, Optional<ReadableMap> sourceAsset, Optional<ReadableMap> sourceAmount, Promise promise) {
         WritableNativeMap implementationsData = new WritableNativeMap();
         if (operationType < 0 || StellarLikeOperationType.values().length <= operationType)
         {
@@ -121,7 +121,7 @@ public class RCTCoreStellarLikeOperationRecord extends ReactContextBaseJavaModul
         RCTCoreAmount rctParam_sourceAmount = this.reactContext.getNativeModule(RCTCoreAmount.class);
         Amount javaParam_6 = rctParam_sourceAmount.getJavaObjects().get(sourceAmount.get().getString("uid"));
         implementationsData.putString("sourceAmount", sourceAmount.get().getString("uid"));
-        StellarLikeOperationRecord javaResult = new StellarLikeOperationRecord(hash, successful, javaParam_2, transactionHash, javaParam_4, javaParam_5, javaParam_6);
+        StellarLikeOperationRecord javaResult = new StellarLikeOperationRecord(operationHash, successful, javaParam_2, transactionHash, javaParam_4, javaParam_5, javaParam_6);
 
         String uuid = UUID.randomUUID().toString();
         this.javaObjects.put(uuid, javaResult);
@@ -163,20 +163,20 @@ public class RCTCoreStellarLikeOperationRecord extends ReactContextBaseJavaModul
         this.implementationsData.put(currentInstanceUid, implementationsData);
     }
     @ReactMethod
-    public void getHash(ReadableMap currentInstance, Promise promise)
+    public void getOperationHash(ReadableMap currentInstance, Promise promise)
     {
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
             StellarLikeOperationRecord javaObj = this.javaObjects.get(uid);
-            String result = javaObj.getHash();
+            String result = javaObj.getOperationHash();
             WritableNativeMap resultMap = new WritableNativeMap();
             resultMap.putString("value", result);
             promise.resolve(resultMap);
         }
         else
         {
-            promise.reject("Failed to call RCTCoreStellarLikeOperationRecord::getHash", "First parameter of RCTCoreStellarLikeOperationRecord::getHash should be an instance of RCTCoreStellarLikeOperationRecord");
+            promise.reject("Failed to call RCTCoreStellarLikeOperationRecord::getOperationHash", "First parameter of RCTCoreStellarLikeOperationRecord::getOperationHash should be an instance of RCTCoreStellarLikeOperationRecord");
         }
     }
 

@@ -31,13 +31,13 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 {
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
-RCT_REMAP_METHOD(init, initWithHash:(nonnull NSString *)hash
-                         successful:(BOOL)successful
-                      operationType:(int)operationType
-                    transactionHash:(nonnull NSString *)transactionHash
-                              asset:(NSDictionary *)asset
-                        sourceAsset:(nullable NSDictionary *)sourceAsset
-                       sourceAmount:(nullable NSDictionary *)sourceAmount withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_REMAP_METHOD(init, initWithOperationHash:(nonnull NSString *)operationHash
+                                  successful:(BOOL)successful
+                               operationType:(int)operationType
+                             transactionHash:(nonnull NSString *)transactionHash
+                                       asset:(NSDictionary *)asset
+                                 sourceAsset:(nullable NSDictionary *)sourceAsset
+                                sourceAmount:(nullable NSDictionary *)sourceAmount withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSMutableDictionary *implementationsData = [[NSMutableDictionary alloc] init];
     RCTCoreLGStellarLikeAsset *rctParam_asset = (RCTCoreLGStellarLikeAsset *)[self.bridge moduleForName:@"CoreLGStellarLikeAsset"];
     LGStellarLikeAsset *field_4 = (LGStellarLikeAsset *)[rctParam_asset.objcImplementations objectForKey:asset[@"uid"]];
@@ -50,7 +50,7 @@ RCT_REMAP_METHOD(init, initWithHash:(nonnull NSString *)hash
     [implementationsData setObject:sourceAmount[@"uid"] forKey:@"sourceAmount"];
 
 
-    LGStellarLikeOperationRecord * finalResult = [[LGStellarLikeOperationRecord alloc] initWithHash:hash successful:successful operationType:(LGStellarLikeOperationType)operationType transactionHash:transactionHash asset:field_4 sourceAsset:field_5 sourceAmount:field_6];
+    LGStellarLikeOperationRecord * finalResult = [[LGStellarLikeOperationRecord alloc] initWithOperationHash:operationHash successful:successful operationType:(LGStellarLikeOperationType)operationType transactionHash:transactionHash asset:field_4 sourceAsset:field_5 sourceAmount:field_6];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGStellarLikeOperationRecord *rctImpl = (RCTCoreLGStellarLikeOperationRecord *)[self.bridge moduleForName:@"CoreLGStellarLikeOperationRecord"];
     NSArray *finalResultArray = [[NSArray alloc] initWithObjects:finalResult, uuid, nil];
@@ -96,10 +96,10 @@ RCT_REMAP_METHOD(init, initWithHash:(nonnull NSString *)hash
     [implementationsData setObject:converted_field_6 forKey:@"sourceAmount"];
     [self.implementationsData setObject:implementationsData forKey:currentInstance[@"uid"]];
 }
-RCT_REMAP_METHOD(getHash, getHash:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
+RCT_REMAP_METHOD(getOperationHash, getOperationHash:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGStellarLikeOperationRecord *objcImpl = (LGStellarLikeOperationRecord *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : objcImpl.hash};
+    NSDictionary *result = @{@"value" : objcImpl.operationHash};
     resolve(result);
 }
 

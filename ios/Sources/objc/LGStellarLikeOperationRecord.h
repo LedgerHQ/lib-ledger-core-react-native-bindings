@@ -7,22 +7,22 @@
 @class LGAmount;
 
 @interface LGStellarLikeOperationRecord : NSObject
-- (nonnull instancetype)initWithHash:(nonnull NSString *)hash
-                          successful:(BOOL)successful
-                       operationType:(LGStellarLikeOperationType)operationType
-                     transactionHash:(nonnull NSString *)transactionHash
-                               asset:(nonnull LGStellarLikeAsset *)asset
-                         sourceAsset:(nullable LGStellarLikeAsset *)sourceAsset
-                        sourceAmount:(nullable LGAmount *)sourceAmount;
-+ (nonnull instancetype)StellarLikeOperationRecordWithHash:(nonnull NSString *)hash
-                                                successful:(BOOL)successful
-                                             operationType:(LGStellarLikeOperationType)operationType
-                                           transactionHash:(nonnull NSString *)transactionHash
-                                                     asset:(nonnull LGStellarLikeAsset *)asset
-                                               sourceAsset:(nullable LGStellarLikeAsset *)sourceAsset
-                                              sourceAmount:(nullable LGAmount *)sourceAmount;
+- (nonnull instancetype)initWithOperationHash:(nonnull NSString *)operationHash
+                                   successful:(BOOL)successful
+                                operationType:(LGStellarLikeOperationType)operationType
+                              transactionHash:(nonnull NSString *)transactionHash
+                                        asset:(nonnull LGStellarLikeAsset *)asset
+                                  sourceAsset:(nullable LGStellarLikeAsset *)sourceAsset
+                                 sourceAmount:(nullable LGAmount *)sourceAmount;
++ (nonnull instancetype)StellarLikeOperationRecordWithOperationHash:(nonnull NSString *)operationHash
+                                                         successful:(BOOL)successful
+                                                      operationType:(LGStellarLikeOperationType)operationType
+                                                    transactionHash:(nonnull NSString *)transactionHash
+                                                              asset:(nonnull LGStellarLikeAsset *)asset
+                                                        sourceAsset:(nullable LGStellarLikeAsset *)sourceAsset
+                                                       sourceAmount:(nullable LGAmount *)sourceAmount;
 
-@property (nonatomic, readonly, nonnull) NSString * hash;
+@property (nonatomic, readonly, nonnull) NSString * operationHash;
 
 @property (nonatomic, readonly) BOOL successful;
 

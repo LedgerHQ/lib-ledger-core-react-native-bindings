@@ -6,7 +6,7 @@ package co.ledger.core;
 public final class StellarLikeOperationRecord {
 
 
-    /*package*/ final String hash;
+    /*package*/ final String operationHash;
 
     /*package*/ final boolean successful;
 
@@ -21,14 +21,14 @@ public final class StellarLikeOperationRecord {
     /*package*/ final Amount sourceAmount;
 
     public StellarLikeOperationRecord(
-            String hash,
+            String operationHash,
             boolean successful,
             StellarLikeOperationType operationType,
             String transactionHash,
             StellarLikeAsset asset,
             StellarLikeAsset sourceAsset,
             Amount sourceAmount) {
-        this.hash = hash;
+        this.operationHash = operationHash;
         this.successful = successful;
         this.operationType = operationType;
         this.transactionHash = transactionHash;
@@ -37,8 +37,8 @@ public final class StellarLikeOperationRecord {
         this.sourceAmount = sourceAmount;
     }
 
-    public String getHash() {
-        return hash;
+    public String getOperationHash() {
+        return operationHash;
     }
 
     public boolean getSuccessful() {
@@ -68,7 +68,7 @@ public final class StellarLikeOperationRecord {
     @Override
     public String toString() {
         return "StellarLikeOperationRecord{" +
-                "hash=" + hash +
+                "operationHash=" + operationHash +
                 "," + "successful=" + successful +
                 "," + "operationType=" + operationType +
                 "," + "transactionHash=" + transactionHash +

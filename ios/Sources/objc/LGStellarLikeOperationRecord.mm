@@ -6,16 +6,16 @@
 
 @implementation LGStellarLikeOperationRecord
 
-- (nonnull instancetype)initWithHash:(nonnull NSString *)hash
-                          successful:(BOOL)successful
-                       operationType:(LGStellarLikeOperationType)operationType
-                     transactionHash:(nonnull NSString *)transactionHash
-                               asset:(nonnull LGStellarLikeAsset *)asset
-                         sourceAsset:(nullable LGStellarLikeAsset *)sourceAsset
-                        sourceAmount:(nullable LGAmount *)sourceAmount
+- (nonnull instancetype)initWithOperationHash:(nonnull NSString *)operationHash
+                                   successful:(BOOL)successful
+                                operationType:(LGStellarLikeOperationType)operationType
+                              transactionHash:(nonnull NSString *)transactionHash
+                                        asset:(nonnull LGStellarLikeAsset *)asset
+                                  sourceAsset:(nullable LGStellarLikeAsset *)sourceAsset
+                                 sourceAmount:(nullable LGAmount *)sourceAmount
 {
     if (self = [super init]) {
-        _hash = [hash copy];
+        _operationHash = [operationHash copy];
         _successful = successful;
         _operationType = operationType;
         _transactionHash = [transactionHash copy];
@@ -26,26 +26,26 @@
     return self;
 }
 
-+ (nonnull instancetype)StellarLikeOperationRecordWithHash:(nonnull NSString *)hash
-                                                successful:(BOOL)successful
-                                             operationType:(LGStellarLikeOperationType)operationType
-                                           transactionHash:(nonnull NSString *)transactionHash
-                                                     asset:(nonnull LGStellarLikeAsset *)asset
-                                               sourceAsset:(nullable LGStellarLikeAsset *)sourceAsset
-                                              sourceAmount:(nullable LGAmount *)sourceAmount
++ (nonnull instancetype)StellarLikeOperationRecordWithOperationHash:(nonnull NSString *)operationHash
+                                                         successful:(BOOL)successful
+                                                      operationType:(LGStellarLikeOperationType)operationType
+                                                    transactionHash:(nonnull NSString *)transactionHash
+                                                              asset:(nonnull LGStellarLikeAsset *)asset
+                                                        sourceAsset:(nullable LGStellarLikeAsset *)sourceAsset
+                                                       sourceAmount:(nullable LGAmount *)sourceAmount
 {
-    return [[self alloc] initWithHash:hash
-                           successful:successful
-                        operationType:operationType
-                      transactionHash:transactionHash
-                                asset:asset
-                          sourceAsset:sourceAsset
-                         sourceAmount:sourceAmount];
+    return [[self alloc] initWithOperationHash:operationHash
+                                    successful:successful
+                                 operationType:operationType
+                               transactionHash:transactionHash
+                                         asset:asset
+                                   sourceAsset:sourceAsset
+                                  sourceAmount:sourceAmount];
 }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ %p hash:%@ successful:%@ operationType:%@ transactionHash:%@ asset:%@ sourceAsset:%@ sourceAmount:%@>", self.class, (void *)self, self.hash, @(self.successful), @(self.operationType), self.transactionHash, self.asset, self.sourceAsset, self.sourceAmount];
+    return [NSString stringWithFormat:@"<%@ %p operationHash:%@ successful:%@ operationType:%@ transactionHash:%@ asset:%@ sourceAsset:%@ sourceAmount:%@>", self.class, (void *)self, self.operationHash, @(self.successful), @(self.operationType), self.transactionHash, self.asset, self.sourceAsset, self.sourceAmount];
 }
 
 @end

@@ -13,7 +13,7 @@ namespace djinni_generated {
 auto StellarLikeOperationRecord::toCpp(ObjcType obj) -> CppType
 {
     assert(obj);
-    return {::djinni::String::toCpp(obj.hash),
+    return {::djinni::String::toCpp(obj.operationHash),
             ::djinni::Bool::toCpp(obj.successful),
             ::djinni::Enum<::ledger::core::api::StellarLikeOperationType, LGStellarLikeOperationType>::toCpp(obj.operationType),
             ::djinni::String::toCpp(obj.transactionHash),
@@ -24,13 +24,13 @@ auto StellarLikeOperationRecord::toCpp(ObjcType obj) -> CppType
 
 auto StellarLikeOperationRecord::fromCpp(const CppType& cpp) -> ObjcType
 {
-    return [[LGStellarLikeOperationRecord alloc] initWithHash:(::djinni::String::fromCpp(cpp.hash))
-                                                   successful:(::djinni::Bool::fromCpp(cpp.successful))
-                                                operationType:(::djinni::Enum<::ledger::core::api::StellarLikeOperationType, LGStellarLikeOperationType>::fromCpp(cpp.operationType))
-                                              transactionHash:(::djinni::String::fromCpp(cpp.transactionHash))
-                                                        asset:(::djinni_generated::StellarLikeAsset::fromCpp(cpp.asset))
-                                                  sourceAsset:(::djinni::Optional<std::experimental::optional, ::djinni_generated::StellarLikeAsset>::fromCpp(cpp.sourceAsset))
-                                                 sourceAmount:(::djinni::Optional<std::experimental::optional, ::djinni_generated::Amount>::fromCpp(cpp.sourceAmount))];
+    return [[LGStellarLikeOperationRecord alloc] initWithOperationHash:(::djinni::String::fromCpp(cpp.operationHash))
+                                                            successful:(::djinni::Bool::fromCpp(cpp.successful))
+                                                         operationType:(::djinni::Enum<::ledger::core::api::StellarLikeOperationType, LGStellarLikeOperationType>::fromCpp(cpp.operationType))
+                                                       transactionHash:(::djinni::String::fromCpp(cpp.transactionHash))
+                                                                 asset:(::djinni_generated::StellarLikeAsset::fromCpp(cpp.asset))
+                                                           sourceAsset:(::djinni::Optional<std::experimental::optional, ::djinni_generated::StellarLikeAsset>::fromCpp(cpp.sourceAsset))
+                                                          sourceAmount:(::djinni::Optional<std::experimental::optional, ::djinni_generated::Amount>::fromCpp(cpp.sourceAmount))];
 }
 
 }  // namespace djinni_generated
