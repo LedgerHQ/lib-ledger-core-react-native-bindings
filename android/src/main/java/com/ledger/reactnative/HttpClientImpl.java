@@ -55,8 +55,12 @@ public class HttpClientImpl extends co.ledger.core.HttpClient {
                     byte[] body = request.getBody();
                     if (body.length > 0) {
                         connection.setRequestMethod( "POST" );
-                        connection.setRequestProperty( "Content-Type", "application/json");
-                        connection.setRequestProperty( "Content-Encoding", "UTF-8");
+                        if (!headers.containsKey("Content-Type")) {
+                            connection.setRequestProperty( "Content-Type", "application/json");
+                        }
+                        if (!headers.containsKey("Content-Encoding")) {
+                            connection.setRequestProperty( "Content-Encoding", "UTF-8");
+                        }
                         connection.setRequestProperty( "Content-Length", Integer.toString(body.length));
                         OutputStream os = connection.getOutputStream();
                         os.write(body);

@@ -21,7 +21,9 @@
     NSData *body = [request getBody];
     if ([body length] > 0) {
         [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setValue: @"application/json" forHTTPHeaderField: @"Content-Type"];
+        if ([headers objectForKey: @"Content-Type"] == nil) {
+            [urlRequest setValue: @"application/json" forHTTPHeaderField: @"Content-Type"];
+        }
         NSString * dataLength = [NSString stringWithFormat: @"%ld", [body length]];
         [urlRequest setValue: dataLength forHTTPHeaderField: @"Content-Length"];
         [urlRequest setHTTPBody:body];
