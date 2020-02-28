@@ -59,6 +59,13 @@ public:
             return ::djinni_generated::DatabaseBlob::toCpp(objcpp_result_);
         }
     }
+    bool isAlive() override
+    {
+        @autoreleasepool {
+            auto objcpp_result_ = [djinni_private_get_proxied_objc_object() isAlive];
+            return ::djinni::Bool::toCpp(objcpp_result_);
+        }
+    }
 };
 
 }  // namespace djinni_generated

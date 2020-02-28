@@ -31,6 +31,12 @@ public abstract class DatabaseBackend {
      */
     public static native DatabaseBackend getSqlite3Backend();
 
+    /**
+     * Create an instance of PostgreSQL database.
+     * @return DatabaseBackend object
+     */
+    public static native DatabaseBackend getPostgreSQLBackend(int connectionPoolSize);
+
     /** Create a database backend instance from the given DatabaseEngine implementation. */
     public static native DatabaseBackend createBackendFromEngine(DatabaseEngine engine);
 

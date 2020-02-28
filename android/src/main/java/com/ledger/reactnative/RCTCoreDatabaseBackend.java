@@ -199,6 +199,30 @@ public class RCTCoreDatabaseBackend extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /**
+     * Create an instance of PostgreSQL database.
+     * @return DatabaseBackend object
+     */
+    @ReactMethod
+    public void getPostgreSQLBackend(int connectionPoolSize, Promise promise) {
+        try
+        {
+            DatabaseBackend javaResult = DatabaseBackend.getPostgreSQLBackend(connectionPoolSize);
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreDatabaseBackend rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreDatabaseBackend.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreDatabaseBackend");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
     /** Create a database backend instance from the given DatabaseEngine implementation. */
     @ReactMethod
     public void createBackendFromEngine(ReadableMap engine, Promise promise) {

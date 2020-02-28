@@ -33,6 +33,12 @@
  */
 + (nullable LGDatabaseBackend *)getSqlite3Backend;
 
+/**
+ * Create an instance of PostgreSQL database.
+ * @return DatabaseBackend object
+ */
++ (nullable LGDatabaseBackend *)getPostgreSQLBackend:(int32_t)connectionPoolSize;
+
 /** Create a database backend instance from the given DatabaseEngine implementation. */
 + (nullable LGDatabaseBackend *)createBackendFromEngine:(nullable id<LGDatabaseEngine>)engine;
 

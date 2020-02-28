@@ -67,4 +67,7 @@
 /** An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account */
 - (nullable NSNumber *)getDestinationTag;
 
+/** Status of the transaction. */
+- (int32_t)getStatus;
+
 @end

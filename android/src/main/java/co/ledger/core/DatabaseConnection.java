@@ -34,4 +34,7 @@ public abstract class DatabaseConnection {
      * @return An empty blob
      */
     public abstract DatabaseBlob newBlob();
+
+    /** Check whether the connection is still alive. */
+    public abstract boolean isAlive();
 }

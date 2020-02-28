@@ -156,6 +156,31 @@ RCT_REMAP_METHOD(getSqlite3Backend,getSqlite3BackendWithResolver:(RCTPromiseReso
 
 }
 
+/**
+ * Create an instance of PostgreSQL database.
+ * @return DatabaseBackend object
+ */
+RCT_REMAP_METHOD(getPostgreSQLBackend,getPostgreSQLBackendwithParams:(int)connectionPoolSize withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    LGDatabaseBackend * objcResult = [LGDatabaseBackend getPostgreSQLBackend:connectionPoolSize];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGDatabaseBackend *rctImpl_objcResult = (RCTCoreLGDatabaseBackend *)[self.bridge moduleForName:@"CoreLGDatabaseBackend"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGDatabaseBackend", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getPostgreSQLBackend", nil);
+        return;
+    }
+
+}
+
 /** Create a database backend instance from the given DatabaseEngine implementation. */
 RCT_REMAP_METHOD(createBackendFromEngine,createBackendFromEnginewithParams:(NSDictionary *)engine withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     RCTCoreLGDatabaseEngine *rctParam_engine = (RCTCoreLGDatabaseEngine *)[self.bridge moduleForName:@"CoreLGDatabaseEngine"];

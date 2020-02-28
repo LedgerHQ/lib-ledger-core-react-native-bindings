@@ -59,6 +59,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
++ (nullable LGDatabaseBackend *)getPostgreSQLBackend:(int32_t)connectionPoolSize {
+    try {
+        auto objcpp_result_ = ::ledger::core::api::DatabaseBackend::getPostgreSQLBackend(::djinni::I32::toCpp(connectionPoolSize));
+        return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 + (nullable LGDatabaseBackend *)createBackendFromEngine:(nullable id<LGDatabaseEngine>)engine {
     try {
         auto objcpp_result_ = ::ledger::core::api::DatabaseBackend::createBackendFromEngine(::djinni_generated::DatabaseEngine::toCpp(engine));

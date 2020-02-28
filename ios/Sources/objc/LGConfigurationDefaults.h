@@ -17,6 +17,8 @@ extern int32_t const LGConfigurationDefaultsDEFAULTTRUSTLIMIT;
 extern int32_t const LGConfigurationDefaultsKEYCHAINDEFAULTOBSERVABLERANGE;
 /** Default TTL for cache */
 extern int32_t const LGConfigurationDefaultsDEFAULTTTLCACHE;
+/** Default connection pool size for PostgreSQL */
+extern int32_t const LGConfigurationDefaultsDEFAULTPGCONNECTIONPOOLSIZE;
 
 /** Default values you might want to use if you don’t know what values you should use. */
 @interface LGConfigurationDefaults : NSObject

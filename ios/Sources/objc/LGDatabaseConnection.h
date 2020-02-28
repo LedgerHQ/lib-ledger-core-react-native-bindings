@@ -40,4 +40,7 @@
  */
 - (nullable id<LGDatabaseBlob>)newBlob;
 
+/** Check whether the connection is still alive. */
+- (BOOL)isAlive;
+
 @end
