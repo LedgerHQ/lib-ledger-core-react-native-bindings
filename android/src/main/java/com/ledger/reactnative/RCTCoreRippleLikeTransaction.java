@@ -487,4 +487,24 @@ public class RCTCoreRippleLikeTransaction extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Status of the transaction. */
+    @ReactMethod
+    public void getStatus(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            RippleLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+
+            int javaResult = currentInstanceObj.getStatus();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putInt("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
 }

@@ -17,3 +17,5 @@ int32_t const LGConfigurationDefaultsDEFAULTTRUSTLIMIT = 3;
 int32_t const LGConfigurationDefaultsKEYCHAINDEFAULTOBSERVABLERANGE = 20;
 
 int32_t const LGConfigurationDefaultsDEFAULTTTLCACHE = 30;
+
+int32_t const LGConfigurationDefaultsDEFAULTPGCONNECTIONPOOLSIZE = 25;

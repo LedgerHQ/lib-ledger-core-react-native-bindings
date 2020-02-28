@@ -514,4 +514,32 @@ RCT_REMAP_METHOD(getDestinationTag,getDestinationTag:(NSDictionary *)currentInst
     }
 
 }
+
+/** Status of the transaction. */
+RCT_REMAP_METHOD(getStatus,getStatus:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getStatus, first argument should be an instance of LGRippleLikeTransaction", nil);
+        return;
+    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getStatus, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSInteger objcResult = [currentInstanceObj getStatus];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGRippleLikeTransaction::getStatus", nil);
+        return;
+    }
+
+}
 @end

@@ -130,7 +130,7 @@ package object implicits {
             case ErrorCode.INVALID_BECH32_FORMAT => new InvalidBech32FormatException(error.getMessage)
         }
     }
-    private def arrayList2Array[T](a: Array[T]): java.util.ArrayList[T] = new java.util.ArrayList[T](a.toSeq.asInstanceOf[java.util.Collection[T]])
+    private def arrayList2Array[T](a: Array[T]): java.util.ArrayList[T] = new java.util.ArrayList[T](a.toList.asJava.asInstanceOf[java.util.Collection[T]])
     implicit class RichTezosLikeTransaction(val self: TezosLikeTransaction) {
     }
     implicit class RichTezosLikeOperation(val self: TezosLikeOperation) {

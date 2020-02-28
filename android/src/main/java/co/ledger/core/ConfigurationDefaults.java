@@ -28,6 +28,9 @@ public abstract class ConfigurationDefaults {
     /** Default TTL for cache */
     public static final int DEFAULT_TTL_CACHE = 30;
 
+    /** Default connection pool size for PostgreSQL */
+    public static final int DEFAULT_PG_CONNECTION_POOL_SIZE = 25;
+
 
     private static final class CppProxy extends ConfigurationDefaults
     {

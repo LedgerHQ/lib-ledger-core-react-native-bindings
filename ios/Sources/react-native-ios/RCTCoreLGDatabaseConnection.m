@@ -184,6 +184,34 @@ RCT_REMAP_METHOD(newBlob,newBlob:(NSDictionary *)currentInstance WithResolver:(R
     }
 
 }
+
+/** Check whether the connection is still alive. */
+RCT_REMAP_METHOD(isAlive,isAlive:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseConnection::isAlive, first argument should be an instance of LGDatabaseConnectionImpl", nil);
+        return;
+    }
+    LGDatabaseConnectionImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseConnectionImpl::isAlive, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    BOOL objcResult = [currentInstanceObj isAlive];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGDatabaseConnectionImpl::isAlive", nil);
+        return;
+    }
+
+}
 RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGDatabaseConnectionImpl *objcResult = [[LGDatabaseConnectionImpl alloc] init];
     NSString *uuid = [[NSUUID UUID] UUIDString];

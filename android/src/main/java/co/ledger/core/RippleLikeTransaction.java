@@ -64,6 +64,9 @@ public abstract class RippleLikeTransaction {
     /** An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account */
     public abstract Long getDestinationTag();
 
+    /** Status of the transaction. */
+    public abstract int getStatus();
+
     private static final class CppProxy extends RippleLikeTransaction
     {
         private final long nativeRef;
@@ -206,5 +209,13 @@ public abstract class RippleLikeTransaction {
             return native_getDestinationTag(this.nativeRef);
         }
         private native Long native_getDestinationTag(long _nativeRef);
+
+        @Override
+        public int getStatus()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getStatus(this.nativeRef);
+        }
+        private native int native_getStatus(long _nativeRef);
     }
 }
