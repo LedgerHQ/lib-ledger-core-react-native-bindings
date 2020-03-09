@@ -6,6 +6,7 @@
 @protocol LGAmountCallback;
 @protocol LGBigIntCallback;
 @protocol LGBoolCallback;
+@protocol LGStellarLikeAccountSignerListCallback;
 @protocol LGStellarLikeFeeStatsCallback;
 @protocol LGStringCallback;
 
@@ -37,5 +38,8 @@
 
 /** Get recommended fee */
 - (void)getFeeStats:(nullable id<LGStellarLikeFeeStatsCallback>)callback;
+
+/** Get signers for this account */
+- (void)getSigners:(nullable id<LGStellarLikeAccountSignerListCallback>)callback;
 
 @end

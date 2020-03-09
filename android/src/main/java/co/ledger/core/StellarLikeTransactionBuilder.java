@@ -24,6 +24,10 @@ public abstract class StellarLikeTransactionBuilder {
 
     public abstract void build(StellarLikeTransactionCallback callback);
 
+    public static native StellarLikeTransaction parseRawTransaction(Currency currency, byte[] rawTransaction);
+
+    public static native StellarLikeTransaction parseSignatureBase(Currency currency, byte[] rawTransaction);
+
     private static final class CppProxy extends StellarLikeTransactionBuilder
     {
         private final long nativeRef;

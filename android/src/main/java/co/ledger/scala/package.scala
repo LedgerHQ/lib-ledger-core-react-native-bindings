@@ -474,8 +474,24 @@ package object implicits {
             })
             promise.future
         }
+        def getSigners(): Future[ArrayList[StellarLikeAccountSigner]] = {
+            val promise = Promise[ArrayList[StellarLikeAccountSigner]]()
+            self.getSigners(new StellarLikeAccountSignerListCallback() {
+                override def onCallback(result: ArrayList[StellarLikeAccountSigner], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
     }
     implicit class RichStellarLikeFeeStatsCallback(val self: StellarLikeFeeStatsCallback) {
+    }
+    implicit class RichStellarLikeAccountSignerListCallback(val self: StellarLikeAccountSignerListCallback) {
     }
     implicit class RichStellarLikeWallet(val self: StellarLikeWallet) {
         def exists(address: String): Future[Boolean] = {
@@ -947,6 +963,20 @@ package object implicits {
         def getEstimatedGasLimit(address: String): Future[BigInt] = {
             val promise = Promise[BigInt]()
             self.getEstimatedGasLimit(address, new BigIntCallback() {
+                override def onCallback(result: BigInt, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getDryRunGasLimit(address: String, request: EthereumGasLimitRequest): Future[BigInt] = {
+            val promise = Promise[BigInt]()
+            self.getDryRunGasLimit(address, request, new BigIntCallback() {
                 override def onCallback(result: BigInt, error: co.ledger.core.Error): Unit =  {
                     if (error != null) {
                         promise.failure(wrapLedgerCoreError(error))

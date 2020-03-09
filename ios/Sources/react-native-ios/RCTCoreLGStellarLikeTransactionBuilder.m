@@ -353,4 +353,56 @@ RCT_REMAP_METHOD(build,build:(NSDictionary *)currentInstance WithResolver:(RCTPr
     [currentInstanceObj build:objcParam_0];
 
 }
+
+RCT_REMAP_METHOD(parseRawTransaction,parseRawTransactionwithParams:(NSDictionary *)currency
+                                                    rawTransaction:(NSString *)rawTransaction withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    RCTCoreLGCurrency *rctParam_currency = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
+    LGCurrency *objcParam_0 = (LGCurrency *)[rctParam_currency.objcImplementations objectForKey:currency[@"uid"]];
+    NSData *objcParam_1 = [self hexStringToData:rawTransaction];
+
+    LGStellarLikeTransaction * objcResult = [LGStellarLikeTransactionBuilder parseRawTransaction:objcParam_0 rawTransaction:objcParam_1];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGStellarLikeTransaction *rctImpl_objcResult = (RCTCoreLGStellarLikeTransaction *)[self.bridge moduleForName:@"CoreLGStellarLikeTransaction"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGStellarLikeTransaction", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGStellarLikeTransactionBuilder::parseRawTransaction", nil);
+        return;
+    }
+
+}
+
+RCT_REMAP_METHOD(parseSignatureBase,parseSignatureBasewithParams:(NSDictionary *)currency
+                                                  rawTransaction:(NSString *)rawTransaction withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    RCTCoreLGCurrency *rctParam_currency = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
+    LGCurrency *objcParam_0 = (LGCurrency *)[rctParam_currency.objcImplementations objectForKey:currency[@"uid"]];
+    NSData *objcParam_1 = [self hexStringToData:rawTransaction];
+
+    LGStellarLikeTransaction * objcResult = [LGStellarLikeTransactionBuilder parseSignatureBase:objcParam_0 rawTransaction:objcParam_1];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGStellarLikeTransaction *rctImpl_objcResult = (RCTCoreLGStellarLikeTransaction *)[self.bridge moduleForName:@"CoreLGStellarLikeTransaction"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGStellarLikeTransaction", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGStellarLikeTransactionBuilder::parseSignatureBase", nil);
+        return;
+    }
+
+}
 @end

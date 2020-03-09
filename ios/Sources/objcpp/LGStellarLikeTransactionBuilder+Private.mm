@@ -8,6 +8,8 @@
 #import "DJIMarshal+Private.h"
 #import "LGAmount+Private.h"
 #import "LGBigInt+Private.h"
+#import "LGCurrency+Private.h"
+#import "LGStellarLikeTransaction+Private.h"
 #import "LGStellarLikeTransactionCallback+Private.h"
 #include <exception>
 #include <stdexcept>
@@ -96,6 +98,24 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 - (void)build:(nullable id<LGStellarLikeTransactionCallback>)callback {
     try {
         _cppRefHandle.get()->build(::djinni_generated::StellarLikeTransactionCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
++ (nullable LGStellarLikeTransaction *)parseRawTransaction:(nonnull LGCurrency *)currency
+                                            rawTransaction:(nonnull NSData *)rawTransaction {
+    try {
+        auto objcpp_result_ = ::ledger::core::api::StellarLikeTransactionBuilder::parseRawTransaction(::djinni_generated::Currency::toCpp(currency),
+                                                                                                      ::djinni::Binary::toCpp(rawTransaction));
+        return ::djinni_generated::StellarLikeTransaction::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
++ (nullable LGStellarLikeTransaction *)parseSignatureBase:(nonnull LGCurrency *)currency
+                                           rawTransaction:(nonnull NSData *)rawTransaction {
+    try {
+        auto objcpp_result_ = ::ledger::core::api::StellarLikeTransactionBuilder::parseSignatureBase(::djinni_generated::Currency::toCpp(currency),
+                                                                                                     ::djinni::Binary::toCpp(rawTransaction));
+        return ::djinni_generated::StellarLikeTransaction::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

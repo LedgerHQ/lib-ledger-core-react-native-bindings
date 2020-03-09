@@ -10,11 +10,12 @@ typedef NS_ENUM(NSInteger, LGStellarLikeOperationType)
     LGStellarLikeOperationTypePATHPAYMENT,
     LGStellarLikeOperationTypeMANAGEOFFER,
     LGStellarLikeOperationTypeCREATEPASSIVEOFFER,
-    LGStellarLikeOperationTypeSETOPTIONALS,
+    LGStellarLikeOperationTypeSETOPTIONS,
     LGStellarLikeOperationTypeCHANGETRUST,
     LGStellarLikeOperationTypeALLOWTRUST,
     LGStellarLikeOperationTypeACCOUNTMERGE,
     LGStellarLikeOperationTypeINFLATION,
     LGStellarLikeOperationTypeMANAGEDATA,
     LGStellarLikeOperationTypeBUMPSEQUENCE,
+    LGStellarLikeOperationTypeMANAGEBUYOFFER,
 };

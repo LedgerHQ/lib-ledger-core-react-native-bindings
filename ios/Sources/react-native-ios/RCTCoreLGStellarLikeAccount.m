@@ -193,4 +193,23 @@ RCT_REMAP_METHOD(getFeeStats,getFeeStats:(NSDictionary *)currentInstance WithRes
     [currentInstanceObj getFeeStats:objcParam_0];
 
 }
+
+/** Get signers for this account */
+RCT_REMAP_METHOD(getSigners,getSigners:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeAccount::getSigners, first argument should be an instance of LGStellarLikeAccount", nil);
+        return;
+    }
+    LGStellarLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeAccount::getSigners, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGStellarLikeAccountSignerListCallback *objcParam_0 = [[RCTCoreLGStellarLikeAccountSignerListCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getSigners:objcParam_0];
+
+}
 @end

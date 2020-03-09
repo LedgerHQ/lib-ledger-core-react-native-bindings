@@ -9,6 +9,7 @@
 #import "LGAmountCallback+Private.h"
 #import "LGBigIntCallback+Private.h"
 #import "LGBoolCallback+Private.h"
+#import "LGStellarLikeAccountSignerListCallback+Private.h"
 #import "LGStellarLikeFeeStatsCallback+Private.h"
 #import "LGStellarLikeTransactionBuilder+Private.h"
 #import "LGStringCallback+Private.h"
@@ -72,6 +73,12 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 - (void)getFeeStats:(nullable id<LGStellarLikeFeeStatsCallback>)callback {
     try {
         _cppRefHandle.get()->getFeeStats(::djinni_generated::StellarLikeFeeStatsCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)getSigners:(nullable id<LGStellarLikeAccountSignerListCallback>)callback {
+    try {
+        _cppRefHandle.get()->getSigners(::djinni_generated::StellarLikeAccountSignerListCallback::toCpp(callback));
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

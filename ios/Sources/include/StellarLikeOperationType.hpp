@@ -16,13 +16,14 @@ enum class StellarLikeOperationType : int {
     PATH_PAYMENT,
     MANAGE_OFFER,
     CREATE_PASSIVE_OFFER,
-    SET_OPTIONALS,
+    SET_OPTIONS,
     CHANGE_TRUST,
     ALLOW_TRUST,
     ACCOUNT_MERGE,
     INFLATION,
     MANAGE_DATA,
     BUMP_SEQUENCE,
+    MANAGE_BUY_OFFER,
 };
  std::string to_string(const StellarLikeOperationType& stellarLikeOperationType);
  std::ostream &operator<<(std::ostream &os, const StellarLikeOperationType &o);

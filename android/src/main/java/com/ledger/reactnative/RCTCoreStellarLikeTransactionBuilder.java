@@ -5,6 +5,8 @@ package com.ledger.reactnative;
 
 import co.ledger.core.Amount;
 import co.ledger.core.BigInt;
+import co.ledger.core.Currency;
+import co.ledger.core.StellarLikeTransaction;
 import co.ledger.core.StellarLikeTransactionBuilder;
 import co.ledger.core.StellarLikeTransactionCallback;
 import com.facebook.react.bridge.Promise;
@@ -342,6 +344,54 @@ public class RCTCoreStellarLikeTransactionBuilder extends ReactContextBaseJavaMo
 
             RCTCoreStellarLikeTransactionCallback javaParam_0 = RCTCoreStellarLikeTransactionCallback.initWithPromise(promise, this.reactContext);
             currentInstanceObj.build(javaParam_0);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    @ReactMethod
+    public void parseRawTransaction(ReadableMap currency, String rawTransaction, Promise promise) {
+        try
+        {
+            RCTCoreCurrency rctParam_currency = this.reactContext.getNativeModule(RCTCoreCurrency.class);
+            Currency javaParam_0 = rctParam_currency.getJavaObjects().get(currency.getString("uid"));
+            byte [] javaParam_1 = hexStringToByteArray(rawTransaction);
+
+            StellarLikeTransaction javaResult = StellarLikeTransactionBuilder.parseRawTransaction(javaParam_0, javaParam_1);
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreStellarLikeTransaction rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreStellarLikeTransaction.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreStellarLikeTransaction");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    @ReactMethod
+    public void parseSignatureBase(ReadableMap currency, String rawTransaction, Promise promise) {
+        try
+        {
+            RCTCoreCurrency rctParam_currency = this.reactContext.getNativeModule(RCTCoreCurrency.class);
+            Currency javaParam_0 = rctParam_currency.getJavaObjects().get(currency.getString("uid"));
+            byte [] javaParam_1 = hexStringToByteArray(rawTransaction);
+
+            StellarLikeTransaction javaResult = StellarLikeTransactionBuilder.parseSignatureBase(javaParam_0, javaParam_1);
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreStellarLikeTransaction rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreStellarLikeTransaction.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreStellarLikeTransaction");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
         }
         catch(Exception e)
         {

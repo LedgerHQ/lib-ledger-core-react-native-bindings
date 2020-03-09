@@ -7,6 +7,7 @@ import co.ledger.core.AmountCallback;
 import co.ledger.core.BigIntCallback;
 import co.ledger.core.BoolCallback;
 import co.ledger.core.StellarLikeAccount;
+import co.ledger.core.StellarLikeAccountSignerListCallback;
 import co.ledger.core.StellarLikeFeeStatsCallback;
 import co.ledger.core.StellarLikeTransactionBuilder;
 import co.ledger.core.StringCallback;
@@ -242,6 +243,23 @@ public class RCTCoreStellarLikeAccount extends ReactContextBaseJavaModule {
 
             RCTCoreStellarLikeFeeStatsCallback javaParam_0 = RCTCoreStellarLikeFeeStatsCallback.initWithPromise(promise, this.reactContext);
             currentInstanceObj.getFeeStats(javaParam_0);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Get signers for this account */
+    @ReactMethod
+    public void getSigners(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            StellarLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreStellarLikeAccountSignerListCallback javaParam_0 = RCTCoreStellarLikeAccountSignerListCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getSigners(javaParam_0);
         }
         catch(Exception e)
         {

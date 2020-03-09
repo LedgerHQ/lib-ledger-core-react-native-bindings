@@ -31,6 +31,9 @@ public abstract class StellarLikeAccount {
     /** Get recommended fee */
     public abstract void getFeeStats(StellarLikeFeeStatsCallback callback);
 
+    /** Get signers for this account */
+    public abstract void getSigners(StellarLikeAccountSignerListCallback callback);
+
     private static final class CppProxy extends StellarLikeAccount
     {
         private final long nativeRef;
@@ -101,5 +104,13 @@ public abstract class StellarLikeAccount {
             native_getFeeStats(this.nativeRef, callback);
         }
         private native void native_getFeeStats(long _nativeRef, StellarLikeFeeStatsCallback callback);
+
+        @Override
+        public void getSigners(StellarLikeAccountSignerListCallback callback)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_getSigners(this.nativeRef, callback);
+        }
+        private native void native_getSigners(long _nativeRef, StellarLikeAccountSignerListCallback callback);
     }
 }

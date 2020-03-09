@@ -11,7 +11,7 @@ public abstract class StellarConfiguration {
 
     public static final String HORIZON_EXPLORER_ENGINE = "HORIZON_EXPLORER_ENGINE";
 
-    public static final String HORIZON_MAINNET_BLOCKCHAIN_EXPLORER_URL = "https://horizon.stellar.org/";
+    public static final String HORIZON_MAINNET_BLOCKCHAIN_EXPLORER_URL = "https://stellar.coin-proxy.dev.aws.ledger.fr/";
 
     public static final String HORIZON_TESTNET_BLOCKCHAIN_EXPLORER_URL = "https://horizon-testnet.stellar.org/";
 

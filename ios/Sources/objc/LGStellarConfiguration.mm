@@ -8,6 +8,6 @@ NSString * __nonnull const LGStellarConfigurationBLOCKCHAINEXPLORERENGINE = @"BL
 
 NSString * __nonnull const LGStellarConfigurationHORIZONEXPLORERENGINE = @"HORIZON_EXPLORER_ENGINE";
 
-NSString * __nonnull const LGStellarConfigurationHORIZONMAINNETBLOCKCHAINEXPLORERURL = @"https://horizon.stellar.org/";
+NSString * __nonnull const LGStellarConfigurationHORIZONMAINNETBLOCKCHAINEXPLORERURL = @"https://stellar.coin-proxy.dev.aws.ledger.fr/";
 
 NSString * __nonnull const LGStellarConfigurationHORIZONTESTNETBLOCKCHAINEXPLORERURL = @"https://horizon-testnet.stellar.org/";
