@@ -41,4 +41,8 @@ public class DatabaseConnectionImpl extends DatabaseConnection {
     public DatabaseBlob newBlob() {
         throw new AssertionError("missing implementation");
     }
+
+    public boolean isAlive() {
+        throw new AssertionError("missing implementation");
+    }
 }
