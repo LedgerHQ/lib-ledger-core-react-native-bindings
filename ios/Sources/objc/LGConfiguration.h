@@ -29,6 +29,8 @@ extern NSString * __nonnull const LGConfigurationSYNCHRONIZATIONHALFBATCHSIZE;
 extern NSString * __nonnull const LGConfigurationTRUSTLIMIT;
 /** Time to Live for block cache */
 extern NSString * __nonnull const LGConfigurationTTLCACHE;
+/** Syncronization token deactivation */
+extern NSString * __nonnull const LGConfigurationDEACTIVATESYNCTOKEN;
 
 /** Overall configuration. */
 @interface LGConfiguration : NSObject

@@ -109,6 +109,15 @@ public abstract class Wallet {
     public abstract boolean isInstanceOfRippleLikeWallet();
 
     /**
+     * Tell whether wallet is a Stellar one.
+     * @return bool
+     */
+    public abstract boolean isInstanceOfStellarLikeWallet();
+
+    /** Cast the instance to StellarLIkeWallet */
+    public abstract StellarLikeWallet asStellarLikeWallet();
+
+    /**
      * Get wallet type.
      * @return WalletType object
      */
@@ -308,6 +317,22 @@ public abstract class Wallet {
             return native_isInstanceOfRippleLikeWallet(this.nativeRef);
         }
         private native boolean native_isInstanceOfRippleLikeWallet(long _nativeRef);
+
+        @Override
+        public boolean isInstanceOfStellarLikeWallet()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_isInstanceOfStellarLikeWallet(this.nativeRef);
+        }
+        private native boolean native_isInstanceOfStellarLikeWallet(long _nativeRef);
+
+        @Override
+        public StellarLikeWallet asStellarLikeWallet()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asStellarLikeWallet(this.nativeRef);
+        }
+        private native StellarLikeWallet native_asStellarLikeWallet(long _nativeRef);
 
         @Override
         public WalletType getWalletType()

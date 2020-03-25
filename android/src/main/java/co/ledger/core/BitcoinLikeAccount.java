@@ -36,6 +36,12 @@ public abstract class BitcoinLikeAccount {
      */
     public abstract void getFees(BigIntListCallback callback);
 
+    /**
+     * Get addresses given a range of indices
+     * Note: this will return public and change addresses
+     */
+    public abstract void getAddresses(long from, long to, AddressListCallback callback);
+
     private static final class CppProxy extends BitcoinLikeAccount
     {
         private final long nativeRef;
@@ -106,5 +112,13 @@ public abstract class BitcoinLikeAccount {
             native_getFees(this.nativeRef, callback);
         }
         private native void native_getFees(long _nativeRef, BigIntListCallback callback);
+
+        @Override
+        public void getAddresses(long from, long to, AddressListCallback callback)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_getAddresses(this.nativeRef, from, to, callback);
+        }
+        private native void native_getAddresses(long _nativeRef, long from, long to, AddressListCallback callback);
     }
 }

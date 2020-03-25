@@ -540,6 +540,71 @@ RCT_REMAP_METHOD(isInstanceOfRippleLikeWallet,isInstanceOfRippleLikeWallet:(NSDi
 }
 
 /**
+ * Tell whether wallet is a Stellar one.
+ * @return bool
+ */
+RCT_REMAP_METHOD(isInstanceOfStellarLikeWallet,isInstanceOfStellarLikeWallet:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGWallet::isInstanceOfStellarLikeWallet, first argument should be an instance of LGWallet", nil);
+        return;
+    }
+    LGWallet *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGWallet::isInstanceOfStellarLikeWallet, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    BOOL objcResult = [currentInstanceObj isInstanceOfStellarLikeWallet];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGWallet::isInstanceOfStellarLikeWallet", nil);
+        return;
+    }
+
+}
+
+/** Cast the instance to StellarLIkeWallet */
+RCT_REMAP_METHOD(asStellarLikeWallet,asStellarLikeWallet:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGWallet::asStellarLikeWallet, first argument should be an instance of LGWallet", nil);
+        return;
+    }
+    LGWallet *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGWallet::asStellarLikeWallet, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGStellarLikeWallet * objcResult = [currentInstanceObj asStellarLikeWallet];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGStellarLikeWallet *rctImpl_objcResult = (RCTCoreLGStellarLikeWallet *)[self.bridge moduleForName:@"CoreLGStellarLikeWallet"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGStellarLikeWallet", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGWallet::asStellarLikeWallet", nil);
+        return;
+    }
+
+}
+
+/**
  * Get wallet type.
  * @return WalletType object
  */

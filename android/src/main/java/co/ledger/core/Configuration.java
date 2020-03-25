@@ -46,6 +46,9 @@ public abstract class Configuration {
     /** Time to Live for block cache */
     public static final String TTL_CACHE = "TTL_CACHE";
 
+    /** Syncronization token deactivation */
+    public static final String DEACTIVATE_SYNC_TOKEN = "DEACTIVATE_SYNC_TOKEN";
+
 
     private static final class CppProxy extends Configuration
     {

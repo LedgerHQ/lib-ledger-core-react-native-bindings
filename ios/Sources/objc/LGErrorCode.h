@@ -90,4 +90,6 @@ typedef NS_ENUM(NSInteger, LGErrorCode)
     LGErrorCodeLinkNonTailFilter,
     /** Invalid bech32 format */
     LGErrorCodeInvalidBech32Format,
+    /** Stellar errors */
+    LGErrorCodeInvalidStellarAddressFormat,
 };
