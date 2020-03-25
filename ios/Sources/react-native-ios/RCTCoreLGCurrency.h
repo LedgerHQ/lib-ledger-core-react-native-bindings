@@ -5,7 +5,6 @@
 #import "LGCurrencyUnit.h"
 #import "LGEthereumLikeNetworkParameters.h"
 #import "LGRippleLikeNetworkParameters.h"
-#import "LGStellarLikeNetworkParameters.h"
 #import "LGTezosLikeNetworkParameters.h"
 #import "LGWalletType.h"
 #import "RCTCoreBaseModule.h"
@@ -13,7 +12,6 @@
 #import "RCTCoreLGCurrencyUnit.h"
 #import "RCTCoreLGEthereumLikeNetworkParameters.h"
 #import "RCTCoreLGRippleLikeNetworkParameters.h"
-#import "RCTCoreLGStellarLikeNetworkParameters.h"
 #import "RCTCoreLGTezosLikeNetworkParameters.h"
 #import <Foundation/Foundation.h>
 #import <React/RCTBridge.h>

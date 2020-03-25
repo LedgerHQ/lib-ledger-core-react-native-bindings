@@ -22,11 +22,6 @@ public abstract class Address {
 
     public abstract boolean isInstanceOfBitcoinLikeAddress();
 
-    /** Cast the address to a stellar like one */
-    public abstract StellarLikeAddress asStellarLikeAddress();
-
-    public abstract boolean isInstanceOfStellarLikeAddress();
-
     public abstract Currency getCurrency();
 
     /**
@@ -100,22 +95,6 @@ public abstract class Address {
             return native_isInstanceOfBitcoinLikeAddress(this.nativeRef);
         }
         private native boolean native_isInstanceOfBitcoinLikeAddress(long _nativeRef);
-
-        @Override
-        public StellarLikeAddress asStellarLikeAddress()
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_asStellarLikeAddress(this.nativeRef);
-        }
-        private native StellarLikeAddress native_asStellarLikeAddress(long _nativeRef);
-
-        @Override
-        public boolean isInstanceOfStellarLikeAddress()
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_isInstanceOfStellarLikeAddress(this.nativeRef);
-        }
-        private native boolean native_isInstanceOfStellarLikeAddress(long _nativeRef);
 
         @Override
         public Currency getCurrency()

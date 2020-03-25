@@ -8,7 +8,6 @@
 #import "DJIMarshal+Private.h"
 #import "LGBitcoinLikeAddress+Private.h"
 #import "LGCurrency+Private.h"
-#import "LGStellarLikeAddress+Private.h"
 #include <exception>
 #include <stdexcept>
 #include <utility>
@@ -57,20 +56,6 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 - (BOOL)isInstanceOfBitcoinLikeAddress {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfBitcoinLikeAddress();
-        return ::djinni::Bool::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nullable LGStellarLikeAddress *)asStellarLikeAddress {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->asStellarLikeAddress();
-        return ::djinni::Optional<std::experimental::optional, ::djinni_generated::StellarLikeAddress>::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (BOOL)isInstanceOfStellarLikeAddress {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfStellarLikeAddress();
         return ::djinni::Bool::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

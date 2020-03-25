@@ -21,7 +21,6 @@
 #import "LGI32Callback+Private.h"
 #import "LGLogger+Private.h"
 #import "LGPreferences+Private.h"
-#import "LGStellarLikeWallet+Private.h"
 #import "LGWalletType+Private.h"
 #include <exception>
 #include <stdexcept>
@@ -158,20 +157,6 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfRippleLikeWallet();
         return ::djinni::Bool::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (BOOL)isInstanceOfStellarLikeWallet {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfStellarLikeWallet();
-        return ::djinni::Bool::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (nullable LGStellarLikeWallet *)asStellarLikeWallet {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->asStellarLikeWallet();
-        return ::djinni_generated::StellarLikeWallet::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

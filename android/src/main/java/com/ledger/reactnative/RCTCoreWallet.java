@@ -18,7 +18,6 @@ import co.ledger.core.ExtendedKeyAccountCreationInfoCallback;
 import co.ledger.core.I32Callback;
 import co.ledger.core.Logger;
 import co.ledger.core.Preferences;
-import co.ledger.core.StellarLikeWallet;
 import co.ledger.core.Wallet;
 import co.ledger.core.WalletType;
 import com.facebook.react.bridge.Promise;
@@ -504,54 +503,6 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
             boolean javaResult = currentInstanceObj.isInstanceOfRippleLikeWallet();
             WritableNativeMap result = new WritableNativeMap();
             result.putBoolean("value", javaResult);
-
-            promise.resolve(result);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /**
-     * Tell whether wallet is a Stellar one.
-     * @return bool
-     */
-    @ReactMethod
-    public void isInstanceOfStellarLikeWallet(ReadableMap currentInstance, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            Wallet currentInstanceObj = this.javaObjects.get(sUid);
-
-            boolean javaResult = currentInstanceObj.isInstanceOfStellarLikeWallet();
-            WritableNativeMap result = new WritableNativeMap();
-            result.putBoolean("value", javaResult);
-
-            promise.resolve(result);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /** Cast the instance to StellarLIkeWallet */
-    @ReactMethod
-    public void asStellarLikeWallet(ReadableMap currentInstance, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            Wallet currentInstanceObj = this.javaObjects.get(sUid);
-
-            StellarLikeWallet javaResult = currentInstanceObj.asStellarLikeWallet();
-
-            String javaResult_uuid = UUID.randomUUID().toString();
-            RCTCoreStellarLikeWallet rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreStellarLikeWallet.class);
-            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
-            WritableNativeMap result = new WritableNativeMap();
-            result.putString("type","RCTCoreStellarLikeWallet");
-            result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);
         }

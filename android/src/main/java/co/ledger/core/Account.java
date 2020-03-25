@@ -109,12 +109,6 @@ public abstract class Account {
     public abstract TezosLikeAccount asTezosLikeAccount();
 
     /**
-     * Turn the account into a Stellar one, allowing operations to be performerd on the Stellar
-     * network.
-     */
-    public abstract StellarLikeAccount asStellarLikeAccount();
-
-    /**
      * Check if account is a Bitcoin one.
      * @return bool
      */
@@ -125,12 +119,6 @@ public abstract class Account {
      * @return bool
      */
     public abstract boolean isInstanceOfEthereumLikeAccount();
-
-    /**
-     * Check if account is a Stellar one.
-     * @return bool
-     */
-    public abstract boolean isInstanceOfStellarLikeAccount();
 
     /**
      * Check if account is a Ripple one.
@@ -308,14 +296,6 @@ public abstract class Account {
         private native TezosLikeAccount native_asTezosLikeAccount(long _nativeRef);
 
         @Override
-        public StellarLikeAccount asStellarLikeAccount()
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_asStellarLikeAccount(this.nativeRef);
-        }
-        private native StellarLikeAccount native_asStellarLikeAccount(long _nativeRef);
-
-        @Override
         public boolean isInstanceOfBitcoinLikeAccount()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
@@ -330,14 +310,6 @@ public abstract class Account {
             return native_isInstanceOfEthereumLikeAccount(this.nativeRef);
         }
         private native boolean native_isInstanceOfEthereumLikeAccount(long _nativeRef);
-
-        @Override
-        public boolean isInstanceOfStellarLikeAccount()
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_isInstanceOfStellarLikeAccount(this.nativeRef);
-        }
-        private native boolean native_isInstanceOfStellarLikeAccount(long _nativeRef);
 
         @Override
         public boolean isInstanceOfRippleLikeAccount()

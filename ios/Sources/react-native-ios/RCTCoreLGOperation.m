@@ -550,45 +550,7 @@ RCT_REMAP_METHOD(asTezosLikeOperation,asTezosLikeOperation:(NSDictionary *)curre
 
 }
 
-/**
- * Same as isInstanceOfBitcoinLikeOperation for bitcoin.
- * Convert operation as Ethereum operation.
- * @return EthereumLikeOperation object
- */
-RCT_REMAP_METHOD(asStellarLikeOperation,asStellarLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
-    {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::asStellarLikeOperation, first argument should be an instance of LGOperation", nil);
-        return;
-    }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    if (!currentInstanceObj)
-    {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::asStellarLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
-        reject(@"impl_call_error", error, nil);
-        return;
-    }
-    LGStellarLikeOperation * objcResult = [currentInstanceObj asStellarLikeOperation];
-
-    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
-    RCTCoreLGStellarLikeOperation *rctImpl_objcResult = (RCTCoreLGStellarLikeOperation *)[self.bridge moduleForName:@"CoreLGStellarLikeOperation"];
-    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
-    [rctImpl_objcResult baseSetObject:objcResult_array];
-    NSDictionary *result = @{@"type" : @"CoreLGStellarLikeOperation", @"uid" : objcResult_uuid };
-
-    if(result)
-    {
-        resolve(result);
-    }
-    else
-    {
-        reject(@"impl_call_error", @"Error while calling LGOperation::asStellarLikeOperation", nil);
-        return;
-    }
-
-}
-
-/** Is this an instance of a Bitcoin-like operation? */
+/** Same as isInstanceOfBitcoinLikeOperation for bitcoin. */
 RCT_REMAP_METHOD(isInstanceOfBitcoinLikeOperation,isInstanceOfBitcoinLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
@@ -695,34 +657,6 @@ RCT_REMAP_METHOD(isInstanceOfTezosLikeOperation,isInstanceOfTezosLikeOperation:(
     else
     {
         reject(@"impl_call_error", @"Error while calling LGOperation::isInstanceOfTezosLikeOperation", nil);
-        return;
-    }
-
-}
-
-/** Same as isInstanceOfBitcoinLikeOperation for ripple. */
-RCT_REMAP_METHOD(isInstanceOfStellarLikeOperation,isInstanceOfStellarLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
-    {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::isInstanceOfStellarLikeOperation, first argument should be an instance of LGOperation", nil);
-        return;
-    }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    if (!currentInstanceObj)
-    {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::isInstanceOfStellarLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
-        reject(@"impl_call_error", error, nil);
-        return;
-    }
-    BOOL objcResult = [currentInstanceObj isInstanceOfStellarLikeOperation];
-    NSDictionary *result = @{@"value" : @(objcResult)};
-    if(result)
-    {
-        resolve(result);
-    }
-    else
-    {
-        reject(@"impl_call_error", @"Error while calling LGOperation::isInstanceOfStellarLikeOperation", nil);
         return;
     }
 

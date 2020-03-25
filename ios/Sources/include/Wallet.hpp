@@ -23,7 +23,6 @@ class ExtendedKeyAccountCreationInfoCallback;
 class I32Callback;
 class Logger;
 class Preferences;
-class StellarLikeWallet;
 enum class WalletType;
 struct AccountCreationInfo;
 struct Currency;
@@ -133,15 +132,6 @@ public:
      * @return bool
      */
     virtual bool isInstanceOfRippleLikeWallet() = 0;
-
-    /**
-     * Tell whether wallet is a Stellar one.
-     * @return bool
-     */
-    virtual bool isInstanceOfStellarLikeWallet() = 0;
-
-    /** Cast the instance to StellarLIkeWallet */
-    virtual std::shared_ptr<StellarLikeWallet> asStellarLikeWallet() = 0;
 
     /**
      * Get wallet type.

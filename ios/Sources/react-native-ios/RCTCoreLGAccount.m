@@ -468,43 +468,6 @@ RCT_REMAP_METHOD(asTezosLikeAccount,asTezosLikeAccount:(NSDictionary *)currentIn
 }
 
 /**
- * Turn the account into a Stellar one, allowing operations to be performerd on the Stellar
- * network.
- */
-RCT_REMAP_METHOD(asStellarLikeAccount,asStellarLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
-    {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::asStellarLikeAccount, first argument should be an instance of LGAccount", nil);
-        return;
-    }
-    LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    if (!currentInstanceObj)
-    {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::asStellarLikeAccount, instance of uid %@ not found", currentInstance[@"uid"]];
-        reject(@"impl_call_error", error, nil);
-        return;
-    }
-    LGStellarLikeAccount * objcResult = [currentInstanceObj asStellarLikeAccount];
-
-    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
-    RCTCoreLGStellarLikeAccount *rctImpl_objcResult = (RCTCoreLGStellarLikeAccount *)[self.bridge moduleForName:@"CoreLGStellarLikeAccount"];
-    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
-    [rctImpl_objcResult baseSetObject:objcResult_array];
-    NSDictionary *result = @{@"type" : @"CoreLGStellarLikeAccount", @"uid" : objcResult_uuid };
-
-    if(result)
-    {
-        resolve(result);
-    }
-    else
-    {
-        reject(@"impl_call_error", @"Error while calling LGAccount::asStellarLikeAccount", nil);
-        return;
-    }
-
-}
-
-/**
  * Check if account is a Bitcoin one.
  * @return bool
  */
@@ -561,37 +524,6 @@ RCT_REMAP_METHOD(isInstanceOfEthereumLikeAccount,isInstanceOfEthereumLikeAccount
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::isInstanceOfEthereumLikeAccount", nil);
-        return;
-    }
-
-}
-
-/**
- * Check if account is a Stellar one.
- * @return bool
- */
-RCT_REMAP_METHOD(isInstanceOfStellarLikeAccount,isInstanceOfStellarLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
-    {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::isInstanceOfStellarLikeAccount, first argument should be an instance of LGAccount", nil);
-        return;
-    }
-    LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    if (!currentInstanceObj)
-    {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::isInstanceOfStellarLikeAccount, instance of uid %@ not found", currentInstance[@"uid"]];
-        reject(@"impl_call_error", error, nil);
-        return;
-    }
-    BOOL objcResult = [currentInstanceObj isInstanceOfStellarLikeAccount];
-    NSDictionary *result = @{@"value" : @(objcResult)};
-    if(result)
-    {
-        resolve(result);
-    }
-    else
-    {
-        reject(@"impl_call_error", @"Error while calling LGAccount::isInstanceOfStellarLikeAccount", nil);
         return;
     }
 

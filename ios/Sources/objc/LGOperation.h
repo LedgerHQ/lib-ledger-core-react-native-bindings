@@ -10,7 +10,6 @@
 @class LGEthereumLikeOperation;
 @class LGPreferences;
 @class LGRippleLikeOperation;
-@class LGStellarLikeOperation;
 @class LGTezosLikeOperation;
 @class LGTrustIndicator;
 
@@ -108,14 +107,7 @@
  */
 - (nullable LGTezosLikeOperation *)asTezosLikeOperation;
 
-/**
- * Same as isInstanceOfBitcoinLikeOperation for bitcoin.
- * Convert operation as Ethereum operation.
- * @return EthereumLikeOperation object
- */
-- (nullable LGStellarLikeOperation *)asStellarLikeOperation;
-
-/** Is this an instance of a Bitcoin-like operation? */
+/** Same as isInstanceOfBitcoinLikeOperation for bitcoin. */
 - (BOOL)isInstanceOfBitcoinLikeOperation;
 
 /** Same as isInstanceOfEthereumLikeOperation for ethereum. */
@@ -126,9 +118,6 @@
 
 /** Same as isInstanceOfTezosLikeOperation for tezos. */
 - (BOOL)isInstanceOfTezosLikeOperation;
-
-/** Same as isInstanceOfBitcoinLikeOperation for ripple. */
-- (BOOL)isInstanceOfStellarLikeOperation;
 
 /**
  * Tells if the operation is complete.

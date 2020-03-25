@@ -27,8 +27,6 @@ public final class Currency {
 
     /*package*/ final TezosLikeNetworkParameters tezosLikeNetworkParameters;
 
-    /*package*/ final StellarLikeNetworkParameters stellarLikeNetworkParameters;
-
     public Currency(
             WalletType walletType,
             String name,
@@ -38,8 +36,7 @@ public final class Currency {
             BitcoinLikeNetworkParameters bitcoinLikeNetworkParameters,
             EthereumLikeNetworkParameters ethereumLikeNetworkParameters,
             RippleLikeNetworkParameters rippleLikeNetworkParameters,
-            TezosLikeNetworkParameters tezosLikeNetworkParameters,
-            StellarLikeNetworkParameters stellarLikeNetworkParameters) {
+            TezosLikeNetworkParameters tezosLikeNetworkParameters) {
         this.walletType = walletType;
         this.name = name;
         this.bip44CoinType = bip44CoinType;
@@ -49,7 +46,6 @@ public final class Currency {
         this.ethereumLikeNetworkParameters = ethereumLikeNetworkParameters;
         this.rippleLikeNetworkParameters = rippleLikeNetworkParameters;
         this.tezosLikeNetworkParameters = tezosLikeNetworkParameters;
-        this.stellarLikeNetworkParameters = stellarLikeNetworkParameters;
     }
 
     /** WalletType object defining the type of wallet the currency belongs to. */
@@ -103,11 +99,6 @@ public final class Currency {
         return tezosLikeNetworkParameters;
     }
 
-    /** Optional StellarLikeNetworkParameters, for more details refer to EthereumLikeNetworkParameters doc */
-    public StellarLikeNetworkParameters getStellarLikeNetworkParameters() {
-        return stellarLikeNetworkParameters;
-    }
-
     @Override
     public String toString() {
         return "Currency{" +
@@ -120,7 +111,6 @@ public final class Currency {
                 "," + "ethereumLikeNetworkParameters=" + ethereumLikeNetworkParameters +
                 "," + "rippleLikeNetworkParameters=" + rippleLikeNetworkParameters +
                 "," + "tezosLikeNetworkParameters=" + tezosLikeNetworkParameters +
-                "," + "stellarLikeNetworkParameters=" + stellarLikeNetworkParameters +
         "}";
     }
 

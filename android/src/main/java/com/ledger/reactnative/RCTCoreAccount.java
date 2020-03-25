@@ -16,7 +16,6 @@ import co.ledger.core.Logger;
 import co.ledger.core.OperationQuery;
 import co.ledger.core.Preferences;
 import co.ledger.core.RippleLikeAccount;
-import co.ledger.core.StellarLikeAccount;
 import co.ledger.core.TezosLikeAccount;
 import co.ledger.core.TimePeriod;
 import co.ledger.core.WalletType;
@@ -455,34 +454,6 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
-     * Turn the account into a Stellar one, allowing operations to be performerd on the Stellar
-     * network.
-     */
-    @ReactMethod
-    public void asStellarLikeAccount(ReadableMap currentInstance, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            Account currentInstanceObj = this.javaObjects.get(sUid);
-
-            StellarLikeAccount javaResult = currentInstanceObj.asStellarLikeAccount();
-
-            String javaResult_uuid = UUID.randomUUID().toString();
-            RCTCoreStellarLikeAccount rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreStellarLikeAccount.class);
-            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
-            WritableNativeMap result = new WritableNativeMap();
-            result.putString("type","RCTCoreStellarLikeAccount");
-            result.putString("uid",javaResult_uuid);
-
-            promise.resolve(result);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /**
      * Check if account is a Bitcoin one.
      * @return bool
      */
@@ -518,29 +489,6 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             Account currentInstanceObj = this.javaObjects.get(sUid);
 
             boolean javaResult = currentInstanceObj.isInstanceOfEthereumLikeAccount();
-            WritableNativeMap result = new WritableNativeMap();
-            result.putBoolean("value", javaResult);
-
-            promise.resolve(result);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /**
-     * Check if account is a Stellar one.
-     * @return bool
-     */
-    @ReactMethod
-    public void isInstanceOfStellarLikeAccount(ReadableMap currentInstance, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            Account currentInstanceObj = this.javaObjects.get(sUid);
-
-            boolean javaResult = currentInstanceObj.isInstanceOfStellarLikeAccount();
             WritableNativeMap result = new WritableNativeMap();
             result.putBoolean("value", javaResult);
 

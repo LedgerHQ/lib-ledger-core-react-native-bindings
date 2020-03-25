@@ -23,7 +23,6 @@ class Logger;
 class OperationQuery;
 class Preferences;
 class RippleLikeAccount;
-class StellarLikeAccount;
 class TezosLikeAccount;
 enum class TimePeriod;
 enum class WalletType;
@@ -134,12 +133,6 @@ public:
     virtual std::shared_ptr<TezosLikeAccount> asTezosLikeAccount() = 0;
 
     /**
-     * Turn the account into a Stellar one, allowing operations to be performerd on the Stellar
-     * network.
-     */
-    virtual std::shared_ptr<StellarLikeAccount> asStellarLikeAccount() = 0;
-
-    /**
      * Check if account is a Bitcoin one.
      * @return bool
      */
@@ -150,12 +143,6 @@ public:
      * @return bool
      */
     virtual bool isInstanceOfEthereumLikeAccount() = 0;
-
-    /**
-     * Check if account is a Stellar one.
-     * @return bool
-     */
-    virtual bool isInstanceOfStellarLikeAccount() = 0;
 
     /**
      * Check if account is a Ripple one.

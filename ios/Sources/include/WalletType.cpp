@@ -13,7 +13,6 @@ std::string to_string(const WalletType& walletType) {
         case WalletType::RIPPLE: return "RIPPLE";
         case WalletType::MONERO: return "MONERO";
         case WalletType::TEZOS: return "TEZOS";
-        case WalletType::STELLAR: return "STELLAR";
     };
 };
 template <>
@@ -22,8 +21,7 @@ WalletType from_string(const std::string& walletType) {
     else if (walletType == "ETHEREUM") return WalletType::ETHEREUM;
     else if (walletType == "RIPPLE") return WalletType::RIPPLE;
     else if (walletType == "MONERO") return WalletType::MONERO;
-    else if (walletType == "TEZOS") return WalletType::TEZOS;
-    else return WalletType::STELLAR;
+    else return WalletType::TEZOS;
 };
 
 std::ostream &operator<<(std::ostream &os, const WalletType &o)
@@ -34,7 +32,6 @@ std::ostream &operator<<(std::ostream &os, const WalletType &o)
         case WalletType::RIPPLE:  return os << "RIPPLE";
         case WalletType::MONERO:  return os << "MONERO";
         case WalletType::TEZOS:  return os << "TEZOS";
-        case WalletType::STELLAR:  return os << "STELLAR";
     }
 }
 

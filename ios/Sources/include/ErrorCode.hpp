@@ -95,8 +95,6 @@ enum class ErrorCode : int {
     LINK_NON_TAIL_FILTER,
     /** Invalid bech32 format */
     INVALID_BECH32_FORMAT,
-    /** Generic invalid address format */
-    INVALID_ADDRESS_FORMAT,
 };
  std::string to_string(const ErrorCode& errorCode);
  std::ostream &operator<<(std::ostream &os, const ErrorCode &o);

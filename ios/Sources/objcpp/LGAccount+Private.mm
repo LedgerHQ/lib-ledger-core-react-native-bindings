@@ -18,7 +18,6 @@
 #import "LGOperationQuery+Private.h"
 #import "LGPreferences+Private.h"
 #import "LGRippleLikeAccount+Private.h"
-#import "LGStellarLikeAccount+Private.h"
 #import "LGTezosLikeAccount+Private.h"
 #import "LGTimePeriod+Private.h"
 #import "LGWalletType+Private.h"
@@ -141,13 +140,6 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (nullable LGStellarLikeAccount *)asStellarLikeAccount {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->asStellarLikeAccount();
-        return ::djinni_generated::StellarLikeAccount::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
 - (BOOL)isInstanceOfBitcoinLikeAccount {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfBitcoinLikeAccount();
@@ -158,13 +150,6 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 - (BOOL)isInstanceOfEthereumLikeAccount {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfEthereumLikeAccount();
-        return ::djinni::Bool::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (BOOL)isInstanceOfStellarLikeAccount {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfStellarLikeAccount();
         return ::djinni::Bool::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

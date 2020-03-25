@@ -15,7 +15,5 @@ public enum WalletType {
     MONERO,
     /** A Tezos-like wallet. */
     TEZOS,
-    /** A Stellar-like wallet. */
-    STELLAR,
     ;
 }

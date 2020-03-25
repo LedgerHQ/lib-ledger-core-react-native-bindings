@@ -99,14 +99,7 @@ public abstract class Operation {
      */
     public abstract TezosLikeOperation asTezosLikeOperation();
 
-    /**
-     * Same as isInstanceOfBitcoinLikeOperation for bitcoin.
-     * Convert operation as Ethereum operation.
-     * @return EthereumLikeOperation object
-     */
-    public abstract StellarLikeOperation asStellarLikeOperation();
-
-    /** Is this an instance of a Bitcoin-like operation? */
+    /** Same as isInstanceOfBitcoinLikeOperation for bitcoin. */
     public abstract boolean isInstanceOfBitcoinLikeOperation();
 
     /** Same as isInstanceOfEthereumLikeOperation for ethereum. */
@@ -117,9 +110,6 @@ public abstract class Operation {
 
     /** Same as isInstanceOfTezosLikeOperation for tezos. */
     public abstract boolean isInstanceOfTezosLikeOperation();
-
-    /** Same as isInstanceOfBitcoinLikeOperation for ripple. */
-    public abstract boolean isInstanceOfStellarLikeOperation();
 
     /**
      * Tells if the operation is complete.
@@ -280,14 +270,6 @@ public abstract class Operation {
         private native TezosLikeOperation native_asTezosLikeOperation(long _nativeRef);
 
         @Override
-        public StellarLikeOperation asStellarLikeOperation()
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_asStellarLikeOperation(this.nativeRef);
-        }
-        private native StellarLikeOperation native_asStellarLikeOperation(long _nativeRef);
-
-        @Override
         public boolean isInstanceOfBitcoinLikeOperation()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
@@ -318,14 +300,6 @@ public abstract class Operation {
             return native_isInstanceOfTezosLikeOperation(this.nativeRef);
         }
         private native boolean native_isInstanceOfTezosLikeOperation(long _nativeRef);
-
-        @Override
-        public boolean isInstanceOfStellarLikeOperation()
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_isInstanceOfStellarLikeOperation(this.nativeRef);
-        }
-        private native boolean native_isInstanceOfStellarLikeOperation(long _nativeRef);
 
         @Override
         public boolean isComplete()

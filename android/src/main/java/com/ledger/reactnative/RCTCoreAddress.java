@@ -6,7 +6,6 @@ package com.ledger.reactnative;
 import co.ledger.core.Address;
 import co.ledger.core.BitcoinLikeAddress;
 import co.ledger.core.Currency;
-import co.ledger.core.StellarLikeAddress;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
@@ -181,50 +180,6 @@ public class RCTCoreAddress extends ReactContextBaseJavaModule {
             Address currentInstanceObj = this.javaObjects.get(sUid);
 
             boolean javaResult = currentInstanceObj.isInstanceOfBitcoinLikeAddress();
-            WritableNativeMap result = new WritableNativeMap();
-            result.putBoolean("value", javaResult);
-
-            promise.resolve(result);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /** Cast the address to a stellar like one */
-    @ReactMethod
-    public void asStellarLikeAddress(ReadableMap currentInstance, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            Address currentInstanceObj = this.javaObjects.get(sUid);
-
-            StellarLikeAddress javaResult = currentInstanceObj.asStellarLikeAddress();
-
-            String javaResult_uuid = UUID.randomUUID().toString();
-            RCTCoreStellarLikeAddress rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreStellarLikeAddress.class);
-            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
-            WritableNativeMap result = new WritableNativeMap();
-            result.putString("type","RCTCoreStellarLikeAddress");
-            result.putString("uid",javaResult_uuid);
-
-            promise.resolve(result);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    @ReactMethod
-    public void isInstanceOfStellarLikeAddress(ReadableMap currentInstance, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            Address currentInstanceObj = this.javaObjects.get(sUid);
-
-            boolean javaResult = currentInstanceObj.isInstanceOfStellarLikeAddress();
             WritableNativeMap result = new WritableNativeMap();
             result.putBoolean("value", javaResult);
 
