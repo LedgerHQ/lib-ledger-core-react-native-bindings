@@ -200,4 +200,27 @@ RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(R
     [currentInstanceObj getFees:objcParam_0];
 
 }
+
+/**
+ * Get addresses given a range of indices
+ * Note: this will return public and change addresses
+ */
+RCT_REMAP_METHOD(getAddresses,getAddresses:(NSDictionary *)currentInstance withParams:(int)from
+                                                                                   to:(int)to withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::getAddresses, first argument should be an instance of LGBitcoinLikeAccount", nil);
+        return;
+    }
+    LGBitcoinLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAccount::getAddresses, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGAddressListCallback *objcParam_2 = [[RCTCoreLGAddressListCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getAddresses:from to:to callback:objcParam_2];
+
+}
 @end

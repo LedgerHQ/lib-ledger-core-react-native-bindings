@@ -5,6 +5,7 @@
 #import <Foundation/Foundation.h>
 @class LGAddress;
 @class LGBitcoinLikeAddress;
+@class LGStellarLikeAddress;
 
 
 @interface LGAddress : NSObject
@@ -24,6 +25,11 @@
 - (nullable LGBitcoinLikeAddress *)asBitcoinLikeAddress;
 
 - (BOOL)isInstanceOfBitcoinLikeAddress;
+
+/** Cast the address to a stellar like one */
+- (nullable LGStellarLikeAddress *)asStellarLikeAddress;
+
+- (BOOL)isInstanceOfStellarLikeAddress;
 
 - (nonnull LGCurrency *)getCurrency;
 

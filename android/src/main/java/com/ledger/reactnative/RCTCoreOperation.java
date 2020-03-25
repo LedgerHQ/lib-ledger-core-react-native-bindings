@@ -11,6 +11,7 @@ import co.ledger.core.Operation;
 import co.ledger.core.OperationType;
 import co.ledger.core.Preferences;
 import co.ledger.core.RippleLikeOperation;
+import co.ledger.core.StellarLikeOperation;
 import co.ledger.core.TezosLikeOperation;
 import co.ledger.core.TrustIndicator;
 import co.ledger.core.WalletType;
@@ -514,7 +515,36 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Same as isInstanceOfBitcoinLikeOperation for bitcoin. */
+    /**
+     * Same as isInstanceOfBitcoinLikeOperation for bitcoin.
+     * Convert operation as Ethereum operation.
+     * @return EthereumLikeOperation object
+     */
+    @ReactMethod
+    public void asStellarLikeOperation(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Operation currentInstanceObj = this.javaObjects.get(sUid);
+
+            StellarLikeOperation javaResult = currentInstanceObj.asStellarLikeOperation();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreStellarLikeOperation rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreStellarLikeOperation.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreStellarLikeOperation");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Is this an instance of a Bitcoin-like operation? */
     @ReactMethod
     public void isInstanceOfBitcoinLikeOperation(ReadableMap currentInstance, Promise promise) {
         try
@@ -584,6 +614,26 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
             Operation currentInstanceObj = this.javaObjects.get(sUid);
 
             boolean javaResult = currentInstanceObj.isInstanceOfTezosLikeOperation();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putBoolean("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Same as isInstanceOfBitcoinLikeOperation for ripple. */
+    @ReactMethod
+    public void isInstanceOfStellarLikeOperation(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Operation currentInstanceObj = this.javaObjects.get(sUid);
+
+            boolean javaResult = currentInstanceObj.isInstanceOfStellarLikeOperation();
             WritableNativeMap result = new WritableNativeMap();
             result.putBoolean("value", javaResult);
 

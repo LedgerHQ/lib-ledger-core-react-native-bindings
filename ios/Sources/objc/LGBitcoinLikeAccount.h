@@ -4,6 +4,7 @@
 #import <Foundation/Foundation.h>
 @class LGBitcoinLikeTransaction;
 @class LGBitcoinLikeTransactionBuilder;
+@protocol LGAddressListCallback;
 @protocol LGBigIntListCallback;
 @protocol LGBitcoinLikeOutputListCallback;
 @protocol LGI32Callback;
@@ -45,5 +46,13 @@
  * when the right time comes !
  */
 - (void)getFees:(nullable id<LGBigIntListCallback>)callback;
+
+/**
+ * Get addresses given a range of indices
+ * Note: this will return public and change addresses
+ */
+- (void)getAddresses:(int64_t)from
+                  to:(int64_t)to
+            callback:(nullable id<LGAddressListCallback>)callback;
 
 @end

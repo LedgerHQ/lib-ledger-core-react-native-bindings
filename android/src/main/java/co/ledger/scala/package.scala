@@ -68,6 +68,7 @@ package object implicits {
     class BadCastException(message: String) extends LedgerCoreWrappedException(ErrorCode.BAD_CAST, message)
     class LinkNonTailFilterException(message: String) extends LedgerCoreWrappedException(ErrorCode.LINK_NON_TAIL_FILTER, message)
     class InvalidBech32FormatException(message: String) extends LedgerCoreWrappedException(ErrorCode.INVALID_BECH32_FORMAT, message)
+    class InvalidStellarAddressFormatException(message: String) extends LedgerCoreWrappedException(ErrorCode.INVALID_STELLAR_ADDRESS_FORMAT, message)
     private def wrapLedgerCoreError(error: co.ledger.core.Error): LedgerCoreWrappedException = {
         error.getCode match {
             case ErrorCode.EC_PRIV_KEY_INVALID_FORMAT => new EcPrivKeyInvalidFormatException(error.getMessage)
@@ -128,6 +129,7 @@ package object implicits {
             case ErrorCode.BAD_CAST => new BadCastException(error.getMessage)
             case ErrorCode.LINK_NON_TAIL_FILTER => new LinkNonTailFilterException(error.getMessage)
             case ErrorCode.INVALID_BECH32_FORMAT => new InvalidBech32FormatException(error.getMessage)
+            case ErrorCode.INVALID_STELLAR_ADDRESS_FORMAT => new InvalidStellarAddressFormatException(error.getMessage)
         }
     }
     private def arrayList2Array[T](a: Array[T]): java.util.ArrayList[T] = new java.util.ArrayList[T](a.toList.asJava.asInstanceOf[java.util.Collection[T]])
@@ -376,6 +378,138 @@ package object implicits {
     implicit class RichNetworks(val self: Networks) {
     }
     implicit class RichHashAlgorithmHelper(val self: HashAlgorithmHelper) {
+    }
+    implicit class RichStellarLikeBlock(val self: StellarLikeBlock) {
+    }
+    implicit class RichStellarLikeTransaction(val self: StellarLikeTransaction) {
+    }
+    implicit class RichStellarLikeTransactionBuilder(val self: StellarLikeTransactionBuilder) {
+        def build(): Future[StellarLikeTransaction] = {
+            val promise = Promise[StellarLikeTransaction]()
+            self.build(new StellarLikeTransactionCallback() {
+                override def onCallback(result: StellarLikeTransaction, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+    }
+    implicit class RichStellarLikeTransactionCallback(val self: StellarLikeTransactionCallback) {
+    }
+    implicit class RichStellarLikeOperation(val self: StellarLikeOperation) {
+    }
+    implicit class RichStellarLikeAccount(val self: StellarLikeAccount) {
+        def exists(): Future[Boolean] = {
+            val promise = Promise[Boolean]()
+            self.exists(new BoolCallback() {
+                override def onCallback(result: java.lang.Boolean, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def broadcastRawTransaction(tx: Array[Byte]): Future[String] = {
+            val promise = Promise[String]()
+            self.broadcastRawTransaction(tx, new StringCallback() {
+                override def onCallback(result: String, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getBaseReserve(): Future[Amount] = {
+            val promise = Promise[Amount]()
+            self.getBaseReserve(new AmountCallback() {
+                override def onCallback(result: Amount, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getSequence(): Future[BigInt] = {
+            val promise = Promise[BigInt]()
+            self.getSequence(new BigIntCallback() {
+                override def onCallback(result: BigInt, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getFeeStats(): Future[StellarLikeFeeStats] = {
+            val promise = Promise[StellarLikeFeeStats]()
+            self.getFeeStats(new StellarLikeFeeStatsCallback() {
+                override def onCallback(result: StellarLikeFeeStats, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getSigners(): Future[ArrayList[StellarLikeAccountSigner]] = {
+            val promise = Promise[ArrayList[StellarLikeAccountSigner]]()
+            self.getSigners(new StellarLikeAccountSignerListCallback() {
+                override def onCallback(result: ArrayList[StellarLikeAccountSigner], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+    }
+    implicit class RichStellarLikeFeeStatsCallback(val self: StellarLikeFeeStatsCallback) {
+    }
+    implicit class RichStellarLikeAccountSignerListCallback(val self: StellarLikeAccountSignerListCallback) {
+    }
+    implicit class RichStellarLikeWallet(val self: StellarLikeWallet) {
+        def exists(address: String): Future[Boolean] = {
+            val promise = Promise[Boolean]()
+            self.exists(address, new BoolCallback() {
+                override def onCallback(result: java.lang.Boolean, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+    }
+    implicit class RichStellarLikeAddress(val self: StellarLikeAddress) {
     }
     implicit class RichEvent(val self: Event) {
     }
@@ -676,6 +810,8 @@ package object implicits {
     implicit class RichDynamicArray(val self: DynamicArray) {
     }
     implicit class RichDynamicObject(val self: DynamicObject) {
+    }
+    implicit class RichStellarConfiguration(val self: StellarConfiguration) {
     }
     implicit class RichBlockchainExplorerEngines(val self: BlockchainExplorerEngines) {
     }
@@ -1014,6 +1150,20 @@ package object implicits {
             val promise = Promise[ArrayList[BigInt]]()
             self.getFees(new BigIntListCallback() {
                 override def onCallback(result: ArrayList[BigInt], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getAddresses(from: Long, to: Long): Future[ArrayList[Address]] = {
+            val promise = Promise[ArrayList[Address]]()
+            self.getAddresses(from, to, new AddressListCallback() {
+                override def onCallback(result: ArrayList[Address], error: co.ledger.core.Error): Unit =  {
                     if (error != null) {
                         promise.failure(wrapLedgerCoreError(error))
                     }
