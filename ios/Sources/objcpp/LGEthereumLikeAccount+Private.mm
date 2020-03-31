@@ -9,6 +9,7 @@
 #import "LGBigIntCallback+Private.h"
 #import "LGBigIntListCallback+Private.h"
 #import "LGERC20LikeAccount+Private.h"
+#import "LGEthereumGasLimitRequest+Private.h"
 #import "LGEthereumLikeTransaction+Private.h"
 #import "LGEthereumLikeTransactionBuilder+Private.h"
 #import "LGStringCallback+Private.h"
@@ -77,6 +78,16 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         _cppRefHandle.get()->getEstimatedGasLimit(::djinni::String::toCpp(address),
                                                   ::djinni_generated::BigIntCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)getDryRunGasLimit:(nonnull NSString *)address
+                  request:(nonnull LGEthereumGasLimitRequest *)request
+                 callback:(nullable id<LGBigIntCallback>)callback {
+    try {
+        _cppRefHandle.get()->getDryRunGasLimit(::djinni::String::toCpp(address),
+                                               ::djinni_generated::EthereumGasLimitRequest::toCpp(request),
+                                               ::djinni_generated::BigIntCallback::toCpp(callback));
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

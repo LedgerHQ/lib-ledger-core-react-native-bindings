@@ -18,6 +18,7 @@ class BitcoinLikeOperation;
 class EthereumLikeOperation;
 class Preferences;
 class RippleLikeOperation;
+class StellarLikeOperation;
 class TezosLikeOperation;
 class TrustIndicator;
 enum class OperationType;
@@ -119,7 +120,14 @@ public:
      */
     virtual std::shared_ptr<TezosLikeOperation> asTezosLikeOperation() = 0;
 
-    /** Same as isInstanceOfBitcoinLikeOperation for bitcoin. */
+    /**
+     * Same as isInstanceOfBitcoinLikeOperation for bitcoin.
+     * Convert operation as Ethereum operation.
+     * @return EthereumLikeOperation object
+     */
+    virtual std::shared_ptr<StellarLikeOperation> asStellarLikeOperation() = 0;
+
+    /** Is this an instance of a Bitcoin-like operation? */
     virtual bool isInstanceOfBitcoinLikeOperation() = 0;
 
     /** Same as isInstanceOfEthereumLikeOperation for ethereum. */
@@ -130,6 +138,9 @@ public:
 
     /** Same as isInstanceOfTezosLikeOperation for tezos. */
     virtual bool isInstanceOfTezosLikeOperation() = 0;
+
+    /** Same as isInstanceOfBitcoinLikeOperation for ripple. */
+    virtual bool isInstanceOfStellarLikeOperation() const = 0;
 
     /**
      * Tells if the operation is complete.

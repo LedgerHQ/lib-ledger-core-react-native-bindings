@@ -11,6 +11,7 @@
 
 namespace ledger { namespace core { namespace api {
 
+class AddressListCallback;
 class BigIntListCallback;
 class BitcoinLikeOutputListCallback;
 class BitcoinLikeTransaction;
@@ -51,6 +52,12 @@ public:
      * when the right time comes !
      */
     virtual void getFees(const std::shared_ptr<BigIntListCallback> & callback) = 0;
+
+    /**
+     * Get addresses given a range of indices
+     * Note: this will return public and change addresses
+     */
+    virtual void getAddresses(int64_t from, int64_t to, const std::shared_ptr<AddressListCallback> & callback) = 0;
 };
 
 } } }  // namespace ledger::core::api

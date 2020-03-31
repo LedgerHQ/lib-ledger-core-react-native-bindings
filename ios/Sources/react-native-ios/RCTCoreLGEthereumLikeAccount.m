@@ -221,6 +221,33 @@ RCT_REMAP_METHOD(getEstimatedGasLimit,getEstimatedGasLimit:(NSDictionary *)curre
 }
 
 /**
+ * Get estimated gas limit to set so the transaction will succeed
+ * The passed address could be EOA or contract
+ * This estimation is based on a dry-run on the node, and it will fail if the request is ill-formed
+ * Note: same note as above
+ */
+RCT_REMAP_METHOD(getDryRunGasLimit,getDryRunGasLimit:(NSDictionary *)currentInstance withParams:(nonnull NSString *)address
+                                                                                        request:(NSDictionary *)request withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::getDryRunGasLimit, first argument should be an instance of LGEthereumLikeAccount", nil);
+        return;
+    }
+    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::getDryRunGasLimit, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGEthereumGasLimitRequest *rctParam_request = (RCTCoreLGEthereumGasLimitRequest *)[self.bridge moduleForName:@"CoreLGEthereumGasLimitRequest"];
+    LGEthereumGasLimitRequest *objcParam_1 = (LGEthereumGasLimitRequest *)[rctParam_request.objcImplementations objectForKey:request[@"uid"]];
+    RCTCoreLGBigIntCallback *objcParam_2 = [[RCTCoreLGBigIntCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getDryRunGasLimit:address request:objcParam_1 callback:objcParam_2];
+
+}
+
+/**
  * Get balance of ERC20 token
  * The passed address is an ERC20 account
  * Note: same note as above

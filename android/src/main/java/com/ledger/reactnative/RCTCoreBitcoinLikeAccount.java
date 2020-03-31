@@ -3,6 +3,7 @@
 
 package com.ledger.reactnative;
 
+import co.ledger.core.AddressListCallback;
 import co.ledger.core.BigIntListCallback;
 import co.ledger.core.BitcoinLikeAccount;
 import co.ledger.core.BitcoinLikeOutputListCallback;
@@ -249,6 +250,26 @@ public class RCTCoreBitcoinLikeAccount extends ReactContextBaseJavaModule {
 
             RCTCoreBigIntListCallback javaParam_0 = RCTCoreBigIntListCallback.initWithPromise(promise, this.reactContext);
             currentInstanceObj.getFees(javaParam_0);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Get addresses given a range of indices
+     * Note: this will return public and change addresses
+     */
+    @ReactMethod
+    public void getAddresses(ReadableMap currentInstance, long from, long to, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            BitcoinLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreAddressListCallback javaParam_2 = RCTCoreAddressListCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getAddresses(from, to, javaParam_2);
         }
         catch(Exception e)
         {

@@ -6,6 +6,7 @@ package com.ledger.reactnative;
 import co.ledger.core.BigIntCallback;
 import co.ledger.core.BigIntListCallback;
 import co.ledger.core.ERC20LikeAccount;
+import co.ledger.core.EthereumGasLimitRequest;
 import co.ledger.core.EthereumLikeAccount;
 import co.ledger.core.EthereumLikeTransaction;
 import co.ledger.core.EthereumLikeTransactionBuilder;
@@ -262,6 +263,30 @@ public class RCTCoreEthereumLikeAccount extends ReactContextBaseJavaModule {
 
             RCTCoreBigIntCallback javaParam_1 = RCTCoreBigIntCallback.initWithPromise(promise, this.reactContext);
             currentInstanceObj.getEstimatedGasLimit(address, javaParam_1);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Get estimated gas limit to set so the transaction will succeed
+     * The passed address could be EOA or contract
+     * This estimation is based on a dry-run on the node, and it will fail if the request is ill-formed
+     * Note: same note as above
+     */
+    @ReactMethod
+    public void getDryRunGasLimit(ReadableMap currentInstance, String address, ReadableMap request, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            EthereumLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreEthereumGasLimitRequest rctParam_request = this.reactContext.getNativeModule(RCTCoreEthereumGasLimitRequest.class);
+            EthereumGasLimitRequest javaParam_1 = rctParam_request.getJavaObjects().get(request.getString("uid"));
+            RCTCoreBigIntCallback javaParam_2 = RCTCoreBigIntCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getDryRunGasLimit(address, javaParam_1, javaParam_2);
         }
         catch(Exception e)
         {

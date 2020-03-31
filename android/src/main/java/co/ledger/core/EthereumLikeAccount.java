@@ -38,6 +38,14 @@ public abstract class EthereumLikeAccount {
     public abstract void getEstimatedGasLimit(String address, BigIntCallback callback);
 
     /**
+     * Get estimated gas limit to set so the transaction will succeed
+     * The passed address could be EOA or contract
+     * This estimation is based on a dry-run on the node, and it will fail if the request is ill-formed
+     * Note: same note as above
+     */
+    public abstract void getDryRunGasLimit(String address, EthereumGasLimitRequest request, BigIntCallback callback);
+
+    /**
      * Get balance of ERC20 token
      * The passed address is an ERC20 account
      * Note: same note as above
@@ -121,6 +129,14 @@ public abstract class EthereumLikeAccount {
             native_getEstimatedGasLimit(this.nativeRef, address, callback);
         }
         private native void native_getEstimatedGasLimit(long _nativeRef, String address, BigIntCallback callback);
+
+        @Override
+        public void getDryRunGasLimit(String address, EthereumGasLimitRequest request, BigIntCallback callback)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_getDryRunGasLimit(this.nativeRef, address, request, callback);
+        }
+        private native void native_getDryRunGasLimit(long _nativeRef, String address, EthereumGasLimitRequest request, BigIntCallback callback);
 
         @Override
         public void getERC20Balance(String erc20Address, BigIntCallback callback)

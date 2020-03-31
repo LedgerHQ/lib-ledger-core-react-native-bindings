@@ -9,6 +9,7 @@
 #import "LGOperationType.h"
 #import "LGPreferences.h"
 #import "LGRippleLikeOperation.h"
+#import "LGStellarLikeOperation.h"
 #import "LGTezosLikeOperation.h"
 #import "LGTrustIndicator.h"
 #import "LGWalletType.h"
@@ -19,6 +20,7 @@
 #import "RCTCoreLGEthereumLikeOperation.h"
 #import "RCTCoreLGPreferences.h"
 #import "RCTCoreLGRippleLikeOperation.h"
+#import "RCTCoreLGStellarLikeOperation.h"
 #import "RCTCoreLGTezosLikeOperation.h"
 #import "RCTCoreLGTrustIndicator.h"
 #import <Foundation/Foundation.h>

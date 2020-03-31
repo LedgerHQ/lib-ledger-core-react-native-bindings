@@ -157,6 +157,70 @@ RCT_REMAP_METHOD(isInstanceOfBitcoinLikeAddress,isInstanceOfBitcoinLikeAddress:(
 
 }
 
+/** Cast the address to a stellar like one */
+RCT_REMAP_METHOD(asStellarLikeAddress,asStellarLikeAddress:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGAddress::asStellarLikeAddress, first argument should be an instance of LGAddress", nil);
+        return;
+    }
+    LGAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGAddress::asStellarLikeAddress, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGStellarLikeAddress * objcResult = [currentInstanceObj asStellarLikeAddress];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGStellarLikeAddress *rctImpl_objcResult = (RCTCoreLGStellarLikeAddress *)[self.bridge moduleForName:@"CoreLGStellarLikeAddress"];
+    if (objcResult)
+    {
+        NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+        [rctImpl_objcResult baseSetObject:objcResult_array];
+    }
+    NSDictionary *result = @{@"type" : @"CoreLGStellarLikeAddress", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGAddress::asStellarLikeAddress", nil);
+        return;
+    }
+
+}
+
+RCT_REMAP_METHOD(isInstanceOfStellarLikeAddress,isInstanceOfStellarLikeAddress:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGAddress::isInstanceOfStellarLikeAddress, first argument should be an instance of LGAddress", nil);
+        return;
+    }
+    LGAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGAddress::isInstanceOfStellarLikeAddress, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    BOOL objcResult = [currentInstanceObj isInstanceOfStellarLikeAddress];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGAddress::isInstanceOfStellarLikeAddress", nil);
+        return;
+    }
+
+}
+
 RCT_REMAP_METHOD(getCurrency,getCurrency:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {

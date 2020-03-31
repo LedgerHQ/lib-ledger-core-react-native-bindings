@@ -8,6 +8,7 @@ import co.ledger.core.Currency;
 import co.ledger.core.CurrencyUnit;
 import co.ledger.core.EthereumLikeNetworkParameters;
 import co.ledger.core.RippleLikeNetworkParameters;
+import co.ledger.core.StellarLikeNetworkParameters;
 import co.ledger.core.TezosLikeNetworkParameters;
 import co.ledger.core.WalletType;
 import com.facebook.react.bridge.Promise;
@@ -108,7 +109,7 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void init(int walletType, String name, int bip44CoinType, String paymentUriScheme, ReadableArray units, Optional<ReadableMap> bitcoinLikeNetworkParameters, Optional<ReadableMap> ethereumLikeNetworkParameters, Optional<ReadableMap> rippleLikeNetworkParameters, Optional<ReadableMap> tezosLikeNetworkParameters, Promise promise) {
+    public void init(int walletType, String name, int bip44CoinType, String paymentUriScheme, ReadableArray units, Optional<ReadableMap> bitcoinLikeNetworkParameters, Optional<ReadableMap> ethereumLikeNetworkParameters, Optional<ReadableMap> rippleLikeNetworkParameters, Optional<ReadableMap> tezosLikeNetworkParameters, Optional<ReadableMap> stellarLikeNetworkParameters, Promise promise) {
         WritableNativeMap implementationsData = new WritableNativeMap();
         if (walletType < 0 || WalletType.values().length <= walletType)
         {
@@ -141,7 +142,10 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         RCTCoreTezosLikeNetworkParameters rctParam_tezosLikeNetworkParameters = this.reactContext.getNativeModule(RCTCoreTezosLikeNetworkParameters.class);
         TezosLikeNetworkParameters javaParam_8 = rctParam_tezosLikeNetworkParameters.getJavaObjects().get(tezosLikeNetworkParameters.get().getString("uid"));
         implementationsData.putString("tezosLikeNetworkParameters", tezosLikeNetworkParameters.get().getString("uid"));
-        Currency javaResult = new Currency(javaParam_0, name, bip44CoinType, paymentUriScheme, javaParam_4, javaParam_5, javaParam_6, javaParam_7, javaParam_8);
+        RCTCoreStellarLikeNetworkParameters rctParam_stellarLikeNetworkParameters = this.reactContext.getNativeModule(RCTCoreStellarLikeNetworkParameters.class);
+        StellarLikeNetworkParameters javaParam_9 = rctParam_stellarLikeNetworkParameters.getJavaObjects().get(stellarLikeNetworkParameters.get().getString("uid"));
+        implementationsData.putString("stellarLikeNetworkParameters", stellarLikeNetworkParameters.get().getString("uid"));
+        Currency javaResult = new Currency(javaParam_0, name, bip44CoinType, paymentUriScheme, javaParam_4, javaParam_5, javaParam_6, javaParam_7, javaParam_8, javaParam_9);
 
         String uuid = UUID.randomUUID().toString();
         this.javaObjects.put(uuid, javaResult);
@@ -201,6 +205,14 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         converted_field_8.putString("type","RCTCoreTezosLikeNetworkParameters");
         converted_field_8.putString("uid",field_8_uuid);
         implementationsData.putMap("tezosLikeNetworkParameters", converted_field_8);
+        StellarLikeNetworkParameters field_9 = javaImpl.getStellarLikeNetworkParameters();
+        String field_9_uuid = UUID.randomUUID().toString();
+        RCTCoreStellarLikeNetworkParameters rctImpl_field_9 = this.reactContext.getNativeModule(RCTCoreStellarLikeNetworkParameters.class);
+        rctImpl_field_9.getJavaObjects().put(field_9_uuid, field_9);
+        WritableNativeMap converted_field_9 = new WritableNativeMap();
+        converted_field_9.putString("type","RCTCoreStellarLikeNetworkParameters");
+        converted_field_9.putString("uid",field_9_uuid);
+        implementationsData.putMap("stellarLikeNetworkParameters", converted_field_9);
         this.implementationsData.put(currentInstanceUid, implementationsData);
     }
     @ReactMethod
@@ -383,6 +395,27 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         else
         {
             promise.reject("Failed to call RCTCoreCurrency::getTezosLikeNetworkParameters", "First parameter of RCTCoreCurrency::getTezosLikeNetworkParameters should be an instance of RCTCoreCurrency");
+        }
+    }
+
+    @ReactMethod
+    public void getStellarLikeNetworkParameters(ReadableMap currentInstance, Promise promise)
+    {
+        String uid = currentInstance.getString("uid");
+        if (uid.length() > 0)
+        {
+            if (!this.implementationsData.containsKey(uid))
+            {
+                this.mapImplementationsData(currentInstance);
+            }
+            ReadableNativeMap data = (ReadableNativeMap)this.implementationsData.get(uid);
+            WritableNativeMap result = new WritableNativeMap();
+            result.merge(data.getMap("stellarLikeNetworkParameters"));
+            promise.resolve(result);
+        }
+        else
+        {
+            promise.reject("Failed to call RCTCoreCurrency::getStellarLikeNetworkParameters", "First parameter of RCTCoreCurrency::getStellarLikeNetworkParameters should be an instance of RCTCoreCurrency");
         }
     }
 

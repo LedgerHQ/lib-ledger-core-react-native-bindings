@@ -6,6 +6,7 @@
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
 #import "DJIMarshal+Private.h"
+#import "LGAddressListCallback+Private.h"
 #import "LGBigIntListCallback+Private.h"
 #import "LGBitcoinLikeOutputListCallback+Private.h"
 #import "LGBitcoinLikeTransaction+Private.h"
@@ -78,6 +79,16 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 - (void)getFees:(nullable id<LGBigIntListCallback>)callback {
     try {
         _cppRefHandle.get()->getFees(::djinni_generated::BigIntListCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)getAddresses:(int64_t)from
+                  to:(int64_t)to
+            callback:(nullable id<LGAddressListCallback>)callback {
+    try {
+        _cppRefHandle.get()->getAddresses(::djinni::I64::toCpp(from),
+                                          ::djinni::I64::toCpp(to),
+                                          ::djinni_generated::AddressListCallback::toCpp(callback));
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

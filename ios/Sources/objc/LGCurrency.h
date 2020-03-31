@@ -5,6 +5,7 @@
 #import "LGCurrencyUnit.h"
 #import "LGEthereumLikeNetworkParameters.h"
 #import "LGRippleLikeNetworkParameters.h"
+#import "LGStellarLikeNetworkParameters.h"
 #import "LGTezosLikeNetworkParameters.h"
 #import "LGWalletType.h"
 #import <Foundation/Foundation.h>
@@ -19,7 +20,8 @@
               bitcoinLikeNetworkParameters:(nullable LGBitcoinLikeNetworkParameters *)bitcoinLikeNetworkParameters
              ethereumLikeNetworkParameters:(nullable LGEthereumLikeNetworkParameters *)ethereumLikeNetworkParameters
                rippleLikeNetworkParameters:(nullable LGRippleLikeNetworkParameters *)rippleLikeNetworkParameters
-                tezosLikeNetworkParameters:(nullable LGTezosLikeNetworkParameters *)tezosLikeNetworkParameters;
+                tezosLikeNetworkParameters:(nullable LGTezosLikeNetworkParameters *)tezosLikeNetworkParameters
+              stellarLikeNetworkParameters:(nullable LGStellarLikeNetworkParameters *)stellarLikeNetworkParameters;
 + (nonnull instancetype)CurrencyWithWalletType:(LGWalletType)walletType
                                           name:(nonnull NSString *)name
                                  bip44CoinType:(int32_t)bip44CoinType
@@ -28,7 +30,8 @@
                   bitcoinLikeNetworkParameters:(nullable LGBitcoinLikeNetworkParameters *)bitcoinLikeNetworkParameters
                  ethereumLikeNetworkParameters:(nullable LGEthereumLikeNetworkParameters *)ethereumLikeNetworkParameters
                    rippleLikeNetworkParameters:(nullable LGRippleLikeNetworkParameters *)rippleLikeNetworkParameters
-                    tezosLikeNetworkParameters:(nullable LGTezosLikeNetworkParameters *)tezosLikeNetworkParameters;
+                    tezosLikeNetworkParameters:(nullable LGTezosLikeNetworkParameters *)tezosLikeNetworkParameters
+                  stellarLikeNetworkParameters:(nullable LGStellarLikeNetworkParameters *)stellarLikeNetworkParameters;
 
 /** WalletType object defining the type of wallet the currency belongs to. */
 @property (nonatomic, readonly) LGWalletType walletType;
@@ -62,5 +65,8 @@
 
 /**Optional TezosLikeNetworkParameters, for more details refer to TezosLikeNetworkParameters doc */
 @property (nonatomic, readonly, nullable) LGTezosLikeNetworkParameters * tezosLikeNetworkParameters;
+
+/** Optional StellarLikeNetworkParameters, for more details refer to EthereumLikeNetworkParameters doc */
+@property (nonatomic, readonly, nullable) LGStellarLikeNetworkParameters * stellarLikeNetworkParameters;
 
 @end
