@@ -12,18 +12,27 @@ BASE_URL="https://s3-eu-west-1.amazonaws.com/ledger-lib-ledger-core"
 function main() {
   #  lib file                             architecture            destination       arch override
   #  ---------------------------------------------------------------------------------------------
-  dl "ledger-core.framework/ledger-core"  "ios/x86_64"            "ios/Frameworks"  "x86"
-  dl "ledger-core.framework/Info.plist"   "ios/x86_64"            "ios/Frameworks"  "x86"
-  dl "ledger-core.framework/ledger-core"  "ios/armv7"             "ios/Frameworks"
-  dl "ledger-core.framework/Info.plist"   "ios/armv7"             "ios/Frameworks"
-  dl "ledger-core.framework/ledger-core"  "ios/arm64"             "ios/Frameworks"
-  dl "ledger-core.framework/Info.plist"   "ios/arm64"             "ios/Frameworks"
-  dl "ledger-core.framework/ledger-core"  "ios/universal"         "ios/Frameworks"
-  dl "ledger-core.framework/Info.plist"   "ios/universal"         "ios/Frameworks"
   dl "libledger-core.so"                  "android/x86"           "android/libs"
   dl "libledger-core.so"                  "android/x86_64"        "android/libs"
   dl "libledger-core.so"                  "android/armeabi-v7a"   "android/libs"
   dl "libledger-core.so"                  "android/arm64-v8a"     "android/libs"
+
+  if [[ $(uname) == "Darwin" ]]; then
+    dl "ledger-core.framework/ledger-core"  "ios/x86_64"          "ios/Frameworks"  "x86"
+    dl "ledger-core.framework/Info.plist"   "ios/x86_64"          "ios/Frameworks"  "x86"
+    dl "ledger-core.framework/ledger-core"  "ios/armv7"           "ios/Frameworks"
+    dl "ledger-core.framework/Info.plist"   "ios/armv7"           "ios/Frameworks"
+    dl "ledger-core.framework/ledger-core"  "ios/arm64"           "ios/Frameworks"
+    dl "ledger-core.framework/Info.plist"   "ios/arm64"           "ios/Frameworks"
+    dl "ledger-core.framework/Info.plist"   "ios/universal"       "ios/Frameworks"
+
+    lipo -create -output ios/Frameworks/universal/ledger-core.framework/ledger-core \
+    ios/Frameworks/x86/ledger-core.framework/ledger-core \
+    ios/Frameworks/arm64/ledger-core.framework/ledger-core \
+    ios/Frameworks/armv7/ledger-core.framework/ledger-core
+
+    rm -rf ios/Frameworks/x86 ios/Frameworks/arm64 ios/Frameworks/armv7
+  fi
 }
 
 function dl() {
