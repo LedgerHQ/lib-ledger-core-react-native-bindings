@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class StellarConfiguration {
     public static final String HORIZON_EXPLORER_ENGINE = "HORIZON_EXPLORER_ENGINE";
 
-    public static final String HORIZON_MAINNET_BLOCKCHAIN_EXPLORER_URL = "https://horizon.stellar.org";
+    public static final String HORIZON_MAINNET_BLOCKCHAIN_EXPLORER_URL = "https://stellar.coin.ledger.com";
 
     public static final String HORIZON_TESTNET_BLOCKCHAIN_EXPLORER_URL = "https://horizon-testnet.stellar.org";
 

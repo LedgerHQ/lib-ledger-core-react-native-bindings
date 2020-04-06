@@ -4,6 +4,7 @@
 package com.ledger.reactnative;
 
 import co.ledger.core.BitcoinLikeNetworkParameters;
+import co.ledger.core.CosmosLikeNetworkParameters;
 import co.ledger.core.Currency;
 import co.ledger.core.CurrencyUnit;
 import co.ledger.core.EthereumLikeNetworkParameters;
@@ -109,7 +110,7 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void init(int walletType, String name, int bip44CoinType, String paymentUriScheme, ReadableArray units, Optional<ReadableMap> bitcoinLikeNetworkParameters, Optional<ReadableMap> ethereumLikeNetworkParameters, Optional<ReadableMap> rippleLikeNetworkParameters, Optional<ReadableMap> tezosLikeNetworkParameters, Optional<ReadableMap> stellarLikeNetworkParameters, Promise promise) {
+    public void init(int walletType, String name, int bip44CoinType, String paymentUriScheme, ReadableArray units, Optional<ReadableMap> bitcoinLikeNetworkParameters, Optional<ReadableMap> cosmosLikeNetworkParameters, Optional<ReadableMap> ethereumLikeNetworkParameters, Optional<ReadableMap> rippleLikeNetworkParameters, Optional<ReadableMap> tezosLikeNetworkParameters, Optional<ReadableMap> stellarLikeNetworkParameters, Promise promise) {
         WritableNativeMap implementationsData = new WritableNativeMap();
         if (walletType < 0 || WalletType.values().length <= walletType)
         {
@@ -133,19 +134,22 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         RCTCoreBitcoinLikeNetworkParameters rctParam_bitcoinLikeNetworkParameters = this.reactContext.getNativeModule(RCTCoreBitcoinLikeNetworkParameters.class);
         BitcoinLikeNetworkParameters javaParam_5 = rctParam_bitcoinLikeNetworkParameters.getJavaObjects().get(bitcoinLikeNetworkParameters.get().getString("uid"));
         implementationsData.putString("bitcoinLikeNetworkParameters", bitcoinLikeNetworkParameters.get().getString("uid"));
+        RCTCoreCosmosLikeNetworkParameters rctParam_cosmosLikeNetworkParameters = this.reactContext.getNativeModule(RCTCoreCosmosLikeNetworkParameters.class);
+        CosmosLikeNetworkParameters javaParam_6 = rctParam_cosmosLikeNetworkParameters.getJavaObjects().get(cosmosLikeNetworkParameters.get().getString("uid"));
+        implementationsData.putString("cosmosLikeNetworkParameters", cosmosLikeNetworkParameters.get().getString("uid"));
         RCTCoreEthereumLikeNetworkParameters rctParam_ethereumLikeNetworkParameters = this.reactContext.getNativeModule(RCTCoreEthereumLikeNetworkParameters.class);
-        EthereumLikeNetworkParameters javaParam_6 = rctParam_ethereumLikeNetworkParameters.getJavaObjects().get(ethereumLikeNetworkParameters.get().getString("uid"));
+        EthereumLikeNetworkParameters javaParam_7 = rctParam_ethereumLikeNetworkParameters.getJavaObjects().get(ethereumLikeNetworkParameters.get().getString("uid"));
         implementationsData.putString("ethereumLikeNetworkParameters", ethereumLikeNetworkParameters.get().getString("uid"));
         RCTCoreRippleLikeNetworkParameters rctParam_rippleLikeNetworkParameters = this.reactContext.getNativeModule(RCTCoreRippleLikeNetworkParameters.class);
-        RippleLikeNetworkParameters javaParam_7 = rctParam_rippleLikeNetworkParameters.getJavaObjects().get(rippleLikeNetworkParameters.get().getString("uid"));
+        RippleLikeNetworkParameters javaParam_8 = rctParam_rippleLikeNetworkParameters.getJavaObjects().get(rippleLikeNetworkParameters.get().getString("uid"));
         implementationsData.putString("rippleLikeNetworkParameters", rippleLikeNetworkParameters.get().getString("uid"));
         RCTCoreTezosLikeNetworkParameters rctParam_tezosLikeNetworkParameters = this.reactContext.getNativeModule(RCTCoreTezosLikeNetworkParameters.class);
-        TezosLikeNetworkParameters javaParam_8 = rctParam_tezosLikeNetworkParameters.getJavaObjects().get(tezosLikeNetworkParameters.get().getString("uid"));
+        TezosLikeNetworkParameters javaParam_9 = rctParam_tezosLikeNetworkParameters.getJavaObjects().get(tezosLikeNetworkParameters.get().getString("uid"));
         implementationsData.putString("tezosLikeNetworkParameters", tezosLikeNetworkParameters.get().getString("uid"));
         RCTCoreStellarLikeNetworkParameters rctParam_stellarLikeNetworkParameters = this.reactContext.getNativeModule(RCTCoreStellarLikeNetworkParameters.class);
-        StellarLikeNetworkParameters javaParam_9 = rctParam_stellarLikeNetworkParameters.getJavaObjects().get(stellarLikeNetworkParameters.get().getString("uid"));
+        StellarLikeNetworkParameters javaParam_10 = rctParam_stellarLikeNetworkParameters.getJavaObjects().get(stellarLikeNetworkParameters.get().getString("uid"));
         implementationsData.putString("stellarLikeNetworkParameters", stellarLikeNetworkParameters.get().getString("uid"));
-        Currency javaResult = new Currency(javaParam_0, name, bip44CoinType, paymentUriScheme, javaParam_4, javaParam_5, javaParam_6, javaParam_7, javaParam_8, javaParam_9);
+        Currency javaResult = new Currency(javaParam_0, name, bip44CoinType, paymentUriScheme, javaParam_4, javaParam_5, javaParam_6, javaParam_7, javaParam_8, javaParam_9, javaParam_10);
 
         String uuid = UUID.randomUUID().toString();
         this.javaObjects.put(uuid, javaResult);
@@ -181,38 +185,46 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         converted_field_5.putString("type","RCTCoreBitcoinLikeNetworkParameters");
         converted_field_5.putString("uid",field_5_uuid);
         implementationsData.putMap("bitcoinLikeNetworkParameters", converted_field_5);
-        EthereumLikeNetworkParameters field_6 = javaImpl.getEthereumLikeNetworkParameters();
+        CosmosLikeNetworkParameters field_6 = javaImpl.getCosmosLikeNetworkParameters();
         String field_6_uuid = UUID.randomUUID().toString();
-        RCTCoreEthereumLikeNetworkParameters rctImpl_field_6 = this.reactContext.getNativeModule(RCTCoreEthereumLikeNetworkParameters.class);
+        RCTCoreCosmosLikeNetworkParameters rctImpl_field_6 = this.reactContext.getNativeModule(RCTCoreCosmosLikeNetworkParameters.class);
         rctImpl_field_6.getJavaObjects().put(field_6_uuid, field_6);
         WritableNativeMap converted_field_6 = new WritableNativeMap();
-        converted_field_6.putString("type","RCTCoreEthereumLikeNetworkParameters");
+        converted_field_6.putString("type","RCTCoreCosmosLikeNetworkParameters");
         converted_field_6.putString("uid",field_6_uuid);
-        implementationsData.putMap("ethereumLikeNetworkParameters", converted_field_6);
-        RippleLikeNetworkParameters field_7 = javaImpl.getRippleLikeNetworkParameters();
+        implementationsData.putMap("cosmosLikeNetworkParameters", converted_field_6);
+        EthereumLikeNetworkParameters field_7 = javaImpl.getEthereumLikeNetworkParameters();
         String field_7_uuid = UUID.randomUUID().toString();
-        RCTCoreRippleLikeNetworkParameters rctImpl_field_7 = this.reactContext.getNativeModule(RCTCoreRippleLikeNetworkParameters.class);
+        RCTCoreEthereumLikeNetworkParameters rctImpl_field_7 = this.reactContext.getNativeModule(RCTCoreEthereumLikeNetworkParameters.class);
         rctImpl_field_7.getJavaObjects().put(field_7_uuid, field_7);
         WritableNativeMap converted_field_7 = new WritableNativeMap();
-        converted_field_7.putString("type","RCTCoreRippleLikeNetworkParameters");
+        converted_field_7.putString("type","RCTCoreEthereumLikeNetworkParameters");
         converted_field_7.putString("uid",field_7_uuid);
-        implementationsData.putMap("rippleLikeNetworkParameters", converted_field_7);
-        TezosLikeNetworkParameters field_8 = javaImpl.getTezosLikeNetworkParameters();
+        implementationsData.putMap("ethereumLikeNetworkParameters", converted_field_7);
+        RippleLikeNetworkParameters field_8 = javaImpl.getRippleLikeNetworkParameters();
         String field_8_uuid = UUID.randomUUID().toString();
-        RCTCoreTezosLikeNetworkParameters rctImpl_field_8 = this.reactContext.getNativeModule(RCTCoreTezosLikeNetworkParameters.class);
+        RCTCoreRippleLikeNetworkParameters rctImpl_field_8 = this.reactContext.getNativeModule(RCTCoreRippleLikeNetworkParameters.class);
         rctImpl_field_8.getJavaObjects().put(field_8_uuid, field_8);
         WritableNativeMap converted_field_8 = new WritableNativeMap();
-        converted_field_8.putString("type","RCTCoreTezosLikeNetworkParameters");
+        converted_field_8.putString("type","RCTCoreRippleLikeNetworkParameters");
         converted_field_8.putString("uid",field_8_uuid);
-        implementationsData.putMap("tezosLikeNetworkParameters", converted_field_8);
-        StellarLikeNetworkParameters field_9 = javaImpl.getStellarLikeNetworkParameters();
+        implementationsData.putMap("rippleLikeNetworkParameters", converted_field_8);
+        TezosLikeNetworkParameters field_9 = javaImpl.getTezosLikeNetworkParameters();
         String field_9_uuid = UUID.randomUUID().toString();
-        RCTCoreStellarLikeNetworkParameters rctImpl_field_9 = this.reactContext.getNativeModule(RCTCoreStellarLikeNetworkParameters.class);
+        RCTCoreTezosLikeNetworkParameters rctImpl_field_9 = this.reactContext.getNativeModule(RCTCoreTezosLikeNetworkParameters.class);
         rctImpl_field_9.getJavaObjects().put(field_9_uuid, field_9);
         WritableNativeMap converted_field_9 = new WritableNativeMap();
-        converted_field_9.putString("type","RCTCoreStellarLikeNetworkParameters");
+        converted_field_9.putString("type","RCTCoreTezosLikeNetworkParameters");
         converted_field_9.putString("uid",field_9_uuid);
-        implementationsData.putMap("stellarLikeNetworkParameters", converted_field_9);
+        implementationsData.putMap("tezosLikeNetworkParameters", converted_field_9);
+        StellarLikeNetworkParameters field_10 = javaImpl.getStellarLikeNetworkParameters();
+        String field_10_uuid = UUID.randomUUID().toString();
+        RCTCoreStellarLikeNetworkParameters rctImpl_field_10 = this.reactContext.getNativeModule(RCTCoreStellarLikeNetworkParameters.class);
+        rctImpl_field_10.getJavaObjects().put(field_10_uuid, field_10);
+        WritableNativeMap converted_field_10 = new WritableNativeMap();
+        converted_field_10.putString("type","RCTCoreStellarLikeNetworkParameters");
+        converted_field_10.putString("uid",field_10_uuid);
+        implementationsData.putMap("stellarLikeNetworkParameters", converted_field_10);
         this.implementationsData.put(currentInstanceUid, implementationsData);
     }
     @ReactMethod
@@ -332,6 +344,27 @@ public class RCTCoreCurrency extends ReactContextBaseJavaModule {
         else
         {
             promise.reject("Failed to call RCTCoreCurrency::getBitcoinLikeNetworkParameters", "First parameter of RCTCoreCurrency::getBitcoinLikeNetworkParameters should be an instance of RCTCoreCurrency");
+        }
+    }
+
+    @ReactMethod
+    public void getCosmosLikeNetworkParameters(ReadableMap currentInstance, Promise promise)
+    {
+        String uid = currentInstance.getString("uid");
+        if (uid.length() > 0)
+        {
+            if (!this.implementationsData.containsKey(uid))
+            {
+                this.mapImplementationsData(currentInstance);
+            }
+            ReadableNativeMap data = (ReadableNativeMap)this.implementationsData.get(uid);
+            WritableNativeMap result = new WritableNativeMap();
+            result.merge(data.getMap("cosmosLikeNetworkParameters"));
+            promise.resolve(result);
+        }
+        else
+        {
+            promise.reject("Failed to call RCTCoreCurrency::getCosmosLikeNetworkParameters", "First parameter of RCTCoreCurrency::getCosmosLikeNetworkParameters should be an instance of RCTCoreCurrency");
         }
     }
 

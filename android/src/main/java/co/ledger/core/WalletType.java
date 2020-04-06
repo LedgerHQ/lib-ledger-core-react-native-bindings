@@ -7,6 +7,8 @@ package co.ledger.core;
 public enum WalletType {
     /** A Bitcoin-like wallet. */
     BITCOIN,
+    /** A Cosmos-like wallet. */
+    COSMOS,
     /** An Ethereum-like wallet. */
     ETHEREUM,
     /** A Ripple-like wallet. */

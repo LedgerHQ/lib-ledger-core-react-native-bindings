@@ -169,10 +169,10 @@ public class RCTCoreOperationQuery extends ReactContextBaseJavaModule {
     }
     /**
      * Add offset to the operation query.
-     * @param from, 64-bit integer
+     * @param from, 32-bit integer
      */
     @ReactMethod
-    public void offset(ReadableMap currentInstance, long from, Promise promise) {
+    public void offset(ReadableMap currentInstance, int from, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
@@ -197,10 +197,10 @@ public class RCTCoreOperationQuery extends ReactContextBaseJavaModule {
     }
     /**
      * Add limit to the operation query results.
-     * @param count, 64-bit integer
+     * @param count, 32-bit integer
      */
     @ReactMethod
-    public void limit(ReadableMap currentInstance, long count, Promise promise) {
+    public void limit(ReadableMap currentInstance, int count, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");

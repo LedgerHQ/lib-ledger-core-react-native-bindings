@@ -7,6 +7,7 @@
 #import "LGWalletType.h"
 #import <Foundation/Foundation.h>
 @class LGBitcoinLikeWallet;
+@class LGCosmosLikeWallet;
 @class LGDynamicObject;
 @class LGEventBus;
 @class LGLogger;
@@ -104,6 +105,12 @@
 - (nullable LGBitcoinLikeWallet *)asBitcoinLikeWallet;
 
 /**
+ * Convert wallet to a Cosmos one.
+ * @return CosmosWallet object
+ */
+- (nullable LGCosmosLikeWallet *)asCosmosLikeWallet;
+
+/**
  * Get currency of wallet.
  * @return Currency object
  */
@@ -114,6 +121,12 @@
  * @return bool
  */
 - (BOOL)isInstanceOfBitcoinLikeWallet;
+
+/**
+ * Tell whether wallet is a Cosmos one.
+ * @return bool
+ */
+- (BOOL)isInstanceOfCosmosLikeWallet;
 
 /**
  * Tell whether wallet is a Ethereum one.

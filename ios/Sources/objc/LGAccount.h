@@ -5,8 +5,10 @@
 #import "LGWalletType.h"
 #import <Foundation/Foundation.h>
 @class LGBitcoinLikeAccount;
+@class LGCosmosLikeAccount;
 @class LGEthereumLikeAccount;
 @class LGEventBus;
+@class LGKeychain;
 @class LGLogger;
 @class LGOperationQuery;
 @class LGPreferences;
@@ -105,6 +107,12 @@ extern NSString * __nonnull const LGAccountEVNEWOPUID;
 - (nullable LGBitcoinLikeAccount *)asBitcoinLikeAccount;
 
 /**
+ * Turn the account into an Cosmos one, allowing operations to be performed on the Cosmos
+ * network.
+ */
+- (nullable LGCosmosLikeAccount *)asCosmosLikeAccount;
+
+/**
  * Turn the account into an Ethereum one, allowing operations to be performrd on the Ethereum
  * network.
  */
@@ -127,6 +135,12 @@ extern NSString * __nonnull const LGAccountEVNEWOPUID;
  * @return bool
  */
 - (BOOL)isInstanceOfBitcoinLikeAccount;
+
+/**
+ * Check if account is a Cosmos one.
+ * @return bool
+ */
+- (BOOL)isInstanceOfCosmosLikeAccount;
 
 /**
  * Check if account is an Ethereum one.
@@ -188,5 +202,8 @@ extern NSString * __nonnull const LGAccountEVNEWOPUID;
  */
 - (void)eraseDataSince:(nonnull NSDate *)date
               callback:(nullable id<LGErrorCodeCallback>)callback;
+
+/** Access to underlying keychain. */
+- (nullable LGKeychain *)getAccountKeychain;
 
 @end

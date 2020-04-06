@@ -8,6 +8,8 @@ typedef NS_ENUM(NSInteger, LGWalletType)
 {
     /** A Bitcoin-like wallet. */
     LGWalletTypeBitcoin,
+    /** A Cosmos-like wallet. */
+    LGWalletTypeCosmos,
     /** An Ethereum-like wallet. */
     LGWalletTypeEthereum,
     /** A Ripple-like wallet. */

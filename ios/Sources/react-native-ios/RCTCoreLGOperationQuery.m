@@ -111,7 +111,7 @@ RCT_REMAP_METHOD(filter,filter:(NSDictionary *)currentInstance WithResolver:(RCT
 
 /**
  * Add offset to the operation query.
- * @param from, 64-bit integer
+ * @param from, 32-bit integer
  */
 RCT_REMAP_METHOD(offset,offset:(NSDictionary *)currentInstance withParams:(int)from withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -148,7 +148,7 @@ RCT_REMAP_METHOD(offset,offset:(NSDictionary *)currentInstance withParams:(int)f
 
 /**
  * Add limit to the operation query results.
- * @param count, 64-bit integer
+ * @param count, 32-bit integer
  */
 RCT_REMAP_METHOD(limit,limit:(NSDictionary *)currentInstance withParams:(int)count withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])

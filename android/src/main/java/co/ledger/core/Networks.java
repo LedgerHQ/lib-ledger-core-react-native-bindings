@@ -10,6 +10,9 @@ public abstract class Networks {
     /** The Bitcoin network parameters. */
     public static native BitcoinLikeNetworkParameters bitcoin();
 
+    /** The Cosmos network parameters. */
+    public static native CosmosLikeNetworkParameters cosmos(String chainID);
+
     /** The Ethereum network parameters. */
     public static native EthereumLikeNetworkParameters ethereum();
 

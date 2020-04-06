@@ -221,6 +221,39 @@ RCT_REMAP_METHOD(getRecipients,getRecipients:(NSDictionary *)currentInstance Wit
 }
 
 /**
+ * Get account-filtered recipients list associated with the operation.
+ *
+ * This function will filter recipients to retain only the ones that are owned by the current
+ * account.
+ */
+RCT_REMAP_METHOD(getSelfRecipients,getSelfRecipients:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getSelfRecipients, first argument should be an instance of LGOperation", nil);
+        return;
+    }
+    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getSelfRecipients, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSArray<NSString *> * objcResult = [currentInstanceObj getSelfRecipients];
+    NSDictionary *result = @{@"value" : objcResult};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGOperation::getSelfRecipients", nil);
+        return;
+    }
+
+}
+
+/**
  * Get amount of operation.
  * @return Amount object
  */
@@ -440,6 +473,43 @@ RCT_REMAP_METHOD(asBitcoinLikeOperation,asBitcoinLikeOperation:(NSDictionary *)c
 }
 
 /**
+ * Convert operation as Cosmos operation.
+ * @return CosmosLikeOperation object
+ */
+RCT_REMAP_METHOD(asCosmosLikeOperation,asCosmosLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::asCosmosLikeOperation, first argument should be an instance of LGOperation", nil);
+        return;
+    }
+    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::asCosmosLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGCosmosLikeOperation * objcResult = [currentInstanceObj asCosmosLikeOperation];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGCosmosLikeOperation *rctImpl_objcResult = (RCTCoreLGCosmosLikeOperation *)[self.bridge moduleForName:@"CoreLGCosmosLikeOperation"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGCosmosLikeOperation", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGOperation::asCosmosLikeOperation", nil);
+        return;
+    }
+
+}
+
+/**
  * Convert operation as Ethereum operation.
  * @return EthereumLikeOperation object
  */
@@ -611,6 +681,34 @@ RCT_REMAP_METHOD(isInstanceOfBitcoinLikeOperation,isInstanceOfBitcoinLikeOperati
     else
     {
         reject(@"impl_call_error", @"Error while calling LGOperation::isInstanceOfBitcoinLikeOperation", nil);
+        return;
+    }
+
+}
+
+/** Same as isInstanceOfCosmosLikeOperation for cosmos. */
+RCT_REMAP_METHOD(isInstanceOfCosmosLikeOperation,isInstanceOfCosmosLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::isInstanceOfCosmosLikeOperation, first argument should be an instance of LGOperation", nil);
+        return;
+    }
+    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::isInstanceOfCosmosLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    BOOL objcResult = [currentInstanceObj isInstanceOfCosmosLikeOperation];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGOperation::isInstanceOfCosmosLikeOperation", nil);
         return;
     }
 

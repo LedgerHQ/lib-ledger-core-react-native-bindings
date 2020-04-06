@@ -85,6 +85,12 @@ public abstract class Wallet {
     public abstract BitcoinLikeWallet asBitcoinLikeWallet();
 
     /**
+     * Convert wallet to a Cosmos one.
+     * @return CosmosWallet object
+     */
+    public abstract CosmosLikeWallet asCosmosLikeWallet();
+
+    /**
      * Get currency of wallet.
      * @return Currency object
      */
@@ -95,6 +101,12 @@ public abstract class Wallet {
      * @return bool
      */
     public abstract boolean isInstanceOfBitcoinLikeWallet();
+
+    /**
+     * Tell whether wallet is a Cosmos one.
+     * @return bool
+     */
+    public abstract boolean isInstanceOfCosmosLikeWallet();
 
     /**
      * Tell whether wallet is a Ethereum one.
@@ -287,6 +299,14 @@ public abstract class Wallet {
         private native BitcoinLikeWallet native_asBitcoinLikeWallet(long _nativeRef);
 
         @Override
+        public CosmosLikeWallet asCosmosLikeWallet()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asCosmosLikeWallet(this.nativeRef);
+        }
+        private native CosmosLikeWallet native_asCosmosLikeWallet(long _nativeRef);
+
+        @Override
         public Currency getCurrency()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
@@ -301,6 +321,14 @@ public abstract class Wallet {
             return native_isInstanceOfBitcoinLikeWallet(this.nativeRef);
         }
         private native boolean native_isInstanceOfBitcoinLikeWallet(long _nativeRef);
+
+        @Override
+        public boolean isInstanceOfCosmosLikeWallet()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_isInstanceOfCosmosLikeWallet(this.nativeRef);
+        }
+        private native boolean native_isInstanceOfCosmosLikeWallet(long _nativeRef);
 
         @Override
         public boolean isInstanceOfEthereumLikeWallet()

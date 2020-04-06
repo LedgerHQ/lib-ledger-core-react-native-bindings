@@ -5,7 +5,9 @@
 #import "LGNetworks.h"
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
+#import "DJIMarshal+Private.h"
 #import "LGBitcoinLikeNetworkParameters+Private.h"
+#import "LGCosmosLikeNetworkParameters+Private.h"
 #import "LGEthereumLikeNetworkParameters+Private.h"
 #import "LGRippleLikeNetworkParameters+Private.h"
 #import "LGTezosLikeNetworkParameters+Private.h"
@@ -37,6 +39,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = ::ledger::core::api::Networks::bitcoin();
         return ::djinni_generated::BitcoinLikeNetworkParameters::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
++ (nonnull LGCosmosLikeNetworkParameters *)cosmos:(nonnull NSString *)chainID {
+    try {
+        auto objcpp_result_ = ::ledger::core::api::Networks::cosmos(::djinni::String::toCpp(chainID));
+        return ::djinni_generated::CosmosLikeNetworkParameters::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

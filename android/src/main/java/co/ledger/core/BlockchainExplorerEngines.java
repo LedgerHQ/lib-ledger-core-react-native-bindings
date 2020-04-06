@@ -7,6 +7,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /** Available API to use with explorers. */
 public abstract class BlockchainExplorerEngines {
+    public static final String COSMOS_NODE = "COSMOS_NODE";
+
     public static final String LEDGER_API = "LEDGER_API";
 
     public static final String RIPPLE_API = "RIPPLE_API";

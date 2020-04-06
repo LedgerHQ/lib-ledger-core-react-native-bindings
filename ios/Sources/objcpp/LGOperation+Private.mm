@@ -8,6 +8,7 @@
 #import "DJIMarshal+Private.h"
 #import "LGAmount+Private.h"
 #import "LGBitcoinLikeOperation+Private.h"
+#import "LGCosmosLikeOperation+Private.h"
 #import "LGCurrency+Private.h"
 #import "LGEthereumLikeOperation+Private.h"
 #import "LGOperationType+Private.h"
@@ -83,6 +84,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (nonnull NSArray<NSString *> *)getSelfRecipients {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getSelfRecipients();
+        return ::djinni::List<::djinni::String>::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (nullable LGAmount *)getAmount {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->getAmount();
@@ -125,6 +133,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (nullable LGCosmosLikeOperation *)asCosmosLikeOperation {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->asCosmosLikeOperation();
+        return ::djinni_generated::CosmosLikeOperation::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (nullable LGEthereumLikeOperation *)asEthereumLikeOperation {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->asEthereumLikeOperation();
@@ -156,6 +171,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 - (BOOL)isInstanceOfBitcoinLikeOperation {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfBitcoinLikeOperation();
+        return ::djinni::Bool::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (BOOL)isInstanceOfCosmosLikeOperation {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfCosmosLikeOperation();
         return ::djinni::Bool::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

@@ -9,9 +9,11 @@ import co.ledger.core.AmountCallback;
 import co.ledger.core.AmountListCallback;
 import co.ledger.core.BitcoinLikeAccount;
 import co.ledger.core.BlockCallback;
+import co.ledger.core.CosmosLikeAccount;
 import co.ledger.core.ErrorCodeCallback;
 import co.ledger.core.EthereumLikeAccount;
 import co.ledger.core.EventBus;
+import co.ledger.core.Keychain;
 import co.ledger.core.Logger;
 import co.ledger.core.OperationQuery;
 import co.ledger.core.Preferences;
@@ -377,6 +379,34 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
         }
     }
     /**
+     * Turn the account into an Cosmos one, allowing operations to be performed on the Cosmos
+     * network.
+     */
+    @ReactMethod
+    public void asCosmosLikeAccount(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Account currentInstanceObj = this.javaObjects.get(sUid);
+
+            CosmosLikeAccount javaResult = currentInstanceObj.asCosmosLikeAccount();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreCosmosLikeAccount rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreCosmosLikeAccount.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreCosmosLikeAccount");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
      * Turn the account into an Ethereum one, allowing operations to be performrd on the Ethereum
      * network.
      */
@@ -495,6 +525,29 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             Account currentInstanceObj = this.javaObjects.get(sUid);
 
             boolean javaResult = currentInstanceObj.isInstanceOfBitcoinLikeAccount();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putBoolean("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Check if account is a Cosmos one.
+     * @return bool
+     */
+    @ReactMethod
+    public void isInstanceOfCosmosLikeAccount(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Account currentInstanceObj = this.javaObjects.get(sUid);
+
+            boolean javaResult = currentInstanceObj.isInstanceOfCosmosLikeAccount();
             WritableNativeMap result = new WritableNativeMap();
             result.putBoolean("value", javaResult);
 
@@ -754,6 +807,31 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
 
             RCTCoreErrorCodeCallback javaParam_1 = RCTCoreErrorCodeCallback.initWithPromise(promise, this.reactContext);
             currentInstanceObj.eraseDataSince(date, javaParam_1);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Access to underlying keychain. */
+    @ReactMethod
+    public void getAccountKeychain(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Account currentInstanceObj = this.javaObjects.get(sUid);
+
+            Keychain javaResult = currentInstanceObj.getAccountKeychain();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreKeychain rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreKeychain.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreKeychain");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
         }
         catch(Exception e)
         {

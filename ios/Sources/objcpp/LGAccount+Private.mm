@@ -11,9 +11,11 @@
 #import "LGAmountListCallback+Private.h"
 #import "LGBitcoinLikeAccount+Private.h"
 #import "LGBlockCallback+Private.h"
+#import "LGCosmosLikeAccount+Private.h"
 #import "LGErrorCodeCallback+Private.h"
 #import "LGEthereumLikeAccount+Private.h"
 #import "LGEventBus+Private.h"
+#import "LGKeychain+Private.h"
 #import "LGLogger+Private.h"
 #import "LGOperationQuery+Private.h"
 #import "LGPreferences+Private.h"
@@ -120,6 +122,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (nullable LGCosmosLikeAccount *)asCosmosLikeAccount {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->asCosmosLikeAccount();
+        return ::djinni_generated::CosmosLikeAccount::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (nullable LGEthereumLikeAccount *)asEthereumLikeAccount {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->asEthereumLikeAccount();
@@ -151,6 +160,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 - (BOOL)isInstanceOfBitcoinLikeAccount {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfBitcoinLikeAccount();
+        return ::djinni::Bool::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (BOOL)isInstanceOfCosmosLikeAccount {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfCosmosLikeAccount();
         return ::djinni::Bool::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
@@ -233,6 +249,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         _cppRefHandle.get()->eraseDataSince(::djinni::Date::toCpp(date),
                                             ::djinni_generated::ErrorCodeCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGKeychain *)getAccountKeychain {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getAccountKeychain();
+        return ::djinni_generated::Keychain::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
