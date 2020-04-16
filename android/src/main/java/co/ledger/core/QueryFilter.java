@@ -70,17 +70,17 @@ public abstract class QueryFilter {
 
     public static native QueryFilter amountLt(Amount amount);
 
-    public static native QueryFilter blockHeightEq(long blockHeight);
+    public static native QueryFilter blockHeightEq(int blockHeight);
 
-    public static native QueryFilter blockHeightNeq(long blockHeight);
+    public static native QueryFilter blockHeightNeq(int blockHeight);
 
-    public static native QueryFilter blockHeightGte(long blockHeight);
+    public static native QueryFilter blockHeightGte(int blockHeight);
 
-    public static native QueryFilter blockHeightGt(long blockHeight);
+    public static native QueryFilter blockHeightGt(int blockHeight);
 
-    public static native QueryFilter blockHeightLte(long blockHeight);
+    public static native QueryFilter blockHeightLte(int blockHeight);
 
-    public static native QueryFilter blockHeightLt(long blockHeight);
+    public static native QueryFilter blockHeightLt(int blockHeight);
 
     public static native QueryFilter blockHeightIsNull();
 

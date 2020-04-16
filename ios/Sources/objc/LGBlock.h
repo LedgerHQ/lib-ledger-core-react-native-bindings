@@ -9,12 +9,12 @@
                                       uid:(nonnull NSString *)uid
                                      time:(nonnull NSDate *)time
                              currencyName:(nonnull NSString *)currencyName
-                                   height:(int64_t)height;
+                                   height:(int32_t)height;
 + (nonnull instancetype)BlockWithBlockHash:(nonnull NSString *)blockHash
                                        uid:(nonnull NSString *)uid
                                       time:(nonnull NSDate *)time
                               currencyName:(nonnull NSString *)currencyName
-                                    height:(int64_t)height;
+                                    height:(int32_t)height;
 
 /** String, block's hash. */
 @property (nonatomic, readonly, nonnull) NSString * blockHash;
@@ -28,7 +28,7 @@
 /** String, currency's name of blockchain the block belongs to. */
 @property (nonatomic, readonly, nonnull) NSString * currencyName;
 
-/** 64-bit integer, height of block in the blockchain. */
-@property (nonatomic, readonly) int64_t height;
+/** 32-bit integer, height of block in the blockchain. */
+@property (nonatomic, readonly) int32_t height;
 
 @end

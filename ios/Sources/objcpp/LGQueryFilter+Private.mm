@@ -222,44 +222,44 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (nullable LGQueryFilter *)blockHeightEq:(int64_t)blockHeight {
++ (nullable LGQueryFilter *)blockHeightEq:(int32_t)blockHeight {
     try {
-        auto objcpp_result_ = ::ledger::core::api::QueryFilter::blockHeightEq(::djinni::I64::toCpp(blockHeight));
+        auto objcpp_result_ = ::ledger::core::api::QueryFilter::blockHeightEq(::djinni::I32::toCpp(blockHeight));
         return ::djinni_generated::QueryFilter::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (nullable LGQueryFilter *)blockHeightNeq:(int64_t)blockHeight {
++ (nullable LGQueryFilter *)blockHeightNeq:(int32_t)blockHeight {
     try {
-        auto objcpp_result_ = ::ledger::core::api::QueryFilter::blockHeightNeq(::djinni::I64::toCpp(blockHeight));
+        auto objcpp_result_ = ::ledger::core::api::QueryFilter::blockHeightNeq(::djinni::I32::toCpp(blockHeight));
         return ::djinni_generated::QueryFilter::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (nullable LGQueryFilter *)blockHeightGte:(int64_t)blockHeight {
++ (nullable LGQueryFilter *)blockHeightGte:(int32_t)blockHeight {
     try {
-        auto objcpp_result_ = ::ledger::core::api::QueryFilter::blockHeightGte(::djinni::I64::toCpp(blockHeight));
+        auto objcpp_result_ = ::ledger::core::api::QueryFilter::blockHeightGte(::djinni::I32::toCpp(blockHeight));
         return ::djinni_generated::QueryFilter::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (nullable LGQueryFilter *)blockHeightGt:(int64_t)blockHeight {
++ (nullable LGQueryFilter *)blockHeightGt:(int32_t)blockHeight {
     try {
-        auto objcpp_result_ = ::ledger::core::api::QueryFilter::blockHeightGt(::djinni::I64::toCpp(blockHeight));
+        auto objcpp_result_ = ::ledger::core::api::QueryFilter::blockHeightGt(::djinni::I32::toCpp(blockHeight));
         return ::djinni_generated::QueryFilter::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (nullable LGQueryFilter *)blockHeightLte:(int64_t)blockHeight {
++ (nullable LGQueryFilter *)blockHeightLte:(int32_t)blockHeight {
     try {
-        auto objcpp_result_ = ::ledger::core::api::QueryFilter::blockHeightLte(::djinni::I64::toCpp(blockHeight));
+        auto objcpp_result_ = ::ledger::core::api::QueryFilter::blockHeightLte(::djinni::I32::toCpp(blockHeight));
         return ::djinni_generated::QueryFilter::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (nullable LGQueryFilter *)blockHeightLt:(int64_t)blockHeight {
++ (nullable LGQueryFilter *)blockHeightLt:(int32_t)blockHeight {
     try {
-        auto objcpp_result_ = ::ledger::core::api::QueryFilter::blockHeightLt(::djinni::I64::toCpp(blockHeight));
+        auto objcpp_result_ = ::ledger::core::api::QueryFilter::blockHeightLt(::djinni::I32::toCpp(blockHeight));
         return ::djinni_generated::QueryFilter::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

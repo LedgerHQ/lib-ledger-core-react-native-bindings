@@ -22,14 +22,14 @@ struct Block final {
     std::chrono::system_clock::time_point time;
     /** String, currency's name of blockchain the block belongs to. */
     std::string currencyName;
-    /** 64-bit integer, height of block in the blockchain. */
-    int64_t height;
+    /** 32-bit integer, height of block in the blockchain. */
+    int32_t height;
 
     Block(std::string blockHash_,
           std::string uid_,
           std::chrono::system_clock::time_point time_,
           std::string currencyName_,
-          int64_t height_)
+          int32_t height_)
     : blockHash(std::move(blockHash_))
     , uid(std::move(uid_))
     , time(std::move(time_))

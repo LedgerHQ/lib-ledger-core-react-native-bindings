@@ -100,7 +100,7 @@ public class RCTCoreBlock extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void init(String blockHash, String uid, Date time, String currencyName, long height, Promise promise) {
+    public void init(String blockHash, String uid, Date time, String currencyName, int height, Promise promise) {
         Block javaResult = new Block(blockHash, uid, time, currencyName, height);
 
         String uuid = UUID.randomUUID().toString();
@@ -190,9 +190,9 @@ public class RCTCoreBlock extends ReactContextBaseJavaModule {
         if (uid.length() > 0)
         {
             Block javaObj = this.javaObjects.get(uid);
-            double result = javaObj.getHeight();
+            int result = javaObj.getHeight();
             WritableNativeMap resultMap = new WritableNativeMap();
-            resultMap.putDouble("value", result);
+            resultMap.putInt("value", result);
             promise.resolve(resultMap);
         }
         else

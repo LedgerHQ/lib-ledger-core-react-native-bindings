@@ -680,7 +680,7 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void blockHeightEq(long blockHeight, Promise promise) {
+    public void blockHeightEq(int blockHeight, Promise promise) {
         try
         {
             QueryFilter javaResult = QueryFilter.blockHeightEq(blockHeight);
@@ -700,7 +700,7 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void blockHeightNeq(long blockHeight, Promise promise) {
+    public void blockHeightNeq(int blockHeight, Promise promise) {
         try
         {
             QueryFilter javaResult = QueryFilter.blockHeightNeq(blockHeight);
@@ -720,7 +720,7 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void blockHeightGte(long blockHeight, Promise promise) {
+    public void blockHeightGte(int blockHeight, Promise promise) {
         try
         {
             QueryFilter javaResult = QueryFilter.blockHeightGte(blockHeight);
@@ -740,7 +740,7 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void blockHeightGt(long blockHeight, Promise promise) {
+    public void blockHeightGt(int blockHeight, Promise promise) {
         try
         {
             QueryFilter javaResult = QueryFilter.blockHeightGt(blockHeight);
@@ -760,7 +760,7 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void blockHeightLte(long blockHeight, Promise promise) {
+    public void blockHeightLte(int blockHeight, Promise promise) {
         try
         {
             QueryFilter javaResult = QueryFilter.blockHeightLte(blockHeight);
@@ -780,7 +780,7 @@ public class RCTCoreQueryFilter extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void blockHeightLt(long blockHeight, Promise promise) {
+    public void blockHeightLt(int blockHeight, Promise promise) {
         try
         {
             QueryFilter javaResult = QueryFilter.blockHeightLt(blockHeight);

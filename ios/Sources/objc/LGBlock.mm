@@ -10,7 +10,7 @@
                                       uid:(nonnull NSString *)uid
                                      time:(nonnull NSDate *)time
                              currencyName:(nonnull NSString *)currencyName
-                                   height:(int64_t)height
+                                   height:(int32_t)height
 {
     if (self = [super init]) {
         _blockHash = [blockHash copy];
@@ -26,7 +26,7 @@
                                        uid:(nonnull NSString *)uid
                                       time:(nonnull NSDate *)time
                               currencyName:(nonnull NSString *)currencyName
-                                    height:(int64_t)height
+                                    height:(int32_t)height
 {
     return [[self alloc] initWithBlockHash:blockHash
                                        uid:uid

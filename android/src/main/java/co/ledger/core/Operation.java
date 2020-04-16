@@ -71,9 +71,9 @@ public abstract class Operation {
 
     /**
      * Get block height on which operation was included.
-     * @return Optional 64-bit integer, height of block in which operation was validated
+     * @return Optional 32-bit integer, height of block in which operation was validated
      */
-    public abstract Long getBlockHeight();
+    public abstract Integer getBlockHeight();
 
     /**
      * Convert operation as Bitcoin operation.
@@ -240,12 +240,12 @@ public abstract class Operation {
         private native TrustIndicator native_getTrust(long _nativeRef);
 
         @Override
-        public Long getBlockHeight()
+        public Integer getBlockHeight()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
             return native_getBlockHeight(this.nativeRef);
         }
-        private native Long native_getBlockHeight(long _nativeRef);
+        private native Integer native_getBlockHeight(long _nativeRef);
 
         @Override
         public BitcoinLikeOperation asBitcoinLikeOperation()

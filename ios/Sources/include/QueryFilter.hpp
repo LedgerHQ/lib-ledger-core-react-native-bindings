@@ -74,17 +74,17 @@ public:
 
     static std::shared_ptr<QueryFilter> amountLt(const std::shared_ptr<Amount> & amount);
 
-    static std::shared_ptr<QueryFilter> blockHeightEq(int64_t blockHeight);
+    static std::shared_ptr<QueryFilter> blockHeightEq(int32_t blockHeight);
 
-    static std::shared_ptr<QueryFilter> blockHeightNeq(int64_t blockHeight);
+    static std::shared_ptr<QueryFilter> blockHeightNeq(int32_t blockHeight);
 
-    static std::shared_ptr<QueryFilter> blockHeightGte(int64_t blockHeight);
+    static std::shared_ptr<QueryFilter> blockHeightGte(int32_t blockHeight);
 
-    static std::shared_ptr<QueryFilter> blockHeightGt(int64_t blockHeight);
+    static std::shared_ptr<QueryFilter> blockHeightGt(int32_t blockHeight);
 
-    static std::shared_ptr<QueryFilter> blockHeightLte(int64_t blockHeight);
+    static std::shared_ptr<QueryFilter> blockHeightLte(int32_t blockHeight);
 
-    static std::shared_ptr<QueryFilter> blockHeightLt(int64_t blockHeight);
+    static std::shared_ptr<QueryFilter> blockHeightLt(int32_t blockHeight);
 
     static std::shared_ptr<QueryFilter> blockHeightIsNull();
 

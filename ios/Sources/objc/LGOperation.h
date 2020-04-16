@@ -80,7 +80,7 @@
 
 /**
  * Get block height on which operation was included.
- * @return Optional 64-bit integer, height of block in which operation was validated
+ * @return Optional 32-bit integer, height of block in which operation was validated
  */
 - (nullable NSNumber *)getBlockHeight;
 

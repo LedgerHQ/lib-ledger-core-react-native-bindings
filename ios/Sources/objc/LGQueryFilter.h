@@ -65,17 +65,17 @@
 
 + (nullable LGQueryFilter *)amountLt:(nullable LGAmount *)amount;
 
-+ (nullable LGQueryFilter *)blockHeightEq:(int64_t)blockHeight;
++ (nullable LGQueryFilter *)blockHeightEq:(int32_t)blockHeight;
 
-+ (nullable LGQueryFilter *)blockHeightNeq:(int64_t)blockHeight;
++ (nullable LGQueryFilter *)blockHeightNeq:(int32_t)blockHeight;
 
-+ (nullable LGQueryFilter *)blockHeightGte:(int64_t)blockHeight;
++ (nullable LGQueryFilter *)blockHeightGte:(int32_t)blockHeight;
 
-+ (nullable LGQueryFilter *)blockHeightGt:(int64_t)blockHeight;
++ (nullable LGQueryFilter *)blockHeightGt:(int32_t)blockHeight;
 
-+ (nullable LGQueryFilter *)blockHeightLte:(int64_t)blockHeight;
++ (nullable LGQueryFilter *)blockHeightLte:(int32_t)blockHeight;
 
-+ (nullable LGQueryFilter *)blockHeightLt:(int64_t)blockHeight;
++ (nullable LGQueryFilter *)blockHeightLt:(int32_t)blockHeight;
 
 + (nullable LGQueryFilter *)blockHeightIsNull;
 

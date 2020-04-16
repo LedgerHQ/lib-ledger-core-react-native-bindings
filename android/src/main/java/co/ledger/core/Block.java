@@ -17,14 +17,14 @@ public final class Block {
 
     /*package*/ final String currencyName;
 
-    /*package*/ final long height;
+    /*package*/ final int height;
 
     public Block(
             String blockHash,
             String uid,
             Date time,
             String currencyName,
-            long height) {
+            int height) {
         this.blockHash = blockHash;
         this.uid = uid;
         this.time = time;
@@ -52,8 +52,8 @@ public final class Block {
         return currencyName;
     }
 
-    /** 64-bit integer, height of block in the blockchain. */
-    public long getHeight() {
+    /** 32-bit integer, height of block in the blockchain. */
+    public int getHeight() {
         return height;
     }
 

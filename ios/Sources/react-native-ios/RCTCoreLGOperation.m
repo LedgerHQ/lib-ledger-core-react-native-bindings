@@ -373,7 +373,7 @@ RCT_REMAP_METHOD(getTrust,getTrust:(NSDictionary *)currentInstance WithResolver:
 
 /**
  * Get block height on which operation was included.
- * @return Optional 64-bit integer, height of block in which operation was validated
+ * @return Optional 32-bit integer, height of block in which operation was validated
  */
 RCT_REMAP_METHOD(getBlockHeight,getBlockHeight:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
