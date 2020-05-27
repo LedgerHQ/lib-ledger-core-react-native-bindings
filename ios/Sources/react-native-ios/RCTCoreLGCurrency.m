@@ -37,6 +37,7 @@ RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
                          paymentUriScheme:(nonnull NSString *)paymentUriScheme
                                     units:(NSArray <NSDictionary *> *)units
              bitcoinLikeNetworkParameters:(nullable NSDictionary *)bitcoinLikeNetworkParameters
+              cosmosLikeNetworkParameters:(nullable NSDictionary *)cosmosLikeNetworkParameters
             ethereumLikeNetworkParameters:(nullable NSDictionary *)ethereumLikeNetworkParameters
               rippleLikeNetworkParameters:(nullable NSDictionary *)rippleLikeNetworkParameters
                tezosLikeNetworkParameters:(nullable NSDictionary *)tezosLikeNetworkParameters
@@ -59,21 +60,24 @@ RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
     RCTCoreLGBitcoinLikeNetworkParameters *rctParam_bitcoinLikeNetworkParameters = (RCTCoreLGBitcoinLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGBitcoinLikeNetworkParameters"];
     LGBitcoinLikeNetworkParameters *field_5 = (LGBitcoinLikeNetworkParameters *)[rctParam_bitcoinLikeNetworkParameters.objcImplementations objectForKey:bitcoinLikeNetworkParameters[@"uid"]];
     [implementationsData setObject:bitcoinLikeNetworkParameters[@"uid"] forKey:@"bitcoinLikeNetworkParameters"];
+    RCTCoreLGCosmosLikeNetworkParameters *rctParam_cosmosLikeNetworkParameters = (RCTCoreLGCosmosLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGCosmosLikeNetworkParameters"];
+    LGCosmosLikeNetworkParameters *field_6 = (LGCosmosLikeNetworkParameters *)[rctParam_cosmosLikeNetworkParameters.objcImplementations objectForKey:cosmosLikeNetworkParameters[@"uid"]];
+    [implementationsData setObject:cosmosLikeNetworkParameters[@"uid"] forKey:@"cosmosLikeNetworkParameters"];
     RCTCoreLGEthereumLikeNetworkParameters *rctParam_ethereumLikeNetworkParameters = (RCTCoreLGEthereumLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGEthereumLikeNetworkParameters"];
-    LGEthereumLikeNetworkParameters *field_6 = (LGEthereumLikeNetworkParameters *)[rctParam_ethereumLikeNetworkParameters.objcImplementations objectForKey:ethereumLikeNetworkParameters[@"uid"]];
+    LGEthereumLikeNetworkParameters *field_7 = (LGEthereumLikeNetworkParameters *)[rctParam_ethereumLikeNetworkParameters.objcImplementations objectForKey:ethereumLikeNetworkParameters[@"uid"]];
     [implementationsData setObject:ethereumLikeNetworkParameters[@"uid"] forKey:@"ethereumLikeNetworkParameters"];
     RCTCoreLGRippleLikeNetworkParameters *rctParam_rippleLikeNetworkParameters = (RCTCoreLGRippleLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGRippleLikeNetworkParameters"];
-    LGRippleLikeNetworkParameters *field_7 = (LGRippleLikeNetworkParameters *)[rctParam_rippleLikeNetworkParameters.objcImplementations objectForKey:rippleLikeNetworkParameters[@"uid"]];
+    LGRippleLikeNetworkParameters *field_8 = (LGRippleLikeNetworkParameters *)[rctParam_rippleLikeNetworkParameters.objcImplementations objectForKey:rippleLikeNetworkParameters[@"uid"]];
     [implementationsData setObject:rippleLikeNetworkParameters[@"uid"] forKey:@"rippleLikeNetworkParameters"];
     RCTCoreLGTezosLikeNetworkParameters *rctParam_tezosLikeNetworkParameters = (RCTCoreLGTezosLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGTezosLikeNetworkParameters"];
-    LGTezosLikeNetworkParameters *field_8 = (LGTezosLikeNetworkParameters *)[rctParam_tezosLikeNetworkParameters.objcImplementations objectForKey:tezosLikeNetworkParameters[@"uid"]];
+    LGTezosLikeNetworkParameters *field_9 = (LGTezosLikeNetworkParameters *)[rctParam_tezosLikeNetworkParameters.objcImplementations objectForKey:tezosLikeNetworkParameters[@"uid"]];
     [implementationsData setObject:tezosLikeNetworkParameters[@"uid"] forKey:@"tezosLikeNetworkParameters"];
     RCTCoreLGStellarLikeNetworkParameters *rctParam_stellarLikeNetworkParameters = (RCTCoreLGStellarLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGStellarLikeNetworkParameters"];
-    LGStellarLikeNetworkParameters *field_9 = (LGStellarLikeNetworkParameters *)[rctParam_stellarLikeNetworkParameters.objcImplementations objectForKey:stellarLikeNetworkParameters[@"uid"]];
+    LGStellarLikeNetworkParameters *field_10 = (LGStellarLikeNetworkParameters *)[rctParam_stellarLikeNetworkParameters.objcImplementations objectForKey:stellarLikeNetworkParameters[@"uid"]];
     [implementationsData setObject:stellarLikeNetworkParameters[@"uid"] forKey:@"stellarLikeNetworkParameters"];
 
 
-    LGCurrency * finalResult = [[LGCurrency alloc] initWithWalletType:(LGWalletType)walletType name:name bip44CoinType:bip44CoinType paymentUriScheme:paymentUriScheme units:field_4 bitcoinLikeNetworkParameters:field_5 ethereumLikeNetworkParameters:field_6 rippleLikeNetworkParameters:field_7 tezosLikeNetworkParameters:field_8 stellarLikeNetworkParameters:field_9];
+    LGCurrency * finalResult = [[LGCurrency alloc] initWithWalletType:(LGWalletType)walletType name:name bip44CoinType:bip44CoinType paymentUriScheme:paymentUriScheme units:field_4 bitcoinLikeNetworkParameters:field_5 cosmosLikeNetworkParameters:field_6 ethereumLikeNetworkParameters:field_7 rippleLikeNetworkParameters:field_8 tezosLikeNetworkParameters:field_9 stellarLikeNetworkParameters:field_10];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGCurrency *rctImpl = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
     NSArray *finalResultArray = [[NSArray alloc] initWithObjects:finalResult, uuid, nil];
@@ -112,46 +116,56 @@ RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
     }
     NSDictionary *converted_field_5 = @{@"type" : @"CoreLGBitcoinLikeNetworkParameters", @"uid" : field_5_uuid };
     [implementationsData setObject:converted_field_5 forKey:@"bitcoinLikeNetworkParameters"];
-    id field_6 = objcImpl.ethereumLikeNetworkParameters;
+    id field_6 = objcImpl.cosmosLikeNetworkParameters;
     NSString *field_6_uuid = [[NSUUID UUID] UUIDString];
-    RCTCoreLGEthereumLikeNetworkParameters *rctImpl_field_6 = (RCTCoreLGEthereumLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGEthereumLikeNetworkParameters"];
+    RCTCoreLGCosmosLikeNetworkParameters *rctImpl_field_6 = (RCTCoreLGCosmosLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGCosmosLikeNetworkParameters"];
     if (field_6)
     {
         NSArray *field_6_array = [[NSArray alloc] initWithObjects:field_6, field_6_uuid, nil];
         [rctImpl_field_6 baseSetObject:field_6_array];
     }
-    NSDictionary *converted_field_6 = @{@"type" : @"CoreLGEthereumLikeNetworkParameters", @"uid" : field_6_uuid };
-    [implementationsData setObject:converted_field_6 forKey:@"ethereumLikeNetworkParameters"];
-    id field_7 = objcImpl.rippleLikeNetworkParameters;
+    NSDictionary *converted_field_6 = @{@"type" : @"CoreLGCosmosLikeNetworkParameters", @"uid" : field_6_uuid };
+    [implementationsData setObject:converted_field_6 forKey:@"cosmosLikeNetworkParameters"];
+    id field_7 = objcImpl.ethereumLikeNetworkParameters;
     NSString *field_7_uuid = [[NSUUID UUID] UUIDString];
-    RCTCoreLGRippleLikeNetworkParameters *rctImpl_field_7 = (RCTCoreLGRippleLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGRippleLikeNetworkParameters"];
+    RCTCoreLGEthereumLikeNetworkParameters *rctImpl_field_7 = (RCTCoreLGEthereumLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGEthereumLikeNetworkParameters"];
     if (field_7)
     {
         NSArray *field_7_array = [[NSArray alloc] initWithObjects:field_7, field_7_uuid, nil];
         [rctImpl_field_7 baseSetObject:field_7_array];
     }
-    NSDictionary *converted_field_7 = @{@"type" : @"CoreLGRippleLikeNetworkParameters", @"uid" : field_7_uuid };
-    [implementationsData setObject:converted_field_7 forKey:@"rippleLikeNetworkParameters"];
-    id field_8 = objcImpl.tezosLikeNetworkParameters;
+    NSDictionary *converted_field_7 = @{@"type" : @"CoreLGEthereumLikeNetworkParameters", @"uid" : field_7_uuid };
+    [implementationsData setObject:converted_field_7 forKey:@"ethereumLikeNetworkParameters"];
+    id field_8 = objcImpl.rippleLikeNetworkParameters;
     NSString *field_8_uuid = [[NSUUID UUID] UUIDString];
-    RCTCoreLGTezosLikeNetworkParameters *rctImpl_field_8 = (RCTCoreLGTezosLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGTezosLikeNetworkParameters"];
+    RCTCoreLGRippleLikeNetworkParameters *rctImpl_field_8 = (RCTCoreLGRippleLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGRippleLikeNetworkParameters"];
     if (field_8)
     {
         NSArray *field_8_array = [[NSArray alloc] initWithObjects:field_8, field_8_uuid, nil];
         [rctImpl_field_8 baseSetObject:field_8_array];
     }
-    NSDictionary *converted_field_8 = @{@"type" : @"CoreLGTezosLikeNetworkParameters", @"uid" : field_8_uuid };
-    [implementationsData setObject:converted_field_8 forKey:@"tezosLikeNetworkParameters"];
-    id field_9 = objcImpl.stellarLikeNetworkParameters;
+    NSDictionary *converted_field_8 = @{@"type" : @"CoreLGRippleLikeNetworkParameters", @"uid" : field_8_uuid };
+    [implementationsData setObject:converted_field_8 forKey:@"rippleLikeNetworkParameters"];
+    id field_9 = objcImpl.tezosLikeNetworkParameters;
     NSString *field_9_uuid = [[NSUUID UUID] UUIDString];
-    RCTCoreLGStellarLikeNetworkParameters *rctImpl_field_9 = (RCTCoreLGStellarLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGStellarLikeNetworkParameters"];
+    RCTCoreLGTezosLikeNetworkParameters *rctImpl_field_9 = (RCTCoreLGTezosLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGTezosLikeNetworkParameters"];
     if (field_9)
     {
         NSArray *field_9_array = [[NSArray alloc] initWithObjects:field_9, field_9_uuid, nil];
         [rctImpl_field_9 baseSetObject:field_9_array];
     }
-    NSDictionary *converted_field_9 = @{@"type" : @"CoreLGStellarLikeNetworkParameters", @"uid" : field_9_uuid };
-    [implementationsData setObject:converted_field_9 forKey:@"stellarLikeNetworkParameters"];
+    NSDictionary *converted_field_9 = @{@"type" : @"CoreLGTezosLikeNetworkParameters", @"uid" : field_9_uuid };
+    [implementationsData setObject:converted_field_9 forKey:@"tezosLikeNetworkParameters"];
+    id field_10 = objcImpl.stellarLikeNetworkParameters;
+    NSString *field_10_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGStellarLikeNetworkParameters *rctImpl_field_10 = (RCTCoreLGStellarLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGStellarLikeNetworkParameters"];
+    if (field_10)
+    {
+        NSArray *field_10_array = [[NSArray alloc] initWithObjects:field_10, field_10_uuid, nil];
+        [rctImpl_field_10 baseSetObject:field_10_array];
+    }
+    NSDictionary *converted_field_10 = @{@"type" : @"CoreLGStellarLikeNetworkParameters", @"uid" : field_10_uuid };
+    [implementationsData setObject:converted_field_10 forKey:@"stellarLikeNetworkParameters"];
     [self.implementationsData setObject:implementationsData forKey:currentInstance[@"uid"]];
 }
 RCT_REMAP_METHOD(getWalletType, getWalletType:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
@@ -203,6 +217,18 @@ RCT_REMAP_METHOD(getBitcoinLikeNetworkParameters, getBitcoinLikeNetworkParameter
         data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     }
     NSDictionary *result = [data objectForKey:@"bitcoinLikeNetworkParameters"];
+    resolve(result);
+}
+
+RCT_REMAP_METHOD(getCosmosLikeNetworkParameters, getCosmosLikeNetworkParameters:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
+{
+    NSDictionary *data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
+    if (!data)
+    {
+        [self mapImplementationsData:currentInstance];
+        data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
+    }
+    NSDictionary *result = [data objectForKey:@"cosmosLikeNetworkParameters"];
     resolve(result);
 }
 

@@ -46,6 +46,14 @@ public abstract class Operation {
     public abstract ArrayList<String> getRecipients();
 
     /**
+     * Get account-filtered recipients list associated with the operation.
+     *
+     * This function will filter recipients to retain only the ones that are owned by the current
+     * account.
+     */
+    public abstract ArrayList<String> getSelfRecipients();
+
+    /**
      * Get amount of operation.
      * @return Amount object
      */
@@ -82,6 +90,12 @@ public abstract class Operation {
     public abstract BitcoinLikeOperation asBitcoinLikeOperation();
 
     /**
+     * Convert operation as Cosmos operation.
+     * @return CosmosLikeOperation object
+     */
+    public abstract CosmosLikeOperation asCosmosLikeOperation();
+
+    /**
      * Convert operation as Ethereum operation.
      * @return EthereumLikeOperation object
      */
@@ -108,6 +122,9 @@ public abstract class Operation {
 
     /** Is this an instance of a Bitcoin-like operation? */
     public abstract boolean isInstanceOfBitcoinLikeOperation();
+
+    /** Same as isInstanceOfCosmosLikeOperation for cosmos. */
+    public abstract boolean isInstanceOfCosmosLikeOperation();
 
     /** Same as isInstanceOfEthereumLikeOperation for ethereum. */
     public abstract boolean isInstanceOfEthereumLikeOperation();
@@ -208,6 +225,14 @@ public abstract class Operation {
         private native ArrayList<String> native_getRecipients(long _nativeRef);
 
         @Override
+        public ArrayList<String> getSelfRecipients()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getSelfRecipients(this.nativeRef);
+        }
+        private native ArrayList<String> native_getSelfRecipients(long _nativeRef);
+
+        @Override
         public Amount getAmount()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
@@ -256,6 +281,14 @@ public abstract class Operation {
         private native BitcoinLikeOperation native_asBitcoinLikeOperation(long _nativeRef);
 
         @Override
+        public CosmosLikeOperation asCosmosLikeOperation()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asCosmosLikeOperation(this.nativeRef);
+        }
+        private native CosmosLikeOperation native_asCosmosLikeOperation(long _nativeRef);
+
+        @Override
         public EthereumLikeOperation asEthereumLikeOperation()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
@@ -294,6 +327,14 @@ public abstract class Operation {
             return native_isInstanceOfBitcoinLikeOperation(this.nativeRef);
         }
         private native boolean native_isInstanceOfBitcoinLikeOperation(long _nativeRef);
+
+        @Override
+        public boolean isInstanceOfCosmosLikeOperation()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_isInstanceOfCosmosLikeOperation(this.nativeRef);
+        }
+        private native boolean native_isInstanceOfCosmosLikeOperation(long _nativeRef);
 
         @Override
         public boolean isInstanceOfEthereumLikeOperation()

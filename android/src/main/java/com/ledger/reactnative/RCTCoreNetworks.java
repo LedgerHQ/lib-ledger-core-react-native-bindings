@@ -4,6 +4,7 @@
 package com.ledger.reactnative;
 
 import co.ledger.core.BitcoinLikeNetworkParameters;
+import co.ledger.core.CosmosLikeNetworkParameters;
 import co.ledger.core.EthereumLikeNetworkParameters;
 import co.ledger.core.Networks;
 import co.ledger.core.RippleLikeNetworkParameters;
@@ -116,6 +117,27 @@ public class RCTCoreNetworks extends ReactContextBaseJavaModule {
             rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreBitcoinLikeNetworkParameters");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** The Cosmos network parameters. */
+    @ReactMethod
+    public void cosmos(String chainID, Promise promise) {
+        try
+        {
+            CosmosLikeNetworkParameters javaResult = Networks.cosmos(chainID);
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreCosmosLikeNetworkParameters rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreCosmosLikeNetworkParameters.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreCosmosLikeNetworkParameters");
             result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);

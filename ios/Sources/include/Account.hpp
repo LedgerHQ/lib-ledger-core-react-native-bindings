@@ -16,9 +16,11 @@ class AmountCallback;
 class AmountListCallback;
 class BitcoinLikeAccount;
 class BlockCallback;
+class CosmosLikeAccount;
 class ErrorCodeCallback;
 class EthereumLikeAccount;
 class EventBus;
+class Keychain;
 class Logger;
 class OperationQuery;
 class Preferences;
@@ -122,6 +124,12 @@ public:
     virtual std::shared_ptr<BitcoinLikeAccount> asBitcoinLikeAccount() = 0;
 
     /**
+     * Turn the account into an Cosmos one, allowing operations to be performed on the Cosmos
+     * network.
+     */
+    virtual std::shared_ptr<CosmosLikeAccount> asCosmosLikeAccount() = 0;
+
+    /**
      * Turn the account into an Ethereum one, allowing operations to be performrd on the Ethereum
      * network.
      */
@@ -144,6 +152,12 @@ public:
      * @return bool
      */
     virtual bool isInstanceOfBitcoinLikeAccount() = 0;
+
+    /**
+     * Check if account is a Cosmos one.
+     * @return bool
+     */
+    virtual bool isInstanceOfCosmosLikeAccount() = 0;
 
     /**
      * Check if account is an Ethereum one.
@@ -204,6 +218,9 @@ public:
      * @param date, start date of data deletion
      */
     virtual void eraseDataSince(const std::chrono::system_clock::time_point & date, const std::shared_ptr<ErrorCodeCallback> & callback) = 0;
+
+    /** Access to underlying keychain. */
+    virtual std::shared_ptr<Keychain> getAccountKeychain() = 0;
 };
 
 } } }  // namespace ledger::core::api

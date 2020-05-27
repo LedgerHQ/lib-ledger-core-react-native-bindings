@@ -50,7 +50,7 @@ RCT_REMAP_METHOD(getDerivationPath,getDerivationPath:(NSDictionary *)currentInst
         return;
     }
     NSString * objcResult = [currentInstanceObj getDerivationPath];
-    NSDictionary *result = @{@"value" : objcResult};
+    NSDictionary *result = @{@"value" : (objcResult ? objcResult : [NSNull null])};
     if(result)
     {
         resolve(result);

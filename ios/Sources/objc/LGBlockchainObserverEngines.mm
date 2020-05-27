@@ -4,6 +4,8 @@
 #import "LGBlockchainObserverEngines.h"
 
 
+NSString * __nonnull const LGBlockchainObserverEnginesCOSMOSNODE = @"COSMOS_NODE";
+
 NSString * __nonnull const LGBlockchainObserverEnginesLEDGERAPI = @"LEDGER_API";
 
 NSString * __nonnull const LGBlockchainObserverEnginesRIPPLENODE = @"RIPPLE_NODE";

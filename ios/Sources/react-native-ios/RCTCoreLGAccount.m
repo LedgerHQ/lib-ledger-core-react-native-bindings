@@ -363,6 +363,43 @@ RCT_REMAP_METHOD(asBitcoinLikeAccount,asBitcoinLikeAccount:(NSDictionary *)curre
 }
 
 /**
+ * Turn the account into an Cosmos one, allowing operations to be performed on the Cosmos
+ * network.
+ */
+RCT_REMAP_METHOD(asCosmosLikeAccount,asCosmosLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::asCosmosLikeAccount, first argument should be an instance of LGAccount", nil);
+        return;
+    }
+    LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::asCosmosLikeAccount, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGCosmosLikeAccount * objcResult = [currentInstanceObj asCosmosLikeAccount];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGCosmosLikeAccount *rctImpl_objcResult = (RCTCoreLGCosmosLikeAccount *)[self.bridge moduleForName:@"CoreLGCosmosLikeAccount"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGCosmosLikeAccount", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGAccount::asCosmosLikeAccount", nil);
+        return;
+    }
+
+}
+
+/**
  * Turn the account into an Ethereum one, allowing operations to be performrd on the Ethereum
  * network.
  */
@@ -530,6 +567,37 @@ RCT_REMAP_METHOD(isInstanceOfBitcoinLikeAccount,isInstanceOfBitcoinLikeAccount:(
     else
     {
         reject(@"impl_call_error", @"Error while calling LGAccount::isInstanceOfBitcoinLikeAccount", nil);
+        return;
+    }
+
+}
+
+/**
+ * Check if account is a Cosmos one.
+ * @return bool
+ */
+RCT_REMAP_METHOD(isInstanceOfCosmosLikeAccount,isInstanceOfCosmosLikeAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::isInstanceOfCosmosLikeAccount, first argument should be an instance of LGAccount", nil);
+        return;
+    }
+    LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::isInstanceOfCosmosLikeAccount, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    BOOL objcResult = [currentInstanceObj isInstanceOfCosmosLikeAccount];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGAccount::isInstanceOfCosmosLikeAccount", nil);
         return;
     }
 
@@ -853,6 +921,40 @@ RCT_REMAP_METHOD(eraseDataSince,eraseDataSince:(NSDictionary *)currentInstance w
     }
     RCTCoreLGErrorCodeCallback *objcParam_1 = [[RCTCoreLGErrorCodeCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj eraseDataSince:date callback:objcParam_1];
+
+}
+
+/** Access to underlying keychain. */
+RCT_REMAP_METHOD(getAccountKeychain,getAccountKeychain:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::getAccountKeychain, first argument should be an instance of LGAccount", nil);
+        return;
+    }
+    LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::getAccountKeychain, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGKeychain * objcResult = [currentInstanceObj getAccountKeychain];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGKeychain *rctImpl_objcResult = (RCTCoreLGKeychain *)[self.bridge moduleForName:@"CoreLGKeychain"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGKeychain", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGAccount::getAccountKeychain", nil);
+        return;
+    }
 
 }
 @end

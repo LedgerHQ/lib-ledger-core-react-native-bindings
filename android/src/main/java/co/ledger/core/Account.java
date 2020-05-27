@@ -97,6 +97,12 @@ public abstract class Account {
     public abstract BitcoinLikeAccount asBitcoinLikeAccount();
 
     /**
+     * Turn the account into an Cosmos one, allowing operations to be performed on the Cosmos
+     * network.
+     */
+    public abstract CosmosLikeAccount asCosmosLikeAccount();
+
+    /**
      * Turn the account into an Ethereum one, allowing operations to be performrd on the Ethereum
      * network.
      */
@@ -119,6 +125,12 @@ public abstract class Account {
      * @return bool
      */
     public abstract boolean isInstanceOfBitcoinLikeAccount();
+
+    /**
+     * Check if account is a Cosmos one.
+     * @return bool
+     */
+    public abstract boolean isInstanceOfCosmosLikeAccount();
 
     /**
      * Check if account is an Ethereum one.
@@ -179,6 +191,9 @@ public abstract class Account {
      * @param date, start date of data deletion
      */
     public abstract void eraseDataSince(Date date, ErrorCodeCallback callback);
+
+    /** Access to underlying keychain. */
+    public abstract Keychain getAccountKeychain();
 
     private static final class CppProxy extends Account
     {
@@ -284,6 +299,14 @@ public abstract class Account {
         private native BitcoinLikeAccount native_asBitcoinLikeAccount(long _nativeRef);
 
         @Override
+        public CosmosLikeAccount asCosmosLikeAccount()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asCosmosLikeAccount(this.nativeRef);
+        }
+        private native CosmosLikeAccount native_asCosmosLikeAccount(long _nativeRef);
+
+        @Override
         public EthereumLikeAccount asEthereumLikeAccount()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
@@ -322,6 +345,14 @@ public abstract class Account {
             return native_isInstanceOfBitcoinLikeAccount(this.nativeRef);
         }
         private native boolean native_isInstanceOfBitcoinLikeAccount(long _nativeRef);
+
+        @Override
+        public boolean isInstanceOfCosmosLikeAccount()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_isInstanceOfCosmosLikeAccount(this.nativeRef);
+        }
+        private native boolean native_isInstanceOfCosmosLikeAccount(long _nativeRef);
 
         @Override
         public boolean isInstanceOfEthereumLikeAccount()
@@ -418,5 +449,13 @@ public abstract class Account {
             native_eraseDataSince(this.nativeRef, date, callback);
         }
         private native void native_eraseDataSince(long _nativeRef, Date date, ErrorCodeCallback callback);
+
+        @Override
+        public Keychain getAccountKeychain()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getAccountKeychain(this.nativeRef);
+        }
+        private native Keychain native_getAccountKeychain(long _nativeRef);
     }
 }

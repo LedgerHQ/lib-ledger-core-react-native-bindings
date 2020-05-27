@@ -7,6 +7,7 @@
 #import <Foundation/Foundation.h>
 @class LGAmount;
 @class LGBitcoinLikeOperation;
+@class LGCosmosLikeOperation;
 @class LGEthereumLikeOperation;
 @class LGPreferences;
 @class LGRippleLikeOperation;
@@ -55,6 +56,14 @@
 - (nonnull NSArray<NSString *> *)getRecipients;
 
 /**
+ * Get account-filtered recipients list associated with the operation.
+ *
+ * This function will filter recipients to retain only the ones that are owned by the current
+ * account.
+ */
+- (nonnull NSArray<NSString *> *)getSelfRecipients;
+
+/**
  * Get amount of operation.
  * @return Amount object
  */
@@ -91,6 +100,12 @@
 - (nullable LGBitcoinLikeOperation *)asBitcoinLikeOperation;
 
 /**
+ * Convert operation as Cosmos operation.
+ * @return CosmosLikeOperation object
+ */
+- (nullable LGCosmosLikeOperation *)asCosmosLikeOperation;
+
+/**
  * Convert operation as Ethereum operation.
  * @return EthereumLikeOperation object
  */
@@ -117,6 +132,9 @@
 
 /** Is this an instance of a Bitcoin-like operation? */
 - (BOOL)isInstanceOfBitcoinLikeOperation;
+
+/** Same as isInstanceOfCosmosLikeOperation for cosmos. */
+- (BOOL)isInstanceOfCosmosLikeOperation;
 
 /** Same as isInstanceOfEthereumLikeOperation for ethereum. */
 - (BOOL)isInstanceOfEthereumLikeOperation;

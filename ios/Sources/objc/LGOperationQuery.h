@@ -28,15 +28,15 @@
 
 /**
  * Add offset to the operation query.
- * @param from, 64-bit integer
+ * @param from, 32-bit integer
  */
-- (nullable LGOperationQuery *)offset:(int64_t)from;
+- (nullable LGOperationQuery *)offset:(int32_t)from;
 
 /**
  * Add limit to the operation query results.
- * @param count, 64-bit integer
+ * @param count, 32-bit integer
  */
-- (nullable LGOperationQuery *)limit:(int64_t)count;
+- (nullable LGOperationQuery *)limit:(int32_t)count;
 
 /**
  *TODO

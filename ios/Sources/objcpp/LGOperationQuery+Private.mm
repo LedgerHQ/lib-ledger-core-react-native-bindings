@@ -49,16 +49,16 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (nullable LGOperationQuery *)offset:(int64_t)from {
+- (nullable LGOperationQuery *)offset:(int32_t)from {
     try {
-        auto objcpp_result_ = _cppRefHandle.get()->offset(::djinni::I64::toCpp(from));
+        auto objcpp_result_ = _cppRefHandle.get()->offset(::djinni::I32::toCpp(from));
         return ::djinni_generated::OperationQuery::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (nullable LGOperationQuery *)limit:(int64_t)count {
+- (nullable LGOperationQuery *)limit:(int32_t)count {
     try {
-        auto objcpp_result_ = _cppRefHandle.get()->limit(::djinni::I64::toCpp(count));
+        auto objcpp_result_ = _cppRefHandle.get()->limit(::djinni::I32::toCpp(count));
         return ::djinni_generated::OperationQuery::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

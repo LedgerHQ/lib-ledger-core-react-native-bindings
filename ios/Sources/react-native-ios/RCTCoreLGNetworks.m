@@ -54,6 +54,28 @@ RCT_REMAP_METHOD(bitcoin,bitcoinWithResolver:(RCTPromiseResolveBlock)resolve rej
 
 }
 
+/** The Cosmos network parameters. */
+RCT_REMAP_METHOD(cosmos,cosmoswithParams:(nonnull NSString *)chainID withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    LGCosmosLikeNetworkParameters * objcResult = [LGNetworks cosmos:chainID];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGCosmosLikeNetworkParameters *rctImpl_objcResult = (RCTCoreLGCosmosLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGCosmosLikeNetworkParameters"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGCosmosLikeNetworkParameters", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGNetworks::cosmos", nil);
+        return;
+    }
+
+}
+
 /** The Ethereum network parameters. */
 RCT_REMAP_METHOD(ethereum,ethereumWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGEthereumLikeNetworkParameters * objcResult = [LGNetworks ethereum];

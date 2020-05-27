@@ -23,15 +23,15 @@ public abstract class OperationQuery {
 
     /**
      * Add offset to the operation query.
-     * @param from, 64-bit integer
+     * @param from, 32-bit integer
      */
-    public abstract OperationQuery offset(long from);
+    public abstract OperationQuery offset(int from);
 
     /**
      * Add limit to the operation query results.
-     * @param count, 64-bit integer
+     * @param count, 32-bit integer
      */
-    public abstract OperationQuery limit(long count);
+    public abstract OperationQuery limit(int count);
 
     /**
      *TODO
@@ -88,20 +88,20 @@ public abstract class OperationQuery {
         private native QueryFilter native_filter(long _nativeRef);
 
         @Override
-        public OperationQuery offset(long from)
+        public OperationQuery offset(int from)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
             return native_offset(this.nativeRef, from);
         }
-        private native OperationQuery native_offset(long _nativeRef, long from);
+        private native OperationQuery native_offset(long _nativeRef, int from);
 
         @Override
-        public OperationQuery limit(long count)
+        public OperationQuery limit(int count)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
             return native_limit(this.nativeRef, count);
         }
-        private native OperationQuery native_limit(long _nativeRef, long count);
+        private native OperationQuery native_limit(long _nativeRef, int count);
 
         @Override
         public OperationQuery complete()

@@ -549,6 +549,8 @@ package object implicits {
     }
     implicit class RichAddress(val self: Address) {
     }
+    implicit class RichKeychain(val self: Keychain) {
+    }
     implicit class RichAccount(val self: Account) {
         def getBalance(): Future[Amount] = {
             val promise = Promise[Amount]()
@@ -853,6 +855,314 @@ package object implicits {
     }
     implicit class RichEthereumPublicKeyProvider(val self: EthereumPublicKeyProvider) {
     }
+    implicit class RichCosmosLikeMessage(val self: CosmosLikeMessage) {
+    }
+    implicit class RichCosmosLikeTransaction(val self: CosmosLikeTransaction) {
+    }
+    implicit class RichCosmosLikeOperation(val self: CosmosLikeOperation) {
+    }
+    implicit class RichCosmosLikeBlock(val self: CosmosLikeBlock) {
+    }
+    implicit class RichCosmosLikeTransactionBuilder(val self: CosmosLikeTransactionBuilder) {
+        def build(): Future[CosmosLikeTransaction] = {
+            val promise = Promise[CosmosLikeTransaction]()
+            self.build(new CosmosLikeTransactionCallback() {
+                override def onCallback(result: CosmosLikeTransaction, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+    }
+    implicit class RichCosmosLikeTransactionCallback(val self: CosmosLikeTransactionCallback) {
+    }
+    implicit class RichCosmosLikeAccount(val self: CosmosLikeAccount) {
+        def broadcastRawTransaction(transaction: String): Future[String] = {
+            val promise = Promise[String]()
+            self.broadcastRawTransaction(transaction, new StringCallback() {
+                override def onCallback(result: String, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def broadcastTransaction(transaction: CosmosLikeTransaction): Future[String] = {
+            val promise = Promise[String]()
+            self.broadcastTransaction(transaction, new StringCallback() {
+                override def onCallback(result: String, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getEstimatedGasLimit(transaction: CosmosLikeTransaction): Future[BigInt] = {
+            val promise = Promise[BigInt]()
+            self.getEstimatedGasLimit(transaction, new BigIntCallback() {
+                override def onCallback(result: BigInt, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def estimateGas(buildingTx: CosmosGasLimitRequest): Future[BigInt] = {
+            val promise = Promise[BigInt]()
+            self.estimateGas(buildingTx, new BigIntCallback() {
+                override def onCallback(result: BigInt, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getLatestValidatorSet(): Future[ArrayList[CosmosLikeValidator]] = {
+            val promise = Promise[ArrayList[CosmosLikeValidator]]()
+            self.getLatestValidatorSet(new CosmosLikeValidatorListCallback() {
+                override def onCallback(result: ArrayList[CosmosLikeValidator], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getValidatorInfo(validatorAddress: String): Future[CosmosLikeValidator] = {
+            val promise = Promise[CosmosLikeValidator]()
+            self.getValidatorInfo(validatorAddress, new CosmosLikeValidatorCallback() {
+                override def onCallback(result: CosmosLikeValidator, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getTotalBalance(): Future[Amount] = {
+            val promise = Promise[Amount]()
+            self.getTotalBalance(new AmountCallback() {
+                override def onCallback(result: Amount, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getDelegatedBalance(): Future[Amount] = {
+            val promise = Promise[Amount]()
+            self.getDelegatedBalance(new AmountCallback() {
+                override def onCallback(result: Amount, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getPendingRewardsBalance(): Future[Amount] = {
+            val promise = Promise[Amount]()
+            self.getPendingRewardsBalance(new AmountCallback() {
+                override def onCallback(result: Amount, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getUnbondingBalance(): Future[Amount] = {
+            val promise = Promise[Amount]()
+            self.getUnbondingBalance(new AmountCallback() {
+                override def onCallback(result: Amount, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getSpendableBalance(): Future[Amount] = {
+            val promise = Promise[Amount]()
+            self.getSpendableBalance(new AmountCallback() {
+                override def onCallback(result: Amount, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getDelegations(): Future[ArrayList[CosmosLikeDelegation]] = {
+            val promise = Promise[ArrayList[CosmosLikeDelegation]]()
+            self.getDelegations(new CosmosLikeDelegationListCallback() {
+                override def onCallback(result: ArrayList[CosmosLikeDelegation], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getPendingRewards(): Future[ArrayList[CosmosLikeReward]] = {
+            val promise = Promise[ArrayList[CosmosLikeReward]]()
+            self.getPendingRewards(new CosmosLikeRewardListCallback() {
+                override def onCallback(result: ArrayList[CosmosLikeReward], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getUnbondings(): Future[ArrayList[CosmosLikeUnbonding]] = {
+            val promise = Promise[ArrayList[CosmosLikeUnbonding]]()
+            self.getUnbondings(new CosmosLikeUnbondingListCallback() {
+                override def onCallback(result: ArrayList[CosmosLikeUnbonding], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getRedelegations(): Future[ArrayList[CosmosLikeRedelegation]] = {
+            val promise = Promise[ArrayList[CosmosLikeRedelegation]]()
+            self.getRedelegations(new CosmosLikeRedelegationListCallback() {
+                override def onCallback(result: ArrayList[CosmosLikeRedelegation], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getSequence(): Future[String] = {
+            val promise = Promise[String]()
+            self.getSequence(new StringCallback() {
+                override def onCallback(result: String, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getAccountNumber(): Future[String] = {
+            val promise = Promise[String]()
+            self.getAccountNumber(new StringCallback() {
+                override def onCallback(result: String, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getWithdrawAddress(): Future[String] = {
+            val promise = Promise[String]()
+            self.getWithdrawAddress(new StringCallback() {
+                override def onCallback(result: String, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+    }
+    implicit class RichCosmosLikeValidatorListCallback(val self: CosmosLikeValidatorListCallback) {
+    }
+    implicit class RichCosmosLikeValidatorCallback(val self: CosmosLikeValidatorCallback) {
+    }
+    implicit class RichCosmosLikeDelegationListCallback(val self: CosmosLikeDelegationListCallback) {
+    }
+    implicit class RichCosmosLikeRewardListCallback(val self: CosmosLikeRewardListCallback) {
+    }
+    implicit class RichCosmosLikeUnbondingListCallback(val self: CosmosLikeUnbondingListCallback) {
+    }
+    implicit class RichCosmosLikeRedelegationListCallback(val self: CosmosLikeRedelegationListCallback) {
+    }
+    implicit class RichCosmosLikeDelegation(val self: CosmosLikeDelegation) {
+    }
+    implicit class RichCosmosLikeReward(val self: CosmosLikeReward) {
+    }
+    implicit class RichCosmosLikeUnbonding(val self: CosmosLikeUnbonding) {
+    }
+    implicit class RichCosmosLikeUnbondingEntry(val self: CosmosLikeUnbondingEntry) {
+    }
+    implicit class RichCosmosLikeRedelegation(val self: CosmosLikeRedelegation) {
+    }
+    implicit class RichCosmosLikeRedelegationEntry(val self: CosmosLikeRedelegationEntry) {
+    }
+    implicit class RichCosmosConfigurationDefaults(val self: CosmosConfigurationDefaults) {
+    }
+    implicit class RichCosmosLikeWallet(val self: CosmosLikeWallet) {
+    }
     implicit class RichERC20LikeAccount(val self: ERC20LikeAccount) {
         def getBalance(): Future[BigInt] = {
             val promise = Promise[BigInt]()
@@ -1034,6 +1344,10 @@ package object implicits {
     implicit class RichEthereumLikeAddress(val self: EthereumLikeAddress) {
     }
     implicit class RichEthereumLikeExtendedPublicKey(val self: EthereumLikeExtendedPublicKey) {
+    }
+    implicit class RichCosmosLikeAddress(val self: CosmosLikeAddress) {
+    }
+    implicit class RichCosmosLikeExtendedPublicKey(val self: CosmosLikeExtendedPublicKey) {
     }
     implicit class RichBitcoinLikeAddress(val self: BitcoinLikeAddress) {
     }

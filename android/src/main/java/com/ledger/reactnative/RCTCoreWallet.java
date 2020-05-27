@@ -9,6 +9,7 @@ import co.ledger.core.AccountCreationInfoCallback;
 import co.ledger.core.AccountListCallback;
 import co.ledger.core.BitcoinLikeWallet;
 import co.ledger.core.BlockCallback;
+import co.ledger.core.CosmosLikeWallet;
 import co.ledger.core.Currency;
 import co.ledger.core.DynamicObject;
 import co.ledger.core.ErrorCodeCallback;
@@ -416,6 +417,34 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
+     * Convert wallet to a Cosmos one.
+     * @return CosmosWallet object
+     */
+    @ReactMethod
+    public void asCosmosLikeWallet(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Wallet currentInstanceObj = this.javaObjects.get(sUid);
+
+            CosmosLikeWallet javaResult = currentInstanceObj.asCosmosLikeWallet();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreCosmosLikeWallet rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreCosmosLikeWallet.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreCosmosLikeWallet");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
      * Get currency of wallet.
      * @return Currency object
      */
@@ -456,6 +485,29 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
             Wallet currentInstanceObj = this.javaObjects.get(sUid);
 
             boolean javaResult = currentInstanceObj.isInstanceOfBitcoinLikeWallet();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putBoolean("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Tell whether wallet is a Cosmos one.
+     * @return bool
+     */
+    @ReactMethod
+    public void isInstanceOfCosmosLikeWallet(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Wallet currentInstanceObj = this.javaObjects.get(sUid);
+
+            boolean javaResult = currentInstanceObj.isInstanceOfCosmosLikeWallet();
             WritableNativeMap result = new WritableNativeMap();
             result.putBoolean("value", javaResult);
 

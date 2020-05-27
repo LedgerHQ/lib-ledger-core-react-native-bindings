@@ -12,6 +12,7 @@
 #import "LGAccountListCallback+Private.h"
 #import "LGBitcoinLikeWallet+Private.h"
 #import "LGBlockCallback+Private.h"
+#import "LGCosmosLikeWallet+Private.h"
 #import "LGCurrency+Private.h"
 #import "LGDynamicObject+Private.h"
 #import "LGErrorCodeCallback+Private.h"
@@ -133,6 +134,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (nullable LGCosmosLikeWallet *)asCosmosLikeWallet {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->asCosmosLikeWallet();
+        return ::djinni_generated::CosmosLikeWallet::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (nonnull LGCurrency *)getCurrency {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->getCurrency();
@@ -143,6 +151,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 - (BOOL)isInstanceOfBitcoinLikeWallet {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfBitcoinLikeWallet();
+        return ::djinni::Bool::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (BOOL)isInstanceOfCosmosLikeWallet {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->isInstanceOfCosmosLikeWallet();
         return ::djinni::Bool::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

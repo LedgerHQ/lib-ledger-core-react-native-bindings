@@ -7,6 +7,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /** Available API to use with observers. */
 public abstract class BlockchainObserverEngines {
+    public static final String COSMOS_NODE = "COSMOS_NODE";
+
     public static final String LEDGER_API = "LEDGER_API";
 
     public static final String RIPPLE_NODE = "RIPPLE_NODE";

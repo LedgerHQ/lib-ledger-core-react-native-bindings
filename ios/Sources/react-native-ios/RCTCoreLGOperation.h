@@ -3,6 +3,7 @@
 
 #import "LGAmount.h"
 #import "LGBitcoinLikeOperation.h"
+#import "LGCosmosLikeOperation.h"
 #import "LGCurrency.h"
 #import "LGEthereumLikeOperation.h"
 #import "LGOperation.h"
@@ -16,6 +17,7 @@
 #import "RCTCoreBaseModule.h"
 #import "RCTCoreLGAmount.h"
 #import "RCTCoreLGBitcoinLikeOperation.h"
+#import "RCTCoreLGCosmosLikeOperation.h"
 #import "RCTCoreLGCurrency.h"
 #import "RCTCoreLGEthereumLikeOperation.h"
 #import "RCTCoreLGPreferences.h"

@@ -4,9 +4,12 @@
 #ifndef DJINNI_GENERATED_NETWORKS_HPP
 #define DJINNI_GENERATED_NETWORKS_HPP
 
+#include <string>
+
 namespace ledger { namespace core { namespace api {
 
 struct BitcoinLikeNetworkParameters;
+struct CosmosLikeNetworkParameters;
 struct EthereumLikeNetworkParameters;
 struct RippleLikeNetworkParameters;
 struct TezosLikeNetworkParameters;
@@ -18,6 +21,9 @@ public:
 
     /** The Bitcoin network parameters. */
     static BitcoinLikeNetworkParameters bitcoin();
+
+    /** The Cosmos network parameters. */
+    static CosmosLikeNetworkParameters cosmos(const std::string & chainID);
 
     /** The Ethereum network parameters. */
     static EthereumLikeNetworkParameters ethereum();

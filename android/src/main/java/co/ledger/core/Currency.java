@@ -21,6 +21,8 @@ public final class Currency {
 
     /*package*/ final BitcoinLikeNetworkParameters bitcoinLikeNetworkParameters;
 
+    /*package*/ final CosmosLikeNetworkParameters cosmosLikeNetworkParameters;
+
     /*package*/ final EthereumLikeNetworkParameters ethereumLikeNetworkParameters;
 
     /*package*/ final RippleLikeNetworkParameters rippleLikeNetworkParameters;
@@ -36,6 +38,7 @@ public final class Currency {
             String paymentUriScheme,
             ArrayList<CurrencyUnit> units,
             BitcoinLikeNetworkParameters bitcoinLikeNetworkParameters,
+            CosmosLikeNetworkParameters cosmosLikeNetworkParameters,
             EthereumLikeNetworkParameters ethereumLikeNetworkParameters,
             RippleLikeNetworkParameters rippleLikeNetworkParameters,
             TezosLikeNetworkParameters tezosLikeNetworkParameters,
@@ -46,6 +49,7 @@ public final class Currency {
         this.paymentUriScheme = paymentUriScheme;
         this.units = units;
         this.bitcoinLikeNetworkParameters = bitcoinLikeNetworkParameters;
+        this.cosmosLikeNetworkParameters = cosmosLikeNetworkParameters;
         this.ethereumLikeNetworkParameters = ethereumLikeNetworkParameters;
         this.rippleLikeNetworkParameters = rippleLikeNetworkParameters;
         this.tezosLikeNetworkParameters = tezosLikeNetworkParameters;
@@ -88,6 +92,11 @@ public final class Currency {
         return bitcoinLikeNetworkParameters;
     }
 
+    /** Optional CosmosLikeNetworkParameters, for more details refer to CosmosLikeNetworkParameters doc */
+    public CosmosLikeNetworkParameters getCosmosLikeNetworkParameters() {
+        return cosmosLikeNetworkParameters;
+    }
+
     /** Optional EthereumLikeNetworkParameters, for more details refer to EthereumLikeNetworkParameters doc */
     public EthereumLikeNetworkParameters getEthereumLikeNetworkParameters() {
         return ethereumLikeNetworkParameters;
@@ -117,6 +126,7 @@ public final class Currency {
                 "," + "paymentUriScheme=" + paymentUriScheme +
                 "," + "units=" + units +
                 "," + "bitcoinLikeNetworkParameters=" + bitcoinLikeNetworkParameters +
+                "," + "cosmosLikeNetworkParameters=" + cosmosLikeNetworkParameters +
                 "," + "ethereumLikeNetworkParameters=" + ethereumLikeNetworkParameters +
                 "," + "rippleLikeNetworkParameters=" + rippleLikeNetworkParameters +
                 "," + "tezosLikeNetworkParameters=" + tezosLikeNetworkParameters +

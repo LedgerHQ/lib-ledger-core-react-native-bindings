@@ -5,6 +5,7 @@ package com.ledger.reactnative;
 
 import co.ledger.core.Amount;
 import co.ledger.core.BitcoinLikeOperation;
+import co.ledger.core.CosmosLikeOperation;
 import co.ledger.core.Currency;
 import co.ledger.core.EthereumLikeOperation;
 import co.ledger.core.Operation;
@@ -264,6 +265,36 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
+     * Get account-filtered recipients list associated with the operation.
+     *
+     * This function will filter recipients to retain only the ones that are owned by the current
+     * account.
+     */
+    @ReactMethod
+    public void getSelfRecipients(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Operation currentInstanceObj = this.javaObjects.get(sUid);
+
+            ArrayList<String> javaResult = currentInstanceObj.getSelfRecipients();
+            WritableNativeMap result = new WritableNativeMap();
+            WritableNativeArray javaResult_list = new WritableNativeArray();
+            for(String javaResult_elem : javaResult)
+            {
+                javaResult_list.pushString(javaResult_elem);
+            }
+            result.putArray("value", javaResult_list);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
      * Get amount of operation.
      * @return Amount object
      */
@@ -432,6 +463,34 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
         }
     }
     /**
+     * Convert operation as Cosmos operation.
+     * @return CosmosLikeOperation object
+     */
+    @ReactMethod
+    public void asCosmosLikeOperation(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Operation currentInstanceObj = this.javaObjects.get(sUid);
+
+            CosmosLikeOperation javaResult = currentInstanceObj.asCosmosLikeOperation();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreCosmosLikeOperation rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreCosmosLikeOperation.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreCosmosLikeOperation");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
      * Convert operation as Ethereum operation.
      * @return EthereumLikeOperation object
      */
@@ -554,6 +613,26 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
             Operation currentInstanceObj = this.javaObjects.get(sUid);
 
             boolean javaResult = currentInstanceObj.isInstanceOfBitcoinLikeOperation();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putBoolean("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Same as isInstanceOfCosmosLikeOperation for cosmos. */
+    @ReactMethod
+    public void isInstanceOfCosmosLikeOperation(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Operation currentInstanceObj = this.javaObjects.get(sUid);
+
+            boolean javaResult = currentInstanceObj.isInstanceOfCosmosLikeOperation();
             WritableNativeMap result = new WritableNativeMap();
             result.putBoolean("value", javaResult);
 
