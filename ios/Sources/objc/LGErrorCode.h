@@ -92,4 +92,5 @@ typedef NS_ENUM(NSInteger, LGErrorCode)
     LGErrorCodeInvalidBech32Format,
     /** Stellar errors */
     LGErrorCodeInvalidStellarAddressFormat,
+    LGErrorCodeInvalidStellarMemoType,
 };

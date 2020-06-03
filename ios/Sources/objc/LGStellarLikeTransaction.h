@@ -5,6 +5,7 @@
 @class LGAddress;
 @class LGAmount;
 @class LGBigInt;
+@class LGStellarLikeMemo;
 
 
 @interface LGStellarLikeTransaction : NSObject
@@ -26,5 +27,8 @@
 
 /** Returns the fee paid for this transaction to be validated */
 - (nullable LGAmount *)getFee;
+
+/** Returns the transaction memo */
+- (nullable LGStellarLikeMemo *)getMemo;
 
 @end

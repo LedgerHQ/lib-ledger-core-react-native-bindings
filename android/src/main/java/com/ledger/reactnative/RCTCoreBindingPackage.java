@@ -36,6 +36,7 @@ public class RCTCoreBindingPackage implements ReactPackage
         new RCTCoreNetworks(reactContext),
         new RCTCoreHashAlgorithmHelper(reactContext),
         new RCTCoreStellarLikeBlock(reactContext),
+        new RCTCoreStellarLikeMemo(reactContext),
         new RCTCoreStellarLikeTransaction(reactContext),
         new RCTCoreStellarLikeTransactionBuilder(reactContext),
         new RCTCoreStellarLikeAsset(reactContext),

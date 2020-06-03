@@ -91,5 +91,6 @@ public enum ErrorCode {
     INVALID_BECH32_FORMAT,
     /** Stellar errors */
     INVALID_STELLAR_ADDRESS_FORMAT,
+    INVALID_STELLAR_MEMO_TYPE,
     ;
 }

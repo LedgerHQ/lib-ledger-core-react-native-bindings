@@ -23,6 +23,9 @@ public abstract class StellarLikeTransaction {
     /** Returns the fee paid for this transaction to be validated */
     public abstract Amount getFee();
 
+    /** Returns the transaction memo */
+    public abstract StellarLikeMemo getMemo();
+
     private static final class CppProxy extends StellarLikeTransaction
     {
         private final long nativeRef;
@@ -93,5 +96,13 @@ public abstract class StellarLikeTransaction {
             return native_getFee(this.nativeRef);
         }
         private native Amount native_getFee(long _nativeRef);
+
+        @Override
+        public StellarLikeMemo getMemo()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getMemo(this.nativeRef);
+        }
+        private native StellarLikeMemo native_getMemo(long _nativeRef);
     }
 }

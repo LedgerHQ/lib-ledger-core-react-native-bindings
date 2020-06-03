@@ -3,11 +3,9 @@
 
 package com.ledger.reactnative;
 
-import co.ledger.core.Address;
-import co.ledger.core.Amount;
 import co.ledger.core.BigInt;
 import co.ledger.core.StellarLikeMemo;
-import co.ledger.core.StellarLikeTransaction;
+import co.ledger.core.StellarLikeMemoType;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
@@ -31,27 +29,27 @@ import java.util.Optional;
 import java.util.TimeZone;
 import java.util.UUID;
 
-@ReactModule(name = "RCTCoreStellarLikeTransaction")
-public class RCTCoreStellarLikeTransaction extends ReactContextBaseJavaModule {
+@ReactModule(name = "RCTCoreStellarLikeMemo")
+public class RCTCoreStellarLikeMemo extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
-    private Map<String, StellarLikeTransaction> javaObjects;
-    public Map<String, StellarLikeTransaction> getJavaObjects()
+    private Map<String, StellarLikeMemo> javaObjects;
+    public Map<String, StellarLikeMemo> getJavaObjects()
     {
         return javaObjects;
     }
 
-    public RCTCoreStellarLikeTransaction(ReactApplicationContext reactContext)
+    public RCTCoreStellarLikeMemo(ReactApplicationContext reactContext)
     {
         super(reactContext);
         this.reactContext = reactContext;
-        this.javaObjects = new HashMap<String, StellarLikeTransaction>();
+        this.javaObjects = new HashMap<String, StellarLikeMemo>();
     }
 
     @Override
     public String getName()
     {
-        return "RCTCoreStellarLikeTransaction";
+        return "RCTCoreStellarLikeMemo";
     }
     @ReactMethod
     public void release(ReadableMap currentInstance, Promise promise)
@@ -64,14 +62,14 @@ public class RCTCoreStellarLikeTransaction extends ReactContextBaseJavaModule {
         }
         else
         {
-            promise.reject("Failed to release instance of RCTCoreStellarLikeTransaction", "First parameter of RCTCoreStellarLikeTransaction::release should be an instance of RCTCoreStellarLikeTransaction");
+            promise.reject("Failed to release instance of RCTCoreStellarLikeMemo", "First parameter of RCTCoreStellarLikeMemo::release should be an instance of RCTCoreStellarLikeMemo");
         }
     }
     @ReactMethod
     public void log(Promise promise)
     {
         WritableNativeArray result = new WritableNativeArray();
-        for (Map.Entry<String, StellarLikeTransaction> elem : this.javaObjects.entrySet())
+        for (Map.Entry<String, StellarLikeMemo> elem : this.javaObjects.entrySet())
         {
             result.pushString(elem.getKey());
         }
@@ -128,17 +126,17 @@ public class RCTCoreStellarLikeTransaction extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void toRawTransaction(ReadableMap currentInstance, Promise promise) {
+    public void getMemoType(ReadableMap currentInstance, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
 
-            StellarLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+            StellarLikeMemo currentInstanceObj = this.javaObjects.get(sUid);
 
-            byte[] javaResult = currentInstanceObj.toRawTransaction();
+            StellarLikeMemoType javaResult = currentInstanceObj.getMemoType();
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = byteArrayToHexString(javaResult);
-            result.putString("value", finalJavaResult);
+            int finalJavaResult = javaResult.ordinal();
+            result.putInt("value", finalJavaResult);
 
             promise.resolve(result);
         }
@@ -147,19 +145,18 @@ public class RCTCoreStellarLikeTransaction extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Returns the payload which should be signed by the user in order to send the transaction. */
+    /** Get the value of the memo as string. Fail if the memo is not with type MEMO_TEXT */
     @ReactMethod
-    public void toSignatureBase(ReadableMap currentInstance, Promise promise) {
+    public void getMemoText(ReadableMap currentInstance, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
 
-            StellarLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+            StellarLikeMemo currentInstanceObj = this.javaObjects.get(sUid);
 
-            byte[] javaResult = currentInstanceObj.toSignatureBase();
+            String javaResult = currentInstanceObj.getMemoText();
             WritableNativeMap result = new WritableNativeMap();
-            String finalJavaResult = byteArrayToHexString(javaResult);
-            result.putString("value", finalJavaResult);
+            result.putString("value", javaResult);
 
             promise.resolve(result);
         }
@@ -168,62 +165,16 @@ public class RCTCoreStellarLikeTransaction extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Add a new signature to the transaction envelope */
+    /** Get the value of the memo as BigInt. Fail if the memo is not with type MEMO_ID */
     @ReactMethod
-    public void putSignature(ReadableMap currentInstance, String signature, ReadableMap address, Promise promise) {
+    public void getMemoId(ReadableMap currentInstance, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
 
-            StellarLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+            StellarLikeMemo currentInstanceObj = this.javaObjects.get(sUid);
 
-            byte [] javaParam_0 = hexStringToByteArray(signature);
-
-            RCTCoreAddress rctParam_address = this.reactContext.getNativeModule(RCTCoreAddress.class);
-            Address javaParam_1 = rctParam_address.getJavaObjects().get(address.getString("uid"));
-            currentInstanceObj.putSignature(javaParam_0, javaParam_1);
-            promise.resolve(0);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /** Returns the author of the transaction */
-    @ReactMethod
-    public void getSourceAccount(ReadableMap currentInstance, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            StellarLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
-
-            Address javaResult = currentInstanceObj.getSourceAccount();
-
-            String javaResult_uuid = UUID.randomUUID().toString();
-            RCTCoreAddress rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreAddress.class);
-            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
-            WritableNativeMap result = new WritableNativeMap();
-            result.putString("type","RCTCoreAddress");
-            result.putString("uid",javaResult_uuid);
-
-            promise.resolve(result);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /** Returns the sequence of the source account used for this transaction */
-    @ReactMethod
-    public void getSourceAccountSequence(ReadableMap currentInstance, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            StellarLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
-
-            BigInt javaResult = currentInstanceObj.getSourceAccountSequence();
+            BigInt javaResult = currentInstanceObj.getMemoId();
 
             String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreBigInt rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreBigInt.class);
@@ -239,23 +190,19 @@ public class RCTCoreStellarLikeTransaction extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Returns the fee paid for this transaction to be validated */
+    /** Get the value of the memo as byte array. Fail if the memo is not with type MEMO_HASH */
     @ReactMethod
-    public void getFee(ReadableMap currentInstance, Promise promise) {
+    public void getMemoHash(ReadableMap currentInstance, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
 
-            StellarLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+            StellarLikeMemo currentInstanceObj = this.javaObjects.get(sUid);
 
-            Amount javaResult = currentInstanceObj.getFee();
-
-            String javaResult_uuid = UUID.randomUUID().toString();
-            RCTCoreAmount rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreAmount.class);
-            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            byte[] javaResult = currentInstanceObj.getMemoHash();
             WritableNativeMap result = new WritableNativeMap();
-            result.putString("type","RCTCoreAmount");
-            result.putString("uid",javaResult_uuid);
+            String finalJavaResult = byteArrayToHexString(javaResult);
+            result.putString("value", finalJavaResult);
 
             promise.resolve(result);
         }
@@ -264,23 +211,45 @@ public class RCTCoreStellarLikeTransaction extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Returns the transaction memo */
+    /** Get the value of the memo as byte array. Fail if the memo is not with type MEMO_RETURN */
     @ReactMethod
-    public void getMemo(ReadableMap currentInstance, Promise promise) {
+    public void getMemoReturn(ReadableMap currentInstance, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
 
-            StellarLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+            StellarLikeMemo currentInstanceObj = this.javaObjects.get(sUid);
 
-            StellarLikeMemo javaResult = currentInstanceObj.getMemo();
-
-            String javaResult_uuid = UUID.randomUUID().toString();
-            RCTCoreStellarLikeMemo rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreStellarLikeMemo.class);
-            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            byte[] javaResult = currentInstanceObj.getMemoReturn();
             WritableNativeMap result = new WritableNativeMap();
-            result.putString("type","RCTCoreStellarLikeMemo");
-            result.putString("uid",javaResult_uuid);
+            String finalJavaResult = byteArrayToHexString(javaResult);
+            result.putString("value", finalJavaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Create a string version of the memo, no matter which underlying type it holds.
+     * For MEMO_TEXT returns memo value.
+     * For MEMO_ID, return a uint64 as string (base 10).
+     * For MEMO_HASH, MEMO_RETURN, returns a hex encoded string.
+     * For MEMO_NONE, returns an empty string
+     */
+    @ReactMethod
+    public void memoValuetoString(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            StellarLikeMemo currentInstanceObj = this.javaObjects.get(sUid);
+
+            String javaResult = currentInstanceObj.memoValuetoString();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("value", javaResult);
 
             promise.resolve(result);
         }
