@@ -9,6 +9,7 @@
 #import "LGAddress+Private.h"
 #import "LGAmount+Private.h"
 #import "LGBigInt+Private.h"
+#import "LGStellarLikeMemo+Private.h"
 #include <exception>
 #include <stdexcept>
 #include <utility>
@@ -73,6 +74,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->getFee();
         return ::djinni_generated::Amount::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGStellarLikeMemo *)getMemo {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getMemo();
+        return ::djinni_generated::StellarLikeMemo::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

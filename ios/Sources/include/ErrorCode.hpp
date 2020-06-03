@@ -97,6 +97,7 @@ enum class ErrorCode : int {
     INVALID_BECH32_FORMAT,
     /** Stellar errors */
     INVALID_STELLAR_ADDRESS_FORMAT,
+    INVALID_STELLAR_MEMO_TYPE,
 };
  std::string to_string(const ErrorCode& errorCode);
  std::ostream &operator<<(std::ostream &os, const ErrorCode &o);

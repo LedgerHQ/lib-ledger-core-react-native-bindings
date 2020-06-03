@@ -69,6 +69,7 @@ package object implicits {
     class LinkNonTailFilterException(message: String) extends LedgerCoreWrappedException(ErrorCode.LINK_NON_TAIL_FILTER, message)
     class InvalidBech32FormatException(message: String) extends LedgerCoreWrappedException(ErrorCode.INVALID_BECH32_FORMAT, message)
     class InvalidStellarAddressFormatException(message: String) extends LedgerCoreWrappedException(ErrorCode.INVALID_STELLAR_ADDRESS_FORMAT, message)
+    class InvalidStellarMemoTypeException(message: String) extends LedgerCoreWrappedException(ErrorCode.INVALID_STELLAR_MEMO_TYPE, message)
     private def wrapLedgerCoreError(error: co.ledger.core.Error): LedgerCoreWrappedException = {
         error.getCode match {
             case ErrorCode.EC_PRIV_KEY_INVALID_FORMAT => new EcPrivKeyInvalidFormatException(error.getMessage)
@@ -130,6 +131,7 @@ package object implicits {
             case ErrorCode.LINK_NON_TAIL_FILTER => new LinkNonTailFilterException(error.getMessage)
             case ErrorCode.INVALID_BECH32_FORMAT => new InvalidBech32FormatException(error.getMessage)
             case ErrorCode.INVALID_STELLAR_ADDRESS_FORMAT => new InvalidStellarAddressFormatException(error.getMessage)
+            case ErrorCode.INVALID_STELLAR_MEMO_TYPE => new InvalidStellarMemoTypeException(error.getMessage)
         }
     }
     private def arrayList2Array[T](a: Array[T]): java.util.ArrayList[T] = new java.util.ArrayList[T](a.toList.asJava.asInstanceOf[java.util.Collection[T]])
@@ -380,6 +382,8 @@ package object implicits {
     implicit class RichHashAlgorithmHelper(val self: HashAlgorithmHelper) {
     }
     implicit class RichStellarLikeBlock(val self: StellarLikeBlock) {
+    }
+    implicit class RichStellarLikeMemo(val self: StellarLikeMemo) {
     }
     implicit class RichStellarLikeTransaction(val self: StellarLikeTransaction) {
     }
