@@ -320,4 +320,29 @@ public class RCTCoreBitcoinLikeOutput extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /**
+     * Check if the transaction (which created this output) is replaceable (RBF).
+     * An output can be replaceable if the transaction has at least one RBF input
+     * and if the transaction is not a block.
+     * @return true if the output is replaceable, false otherwise
+     */
+    @ReactMethod
+    public void isReplaceable(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            BitcoinLikeOutput currentInstanceObj = this.javaObjects.get(sUid);
+
+            boolean javaResult = currentInstanceObj.isReplaceable();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putBoolean("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
 }
