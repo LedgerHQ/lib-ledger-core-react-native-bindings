@@ -313,4 +313,37 @@ RCT_REMAP_METHOD(getBlockHeight,getBlockHeight:(NSDictionary *)currentInstance W
     }
 
 }
+
+/**
+ * Check if the transaction (which created this output) is replaceable (RBF).
+ * An output can be replaceable if the transaction has at least one RBF input
+ * and if the transaction is not a block.
+ * @return true if the output is replaceable, false otherwise
+ */
+RCT_REMAP_METHOD(isReplaceable,isReplaceable:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeOutput::isReplaceable, first argument should be an instance of LGBitcoinLikeOutput", nil);
+        return;
+    }
+    LGBitcoinLikeOutput *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeOutput::isReplaceable, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    BOOL objcResult = [currentInstanceObj isReplaceable];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGBitcoinLikeOutput::isReplaceable", nil);
+        return;
+    }
+
+}
 @end
