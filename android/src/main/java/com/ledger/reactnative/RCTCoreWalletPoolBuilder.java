@@ -8,6 +8,7 @@ import co.ledger.core.DynamicObject;
 import co.ledger.core.HttpClient;
 import co.ledger.core.LogPrinter;
 import co.ledger.core.PathResolver;
+import co.ledger.core.PreferencesBackend;
 import co.ledger.core.RandomNumberGenerator;
 import co.ledger.core.ThreadDispatcher;
 import co.ledger.core.WalletPoolBuilder;
@@ -400,6 +401,68 @@ public class RCTCoreWalletPoolBuilder extends ReactContextBaseJavaModule {
             RCTCoreDynamicObject rctParam_configuration = this.reactContext.getNativeModule(RCTCoreDynamicObject.class);
             DynamicObject javaParam_0 = rctParam_configuration.getJavaObjects().get(configuration.getString("uid"));
             WalletPoolBuilder javaResult = currentInstanceObj.setConfiguration(javaParam_0);
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreWalletPoolBuilder rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreWalletPoolBuilder.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreWalletPoolBuilder");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Set the external PreferencesBackend
+     * @param backend, PreferencesBackend object
+     * @return WalletPoolBuilder object, with wallet pool externalPreferencesBackend set
+     */
+    @ReactMethod
+    public void setExternalPreferencesBackend(ReadableMap currentInstance, ReadableMap backend, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            WalletPoolBuilder currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCorePreferencesBackend rctParam_backend = this.reactContext.getNativeModule(RCTCorePreferencesBackend.class);
+            PreferencesBackend javaParam_0 = rctParam_backend.getJavaObjects().get(backend.getString("uid"));
+            WalletPoolBuilder javaResult = currentInstanceObj.setExternalPreferencesBackend(javaParam_0);
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreWalletPoolBuilder rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreWalletPoolBuilder.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreWalletPoolBuilder");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Set the internal PreferencesBackend
+     * @param backend, PreferencesBackend object
+     * @return WalletPoolBuilder object, with wallet pool internalPreferencesBackend set
+     */
+    @ReactMethod
+    public void setInternalPreferencesBackend(ReadableMap currentInstance, ReadableMap backend, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            WalletPoolBuilder currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCorePreferencesBackend rctParam_backend = this.reactContext.getNativeModule(RCTCorePreferencesBackend.class);
+            PreferencesBackend javaParam_0 = rctParam_backend.getJavaObjects().get(backend.getString("uid"));
+            WalletPoolBuilder javaResult = currentInstanceObj.setInternalPreferencesBackend(javaParam_0);
 
             String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreWalletPoolBuilder rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreWalletPoolBuilder.class);

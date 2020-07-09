@@ -855,8 +855,6 @@ package object implicits {
     }
     implicit class RichDatabaseBackend(val self: DatabaseBackend) {
     }
-    implicit class RichRandomNumberGenerator(val self: RandomNumberGenerator) {
-    }
     implicit class RichEthereumPublicKeyProvider(val self: EthereumPublicKeyProvider) {
     }
     implicit class RichCosmosLikeMessage(val self: CosmosLikeMessage) {
@@ -1359,9 +1357,13 @@ package object implicits {
     }
     implicit class RichAmount(val self: Amount) {
     }
+    implicit class RichRandomNumberGenerator(val self: RandomNumberGenerator) {
+    }
     implicit class RichPreferences(val self: Preferences) {
     }
     implicit class RichPreferencesEditor(val self: PreferencesEditor) {
+    }
+    implicit class RichPreferencesBackend(val self: PreferencesBackend) {
     }
     implicit class RichBitcoinLikeWalletConfiguration(val self: BitcoinLikeWalletConfiguration) {
     }

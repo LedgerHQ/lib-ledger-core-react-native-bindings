@@ -429,6 +429,86 @@ RCT_REMAP_METHOD(setConfiguration,setConfiguration:(NSDictionary *)currentInstan
 }
 
 /**
+ * Set the external PreferencesBackend
+ * @param backend, PreferencesBackend object
+ * @return WalletPoolBuilder object, with wallet pool externalPreferencesBackend set
+ */
+RCT_REMAP_METHOD(setExternalPreferencesBackend,setExternalPreferencesBackend:(NSDictionary *)currentInstance withParams:(NSDictionary *)backend withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPoolBuilder::setExternalPreferencesBackend, first argument should be an instance of LGWalletPoolBuilder", nil);
+        return;
+    }
+    LGWalletPoolBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPoolBuilder::setExternalPreferencesBackend, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGPreferencesBackend *rctParam_backend = (RCTCoreLGPreferencesBackend *)[self.bridge moduleForName:@"CoreLGPreferencesBackend"];
+    LGPreferencesBackend *objcParam_0 = (LGPreferencesBackend *)[rctParam_backend.objcImplementations objectForKey:backend[@"uid"]];
+    LGWalletPoolBuilder * objcResult = [currentInstanceObj setExternalPreferencesBackend:objcParam_0];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGWalletPoolBuilder *rctImpl_objcResult = (RCTCoreLGWalletPoolBuilder *)[self.bridge moduleForName:@"CoreLGWalletPoolBuilder"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGWalletPoolBuilder::setExternalPreferencesBackend", nil);
+        return;
+    }
+
+}
+
+/**
+ * Set the internal PreferencesBackend
+ * @param backend, PreferencesBackend object
+ * @return WalletPoolBuilder object, with wallet pool internalPreferencesBackend set
+ */
+RCT_REMAP_METHOD(setInternalPreferencesBackend,setInternalPreferencesBackend:(NSDictionary *)currentInstance withParams:(NSDictionary *)backend withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPoolBuilder::setInternalPreferencesBackend, first argument should be an instance of LGWalletPoolBuilder", nil);
+        return;
+    }
+    LGWalletPoolBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPoolBuilder::setInternalPreferencesBackend, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGPreferencesBackend *rctParam_backend = (RCTCoreLGPreferencesBackend *)[self.bridge moduleForName:@"CoreLGPreferencesBackend"];
+    LGPreferencesBackend *objcParam_0 = (LGPreferencesBackend *)[rctParam_backend.objcImplementations objectForKey:backend[@"uid"]];
+    LGWalletPoolBuilder * objcResult = [currentInstanceObj setInternalPreferencesBackend:objcParam_0];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGWalletPoolBuilder *rctImpl_objcResult = (RCTCoreLGWalletPoolBuilder *)[self.bridge moduleForName:@"CoreLGWalletPoolBuilder"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGWalletPoolBuilder", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGWalletPoolBuilder::setInternalPreferencesBackend", nil);
+        return;
+    }
+
+}
+
+/**
  * Create wallet pool.
  * @param callback, Callback object returning a WalletPool instance
  */
