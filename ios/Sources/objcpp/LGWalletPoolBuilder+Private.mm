@@ -11,6 +11,7 @@
 #import "LGHttpClient+Private.h"
 #import "LGLogPrinter+Private.h"
 #import "LGPathResolver+Private.h"
+#import "LGPreferencesBackend+Private.h"
 #import "LGRandomNumberGenerator+Private.h"
 #import "LGThreadDispatcher+Private.h"
 #import "LGWalletPoolCallback+Private.h"
@@ -105,6 +106,20 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 - (nullable LGWalletPoolBuilder *)setConfiguration:(nullable LGDynamicObject *)configuration {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->setConfiguration(::djinni_generated::DynamicObject::toCpp(configuration));
+        return ::djinni_generated::WalletPoolBuilder::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGWalletPoolBuilder *)setExternalPreferencesBackend:(nullable LGPreferencesBackend *)backend {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->setExternalPreferencesBackend(::djinni_generated::PreferencesBackend::toCpp(backend));
+        return ::djinni_generated::WalletPoolBuilder::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGWalletPoolBuilder *)setInternalPreferencesBackend:(nullable LGPreferencesBackend *)backend {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->setInternalPreferencesBackend(::djinni_generated::PreferencesBackend::toCpp(backend));
         return ::djinni_generated::WalletPoolBuilder::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

@@ -4,6 +4,7 @@
 #import <Foundation/Foundation.h>
 @class LGDatabaseBackend;
 @class LGDynamicObject;
+@class LGPreferencesBackend;
 @class LGWalletPoolBuilder;
 @protocol LGHttpClient;
 @protocol LGLogPrinter;
@@ -86,6 +87,20 @@
  * @return WalletPoolBuilder object, with wallet pool configuration set
  */
 - (nullable LGWalletPoolBuilder *)setConfiguration:(nullable LGDynamicObject *)configuration;
+
+/**
+ * Set the external PreferencesBackend
+ * @param backend, PreferencesBackend object
+ * @return WalletPoolBuilder object, with wallet pool externalPreferencesBackend set
+ */
+- (nullable LGWalletPoolBuilder *)setExternalPreferencesBackend:(nullable LGPreferencesBackend *)backend;
+
+/**
+ * Set the internal PreferencesBackend
+ * @param backend, PreferencesBackend object
+ * @return WalletPoolBuilder object, with wallet pool internalPreferencesBackend set
+ */
+- (nullable LGWalletPoolBuilder *)setInternalPreferencesBackend:(nullable LGPreferencesBackend *)backend;
 
 /**
  * Create wallet pool.

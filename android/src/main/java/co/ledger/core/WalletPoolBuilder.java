@@ -78,6 +78,20 @@ public abstract class WalletPoolBuilder {
     public abstract WalletPoolBuilder setConfiguration(DynamicObject configuration);
 
     /**
+     * Set the external PreferencesBackend
+     * @param backend, PreferencesBackend object
+     * @return WalletPoolBuilder object, with wallet pool externalPreferencesBackend set
+     */
+    public abstract WalletPoolBuilder setExternalPreferencesBackend(PreferencesBackend backend);
+
+    /**
+     * Set the internal PreferencesBackend
+     * @param backend, PreferencesBackend object
+     * @return WalletPoolBuilder object, with wallet pool internalPreferencesBackend set
+     */
+    public abstract WalletPoolBuilder setInternalPreferencesBackend(PreferencesBackend backend);
+
+    /**
      * Create wallet pool.
      * @param callback, Callback object returning a WalletPool instance
      */
@@ -191,6 +205,22 @@ public abstract class WalletPoolBuilder {
             return native_setConfiguration(this.nativeRef, configuration);
         }
         private native WalletPoolBuilder native_setConfiguration(long _nativeRef, DynamicObject configuration);
+
+        @Override
+        public WalletPoolBuilder setExternalPreferencesBackend(PreferencesBackend backend)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_setExternalPreferencesBackend(this.nativeRef, backend);
+        }
+        private native WalletPoolBuilder native_setExternalPreferencesBackend(long _nativeRef, PreferencesBackend backend);
+
+        @Override
+        public WalletPoolBuilder setInternalPreferencesBackend(PreferencesBackend backend)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_setInternalPreferencesBackend(this.nativeRef, backend);
+        }
+        private native WalletPoolBuilder native_setInternalPreferencesBackend(long _nativeRef, PreferencesBackend backend);
 
         @Override
         public void build(WalletPoolCallback listener)
