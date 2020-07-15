@@ -12,6 +12,8 @@ public final class StellarLikeNetworkParameters {
 
     /*package*/ final byte[] Version;
 
+    /*package*/ final byte[] MuxedVersion;
+
     /*package*/ final long BaseReserve;
 
     /*package*/ final long BaseFee;
@@ -23,12 +25,14 @@ public final class StellarLikeNetworkParameters {
     public StellarLikeNetworkParameters(
             String Identifier,
             byte[] Version,
+            byte[] MuxedVersion,
             long BaseReserve,
             long BaseFee,
             ArrayList<String> AdditionalSEPs,
             String NetworkPassphrase) {
         this.Identifier = Identifier;
         this.Version = Version;
+        this.MuxedVersion = MuxedVersion;
         this.BaseReserve = BaseReserve;
         this.BaseFee = BaseFee;
         this.AdditionalSEPs = AdditionalSEPs;
@@ -43,6 +47,14 @@ public final class StellarLikeNetworkParameters {
     /** Address version bytes */
     public byte[] getVersion() {
         return Version;
+    }
+
+    /**
+     * Muxed address version bytes, for M-addresses (an address containing a public key
+     * and a memoId)
+     */
+    public byte[] getMuxedVersion() {
+        return MuxedVersion;
     }
 
     /** The minimum account to enable an account */
@@ -70,6 +82,7 @@ public final class StellarLikeNetworkParameters {
         return "StellarLikeNetworkParameters{" +
                 "Identifier=" + Identifier +
                 "," + "Version=" + Version +
+                "," + "MuxedVersion=" + MuxedVersion +
                 "," + "BaseReserve=" + BaseReserve +
                 "," + "BaseFee=" + BaseFee +
                 "," + "AdditionalSEPs=" + AdditionalSEPs +

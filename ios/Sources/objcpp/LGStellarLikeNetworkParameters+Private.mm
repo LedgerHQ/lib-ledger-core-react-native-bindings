@@ -12,6 +12,7 @@ auto StellarLikeNetworkParameters::toCpp(ObjcType obj) -> CppType
     assert(obj);
     return {::djinni::String::toCpp(obj.Identifier),
             ::djinni::Binary::toCpp(obj.Version),
+            ::djinni::Binary::toCpp(obj.MuxedVersion),
             ::djinni::I64::toCpp(obj.BaseReserve),
             ::djinni::I64::toCpp(obj.BaseFee),
             ::djinni::List<::djinni::String>::toCpp(obj.AdditionalSEPs),
@@ -22,6 +23,7 @@ auto StellarLikeNetworkParameters::fromCpp(const CppType& cpp) -> ObjcType
 {
     return [[LGStellarLikeNetworkParameters alloc] initWithIdentifier:(::djinni::String::fromCpp(cpp.Identifier))
                                                               Version:(::djinni::Binary::fromCpp(cpp.Version))
+                                                         MuxedVersion:(::djinni::Binary::fromCpp(cpp.MuxedVersion))
                                                           BaseReserve:(::djinni::I64::fromCpp(cpp.BaseReserve))
                                                               BaseFee:(::djinni::I64::fromCpp(cpp.BaseFee))
                                                        AdditionalSEPs:(::djinni::List<::djinni::String>::fromCpp(cpp.AdditionalSEPs))

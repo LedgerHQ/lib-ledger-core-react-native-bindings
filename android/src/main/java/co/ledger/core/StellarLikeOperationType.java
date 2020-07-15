@@ -6,7 +6,7 @@ package co.ledger.core;
 public enum StellarLikeOperationType {
     CREATE_ACCOUNT,
     PAYMENT,
-    PATH_PAYMENT,
+    PATH_PAYMENT_STRICT_RECEIVE,
     MANAGE_OFFER,
     CREATE_PASSIVE_OFFER,
     SET_OPTIONS,
@@ -17,5 +17,6 @@ public enum StellarLikeOperationType {
     MANAGE_DATA,
     BUMP_SEQUENCE,
     MANAGE_BUY_OFFER,
+    PATH_PAYMENT_STRICT_SEND,
     ;
 }

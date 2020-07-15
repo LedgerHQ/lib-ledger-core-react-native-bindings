@@ -13,7 +13,7 @@ namespace ledger { namespace core { namespace api {
 enum class StellarLikeOperationType : int {
     CREATE_ACCOUNT,
     PAYMENT,
-    PATH_PAYMENT,
+    PATH_PAYMENT_STRICT_RECEIVE,
     MANAGE_OFFER,
     CREATE_PASSIVE_OFFER,
     SET_OPTIONS,
@@ -24,6 +24,7 @@ enum class StellarLikeOperationType : int {
     MANAGE_DATA,
     BUMP_SEQUENCE,
     MANAGE_BUY_OFFER,
+    PATH_PAYMENT_STRICT_SEND,
 };
  std::string to_string(const StellarLikeOperationType& stellarLikeOperationType);
  std::ostream &operator<<(std::ostream &os, const StellarLikeOperationType &o);
