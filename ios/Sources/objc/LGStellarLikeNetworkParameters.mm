@@ -8,6 +8,7 @@
 
 - (nonnull instancetype)initWithIdentifier:(nonnull NSString *)Identifier
                                    Version:(nonnull NSData *)Version
+                              MuxedVersion:(nonnull NSData *)MuxedVersion
                                BaseReserve:(int64_t)BaseReserve
                                    BaseFee:(int64_t)BaseFee
                             AdditionalSEPs:(nonnull NSArray<NSString *> *)AdditionalSEPs
@@ -16,6 +17,7 @@
     if (self = [super init]) {
         _Identifier = [Identifier copy];
         _Version = [Version copy];
+        _MuxedVersion = [MuxedVersion copy];
         _BaseReserve = BaseReserve;
         _BaseFee = BaseFee;
         _AdditionalSEPs = [AdditionalSEPs copy];
@@ -26,6 +28,7 @@
 
 + (nonnull instancetype)StellarLikeNetworkParametersWithIdentifier:(nonnull NSString *)Identifier
                                                            Version:(nonnull NSData *)Version
+                                                      MuxedVersion:(nonnull NSData *)MuxedVersion
                                                        BaseReserve:(int64_t)BaseReserve
                                                            BaseFee:(int64_t)BaseFee
                                                     AdditionalSEPs:(nonnull NSArray<NSString *> *)AdditionalSEPs
@@ -33,6 +36,7 @@
 {
     return [[self alloc] initWithIdentifier:Identifier
                                     Version:Version
+                               MuxedVersion:MuxedVersion
                                 BaseReserve:BaseReserve
                                     BaseFee:BaseFee
                              AdditionalSEPs:AdditionalSEPs
@@ -41,7 +45,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ %p Identifier:%@ Version:%@ BaseReserve:%@ BaseFee:%@ AdditionalSEPs:%@ NetworkPassphrase:%@>", self.class, (void *)self, self.Identifier, self.Version, @(self.BaseReserve), @(self.BaseFee), self.AdditionalSEPs, self.NetworkPassphrase];
+    return [NSString stringWithFormat:@"<%@ %p Identifier:%@ Version:%@ MuxedVersion:%@ BaseReserve:%@ BaseFee:%@ AdditionalSEPs:%@ NetworkPassphrase:%@>", self.class, (void *)self, self.Identifier, self.Version, self.MuxedVersion, @(self.BaseReserve), @(self.BaseFee), self.AdditionalSEPs, self.NetworkPassphrase];
 }
 
 @end

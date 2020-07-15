@@ -6,12 +6,14 @@
 @interface LGStellarLikeNetworkParameters : NSObject
 - (nonnull instancetype)initWithIdentifier:(nonnull NSString *)Identifier
                                    Version:(nonnull NSData *)Version
+                              MuxedVersion:(nonnull NSData *)MuxedVersion
                                BaseReserve:(int64_t)BaseReserve
                                    BaseFee:(int64_t)BaseFee
                             AdditionalSEPs:(nonnull NSArray<NSString *> *)AdditionalSEPs
                          NetworkPassphrase:(nonnull NSString *)NetworkPassphrase;
 + (nonnull instancetype)StellarLikeNetworkParametersWithIdentifier:(nonnull NSString *)Identifier
                                                            Version:(nonnull NSData *)Version
+                                                      MuxedVersion:(nonnull NSData *)MuxedVersion
                                                        BaseReserve:(int64_t)BaseReserve
                                                            BaseFee:(int64_t)BaseFee
                                                     AdditionalSEPs:(nonnull NSArray<NSString *> *)AdditionalSEPs
@@ -22,6 +24,12 @@
 
 /** Address version bytes */
 @property (nonatomic, readonly, nonnull) NSData * Version;
+
+/**
+ * Muxed address version bytes, for M-addresses (an address containing a public key
+ * and a memoId)
+ */
+@property (nonatomic, readonly, nonnull) NSData * MuxedVersion;
 
 /** The minimum account to enable an account */
 @property (nonatomic, readonly) int64_t BaseReserve;

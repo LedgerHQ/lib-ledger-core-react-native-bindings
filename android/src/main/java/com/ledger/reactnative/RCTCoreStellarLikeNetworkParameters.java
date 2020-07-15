@@ -123,16 +123,18 @@ public class RCTCoreStellarLikeNetworkParameters extends ReactContextBaseJavaMod
     }
 
     @ReactMethod
-    public void init(String Identifier, String Version, long BaseReserve, long BaseFee, ReadableArray AdditionalSEPs, String NetworkPassphrase, Promise promise) {
+    public void init(String Identifier, String Version, String MuxedVersion, long BaseReserve, long BaseFee, ReadableArray AdditionalSEPs, String NetworkPassphrase, Promise promise) {
         byte [] javaParam_1 = hexStringToByteArray(Version);
 
-        ArrayList<String> javaParam_4 = new ArrayList<String>();
+        byte [] javaParam_2 = hexStringToByteArray(MuxedVersion);
+
+        ArrayList<String> javaParam_5 = new ArrayList<String>();
         for (int i = 0; i <  AdditionalSEPs.size(); i++)
         {
             String AdditionalSEPs_elem = AdditionalSEPs.getString(i);
-            javaParam_4.add(AdditionalSEPs_elem);
+            javaParam_5.add(AdditionalSEPs_elem);
         }
-        StellarLikeNetworkParameters javaResult = new StellarLikeNetworkParameters(Identifier, javaParam_1, BaseReserve, BaseFee, javaParam_4, NetworkPassphrase);
+        StellarLikeNetworkParameters javaResult = new StellarLikeNetworkParameters(Identifier, javaParam_1, javaParam_2, BaseReserve, BaseFee, javaParam_5, NetworkPassphrase);
 
         String uuid = UUID.randomUUID().toString();
         this.javaObjects.put(uuid, javaResult);
@@ -175,6 +177,25 @@ public class RCTCoreStellarLikeNetworkParameters extends ReactContextBaseJavaMod
         else
         {
             promise.reject("Failed to call RCTCoreStellarLikeNetworkParameters::getVersion", "First parameter of RCTCoreStellarLikeNetworkParameters::getVersion should be an instance of RCTCoreStellarLikeNetworkParameters");
+        }
+    }
+
+    @ReactMethod
+    public void getMuxedVersion(ReadableMap currentInstance, Promise promise)
+    {
+        String uid = currentInstance.getString("uid");
+        if (uid.length() > 0)
+        {
+            StellarLikeNetworkParameters javaObj = this.javaObjects.get(uid);
+            byte[] result = javaObj.getMuxedVersion();
+            String converted_result = byteArrayToHexString(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", converted_result);
+            promise.resolve(resultMap);
+        }
+        else
+        {
+            promise.reject("Failed to call RCTCoreStellarLikeNetworkParameters::getMuxedVersion", "First parameter of RCTCoreStellarLikeNetworkParameters::getMuxedVersion should be an instance of RCTCoreStellarLikeNetworkParameters");
         }
     }
 

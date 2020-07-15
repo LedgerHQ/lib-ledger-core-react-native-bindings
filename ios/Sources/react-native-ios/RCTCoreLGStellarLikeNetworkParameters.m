@@ -57,15 +57,18 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 RCT_REMAP_METHOD(init, initWithIdentifier:(nonnull NSString *)Identifier
                                   Version:(NSString *)Version
+                             MuxedVersion:(NSString *)MuxedVersion
                               BaseReserve:(int)BaseReserve
                                   BaseFee:(int)BaseFee
                            AdditionalSEPs:(nonnull NSArray<NSString *> *)AdditionalSEPs
                         NetworkPassphrase:(nonnull NSString *)NetworkPassphrase withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSData *field_1 = [self hexStringToData:Version];
 
+    NSData *field_2 = [self hexStringToData:MuxedVersion];
 
 
-    LGStellarLikeNetworkParameters * finalResult = [[LGStellarLikeNetworkParameters alloc] initWithIdentifier:Identifier Version:field_1 BaseReserve:BaseReserve BaseFee:BaseFee AdditionalSEPs:AdditionalSEPs NetworkPassphrase:NetworkPassphrase];
+
+    LGStellarLikeNetworkParameters * finalResult = [[LGStellarLikeNetworkParameters alloc] initWithIdentifier:Identifier Version:field_1 MuxedVersion:field_2 BaseReserve:BaseReserve BaseFee:BaseFee AdditionalSEPs:AdditionalSEPs NetworkPassphrase:NetworkPassphrase];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGStellarLikeNetworkParameters *rctImpl = (RCTCoreLGStellarLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGStellarLikeNetworkParameters"];
     NSArray *finalResultArray = [[NSArray alloc] initWithObjects:finalResult, uuid, nil];
@@ -89,6 +92,14 @@ RCT_REMAP_METHOD(getVersion, getVersion:(NSDictionary *)currentInstance withReso
     LGStellarLikeNetworkParameters *objcImpl = (LGStellarLikeNetworkParameters *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
     NSString *objcImplVersionHexString = [self dataToHexString:objcImpl.Version];
     NSDictionary *result = @{@"value" : objcImplVersionHexString};
+    resolve(result);
+}
+
+RCT_REMAP_METHOD(getMuxedVersion, getMuxedVersion:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
+{
+    LGStellarLikeNetworkParameters *objcImpl = (LGStellarLikeNetworkParameters *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    NSString *objcImplMuxedVersionHexString = [self dataToHexString:objcImpl.MuxedVersion];
+    NSDictionary *result = @{@"value" : objcImplMuxedVersionHexString};
     resolve(result);
 }
 
