@@ -203,8 +203,8 @@ public class RCTCorePreferencesBackend extends ReactContextBaseJavaModule {
             RCTCoreRandomNumberGenerator rctParam_rng = this.reactContext.getNativeModule(RCTCoreRandomNumberGenerator.class);
             RandomNumberGenerator javaParam_0 = rctParam_rng.getJavaObjects().get(rng.getString("uid"));
             RandomNumberGeneratorImpl javaParam_0_java = (RandomNumberGeneratorImpl)javaParam_0;
-            javaParam_0_java.setPromise(promise);
             currentInstanceObj.setEncryption(javaParam_0, password);
+            promise.resolve(0);
         }
         catch(Exception e)
         {
