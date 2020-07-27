@@ -515,6 +515,212 @@ package object implicits {
     }
     implicit class RichStellarLikeAddress(val self: StellarLikeAddress) {
     }
+    implicit class RichAlgorandBlockchainExplorerEngines(val self: AlgorandBlockchainExplorerEngines) {
+    }
+    implicit class RichAlgorandBlockchainObserverEngines(val self: AlgorandBlockchainObserverEngines) {
+    }
+    implicit class RichAlgorandTransaction(val self: AlgorandTransaction) {
+    }
+    implicit class RichAlgorandOperation(val self: AlgorandOperation) {
+    }
+    implicit class RichAlgorandAddress(val self: AlgorandAddress) {
+    }
+    implicit class RichAlgorandAccount(val self: AlgorandAccount) {
+        def getSpendableBalance(operationType: AlgorandOperationType): Future[Amount] = {
+            val promise = Promise[Amount]()
+            self.getSpendableBalance(operationType, new AmountCallback() {
+                override def onCallback(result: Amount, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getAsset(assetId: String): Future[AlgorandAssetParams] = {
+            val promise = Promise[AlgorandAssetParams]()
+            self.getAsset(assetId, new AlgorandAssetParamsCallback() {
+                override def onCallback(result: AlgorandAssetParams, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def hasAsset(address: String, assetId: String): Future[Boolean] = {
+            val promise = Promise[Boolean]()
+            self.hasAsset(address, assetId, new BoolCallback() {
+                override def onCallback(result: java.lang.Boolean, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getAssetBalance(assetId: String): Future[AlgorandAssetAmount] = {
+            val promise = Promise[AlgorandAssetAmount]()
+            self.getAssetBalance(assetId, new AlgorandAssetAmountCallback() {
+                override def onCallback(result: AlgorandAssetAmount, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getAssetBalanceHistory(assetId: String, start: String, end: String, period: TimePeriod): Future[ArrayList[AlgorandAssetAmount]] = {
+            val promise = Promise[ArrayList[AlgorandAssetAmount]]()
+            self.getAssetBalanceHistory(assetId, start, end, period, new AlgorandAssetAmountListCallback() {
+                override def onCallback(result: ArrayList[AlgorandAssetAmount], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getAssetsBalances(): Future[ArrayList[AlgorandAssetAmount]] = {
+            val promise = Promise[ArrayList[AlgorandAssetAmount]]()
+            self.getAssetsBalances(new AlgorandAssetAmountListCallback() {
+                override def onCallback(result: ArrayList[AlgorandAssetAmount], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getCreatedAssets(): Future[ArrayList[AlgorandAssetParams]] = {
+            val promise = Promise[ArrayList[AlgorandAssetParams]]()
+            self.getCreatedAssets(new AlgorandAssetParamsListCallback() {
+                override def onCallback(result: ArrayList[AlgorandAssetParams], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getPendingRewards(): Future[Amount] = {
+            val promise = Promise[Amount]()
+            self.getPendingRewards(new AmountCallback() {
+                override def onCallback(result: Amount, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getTotalRewards(): Future[Amount] = {
+            val promise = Promise[Amount]()
+            self.getTotalRewards(new AmountCallback() {
+                override def onCallback(result: Amount, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getFeeEstimate(transaction: AlgorandTransaction): Future[Amount] = {
+            val promise = Promise[Amount]()
+            self.getFeeEstimate(transaction, new AmountCallback() {
+                override def onCallback(result: Amount, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def broadcastRawTransaction(transaction: Array[Byte]): Future[String] = {
+            val promise = Promise[String]()
+            self.broadcastRawTransaction(transaction, new StringCallback() {
+                override def onCallback(result: String, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def broadcastTransaction(transaction: AlgorandTransaction): Future[String] = {
+            val promise = Promise[String]()
+            self.broadcastTransaction(transaction, new StringCallback() {
+                override def onCallback(result: String, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def createTransaction(): Future[AlgorandTransaction] = {
+            val promise = Promise[AlgorandTransaction]()
+            self.createTransaction(new AlgorandTransactionCallback() {
+                override def onCallback(result: AlgorandTransaction, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+    }
+    implicit class RichAlgorandAssetParamsCallback(val self: AlgorandAssetParamsCallback) {
+    }
+    implicit class RichAlgorandAssetAmountCallback(val self: AlgorandAssetAmountCallback) {
+    }
+    implicit class RichAlgorandAssetAmountListCallback(val self: AlgorandAssetAmountListCallback) {
+    }
+    implicit class RichAlgorandAssetParamsListCallback(val self: AlgorandAssetParamsListCallback) {
+    }
+    implicit class RichAlgorandTransactionCallback(val self: AlgorandTransactionCallback) {
+    }
+    implicit class RichAlgorandWallet(val self: AlgorandWallet) {
+    }
     implicit class RichEvent(val self: Event) {
     }
     implicit class RichEventReceiver(val self: EventReceiver) {

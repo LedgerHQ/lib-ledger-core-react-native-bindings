@@ -496,6 +496,29 @@ public class RCTCoreWallet extends ReactContextBaseJavaModule {
         }
     }
     /**
+     * Tell whether wallet is an Algorand one.
+     * @return bool
+     */
+    @ReactMethod
+    public void isInstanceOfAlgorandLikeWallet(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Wallet currentInstanceObj = this.javaObjects.get(sUid);
+
+            boolean javaResult = currentInstanceObj.isInstanceOfAlgorandLikeWallet();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putBoolean("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
      * Tell whether wallet is a Cosmos one.
      * @return bool
      */

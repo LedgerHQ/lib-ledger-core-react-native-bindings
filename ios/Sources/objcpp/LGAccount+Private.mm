@@ -7,6 +7,7 @@
 #import "DJIError.h"
 #import "DJIMarshal+Private.h"
 #import "LGAddressListCallback+Private.h"
+#import "LGAlgorandAccount+Private.h"
 #import "LGAmountCallback+Private.h"
 #import "LGAmountListCallback+Private.h"
 #import "LGBitcoinLikeAccount+Private.h"
@@ -147,6 +148,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->asTezosLikeAccount();
         return ::djinni_generated::TezosLikeAccount::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGAlgorandAccount *)asAlgorandAccount {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->asAlgorandAccount();
+        return ::djinni_generated::AlgorandAccount::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

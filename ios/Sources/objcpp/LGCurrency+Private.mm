@@ -3,6 +3,7 @@
 
 #import "LGCurrency+Private.h"
 #import "DJIMarshal+Private.h"
+#import "LGAlgorandNetworkParameters+Private.h"
 #import "LGBitcoinLikeNetworkParameters+Private.h"
 #import "LGCosmosLikeNetworkParameters+Private.h"
 #import "LGCurrencyUnit+Private.h"
@@ -28,7 +29,8 @@ auto Currency::toCpp(ObjcType obj) -> CppType
             ::djinni::Optional<std::experimental::optional, ::djinni_generated::EthereumLikeNetworkParameters>::toCpp(obj.ethereumLikeNetworkParameters),
             ::djinni::Optional<std::experimental::optional, ::djinni_generated::RippleLikeNetworkParameters>::toCpp(obj.rippleLikeNetworkParameters),
             ::djinni::Optional<std::experimental::optional, ::djinni_generated::TezosLikeNetworkParameters>::toCpp(obj.tezosLikeNetworkParameters),
-            ::djinni::Optional<std::experimental::optional, ::djinni_generated::StellarLikeNetworkParameters>::toCpp(obj.stellarLikeNetworkParameters)};
+            ::djinni::Optional<std::experimental::optional, ::djinni_generated::StellarLikeNetworkParameters>::toCpp(obj.stellarLikeNetworkParameters),
+            ::djinni::Optional<std::experimental::optional, ::djinni_generated::AlgorandNetworkParameters>::toCpp(obj.algorandNetworkParameters)};
 }
 
 auto Currency::fromCpp(const CppType& cpp) -> ObjcType
@@ -43,7 +45,8 @@ auto Currency::fromCpp(const CppType& cpp) -> ObjcType
                     ethereumLikeNetworkParameters:(::djinni::Optional<std::experimental::optional, ::djinni_generated::EthereumLikeNetworkParameters>::fromCpp(cpp.ethereumLikeNetworkParameters))
                       rippleLikeNetworkParameters:(::djinni::Optional<std::experimental::optional, ::djinni_generated::RippleLikeNetworkParameters>::fromCpp(cpp.rippleLikeNetworkParameters))
                        tezosLikeNetworkParameters:(::djinni::Optional<std::experimental::optional, ::djinni_generated::TezosLikeNetworkParameters>::fromCpp(cpp.tezosLikeNetworkParameters))
-                     stellarLikeNetworkParameters:(::djinni::Optional<std::experimental::optional, ::djinni_generated::StellarLikeNetworkParameters>::fromCpp(cpp.stellarLikeNetworkParameters))];
+                     stellarLikeNetworkParameters:(::djinni::Optional<std::experimental::optional, ::djinni_generated::StellarLikeNetworkParameters>::fromCpp(cpp.stellarLikeNetworkParameters))
+                        algorandNetworkParameters:(::djinni::Optional<std::experimental::optional, ::djinni_generated::AlgorandNetworkParameters>::fromCpp(cpp.algorandNetworkParameters))];
 }
 
 }  // namespace djinni_generated

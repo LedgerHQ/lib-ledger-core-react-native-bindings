@@ -123,6 +123,12 @@
 - (BOOL)isInstanceOfBitcoinLikeWallet;
 
 /**
+ * Tell whether wallet is an Algorand one.
+ * @return bool
+ */
+- (BOOL)isInstanceOfAlgorandLikeWallet;
+
+/**
  * Tell whether wallet is a Cosmos one.
  * @return bool
  */

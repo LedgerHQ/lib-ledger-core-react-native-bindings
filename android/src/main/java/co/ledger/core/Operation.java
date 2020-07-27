@@ -115,10 +115,17 @@ public abstract class Operation {
 
     /**
      * Same as isInstanceOfBitcoinLikeOperation for bitcoin.
-     * Convert operation as Ethereum operation.
-     * @return EthereumLikeOperation object
+     * Convert operation as Stellar operation.
+     * @return StellarLikeOperation object
      */
     public abstract StellarLikeOperation asStellarLikeOperation();
+
+    /**
+     * Same as isInstanceOfBitcoinLikeOperation for bitcoin.
+     * Convert operation as Algorand operation.
+     * @return AlgorandOperation object
+     */
+    public abstract AlgorandOperation asAlgorandOperation();
 
     /** Is this an instance of a Bitcoin-like operation? */
     public abstract boolean isInstanceOfBitcoinLikeOperation();
@@ -319,6 +326,14 @@ public abstract class Operation {
             return native_asStellarLikeOperation(this.nativeRef);
         }
         private native StellarLikeOperation native_asStellarLikeOperation(long _nativeRef);
+
+        @Override
+        public AlgorandOperation asAlgorandOperation()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asAlgorandOperation(this.nativeRef);
+        }
+        private native AlgorandOperation native_asAlgorandOperation(long _nativeRef);
 
         @Override
         public boolean isInstanceOfBitcoinLikeOperation()

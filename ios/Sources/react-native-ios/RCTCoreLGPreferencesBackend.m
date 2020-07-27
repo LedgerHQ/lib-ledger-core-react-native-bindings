@@ -31,7 +31,7 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 {
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
--(NSData *) hexStringToData: (NSString *)hexString
+-(NSData *) hexStringToData: (NSString *)hexString 
 {
     NSMutableData *data= [[NSMutableData alloc] init];
     unsigned char byte;
@@ -45,7 +45,7 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     }
     return data;
 }
--(NSString *) dataToHexString: (NSData *)data
+-(NSString *) dataToHexString: (NSData *)data 
 {
     const unsigned char *bytes = (const unsigned char *)data.bytes;
     NSMutableString *hex = [NSMutableString new];
@@ -156,13 +156,13 @@ RCT_REMAP_METHOD(setEncryption,setEncryption:(NSDictionary *)currentInstance wit
     RCTCoreLGRandomNumberGenerator *rctParam_rng = (RCTCoreLGRandomNumberGenerator *)[self.bridge moduleForName:@"CoreLGRandomNumberGenerator"];
     id<LGRandomNumberGenerator>objcParam_0 = (id<LGRandomNumberGenerator>)[rctParam_rng.objcImplementations objectForKey:rng[@"uid"]];
     LGRandomNumberGeneratorImpl *objcParam_0_objc = (LGRandomNumberGeneratorImpl *)objcParam_0;
-    @try {
-      [currentInstanceObj setEncryption:objcParam_0 password:password];
-      resolve(@YES);
+    if (objcParam_0_objc)
+    {
+        objcParam_0_objc.resolve = resolve;
+        objcParam_0_objc.reject = reject;
     }
-    @catch (NSException* exception) {
-      reject(@"runtime_exception", exception.reason, nil);
-    }
+    [currentInstanceObj setEncryption:objcParam_0 password:password];
+
 }
 
 /**

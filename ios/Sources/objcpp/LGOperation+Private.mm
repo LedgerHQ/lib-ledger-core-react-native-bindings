@@ -6,6 +6,7 @@
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
 #import "DJIMarshal+Private.h"
+#import "LGAlgorandOperation+Private.h"
 #import "LGAmount+Private.h"
 #import "LGBitcoinLikeOperation+Private.h"
 #import "LGCosmosLikeOperation+Private.h"
@@ -165,6 +166,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->asStellarLikeOperation();
         return ::djinni_generated::StellarLikeOperation::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGAlgorandOperation *)asAlgorandOperation {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->asAlgorandOperation();
+        return ::djinni_generated::AlgorandOperation::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

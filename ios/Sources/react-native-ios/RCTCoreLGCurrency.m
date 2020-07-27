@@ -41,7 +41,8 @@ RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
             ethereumLikeNetworkParameters:(nullable NSDictionary *)ethereumLikeNetworkParameters
               rippleLikeNetworkParameters:(nullable NSDictionary *)rippleLikeNetworkParameters
                tezosLikeNetworkParameters:(nullable NSDictionary *)tezosLikeNetworkParameters
-             stellarLikeNetworkParameters:(nullable NSDictionary *)stellarLikeNetworkParameters withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+             stellarLikeNetworkParameters:(nullable NSDictionary *)stellarLikeNetworkParameters
+                algorandNetworkParameters:(nullable NSDictionary *)algorandNetworkParameters withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSMutableDictionary *implementationsData = [[NSMutableDictionary alloc] init];
     NSMutableArray *field_4 = [[NSMutableArray alloc] init];
 
@@ -75,9 +76,12 @@ RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
     RCTCoreLGStellarLikeNetworkParameters *rctParam_stellarLikeNetworkParameters = (RCTCoreLGStellarLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGStellarLikeNetworkParameters"];
     LGStellarLikeNetworkParameters *field_10 = (LGStellarLikeNetworkParameters *)[rctParam_stellarLikeNetworkParameters.objcImplementations objectForKey:stellarLikeNetworkParameters[@"uid"]];
     [implementationsData setObject:stellarLikeNetworkParameters[@"uid"] forKey:@"stellarLikeNetworkParameters"];
+    RCTCoreLGAlgorandNetworkParameters *rctParam_algorandNetworkParameters = (RCTCoreLGAlgorandNetworkParameters *)[self.bridge moduleForName:@"CoreLGAlgorandNetworkParameters"];
+    LGAlgorandNetworkParameters *field_11 = (LGAlgorandNetworkParameters *)[rctParam_algorandNetworkParameters.objcImplementations objectForKey:algorandNetworkParameters[@"uid"]];
+    [implementationsData setObject:algorandNetworkParameters[@"uid"] forKey:@"algorandNetworkParameters"];
 
 
-    LGCurrency * finalResult = [[LGCurrency alloc] initWithWalletType:(LGWalletType)walletType name:name bip44CoinType:bip44CoinType paymentUriScheme:paymentUriScheme units:field_4 bitcoinLikeNetworkParameters:field_5 cosmosLikeNetworkParameters:field_6 ethereumLikeNetworkParameters:field_7 rippleLikeNetworkParameters:field_8 tezosLikeNetworkParameters:field_9 stellarLikeNetworkParameters:field_10];
+    LGCurrency * finalResult = [[LGCurrency alloc] initWithWalletType:(LGWalletType)walletType name:name bip44CoinType:bip44CoinType paymentUriScheme:paymentUriScheme units:field_4 bitcoinLikeNetworkParameters:field_5 cosmosLikeNetworkParameters:field_6 ethereumLikeNetworkParameters:field_7 rippleLikeNetworkParameters:field_8 tezosLikeNetworkParameters:field_9 stellarLikeNetworkParameters:field_10 algorandNetworkParameters:field_11];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGCurrency *rctImpl = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
     NSArray *finalResultArray = [[NSArray alloc] initWithObjects:finalResult, uuid, nil];
@@ -166,6 +170,16 @@ RCT_REMAP_METHOD(init, initWithWalletType:(int)walletType
     }
     NSDictionary *converted_field_10 = @{@"type" : @"CoreLGStellarLikeNetworkParameters", @"uid" : field_10_uuid };
     [implementationsData setObject:converted_field_10 forKey:@"stellarLikeNetworkParameters"];
+    id field_11 = objcImpl.algorandNetworkParameters;
+    NSString *field_11_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGAlgorandNetworkParameters *rctImpl_field_11 = (RCTCoreLGAlgorandNetworkParameters *)[self.bridge moduleForName:@"CoreLGAlgorandNetworkParameters"];
+    if (field_11)
+    {
+        NSArray *field_11_array = [[NSArray alloc] initWithObjects:field_11, field_11_uuid, nil];
+        [rctImpl_field_11 baseSetObject:field_11_array];
+    }
+    NSDictionary *converted_field_11 = @{@"type" : @"CoreLGAlgorandNetworkParameters", @"uid" : field_11_uuid };
+    [implementationsData setObject:converted_field_11 forKey:@"algorandNetworkParameters"];
     [self.implementationsData setObject:implementationsData forKey:currentInstance[@"uid"]];
 }
 RCT_REMAP_METHOD(getWalletType, getWalletType:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
@@ -277,6 +291,18 @@ RCT_REMAP_METHOD(getStellarLikeNetworkParameters, getStellarLikeNetworkParameter
         data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
     }
     NSDictionary *result = [data objectForKey:@"stellarLikeNetworkParameters"];
+    resolve(result);
+}
+
+RCT_REMAP_METHOD(getAlgorandNetworkParameters, getAlgorandNetworkParameters:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
+{
+    NSDictionary *data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
+    if (!data)
+    {
+        [self mapImplementationsData:currentInstance];
+        data = (NSDictionary *)[self.implementationsData objectForKey:currentInstance[@"uid"]];
+    }
+    NSDictionary *result = [data objectForKey:@"algorandNetworkParameters"];
     resolve(result);
 }
 

@@ -114,6 +114,9 @@ public abstract class Account {
     /** Turn the account into a Tezos one, allowing operations to be performed on the Tezos network. */
     public abstract TezosLikeAccount asTezosLikeAccount();
 
+    /** Turn the account into an Algorand one, allowing operations to be performed on the Algorand network. */
+    public abstract AlgorandAccount asAlgorandAccount();
+
     /**
      * Turn the account into a Stellar one, allowing operations to be performerd on the Stellar
      * network.
@@ -329,6 +332,14 @@ public abstract class Account {
             return native_asTezosLikeAccount(this.nativeRef);
         }
         private native TezosLikeAccount native_asTezosLikeAccount(long _nativeRef);
+
+        @Override
+        public AlgorandAccount asAlgorandAccount()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_asAlgorandAccount(this.nativeRef);
+        }
+        private native AlgorandAccount native_asAlgorandAccount(long _nativeRef);
 
         @Override
         public StellarLikeAccount asStellarLikeAccount()

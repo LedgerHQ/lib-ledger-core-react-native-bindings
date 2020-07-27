@@ -5,6 +5,7 @@
 #import "LGOperationType.h"
 #import "LGWalletType.h"
 #import <Foundation/Foundation.h>
+@class LGAlgorandOperation;
 @class LGAmount;
 @class LGBitcoinLikeOperation;
 @class LGCosmosLikeOperation;
@@ -125,10 +126,17 @@
 
 /**
  * Same as isInstanceOfBitcoinLikeOperation for bitcoin.
- * Convert operation as Ethereum operation.
- * @return EthereumLikeOperation object
+ * Convert operation as Stellar operation.
+ * @return StellarLikeOperation object
  */
 - (nullable LGStellarLikeOperation *)asStellarLikeOperation;
+
+/**
+ * Same as isInstanceOfBitcoinLikeOperation for bitcoin.
+ * Convert operation as Algorand operation.
+ * @return AlgorandOperation object
+ */
+- (nullable LGAlgorandOperation *)asAlgorandOperation;
 
 /** Is this an instance of a Bitcoin-like operation? */
 - (BOOL)isInstanceOfBitcoinLikeOperation;

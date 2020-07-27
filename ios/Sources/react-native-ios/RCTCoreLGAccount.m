@@ -504,6 +504,40 @@ RCT_REMAP_METHOD(asTezosLikeAccount,asTezosLikeAccount:(NSDictionary *)currentIn
 
 }
 
+/** Turn the account into an Algorand one, allowing operations to be performed on the Algorand network. */
+RCT_REMAP_METHOD(asAlgorandAccount,asAlgorandAccount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGAccount::asAlgorandAccount, first argument should be an instance of LGAccount", nil);
+        return;
+    }
+    LGAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGAccount::asAlgorandAccount, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGAlgorandAccount * objcResult = [currentInstanceObj asAlgorandAccount];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGAlgorandAccount *rctImpl_objcResult = (RCTCoreLGAlgorandAccount *)[self.bridge moduleForName:@"CoreLGAlgorandAccount"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGAlgorandAccount", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGAccount::asAlgorandAccount", nil);
+        return;
+    }
+
+}
+
 /**
  * Turn the account into a Stellar one, allowing operations to be performerd on the Stellar
  * network.

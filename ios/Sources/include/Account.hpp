@@ -12,6 +12,7 @@
 namespace ledger { namespace core { namespace api {
 
 class AddressListCallback;
+class AlgorandAccount;
 class AmountCallback;
 class AmountListCallback;
 class BitcoinLikeAccount;
@@ -140,6 +141,9 @@ public:
 
     /** Turn the account into a Tezos one, allowing operations to be performed on the Tezos network. */
     virtual std::shared_ptr<TezosLikeAccount> asTezosLikeAccount() = 0;
+
+    /** Turn the account into an Algorand one, allowing operations to be performed on the Algorand network. */
+    virtual std::shared_ptr<AlgorandAccount> asAlgorandAccount() = 0;
 
     /**
      * Turn the account into a Stellar one, allowing operations to be performerd on the Stellar

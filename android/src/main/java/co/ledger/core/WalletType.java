@@ -19,5 +19,7 @@ public enum WalletType {
     TEZOS,
     /** A Stellar-like wallet. */
     STELLAR,
+    /** An Algorand-like wallet. */
+    ALGORAND,
     ;
 }
