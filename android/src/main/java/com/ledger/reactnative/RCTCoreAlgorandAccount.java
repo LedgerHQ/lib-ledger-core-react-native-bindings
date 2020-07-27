@@ -184,6 +184,7 @@ public class RCTCoreAlgorandAccount extends ReactContextBaseJavaModule {
     }
     /**
      * Check if address has a specific asset
+     * @param address, the address to check
      * @param assetId, the unique identifier of the asset to look for
      * @param callback, Callback returning the true if the address hold the asset
      */
@@ -197,6 +198,29 @@ public class RCTCoreAlgorandAccount extends ReactContextBaseJavaModule {
 
             RCTCoreBoolCallback javaParam_2 = RCTCoreBoolCallback.initWithPromise(promise, this.reactContext);
             currentInstanceObj.hasAsset(address, assetId, javaParam_2);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Check if address can receive the given amount:
+     * it may not be enough to reach the minimum balance, if the account has 0 ALGO
+     * @param address, the address to check
+     * @param amount, the amount to test
+     * @param callback, Callback returning the true if the address hold the asset
+     */
+    @ReactMethod
+    public void isAmountValid(ReadableMap currentInstance, String address, String amount, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            AlgorandAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreBoolCallback javaParam_2 = RCTCoreBoolCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.isAmountValid(address, amount, javaParam_2);
         }
         catch(Exception e)
         {

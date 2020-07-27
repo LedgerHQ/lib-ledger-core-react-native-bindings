@@ -99,7 +99,7 @@ public class RCTCoreAlgorandConfigurationDefaults extends ReactContextBaseJavaMo
     }
 
     @ReactMethod
-    public void init(, Promise promise) {
+    public void init(Promise promise) {
         AlgorandConfigurationDefaults javaResult = new AlgorandConfigurationDefaults();
 
         String uuid = UUID.randomUUID().toString();

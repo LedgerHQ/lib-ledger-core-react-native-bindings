@@ -568,6 +568,20 @@ package object implicits {
             })
             promise.future
         }
+        def isAmountValid(address: String, amount: String): Future[Boolean] = {
+            val promise = Promise[Boolean]()
+            self.isAmountValid(address, amount, new BoolCallback() {
+                override def onCallback(result: java.lang.Boolean, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
         def getAssetBalance(assetId: String): Future[AlgorandAssetAmount] = {
             val promise = Promise[AlgorandAssetAmount]()
             self.getAssetBalance(assetId, new AlgorandAssetAmountCallback() {

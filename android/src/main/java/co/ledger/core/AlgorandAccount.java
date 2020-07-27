@@ -22,10 +22,20 @@ public abstract class AlgorandAccount {
 
     /**
      * Check if address has a specific asset
+     * @param address, the address to check
      * @param assetId, the unique identifier of the asset to look for
      * @param callback, Callback returning the true if the address hold the asset
      */
     public abstract void hasAsset(String address, String assetId, BoolCallback callback);
+
+    /**
+     * Check if address can receive the given amount:
+     * it may not be enough to reach the minimum balance, if the account has 0 ALGO
+     * @param address, the address to check
+     * @param amount, the amount to test
+     * @param callback, Callback returning the true if the address hold the asset
+     */
+    public abstract void isAmountValid(String address, String amount, BoolCallback callback);
 
     /**
      * Get balance of account for a particular asset.
@@ -149,6 +159,14 @@ public abstract class AlgorandAccount {
             native_hasAsset(this.nativeRef, address, assetId, callback);
         }
         private native void native_hasAsset(long _nativeRef, String address, String assetId, BoolCallback callback);
+
+        @Override
+        public void isAmountValid(String address, String amount, BoolCallback callback)
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_isAmountValid(this.nativeRef, address, amount, callback);
+        }
+        private native void native_isAmountValid(long _nativeRef, String address, String amount, BoolCallback callback);
 
         @Override
         public void getAssetBalance(String assetId, AlgorandAssetAmountCallback callback)

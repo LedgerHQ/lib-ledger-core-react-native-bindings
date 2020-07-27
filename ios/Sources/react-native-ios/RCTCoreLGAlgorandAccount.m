@@ -104,6 +104,7 @@ RCT_REMAP_METHOD(getAsset,getAsset:(NSDictionary *)currentInstance withParams:(n
 
 /**
  * Check if address has a specific asset
+ * @param address, the address to check
  * @param assetId, the unique identifier of the asset to look for
  * @param callback, Callback returning the true if the address hold the asset
  */
@@ -123,6 +124,32 @@ RCT_REMAP_METHOD(hasAsset,hasAsset:(NSDictionary *)currentInstance withParams:(n
     }
     RCTCoreLGBoolCallback *objcParam_2 = [[RCTCoreLGBoolCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj hasAsset:address assetId:assetId callback:objcParam_2];
+
+}
+
+/**
+ * Check if address can receive the given amount:
+ * it may not be enough to reach the minimum balance, if the account has 0 ALGO
+ * @param address, the address to check
+ * @param amount, the amount to test
+ * @param callback, Callback returning the true if the address hold the asset
+ */
+RCT_REMAP_METHOD(isAmountValid,isAmountValid:(NSDictionary *)currentInstance withParams:(nonnull NSString *)address
+                                                                                 amount:(nonnull NSString *)amount withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandAccount::isAmountValid, first argument should be an instance of LGAlgorandAccount", nil);
+        return;
+    }
+    LGAlgorandAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandAccount::isAmountValid, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGBoolCallback *objcParam_2 = [[RCTCoreLGBoolCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj isAmountValid:address amount:amount callback:objcParam_2];
 
 }
 
