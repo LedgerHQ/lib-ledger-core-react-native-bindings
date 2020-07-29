@@ -22,6 +22,9 @@ public abstract class Configuration {
     /** Sets the API endpoint for API based engine (Ledger's API). */
     public static final String BLOCKCHAIN_EXPLORER_API_ENDPOINT = "BLOCKCHAIN_EXPLORER_API_ENDPOINT";
 
+    /** Sets the API key if one is required */
+    public static final String BLOCKCHAIN_EXPLORER_API_KEY = "BLOCKCHAIN_EXPLORER_API_KEY";
+
     /** Sets the API version. */
     public static final String BLOCKCHAIN_EXPLORER_VERSION = "BLOCKCHAIN_EXPLORER_VERSION";
 

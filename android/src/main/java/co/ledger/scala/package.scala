@@ -517,8 +517,6 @@ package object implicits {
     }
     implicit class RichAlgorandBlockchainExplorerEngines(val self: AlgorandBlockchainExplorerEngines) {
     }
-    implicit class RichAlgorandBlockchainObserverEngines(val self: AlgorandBlockchainObserverEngines) {
-    }
     implicit class RichAlgorandTransaction(val self: AlgorandTransaction) {
     }
     implicit class RichAlgorandOperation(val self: AlgorandOperation) {
