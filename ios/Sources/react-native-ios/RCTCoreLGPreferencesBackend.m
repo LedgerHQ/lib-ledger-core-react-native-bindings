@@ -155,14 +155,16 @@ RCT_REMAP_METHOD(setEncryption,setEncryption:(NSDictionary *)currentInstance wit
     }
     RCTCoreLGRandomNumberGenerator *rctParam_rng = (RCTCoreLGRandomNumberGenerator *)[self.bridge moduleForName:@"CoreLGRandomNumberGenerator"];
     id<LGRandomNumberGenerator>objcParam_0 = (id<LGRandomNumberGenerator>)[rctParam_rng.objcImplementations objectForKey:rng[@"uid"]];
-    LGRandomNumberGeneratorImpl *objcParam_0_objc = (LGRandomNumberGeneratorImpl *)objcParam_0;
-    if (objcParam_0_objc)
-    {
-        objcParam_0_objc.resolve = resolve;
-        objcParam_0_objc.reject = reject;
-    }
+    // LGRandomNumberGeneratorImpl *objcParam_0_objc = (LGRandomNumberGeneratorImpl *)objcParam_0;
+    // if (objcParam_0_objc)
+    // {
+    //     objcParam_0_objc.resolve = resolve;
+    //     objcParam_0_objc.reject = reject;
+    // }
+
     [currentInstanceObj setEncryption:objcParam_0 password:password];
 
+    resolve(@(YES));
 }
 
 /**
