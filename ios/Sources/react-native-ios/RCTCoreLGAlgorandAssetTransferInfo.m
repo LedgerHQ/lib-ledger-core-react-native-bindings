@@ -32,11 +32,11 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
 RCT_REMAP_METHOD(init, initWithAssetId:(nonnull NSString *)assetId
-                                amount:(nonnull NSString *)amount
+                                amount:(nullable NSString *)amount
                       recipientAddress:(nonnull NSString *)recipientAddress
-                          closeAddress:(nonnull NSString *)closeAddress
-                     clawedBackAddress:(nonnull NSString *)clawedBackAddress
-                           closeAmount:(nonnull NSString *)closeAmount withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                          closeAddress:(nullable NSString *)closeAddress
+                     clawedBackAddress:(nullable NSString *)clawedBackAddress
+                           closeAmount:(nullable NSString *)closeAmount withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
 
 
     LGAlgorandAssetTransferInfo * finalResult = [[LGAlgorandAssetTransferInfo alloc] initWithAssetId:assetId amount:amount recipientAddress:recipientAddress closeAddress:closeAddress clawedBackAddress:clawedBackAddress closeAmount:closeAmount];

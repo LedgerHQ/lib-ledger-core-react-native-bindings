@@ -3,6 +3,7 @@
 
 package co.ledger.core;
 
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /** Class representing a Bitcoin account. */
@@ -41,6 +42,9 @@ public abstract class BitcoinLikeAccount {
      * Note: this will return public and change addresses
      */
     public abstract void getAddresses(long from, long to, AddressListCallback callback);
+
+    /** get all contained adresses. */
+    public abstract ArrayList<Address> getAllAddresses();
 
     private static final class CppProxy extends BitcoinLikeAccount
     {
@@ -120,5 +124,13 @@ public abstract class BitcoinLikeAccount {
             native_getAddresses(this.nativeRef, from, to, callback);
         }
         private native void native_getAddresses(long _nativeRef, long from, long to, AddressListCallback callback);
+
+        @Override
+        public ArrayList<Address> getAllAddresses()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getAllAddresses(this.nativeRef);
+        }
+        private native ArrayList<Address> native_getAllAddresses(long _nativeRef);
     }
 }

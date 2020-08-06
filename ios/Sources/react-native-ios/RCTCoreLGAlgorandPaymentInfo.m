@@ -33,8 +33,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 RCT_REMAP_METHOD(init, initWithRecipientAddress:(nonnull NSString *)recipientAddress
                                          amount:(nonnull NSString *)amount
-                                   closeAddress:(nonnull NSString *)closeAddress
-                                    closeAmount:(nonnull NSString *)closeAmount withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                                   closeAddress:(nullable NSString *)closeAddress
+                                    closeAmount:(nullable NSString *)closeAmount withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
 
 
     LGAlgorandPaymentInfo * finalResult = [[LGAlgorandPaymentInfo alloc] initWithRecipientAddress:recipientAddress amount:amount closeAddress:closeAddress closeAmount:closeAmount];

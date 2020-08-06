@@ -31,13 +31,13 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 {
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
-RCT_REMAP_METHOD(init, initWithFrom:(nonnull NSString *)from
-                                 to:(nonnull NSString *)to
-                              value:(nonnull NSString *)value
-                               data:(nonnull NSString *)data
-                                gas:(nonnull NSString *)gas
-                           gasPrice:(nonnull NSString *)gasPrice
-                          amplifier:(nonnull NSNumber *)amplifier withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_REMAP_METHOD(init, initWithFrom:(nullable NSString *)from
+                                 to:(nullable NSString *)to
+                              value:(nullable NSString *)value
+                               data:(nullable NSString *)data
+                                gas:(nullable NSString *)gas
+                           gasPrice:(nullable NSString *)gasPrice
+                          amplifier:(nullable NSNumber *)amplifier withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
 
 
     LGEthereumGasLimitRequest * finalResult = [[LGEthereumGasLimitRequest alloc] initWithFrom:from to:to value:value data:data gas:gas gasPrice:gasPrice amplifier:amplifier];

@@ -141,9 +141,10 @@ public class RCTCorePreferencesBackend extends ReactContextBaseJavaModule {
 
             byte [] javaParam_0 = hexStringToByteArray(key);
 
-            String javaResult = currentInstanceObj.get(javaParam_0);
+            byte[] javaResult = currentInstanceObj.get(javaParam_0);
             WritableNativeMap result = new WritableNativeMap();
-            result.putString("value", javaResult);
+            String finalJavaResult = byteArrayToHexString(javaResult);
+            result.putString("value", finalJavaResult);
 
             promise.resolve(result);
         }

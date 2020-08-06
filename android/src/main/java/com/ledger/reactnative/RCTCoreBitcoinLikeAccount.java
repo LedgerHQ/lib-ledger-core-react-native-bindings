@@ -3,6 +3,7 @@
 
 package com.ledger.reactnative;
 
+import co.ledger.core.Address;
 import co.ledger.core.AddressListCallback;
 import co.ledger.core.BigIntListCallback;
 import co.ledger.core.BitcoinLikeAccount;
@@ -270,6 +271,36 @@ public class RCTCoreBitcoinLikeAccount extends ReactContextBaseJavaModule {
 
             RCTCoreAddressListCallback javaParam_2 = RCTCoreAddressListCallback.initWithPromise(promise, this.reactContext);
             currentInstanceObj.getAddresses(from, to, javaParam_2);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** get all contained adresses. */
+    @ReactMethod
+    public void getAllAddresses(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            BitcoinLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            ArrayList<Address> javaResult = currentInstanceObj.getAllAddresses();
+
+            WritableNativeArray result = new WritableNativeArray();
+            for (Address javaResult_elem : javaResult)
+            {
+                String javaResult_elem_uuid = UUID.randomUUID().toString();
+                RCTCoreAddress rctImpl_javaResult_elem = this.reactContext.getNativeModule(RCTCoreAddress.class);
+                rctImpl_javaResult_elem.getJavaObjects().put(javaResult_elem_uuid, javaResult_elem);
+                WritableNativeMap result_elem = new WritableNativeMap();
+                result_elem.putString("type","RCTCoreAddress");
+                result_elem.putString("uid",javaResult_elem_uuid);
+                result.pushMap(result_elem);
+            }
+
+            promise.resolve(result);
         }
         catch(Exception e)
         {
