@@ -622,8 +622,8 @@ RCT_REMAP_METHOD(asTezosLikeOperation,asTezosLikeOperation:(NSDictionary *)curre
 
 /**
  * Same as isInstanceOfBitcoinLikeOperation for bitcoin.
- * Convert operation as Ethereum operation.
- * @return EthereumLikeOperation object
+ * Convert operation as Stellar operation.
+ * @return StellarLikeOperation object
  */
 RCT_REMAP_METHOD(asStellarLikeOperation,asStellarLikeOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -653,6 +653,44 @@ RCT_REMAP_METHOD(asStellarLikeOperation,asStellarLikeOperation:(NSDictionary *)c
     else
     {
         reject(@"impl_call_error", @"Error while calling LGOperation::asStellarLikeOperation", nil);
+        return;
+    }
+
+}
+
+/**
+ * Same as isInstanceOfBitcoinLikeOperation for bitcoin.
+ * Convert operation as Algorand operation.
+ * @return AlgorandOperation object
+ */
+RCT_REMAP_METHOD(asAlgorandOperation,asAlgorandOperation:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::asAlgorandOperation, first argument should be an instance of LGOperation", nil);
+        return;
+    }
+    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::asAlgorandOperation, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    LGAlgorandOperation * objcResult = [currentInstanceObj asAlgorandOperation];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGAlgorandOperation *rctImpl_objcResult = (RCTCoreLGAlgorandOperation *)[self.bridge moduleForName:@"CoreLGAlgorandOperation"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGAlgorandOperation", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGOperation::asAlgorandOperation", nil);
         return;
     }
 

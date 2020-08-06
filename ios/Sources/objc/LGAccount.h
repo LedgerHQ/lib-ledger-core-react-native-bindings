@@ -4,6 +4,7 @@
 #import "LGTimePeriod.h"
 #import "LGWalletType.h"
 #import <Foundation/Foundation.h>
+@class LGAlgorandAccount;
 @class LGBitcoinLikeAccount;
 @class LGCosmosLikeAccount;
 @class LGEthereumLikeAccount;
@@ -123,6 +124,9 @@ extern NSString * __nonnull const LGAccountEVNEWOPUID;
 
 /** Turn the account into a Tezos one, allowing operations to be performed on the Tezos network. */
 - (nullable LGTezosLikeAccount *)asTezosLikeAccount;
+
+/** Turn the account into an Algorand one, allowing operations to be performed on the Algorand network. */
+- (nullable LGAlgorandAccount *)asAlgorandAccount;
 
 /**
  * Turn the account into a Stellar one, allowing operations to be performerd on the Stellar

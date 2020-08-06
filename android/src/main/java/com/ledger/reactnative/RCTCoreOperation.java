@@ -3,6 +3,7 @@
 
 package com.ledger.reactnative;
 
+import co.ledger.core.AlgorandOperation;
 import co.ledger.core.Amount;
 import co.ledger.core.BitcoinLikeOperation;
 import co.ledger.core.CosmosLikeOperation;
@@ -576,8 +577,8 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
     }
     /**
      * Same as isInstanceOfBitcoinLikeOperation for bitcoin.
-     * Convert operation as Ethereum operation.
-     * @return EthereumLikeOperation object
+     * Convert operation as Stellar operation.
+     * @return StellarLikeOperation object
      */
     @ReactMethod
     public void asStellarLikeOperation(ReadableMap currentInstance, Promise promise) {
@@ -594,6 +595,35 @@ public class RCTCoreOperation extends ReactContextBaseJavaModule {
             rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreStellarLikeOperation");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Same as isInstanceOfBitcoinLikeOperation for bitcoin.
+     * Convert operation as Algorand operation.
+     * @return AlgorandOperation object
+     */
+    @ReactMethod
+    public void asAlgorandOperation(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Operation currentInstanceObj = this.javaObjects.get(sUid);
+
+            AlgorandOperation javaResult = currentInstanceObj.asAlgorandOperation();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreAlgorandOperation rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreAlgorandOperation.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreAlgorandOperation");
             result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);

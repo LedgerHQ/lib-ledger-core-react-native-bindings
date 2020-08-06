@@ -31,6 +31,8 @@ public final class Currency {
 
     /*package*/ final StellarLikeNetworkParameters stellarLikeNetworkParameters;
 
+    /*package*/ final AlgorandNetworkParameters algorandNetworkParameters;
+
     public Currency(
             WalletType walletType,
             String name,
@@ -42,7 +44,8 @@ public final class Currency {
             EthereumLikeNetworkParameters ethereumLikeNetworkParameters,
             RippleLikeNetworkParameters rippleLikeNetworkParameters,
             TezosLikeNetworkParameters tezosLikeNetworkParameters,
-            StellarLikeNetworkParameters stellarLikeNetworkParameters) {
+            StellarLikeNetworkParameters stellarLikeNetworkParameters,
+            AlgorandNetworkParameters algorandNetworkParameters) {
         this.walletType = walletType;
         this.name = name;
         this.bip44CoinType = bip44CoinType;
@@ -54,6 +57,7 @@ public final class Currency {
         this.rippleLikeNetworkParameters = rippleLikeNetworkParameters;
         this.tezosLikeNetworkParameters = tezosLikeNetworkParameters;
         this.stellarLikeNetworkParameters = stellarLikeNetworkParameters;
+        this.algorandNetworkParameters = algorandNetworkParameters;
     }
 
     /** WalletType object defining the type of wallet the currency belongs to. */
@@ -117,6 +121,11 @@ public final class Currency {
         return stellarLikeNetworkParameters;
     }
 
+    /** Optional AlgorandNetworkParameters, for more details refer to AlgorandNetworkParameters doc */
+    public AlgorandNetworkParameters getAlgorandNetworkParameters() {
+        return algorandNetworkParameters;
+    }
+
     @Override
     public String toString() {
         return "Currency{" +
@@ -131,6 +140,7 @@ public final class Currency {
                 "," + "rippleLikeNetworkParameters=" + rippleLikeNetworkParameters +
                 "," + "tezosLikeNetworkParameters=" + tezosLikeNetworkParameters +
                 "," + "stellarLikeNetworkParameters=" + stellarLikeNetworkParameters +
+                "," + "algorandNetworkParameters=" + algorandNetworkParameters +
         "}";
     }
 

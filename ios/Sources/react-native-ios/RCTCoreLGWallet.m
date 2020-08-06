@@ -515,6 +515,37 @@ RCT_REMAP_METHOD(isInstanceOfBitcoinLikeWallet,isInstanceOfBitcoinLikeWallet:(NS
 }
 
 /**
+ * Tell whether wallet is an Algorand one.
+ * @return bool
+ */
+RCT_REMAP_METHOD(isInstanceOfAlgorandLikeWallet,isInstanceOfAlgorandLikeWallet:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGWallet::isInstanceOfAlgorandLikeWallet, first argument should be an instance of LGWallet", nil);
+        return;
+    }
+    LGWallet *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGWallet::isInstanceOfAlgorandLikeWallet, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    BOOL objcResult = [currentInstanceObj isInstanceOfAlgorandLikeWallet];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGWallet::isInstanceOfAlgorandLikeWallet", nil);
+        return;
+    }
+
+}
+
+/**
  * Tell whether wallet is a Cosmos one.
  * @return bool
  */

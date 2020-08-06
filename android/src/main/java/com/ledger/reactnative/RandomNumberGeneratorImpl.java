@@ -1,11 +1,17 @@
 package com.ledger.reactnative;
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.Promise;
 
 import java.util.Random;
 /** Class to generate random numbers */
 public class RandomNumberGeneratorImpl extends co.ledger.core.RandomNumberGenerator {
     private ReactApplicationContext reactContext;
     private Random rand;
+    private Promise promise;
+
+    public void setPromise(Promise _promise) {
+        this.promise = _promise;
+    }
 
     public RandomNumberGeneratorImpl(ReactApplicationContext reactContext) {
         this.reactContext = reactContext;
@@ -45,4 +51,5 @@ public class RandomNumberGeneratorImpl extends co.ledger.core.RandomNumberGenera
     public byte getRandomByte() {
     	return this.getRandomBytes(1)[0];
     }
+
 }

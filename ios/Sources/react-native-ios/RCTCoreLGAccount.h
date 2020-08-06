@@ -3,6 +3,7 @@
 
 #import "LGAccount.h"
 #import "LGAddressListCallback.h"
+#import "LGAlgorandAccount.h"
 #import "LGAmountCallback.h"
 #import "LGAmountListCallback.h"
 #import "LGBitcoinLikeAccount.h"
@@ -22,6 +23,7 @@
 #import "LGWalletType.h"
 #import "RCTCoreBaseModule.h"
 #import "RCTCoreLGAddressListCallback.h"
+#import "RCTCoreLGAlgorandAccount.h"
 #import "RCTCoreLGAmountCallback.h"
 #import "RCTCoreLGAmountListCallback.h"
 #import "RCTCoreLGBitcoinLikeAccount.h"

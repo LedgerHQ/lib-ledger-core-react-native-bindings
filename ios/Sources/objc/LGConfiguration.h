@@ -13,6 +13,8 @@ extern NSString * __nonnull const LGConfigurationKEYCHAINOBSERVABLERANGE;
 extern NSString * __nonnull const LGConfigurationBLOCKCHAINEXPLORERENGINE;
 /** Sets the API endpoint for API based engine (Ledger's API). */
 extern NSString * __nonnull const LGConfigurationBLOCKCHAINEXPLORERAPIENDPOINT;
+/** Sets the API key if one is required */
+extern NSString * __nonnull const LGConfigurationBLOCKCHAINEXPLORERAPIKEY;
 /** Sets the API version. */
 extern NSString * __nonnull const LGConfigurationBLOCKCHAINEXPLORERVERSION;
 /** Sets the API port (e.g. for XRP it is 51234) */

@@ -25,6 +25,8 @@ enum class WalletType : int {
     TEZOS,
     /** A Stellar-like wallet. */
     STELLAR,
+    /** An Algorand-like wallet. */
+    ALGORAND,
 };
  std::string to_string(const WalletType& walletType);
  std::ostream &operator<<(std::ostream &os, const WalletType &o);

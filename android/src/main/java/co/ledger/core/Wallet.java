@@ -103,6 +103,12 @@ public abstract class Wallet {
     public abstract boolean isInstanceOfBitcoinLikeWallet();
 
     /**
+     * Tell whether wallet is an Algorand one.
+     * @return bool
+     */
+    public abstract boolean isInstanceOfAlgorandLikeWallet();
+
+    /**
      * Tell whether wallet is a Cosmos one.
      * @return bool
      */
@@ -321,6 +327,14 @@ public abstract class Wallet {
             return native_isInstanceOfBitcoinLikeWallet(this.nativeRef);
         }
         private native boolean native_isInstanceOfBitcoinLikeWallet(long _nativeRef);
+
+        @Override
+        public boolean isInstanceOfAlgorandLikeWallet()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_isInstanceOfAlgorandLikeWallet(this.nativeRef);
+        }
+        private native boolean native_isInstanceOfAlgorandLikeWallet(long _nativeRef);
 
         @Override
         public boolean isInstanceOfCosmosLikeWallet()

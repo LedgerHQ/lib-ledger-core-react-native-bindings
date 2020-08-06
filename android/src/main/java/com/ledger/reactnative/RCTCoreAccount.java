@@ -5,6 +5,7 @@ package com.ledger.reactnative;
 
 import co.ledger.core.Account;
 import co.ledger.core.AddressListCallback;
+import co.ledger.core.AlgorandAccount;
 import co.ledger.core.AmountCallback;
 import co.ledger.core.AmountListCallback;
 import co.ledger.core.BitcoinLikeAccount;
@@ -475,6 +476,31 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
             WritableNativeMap result = new WritableNativeMap();
             result.putString("type","RCTCoreTezosLikeAccount");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Turn the account into an Algorand one, allowing operations to be performed on the Algorand network. */
+    @ReactMethod
+    public void asAlgorandAccount(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            Account currentInstanceObj = this.javaObjects.get(sUid);
+
+            AlgorandAccount javaResult = currentInstanceObj.asAlgorandAccount();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreAlgorandAccount rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreAlgorandAccount.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreAlgorandAccount");
             result.putString("uid",javaResult_uuid);
 
             promise.resolve(result);

@@ -17,6 +17,7 @@
                rippleLikeNetworkParameters:(nullable LGRippleLikeNetworkParameters *)rippleLikeNetworkParameters
                 tezosLikeNetworkParameters:(nullable LGTezosLikeNetworkParameters *)tezosLikeNetworkParameters
               stellarLikeNetworkParameters:(nullable LGStellarLikeNetworkParameters *)stellarLikeNetworkParameters
+                 algorandNetworkParameters:(nullable LGAlgorandNetworkParameters *)algorandNetworkParameters
 {
     if (self = [super init]) {
         _walletType = walletType;
@@ -30,6 +31,7 @@
         _rippleLikeNetworkParameters = rippleLikeNetworkParameters;
         _tezosLikeNetworkParameters = tezosLikeNetworkParameters;
         _stellarLikeNetworkParameters = stellarLikeNetworkParameters;
+        _algorandNetworkParameters = algorandNetworkParameters;
     }
     return self;
 }
@@ -45,6 +47,7 @@
                    rippleLikeNetworkParameters:(nullable LGRippleLikeNetworkParameters *)rippleLikeNetworkParameters
                     tezosLikeNetworkParameters:(nullable LGTezosLikeNetworkParameters *)tezosLikeNetworkParameters
                   stellarLikeNetworkParameters:(nullable LGStellarLikeNetworkParameters *)stellarLikeNetworkParameters
+                     algorandNetworkParameters:(nullable LGAlgorandNetworkParameters *)algorandNetworkParameters
 {
     return [[self alloc] initWithWalletType:walletType
                                        name:name
@@ -56,12 +59,13 @@
               ethereumLikeNetworkParameters:ethereumLikeNetworkParameters
                 rippleLikeNetworkParameters:rippleLikeNetworkParameters
                  tezosLikeNetworkParameters:tezosLikeNetworkParameters
-               stellarLikeNetworkParameters:stellarLikeNetworkParameters];
+               stellarLikeNetworkParameters:stellarLikeNetworkParameters
+                  algorandNetworkParameters:algorandNetworkParameters];
 }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ %p walletType:%@ name:%@ bip44CoinType:%@ paymentUriScheme:%@ units:%@ bitcoinLikeNetworkParameters:%@ cosmosLikeNetworkParameters:%@ ethereumLikeNetworkParameters:%@ rippleLikeNetworkParameters:%@ tezosLikeNetworkParameters:%@ stellarLikeNetworkParameters:%@>", self.class, (void *)self, @(self.walletType), self.name, @(self.bip44CoinType), self.paymentUriScheme, self.units, self.bitcoinLikeNetworkParameters, self.cosmosLikeNetworkParameters, self.ethereumLikeNetworkParameters, self.rippleLikeNetworkParameters, self.tezosLikeNetworkParameters, self.stellarLikeNetworkParameters];
+    return [NSString stringWithFormat:@"<%@ %p walletType:%@ name:%@ bip44CoinType:%@ paymentUriScheme:%@ units:%@ bitcoinLikeNetworkParameters:%@ cosmosLikeNetworkParameters:%@ ethereumLikeNetworkParameters:%@ rippleLikeNetworkParameters:%@ tezosLikeNetworkParameters:%@ stellarLikeNetworkParameters:%@ algorandNetworkParameters:%@>", self.class, (void *)self, @(self.walletType), self.name, @(self.bip44CoinType), self.paymentUriScheme, self.units, self.bitcoinLikeNetworkParameters, self.cosmosLikeNetworkParameters, self.ethereumLikeNetworkParameters, self.rippleLikeNetworkParameters, self.tezosLikeNetworkParameters, self.stellarLikeNetworkParameters, self.algorandNetworkParameters];
 }
 
 @end
