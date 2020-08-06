@@ -32,9 +32,9 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
 RCT_REMAP_METHOD(init, initWithMoniker:(nonnull NSString *)moniker
-                              identity:(nonnull NSString *)identity
-                               website:(nonnull NSString *)website
-                               details:(nonnull NSString *)details withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                              identity:(nullable NSString *)identity
+                               website:(nullable NSString *)website
+                               details:(nullable NSString *)details withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
 
 
     LGCosmosLikeValidatorDescription * finalResult = [[LGCosmosLikeValidatorDescription alloc] initWithMoniker:moniker identity:identity website:website details:details];

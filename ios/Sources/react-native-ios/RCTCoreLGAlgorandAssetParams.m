@@ -31,19 +31,19 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 {
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
-RCT_REMAP_METHOD(init, initWithAssetId:(nonnull NSString *)assetId
-                             assetName:(nonnull NSString *)assetName
-                              unitName:(nonnull NSString *)unitName
-                                   url:(nonnull NSString *)url
-                         defaultFrozen:(nonnull NSNumber *)defaultFrozen
-                                 total:(nonnull NSString *)total
-                              decimals:(nonnull NSNumber *)decimals
-                        creatorAddress:(nonnull NSString *)creatorAddress
-                        managerAddress:(nonnull NSString *)managerAddress
-                         freezeAddress:(nonnull NSString *)freezeAddress
-                       clawbackAddress:(nonnull NSString *)clawbackAddress
-                        reserveAddress:(nonnull NSString *)reserveAddress
-                          metadataHash:(nonnull NSString *)metadataHash withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_REMAP_METHOD(init, initWithAssetId:(nullable NSString *)assetId
+                             assetName:(nullable NSString *)assetName
+                              unitName:(nullable NSString *)unitName
+                                   url:(nullable NSString *)url
+                         defaultFrozen:(nullable NSNumber *)defaultFrozen
+                                 total:(nullable NSString *)total
+                              decimals:(nullable NSNumber *)decimals
+                        creatorAddress:(nullable NSString *)creatorAddress
+                        managerAddress:(nullable NSString *)managerAddress
+                         freezeAddress:(nullable NSString *)freezeAddress
+                       clawbackAddress:(nullable NSString *)clawbackAddress
+                        reserveAddress:(nullable NSString *)reserveAddress
+                          metadataHash:(nullable NSString *)metadataHash withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
 
 
     LGAlgorandAssetParams * finalResult = [[LGAlgorandAssetParams alloc] initWithAssetId:assetId assetName:assetName unitName:unitName url:url defaultFrozen:defaultFrozen total:total decimals:decimals creatorAddress:creatorAddress managerAddress:managerAddress freezeAddress:freezeAddress clawbackAddress:clawbackAddress reserveAddress:reserveAddress metadataHash:metadataHash];

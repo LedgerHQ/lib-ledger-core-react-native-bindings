@@ -14,7 +14,7 @@
  * @param key The data key.
  * @return The value associated to the key if it exists, an empty option otherwise.
  */
-- (nullable NSString *)get:(nonnull NSData *)key;
+- (nullable NSData *)get:(nonnull NSData *)key;
 
 /**
  * Commit a change.

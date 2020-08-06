@@ -13,7 +13,7 @@ public abstract class PreferencesBackend {
      * @param key The data key.
      * @return The value associated to the key if it exists, an empty option otherwise.
      */
-    public abstract String get(byte[] key);
+    public abstract byte[] get(byte[] key);
 
     /**
      * Commit a change.
@@ -84,12 +84,12 @@ public abstract class PreferencesBackend {
         }
 
         @Override
-        public String get(byte[] key)
+        public byte[] get(byte[] key)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
             return native_get(this.nativeRef, key);
         }
-        private native String native_get(long _nativeRef, byte[] key);
+        private native byte[] native_get(long _nativeRef, byte[] key);
 
         @Override
         public boolean commit(ArrayList<PreferencesChange> changes)

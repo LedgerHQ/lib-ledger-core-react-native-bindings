@@ -32,10 +32,10 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     return self;
 }
 
-- (nullable NSString *)get:(nonnull NSData *)key {
+- (nullable NSData *)get:(nonnull NSData *)key {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->get(::djinni::Binary::toCpp(key));
-        return ::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(objcpp_result_);
+        return ::djinni::Optional<std::experimental::optional, ::djinni::Binary>::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

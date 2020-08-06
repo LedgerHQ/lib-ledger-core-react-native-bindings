@@ -35,7 +35,7 @@ RCT_REMAP_METHOD(init, initWithUtxo:(NSArray <NSDictionary *> *)utxo
                             outputs:(NSArray <NSDictionary *> *)outputs
                            baseFees:(nullable NSDictionary *)baseFees
                           totalFees:(nullable NSDictionary *)totalFees
-                           lockTime:(nonnull NSNumber *)lockTime withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                           lockTime:(nullable NSNumber *)lockTime withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSMutableDictionary *implementationsData = [[NSMutableDictionary alloc] init];
     NSMutableArray *field_0 = [[NSMutableArray alloc] init];
 

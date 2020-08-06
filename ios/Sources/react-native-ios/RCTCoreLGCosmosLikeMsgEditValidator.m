@@ -33,8 +33,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 RCT_REMAP_METHOD(init, initWithDescr:(nullable NSDictionary *)descr
                     validatorAddress:(nonnull NSString *)validatorAddress
-                      commissionRate:(nonnull NSString *)commissionRate
-                   minSelfDelegation:(nonnull NSString *)minSelfDelegation withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                      commissionRate:(nullable NSString *)commissionRate
+                   minSelfDelegation:(nullable NSString *)minSelfDelegation withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSMutableDictionary *implementationsData = [[NSMutableDictionary alloc] init];
     RCTCoreLGCosmosLikeValidatorDescription *rctParam_descr = (RCTCoreLGCosmosLikeValidatorDescription *)[self.bridge moduleForName:@"CoreLGCosmosLikeValidatorDescription"];
     LGCosmosLikeValidatorDescription *field_0 = (LGCosmosLikeValidatorDescription *)[rctParam_descr.objcImplementations objectForKey:descr[@"uid"]];

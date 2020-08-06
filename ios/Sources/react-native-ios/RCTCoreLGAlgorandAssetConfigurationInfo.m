@@ -31,7 +31,7 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 {
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
-RCT_REMAP_METHOD(init, initWithAssetId:(nonnull NSString *)assetId
+RCT_REMAP_METHOD(init, initWithAssetId:(nullable NSString *)assetId
                            assetParams:(nullable NSDictionary *)assetParams withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSMutableDictionary *implementationsData = [[NSMutableDictionary alloc] init];
     RCTCoreLGAlgorandAssetParams *rctParam_assetParams = (RCTCoreLGAlgorandAssetParams *)[self.bridge moduleForName:@"CoreLGAlgorandAssetParams"];

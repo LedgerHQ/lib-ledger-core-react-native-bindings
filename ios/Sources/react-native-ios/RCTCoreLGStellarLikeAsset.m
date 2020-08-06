@@ -32,8 +32,8 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
 RCT_REMAP_METHOD(init, initWithType:(nonnull NSString *)type
-                               code:(nonnull NSString *)code
-                             issuer:(nonnull NSString *)issuer withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                               code:(nullable NSString *)code
+                             issuer:(nullable NSString *)issuer withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
 
 
     LGStellarLikeAsset * finalResult = [[LGStellarLikeAsset alloc] initWithType:type code:code issuer:issuer];

@@ -143,7 +143,7 @@ RCT_REMAP_METHOD(broadcastTransaction,broadcastTransaction:(NSDictionary *)curre
 
 }
 
-RCT_REMAP_METHOD(buildTransaction,buildTransaction:(NSDictionary *)currentInstance withParams:(nonnull NSNumber *)partial withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_REMAP_METHOD(buildTransaction,buildTransaction:(NSDictionary *)currentInstance withParams:(nullable NSNumber *)partial withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::buildTransaction, first argument should be an instance of LGBitcoinLikeAccount", nil);
@@ -221,6 +221,45 @@ RCT_REMAP_METHOD(getAddresses,getAddresses:(NSDictionary *)currentInstance withP
     }
     RCTCoreLGAddressListCallback *objcParam_2 = [[RCTCoreLGAddressListCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
     [currentInstanceObj getAddresses:from to:to callback:objcParam_2];
+
+}
+
+/** get all contained adresses. */
+RCT_REMAP_METHOD(getAllAddresses,getAllAddresses:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::getAllAddresses, first argument should be an instance of LGBitcoinLikeAccount", nil);
+        return;
+    }
+    LGBitcoinLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAccount::getAllAddresses, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSArray<LGAddress *> * objcResult = [currentInstanceObj getAllAddresses];
+
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (id objcResult_elem in objcResult)
+    {
+        NSString *objcResult_elem_uuid = [[NSUUID UUID] UUIDString];
+        RCTCoreLGAddress *rctImpl_objcResult_elem = (RCTCoreLGAddress *)[self.bridge moduleForName:@"CoreLGAddress"];
+        NSArray *objcResult_elem_array = [[NSArray alloc] initWithObjects:objcResult_elem, objcResult_elem_uuid, nil];
+        [rctImpl_objcResult_elem baseSetObject:objcResult_elem_array];
+        NSDictionary *result_elem = @{@"type" : @"CoreLGAddress", @"uid" : objcResult_elem_uuid };
+        [result addObject:result_elem];
+    }
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGBitcoinLikeAccount::getAllAddresses", nil);
+        return;
+    }
 
 }
 @end

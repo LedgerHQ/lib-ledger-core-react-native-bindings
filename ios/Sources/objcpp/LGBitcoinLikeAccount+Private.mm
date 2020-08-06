@@ -6,6 +6,7 @@
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
 #import "DJIMarshal+Private.h"
+#import "LGAddress+Private.h"
 #import "LGAddressListCallback+Private.h"
 #import "LGBigIntListCallback+Private.h"
 #import "LGBitcoinLikeOutputListCallback+Private.h"
@@ -89,6 +90,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
         _cppRefHandle.get()->getAddresses(::djinni::I64::toCpp(from),
                                           ::djinni::I64::toCpp(to),
                                           ::djinni_generated::AddressListCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nonnull NSArray<LGAddress *> *)getAllAddresses {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getAllAddresses();
+        return ::djinni::List<::djinni_generated::Address>::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

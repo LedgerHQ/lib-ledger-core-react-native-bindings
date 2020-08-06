@@ -36,7 +36,7 @@ RCT_REMAP_METHOD(init, initWithValidatorDetails:(NSDictionary *)validatorDetails
                                        distInfo:(NSDictionary *)distInfo
                                        signInfo:(NSDictionary *)signInfo
                                 unbondingHeight:(int)unbondingHeight
-                                  unbondingTime:(nonnull NSDate *)unbondingTime
+                                  unbondingTime:(nullable NSDate *)unbondingTime
                               minSelfDelegation:(nonnull NSString *)minSelfDelegation
                                          jailed:(BOOL)jailed
                                     votingPower:(nonnull NSString *)votingPower
