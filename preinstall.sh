@@ -6,8 +6,8 @@
 #                              Preinstall script
 #
 
-LIB_CORE_VERSION="3.4.1-rc-210a68"
-BASE_URL="https://s3-eu-west-1.amazonaws.com/ledger-lib-ledger-core/int-algorand-libcorev1/release"
+LIB_CORE_VERSION="3.4.1-rc-2aaeab"
+BASE_URL="https://s3-eu-west-1.amazonaws.com/ledger-lib-ledger-core"
 
 function main() {
   #  lib file                             architecture            destination       arch override
