@@ -26,7 +26,7 @@ public abstract class BitcoinLikeAccount {
 
     public abstract void broadcastTransaction(BitcoinLikeTransaction transaction, StringCallback callback);
 
-    public abstract BitcoinLikeTransactionBuilder buildTransaction(Boolean partial);
+    public abstract BitcoinLikeTransactionBuilder buildTransaction(boolean partial);
 
     /**
      * Get fees from network, fees are ordered in descending order (i.e. fastest to slowest confirmation)
@@ -102,12 +102,12 @@ public abstract class BitcoinLikeAccount {
         private native void native_broadcastTransaction(long _nativeRef, BitcoinLikeTransaction transaction, StringCallback callback);
 
         @Override
-        public BitcoinLikeTransactionBuilder buildTransaction(Boolean partial)
+        public BitcoinLikeTransactionBuilder buildTransaction(boolean partial)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
             return native_buildTransaction(this.nativeRef, partial);
         }
-        private native BitcoinLikeTransactionBuilder native_buildTransaction(long _nativeRef, Boolean partial);
+        private native BitcoinLikeTransactionBuilder native_buildTransaction(long _nativeRef, boolean partial);
 
         @Override
         public void getFees(BigIntListCallback callback)

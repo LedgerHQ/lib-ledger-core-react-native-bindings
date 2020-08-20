@@ -146,11 +146,11 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 
 + (nullable LGBitcoinLikeTransaction *)parseRawUnsignedTransaction:(nonnull LGCurrency *)currency
                                                     rawTransaction:(nonnull NSData *)rawTransaction
-                                                currentBlockHeight:(nullable NSNumber *)currentBlockHeight {
+                                                currentBlockHeight:(int32_t)currentBlockHeight {
     try {
         auto objcpp_result_ = ::ledger::core::api::BitcoinLikeTransactionBuilder::parseRawUnsignedTransaction(::djinni_generated::Currency::toCpp(currency),
                                                                                                               ::djinni::Binary::toCpp(rawTransaction),
-                                                                                                              ::djinni::Optional<std::experimental::optional, ::djinni::I32>::toCpp(currentBlockHeight));
+                                                                                                              ::djinni::I32::toCpp(currentBlockHeight));
         return ::djinni_generated::BitcoinLikeTransaction::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

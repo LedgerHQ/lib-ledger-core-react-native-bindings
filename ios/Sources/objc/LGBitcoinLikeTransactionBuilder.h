@@ -115,6 +115,6 @@
  */
 + (nullable LGBitcoinLikeTransaction *)parseRawUnsignedTransaction:(nonnull LGCurrency *)currency
                                                     rawTransaction:(nonnull NSData *)rawTransaction
-                                                currentBlockHeight:(nullable NSNumber *)currentBlockHeight;
+                                                currentBlockHeight:(int32_t)currentBlockHeight;
 
 @end

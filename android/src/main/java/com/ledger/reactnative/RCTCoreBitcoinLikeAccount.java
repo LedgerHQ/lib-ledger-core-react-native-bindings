@@ -211,7 +211,7 @@ public class RCTCoreBitcoinLikeAccount extends ReactContextBaseJavaModule {
         }
     }
     @ReactMethod
-    public void buildTransaction(ReadableMap currentInstance, Boolean partial, Promise promise) {
+    public void buildTransaction(ReadableMap currentInstance, boolean partial, Promise promise) {
         try
         {
             String sUid = currentInstance.getString("uid");
