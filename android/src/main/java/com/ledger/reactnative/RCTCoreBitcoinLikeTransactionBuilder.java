@@ -534,7 +534,7 @@ public class RCTCoreBitcoinLikeTransactionBuilder extends ReactContextBaseJavaMo
      * parsing a tx might change depending on block height we are on (if an update is effective starting from a given hight)
      */
     @ReactMethod
-    public void parseRawUnsignedTransaction(ReadableMap currency, String rawTransaction, Integer currentBlockHeight, Promise promise) {
+    public void parseRawUnsignedTransaction(ReadableMap currency, String rawTransaction, int currentBlockHeight, Promise promise) {
         try
         {
             RCTCoreCurrency rctParam_currency = this.reactContext.getNativeModule(RCTCoreCurrency.class);

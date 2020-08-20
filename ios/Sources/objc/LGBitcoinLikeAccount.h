@@ -37,7 +37,7 @@
 - (void)broadcastTransaction:(nullable LGBitcoinLikeTransaction *)transaction
                     callback:(nullable id<LGStringCallback>)callback;
 
-- (nullable LGBitcoinLikeTransactionBuilder *)buildTransaction:(nullable NSNumber *)partial;
+- (nullable LGBitcoinLikeTransactionBuilder *)buildTransaction:(BOOL)partial;
 
 /**
  * Get fees from network, fees are ordered in descending order (i.e. fastest to slowest confirmation)
