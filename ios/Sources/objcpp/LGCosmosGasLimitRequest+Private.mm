@@ -13,14 +13,14 @@ auto CosmosGasLimitRequest::toCpp(ObjcType obj) -> CppType
     assert(obj);
     return {::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.memo),
             ::djinni::List<::djinni_generated::CosmosLikeMessage>::toCpp(obj.messages),
-            ::djinni::Optional<std::experimental::optional, ::djinni::F64>::toCpp(obj.amplifier)};
+            ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.amplifier)};
 }
 
 auto CosmosGasLimitRequest::fromCpp(const CppType& cpp) -> ObjcType
 {
     return [[LGCosmosGasLimitRequest alloc] initWithMemo:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.memo))
                                                 messages:(::djinni::List<::djinni_generated::CosmosLikeMessage>::fromCpp(cpp.messages))
-                                               amplifier:(::djinni::Optional<std::experimental::optional, ::djinni::F64>::fromCpp(cpp.amplifier))];
+                                               amplifier:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.amplifier))];
 }
 
 }  // namespace djinni_generated

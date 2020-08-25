@@ -37,7 +37,7 @@ RCT_REMAP_METHOD(init, initWithFrom:(nullable NSString *)from
                                data:(nullable NSString *)data
                                 gas:(nullable NSString *)gas
                            gasPrice:(nullable NSString *)gasPrice
-                          amplifier:(nullable NSNumber *)amplifier withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                          amplifier:(nullable NSString *)amplifier withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
 
 
     LGEthereumGasLimitRequest * finalResult = [[LGEthereumGasLimitRequest alloc] initWithFrom:from to:to value:value data:data gas:gas gasPrice:gasPrice amplifier:amplifier];

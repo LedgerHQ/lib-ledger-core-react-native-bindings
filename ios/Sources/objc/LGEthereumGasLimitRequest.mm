@@ -12,7 +12,7 @@
                                 data:(nullable NSString *)data
                                  gas:(nullable NSString *)gas
                             gasPrice:(nullable NSString *)gasPrice
-                           amplifier:(nullable NSNumber *)amplifier
+                           amplifier:(nullable NSString *)amplifier
 {
     if (self = [super init]) {
         _from = [from copy];
@@ -21,7 +21,7 @@
         _data = [data copy];
         _gas = [gas copy];
         _gasPrice = [gasPrice copy];
-        _amplifier = amplifier;
+        _amplifier = [amplifier copy];
     }
     return self;
 }
@@ -32,7 +32,7 @@
                                                    data:(nullable NSString *)data
                                                     gas:(nullable NSString *)gas
                                                gasPrice:(nullable NSString *)gasPrice
-                                              amplifier:(nullable NSNumber *)amplifier
+                                              amplifier:(nullable NSString *)amplifier
 {
     return [[self alloc] initWithFrom:from
                                    to:to

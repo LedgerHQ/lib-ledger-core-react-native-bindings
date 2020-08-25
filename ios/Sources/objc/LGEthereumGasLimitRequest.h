@@ -11,14 +11,14 @@
                                 data:(nullable NSString *)data
                                  gas:(nullable NSString *)gas
                             gasPrice:(nullable NSString *)gasPrice
-                           amplifier:(nullable NSNumber *)amplifier;
+                           amplifier:(nullable NSString *)amplifier;
 + (nonnull instancetype)EthereumGasLimitRequestWithFrom:(nullable NSString *)from
                                                      to:(nullable NSString *)to
                                                   value:(nullable NSString *)value
                                                    data:(nullable NSString *)data
                                                     gas:(nullable NSString *)gas
                                                gasPrice:(nullable NSString *)gasPrice
-                                              amplifier:(nullable NSNumber *)amplifier;
+                                              amplifier:(nullable NSString *)amplifier;
 
 /** From address used in the contract transaction */
 @property (nonatomic, readonly, nullable) NSString * from;
@@ -39,6 +39,6 @@
 @property (nonatomic, readonly, nullable) NSString * gasPrice;
 
 /** Amplifier coefficient for safety */
-@property (nonatomic, readonly, nullable) NSNumber * amplifier;
+@property (nonatomic, readonly, nullable) NSString * amplifier;
 
 @end

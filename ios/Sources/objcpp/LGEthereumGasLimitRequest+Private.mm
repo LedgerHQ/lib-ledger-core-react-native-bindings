@@ -16,7 +16,7 @@ auto EthereumGasLimitRequest::toCpp(ObjcType obj) -> CppType
             ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.data),
             ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.gas),
             ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.gasPrice),
-            ::djinni::Optional<std::experimental::optional, ::djinni::F64>::toCpp(obj.amplifier)};
+            ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.amplifier)};
 }
 
 auto EthereumGasLimitRequest::fromCpp(const CppType& cpp) -> ObjcType
@@ -27,7 +27,7 @@ auto EthereumGasLimitRequest::fromCpp(const CppType& cpp) -> ObjcType
                                                       data:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.data))
                                                        gas:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.gas))
                                                   gasPrice:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.gasPrice))
-                                                 amplifier:(::djinni::Optional<std::experimental::optional, ::djinni::F64>::fromCpp(cpp.amplifier))];
+                                                 amplifier:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.amplifier))];
 }
 
 }  // namespace djinni_generated

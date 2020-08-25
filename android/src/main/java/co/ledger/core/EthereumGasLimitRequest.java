@@ -19,7 +19,7 @@ public final class EthereumGasLimitRequest {
 
     /*package*/ final String gasPrice;
 
-    /*package*/ final Double amplifier;
+    /*package*/ final String amplifier;
 
     public EthereumGasLimitRequest(
             String from,
@@ -28,7 +28,7 @@ public final class EthereumGasLimitRequest {
             String data,
             String gas,
             String gasPrice,
-            Double amplifier) {
+            String amplifier) {
         this.from = from;
         this.to = to;
         this.value = value;
@@ -69,7 +69,7 @@ public final class EthereumGasLimitRequest {
     }
 
     /** Amplifier coefficient for safety */
-    public Double getAmplifier() {
+    public String getAmplifier() {
         return amplifier;
     }
 

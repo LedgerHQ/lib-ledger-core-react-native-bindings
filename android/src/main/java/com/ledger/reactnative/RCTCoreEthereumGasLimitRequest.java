@@ -100,7 +100,7 @@ public class RCTCoreEthereumGasLimitRequest extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void init(String from, String to, String value, String data, String gas, String gasPrice, Double amplifier, Promise promise) {
+    public void init(String from, String to, String value, String data, String gas, String gasPrice, String amplifier, Promise promise) {
         EthereumGasLimitRequest javaResult = new EthereumGasLimitRequest(from, to, value, data, gas, gasPrice, amplifier);
 
         String uuid = UUID.randomUUID().toString();
@@ -225,9 +225,9 @@ public class RCTCoreEthereumGasLimitRequest extends ReactContextBaseJavaModule {
         if (uid.length() > 0)
         {
             EthereumGasLimitRequest javaObj = this.javaObjects.get(uid);
-            Double result = javaObj.getAmplifier();
+            String result = javaObj.getAmplifier();
             WritableNativeMap resultMap = new WritableNativeMap();
-            resultMap.putDouble("value", result);
+            resultMap.putString("value", result);
             promise.resolve(resultMap);
         }
         else

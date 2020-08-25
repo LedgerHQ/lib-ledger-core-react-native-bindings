@@ -33,7 +33,7 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 }
 RCT_REMAP_METHOD(init, initWithMemo:(nullable NSString *)memo
                            messages:(NSArray <NSDictionary *> *)messages
-                          amplifier:(nullable NSNumber *)amplifier withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                          amplifier:(nullable NSString *)amplifier withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSMutableDictionary *implementationsData = [[NSMutableDictionary alloc] init];
     NSMutableArray *field_1 = [[NSMutableArray alloc] init];
 

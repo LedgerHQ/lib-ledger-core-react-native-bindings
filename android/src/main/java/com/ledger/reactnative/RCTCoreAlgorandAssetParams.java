@@ -99,7 +99,7 @@ public class RCTCoreAlgorandAssetParams extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void init(String assetId, String assetName, String unitName, String url, Boolean defaultFrozen, String total, Integer decimals, String creatorAddress, String managerAddress, String freezeAddress, String clawbackAddress, String reserveAddress, String metadataHash, Promise promise) {
+    public void init(String assetId, String assetName, String unitName, String url, boolean defaultFrozen, String total, String decimals, String creatorAddress, String managerAddress, String freezeAddress, String clawbackAddress, String reserveAddress, String metadataHash, Promise promise) {
         AlgorandAssetParams javaResult = new AlgorandAssetParams(assetId, assetName, unitName, url, defaultFrozen, total, decimals, creatorAddress, managerAddress, freezeAddress, clawbackAddress, reserveAddress, metadataHash);
 
         String uuid = UUID.randomUUID().toString();
@@ -188,7 +188,7 @@ public class RCTCoreAlgorandAssetParams extends ReactContextBaseJavaModule {
         if (uid.length() > 0)
         {
             AlgorandAssetParams javaObj = this.javaObjects.get(uid);
-            Boolean result = javaObj.getDefaultFrozen();
+            boolean result = javaObj.getDefaultFrozen();
             WritableNativeMap resultMap = new WritableNativeMap();
             resultMap.putBoolean("value", result);
             promise.resolve(resultMap);
@@ -224,9 +224,9 @@ public class RCTCoreAlgorandAssetParams extends ReactContextBaseJavaModule {
         if (uid.length() > 0)
         {
             AlgorandAssetParams javaObj = this.javaObjects.get(uid);
-            Integer result = javaObj.getDecimals();
+            String result = javaObj.getDecimals();
             WritableNativeMap resultMap = new WritableNativeMap();
-            resultMap.putInt("value", result);
+            resultMap.putString("value", result);
             promise.resolve(resultMap);
         }
         else

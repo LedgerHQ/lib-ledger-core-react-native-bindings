@@ -8,9 +8,9 @@
                               assetName:(nullable NSString *)assetName
                                unitName:(nullable NSString *)unitName
                                     url:(nullable NSString *)url
-                          defaultFrozen:(nullable NSNumber *)defaultFrozen
+                          defaultFrozen:(BOOL)defaultFrozen
                                   total:(nullable NSString *)total
-                               decimals:(nullable NSNumber *)decimals
+                               decimals:(nullable NSString *)decimals
                          creatorAddress:(nullable NSString *)creatorAddress
                          managerAddress:(nullable NSString *)managerAddress
                           freezeAddress:(nullable NSString *)freezeAddress
@@ -21,9 +21,9 @@
                                              assetName:(nullable NSString *)assetName
                                               unitName:(nullable NSString *)unitName
                                                    url:(nullable NSString *)url
-                                         defaultFrozen:(nullable NSNumber *)defaultFrozen
+                                         defaultFrozen:(BOOL)defaultFrozen
                                                  total:(nullable NSString *)total
-                                              decimals:(nullable NSNumber *)decimals
+                                              decimals:(nullable NSString *)decimals
                                         creatorAddress:(nullable NSString *)creatorAddress
                                         managerAddress:(nullable NSString *)managerAddress
                                          freezeAddress:(nullable NSString *)freezeAddress
@@ -44,13 +44,13 @@
 @property (nonatomic, readonly, nullable) NSString * url;
 
 /** Specifies whether holdings in this asset are frozen by default */
-@property (nonatomic, readonly, nullable) NSNumber * defaultFrozen;
+@property (nonatomic, readonly) BOOL defaultFrozen;
 
 /** The total number of units of this asset */
 @property (nonatomic, readonly, nullable) NSString * total;
 
 /** The number of digits to use after the decimal point when displaying this asset */
-@property (nonatomic, readonly, nullable) NSNumber * decimals;
+@property (nonatomic, readonly, nullable) NSString * decimals;
 
 /** The address that created this asset. */
 @property (nonatomic, readonly, nullable) NSString * creatorAddress;

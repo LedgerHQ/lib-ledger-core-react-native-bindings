@@ -10,9 +10,9 @@
                               assetName:(nullable NSString *)assetName
                                unitName:(nullable NSString *)unitName
                                     url:(nullable NSString *)url
-                          defaultFrozen:(nullable NSNumber *)defaultFrozen
+                          defaultFrozen:(BOOL)defaultFrozen
                                   total:(nullable NSString *)total
-                               decimals:(nullable NSNumber *)decimals
+                               decimals:(nullable NSString *)decimals
                          creatorAddress:(nullable NSString *)creatorAddress
                          managerAddress:(nullable NSString *)managerAddress
                           freezeAddress:(nullable NSString *)freezeAddress
@@ -27,7 +27,7 @@
         _url = [url copy];
         _defaultFrozen = defaultFrozen;
         _total = [total copy];
-        _decimals = decimals;
+        _decimals = [decimals copy];
         _creatorAddress = [creatorAddress copy];
         _managerAddress = [managerAddress copy];
         _freezeAddress = [freezeAddress copy];
@@ -42,9 +42,9 @@
                                              assetName:(nullable NSString *)assetName
                                               unitName:(nullable NSString *)unitName
                                                    url:(nullable NSString *)url
-                                         defaultFrozen:(nullable NSNumber *)defaultFrozen
+                                         defaultFrozen:(BOOL)defaultFrozen
                                                  total:(nullable NSString *)total
-                                              decimals:(nullable NSNumber *)decimals
+                                              decimals:(nullable NSString *)decimals
                                         creatorAddress:(nullable NSString *)creatorAddress
                                         managerAddress:(nullable NSString *)managerAddress
                                          freezeAddress:(nullable NSString *)freezeAddress
@@ -69,7 +69,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ %p assetId:%@ assetName:%@ unitName:%@ url:%@ defaultFrozen:%@ total:%@ decimals:%@ creatorAddress:%@ managerAddress:%@ freezeAddress:%@ clawbackAddress:%@ reserveAddress:%@ metadataHash:%@>", self.class, (void *)self, self.assetId, self.assetName, self.unitName, self.url, self.defaultFrozen, self.total, self.decimals, self.creatorAddress, self.managerAddress, self.freezeAddress, self.clawbackAddress, self.reserveAddress, self.metadataHash];
+    return [NSString stringWithFormat:@"<%@ %p assetId:%@ assetName:%@ unitName:%@ url:%@ defaultFrozen:%@ total:%@ decimals:%@ creatorAddress:%@ managerAddress:%@ freezeAddress:%@ clawbackAddress:%@ reserveAddress:%@ metadataHash:%@>", self.class, (void *)self, self.assetId, self.assetName, self.unitName, self.url, @(self.defaultFrozen), self.total, self.decimals, self.creatorAddress, self.managerAddress, self.freezeAddress, self.clawbackAddress, self.reserveAddress, self.metadataHash];
 }
 
 @end
