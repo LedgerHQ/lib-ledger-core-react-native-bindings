@@ -103,7 +103,7 @@ public class RCTCoreCosmosGasLimitRequest extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void init(String memo, ReadableArray messages, Double amplifier, Promise promise) {
+    public void init(String memo, ReadableArray messages, String amplifier, Promise promise) {
         WritableNativeMap implementationsData = new WritableNativeMap();
         ArrayList<CosmosLikeMessage> javaParam_1 = new ArrayList<CosmosLikeMessage>();
         WritableNativeArray javaParam_1_data = new WritableNativeArray();
@@ -200,9 +200,9 @@ public class RCTCoreCosmosGasLimitRequest extends ReactContextBaseJavaModule {
         if (uid.length() > 0)
         {
             CosmosGasLimitRequest javaObj = this.javaObjects.get(uid);
-            Double result = javaObj.getAmplifier();
+            String result = javaObj.getAmplifier();
             WritableNativeMap resultMap = new WritableNativeMap();
-            resultMap.putDouble("value", result);
+            resultMap.putString("value", result);
             promise.resolve(resultMap);
         }
         else

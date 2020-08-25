@@ -8,19 +8,19 @@
 
 - (nonnull instancetype)initWithMemo:(nullable NSString *)memo
                             messages:(nonnull NSArray<LGCosmosLikeMessage *> *)messages
-                           amplifier:(nullable NSNumber *)amplifier
+                           amplifier:(nullable NSString *)amplifier
 {
     if (self = [super init]) {
         _memo = [memo copy];
         _messages = [messages copy];
-        _amplifier = amplifier;
+        _amplifier = [amplifier copy];
     }
     return self;
 }
 
 + (nonnull instancetype)CosmosGasLimitRequestWithMemo:(nullable NSString *)memo
                                              messages:(nonnull NSArray<LGCosmosLikeMessage *> *)messages
-                                            amplifier:(nullable NSNumber *)amplifier
+                                            amplifier:(nullable NSString *)amplifier
 {
     return [[self alloc] initWithMemo:memo
                              messages:messages

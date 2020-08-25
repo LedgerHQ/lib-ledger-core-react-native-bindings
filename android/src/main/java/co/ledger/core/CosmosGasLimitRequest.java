@@ -13,12 +13,12 @@ public final class CosmosGasLimitRequest {
 
     /*package*/ final ArrayList<CosmosLikeMessage> messages;
 
-    /*package*/ final Double amplifier;
+    /*package*/ final String amplifier;
 
     public CosmosGasLimitRequest(
             String memo,
             ArrayList<CosmosLikeMessage> messages,
-            Double amplifier) {
+            String amplifier) {
         this.memo = memo;
         this.messages = messages;
         this.amplifier = amplifier;
@@ -40,7 +40,7 @@ public final class CosmosGasLimitRequest {
      * payload than usual to the simulation backend (and gas is also consumed
      * per tx byte)
      */
-    public Double getAmplifier() {
+    public String getAmplifier() {
         return amplifier;
     }
 

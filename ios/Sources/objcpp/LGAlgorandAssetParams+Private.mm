@@ -14,9 +14,9 @@ auto AlgorandAssetParams::toCpp(ObjcType obj) -> CppType
             ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.assetName),
             ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.unitName),
             ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.url),
-            ::djinni::Optional<std::experimental::optional, ::djinni::Bool>::toCpp(obj.defaultFrozen),
+            ::djinni::Bool::toCpp(obj.defaultFrozen),
             ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.total),
-            ::djinni::Optional<std::experimental::optional, ::djinni::I32>::toCpp(obj.decimals),
+            ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.decimals),
             ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.creatorAddress),
             ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.managerAddress),
             ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.freezeAddress),
@@ -31,9 +31,9 @@ auto AlgorandAssetParams::fromCpp(const CppType& cpp) -> ObjcType
                                                 assetName:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.assetName))
                                                  unitName:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.unitName))
                                                       url:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.url))
-                                            defaultFrozen:(::djinni::Optional<std::experimental::optional, ::djinni::Bool>::fromCpp(cpp.defaultFrozen))
+                                            defaultFrozen:(::djinni::Bool::fromCpp(cpp.defaultFrozen))
                                                     total:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.total))
-                                                 decimals:(::djinni::Optional<std::experimental::optional, ::djinni::I32>::fromCpp(cpp.decimals))
+                                                 decimals:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.decimals))
                                            creatorAddress:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.creatorAddress))
                                            managerAddress:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.managerAddress))
                                             freezeAddress:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.freezeAddress))

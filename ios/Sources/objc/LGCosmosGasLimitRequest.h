@@ -8,10 +8,10 @@
 @interface LGCosmosGasLimitRequest : NSObject
 - (nonnull instancetype)initWithMemo:(nullable NSString *)memo
                             messages:(nonnull NSArray<LGCosmosLikeMessage *> *)messages
-                           amplifier:(nullable NSNumber *)amplifier;
+                           amplifier:(nullable NSString *)amplifier;
 + (nonnull instancetype)CosmosGasLimitRequestWithMemo:(nullable NSString *)memo
                                              messages:(nonnull NSArray<LGCosmosLikeMessage *> *)messages
-                                            amplifier:(nullable NSNumber *)amplifier;
+                                            amplifier:(nullable NSString *)amplifier;
 
 /** Memo field of the contract transaction */
 @property (nonatomic, readonly, nullable) NSString * memo;
@@ -25,6 +25,6 @@
  * payload than usual to the simulation backend (and gas is also consumed
  * per tx byte)
  */
-@property (nonatomic, readonly, nullable) NSNumber * amplifier;
+@property (nonatomic, readonly, nullable) NSString * amplifier;
 
 @end

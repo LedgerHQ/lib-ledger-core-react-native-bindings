@@ -35,9 +35,9 @@ RCT_REMAP_METHOD(init, initWithAssetId:(nullable NSString *)assetId
                              assetName:(nullable NSString *)assetName
                               unitName:(nullable NSString *)unitName
                                    url:(nullable NSString *)url
-                         defaultFrozen:(nullable NSNumber *)defaultFrozen
+                         defaultFrozen:(BOOL)defaultFrozen
                                  total:(nullable NSString *)total
-                              decimals:(nullable NSNumber *)decimals
+                              decimals:(nullable NSString *)decimals
                         creatorAddress:(nullable NSString *)creatorAddress
                         managerAddress:(nullable NSString *)managerAddress
                          freezeAddress:(nullable NSString *)freezeAddress
@@ -89,7 +89,7 @@ RCT_REMAP_METHOD(getUrl, getUrl:(NSDictionary *)currentInstance withResolver:(RC
 RCT_REMAP_METHOD(getDefaultFrozen, getDefaultFrozen:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGAlgorandAssetParams *objcImpl = (LGAlgorandAssetParams *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : objcImpl.defaultFrozen};
+    NSDictionary *result = @{@"value" : @(objcImpl.defaultFrozen)};
     resolve(result);
 }
 

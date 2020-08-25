@@ -14,11 +14,11 @@ public final class AlgorandAssetParams {
 
     /*package*/ final String url;
 
-    /*package*/ final Boolean defaultFrozen;
+    /*package*/ final boolean defaultFrozen;
 
     /*package*/ final String total;
 
-    /*package*/ final Integer decimals;
+    /*package*/ final String decimals;
 
     /*package*/ final String creatorAddress;
 
@@ -37,9 +37,9 @@ public final class AlgorandAssetParams {
             String assetName,
             String unitName,
             String url,
-            Boolean defaultFrozen,
+            boolean defaultFrozen,
             String total,
-            Integer decimals,
+            String decimals,
             String creatorAddress,
             String managerAddress,
             String freezeAddress,
@@ -82,7 +82,7 @@ public final class AlgorandAssetParams {
     }
 
     /** Specifies whether holdings in this asset are frozen by default */
-    public Boolean getDefaultFrozen() {
+    public boolean getDefaultFrozen() {
         return defaultFrozen;
     }
 
@@ -92,7 +92,7 @@ public final class AlgorandAssetParams {
     }
 
     /** The number of digits to use after the decimal point when displaying this asset */
-    public Integer getDecimals() {
+    public String getDecimals() {
         return decimals;
     }
 
