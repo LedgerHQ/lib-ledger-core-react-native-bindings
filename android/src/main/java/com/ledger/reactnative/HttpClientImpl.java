@@ -72,11 +72,12 @@ public class HttpClientImpl extends co.ledger.core.HttpClient {
                     String response = getString(httpCode<400 ? connection.getInputStream() : connection.getErrorStream(), "UTF-8");
                     com.ledger.reactnative.HttpUrlConnectionImpl urlConnection = new com.ledger.reactnative.HttpUrlConnectionImpl(reactContext, response, httpCode, headers, null);
                     request.complete(urlConnection, null);
-                    connection.disconnect();
                 } catch (Exception ex) {
                     Error error = new Error(co.ledger.core.ErrorCode.HTTP_ERROR, ex.getMessage());
                     com.ledger.reactnative.HttpUrlConnectionImpl urlConnection = new com.ledger.reactnative.HttpUrlConnectionImpl(reactContext, ex.toString(), ex.hashCode(), null, error);
                     request.complete(urlConnection, error);
+		} finally {
+                    connection.disconnect();
                 }
             }
         });
