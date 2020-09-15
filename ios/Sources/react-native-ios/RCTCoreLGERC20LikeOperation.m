@@ -63,7 +63,11 @@ RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getHash, first argument should be an instance of LGERC20LikeOperation", nil);
         return;
     }
-    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getHash, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -91,7 +95,11 @@ RCT_REMAP_METHOD(getNonce,getNonce:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getNonce, first argument should be an instance of LGERC20LikeOperation", nil);
         return;
     }
-    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getNonce, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -125,7 +133,11 @@ RCT_REMAP_METHOD(getGasPrice,getGasPrice:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getGasPrice, first argument should be an instance of LGERC20LikeOperation", nil);
         return;
     }
-    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getGasPrice, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -159,7 +171,11 @@ RCT_REMAP_METHOD(getGasLimit,getGasLimit:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getGasLimit, first argument should be an instance of LGERC20LikeOperation", nil);
         return;
     }
-    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getGasLimit, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -193,7 +209,11 @@ RCT_REMAP_METHOD(getUsedGas,getUsedGas:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getUsedGas, first argument should be an instance of LGERC20LikeOperation", nil);
         return;
     }
-    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getUsedGas, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -227,7 +247,11 @@ RCT_REMAP_METHOD(getSender,getSender:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getSender, first argument should be an instance of LGERC20LikeOperation", nil);
         return;
     }
-    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getSender, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -255,7 +279,11 @@ RCT_REMAP_METHOD(getReceiver,getReceiver:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getReceiver, first argument should be an instance of LGERC20LikeOperation", nil);
         return;
     }
-    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getReceiver, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -283,7 +311,11 @@ RCT_REMAP_METHOD(getValue,getValue:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getValue, first argument should be an instance of LGERC20LikeOperation", nil);
         return;
     }
-    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getValue, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -317,7 +349,11 @@ RCT_REMAP_METHOD(getData,getData:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getData, first argument should be an instance of LGERC20LikeOperation", nil);
         return;
     }
-    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getData, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -349,7 +385,11 @@ RCT_REMAP_METHOD(getTime,getTime:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getTime, first argument should be an instance of LGERC20LikeOperation", nil);
         return;
     }
-    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getTime, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -379,7 +419,11 @@ RCT_REMAP_METHOD(getOperationType,getOperationType:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getOperationType, first argument should be an instance of LGERC20LikeOperation", nil);
         return;
     }
-    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getOperationType, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -407,7 +451,11 @@ RCT_REMAP_METHOD(getStatus,getStatus:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getStatus, first argument should be an instance of LGERC20LikeOperation", nil);
         return;
     }
-    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getStatus, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -438,7 +486,11 @@ RCT_REMAP_METHOD(getBlockHeight,getBlockHeight:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getBlockHeight, first argument should be an instance of LGERC20LikeOperation", nil);
         return;
     }
-    LGERC20LikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getBlockHeight, instance of uid %@ not found", currentInstance[@"uid"]];

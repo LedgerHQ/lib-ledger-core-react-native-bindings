@@ -39,7 +39,11 @@ RCT_REMAP_METHOD(getRecord,getRecord:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeOperation::getRecord, first argument should be an instance of LGStellarLikeOperation", nil);
         return;
     }
-    LGStellarLikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeOperation::getRecord, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -73,7 +77,11 @@ RCT_REMAP_METHOD(getTransaction,getTransaction:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeOperation::getTransaction, first argument should be an instance of LGStellarLikeOperation", nil);
         return;
     }
-    LGStellarLikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeOperation::getTransaction, instance of uid %@ not found", currentInstance[@"uid"]];

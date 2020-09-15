@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(getTransaction,getTransaction:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeOperation::getTransaction, first argument should be an instance of LGBitcoinLikeOperation", nil);
         return;
     }
-    LGBitcoinLikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGBitcoinLikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeOperation::getTransaction, instance of uid %@ not found", currentInstance[@"uid"]];

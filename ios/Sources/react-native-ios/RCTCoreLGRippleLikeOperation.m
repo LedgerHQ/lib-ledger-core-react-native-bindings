@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(getTransaction,getTransaction:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeOperation::getTransaction, first argument should be an instance of LGRippleLikeOperation", nil);
         return;
     }
-    LGRippleLikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeOperation::getTransaction, instance of uid %@ not found", currentInstance[@"uid"]];

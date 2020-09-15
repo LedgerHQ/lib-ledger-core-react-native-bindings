@@ -38,7 +38,11 @@ RCT_REMAP_METHOD(getDelegatorAddress,getDelegatorAddress:(NSDictionary *)current
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeReward::getDelegatorAddress, first argument should be an instance of LGCosmosLikeReward", nil);
         return;
     }
-    LGCosmosLikeReward *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeReward *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeReward::getDelegatorAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -65,7 +69,11 @@ RCT_REMAP_METHOD(getValidatorAddress,getValidatorAddress:(NSDictionary *)current
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeReward::getValidatorAddress, first argument should be an instance of LGCosmosLikeReward", nil);
         return;
     }
-    LGCosmosLikeReward *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeReward *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeReward::getValidatorAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -92,7 +100,11 @@ RCT_REMAP_METHOD(getRewardAmount,getRewardAmount:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeReward::getRewardAmount, first argument should be an instance of LGCosmosLikeReward", nil);
         return;
     }
-    LGCosmosLikeReward *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeReward *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeReward::getRewardAmount, instance of uid %@ not found", currentInstance[@"uid"]];

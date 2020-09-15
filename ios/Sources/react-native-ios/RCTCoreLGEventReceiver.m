@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(onEvent,onEvent:(NSDictionary *)currentInstance withParams:(NSD
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEventReceiver::onEvent, first argument should be an instance of LGEventReceiverImpl", nil);
         return;
     }
-    LGEventReceiverImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGEventReceiverImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEventReceiverImpl::onEvent, instance of uid %@ not found", currentInstance[@"uid"]];

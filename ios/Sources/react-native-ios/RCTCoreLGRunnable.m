@@ -39,7 +39,11 @@ RCT_REMAP_METHOD(run,run:(NSDictionary *)currentInstance WithResolver:(RCTPromis
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRunnable::run, first argument should be an instance of LGRunnable", nil);
         return;
     }
-    LGRunnable *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRunnable *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRunnable::run, instance of uid %@ not found", currentInstance[@"uid"]];

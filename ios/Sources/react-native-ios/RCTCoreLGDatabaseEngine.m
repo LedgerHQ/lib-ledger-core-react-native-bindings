@@ -43,7 +43,11 @@ RCT_REMAP_METHOD(connect,connect:(NSDictionary *)currentInstance withParams:(non
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseEngine::connect, first argument should be an instance of LGDatabaseEngineImpl", nil);
         return;
     }
-    LGDatabaseEngineImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseEngineImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseEngineImpl::connect, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -80,7 +84,11 @@ RCT_REMAP_METHOD(getPoolSize,getPoolSize:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseEngine::getPoolSize, first argument should be an instance of LGDatabaseEngineImpl", nil);
         return;
     }
-    LGDatabaseEngineImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseEngineImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseEngineImpl::getPoolSize, instance of uid %@ not found", currentInstance[@"uid"]];

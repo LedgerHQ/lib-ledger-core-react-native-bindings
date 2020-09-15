@@ -818,7 +818,11 @@ RCT_REMAP_METHOD(opAnd,opAnd:(NSDictionary *)currentInstance withParams:(NSDicti
         reject(@"impl_call_error", @"Error while calling RCTCoreLGQueryFilter::opAnd, first argument should be an instance of LGQueryFilter", nil);
         return;
     }
-    LGQueryFilter *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGQueryFilter *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGQueryFilter::opAnd, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -853,7 +857,11 @@ RCT_REMAP_METHOD(opOr,opOr:(NSDictionary *)currentInstance withParams:(NSDiction
         reject(@"impl_call_error", @"Error while calling RCTCoreLGQueryFilter::opOr, first argument should be an instance of LGQueryFilter", nil);
         return;
     }
-    LGQueryFilter *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGQueryFilter *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGQueryFilter::opOr, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -888,7 +896,11 @@ RCT_REMAP_METHOD(opAndNot,opAndNot:(NSDictionary *)currentInstance withParams:(N
         reject(@"impl_call_error", @"Error while calling RCTCoreLGQueryFilter::opAndNot, first argument should be an instance of LGQueryFilter", nil);
         return;
     }
-    LGQueryFilter *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGQueryFilter *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGQueryFilter::opAndNot, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -923,7 +935,11 @@ RCT_REMAP_METHOD(opOrNot,opOrNot:(NSDictionary *)currentInstance withParams:(NSD
         reject(@"impl_call_error", @"Error while calling RCTCoreLGQueryFilter::opOrNot, first argument should be an instance of LGQueryFilter", nil);
         return;
     }
-    LGQueryFilter *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGQueryFilter *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGQueryFilter::opOrNot, instance of uid %@ not found", currentInstance[@"uid"]];

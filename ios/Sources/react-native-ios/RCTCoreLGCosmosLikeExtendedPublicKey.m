@@ -63,7 +63,11 @@ RCT_REMAP_METHOD(derive,derive:(NSDictionary *)currentInstance withParams:(nonnu
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeExtendedPublicKey::derive, first argument should be an instance of LGCosmosLikeExtendedPublicKey", nil);
         return;
     }
-    LGCosmosLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeExtendedPublicKey *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeExtendedPublicKey::derive, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -97,7 +101,11 @@ RCT_REMAP_METHOD(derivePublicKey,derivePublicKey:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeExtendedPublicKey::derivePublicKey, first argument should be an instance of LGCosmosLikeExtendedPublicKey", nil);
         return;
     }
-    LGCosmosLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeExtendedPublicKey *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeExtendedPublicKey::derivePublicKey, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -126,7 +134,11 @@ RCT_REMAP_METHOD(deriveHash160,deriveHash160:(NSDictionary *)currentInstance wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeExtendedPublicKey::deriveHash160, first argument should be an instance of LGCosmosLikeExtendedPublicKey", nil);
         return;
     }
-    LGCosmosLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeExtendedPublicKey *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeExtendedPublicKey::deriveHash160, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -155,7 +167,11 @@ RCT_REMAP_METHOD(toBech32,toBech32:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeExtendedPublicKey::toBech32, first argument should be an instance of LGCosmosLikeExtendedPublicKey", nil);
         return;
     }
-    LGCosmosLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeExtendedPublicKey *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeExtendedPublicKey::toBech32, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -183,7 +199,11 @@ RCT_REMAP_METHOD(toBase58,toBase58:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeExtendedPublicKey::toBase58, first argument should be an instance of LGCosmosLikeExtendedPublicKey", nil);
         return;
     }
-    LGCosmosLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeExtendedPublicKey *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeExtendedPublicKey::toBase58, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -211,7 +231,11 @@ RCT_REMAP_METHOD(getRootPath,getRootPath:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeExtendedPublicKey::getRootPath, first argument should be an instance of LGCosmosLikeExtendedPublicKey", nil);
         return;
     }
-    LGCosmosLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeExtendedPublicKey *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeExtendedPublicKey::getRootPath, instance of uid %@ not found", currentInstance[@"uid"]];
