@@ -39,7 +39,11 @@ RCT_REMAP_METHOD(onSuccess,onSuccess:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGGetEthreumLikeWalletCallback::onSuccess, first argument should be an instance of LGGetEthreumLikeWalletCallbackImpl", nil);
         return;
     }
-    LGGetEthreumLikeWalletCallbackImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGGetEthreumLikeWalletCallbackImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGGetEthreumLikeWalletCallbackImpl::onSuccess, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -59,7 +63,11 @@ RCT_REMAP_METHOD(onError,onError:(NSDictionary *)currentInstance withParams:(NSD
         reject(@"impl_call_error", @"Error while calling RCTCoreLGGetEthreumLikeWalletCallback::onError, first argument should be an instance of LGGetEthreumLikeWalletCallbackImpl", nil);
         return;
     }
-    LGGetEthreumLikeWalletCallbackImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGGetEthreumLikeWalletCallbackImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGGetEthreumLikeWalletCallbackImpl::onError, instance of uid %@ not found", currentInstance[@"uid"]];

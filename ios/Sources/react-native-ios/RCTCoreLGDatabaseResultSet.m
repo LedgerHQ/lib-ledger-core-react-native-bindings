@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(getRow,getRow:(NSDictionary *)currentInstance WithResolver:(RCT
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseResultSet::getRow, first argument should be an instance of LGDatabaseResultSetImpl", nil);
         return;
     }
-    LGDatabaseResultSetImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseResultSetImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseResultSetImpl::getRow, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -76,7 +80,11 @@ RCT_REMAP_METHOD(getUpdateCount,getUpdateCount:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseResultSet::getUpdateCount, first argument should be an instance of LGDatabaseResultSetImpl", nil);
         return;
     }
-    LGDatabaseResultSetImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseResultSetImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseResultSetImpl::getUpdateCount, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -107,7 +115,11 @@ RCT_REMAP_METHOD(hasNext,hasNext:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseResultSet::hasNext, first argument should be an instance of LGDatabaseResultSetImpl", nil);
         return;
     }
-    LGDatabaseResultSetImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseResultSetImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseResultSetImpl::hasNext, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -138,7 +150,11 @@ RCT_REMAP_METHOD(available,available:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseResultSet::available, first argument should be an instance of LGDatabaseResultSetImpl", nil);
         return;
     }
-    LGDatabaseResultSetImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseResultSetImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseResultSetImpl::available, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -169,7 +185,11 @@ RCT_REMAP_METHOD(next,next:(NSDictionary *)currentInstance WithResolver:(RCTProm
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseResultSet::next, first argument should be an instance of LGDatabaseResultSetImpl", nil);
         return;
     }
-    LGDatabaseResultSetImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseResultSetImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseResultSetImpl::next, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -188,7 +208,11 @@ RCT_REMAP_METHOD(close,close:(NSDictionary *)currentInstance WithResolver:(RCTPr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseResultSet::close, first argument should be an instance of LGDatabaseResultSetImpl", nil);
         return;
     }
-    LGDatabaseResultSetImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseResultSetImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseResultSetImpl::close, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -207,7 +231,11 @@ RCT_REMAP_METHOD(getError,getError:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseResultSet::getError, first argument should be an instance of LGDatabaseResultSetImpl", nil);
         return;
     }
-    LGDatabaseResultSetImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseResultSetImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseResultSetImpl::getError, instance of uid %@ not found", currentInstance[@"uid"]];

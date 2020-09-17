@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(getConnectionPoolSize,getConnectionPoolSize:(NSDictionary *)cur
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::getConnectionPoolSize, first argument should be an instance of LGDatabaseBackend", nil);
         return;
     }
-    LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseBackend *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::getConnectionPoolSize, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -73,7 +77,11 @@ RCT_REMAP_METHOD(enableQueryLogging,enableQueryLogging:(NSDictionary *)currentIn
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::enableQueryLogging, first argument should be an instance of LGDatabaseBackend", nil);
         return;
     }
-    LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseBackend *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::enableQueryLogging, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -110,7 +118,11 @@ RCT_REMAP_METHOD(isLoggingEnabled,isLoggingEnabled:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::isLoggingEnabled, first argument should be an instance of LGDatabaseBackend", nil);
         return;
     }
-    LGDatabaseBackend *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseBackend *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::isLoggingEnabled, instance of uid %@ not found", currentInstance[@"uid"]];

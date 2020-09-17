@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeBlock::getHash, first argument should be an instance of LGCosmosLikeBlock", nil);
         return;
     }
-    LGCosmosLikeBlock *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeBlock *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeBlock::getHash, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -73,7 +77,11 @@ RCT_REMAP_METHOD(getHeight,getHeight:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeBlock::getHeight, first argument should be an instance of LGCosmosLikeBlock", nil);
         return;
     }
-    LGCosmosLikeBlock *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeBlock *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeBlock::getHeight, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -104,7 +112,11 @@ RCT_REMAP_METHOD(getTime,getTime:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeBlock::getTime, first argument should be an instance of LGCosmosLikeBlock", nil);
         return;
     }
-    LGCosmosLikeBlock *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeBlock *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeBlock::getTime, instance of uid %@ not found", currentInstance[@"uid"]];

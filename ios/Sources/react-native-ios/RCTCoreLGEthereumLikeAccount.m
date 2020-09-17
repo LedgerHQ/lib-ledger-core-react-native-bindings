@@ -63,7 +63,11 @@ RCT_REMAP_METHOD(broadcastRawTransaction,broadcastRawTransaction:(NSDictionary *
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::broadcastRawTransaction, first argument should be an instance of LGEthereumLikeAccount", nil);
         return;
     }
-    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGEthereumLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::broadcastRawTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -84,7 +88,11 @@ RCT_REMAP_METHOD(broadcastTransaction,broadcastTransaction:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::broadcastTransaction, first argument should be an instance of LGEthereumLikeAccount", nil);
         return;
     }
-    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGEthereumLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::broadcastTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -105,7 +113,11 @@ RCT_REMAP_METHOD(buildTransaction,buildTransaction:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::buildTransaction, first argument should be an instance of LGEthereumLikeAccount", nil);
         return;
     }
-    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGEthereumLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::buildTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -139,7 +151,11 @@ RCT_REMAP_METHOD(getERC20Accounts,getERC20Accounts:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::getERC20Accounts, first argument should be an instance of LGEthereumLikeAccount", nil);
         return;
     }
-    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGEthereumLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::getERC20Accounts, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -184,7 +200,11 @@ RCT_REMAP_METHOD(getGasPrice,getGasPrice:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::getGasPrice, first argument should be an instance of LGEthereumLikeAccount", nil);
         return;
     }
-    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGEthereumLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::getGasPrice, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -208,7 +228,11 @@ RCT_REMAP_METHOD(getEstimatedGasLimit,getEstimatedGasLimit:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::getEstimatedGasLimit, first argument should be an instance of LGEthereumLikeAccount", nil);
         return;
     }
-    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGEthereumLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::getEstimatedGasLimit, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -233,7 +257,11 @@ RCT_REMAP_METHOD(getDryRunGasLimit,getDryRunGasLimit:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::getDryRunGasLimit, first argument should be an instance of LGEthereumLikeAccount", nil);
         return;
     }
-    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGEthereumLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::getDryRunGasLimit, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -258,7 +286,11 @@ RCT_REMAP_METHOD(getERC20Balance,getERC20Balance:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::getERC20Balance, first argument should be an instance of LGEthereumLikeAccount", nil);
         return;
     }
-    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGEthereumLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::getERC20Balance, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -281,7 +313,11 @@ RCT_REMAP_METHOD(getERC20Balances,getERC20Balances:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAccount::getERC20Balances, first argument should be an instance of LGEthereumLikeAccount", nil);
         return;
     }
-    LGEthereumLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGEthereumLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAccount::getERC20Balances, instance of uid %@ not found", currentInstance[@"uid"]];

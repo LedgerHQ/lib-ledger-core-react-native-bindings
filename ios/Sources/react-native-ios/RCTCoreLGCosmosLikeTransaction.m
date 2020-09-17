@@ -63,7 +63,11 @@ RCT_REMAP_METHOD(getDate,getDate:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeTransaction::getDate, first argument should be an instance of LGCosmosLikeTransaction", nil);
         return;
     }
-    LGCosmosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeTransaction::getDate, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -93,7 +97,11 @@ RCT_REMAP_METHOD(getFee,getFee:(NSDictionary *)currentInstance WithResolver:(RCT
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeTransaction::getFee, first argument should be an instance of LGCosmosLikeTransaction", nil);
         return;
     }
-    LGCosmosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeTransaction::getFee, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -127,7 +135,11 @@ RCT_REMAP_METHOD(getGas,getGas:(NSDictionary *)currentInstance WithResolver:(RCT
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeTransaction::getGas, first argument should be an instance of LGCosmosLikeTransaction", nil);
         return;
     }
-    LGCosmosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeTransaction::getGas, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -161,7 +173,11 @@ RCT_REMAP_METHOD(getGasUsed,getGasUsed:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeTransaction::getGasUsed, first argument should be an instance of LGCosmosLikeTransaction", nil);
         return;
     }
-    LGCosmosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeTransaction::getGasUsed, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -195,7 +211,11 @@ RCT_REMAP_METHOD(getGasWanted,getGasWanted:(NSDictionary *)currentInstance WithR
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeTransaction::getGasWanted, first argument should be an instance of LGCosmosLikeTransaction", nil);
         return;
     }
-    LGCosmosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeTransaction::getGasWanted, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -229,7 +249,11 @@ RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeTransaction::getHash, first argument should be an instance of LGCosmosLikeTransaction", nil);
         return;
     }
-    LGCosmosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeTransaction::getHash, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -257,7 +281,11 @@ RCT_REMAP_METHOD(getMemo,getMemo:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeTransaction::getMemo, first argument should be an instance of LGCosmosLikeTransaction", nil);
         return;
     }
-    LGCosmosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeTransaction::getMemo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -285,7 +313,11 @@ RCT_REMAP_METHOD(getMessages,getMessages:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeTransaction::getMessages, first argument should be an instance of LGCosmosLikeTransaction", nil);
         return;
     }
-    LGCosmosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeTransaction::getMessages, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -324,7 +356,11 @@ RCT_REMAP_METHOD(getSigningPubKey,getSigningPubKey:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeTransaction::getSigningPubKey, first argument should be an instance of LGCosmosLikeTransaction", nil);
         return;
     }
-    LGCosmosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeTransaction::getSigningPubKey, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -353,7 +389,11 @@ RCT_REMAP_METHOD(serializeForSignature,serializeForSignature:(NSDictionary *)cur
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeTransaction::serializeForSignature, first argument should be an instance of LGCosmosLikeTransaction", nil);
         return;
     }
-    LGCosmosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeTransaction::serializeForSignature, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -382,7 +422,11 @@ RCT_REMAP_METHOD(setSignature,setSignature:(NSDictionary *)currentInstance withP
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeTransaction::setSignature, first argument should be an instance of LGCosmosLikeTransaction", nil);
         return;
     }
-    LGCosmosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeTransaction::setSignature, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -404,7 +448,11 @@ RCT_REMAP_METHOD(setDERSignature,setDERSignature:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeTransaction::setDERSignature, first argument should be an instance of LGCosmosLikeTransaction", nil);
         return;
     }
-    LGCosmosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeTransaction::setDERSignature, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -432,7 +480,11 @@ RCT_REMAP_METHOD(serializeForBroadcast,serializeForBroadcast:(NSDictionary *)cur
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeTransaction::serializeForBroadcast, first argument should be an instance of LGCosmosLikeTransaction", nil);
         return;
     }
-    LGCosmosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeTransaction::serializeForBroadcast, instance of uid %@ not found", currentInstance[@"uid"]];

@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(printError,printError:(NSDictionary *)currentInstance withParam
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLogPrinter::printError, first argument should be an instance of LGLogPrinterImpl", nil);
         return;
     }
-    LGLogPrinterImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGLogPrinterImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLogPrinterImpl::printError, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -64,7 +68,11 @@ RCT_REMAP_METHOD(printInfo,printInfo:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLogPrinter::printInfo, first argument should be an instance of LGLogPrinterImpl", nil);
         return;
     }
-    LGLogPrinterImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGLogPrinterImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLogPrinterImpl::printInfo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -86,7 +94,11 @@ RCT_REMAP_METHOD(printDebug,printDebug:(NSDictionary *)currentInstance withParam
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLogPrinter::printDebug, first argument should be an instance of LGLogPrinterImpl", nil);
         return;
     }
-    LGLogPrinterImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGLogPrinterImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLogPrinterImpl::printDebug, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -108,7 +120,11 @@ RCT_REMAP_METHOD(printWarning,printWarning:(NSDictionary *)currentInstance withP
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLogPrinter::printWarning, first argument should be an instance of LGLogPrinterImpl", nil);
         return;
     }
-    LGLogPrinterImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGLogPrinterImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLogPrinterImpl::printWarning, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -130,7 +146,11 @@ RCT_REMAP_METHOD(printApdu,printApdu:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLogPrinter::printApdu, first argument should be an instance of LGLogPrinterImpl", nil);
         return;
     }
-    LGLogPrinterImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGLogPrinterImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLogPrinterImpl::printApdu, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -152,7 +172,11 @@ RCT_REMAP_METHOD(printCriticalError,printCriticalError:(NSDictionary *)currentIn
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLogPrinter::printCriticalError, first argument should be an instance of LGLogPrinterImpl", nil);
         return;
     }
-    LGLogPrinterImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGLogPrinterImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLogPrinterImpl::printCriticalError, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -174,7 +198,11 @@ RCT_REMAP_METHOD(getContext,getContext:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLogPrinter::getContext, first argument should be an instance of LGLogPrinterImpl", nil);
         return;
     }
-    LGLogPrinterImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGLogPrinterImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLogPrinterImpl::getContext, instance of uid %@ not found", currentInstance[@"uid"]];

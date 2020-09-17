@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(getTransaction,getTransaction:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeOperation::getTransaction, first argument should be an instance of LGCosmosLikeOperation", nil);
         return;
     }
-    LGCosmosLikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeOperation::getTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -79,7 +83,11 @@ RCT_REMAP_METHOD(getMessage,getMessage:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeOperation::getMessage, first argument should be an instance of LGCosmosLikeOperation", nil);
         return;
     }
-    LGCosmosLikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeOperation::getMessage, instance of uid %@ not found", currentInstance[@"uid"]];

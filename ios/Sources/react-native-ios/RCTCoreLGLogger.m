@@ -44,7 +44,11 @@ RCT_REMAP_METHOD(d,d:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLogger::d, first argument should be an instance of LGLogger", nil);
         return;
     }
-    LGLogger *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGLogger *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLogger::d, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -68,7 +72,11 @@ RCT_REMAP_METHOD(i,i:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLogger::i, first argument should be an instance of LGLogger", nil);
         return;
     }
-    LGLogger *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGLogger *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLogger::i, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -92,7 +100,11 @@ RCT_REMAP_METHOD(e,e:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLogger::e, first argument should be an instance of LGLogger", nil);
         return;
     }
-    LGLogger *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGLogger *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLogger::e, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -116,7 +128,11 @@ RCT_REMAP_METHOD(w,w:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLogger::w, first argument should be an instance of LGLogger", nil);
         return;
     }
-    LGLogger *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGLogger *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLogger::w, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -140,7 +156,11 @@ RCT_REMAP_METHOD(c,c:(NSDictionary *)currentInstance withParams:(nonnull NSStrin
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLogger::c, first argument should be an instance of LGLogger", nil);
         return;
     }
-    LGLogger *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGLogger *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLogger::c, instance of uid %@ not found", currentInstance[@"uid"]];

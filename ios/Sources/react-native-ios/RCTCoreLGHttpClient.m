@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(execute,execute:(NSDictionary *)currentInstance withParams:(NSD
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpClient::execute, first argument should be an instance of LGHttpClientImpl", nil);
         return;
     }
-    LGHttpClientImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGHttpClientImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHttpClientImpl::execute, instance of uid %@ not found", currentInstance[@"uid"]];

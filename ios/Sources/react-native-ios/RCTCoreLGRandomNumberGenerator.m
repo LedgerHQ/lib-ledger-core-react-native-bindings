@@ -67,7 +67,11 @@ RCT_REMAP_METHOD(getRandomBytes,getRandomBytes:(NSDictionary *)currentInstance w
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRandomNumberGenerator::getRandomBytes, first argument should be an instance of LGRandomNumberGeneratorImpl", nil);
         return;
     }
-    LGRandomNumberGeneratorImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRandomNumberGeneratorImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRandomNumberGeneratorImpl::getRandomBytes, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -99,7 +103,11 @@ RCT_REMAP_METHOD(getRandomInt,getRandomInt:(NSDictionary *)currentInstance WithR
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRandomNumberGenerator::getRandomInt, first argument should be an instance of LGRandomNumberGeneratorImpl", nil);
         return;
     }
-    LGRandomNumberGeneratorImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRandomNumberGeneratorImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRandomNumberGeneratorImpl::getRandomInt, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -130,7 +138,11 @@ RCT_REMAP_METHOD(getRandomLong,getRandomLong:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRandomNumberGenerator::getRandomLong, first argument should be an instance of LGRandomNumberGeneratorImpl", nil);
         return;
     }
-    LGRandomNumberGeneratorImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRandomNumberGeneratorImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRandomNumberGeneratorImpl::getRandomLong, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -161,7 +173,11 @@ RCT_REMAP_METHOD(getRandomByte,getRandomByte:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRandomNumberGenerator::getRandomByte, first argument should be an instance of LGRandomNumberGeneratorImpl", nil);
         return;
     }
-    LGRandomNumberGeneratorImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRandomNumberGeneratorImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRandomNumberGeneratorImpl::getRandomByte, instance of uid %@ not found", currentInstance[@"uid"]];

@@ -43,7 +43,11 @@ RCT_REMAP_METHOD(getConnection,getConnection:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseConnectionPool::getConnection, first argument should be an instance of LGDatabaseConnectionPoolImpl", nil);
         return;
     }
-    LGDatabaseConnectionPoolImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseConnectionPoolImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseConnectionPoolImpl::getConnection, instance of uid %@ not found", currentInstance[@"uid"]];

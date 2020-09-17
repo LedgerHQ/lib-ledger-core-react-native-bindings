@@ -62,7 +62,11 @@ RCT_REMAP_METHOD(broadcastRawTransaction,broadcastRawTransaction:(NSDictionary *
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeAccount::broadcastRawTransaction, first argument should be an instance of LGRippleLikeAccount", nil);
         return;
     }
-    LGRippleLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeAccount::broadcastRawTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -82,7 +86,11 @@ RCT_REMAP_METHOD(broadcastTransaction,broadcastTransaction:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeAccount::broadcastTransaction, first argument should be an instance of LGRippleLikeAccount", nil);
         return;
     }
-    LGRippleLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeAccount::broadcastTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -102,7 +110,11 @@ RCT_REMAP_METHOD(buildTransaction,buildTransaction:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeAccount::buildTransaction, first argument should be an instance of LGRippleLikeAccount", nil);
         return;
     }
-    LGRippleLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeAccount::buildTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -142,7 +154,11 @@ RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeAccount::getFees, first argument should be an instance of LGRippleLikeAccount", nil);
         return;
     }
-    LGRippleLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeAccount::getFees, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -164,7 +180,11 @@ RCT_REMAP_METHOD(getBaseReserve,getBaseReserve:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeAccount::getBaseReserve, first argument should be an instance of LGRippleLikeAccount", nil);
         return;
     }
-    LGRippleLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeAccount::getBaseReserve, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -189,7 +209,11 @@ RCT_REMAP_METHOD(isAddressActivated,isAddressActivated:(NSDictionary *)currentIn
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeAccount::isAddressActivated, first argument should be an instance of LGRippleLikeAccount", nil);
         return;
     }
-    LGRippleLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeAccount::isAddressActivated, instance of uid %@ not found", currentInstance[@"uid"]];
