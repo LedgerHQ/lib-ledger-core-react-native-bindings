@@ -100,8 +100,8 @@ public class RCTCoreCosmosLikeValidatorDescription extends ReactContextBaseJavaM
     }
 
     @ReactMethod
-    public void init(String moniker, String identity, String website, String details, Promise promise) {
-        CosmosLikeValidatorDescription javaResult = new CosmosLikeValidatorDescription(moniker, identity, website, details);
+    public void init(String moniker, String identity, String website, String securityContact, String details, Promise promise) {
+        CosmosLikeValidatorDescription javaResult = new CosmosLikeValidatorDescription(moniker, identity, website, securityContact, details);
 
         String uuid = UUID.randomUUID().toString();
         this.javaObjects.put(uuid, javaResult);
@@ -161,6 +161,24 @@ public class RCTCoreCosmosLikeValidatorDescription extends ReactContextBaseJavaM
         else
         {
             promise.reject("Failed to call RCTCoreCosmosLikeValidatorDescription::getWebsite", "First parameter of RCTCoreCosmosLikeValidatorDescription::getWebsite should be an instance of RCTCoreCosmosLikeValidatorDescription");
+        }
+    }
+
+    @ReactMethod
+    public void getSecurityContact(ReadableMap currentInstance, Promise promise)
+    {
+        String uid = currentInstance.getString("uid");
+        if (uid.length() > 0)
+        {
+            CosmosLikeValidatorDescription javaObj = this.javaObjects.get(uid);
+            String result = javaObj.getSecurityContact();
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", result);
+            promise.resolve(resultMap);
+        }
+        else
+        {
+            promise.reject("Failed to call RCTCoreCosmosLikeValidatorDescription::getSecurityContact", "First parameter of RCTCoreCosmosLikeValidatorDescription::getSecurityContact should be an instance of RCTCoreCosmosLikeValidatorDescription");
         }
     }
 

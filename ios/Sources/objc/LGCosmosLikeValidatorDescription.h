@@ -8,10 +8,12 @@
 - (nonnull instancetype)initWithMoniker:(nonnull NSString *)moniker
                                identity:(nullable NSString *)identity
                                 website:(nullable NSString *)website
+                        securityContact:(nullable NSString *)securityContact
                                 details:(nullable NSString *)details;
 + (nonnull instancetype)CosmosLikeValidatorDescriptionWithMoniker:(nonnull NSString *)moniker
                                                          identity:(nullable NSString *)identity
                                                           website:(nullable NSString *)website
+                                                  securityContact:(nullable NSString *)securityContact
                                                           details:(nullable NSString *)details;
 
 @property (nonatomic, readonly, nonnull) NSString * moniker;
@@ -19,6 +21,8 @@
 @property (nonatomic, readonly, nullable) NSString * identity;
 
 @property (nonatomic, readonly, nullable) NSString * website;
+
+@property (nonatomic, readonly, nullable) NSString * securityContact;
 
 @property (nonatomic, readonly, nullable) NSString * details;
 

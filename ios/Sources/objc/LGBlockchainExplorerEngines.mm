@@ -4,6 +4,8 @@
 #import "LGBlockchainExplorerEngines.h"
 
 
+NSString * __nonnull const LGBlockchainExplorerEnginesSTARGATENODE = @"STARGATE_NODE";
+
 NSString * __nonnull const LGBlockchainExplorerEnginesCOSMOSNODE = @"COSMOS_NODE";
 
 NSString * __nonnull const LGBlockchainExplorerEnginesLEDGERAPI = @"LEDGER_API";

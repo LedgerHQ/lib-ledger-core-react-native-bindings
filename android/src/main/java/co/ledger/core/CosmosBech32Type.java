@@ -6,7 +6,9 @@ package co.ledger.core;
 public enum CosmosBech32Type {
     PUBLIC_KEY,
     PUBLIC_KEY_VAL,
+    PUBLIC_KEY_VAL_CONS,
     ADDRESS,
     ADDRESS_VAL,
+    ADDRESS_VAL_CONS,
     ;
 }

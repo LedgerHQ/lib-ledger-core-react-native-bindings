@@ -4,6 +4,6 @@
 #import "LGCosmosConfigurationDefaults.h"
 
 
-NSString * __nonnull const LGCosmosConfigurationDefaultsCOSMOSDEFAULTAPIENDPOINT = @"https://cosmos.coin.staging.aws.ledger.com";
+NSString * __nonnull const LGCosmosConfigurationDefaultsCOSMOSDEFAULTAPIENDPOINT = @"https://cosmos.coin.ledger.com";
 
 NSString * __nonnull const LGCosmosConfigurationDefaultsCOSMOSOBSERVERWSENDPOINT = @"";

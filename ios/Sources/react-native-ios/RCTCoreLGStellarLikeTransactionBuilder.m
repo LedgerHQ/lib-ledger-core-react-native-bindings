@@ -63,11 +63,7 @@ RCT_REMAP_METHOD(addNativePayment,addNativePayment:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeTransactionBuilder::addNativePayment, first argument should be an instance of LGStellarLikeTransactionBuilder", nil);
         return;
     }
-    LGStellarLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGStellarLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeTransactionBuilder::addNativePayment, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -103,11 +99,7 @@ RCT_REMAP_METHOD(addCreateAccount,addCreateAccount:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeTransactionBuilder::addCreateAccount, first argument should be an instance of LGStellarLikeTransactionBuilder", nil);
         return;
     }
-    LGStellarLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGStellarLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeTransactionBuilder::addCreateAccount, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -142,11 +134,7 @@ RCT_REMAP_METHOD(setBaseFee,setBaseFee:(NSDictionary *)currentInstance withParam
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeTransactionBuilder::setBaseFee, first argument should be an instance of LGStellarLikeTransactionBuilder", nil);
         return;
     }
-    LGStellarLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGStellarLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeTransactionBuilder::setBaseFee, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -181,11 +169,7 @@ RCT_REMAP_METHOD(setTextMemo,setTextMemo:(NSDictionary *)currentInstance withPar
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeTransactionBuilder::setTextMemo, first argument should be an instance of LGStellarLikeTransactionBuilder", nil);
         return;
     }
-    LGStellarLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGStellarLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeTransactionBuilder::setTextMemo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -218,11 +202,7 @@ RCT_REMAP_METHOD(setNumberMemo,setNumberMemo:(NSDictionary *)currentInstance wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeTransactionBuilder::setNumberMemo, first argument should be an instance of LGStellarLikeTransactionBuilder", nil);
         return;
     }
-    LGStellarLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGStellarLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeTransactionBuilder::setNumberMemo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -257,11 +237,7 @@ RCT_REMAP_METHOD(setHashMemo,setHashMemo:(NSDictionary *)currentInstance withPar
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeTransactionBuilder::setHashMemo, first argument should be an instance of LGStellarLikeTransactionBuilder", nil);
         return;
     }
-    LGStellarLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGStellarLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeTransactionBuilder::setHashMemo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -296,11 +272,7 @@ RCT_REMAP_METHOD(setReturnMemo,setReturnMemo:(NSDictionary *)currentInstance wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeTransactionBuilder::setReturnMemo, first argument should be an instance of LGStellarLikeTransactionBuilder", nil);
         return;
     }
-    LGStellarLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGStellarLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeTransactionBuilder::setReturnMemo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -335,11 +307,7 @@ RCT_REMAP_METHOD(setSequence,setSequence:(NSDictionary *)currentInstance withPar
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeTransactionBuilder::setSequence, first argument should be an instance of LGStellarLikeTransactionBuilder", nil);
         return;
     }
-    LGStellarLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGStellarLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeTransactionBuilder::setSequence, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -374,11 +342,7 @@ RCT_REMAP_METHOD(build,build:(NSDictionary *)currentInstance WithResolver:(RCTPr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeTransactionBuilder::build, first argument should be an instance of LGStellarLikeTransactionBuilder", nil);
         return;
     }
-    LGStellarLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGStellarLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeTransactionBuilder::build, instance of uid %@ not found", currentInstance[@"uid"]];

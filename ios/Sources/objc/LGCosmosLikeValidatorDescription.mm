@@ -9,12 +9,14 @@
 - (nonnull instancetype)initWithMoniker:(nonnull NSString *)moniker
                                identity:(nullable NSString *)identity
                                 website:(nullable NSString *)website
+                        securityContact:(nullable NSString *)securityContact
                                 details:(nullable NSString *)details
 {
     if (self = [super init]) {
         _moniker = [moniker copy];
         _identity = [identity copy];
         _website = [website copy];
+        _securityContact = [securityContact copy];
         _details = [details copy];
     }
     return self;
@@ -23,17 +25,19 @@
 + (nonnull instancetype)CosmosLikeValidatorDescriptionWithMoniker:(nonnull NSString *)moniker
                                                          identity:(nullable NSString *)identity
                                                           website:(nullable NSString *)website
+                                                  securityContact:(nullable NSString *)securityContact
                                                           details:(nullable NSString *)details
 {
     return [[self alloc] initWithMoniker:moniker
                                 identity:identity
                                  website:website
+                         securityContact:securityContact
                                  details:details];
 }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ %p moniker:%@ identity:%@ website:%@ details:%@>", self.class, (void *)self, self.moniker, self.identity, self.website, self.details];
+    return [NSString stringWithFormat:@"<%@ %p moniker:%@ identity:%@ website:%@ securityContact:%@ details:%@>", self.class, (void *)self, self.moniker, self.identity, self.website, self.securityContact, self.details];
 }
 
 @end

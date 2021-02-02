@@ -63,11 +63,7 @@ RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::getHash, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::getHash, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -95,11 +91,7 @@ RCT_REMAP_METHOD(getNonce,getNonce:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::getNonce, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::getNonce, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -127,11 +119,7 @@ RCT_REMAP_METHOD(getGasPrice,getGasPrice:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::getGasPrice, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::getGasPrice, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -165,11 +153,7 @@ RCT_REMAP_METHOD(getGasLimit,getGasLimit:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::getGasLimit, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::getGasLimit, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -203,11 +187,7 @@ RCT_REMAP_METHOD(getGasUsed,getGasUsed:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::getGasUsed, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::getGasUsed, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -241,11 +221,7 @@ RCT_REMAP_METHOD(getReceiver,getReceiver:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::getReceiver, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::getReceiver, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -279,11 +255,7 @@ RCT_REMAP_METHOD(getSender,getSender:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::getSender, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::getSender, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -317,11 +289,7 @@ RCT_REMAP_METHOD(getValue,getValue:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::getValue, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::getValue, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -355,11 +323,7 @@ RCT_REMAP_METHOD(getData,getData:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::getData, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::getData, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -388,11 +352,7 @@ RCT_REMAP_METHOD(getStatus,getStatus:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::getStatus, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::getStatus, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -420,11 +380,7 @@ RCT_REMAP_METHOD(serialize,serialize:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::serialize, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::serialize, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -455,11 +411,7 @@ RCT_REMAP_METHOD(setSignature,setSignature:(NSDictionary *)currentInstance withP
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::setSignature, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::setSignature, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -483,11 +435,7 @@ RCT_REMAP_METHOD(setDERSignature,setDERSignature:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::setDERSignature, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::setDERSignature, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -507,11 +455,7 @@ RCT_REMAP_METHOD(setVSignature,setVSignature:(NSDictionary *)currentInstance wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::setVSignature, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::setVSignature, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -535,11 +479,7 @@ RCT_REMAP_METHOD(getDate,getDate:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::getDate, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::getDate, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -569,11 +509,7 @@ RCT_REMAP_METHOD(getBlock,getBlock:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeTransaction::getBlock, first argument should be an instance of LGEthereumLikeTransaction", nil);
         return;
     }
-    LGEthereumLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeTransaction::getBlock, instance of uid %@ not found", currentInstance[@"uid"]];

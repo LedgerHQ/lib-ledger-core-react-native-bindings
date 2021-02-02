@@ -63,11 +63,7 @@ RCT_REMAP_METHOD(derive,derive:(NSDictionary *)currentInstance withParams:(nonnu
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeExtendedPublicKey::derive, first argument should be an instance of LGTezosLikeExtendedPublicKey", nil);
         return;
     }
-    LGTezosLikeExtendedPublicKey *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGTezosLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeExtendedPublicKey::derive, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -101,11 +97,7 @@ RCT_REMAP_METHOD(derivePublicKey,derivePublicKey:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeExtendedPublicKey::derivePublicKey, first argument should be an instance of LGTezosLikeExtendedPublicKey", nil);
         return;
     }
-    LGTezosLikeExtendedPublicKey *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGTezosLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeExtendedPublicKey::derivePublicKey, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -134,11 +126,7 @@ RCT_REMAP_METHOD(deriveHash160,deriveHash160:(NSDictionary *)currentInstance wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeExtendedPublicKey::deriveHash160, first argument should be an instance of LGTezosLikeExtendedPublicKey", nil);
         return;
     }
-    LGTezosLikeExtendedPublicKey *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGTezosLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeExtendedPublicKey::deriveHash160, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -167,11 +155,7 @@ RCT_REMAP_METHOD(toBase58,toBase58:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeExtendedPublicKey::toBase58, first argument should be an instance of LGTezosLikeExtendedPublicKey", nil);
         return;
     }
-    LGTezosLikeExtendedPublicKey *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGTezosLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeExtendedPublicKey::toBase58, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -199,11 +183,7 @@ RCT_REMAP_METHOD(getRootPath,getRootPath:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeExtendedPublicKey::getRootPath, first argument should be an instance of LGTezosLikeExtendedPublicKey", nil);
         return;
     }
-    LGTezosLikeExtendedPublicKey *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGTezosLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeExtendedPublicKey::getRootPath, instance of uid %@ not found", currentInstance[@"uid"]];

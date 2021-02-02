@@ -42,11 +42,7 @@ RCT_REMAP_METHOD(getCode,getCode:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEvent::getCode, first argument should be an instance of LGEvent", nil);
         return;
     }
-    LGEvent *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEvent *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEvent::getCode, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -77,11 +73,7 @@ RCT_REMAP_METHOD(getPayload,getPayload:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEvent::getPayload, first argument should be an instance of LGEvent", nil);
         return;
     }
-    LGEvent *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEvent *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEvent::getPayload, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -118,11 +110,7 @@ RCT_REMAP_METHOD(isSticky,isSticky:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEvent::isSticky, first argument should be an instance of LGEvent", nil);
         return;
     }
-    LGEvent *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEvent *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEvent::isSticky, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -153,11 +141,7 @@ RCT_REMAP_METHOD(getStickyTag,getStickyTag:(NSDictionary *)currentInstance WithR
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEvent::getStickyTag, first argument should be an instance of LGEvent", nil);
         return;
     }
-    LGEvent *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEvent *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEvent::getStickyTag, instance of uid %@ not found", currentInstance[@"uid"]];

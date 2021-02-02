@@ -66,11 +66,7 @@ RCT_REMAP_METHOD(getMethod,getMethod:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpRequest::getMethod, first argument should be an instance of LGHttpRequest", nil);
         return;
     }
-    LGHttpRequest *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGHttpRequest *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHttpRequest::getMethod, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -101,11 +97,7 @@ RCT_REMAP_METHOD(getHeaders,getHeaders:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpRequest::getHeaders, first argument should be an instance of LGHttpRequest", nil);
         return;
     }
-    LGHttpRequest *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGHttpRequest *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHttpRequest::getHeaders, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -136,11 +128,7 @@ RCT_REMAP_METHOD(getBody,getBody:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpRequest::getBody, first argument should be an instance of LGHttpRequest", nil);
         return;
     }
-    LGHttpRequest *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGHttpRequest *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHttpRequest::getBody, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -172,11 +160,7 @@ RCT_REMAP_METHOD(getUrl,getUrl:(NSDictionary *)currentInstance WithResolver:(RCT
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpRequest::getUrl, first argument should be an instance of LGHttpRequest", nil);
         return;
     }
-    LGHttpRequest *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGHttpRequest *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHttpRequest::getUrl, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -209,11 +193,7 @@ RCT_REMAP_METHOD(complete,complete:(NSDictionary *)currentInstance withParams:(n
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHttpRequest::complete, first argument should be an instance of LGHttpRequest", nil);
         return;
     }
-    LGHttpRequest *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGHttpRequest *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHttpRequest::complete, instance of uid %@ not found", currentInstance[@"uid"]];

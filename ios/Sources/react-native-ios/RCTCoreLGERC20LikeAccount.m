@@ -39,11 +39,7 @@ RCT_REMAP_METHOD(getToken,getToken:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeAccount::getToken, first argument should be an instance of LGERC20LikeAccount", nil);
         return;
     }
-    LGERC20LikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGERC20LikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeAccount::getToken, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -77,11 +73,7 @@ RCT_REMAP_METHOD(getAddress,getAddress:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeAccount::getAddress, first argument should be an instance of LGERC20LikeAccount", nil);
         return;
     }
-    LGERC20LikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGERC20LikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeAccount::getAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -109,11 +101,7 @@ RCT_REMAP_METHOD(getBalance,getBalance:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeAccount::getBalance, first argument should be an instance of LGERC20LikeAccount", nil);
         return;
     }
-    LGERC20LikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGERC20LikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeAccount::getBalance, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -137,11 +125,7 @@ RCT_REMAP_METHOD(getBalanceHistoryFor,getBalanceHistoryFor:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeAccount::getBalanceHistoryFor, first argument should be an instance of LGERC20LikeAccount", nil);
         return;
     }
-    LGERC20LikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGERC20LikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeAccount::getBalanceHistoryFor, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -180,11 +164,7 @@ RCT_REMAP_METHOD(getOperations,getOperations:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeAccount::getOperations, first argument should be an instance of LGERC20LikeAccount", nil);
         return;
     }
-    LGERC20LikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGERC20LikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeAccount::getOperations, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -224,11 +204,7 @@ RCT_REMAP_METHOD(getTransferToAddressData,getTransferToAddressData:(NSDictionary
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeAccount::getTransferToAddressData, first argument should be an instance of LGERC20LikeAccount", nil);
         return;
     }
-    LGERC20LikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGERC20LikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeAccount::getTransferToAddressData, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -248,11 +224,7 @@ RCT_REMAP_METHOD(queryOperations,queryOperations:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeAccount::queryOperations, first argument should be an instance of LGERC20LikeAccount", nil);
         return;
     }
-    LGERC20LikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGERC20LikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeAccount::queryOperations, instance of uid %@ not found", currentInstance[@"uid"]];

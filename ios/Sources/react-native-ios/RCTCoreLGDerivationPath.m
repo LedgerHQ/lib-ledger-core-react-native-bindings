@@ -39,11 +39,7 @@ RCT_REMAP_METHOD(getDepth,getDepth:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDerivationPath::getDepth, first argument should be an instance of LGDerivationPath", nil);
         return;
     }
-    LGDerivationPath *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGDerivationPath *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDerivationPath::getDepth, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -71,11 +67,7 @@ RCT_REMAP_METHOD(getChildNum,getChildNum:(NSDictionary *)currentInstance withPar
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDerivationPath::getChildNum, first argument should be an instance of LGDerivationPath", nil);
         return;
     }
-    LGDerivationPath *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGDerivationPath *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDerivationPath::getChildNum, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -106,11 +98,7 @@ RCT_REMAP_METHOD(getUnhardenedChildNum,getUnhardenedChildNum:(NSDictionary *)cur
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDerivationPath::getUnhardenedChildNum, first argument should be an instance of LGDerivationPath", nil);
         return;
     }
-    LGDerivationPath *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGDerivationPath *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDerivationPath::getUnhardenedChildNum, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -138,11 +126,7 @@ RCT_REMAP_METHOD(isHardened,isHardened:(NSDictionary *)currentInstance withParam
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDerivationPath::isHardened, first argument should be an instance of LGDerivationPath", nil);
         return;
     }
-    LGDerivationPath *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGDerivationPath *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDerivationPath::isHardened, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -170,11 +154,7 @@ RCT_REMAP_METHOD(toString,toString:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDerivationPath::toString, first argument should be an instance of LGDerivationPath", nil);
         return;
     }
-    LGDerivationPath *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGDerivationPath *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDerivationPath::toString, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -205,11 +185,7 @@ RCT_REMAP_METHOD(getParent,getParent:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDerivationPath::getParent, first argument should be an instance of LGDerivationPath", nil);
         return;
     }
-    LGDerivationPath *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGDerivationPath *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDerivationPath::getParent, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -243,11 +219,7 @@ RCT_REMAP_METHOD(toArray,toArray:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDerivationPath::toArray, first argument should be an instance of LGDerivationPath", nil);
         return;
     }
-    LGDerivationPath *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGDerivationPath *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDerivationPath::toArray, instance of uid %@ not found", currentInstance[@"uid"]];

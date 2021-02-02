@@ -13,6 +13,7 @@ auto CosmosLikeValidatorDescription::toCpp(ObjcType obj) -> CppType
     return {::djinni::String::toCpp(obj.moniker),
             ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.identity),
             ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.website),
+            ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.securityContact),
             ::djinni::Optional<std::experimental::optional, ::djinni::String>::toCpp(obj.details)};
 }
 
@@ -21,6 +22,7 @@ auto CosmosLikeValidatorDescription::fromCpp(const CppType& cpp) -> ObjcType
     return [[LGCosmosLikeValidatorDescription alloc] initWithMoniker:(::djinni::String::fromCpp(cpp.moniker))
                                                             identity:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.identity))
                                                              website:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.website))
+                                                     securityContact:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.securityContact))
                                                              details:(::djinni::Optional<std::experimental::optional, ::djinni::String>::fromCpp(cpp.details))];
 }
 

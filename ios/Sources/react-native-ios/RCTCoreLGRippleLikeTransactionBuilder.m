@@ -69,11 +69,7 @@ RCT_REMAP_METHOD(sendToAddress,sendToAddress:(NSDictionary *)currentInstance wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransactionBuilder::sendToAddress, first argument should be an instance of LGRippleLikeTransactionBuilder", nil);
         return;
     }
-    LGRippleLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransactionBuilder::sendToAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -113,11 +109,7 @@ RCT_REMAP_METHOD(wipeToAddress,wipeToAddress:(NSDictionary *)currentInstance wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransactionBuilder::wipeToAddress, first argument should be an instance of LGRippleLikeTransactionBuilder", nil);
         return;
     }
-    LGRippleLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransactionBuilder::wipeToAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -154,11 +146,7 @@ RCT_REMAP_METHOD(setFees,setFees:(NSDictionary *)currentInstance withParams:(NSD
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransactionBuilder::setFees, first argument should be an instance of LGRippleLikeTransactionBuilder", nil);
         return;
     }
-    LGRippleLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransactionBuilder::setFees, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -197,11 +185,7 @@ RCT_REMAP_METHOD(addMemo,addMemo:(NSDictionary *)currentInstance withParams:(NSD
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransactionBuilder::addMemo, first argument should be an instance of LGRippleLikeTransactionBuilder", nil);
         return;
     }
-    LGRippleLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransactionBuilder::addMemo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -237,11 +221,7 @@ RCT_REMAP_METHOD(setDestinationTag,setDestinationTag:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransactionBuilder::setDestinationTag, first argument should be an instance of LGRippleLikeTransactionBuilder", nil);
         return;
     }
-    LGRippleLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransactionBuilder::setDestinationTag, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -275,11 +255,7 @@ RCT_REMAP_METHOD(build,build:(NSDictionary *)currentInstance WithResolver:(RCTPr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransactionBuilder::build, first argument should be an instance of LGRippleLikeTransactionBuilder", nil);
         return;
     }
-    LGRippleLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransactionBuilder::build, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -301,11 +277,7 @@ RCT_REMAP_METHOD(clone,clone:(NSDictionary *)currentInstance WithResolver:(RCTPr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransactionBuilder::clone, first argument should be an instance of LGRippleLikeTransactionBuilder", nil);
         return;
     }
-    LGRippleLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransactionBuilder::clone, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -339,11 +311,7 @@ RCT_REMAP_METHOD(reset,reset:(NSDictionary *)currentInstance WithResolver:(RCTPr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransactionBuilder::reset, first argument should be an instance of LGRippleLikeTransactionBuilder", nil);
         return;
     }
-    LGRippleLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransactionBuilder::reset, instance of uid %@ not found", currentInstance[@"uid"]];

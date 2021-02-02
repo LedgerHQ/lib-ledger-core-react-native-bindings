@@ -3,6 +3,7 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * __nonnull const LGBlockchainExplorerEnginesSTARGATENODE;
 extern NSString * __nonnull const LGBlockchainExplorerEnginesCOSMOSNODE;
 extern NSString * __nonnull const LGBlockchainExplorerEnginesLEDGERAPI;
 extern NSString * __nonnull const LGBlockchainExplorerEnginesRIPPLEAPI;

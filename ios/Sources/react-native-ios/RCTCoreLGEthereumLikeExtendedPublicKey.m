@@ -63,11 +63,7 @@ RCT_REMAP_METHOD(derive,derive:(NSDictionary *)currentInstance withParams:(nonnu
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeExtendedPublicKey::derive, first argument should be an instance of LGEthereumLikeExtendedPublicKey", nil);
         return;
     }
-    LGEthereumLikeExtendedPublicKey *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeExtendedPublicKey::derive, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -101,11 +97,7 @@ RCT_REMAP_METHOD(derivePublicKey,derivePublicKey:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeExtendedPublicKey::derivePublicKey, first argument should be an instance of LGEthereumLikeExtendedPublicKey", nil);
         return;
     }
-    LGEthereumLikeExtendedPublicKey *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeExtendedPublicKey::derivePublicKey, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -134,11 +126,7 @@ RCT_REMAP_METHOD(deriveHash160,deriveHash160:(NSDictionary *)currentInstance wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeExtendedPublicKey::deriveHash160, first argument should be an instance of LGEthereumLikeExtendedPublicKey", nil);
         return;
     }
-    LGEthereumLikeExtendedPublicKey *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeExtendedPublicKey::deriveHash160, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -167,11 +155,7 @@ RCT_REMAP_METHOD(toBase58,toBase58:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeExtendedPublicKey::toBase58, first argument should be an instance of LGEthereumLikeExtendedPublicKey", nil);
         return;
     }
-    LGEthereumLikeExtendedPublicKey *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeExtendedPublicKey::toBase58, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -199,11 +183,7 @@ RCT_REMAP_METHOD(getRootPath,getRootPath:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeExtendedPublicKey::getRootPath, first argument should be an instance of LGEthereumLikeExtendedPublicKey", nil);
         return;
     }
-    LGEthereumLikeExtendedPublicKey *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeExtendedPublicKey::getRootPath, instance of uid %@ not found", currentInstance[@"uid"]];

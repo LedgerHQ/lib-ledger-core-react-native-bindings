@@ -106,7 +106,7 @@ public class RCTCoreCosmosLikeValidator extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void init(ReadableMap validatorDetails, ReadableMap commission, ReadableMap distInfo, ReadableMap signInfo, int unbondingHeight, Date unbondingTime, String minSelfDelegation, boolean jailed, String votingPower, String operatorAddress, String consensusPubkey, int activeStatus, Promise promise) {
+    public void init(ReadableMap validatorDetails, ReadableMap commission, ReadableMap distInfo, ReadableMap signInfo, int unbondingHeight, Date unbondingTime, String minSelfDelegation, boolean jailed, String votingPower, String operatorAddress, String consensusPubkey, String activeStatus, Promise promise) {
         WritableNativeMap implementationsData = new WritableNativeMap();
         RCTCoreCosmosLikeValidatorDescription rctParam_validatorDetails = this.reactContext.getNativeModule(RCTCoreCosmosLikeValidatorDescription.class);
         CosmosLikeValidatorDescription javaParam_0 = rctParam_validatorDetails.getJavaObjects().get(validatorDetails.getString("uid"));
@@ -387,9 +387,9 @@ public class RCTCoreCosmosLikeValidator extends ReactContextBaseJavaModule {
         if (uid.length() > 0)
         {
             CosmosLikeValidator javaObj = this.javaObjects.get(uid);
-            int result = javaObj.getActiveStatus();
+            String result = javaObj.getActiveStatus();
             WritableNativeMap resultMap = new WritableNativeMap();
-            resultMap.putInt("value", result);
+            resultMap.putString("value", result);
             promise.resolve(resultMap);
         }
         else

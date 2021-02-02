@@ -38,11 +38,7 @@ RCT_REMAP_METHOD(getDelegatorAddress,getDelegatorAddress:(NSDictionary *)current
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeRedelegation::getDelegatorAddress, first argument should be an instance of LGCosmosLikeRedelegation", nil);
         return;
     }
-    LGCosmosLikeRedelegation *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeRedelegation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeRedelegation::getDelegatorAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -69,11 +65,7 @@ RCT_REMAP_METHOD(getSrcValidatorAddress,getSrcValidatorAddress:(NSDictionary *)c
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeRedelegation::getSrcValidatorAddress, first argument should be an instance of LGCosmosLikeRedelegation", nil);
         return;
     }
-    LGCosmosLikeRedelegation *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeRedelegation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeRedelegation::getSrcValidatorAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -100,11 +92,7 @@ RCT_REMAP_METHOD(getDstValidatorAddress,getDstValidatorAddress:(NSDictionary *)c
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeRedelegation::getDstValidatorAddress, first argument should be an instance of LGCosmosLikeRedelegation", nil);
         return;
     }
-    LGCosmosLikeRedelegation *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeRedelegation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeRedelegation::getDstValidatorAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -131,11 +119,7 @@ RCT_REMAP_METHOD(getEntries,getEntries:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeRedelegation::getEntries, first argument should be an instance of LGCosmosLikeRedelegation", nil);
         return;
     }
-    LGCosmosLikeRedelegation *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeRedelegation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeRedelegation::getEntries, instance of uid %@ not found", currentInstance[@"uid"]];

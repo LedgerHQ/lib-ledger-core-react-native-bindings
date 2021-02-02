@@ -63,11 +63,7 @@ RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getHash, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getHash, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -95,11 +91,7 @@ RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getFees, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getFees, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -133,11 +125,7 @@ RCT_REMAP_METHOD(getReceiver,getReceiver:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getReceiver, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getReceiver, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -171,11 +159,7 @@ RCT_REMAP_METHOD(getSender,getSender:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getSender, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getSender, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -209,11 +193,7 @@ RCT_REMAP_METHOD(getValue,getValue:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getValue, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getValue, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -247,11 +227,7 @@ RCT_REMAP_METHOD(serialize,serialize:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::serialize, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::serialize, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -281,11 +257,7 @@ RCT_REMAP_METHOD(setSignature,setSignature:(NSDictionary *)currentInstance withP
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::setSignature, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::setSignature, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -307,11 +279,7 @@ RCT_REMAP_METHOD(setDERSignature,setDERSignature:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::setDERSignature, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::setDERSignature, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -335,11 +303,7 @@ RCT_REMAP_METHOD(getDate,getDate:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getDate, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getDate, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -373,11 +337,7 @@ RCT_REMAP_METHOD(getSequence,getSequence:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getSequence, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getSequence, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -411,11 +371,7 @@ RCT_REMAP_METHOD(getLedgerSequence,getLedgerSequence:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getLedgerSequence, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getLedgerSequence, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -449,11 +405,7 @@ RCT_REMAP_METHOD(getSigningPubKey,getSigningPubKey:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getSigningPubKey, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getSigningPubKey, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -482,11 +434,7 @@ RCT_REMAP_METHOD(getMemos,getMemos:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getMemos, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getMemos, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -525,11 +473,7 @@ RCT_REMAP_METHOD(addMemo,addMemo:(NSDictionary *)currentInstance withParams:(NSD
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::addMemo, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::addMemo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -550,11 +494,7 @@ RCT_REMAP_METHOD(getDestinationTag,getDestinationTag:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getDestinationTag, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getDestinationTag, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -582,11 +522,7 @@ RCT_REMAP_METHOD(getStatus,getStatus:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeTransaction::getStatus, first argument should be an instance of LGRippleLikeTransaction", nil);
         return;
     }
-    LGRippleLikeTransaction *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeTransaction::getStatus, instance of uid %@ not found", currentInstance[@"uid"]];

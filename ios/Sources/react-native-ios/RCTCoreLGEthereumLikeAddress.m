@@ -66,11 +66,7 @@ RCT_REMAP_METHOD(getVersion,getVersion:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAddress::getVersion, first argument should be an instance of LGEthereumLikeAddress", nil);
         return;
     }
-    LGEthereumLikeAddress *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAddress::getVersion, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -102,11 +98,7 @@ RCT_REMAP_METHOD(getKeccakHash,getKeccakHash:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAddress::getKeccakHash, first argument should be an instance of LGEthereumLikeAddress", nil);
         return;
     }
-    LGEthereumLikeAddress *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAddress::getKeccakHash, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -138,11 +130,7 @@ RCT_REMAP_METHOD(getNetworkParameters,getNetworkParameters:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAddress::getNetworkParameters, first argument should be an instance of LGEthereumLikeAddress", nil);
         return;
     }
-    LGEthereumLikeAddress *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAddress::getNetworkParameters, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -179,11 +167,7 @@ RCT_REMAP_METHOD(toEIP55,toEIP55:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEthereumLikeAddress::toEIP55, first argument should be an instance of LGEthereumLikeAddress", nil);
         return;
     }
-    LGEthereumLikeAddress *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGEthereumLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEthereumLikeAddress::toEIP55, instance of uid %@ not found", currentInstance[@"uid"]];

@@ -43,11 +43,7 @@ RCT_REMAP_METHOD(lock,lock:(NSDictionary *)currentInstance WithResolver:(RCTProm
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLock::lock, first argument should be an instance of LGLockImpl", nil);
         return;
     }
-    LGLockImpl *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGLockImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLockImpl::lock, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -71,11 +67,7 @@ RCT_REMAP_METHOD(tryLock,tryLock:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLock::tryLock, first argument should be an instance of LGLockImpl", nil);
         return;
     }
-    LGLockImpl *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGLockImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLockImpl::tryLock, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -103,11 +95,7 @@ RCT_REMAP_METHOD(unlock,unlock:(NSDictionary *)currentInstance WithResolver:(RCT
         reject(@"impl_call_error", @"Error while calling RCTCoreLGLock::unlock, first argument should be an instance of LGLockImpl", nil);
         return;
     }
-    LGLockImpl *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGLockImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGLockImpl::unlock, instance of uid %@ not found", currentInstance[@"uid"]];

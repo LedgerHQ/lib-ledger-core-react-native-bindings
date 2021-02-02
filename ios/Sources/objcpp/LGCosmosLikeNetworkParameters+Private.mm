@@ -14,6 +14,7 @@ auto CosmosLikeNetworkParameters::toCpp(ObjcType obj) -> CppType
             ::djinni::String::toCpp(obj.MessagePrefix),
             ::djinni::Binary::toCpp(obj.XPUBVersion),
             ::djinni::Binary::toCpp(obj.PubKeyPrefix),
+            ::djinni::Binary::toCpp(obj.Ed25519PubKeyPrefix),
             ::djinni::Binary::toCpp(obj.AddressPrefix),
             ::djinni::String::toCpp(obj.ChainId),
             ::djinni::List<::djinni::String>::toCpp(obj.AdditionalCIPs)};
@@ -25,6 +26,7 @@ auto CosmosLikeNetworkParameters::fromCpp(const CppType& cpp) -> ObjcType
                                                        MessagePrefix:(::djinni::String::fromCpp(cpp.MessagePrefix))
                                                          XPUBVersion:(::djinni::Binary::fromCpp(cpp.XPUBVersion))
                                                         PubKeyPrefix:(::djinni::Binary::fromCpp(cpp.PubKeyPrefix))
+                                                 Ed25519PubKeyPrefix:(::djinni::Binary::fromCpp(cpp.Ed25519PubKeyPrefix))
                                                        AddressPrefix:(::djinni::Binary::fromCpp(cpp.AddressPrefix))
                                                              ChainId:(::djinni::String::fromCpp(cpp.ChainId))
                                                       AdditionalCIPs:(::djinni::List<::djinni::String>::fromCpp(cpp.AdditionalCIPs))];

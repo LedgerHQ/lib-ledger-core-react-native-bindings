@@ -25,7 +25,7 @@ auto CosmosLikeValidator::toCpp(ObjcType obj) -> CppType
             ::djinni::String::toCpp(obj.votingPower),
             ::djinni::String::toCpp(obj.operatorAddress),
             ::djinni::String::toCpp(obj.consensusPubkey),
-            ::djinni::I32::toCpp(obj.activeStatus)};
+            ::djinni::String::toCpp(obj.activeStatus)};
 }
 
 auto CosmosLikeValidator::fromCpp(const CppType& cpp) -> ObjcType
@@ -41,7 +41,7 @@ auto CosmosLikeValidator::fromCpp(const CppType& cpp) -> ObjcType
                                                        votingPower:(::djinni::String::fromCpp(cpp.votingPower))
                                                    operatorAddress:(::djinni::String::fromCpp(cpp.operatorAddress))
                                                    consensusPubkey:(::djinni::String::fromCpp(cpp.consensusPubkey))
-                                                      activeStatus:(::djinni::I32::fromCpp(cpp.activeStatus))];
+                                                      activeStatus:(::djinni::String::fromCpp(cpp.activeStatus))];
 }
 
 }  // namespace djinni_generated
