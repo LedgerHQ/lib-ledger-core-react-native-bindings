@@ -66,11 +66,7 @@ RCT_REMAP_METHOD(head,head:(NSDictionary *)currentInstance WithResolver:(RCTProm
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeScript::head, first argument should be an instance of LGBitcoinLikeScript", nil);
         return;
     }
-    LGBitcoinLikeScript *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeScript *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeScript::head, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -104,11 +100,7 @@ RCT_REMAP_METHOD(toString,toString:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeScript::toString, first argument should be an instance of LGBitcoinLikeScript", nil);
         return;
     }
-    LGBitcoinLikeScript *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeScript *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeScript::toString, instance of uid %@ not found", currentInstance[@"uid"]];

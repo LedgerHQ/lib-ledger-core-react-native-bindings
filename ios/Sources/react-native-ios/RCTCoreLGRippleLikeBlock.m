@@ -42,11 +42,7 @@ RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeBlock::getHash, first argument should be an instance of LGRippleLikeBlock", nil);
         return;
     }
-    LGRippleLikeBlock *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeBlock *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeBlock::getHash, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -77,11 +73,7 @@ RCT_REMAP_METHOD(getHeight,getHeight:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeBlock::getHeight, first argument should be an instance of LGRippleLikeBlock", nil);
         return;
     }
-    LGRippleLikeBlock *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeBlock *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeBlock::getHeight, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -112,11 +104,7 @@ RCT_REMAP_METHOD(getTime,getTime:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeBlock::getTime, first argument should be an instance of LGRippleLikeBlock", nil);
         return;
     }
-    LGRippleLikeBlock *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGRippleLikeBlock *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeBlock::getTime, instance of uid %@ not found", currentInstance[@"uid"]];

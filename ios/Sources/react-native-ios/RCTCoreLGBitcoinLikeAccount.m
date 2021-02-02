@@ -69,11 +69,7 @@ RCT_REMAP_METHOD(getUTXO,getUTXO:(NSDictionary *)currentInstance withParams:(int
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::getUTXO, first argument should be an instance of LGBitcoinLikeAccount", nil);
         return;
     }
-    LGBitcoinLikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAccount::getUTXO, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -95,11 +91,7 @@ RCT_REMAP_METHOD(getUTXOCount,getUTXOCount:(NSDictionary *)currentInstance WithR
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::getUTXOCount, first argument should be an instance of LGBitcoinLikeAccount", nil);
         return;
     }
-    LGBitcoinLikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAccount::getUTXOCount, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -117,11 +109,7 @@ RCT_REMAP_METHOD(broadcastRawTransaction,broadcastRawTransaction:(NSDictionary *
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::broadcastRawTransaction, first argument should be an instance of LGBitcoinLikeAccount", nil);
         return;
     }
-    LGBitcoinLikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAccount::broadcastRawTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -141,11 +129,7 @@ RCT_REMAP_METHOD(broadcastTransaction,broadcastTransaction:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::broadcastTransaction, first argument should be an instance of LGBitcoinLikeAccount", nil);
         return;
     }
-    LGBitcoinLikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAccount::broadcastTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -165,11 +149,7 @@ RCT_REMAP_METHOD(buildTransaction,buildTransaction:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::buildTransaction, first argument should be an instance of LGBitcoinLikeAccount", nil);
         return;
     }
-    LGBitcoinLikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAccount::buildTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -209,11 +189,7 @@ RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::getFees, first argument should be an instance of LGBitcoinLikeAccount", nil);
         return;
     }
-    LGBitcoinLikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAccount::getFees, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -236,11 +212,7 @@ RCT_REMAP_METHOD(getAddresses,getAddresses:(NSDictionary *)currentInstance withP
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::getAddresses, first argument should be an instance of LGBitcoinLikeAccount", nil);
         return;
     }
-    LGBitcoinLikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAccount::getAddresses, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -259,11 +231,7 @@ RCT_REMAP_METHOD(getAllAddresses,getAllAddresses:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::getAllAddresses, first argument should be an instance of LGBitcoinLikeAccount", nil);
         return;
     }
-    LGBitcoinLikeAccount *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAccount::getAllAddresses, instance of uid %@ not found", currentInstance[@"uid"]];

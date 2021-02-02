@@ -69,11 +69,7 @@ RCT_REMAP_METHOD(putString,putString:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesEditor::putString, first argument should be an instance of LGPreferencesEditor", nil);
         return;
     }
-    LGPreferencesEditor *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGPreferencesEditor *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesEditor::putString, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -113,11 +109,7 @@ RCT_REMAP_METHOD(putInt,putInt:(NSDictionary *)currentInstance withParams:(nonnu
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesEditor::putInt, first argument should be an instance of LGPreferencesEditor", nil);
         return;
     }
-    LGPreferencesEditor *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGPreferencesEditor *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesEditor::putInt, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -157,11 +149,7 @@ RCT_REMAP_METHOD(putLong,putLong:(NSDictionary *)currentInstance withParams:(non
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesEditor::putLong, first argument should be an instance of LGPreferencesEditor", nil);
         return;
     }
-    LGPreferencesEditor *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGPreferencesEditor *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesEditor::putLong, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -201,11 +189,7 @@ RCT_REMAP_METHOD(putBoolean,putBoolean:(NSDictionary *)currentInstance withParam
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesEditor::putBoolean, first argument should be an instance of LGPreferencesEditor", nil);
         return;
     }
-    LGPreferencesEditor *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGPreferencesEditor *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesEditor::putBoolean, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -245,11 +229,7 @@ RCT_REMAP_METHOD(putStringArray,putStringArray:(NSDictionary *)currentInstance w
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesEditor::putStringArray, first argument should be an instance of LGPreferencesEditor", nil);
         return;
     }
-    LGPreferencesEditor *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGPreferencesEditor *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesEditor::putStringArray, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -289,11 +269,7 @@ RCT_REMAP_METHOD(putData,putData:(NSDictionary *)currentInstance withParams:(non
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesEditor::putData, first argument should be an instance of LGPreferencesEditor", nil);
         return;
     }
-    LGPreferencesEditor *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGPreferencesEditor *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesEditor::putData, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -333,11 +309,7 @@ RCT_REMAP_METHOD(remove,remove:(NSDictionary *)currentInstance withParams:(nonnu
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesEditor::remove, first argument should be an instance of LGPreferencesEditor", nil);
         return;
     }
-    LGPreferencesEditor *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGPreferencesEditor *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesEditor::remove, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -371,11 +343,7 @@ RCT_REMAP_METHOD(commit,commit:(NSDictionary *)currentInstance WithResolver:(RCT
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesEditor::commit, first argument should be an instance of LGPreferencesEditor", nil);
         return;
     }
-    LGPreferencesEditor *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGPreferencesEditor *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesEditor::commit, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -394,11 +362,7 @@ RCT_REMAP_METHOD(clear,clear:(NSDictionary *)currentInstance WithResolver:(RCTPr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesEditor::clear, first argument should be an instance of LGPreferencesEditor", nil);
         return;
     }
-    LGPreferencesEditor *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGPreferencesEditor *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesEditor::clear, instance of uid %@ not found", currentInstance[@"uid"]];

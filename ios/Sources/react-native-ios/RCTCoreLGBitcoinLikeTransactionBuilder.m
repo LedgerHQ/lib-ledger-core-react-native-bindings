@@ -71,11 +71,7 @@ RCT_REMAP_METHOD(addInput,addInput:(NSDictionary *)currentInstance withParams:(n
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::addInput, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::addInput, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -113,11 +109,7 @@ RCT_REMAP_METHOD(addOutput,addOutput:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::addOutput, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::addOutput, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -158,11 +150,7 @@ RCT_REMAP_METHOD(addChangePath,addChangePath:(NSDictionary *)currentInstance wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::addChangePath, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::addChangePath, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -203,11 +191,7 @@ RCT_REMAP_METHOD(excludeUtxo,excludeUtxo:(NSDictionary *)currentInstance withPar
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::excludeUtxo, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::excludeUtxo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -244,11 +228,7 @@ RCT_REMAP_METHOD(setNumberOfChangeAddresses,setNumberOfChangeAddresses:(NSDictio
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::setNumberOfChangeAddresses, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::setNumberOfChangeAddresses, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -285,11 +265,7 @@ RCT_REMAP_METHOD(setMaxAmountOnChange,setMaxAmountOnChange:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::setMaxAmountOnChange, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::setMaxAmountOnChange, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -328,11 +304,7 @@ RCT_REMAP_METHOD(setMinAmountOnChange,setMinAmountOnChange:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::setMinAmountOnChange, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::setMinAmountOnChange, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -375,11 +347,7 @@ RCT_REMAP_METHOD(pickInputs,pickInputs:(NSDictionary *)currentInstance withParam
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::pickInputs, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::pickInputs, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -419,11 +387,7 @@ RCT_REMAP_METHOD(sendToAddress,sendToAddress:(NSDictionary *)currentInstance wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::sendToAddress, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::sendToAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -463,11 +427,7 @@ RCT_REMAP_METHOD(wipeToAddress,wipeToAddress:(NSDictionary *)currentInstance wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::wipeToAddress, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::wipeToAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -504,11 +464,7 @@ RCT_REMAP_METHOD(setFeesPerByte,setFeesPerByte:(NSDictionary *)currentInstance w
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::setFeesPerByte, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::setFeesPerByte, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -544,11 +500,7 @@ RCT_REMAP_METHOD(build,build:(NSDictionary *)currentInstance WithResolver:(RCTPr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::build, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::build, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -570,11 +522,7 @@ RCT_REMAP_METHOD(clone,clone:(NSDictionary *)currentInstance WithResolver:(RCTPr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::clone, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::clone, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -608,11 +556,7 @@ RCT_REMAP_METHOD(reset,reset:(NSDictionary *)currentInstance WithResolver:(RCTPr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::reset, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBitcoinLikeTransactionBuilder *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransactionBuilder::reset, instance of uid %@ not found", currentInstance[@"uid"]];

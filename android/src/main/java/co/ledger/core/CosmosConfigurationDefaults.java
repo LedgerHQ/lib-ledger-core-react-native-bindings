@@ -6,7 +6,7 @@ package co.ledger.core;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class CosmosConfigurationDefaults {
-    public static final String COSMOS_DEFAULT_API_ENDPOINT = "https://cosmos.coin.staging.aws.ledger.com";
+    public static final String COSMOS_DEFAULT_API_ENDPOINT = "https://cosmos.coin.ledger.com";
 
     public static final String COSMOS_OBSERVER_WS_ENDPOINT = "";
 

@@ -39,11 +39,7 @@ RCT_REMAP_METHOD(getCreationHeight,getCreationHeight:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeUnbondingEntry::getCreationHeight, first argument should be an instance of LGCosmosLikeUnbondingEntry", nil);
         return;
     }
-    LGCosmosLikeUnbondingEntry *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeUnbondingEntry *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeUnbondingEntry::getCreationHeight, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -77,11 +73,7 @@ RCT_REMAP_METHOD(getCompletionTime,getCompletionTime:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeUnbondingEntry::getCompletionTime, first argument should be an instance of LGCosmosLikeUnbondingEntry", nil);
         return;
     }
-    LGCosmosLikeUnbondingEntry *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeUnbondingEntry *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeUnbondingEntry::getCompletionTime, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -111,11 +103,7 @@ RCT_REMAP_METHOD(getInitialBalance,getInitialBalance:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeUnbondingEntry::getInitialBalance, first argument should be an instance of LGCosmosLikeUnbondingEntry", nil);
         return;
     }
-    LGCosmosLikeUnbondingEntry *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeUnbondingEntry *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeUnbondingEntry::getInitialBalance, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -149,11 +137,7 @@ RCT_REMAP_METHOD(getBalance,getBalance:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeUnbondingEntry::getBalance, first argument should be an instance of LGCosmosLikeUnbondingEntry", nil);
         return;
     }
-    LGCosmosLikeUnbondingEntry *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeUnbondingEntry *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeUnbondingEntry::getBalance, instance of uid %@ not found", currentInstance[@"uid"]];

@@ -43,11 +43,7 @@ RCT_REMAP_METHOD(add,add:(NSDictionary *)currentInstance withParams:(NSDictionar
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBigInt::add, first argument should be an instance of LGBigInt", nil);
         return;
     }
-    LGBigInt *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBigInt *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBigInt::add, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -87,11 +83,7 @@ RCT_REMAP_METHOD(subtract,subtract:(NSDictionary *)currentInstance withParams:(N
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBigInt::subtract, first argument should be an instance of LGBigInt", nil);
         return;
     }
-    LGBigInt *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBigInt *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBigInt::subtract, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -131,11 +123,7 @@ RCT_REMAP_METHOD(multiply,multiply:(NSDictionary *)currentInstance withParams:(N
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBigInt::multiply, first argument should be an instance of LGBigInt", nil);
         return;
     }
-    LGBigInt *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBigInt *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBigInt::multiply, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -175,11 +163,7 @@ RCT_REMAP_METHOD(divide,divide:(NSDictionary *)currentInstance withParams:(NSDic
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBigInt::divide, first argument should be an instance of LGBigInt", nil);
         return;
     }
-    LGBigInt *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBigInt *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBigInt::divide, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -219,11 +203,7 @@ RCT_REMAP_METHOD(divideAndRemainder,divideAndRemainder:(NSDictionary *)currentIn
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBigInt::divideAndRemainder, first argument should be an instance of LGBigInt", nil);
         return;
     }
-    LGBigInt *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBigInt *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBigInt::divideAndRemainder, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -268,11 +248,7 @@ RCT_REMAP_METHOD(pow,pow:(NSDictionary *)currentInstance withParams:(int)exponen
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBigInt::pow, first argument should be an instance of LGBigInt", nil);
         return;
     }
-    LGBigInt *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBigInt *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBigInt::pow, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -314,11 +290,7 @@ RCT_REMAP_METHOD(toDecimalString,toDecimalString:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBigInt::toDecimalString, first argument should be an instance of LGBigInt", nil);
         return;
     }
-    LGBigInt *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBigInt *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBigInt::toDecimalString, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -349,11 +321,7 @@ RCT_REMAP_METHOD(toString,toString:(NSDictionary *)currentInstance withParams:(i
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBigInt::toString, first argument should be an instance of LGBigInt", nil);
         return;
     }
-    LGBigInt *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBigInt *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBigInt::toString, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -385,11 +353,7 @@ RCT_REMAP_METHOD(intValue,intValue:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBigInt::intValue, first argument should be an instance of LGBigInt", nil);
         return;
     }
-    LGBigInt *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBigInt *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBigInt::intValue, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -421,11 +385,7 @@ RCT_REMAP_METHOD(compare,compare:(NSDictionary *)currentInstance withParams:(NSD
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBigInt::compare, first argument should be an instance of LGBigInt", nil);
         return;
     }
-    LGBigInt *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGBigInt *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBigInt::compare, instance of uid %@ not found", currentInstance[@"uid"]];

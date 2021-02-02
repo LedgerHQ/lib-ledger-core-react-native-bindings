@@ -42,7 +42,7 @@ RCT_REMAP_METHOD(init, initWithValidatorDetails:(NSDictionary *)validatorDetails
                                     votingPower:(nonnull NSString *)votingPower
                                 operatorAddress:(nonnull NSString *)operatorAddress
                                 consensusPubkey:(nonnull NSString *)consensusPubkey
-                                   activeStatus:(int)activeStatus withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                                   activeStatus:(nonnull NSString *)activeStatus withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSMutableDictionary *implementationsData = [[NSMutableDictionary alloc] init];
     RCTCoreLGCosmosLikeValidatorDescription *rctParam_validatorDetails = (RCTCoreLGCosmosLikeValidatorDescription *)[self.bridge moduleForName:@"CoreLGCosmosLikeValidatorDescription"];
     LGCosmosLikeValidatorDescription *field_0 = (LGCosmosLikeValidatorDescription *)[rctParam_validatorDetails.objcImplementations objectForKey:validatorDetails[@"uid"]];
@@ -205,7 +205,7 @@ RCT_REMAP_METHOD(getConsensusPubkey, getConsensusPubkey:(NSDictionary *)currentI
 RCT_REMAP_METHOD(getActiveStatus, getActiveStatus:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGCosmosLikeValidator *objcImpl = (LGCosmosLikeValidator *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : @((int)objcImpl.activeStatus)};
+    NSDictionary *result = @{@"value" : objcImpl.activeStatus};
     resolve(result);
 }
 

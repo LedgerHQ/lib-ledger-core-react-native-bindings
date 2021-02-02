@@ -31,7 +31,7 @@ public final class CosmosLikeValidator {
 
     /*package*/ final String consensusPubkey;
 
-    /*package*/ final int activeStatus;
+    /*package*/ final String activeStatus;
 
     public CosmosLikeValidator(
             CosmosLikeValidatorDescription validatorDetails,
@@ -45,7 +45,7 @@ public final class CosmosLikeValidator {
             String votingPower,
             String operatorAddress,
             String consensusPubkey,
-            int activeStatus) {
+            String activeStatus) {
         this.validatorDetails = validatorDetails;
         this.commission = commission;
         this.distInfo = distInfo;
@@ -115,8 +115,11 @@ public final class CosmosLikeValidator {
         return consensusPubkey;
     }
 
-    /** Status (Unbonded - Unbonding - Bonded) Goes from 0 to 2 or 1 to 3 depending on API (see https://github.com/cosmos/cosmos-sdk/commit/53bf2271d5bac054a8f74723732f21055c1b72d4#diff-f54554903608b8b89649f532c8f1a78cL43) */
-    public int getActiveStatus() {
+    /**
+     * Status (Unbonded - Unbonding - Bonded) Goes from 0 to 2 or 1 to 3 depending on API (see https://github.com/cosmos/cosmos-sdk/commit/53bf2271d5bac054a8f74723732f21055c1b72d4#diff-f54554903608b8b89649f532c8f1a78cL43)
+     * For Stargate, the string is an UPPERCASE_CONSTANT
+     */
+    public String getActiveStatus() {
         return activeStatus;
     }
 

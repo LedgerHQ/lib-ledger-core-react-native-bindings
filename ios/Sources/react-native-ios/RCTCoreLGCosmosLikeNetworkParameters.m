@@ -59,6 +59,7 @@ RCT_REMAP_METHOD(init, initWithIdentifier:(nonnull NSString *)Identifier
                             MessagePrefix:(nonnull NSString *)MessagePrefix
                               XPUBVersion:(NSString *)XPUBVersion
                              PubKeyPrefix:(NSString *)PubKeyPrefix
+                      Ed25519PubKeyPrefix:(NSString *)Ed25519PubKeyPrefix
                             AddressPrefix:(NSString *)AddressPrefix
                                   ChainId:(nonnull NSString *)ChainId
                            AdditionalCIPs:(nonnull NSArray<NSString *> *)AdditionalCIPs withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -66,11 +67,13 @@ RCT_REMAP_METHOD(init, initWithIdentifier:(nonnull NSString *)Identifier
 
     NSData *field_3 = [self hexStringToData:PubKeyPrefix];
 
-    NSData *field_4 = [self hexStringToData:AddressPrefix];
+    NSData *field_4 = [self hexStringToData:Ed25519PubKeyPrefix];
+
+    NSData *field_5 = [self hexStringToData:AddressPrefix];
 
 
 
-    LGCosmosLikeNetworkParameters * finalResult = [[LGCosmosLikeNetworkParameters alloc] initWithIdentifier:Identifier MessagePrefix:MessagePrefix XPUBVersion:field_2 PubKeyPrefix:field_3 AddressPrefix:field_4 ChainId:ChainId AdditionalCIPs:AdditionalCIPs];
+    LGCosmosLikeNetworkParameters * finalResult = [[LGCosmosLikeNetworkParameters alloc] initWithIdentifier:Identifier MessagePrefix:MessagePrefix XPUBVersion:field_2 PubKeyPrefix:field_3 Ed25519PubKeyPrefix:field_4 AddressPrefix:field_5 ChainId:ChainId AdditionalCIPs:AdditionalCIPs];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGCosmosLikeNetworkParameters *rctImpl = (RCTCoreLGCosmosLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGCosmosLikeNetworkParameters"];
     NSArray *finalResultArray = [[NSArray alloc] initWithObjects:finalResult, uuid, nil];
@@ -109,6 +112,14 @@ RCT_REMAP_METHOD(getPubKeyPrefix, getPubKeyPrefix:(NSDictionary *)currentInstanc
     LGCosmosLikeNetworkParameters *objcImpl = (LGCosmosLikeNetworkParameters *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
     NSString *objcImplPubKeyPrefixHexString = [self dataToHexString:objcImpl.PubKeyPrefix];
     NSDictionary *result = @{@"value" : objcImplPubKeyPrefixHexString};
+    resolve(result);
+}
+
+RCT_REMAP_METHOD(getEd25519PubKeyPrefix, getEd25519PubKeyPrefix:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
+{
+    LGCosmosLikeNetworkParameters *objcImpl = (LGCosmosLikeNetworkParameters *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    NSString *objcImplEd25519PubKeyPrefixHexString = [self dataToHexString:objcImpl.Ed25519PubKeyPrefix];
+    NSDictionary *result = @{@"value" : objcImplEd25519PubKeyPrefixHexString};
     resolve(result);
 }
 

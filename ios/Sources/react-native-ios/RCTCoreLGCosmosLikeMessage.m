@@ -42,11 +42,7 @@ RCT_REMAP_METHOD(getMessageType,getMessageType:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeMessage::getMessageType, first argument should be an instance of LGCosmosLikeMessage", nil);
         return;
     }
-    LGCosmosLikeMessage *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeMessage *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeMessage::getMessageType, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -77,11 +73,7 @@ RCT_REMAP_METHOD(getRawMessageType,getRawMessageType:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeMessage::getRawMessageType, first argument should be an instance of LGCosmosLikeMessage", nil);
         return;
     }
-    LGCosmosLikeMessage *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeMessage *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeMessage::getRawMessageType, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -112,11 +104,7 @@ RCT_REMAP_METHOD(getSuccess,getSuccess:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeMessage::getSuccess, first argument should be an instance of LGCosmosLikeMessage", nil);
         return;
     }
-    LGCosmosLikeMessage *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeMessage *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeMessage::getSuccess, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -147,11 +135,7 @@ RCT_REMAP_METHOD(getLog,getLog:(NSDictionary *)currentInstance WithResolver:(RCT
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeMessage::getLog, first argument should be an instance of LGCosmosLikeMessage", nil);
         return;
     }
-    LGCosmosLikeMessage *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeMessage *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeMessage::getLog, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -182,11 +166,7 @@ RCT_REMAP_METHOD(getIndex,getIndex:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeMessage::getIndex, first argument should be an instance of LGCosmosLikeMessage", nil);
         return;
     }
-    LGCosmosLikeMessage *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeMessage *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeMessage::getIndex, instance of uid %@ not found", currentInstance[@"uid"]];

@@ -66,11 +66,7 @@ RCT_REMAP_METHOD(getVersion,getVersion:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAddress::getVersion, first argument should be an instance of LGCosmosLikeAddress", nil);
         return;
     }
-    LGCosmosLikeAddress *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAddress::getVersion, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -102,11 +98,7 @@ RCT_REMAP_METHOD(getHash160,getHash160:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAddress::getHash160, first argument should be an instance of LGCosmosLikeAddress", nil);
         return;
     }
-    LGCosmosLikeAddress *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAddress::getHash160, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -138,11 +130,7 @@ RCT_REMAP_METHOD(getNetworkParameters,getNetworkParameters:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAddress::getNetworkParameters, first argument should be an instance of LGCosmosLikeAddress", nil);
         return;
     }
-    LGCosmosLikeAddress *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAddress::getNetworkParameters, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -179,11 +167,7 @@ RCT_REMAP_METHOD(toBech32,toBech32:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAddress::toBech32, first argument should be an instance of LGCosmosLikeAddress", nil);
         return;
     }
-    LGCosmosLikeAddress *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGCosmosLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAddress::toBech32, instance of uid %@ not found", currentInstance[@"uid"]];

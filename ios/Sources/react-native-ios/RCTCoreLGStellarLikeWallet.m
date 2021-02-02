@@ -38,11 +38,7 @@ RCT_REMAP_METHOD(exists,exists:(NSDictionary *)currentInstance withParams:(nonnu
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeWallet::exists, first argument should be an instance of LGStellarLikeWallet", nil);
         return;
     }
-    LGStellarLikeWallet *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGStellarLikeWallet *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeWallet::exists, instance of uid %@ not found", currentInstance[@"uid"]];

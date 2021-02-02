@@ -8,6 +8,7 @@
                              MessagePrefix:(nonnull NSString *)MessagePrefix
                                XPUBVersion:(nonnull NSData *)XPUBVersion
                               PubKeyPrefix:(nonnull NSData *)PubKeyPrefix
+                       Ed25519PubKeyPrefix:(nonnull NSData *)Ed25519PubKeyPrefix
                              AddressPrefix:(nonnull NSData *)AddressPrefix
                                    ChainId:(nonnull NSString *)ChainId
                             AdditionalCIPs:(nonnull NSArray<NSString *> *)AdditionalCIPs;
@@ -15,6 +16,7 @@
                                                     MessagePrefix:(nonnull NSString *)MessagePrefix
                                                       XPUBVersion:(nonnull NSData *)XPUBVersion
                                                      PubKeyPrefix:(nonnull NSData *)PubKeyPrefix
+                                              Ed25519PubKeyPrefix:(nonnull NSData *)Ed25519PubKeyPrefix
                                                     AddressPrefix:(nonnull NSData *)AddressPrefix
                                                           ChainId:(nonnull NSString *)ChainId
                                                    AdditionalCIPs:(nonnull NSArray<NSString *> *)AdditionalCIPs;
@@ -28,8 +30,11 @@
 /** Version of the Extended Public Key standard. */
 @property (nonatomic, readonly, nonnull) NSData * XPUBVersion;
 
-/** Prefix useful during implicit address construction from pubKey hash */
+/** Prefix useful for bech32 encoding of secp256k1 raw pubKey */
 @property (nonatomic, readonly, nonnull) NSData * PubKeyPrefix;
+
+/** Prefix useful for bech32 encoding of ed25519 raw pubKey */
+@property (nonatomic, readonly, nonnull) NSData * Ed25519PubKeyPrefix;
 
 /** Prefix useful during originated address construction from pubKey hash */
 @property (nonatomic, readonly, nonnull) NSData * AddressPrefix;

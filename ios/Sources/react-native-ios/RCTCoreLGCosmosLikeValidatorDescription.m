@@ -34,10 +34,11 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 RCT_REMAP_METHOD(init, initWithMoniker:(nonnull NSString *)moniker
                               identity:(nullable NSString *)identity
                                website:(nullable NSString *)website
+                       securityContact:(nullable NSString *)securityContact
                                details:(nullable NSString *)details withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
 
 
-    LGCosmosLikeValidatorDescription * finalResult = [[LGCosmosLikeValidatorDescription alloc] initWithMoniker:moniker identity:identity website:website details:details];
+    LGCosmosLikeValidatorDescription * finalResult = [[LGCosmosLikeValidatorDescription alloc] initWithMoniker:moniker identity:identity website:website securityContact:securityContact details:details];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGCosmosLikeValidatorDescription *rctImpl = (RCTCoreLGCosmosLikeValidatorDescription *)[self.bridge moduleForName:@"CoreLGCosmosLikeValidatorDescription"];
     NSArray *finalResultArray = [[NSArray alloc] initWithObjects:finalResult, uuid, nil];
@@ -67,6 +68,13 @@ RCT_REMAP_METHOD(getWebsite, getWebsite:(NSDictionary *)currentInstance withReso
 {
     LGCosmosLikeValidatorDescription *objcImpl = (LGCosmosLikeValidatorDescription *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
     NSDictionary *result = @{@"value" : objcImpl.website};
+    resolve(result);
+}
+
+RCT_REMAP_METHOD(getSecurityContact, getSecurityContact:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
+{
+    LGCosmosLikeValidatorDescription *objcImpl = (LGCosmosLikeValidatorDescription *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    NSDictionary *result = @{@"value" : objcImpl.securityContact};
     resolve(result);
 }
 

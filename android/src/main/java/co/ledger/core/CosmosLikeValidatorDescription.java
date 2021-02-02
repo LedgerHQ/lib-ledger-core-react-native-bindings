@@ -13,16 +13,20 @@ public final class CosmosLikeValidatorDescription {
 
     /*package*/ final String website;
 
+    /*package*/ final String securityContact;
+
     /*package*/ final String details;
 
     public CosmosLikeValidatorDescription(
             String moniker,
             String identity,
             String website,
+            String securityContact,
             String details) {
         this.moniker = moniker;
         this.identity = identity;
         this.website = website;
+        this.securityContact = securityContact;
         this.details = details;
     }
 
@@ -38,6 +42,10 @@ public final class CosmosLikeValidatorDescription {
         return website;
     }
 
+    public String getSecurityContact() {
+        return securityContact;
+    }
+
     public String getDetails() {
         return details;
     }
@@ -48,6 +56,7 @@ public final class CosmosLikeValidatorDescription {
                 "moniker=" + moniker +
                 "," + "identity=" + identity +
                 "," + "website=" + website +
+                "," + "securityContact=" + securityContact +
                 "," + "details=" + details +
         "}";
     }

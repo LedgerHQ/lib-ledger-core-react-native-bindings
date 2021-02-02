@@ -10,6 +10,7 @@
                              MessagePrefix:(nonnull NSString *)MessagePrefix
                                XPUBVersion:(nonnull NSData *)XPUBVersion
                               PubKeyPrefix:(nonnull NSData *)PubKeyPrefix
+                       Ed25519PubKeyPrefix:(nonnull NSData *)Ed25519PubKeyPrefix
                              AddressPrefix:(nonnull NSData *)AddressPrefix
                                    ChainId:(nonnull NSString *)ChainId
                             AdditionalCIPs:(nonnull NSArray<NSString *> *)AdditionalCIPs
@@ -19,6 +20,7 @@
         _MessagePrefix = [MessagePrefix copy];
         _XPUBVersion = [XPUBVersion copy];
         _PubKeyPrefix = [PubKeyPrefix copy];
+        _Ed25519PubKeyPrefix = [Ed25519PubKeyPrefix copy];
         _AddressPrefix = [AddressPrefix copy];
         _ChainId = [ChainId copy];
         _AdditionalCIPs = [AdditionalCIPs copy];
@@ -30,6 +32,7 @@
                                                     MessagePrefix:(nonnull NSString *)MessagePrefix
                                                       XPUBVersion:(nonnull NSData *)XPUBVersion
                                                      PubKeyPrefix:(nonnull NSData *)PubKeyPrefix
+                                              Ed25519PubKeyPrefix:(nonnull NSData *)Ed25519PubKeyPrefix
                                                     AddressPrefix:(nonnull NSData *)AddressPrefix
                                                           ChainId:(nonnull NSString *)ChainId
                                                    AdditionalCIPs:(nonnull NSArray<NSString *> *)AdditionalCIPs
@@ -38,6 +41,7 @@
                               MessagePrefix:MessagePrefix
                                 XPUBVersion:XPUBVersion
                                PubKeyPrefix:PubKeyPrefix
+                        Ed25519PubKeyPrefix:Ed25519PubKeyPrefix
                               AddressPrefix:AddressPrefix
                                     ChainId:ChainId
                              AdditionalCIPs:AdditionalCIPs];
@@ -45,7 +49,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ %p Identifier:%@ MessagePrefix:%@ XPUBVersion:%@ PubKeyPrefix:%@ AddressPrefix:%@ ChainId:%@ AdditionalCIPs:%@>", self.class, (void *)self, self.Identifier, self.MessagePrefix, self.XPUBVersion, self.PubKeyPrefix, self.AddressPrefix, self.ChainId, self.AdditionalCIPs];
+    return [NSString stringWithFormat:@"<%@ %p Identifier:%@ MessagePrefix:%@ XPUBVersion:%@ PubKeyPrefix:%@ Ed25519PubKeyPrefix:%@ AddressPrefix:%@ ChainId:%@ AdditionalCIPs:%@>", self.class, (void *)self, self.Identifier, self.MessagePrefix, self.XPUBVersion, self.PubKeyPrefix, self.Ed25519PubKeyPrefix, self.AddressPrefix, self.ChainId, self.AdditionalCIPs];
 }
 
 @end

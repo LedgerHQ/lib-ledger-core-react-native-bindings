@@ -17,7 +17,7 @@
                                      votingPower:(nonnull NSString *)votingPower
                                  operatorAddress:(nonnull NSString *)operatorAddress
                                  consensusPubkey:(nonnull NSString *)consensusPubkey
-                                    activeStatus:(int32_t)activeStatus
+                                    activeStatus:(nonnull NSString *)activeStatus
 {
     if (self = [super init]) {
         _validatorDetails = validatorDetails;
@@ -31,7 +31,7 @@
         _votingPower = [votingPower copy];
         _operatorAddress = [operatorAddress copy];
         _consensusPubkey = [consensusPubkey copy];
-        _activeStatus = activeStatus;
+        _activeStatus = [activeStatus copy];
     }
     return self;
 }
@@ -47,7 +47,7 @@
                                                     votingPower:(nonnull NSString *)votingPower
                                                 operatorAddress:(nonnull NSString *)operatorAddress
                                                 consensusPubkey:(nonnull NSString *)consensusPubkey
-                                                   activeStatus:(int32_t)activeStatus
+                                                   activeStatus:(nonnull NSString *)activeStatus
 {
     return [[self alloc] initWithValidatorDetails:validatorDetails
                                        commission:commission
@@ -65,7 +65,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ %p validatorDetails:%@ commission:%@ distInfo:%@ signInfo:%@ unbondingHeight:%@ unbondingTime:%@ minSelfDelegation:%@ jailed:%@ votingPower:%@ operatorAddress:%@ consensusPubkey:%@ activeStatus:%@>", self.class, (void *)self, self.validatorDetails, self.commission, self.distInfo, self.signInfo, @(self.unbondingHeight), self.unbondingTime, self.minSelfDelegation, @(self.jailed), self.votingPower, self.operatorAddress, self.consensusPubkey, @(self.activeStatus)];
+    return [NSString stringWithFormat:@"<%@ %p validatorDetails:%@ commission:%@ distInfo:%@ signInfo:%@ unbondingHeight:%@ unbondingTime:%@ minSelfDelegation:%@ jailed:%@ votingPower:%@ operatorAddress:%@ consensusPubkey:%@ activeStatus:%@>", self.class, (void *)self, self.validatorDetails, self.commission, self.distInfo, self.signInfo, @(self.unbondingHeight), self.unbondingTime, self.minSelfDelegation, @(self.jailed), self.votingPower, self.operatorAddress, self.consensusPubkey, self.activeStatus];
 }
 
 @end

@@ -66,11 +66,7 @@ RCT_REMAP_METHOD(getVersion,getVersion:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeAddress::getVersion, first argument should be an instance of LGTezosLikeAddress", nil);
         return;
     }
-    LGTezosLikeAddress *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGTezosLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeAddress::getVersion, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -102,11 +98,7 @@ RCT_REMAP_METHOD(getHash160,getHash160:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeAddress::getHash160, first argument should be an instance of LGTezosLikeAddress", nil);
         return;
     }
-    LGTezosLikeAddress *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGTezosLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeAddress::getHash160, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -138,11 +130,7 @@ RCT_REMAP_METHOD(getNetworkParameters,getNetworkParameters:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeAddress::getNetworkParameters, first argument should be an instance of LGTezosLikeAddress", nil);
         return;
     }
-    LGTezosLikeAddress *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGTezosLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeAddress::getNetworkParameters, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -179,11 +167,7 @@ RCT_REMAP_METHOD(toBase58,toBase58:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeAddress::toBase58, first argument should be an instance of LGTezosLikeAddress", nil);
         return;
     }
-    LGTezosLikeAddress *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGTezosLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeAddress::toBase58, instance of uid %@ not found", currentInstance[@"uid"]];

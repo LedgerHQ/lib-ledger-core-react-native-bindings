@@ -7,6 +7,8 @@ typedef NS_ENUM(NSInteger, LGCosmosBech32Type)
 {
     LGCosmosBech32TypePUBLICKEY,
     LGCosmosBech32TypePUBLICKEYVAL,
+    LGCosmosBech32TypePUBLICKEYVALCONS,
     LGCosmosBech32TypeADDRESS,
     LGCosmosBech32TypeADDRESSVAL,
+    LGCosmosBech32TypeADDRESSVALCONS,
 };

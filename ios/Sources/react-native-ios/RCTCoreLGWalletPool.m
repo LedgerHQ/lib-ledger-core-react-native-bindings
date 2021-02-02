@@ -102,11 +102,7 @@ RCT_REMAP_METHOD(getLogger,getLogger:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getLogger, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getLogger, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -143,11 +139,7 @@ RCT_REMAP_METHOD(getName,getName:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getName, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getName, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -178,11 +170,7 @@ RCT_REMAP_METHOD(getPreferences,getPreferences:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getPreferences, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getPreferences, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -219,11 +207,7 @@ RCT_REMAP_METHOD(getWalletCount,getWalletCount:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getWalletCount, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getWalletCount, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -248,11 +232,7 @@ RCT_REMAP_METHOD(getWallets,getWallets:(NSDictionary *)currentInstance withParam
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getWallets, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getWallets, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -275,11 +255,7 @@ RCT_REMAP_METHOD(getWallet,getWallet:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getWallet, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getWallet, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -306,11 +282,7 @@ RCT_REMAP_METHOD(updateWalletConfig,updateWalletConfig:(NSDictionary *)currentIn
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::updateWalletConfig, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::updateWalletConfig, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -339,11 +311,7 @@ RCT_REMAP_METHOD(createWallet,createWallet:(NSDictionary *)currentInstance withP
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::createWallet, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::createWallet, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -369,11 +337,7 @@ RCT_REMAP_METHOD(getCurrencies,getCurrencies:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getCurrencies, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getCurrencies, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -396,11 +360,7 @@ RCT_REMAP_METHOD(getCurrency,getCurrency:(NSDictionary *)currentInstance withPar
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getCurrency, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getCurrency, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -423,11 +383,7 @@ RCT_REMAP_METHOD(getLastBlock,getLastBlock:(NSDictionary *)currentInstance withP
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getLastBlock, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getLastBlock, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -449,11 +405,7 @@ RCT_REMAP_METHOD(getEventBus,getEventBus:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::getEventBus, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::getEventBus, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -490,11 +442,7 @@ RCT_REMAP_METHOD(eraseDataSince,eraseDataSince:(NSDictionary *)currentInstance w
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::eraseDataSince, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::eraseDataSince, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -530,11 +478,7 @@ RCT_REMAP_METHOD(freshResetAll,freshResetAll:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::freshResetAll, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::freshResetAll, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -562,11 +506,7 @@ RCT_REMAP_METHOD(changePassword,changePassword:(NSDictionary *)currentInstance w
         reject(@"impl_call_error", @"Error while calling RCTCoreLGWalletPool::changePassword, first argument should be an instance of LGWalletPool", nil);
         return;
     }
-    LGWalletPool *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGWalletPool *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGWalletPool::changePassword, instance of uid %@ not found", currentInstance[@"uid"]];

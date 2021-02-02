@@ -68,11 +68,7 @@ RCT_REMAP_METHOD(read,read:(NSDictionary *)currentInstance withParams:(int)offse
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBlob::read, first argument should be an instance of LGDatabaseBlobImpl", nil);
         return;
     }
-    LGDatabaseBlobImpl *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGDatabaseBlobImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBlobImpl::read, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -105,11 +101,7 @@ RCT_REMAP_METHOD(write,write:(NSDictionary *)currentInstance withParams:(int)off
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBlob::write, first argument should be an instance of LGDatabaseBlobImpl", nil);
         return;
     }
-    LGDatabaseBlobImpl *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGDatabaseBlobImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBlobImpl::write, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -143,11 +135,7 @@ RCT_REMAP_METHOD(append,append:(NSDictionary *)currentInstance withParams:(NSStr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBlob::append, first argument should be an instance of LGDatabaseBlobImpl", nil);
         return;
     }
-    LGDatabaseBlobImpl *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGDatabaseBlobImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBlobImpl::append, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -181,11 +169,7 @@ RCT_REMAP_METHOD(trim,trim:(NSDictionary *)currentInstance withParams:(int)newLe
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBlob::trim, first argument should be an instance of LGDatabaseBlobImpl", nil);
         return;
     }
-    LGDatabaseBlobImpl *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGDatabaseBlobImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBlobImpl::trim, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -216,11 +200,7 @@ RCT_REMAP_METHOD(size,size:(NSDictionary *)currentInstance WithResolver:(RCTProm
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBlob::size, first argument should be an instance of LGDatabaseBlobImpl", nil);
         return;
     }
-    LGDatabaseBlobImpl *currentInstanceObj = nil;
-    @synchronized(self)
-    {
-        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    }
+    LGDatabaseBlobImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBlobImpl::size, instance of uid %@ not found", currentInstance[@"uid"]];

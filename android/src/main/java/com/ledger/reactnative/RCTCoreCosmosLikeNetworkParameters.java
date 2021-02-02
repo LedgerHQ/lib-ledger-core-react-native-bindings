@@ -123,20 +123,22 @@ public class RCTCoreCosmosLikeNetworkParameters extends ReactContextBaseJavaModu
     }
 
     @ReactMethod
-    public void init(String Identifier, String MessagePrefix, String XPUBVersion, String PubKeyPrefix, String AddressPrefix, String ChainId, ReadableArray AdditionalCIPs, Promise promise) {
+    public void init(String Identifier, String MessagePrefix, String XPUBVersion, String PubKeyPrefix, String Ed25519PubKeyPrefix, String AddressPrefix, String ChainId, ReadableArray AdditionalCIPs, Promise promise) {
         byte [] javaParam_2 = hexStringToByteArray(XPUBVersion);
 
         byte [] javaParam_3 = hexStringToByteArray(PubKeyPrefix);
 
-        byte [] javaParam_4 = hexStringToByteArray(AddressPrefix);
+        byte [] javaParam_4 = hexStringToByteArray(Ed25519PubKeyPrefix);
 
-        ArrayList<String> javaParam_6 = new ArrayList<String>();
+        byte [] javaParam_5 = hexStringToByteArray(AddressPrefix);
+
+        ArrayList<String> javaParam_7 = new ArrayList<String>();
         for (int i = 0; i <  AdditionalCIPs.size(); i++)
         {
             String AdditionalCIPs_elem = AdditionalCIPs.getString(i);
-            javaParam_6.add(AdditionalCIPs_elem);
+            javaParam_7.add(AdditionalCIPs_elem);
         }
-        CosmosLikeNetworkParameters javaResult = new CosmosLikeNetworkParameters(Identifier, MessagePrefix, javaParam_2, javaParam_3, javaParam_4, ChainId, javaParam_6);
+        CosmosLikeNetworkParameters javaResult = new CosmosLikeNetworkParameters(Identifier, MessagePrefix, javaParam_2, javaParam_3, javaParam_4, javaParam_5, ChainId, javaParam_7);
 
         String uuid = UUID.randomUUID().toString();
         this.javaObjects.put(uuid, javaResult);
@@ -216,6 +218,25 @@ public class RCTCoreCosmosLikeNetworkParameters extends ReactContextBaseJavaModu
         else
         {
             promise.reject("Failed to call RCTCoreCosmosLikeNetworkParameters::getPubKeyPrefix", "First parameter of RCTCoreCosmosLikeNetworkParameters::getPubKeyPrefix should be an instance of RCTCoreCosmosLikeNetworkParameters");
+        }
+    }
+
+    @ReactMethod
+    public void getEd25519PubKeyPrefix(ReadableMap currentInstance, Promise promise)
+    {
+        String uid = currentInstance.getString("uid");
+        if (uid.length() > 0)
+        {
+            CosmosLikeNetworkParameters javaObj = this.javaObjects.get(uid);
+            byte[] result = javaObj.getEd25519PubKeyPrefix();
+            String converted_result = byteArrayToHexString(result);
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putString("value", converted_result);
+            promise.resolve(resultMap);
+        }
+        else
+        {
+            promise.reject("Failed to call RCTCoreCosmosLikeNetworkParameters::getEd25519PubKeyPrefix", "First parameter of RCTCoreCosmosLikeNetworkParameters::getEd25519PubKeyPrefix should be an instance of RCTCoreCosmosLikeNetworkParameters");
         }
     }
 
