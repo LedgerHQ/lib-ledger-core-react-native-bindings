@@ -66,7 +66,11 @@ RCT_REMAP_METHOD(getVersion,getVersion:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAddress::getVersion, first argument should be an instance of LGBitcoinLikeAddress", nil);
         return;
     }
-    LGBitcoinLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGBitcoinLikeAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAddress::getVersion, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -98,7 +102,11 @@ RCT_REMAP_METHOD(getHash160,getHash160:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAddress::getHash160, first argument should be an instance of LGBitcoinLikeAddress", nil);
         return;
     }
-    LGBitcoinLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGBitcoinLikeAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAddress::getHash160, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -130,7 +138,11 @@ RCT_REMAP_METHOD(getNetworkParameters,getNetworkParameters:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAddress::getNetworkParameters, first argument should be an instance of LGBitcoinLikeAddress", nil);
         return;
     }
-    LGBitcoinLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGBitcoinLikeAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAddress::getNetworkParameters, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -167,7 +179,11 @@ RCT_REMAP_METHOD(toBase58,toBase58:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAddress::toBase58, first argument should be an instance of LGBitcoinLikeAddress", nil);
         return;
     }
-    LGBitcoinLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGBitcoinLikeAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAddress::toBase58, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -198,7 +214,11 @@ RCT_REMAP_METHOD(toBech32,toBech32:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAddress::toBech32, first argument should be an instance of LGBitcoinLikeAddress", nil);
         return;
     }
-    LGBitcoinLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGBitcoinLikeAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAddress::toBech32, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -232,7 +252,11 @@ RCT_REMAP_METHOD(isP2SH,isP2SH:(NSDictionary *)currentInstance WithResolver:(RCT
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAddress::isP2SH, first argument should be an instance of LGBitcoinLikeAddress", nil);
         return;
     }
-    LGBitcoinLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGBitcoinLikeAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAddress::isP2SH, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -263,7 +287,11 @@ RCT_REMAP_METHOD(isP2PKH,isP2PKH:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAddress::isP2PKH, first argument should be an instance of LGBitcoinLikeAddress", nil);
         return;
     }
-    LGBitcoinLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGBitcoinLikeAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAddress::isP2PKH, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -294,7 +322,11 @@ RCT_REMAP_METHOD(isP2WSH,isP2WSH:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAddress::isP2WSH, first argument should be an instance of LGBitcoinLikeAddress", nil);
         return;
     }
-    LGBitcoinLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGBitcoinLikeAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAddress::isP2WSH, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -325,7 +357,11 @@ RCT_REMAP_METHOD(isP2WPKH,isP2WPKH:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAddress::isP2WPKH, first argument should be an instance of LGBitcoinLikeAddress", nil);
         return;
     }
-    LGBitcoinLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGBitcoinLikeAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAddress::isP2WPKH, instance of uid %@ not found", currentInstance[@"uid"]];

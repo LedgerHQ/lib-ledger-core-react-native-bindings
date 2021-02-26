@@ -45,7 +45,11 @@ RCT_REMAP_METHOD(addOrder,addOrder:(NSDictionary *)currentInstance withParams:(i
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperationQuery::addOrder, first argument should be an instance of LGOperationQuery", nil);
         return;
     }
-    LGOperationQuery *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperationQuery *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperationQuery::addOrder, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -82,7 +86,11 @@ RCT_REMAP_METHOD(filter,filter:(NSDictionary *)currentInstance WithResolver:(RCT
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperationQuery::filter, first argument should be an instance of LGOperationQuery", nil);
         return;
     }
-    LGOperationQuery *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperationQuery *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperationQuery::filter, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -119,7 +127,11 @@ RCT_REMAP_METHOD(offset,offset:(NSDictionary *)currentInstance withParams:(int)f
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperationQuery::offset, first argument should be an instance of LGOperationQuery", nil);
         return;
     }
-    LGOperationQuery *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperationQuery *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperationQuery::offset, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -156,7 +168,11 @@ RCT_REMAP_METHOD(limit,limit:(NSDictionary *)currentInstance withParams:(int)cou
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperationQuery::limit, first argument should be an instance of LGOperationQuery", nil);
         return;
     }
-    LGOperationQuery *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperationQuery *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperationQuery::limit, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -193,7 +209,11 @@ RCT_REMAP_METHOD(complete,complete:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperationQuery::complete, first argument should be an instance of LGOperationQuery", nil);
         return;
     }
-    LGOperationQuery *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperationQuery *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperationQuery::complete, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -227,7 +247,11 @@ RCT_REMAP_METHOD(partial,partial:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperationQuery::partial, first argument should be an instance of LGOperationQuery", nil);
         return;
     }
-    LGOperationQuery *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperationQuery *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperationQuery::partial, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -264,7 +288,11 @@ RCT_REMAP_METHOD(execute,execute:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperationQuery::execute, first argument should be an instance of LGOperationQuery", nil);
         return;
     }
-    LGOperationQuery *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperationQuery *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperationQuery::execute, instance of uid %@ not found", currentInstance[@"uid"]];

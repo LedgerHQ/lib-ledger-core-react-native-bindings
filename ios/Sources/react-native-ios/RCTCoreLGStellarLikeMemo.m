@@ -62,7 +62,11 @@ RCT_REMAP_METHOD(getMemoType,getMemoType:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeMemo::getMemoType, first argument should be an instance of LGStellarLikeMemo", nil);
         return;
     }
-    LGStellarLikeMemo *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeMemo *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeMemo::getMemoType, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -90,7 +94,11 @@ RCT_REMAP_METHOD(getMemoText,getMemoText:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeMemo::getMemoText, first argument should be an instance of LGStellarLikeMemo", nil);
         return;
     }
-    LGStellarLikeMemo *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeMemo *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeMemo::getMemoText, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -118,7 +126,11 @@ RCT_REMAP_METHOD(getMemoId,getMemoId:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeMemo::getMemoId, first argument should be an instance of LGStellarLikeMemo", nil);
         return;
     }
-    LGStellarLikeMemo *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeMemo *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeMemo::getMemoId, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -152,7 +164,11 @@ RCT_REMAP_METHOD(getMemoHash,getMemoHash:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeMemo::getMemoHash, first argument should be an instance of LGStellarLikeMemo", nil);
         return;
     }
-    LGStellarLikeMemo *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeMemo *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeMemo::getMemoHash, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -181,7 +197,11 @@ RCT_REMAP_METHOD(getMemoReturn,getMemoReturn:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeMemo::getMemoReturn, first argument should be an instance of LGStellarLikeMemo", nil);
         return;
     }
-    LGStellarLikeMemo *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeMemo *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeMemo::getMemoReturn, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -216,7 +236,11 @@ RCT_REMAP_METHOD(memoValuetoString,memoValuetoString:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeMemo::memoValuetoString, first argument should be an instance of LGStellarLikeMemo", nil);
         return;
     }
-    LGStellarLikeMemo *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeMemo *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeMemo::memoValuetoString, instance of uid %@ not found", currentInstance[@"uid"]];

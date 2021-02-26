@@ -45,7 +45,11 @@ RCT_REMAP_METHOD(prepareStatement,prepareStatement:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseConnection::prepareStatement, first argument should be an instance of LGDatabaseConnectionImpl", nil);
         return;
     }
-    LGDatabaseConnectionImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseConnectionImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseConnectionImpl::prepareStatement, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -79,7 +83,11 @@ RCT_REMAP_METHOD(begin,begin:(NSDictionary *)currentInstance WithResolver:(RCTPr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseConnection::begin, first argument should be an instance of LGDatabaseConnectionImpl", nil);
         return;
     }
-    LGDatabaseConnectionImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseConnectionImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseConnectionImpl::begin, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -98,7 +106,11 @@ RCT_REMAP_METHOD(rollback,rollback:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseConnection::rollback, first argument should be an instance of LGDatabaseConnectionImpl", nil);
         return;
     }
-    LGDatabaseConnectionImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseConnectionImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseConnectionImpl::rollback, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -117,7 +129,11 @@ RCT_REMAP_METHOD(commit,commit:(NSDictionary *)currentInstance WithResolver:(RCT
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseConnection::commit, first argument should be an instance of LGDatabaseConnectionImpl", nil);
         return;
     }
-    LGDatabaseConnectionImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseConnectionImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseConnectionImpl::commit, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -136,7 +152,11 @@ RCT_REMAP_METHOD(close,close:(NSDictionary *)currentInstance WithResolver:(RCTPr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseConnection::close, first argument should be an instance of LGDatabaseConnectionImpl", nil);
         return;
     }
-    LGDatabaseConnectionImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseConnectionImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseConnectionImpl::close, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -158,7 +178,11 @@ RCT_REMAP_METHOD(newBlob,newBlob:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseConnection::newBlob, first argument should be an instance of LGDatabaseConnectionImpl", nil);
         return;
     }
-    LGDatabaseConnectionImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseConnectionImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseConnectionImpl::newBlob, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -192,7 +216,11 @@ RCT_REMAP_METHOD(isAlive,isAlive:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseConnection::isAlive, first argument should be an instance of LGDatabaseConnectionImpl", nil);
         return;
     }
-    LGDatabaseConnectionImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseConnectionImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseConnectionImpl::isAlive, instance of uid %@ not found", currentInstance[@"uid"]];

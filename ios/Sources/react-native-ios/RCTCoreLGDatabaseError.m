@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(getMessage,getMessage:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseError::getMessage, first argument should be an instance of LGDatabaseErrorImpl", nil);
         return;
     }
-    LGDatabaseErrorImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseErrorImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseErrorImpl::getMessage, instance of uid %@ not found", currentInstance[@"uid"]];

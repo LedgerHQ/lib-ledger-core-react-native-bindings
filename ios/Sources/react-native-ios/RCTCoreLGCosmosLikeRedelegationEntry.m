@@ -39,7 +39,11 @@ RCT_REMAP_METHOD(getCreationHeight,getCreationHeight:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeRedelegationEntry::getCreationHeight, first argument should be an instance of LGCosmosLikeRedelegationEntry", nil);
         return;
     }
-    LGCosmosLikeRedelegationEntry *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeRedelegationEntry *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeRedelegationEntry::getCreationHeight, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -73,7 +77,11 @@ RCT_REMAP_METHOD(getCompletionTime,getCompletionTime:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeRedelegationEntry::getCompletionTime, first argument should be an instance of LGCosmosLikeRedelegationEntry", nil);
         return;
     }
-    LGCosmosLikeRedelegationEntry *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeRedelegationEntry *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeRedelegationEntry::getCompletionTime, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -103,7 +111,11 @@ RCT_REMAP_METHOD(getInitialBalance,getInitialBalance:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeRedelegationEntry::getInitialBalance, first argument should be an instance of LGCosmosLikeRedelegationEntry", nil);
         return;
     }
-    LGCosmosLikeRedelegationEntry *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeRedelegationEntry *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeRedelegationEntry::getInitialBalance, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -137,7 +149,11 @@ RCT_REMAP_METHOD(getBalance,getBalance:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeRedelegationEntry::getBalance, first argument should be an instance of LGCosmosLikeRedelegationEntry", nil);
         return;
     }
-    LGCosmosLikeRedelegationEntry *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeRedelegationEntry *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeRedelegationEntry::getBalance, instance of uid %@ not found", currentInstance[@"uid"]];

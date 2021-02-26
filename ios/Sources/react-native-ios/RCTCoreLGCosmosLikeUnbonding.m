@@ -39,7 +39,11 @@ RCT_REMAP_METHOD(getDelegatorAddress,getDelegatorAddress:(NSDictionary *)current
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeUnbonding::getDelegatorAddress, first argument should be an instance of LGCosmosLikeUnbonding", nil);
         return;
     }
-    LGCosmosLikeUnbonding *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeUnbonding *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeUnbonding::getDelegatorAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -67,7 +71,11 @@ RCT_REMAP_METHOD(getValidatorAddress,getValidatorAddress:(NSDictionary *)current
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeUnbonding::getValidatorAddress, first argument should be an instance of LGCosmosLikeUnbonding", nil);
         return;
     }
-    LGCosmosLikeUnbonding *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeUnbonding *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeUnbonding::getValidatorAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -94,7 +102,11 @@ RCT_REMAP_METHOD(getEntries,getEntries:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeUnbonding::getEntries, first argument should be an instance of LGCosmosLikeUnbonding", nil);
         return;
     }
-    LGCosmosLikeUnbonding *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeUnbonding *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeUnbonding::getEntries, instance of uid %@ not found", currentInstance[@"uid"]];

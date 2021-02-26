@@ -43,7 +43,11 @@ RCT_REMAP_METHOD(resolveDatabasePath,resolveDatabasePath:(NSDictionary *)current
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPathResolver::resolveDatabasePath, first argument should be an instance of LGPathResolverImpl", nil);
         return;
     }
-    LGPathResolverImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGPathResolverImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPathResolverImpl::resolveDatabasePath, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -75,7 +79,11 @@ RCT_REMAP_METHOD(resolveLogFilePath,resolveLogFilePath:(NSDictionary *)currentIn
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPathResolver::resolveLogFilePath, first argument should be an instance of LGPathResolverImpl", nil);
         return;
     }
-    LGPathResolverImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGPathResolverImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPathResolverImpl::resolveLogFilePath, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -107,7 +115,11 @@ RCT_REMAP_METHOD(resolvePreferencesPath,resolvePreferencesPath:(NSDictionary *)c
         reject(@"impl_call_error", @"Error while calling RCTCoreLGPathResolver::resolvePreferencesPath, first argument should be an instance of LGPathResolverImpl", nil);
         return;
     }
-    LGPathResolverImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGPathResolverImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGPathResolverImpl::resolvePreferencesPath, instance of uid %@ not found", currentInstance[@"uid"]];

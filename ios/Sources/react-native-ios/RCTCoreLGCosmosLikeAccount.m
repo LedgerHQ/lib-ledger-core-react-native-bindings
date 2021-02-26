@@ -38,7 +38,11 @@ RCT_REMAP_METHOD(broadcastRawTransaction,broadcastRawTransaction:(NSDictionary *
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::broadcastRawTransaction, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::broadcastRawTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -56,7 +60,11 @@ RCT_REMAP_METHOD(broadcastTransaction,broadcastTransaction:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::broadcastTransaction, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::broadcastTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -76,7 +84,11 @@ RCT_REMAP_METHOD(buildTransaction,buildTransaction:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::buildTransaction, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::buildTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -110,7 +122,11 @@ RCT_REMAP_METHOD(getEstimatedGasLimit,getEstimatedGasLimit:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getEstimatedGasLimit, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getEstimatedGasLimit, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -136,7 +152,11 @@ RCT_REMAP_METHOD(estimateGas,estimateGas:(NSDictionary *)currentInstance withPar
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::estimateGas, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::estimateGas, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -157,7 +177,11 @@ RCT_REMAP_METHOD(getLatestValidatorSet,getLatestValidatorSet:(NSDictionary *)cur
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getLatestValidatorSet, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getLatestValidatorSet, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -176,7 +200,11 @@ RCT_REMAP_METHOD(getValidatorInfo,getValidatorInfo:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getValidatorInfo, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getValidatorInfo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -195,7 +223,11 @@ RCT_REMAP_METHOD(getTotalBalance,getTotalBalance:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getTotalBalance, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getTotalBalance, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -214,7 +246,11 @@ RCT_REMAP_METHOD(getDelegatedBalance,getDelegatedBalance:(NSDictionary *)current
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getDelegatedBalance, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getDelegatedBalance, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -233,7 +269,11 @@ RCT_REMAP_METHOD(getPendingRewardsBalance,getPendingRewardsBalance:(NSDictionary
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getPendingRewardsBalance, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getPendingRewardsBalance, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -252,7 +292,11 @@ RCT_REMAP_METHOD(getUnbondingBalance,getUnbondingBalance:(NSDictionary *)current
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getUnbondingBalance, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getUnbondingBalance, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -271,7 +315,11 @@ RCT_REMAP_METHOD(getSpendableBalance,getSpendableBalance:(NSDictionary *)current
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getSpendableBalance, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getSpendableBalance, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -289,7 +337,11 @@ RCT_REMAP_METHOD(getDelegations,getDelegations:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getDelegations, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getDelegations, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -307,7 +359,11 @@ RCT_REMAP_METHOD(getPendingRewards,getPendingRewards:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getPendingRewards, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getPendingRewards, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -325,7 +381,11 @@ RCT_REMAP_METHOD(getUnbondings,getUnbondings:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getUnbondings, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getUnbondings, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -343,7 +403,11 @@ RCT_REMAP_METHOD(getRedelegations,getRedelegations:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getRedelegations, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getRedelegations, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -365,7 +429,11 @@ RCT_REMAP_METHOD(getSequence,getSequence:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getSequence, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getSequence, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -387,7 +455,11 @@ RCT_REMAP_METHOD(getAccountNumber,getAccountNumber:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getAccountNumber, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getAccountNumber, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -409,7 +481,11 @@ RCT_REMAP_METHOD(getWithdrawAddress,getWithdrawAddress:(NSDictionary *)currentIn
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeAccount::getWithdrawAddress, first argument should be an instance of LGCosmosLikeAccount", nil);
         return;
     }
-    LGCosmosLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeAccount::getWithdrawAddress, instance of uid %@ not found", currentInstance[@"uid"]];

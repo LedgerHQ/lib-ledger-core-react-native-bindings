@@ -38,7 +38,11 @@ RCT_REMAP_METHOD(getTrustWeight,getTrustWeight:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTrustIndicator::getTrustWeight, first argument should be an instance of LGTrustIndicator", nil);
         return;
     }
-    LGTrustIndicator *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTrustIndicator *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTrustIndicator::getTrustWeight, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -65,7 +69,11 @@ RCT_REMAP_METHOD(getTrustLevel,getTrustLevel:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTrustIndicator::getTrustLevel, first argument should be an instance of LGTrustIndicator", nil);
         return;
     }
-    LGTrustIndicator *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTrustIndicator *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTrustIndicator::getTrustLevel, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -92,7 +100,11 @@ RCT_REMAP_METHOD(getConflictingOperationUids,getConflictingOperationUids:(NSDict
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTrustIndicator::getConflictingOperationUids, first argument should be an instance of LGTrustIndicator", nil);
         return;
     }
-    LGTrustIndicator *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTrustIndicator *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTrustIndicator::getConflictingOperationUids, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -119,7 +131,11 @@ RCT_REMAP_METHOD(getOrigin,getOrigin:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTrustIndicator::getOrigin, first argument should be an instance of LGTrustIndicator", nil);
         return;
     }
-    LGTrustIndicator *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTrustIndicator *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTrustIndicator::getOrigin, instance of uid %@ not found", currentInstance[@"uid"]];

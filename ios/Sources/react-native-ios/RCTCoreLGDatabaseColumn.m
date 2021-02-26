@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(getType,getType:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseColumn::getType, first argument should be an instance of LGDatabaseColumnImpl", nil);
         return;
     }
-    LGDatabaseColumnImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseColumnImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseColumnImpl::getType, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -69,7 +73,11 @@ RCT_REMAP_METHOD(getName,getName:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseColumn::getName, first argument should be an instance of LGDatabaseColumnImpl", nil);
         return;
     }
-    LGDatabaseColumnImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDatabaseColumnImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseColumnImpl::getName, instance of uid %@ not found", currentInstance[@"uid"]];

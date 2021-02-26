@@ -66,7 +66,11 @@ RCT_REMAP_METHOD(getVersion,getVersion:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeAddress::getVersion, first argument should be an instance of LGRippleLikeAddress", nil);
         return;
     }
-    LGRippleLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeAddress::getVersion, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -98,7 +102,11 @@ RCT_REMAP_METHOD(getHash160,getHash160:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeAddress::getHash160, first argument should be an instance of LGRippleLikeAddress", nil);
         return;
     }
-    LGRippleLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeAddress::getHash160, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -130,7 +138,11 @@ RCT_REMAP_METHOD(getNetworkParameters,getNetworkParameters:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeAddress::getNetworkParameters, first argument should be an instance of LGRippleLikeAddress", nil);
         return;
     }
-    LGRippleLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeAddress::getNetworkParameters, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -167,7 +179,11 @@ RCT_REMAP_METHOD(toBase58,toBase58:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeAddress::toBase58, first argument should be an instance of LGRippleLikeAddress", nil);
         return;
     }
-    LGRippleLikeAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeAddress::toBase58, instance of uid %@ not found", currentInstance[@"uid"]];
