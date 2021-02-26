@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(getTransaction,getTransaction:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeOperation::getTransaction, first argument should be an instance of LGTezosLikeOperation", nil);
         return;
     }
-    LGTezosLikeOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeOperation::getTransaction, instance of uid %@ not found", currentInstance[@"uid"]];

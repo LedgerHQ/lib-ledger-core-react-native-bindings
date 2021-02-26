@@ -67,7 +67,11 @@ RCT_REMAP_METHOD(exists,exists:(NSDictionary *)currentInstance WithResolver:(RCT
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeAccount::exists, first argument should be an instance of LGStellarLikeAccount", nil);
         return;
     }
-    LGStellarLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeAccount::exists, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -89,7 +93,11 @@ RCT_REMAP_METHOD(buildTransaction,buildTransaction:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeAccount::buildTransaction, first argument should be an instance of LGStellarLikeAccount", nil);
         return;
     }
-    LGStellarLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeAccount::buildTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -123,7 +131,11 @@ RCT_REMAP_METHOD(broadcastRawTransaction,broadcastRawTransaction:(NSDictionary *
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeAccount::broadcastRawTransaction, first argument should be an instance of LGStellarLikeAccount", nil);
         return;
     }
-    LGStellarLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeAccount::broadcastRawTransaction, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -144,7 +156,11 @@ RCT_REMAP_METHOD(getBaseReserve,getBaseReserve:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeAccount::getBaseReserve, first argument should be an instance of LGStellarLikeAccount", nil);
         return;
     }
-    LGStellarLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeAccount::getBaseReserve, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -163,7 +179,11 @@ RCT_REMAP_METHOD(getSequence,getSequence:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeAccount::getSequence, first argument should be an instance of LGStellarLikeAccount", nil);
         return;
     }
-    LGStellarLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeAccount::getSequence, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -182,7 +202,11 @@ RCT_REMAP_METHOD(getFeeStats,getFeeStats:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeAccount::getFeeStats, first argument should be an instance of LGStellarLikeAccount", nil);
         return;
     }
-    LGStellarLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeAccount::getFeeStats, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -201,7 +225,11 @@ RCT_REMAP_METHOD(getSigners,getSigners:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGStellarLikeAccount::getSigners, first argument should be an instance of LGStellarLikeAccount", nil);
         return;
     }
-    LGStellarLikeAccount *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGStellarLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGStellarLikeAccount::getSigners, instance of uid %@ not found", currentInstance[@"uid"]];

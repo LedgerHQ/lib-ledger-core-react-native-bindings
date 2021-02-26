@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(getDerivationPath,getDerivationPath:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAddress::getDerivationPath, first argument should be an instance of LGAddress", nil);
         return;
     }
-    LGAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAddress::getDerivationPath, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -73,7 +77,11 @@ RCT_REMAP_METHOD(toString,toString:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAddress::toString, first argument should be an instance of LGAddress", nil);
         return;
     }
-    LGAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAddress::toString, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -100,7 +108,11 @@ RCT_REMAP_METHOD(asBitcoinLikeAddress,asBitcoinLikeAddress:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAddress::asBitcoinLikeAddress, first argument should be an instance of LGAddress", nil);
         return;
     }
-    LGAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAddress::asBitcoinLikeAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -136,7 +148,11 @@ RCT_REMAP_METHOD(isInstanceOfBitcoinLikeAddress,isInstanceOfBitcoinLikeAddress:(
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAddress::isInstanceOfBitcoinLikeAddress, first argument should be an instance of LGAddress", nil);
         return;
     }
-    LGAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAddress::isInstanceOfBitcoinLikeAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -164,7 +180,11 @@ RCT_REMAP_METHOD(asStellarLikeAddress,asStellarLikeAddress:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAddress::asStellarLikeAddress, first argument should be an instance of LGAddress", nil);
         return;
     }
-    LGAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAddress::asStellarLikeAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -200,7 +220,11 @@ RCT_REMAP_METHOD(isInstanceOfStellarLikeAddress,isInstanceOfStellarLikeAddress:(
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAddress::isInstanceOfStellarLikeAddress, first argument should be an instance of LGAddress", nil);
         return;
     }
-    LGAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAddress::isInstanceOfStellarLikeAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -227,7 +251,11 @@ RCT_REMAP_METHOD(getCurrency,getCurrency:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAddress::getCurrency, first argument should be an instance of LGAddress", nil);
         return;
     }
-    LGAddress *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAddress *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAddress::getCurrency, instance of uid %@ not found", currentInstance[@"uid"]];

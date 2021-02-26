@@ -63,7 +63,11 @@ RCT_REMAP_METHOD(getType,getType:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getType, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getType, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -91,7 +95,11 @@ RCT_REMAP_METHOD(getHash,getHash:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getHash, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getHash, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -119,7 +127,11 @@ RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getFees, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getFees, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -153,7 +165,11 @@ RCT_REMAP_METHOD(getReceiver,getReceiver:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getReceiver, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getReceiver, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -190,7 +206,11 @@ RCT_REMAP_METHOD(getSender,getSender:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getSender, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getSender, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -224,7 +244,11 @@ RCT_REMAP_METHOD(getValue,getValue:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getValue, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getValue, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -261,7 +285,11 @@ RCT_REMAP_METHOD(serialize,serialize:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::serialize, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::serialize, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -290,7 +318,11 @@ RCT_REMAP_METHOD(setSignature,setSignature:(NSDictionary *)currentInstance withP
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::setSignature, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::setSignature, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -314,7 +346,11 @@ RCT_REMAP_METHOD(getDate,getDate:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getDate, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getDate, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -344,7 +380,11 @@ RCT_REMAP_METHOD(getSigningPubKey,getSigningPubKey:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getSigningPubKey, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getSigningPubKey, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -372,7 +412,11 @@ RCT_REMAP_METHOD(getCounter,getCounter:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getCounter, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getCounter, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -405,7 +449,11 @@ RCT_REMAP_METHOD(getGasLimit,getGasLimit:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getGasLimit, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getGasLimit, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -438,7 +486,11 @@ RCT_REMAP_METHOD(getStorageLimit,getStorageLimit:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getStorageLimit, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getStorageLimit, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -472,7 +524,11 @@ RCT_REMAP_METHOD(getBlockHash,getBlockHash:(NSDictionary *)currentInstance WithR
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getBlockHash, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getBlockHash, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -500,7 +556,11 @@ RCT_REMAP_METHOD(getStatus,getStatus:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransaction::getStatus, first argument should be an instance of LGTezosLikeTransaction", nil);
         return;
     }
-    LGTezosLikeTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGTezosLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransaction::getStatus, instance of uid %@ not found", currentInstance[@"uid"]];

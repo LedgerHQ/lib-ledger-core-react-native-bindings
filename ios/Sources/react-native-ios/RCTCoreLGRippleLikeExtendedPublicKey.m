@@ -62,7 +62,11 @@ RCT_REMAP_METHOD(derive,derive:(NSDictionary *)currentInstance withParams:(nonnu
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeExtendedPublicKey::derive, first argument should be an instance of LGRippleLikeExtendedPublicKey", nil);
         return;
     }
-    LGRippleLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeExtendedPublicKey *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeExtendedPublicKey::derive, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -95,7 +99,11 @@ RCT_REMAP_METHOD(derivePublicKey,derivePublicKey:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeExtendedPublicKey::derivePublicKey, first argument should be an instance of LGRippleLikeExtendedPublicKey", nil);
         return;
     }
-    LGRippleLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeExtendedPublicKey *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeExtendedPublicKey::derivePublicKey, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -123,7 +131,11 @@ RCT_REMAP_METHOD(deriveHash160,deriveHash160:(NSDictionary *)currentInstance wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeExtendedPublicKey::deriveHash160, first argument should be an instance of LGRippleLikeExtendedPublicKey", nil);
         return;
     }
-    LGRippleLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeExtendedPublicKey *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeExtendedPublicKey::deriveHash160, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -151,7 +163,11 @@ RCT_REMAP_METHOD(toBase58,toBase58:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeExtendedPublicKey::toBase58, first argument should be an instance of LGRippleLikeExtendedPublicKey", nil);
         return;
     }
-    LGRippleLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeExtendedPublicKey *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeExtendedPublicKey::toBase58, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -178,7 +194,11 @@ RCT_REMAP_METHOD(getRootPath,getRootPath:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGRippleLikeExtendedPublicKey::getRootPath, first argument should be an instance of LGRippleLikeExtendedPublicKey", nil);
         return;
     }
-    LGRippleLikeExtendedPublicKey *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGRippleLikeExtendedPublicKey *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGRippleLikeExtendedPublicKey::getRootPath, instance of uid %@ not found", currentInstance[@"uid"]];

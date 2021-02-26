@@ -63,7 +63,11 @@ RCT_REMAP_METHOD(getGasLimit,getGasLimit:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGInternalTransaction::getGasLimit, first argument should be an instance of LGInternalTransaction", nil);
         return;
     }
-    LGInternalTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGInternalTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGInternalTransaction::getGasLimit, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -97,7 +101,11 @@ RCT_REMAP_METHOD(getUsedGas,getUsedGas:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGInternalTransaction::getUsedGas, first argument should be an instance of LGInternalTransaction", nil);
         return;
     }
-    LGInternalTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGInternalTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGInternalTransaction::getUsedGas, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -131,7 +139,11 @@ RCT_REMAP_METHOD(getSender,getSender:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGInternalTransaction::getSender, first argument should be an instance of LGInternalTransaction", nil);
         return;
     }
-    LGInternalTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGInternalTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGInternalTransaction::getSender, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -159,7 +171,11 @@ RCT_REMAP_METHOD(getReceiver,getReceiver:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGInternalTransaction::getReceiver, first argument should be an instance of LGInternalTransaction", nil);
         return;
     }
-    LGInternalTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGInternalTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGInternalTransaction::getReceiver, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -187,7 +203,11 @@ RCT_REMAP_METHOD(getValue,getValue:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGInternalTransaction::getValue, first argument should be an instance of LGInternalTransaction", nil);
         return;
     }
-    LGInternalTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGInternalTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGInternalTransaction::getValue, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -221,7 +241,11 @@ RCT_REMAP_METHOD(getData,getData:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGInternalTransaction::getData, first argument should be an instance of LGInternalTransaction", nil);
         return;
     }
-    LGInternalTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGInternalTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGInternalTransaction::getData, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -250,7 +274,11 @@ RCT_REMAP_METHOD(getOperationType,getOperationType:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGInternalTransaction::getOperationType, first argument should be an instance of LGInternalTransaction", nil);
         return;
     }
-    LGInternalTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGInternalTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGInternalTransaction::getOperationType, instance of uid %@ not found", currentInstance[@"uid"]];

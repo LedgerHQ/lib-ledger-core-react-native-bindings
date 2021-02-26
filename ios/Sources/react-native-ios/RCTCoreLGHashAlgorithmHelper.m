@@ -67,7 +67,11 @@ RCT_REMAP_METHOD(ripemd160,ripemd160:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHashAlgorithmHelper::ripemd160, first argument should be an instance of LGHashAlgorithmHelperImpl", nil);
         return;
     }
-    LGHashAlgorithmHelperImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGHashAlgorithmHelperImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHashAlgorithmHelperImpl::ripemd160, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -102,7 +106,11 @@ RCT_REMAP_METHOD(sha256,sha256:(NSDictionary *)currentInstance withParams:(NSStr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHashAlgorithmHelper::sha256, first argument should be an instance of LGHashAlgorithmHelperImpl", nil);
         return;
     }
-    LGHashAlgorithmHelperImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGHashAlgorithmHelperImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHashAlgorithmHelperImpl::sha256, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -137,7 +145,11 @@ RCT_REMAP_METHOD(keccak256,keccak256:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGHashAlgorithmHelper::keccak256, first argument should be an instance of LGHashAlgorithmHelperImpl", nil);
         return;
     }
-    LGHashAlgorithmHelperImpl *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGHashAlgorithmHelperImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGHashAlgorithmHelperImpl::keccak256, instance of uid %@ not found", currentInstance[@"uid"]];

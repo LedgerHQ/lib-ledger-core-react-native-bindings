@@ -66,7 +66,11 @@ RCT_REMAP_METHOD(size,size:(NSDictionary *)currentInstance WithResolver:(RCTProm
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::size, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::size, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -98,7 +102,11 @@ RCT_REMAP_METHOD(pushInt,pushInt:(NSDictionary *)currentInstance withParams:(int
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::pushInt, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::pushInt, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -136,7 +144,11 @@ RCT_REMAP_METHOD(pushLong,pushLong:(NSDictionary *)currentInstance withParams:(i
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::pushLong, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::pushLong, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -174,7 +186,11 @@ RCT_REMAP_METHOD(pushString,pushString:(NSDictionary *)currentInstance withParam
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::pushString, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::pushString, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -212,7 +228,11 @@ RCT_REMAP_METHOD(pushDouble,pushDouble:(NSDictionary *)currentInstance withParam
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::pushDouble, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::pushDouble, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -250,7 +270,11 @@ RCT_REMAP_METHOD(pushData,pushData:(NSDictionary *)currentInstance withParams:(N
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::pushData, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::pushData, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -290,7 +314,11 @@ RCT_REMAP_METHOD(pushBoolean,pushBoolean:(NSDictionary *)currentInstance withPar
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::pushBoolean, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::pushBoolean, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -328,7 +356,11 @@ RCT_REMAP_METHOD(pushObject,pushObject:(NSDictionary *)currentInstance withParam
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::pushObject, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::pushObject, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -368,7 +400,11 @@ RCT_REMAP_METHOD(pushArray,pushArray:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::pushArray, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::pushArray, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -408,7 +444,11 @@ RCT_REMAP_METHOD(getString,getString:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::getString, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::getString, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -440,7 +480,11 @@ RCT_REMAP_METHOD(getInt,getInt:(NSDictionary *)currentInstance withParams:(int)i
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::getInt, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::getInt, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -472,7 +516,11 @@ RCT_REMAP_METHOD(getLong,getLong:(NSDictionary *)currentInstance withParams:(int
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::getLong, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::getLong, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -504,7 +552,11 @@ RCT_REMAP_METHOD(getDouble,getDouble:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::getDouble, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::getDouble, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -536,7 +588,11 @@ RCT_REMAP_METHOD(getData,getData:(NSDictionary *)currentInstance withParams:(int
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::getData, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::getData, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -569,7 +625,11 @@ RCT_REMAP_METHOD(getBoolean,getBoolean:(NSDictionary *)currentInstance withParam
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::getBoolean, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::getBoolean, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -601,7 +661,11 @@ RCT_REMAP_METHOD(getObject,getObject:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::getObject, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::getObject, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -642,7 +706,11 @@ RCT_REMAP_METHOD(getArray,getArray:(NSDictionary *)currentInstance withParams:(i
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::getArray, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::getArray, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -683,7 +751,11 @@ RCT_REMAP_METHOD(concat,concat:(NSDictionary *)currentInstance withParams:(NSDic
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::concat, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::concat, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -723,7 +795,11 @@ RCT_REMAP_METHOD(getType,getType:(NSDictionary *)currentInstance withParams:(int
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::getType, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::getType, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -755,7 +831,11 @@ RCT_REMAP_METHOD(remove,remove:(NSDictionary *)currentInstance withParams:(int)i
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::remove, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::remove, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -786,7 +866,11 @@ RCT_REMAP_METHOD(dump,dump:(NSDictionary *)currentInstance WithResolver:(RCTProm
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::dump, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::dump, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -817,7 +901,11 @@ RCT_REMAP_METHOD(serialize,serialize:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::serialize, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::serialize, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -849,7 +937,11 @@ RCT_REMAP_METHOD(isReadOnly,isReadOnly:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGDynamicArray::isReadOnly, first argument should be an instance of LGDynamicArray", nil);
         return;
     }
-    LGDynamicArray *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGDynamicArray *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGDynamicArray::isReadOnly, instance of uid %@ not found", currentInstance[@"uid"]];

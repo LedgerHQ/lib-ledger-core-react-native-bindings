@@ -44,7 +44,11 @@ RCT_REMAP_METHOD(subscribe,subscribe:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEventBus::subscribe, first argument should be an instance of LGEventBus", nil);
         return;
     }
-    LGEventBus *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGEventBus *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEventBus::subscribe, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -81,7 +85,11 @@ RCT_REMAP_METHOD(unsubscribe,unsubscribe:(NSDictionary *)currentInstance withPar
         reject(@"impl_call_error", @"Error while calling RCTCoreLGEventBus::unsubscribe, first argument should be an instance of LGEventBus", nil);
         return;
     }
-    LGEventBus *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGEventBus *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGEventBus::unsubscribe, instance of uid %@ not found", currentInstance[@"uid"]];

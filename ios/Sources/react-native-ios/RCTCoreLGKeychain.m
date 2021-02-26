@@ -39,7 +39,11 @@ RCT_REMAP_METHOD(contains,contains:(NSDictionary *)currentInstance withParams:(n
         reject(@"impl_call_error", @"Error while calling RCTCoreLGKeychain::contains, first argument should be an instance of LGKeychain", nil);
         return;
     }
-    LGKeychain *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGKeychain *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGKeychain::contains, instance of uid %@ not found", currentInstance[@"uid"]];

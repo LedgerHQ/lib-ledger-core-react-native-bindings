@@ -42,7 +42,11 @@ RCT_REMAP_METHOD(getUid,getUid:(NSDictionary *)currentInstance WithResolver:(RCT
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getUid, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getUid, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -73,7 +77,11 @@ RCT_REMAP_METHOD(getAccountIndex,getAccountIndex:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getAccountIndex, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getAccountIndex, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -104,7 +112,11 @@ RCT_REMAP_METHOD(getOperationType,getOperationType:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getOperationType, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getOperationType, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -135,7 +147,11 @@ RCT_REMAP_METHOD(getDate,getDate:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getDate, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getDate, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -168,7 +184,11 @@ RCT_REMAP_METHOD(getSenders,getSenders:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getSenders, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getSenders, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -199,7 +219,11 @@ RCT_REMAP_METHOD(getRecipients,getRecipients:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getRecipients, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getRecipients, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -232,7 +256,11 @@ RCT_REMAP_METHOD(getSelfRecipients,getSelfRecipients:(NSDictionary *)currentInst
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getSelfRecipients, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getSelfRecipients, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -263,7 +291,11 @@ RCT_REMAP_METHOD(getAmount,getAmount:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getAmount, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getAmount, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -300,7 +332,11 @@ RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getFees, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getFees, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -340,7 +376,11 @@ RCT_REMAP_METHOD(getPreferences,getPreferences:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getPreferences, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getPreferences, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -377,7 +417,11 @@ RCT_REMAP_METHOD(getTrust,getTrust:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getTrust, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getTrust, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -414,7 +458,11 @@ RCT_REMAP_METHOD(getBlockHeight,getBlockHeight:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getBlockHeight, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getBlockHeight, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -445,7 +493,11 @@ RCT_REMAP_METHOD(asBitcoinLikeOperation,asBitcoinLikeOperation:(NSDictionary *)c
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::asBitcoinLikeOperation, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::asBitcoinLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -482,7 +534,11 @@ RCT_REMAP_METHOD(asCosmosLikeOperation,asCosmosLikeOperation:(NSDictionary *)cur
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::asCosmosLikeOperation, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::asCosmosLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -519,7 +575,11 @@ RCT_REMAP_METHOD(asEthereumLikeOperation,asEthereumLikeOperation:(NSDictionary *
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::asEthereumLikeOperation, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::asEthereumLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -556,7 +616,11 @@ RCT_REMAP_METHOD(asRippleLikeOperation,asRippleLikeOperation:(NSDictionary *)cur
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::asRippleLikeOperation, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::asRippleLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -593,7 +657,11 @@ RCT_REMAP_METHOD(asTezosLikeOperation,asTezosLikeOperation:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::asTezosLikeOperation, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::asTezosLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -631,7 +699,11 @@ RCT_REMAP_METHOD(asStellarLikeOperation,asStellarLikeOperation:(NSDictionary *)c
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::asStellarLikeOperation, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::asStellarLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -669,7 +741,11 @@ RCT_REMAP_METHOD(asAlgorandOperation,asAlgorandOperation:(NSDictionary *)current
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::asAlgorandOperation, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::asAlgorandOperation, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -703,7 +779,11 @@ RCT_REMAP_METHOD(isInstanceOfBitcoinLikeOperation,isInstanceOfBitcoinLikeOperati
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::isInstanceOfBitcoinLikeOperation, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::isInstanceOfBitcoinLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -731,7 +811,11 @@ RCT_REMAP_METHOD(isInstanceOfCosmosLikeOperation,isInstanceOfCosmosLikeOperation
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::isInstanceOfCosmosLikeOperation, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::isInstanceOfCosmosLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -759,7 +843,11 @@ RCT_REMAP_METHOD(isInstanceOfEthereumLikeOperation,isInstanceOfEthereumLikeOpera
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::isInstanceOfEthereumLikeOperation, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::isInstanceOfEthereumLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -787,7 +875,11 @@ RCT_REMAP_METHOD(isInstanceOfRippleLikeOperation,isInstanceOfRippleLikeOperation
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::isInstanceOfRippleLikeOperation, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::isInstanceOfRippleLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -815,7 +907,11 @@ RCT_REMAP_METHOD(isInstanceOfTezosLikeOperation,isInstanceOfTezosLikeOperation:(
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::isInstanceOfTezosLikeOperation, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::isInstanceOfTezosLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -843,7 +939,11 @@ RCT_REMAP_METHOD(isInstanceOfStellarLikeOperation,isInstanceOfStellarLikeOperati
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::isInstanceOfStellarLikeOperation, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::isInstanceOfStellarLikeOperation, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -874,7 +974,11 @@ RCT_REMAP_METHOD(isComplete,isComplete:(NSDictionary *)currentInstance WithResol
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::isComplete, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::isComplete, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -905,7 +1009,11 @@ RCT_REMAP_METHOD(getWalletType,getWalletType:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getWalletType, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getWalletType, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -933,7 +1041,11 @@ RCT_REMAP_METHOD(getCurrency,getCurrency:(NSDictionary *)currentInstance WithRes
         reject(@"impl_call_error", @"Error while calling RCTCoreLGOperation::getCurrency, first argument should be an instance of LGOperation", nil);
         return;
     }
-    LGOperation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGOperation::getCurrency, instance of uid %@ not found", currentInstance[@"uid"]];

@@ -62,7 +62,11 @@ RCT_REMAP_METHOD(getId,getId:(NSDictionary *)currentInstance WithResolver:(RCTPr
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getId, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getId, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -89,7 +93,11 @@ RCT_REMAP_METHOD(getType,getType:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getType, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getType, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -116,7 +124,11 @@ RCT_REMAP_METHOD(getSender,getSender:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getSender, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getSender, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -143,7 +155,11 @@ RCT_REMAP_METHOD(getFee,getFee:(NSDictionary *)currentInstance WithResolver:(RCT
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getFee, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getFee, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -170,7 +186,11 @@ RCT_REMAP_METHOD(getNote,getNote:(NSDictionary *)currentInstance WithResolver:(R
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getNote, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getNote, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -197,7 +217,11 @@ RCT_REMAP_METHOD(getRound,getRound:(NSDictionary *)currentInstance WithResolver:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getRound, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getRound, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -224,7 +248,11 @@ RCT_REMAP_METHOD(getSenderRewards,getSenderRewards:(NSDictionary *)currentInstan
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getSenderRewards, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getSenderRewards, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -251,7 +279,11 @@ RCT_REMAP_METHOD(getReceiverRewards,getReceiverRewards:(NSDictionary *)currentIn
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getReceiverRewards, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getReceiverRewards, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -278,7 +310,11 @@ RCT_REMAP_METHOD(getCloseRewards,getCloseRewards:(NSDictionary *)currentInstance
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getCloseRewards, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getCloseRewards, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -305,7 +341,11 @@ RCT_REMAP_METHOD(setSender,setSender:(NSDictionary *)currentInstance withParams:
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::setSender, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::setSender, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -323,7 +363,11 @@ RCT_REMAP_METHOD(setFee,setFee:(NSDictionary *)currentInstance withParams:(nonnu
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::setFee, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::setFee, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -341,7 +385,11 @@ RCT_REMAP_METHOD(setNote,setNote:(NSDictionary *)currentInstance withParams:(non
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::setNote, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::setNote, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -359,7 +407,11 @@ RCT_REMAP_METHOD(setPaymentInfo,setPaymentInfo:(NSDictionary *)currentInstance w
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::setPaymentInfo, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::setPaymentInfo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -379,7 +431,11 @@ RCT_REMAP_METHOD(getPaymentInfo,getPaymentInfo:(NSDictionary *)currentInstance W
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getPaymentInfo, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getPaymentInfo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -412,7 +468,11 @@ RCT_REMAP_METHOD(setParticipationInfo,setParticipationInfo:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::setParticipationInfo, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::setParticipationInfo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -432,7 +492,11 @@ RCT_REMAP_METHOD(getParticipationInfo,getParticipationInfo:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getParticipationInfo, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getParticipationInfo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -465,7 +529,11 @@ RCT_REMAP_METHOD(setAssetConfigurationInfo,setAssetConfigurationInfo:(NSDictiona
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::setAssetConfigurationInfo, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::setAssetConfigurationInfo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -485,7 +553,11 @@ RCT_REMAP_METHOD(getAssetConfigurationInfo,getAssetConfigurationInfo:(NSDictiona
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getAssetConfigurationInfo, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getAssetConfigurationInfo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -518,7 +590,11 @@ RCT_REMAP_METHOD(setAssetTransferInfo,setAssetTransferInfo:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::setAssetTransferInfo, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::setAssetTransferInfo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -538,7 +614,11 @@ RCT_REMAP_METHOD(getAssetTransferInfo,getAssetTransferInfo:(NSDictionary *)curre
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getAssetTransferInfo, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getAssetTransferInfo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -571,7 +651,11 @@ RCT_REMAP_METHOD(setAssetFreezeInfo,setAssetFreezeInfo:(NSDictionary *)currentIn
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::setAssetFreezeInfo, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::setAssetFreezeInfo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -591,7 +675,11 @@ RCT_REMAP_METHOD(getAssetFreezeInfo,getAssetFreezeInfo:(NSDictionary *)currentIn
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::getAssetFreezeInfo, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::getAssetFreezeInfo, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -625,7 +713,11 @@ RCT_REMAP_METHOD(serialize,serialize:(NSDictionary *)currentInstance WithResolve
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::serialize, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::serialize, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -653,7 +745,11 @@ RCT_REMAP_METHOD(setSignature,setSignature:(NSDictionary *)currentInstance withP
         reject(@"impl_call_error", @"Error while calling RCTCoreLGAlgorandTransaction::setSignature, first argument should be an instance of LGAlgorandTransaction", nil);
         return;
     }
-    LGAlgorandTransaction *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGAlgorandTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGAlgorandTransaction::setSignature, instance of uid %@ not found", currentInstance[@"uid"]];

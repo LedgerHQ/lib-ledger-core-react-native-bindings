@@ -38,7 +38,11 @@ RCT_REMAP_METHOD(getDelegatorAddress,getDelegatorAddress:(NSDictionary *)current
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeDelegation::getDelegatorAddress, first argument should be an instance of LGCosmosLikeDelegation", nil);
         return;
     }
-    LGCosmosLikeDelegation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeDelegation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeDelegation::getDelegatorAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -65,7 +69,11 @@ RCT_REMAP_METHOD(getValidatorAddress,getValidatorAddress:(NSDictionary *)current
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeDelegation::getValidatorAddress, first argument should be an instance of LGCosmosLikeDelegation", nil);
         return;
     }
-    LGCosmosLikeDelegation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeDelegation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeDelegation::getValidatorAddress, instance of uid %@ not found", currentInstance[@"uid"]];
@@ -92,7 +100,11 @@ RCT_REMAP_METHOD(getDelegatedAmount,getDelegatedAmount:(NSDictionary *)currentIn
         reject(@"impl_call_error", @"Error while calling RCTCoreLGCosmosLikeDelegation::getDelegatedAmount, first argument should be an instance of LGCosmosLikeDelegation", nil);
         return;
     }
-    LGCosmosLikeDelegation *currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    LGCosmosLikeDelegation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
     if (!currentInstanceObj)
     {
         NSString *error = [NSString stringWithFormat:@"Error while calling LGCosmosLikeDelegation::getDelegatedAmount, instance of uid %@ not found", currentInstance[@"uid"]];
