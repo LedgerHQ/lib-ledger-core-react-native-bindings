@@ -6,7 +6,7 @@
 #                              Preinstall script
 #
 
-LIB_CORE_VERSION="3.5.0-rc-661687"
+LIB_CORE_VERSION="3.5.0-rc-7b09b4"
 BASE_URL="https://s3-eu-west-1.amazonaws.com/ledger-lib-ledger-core"
 
 function main() {
