@@ -17,6 +17,9 @@ public abstract class PoolConfiguration {
      */
     public static final String ENABLE_INTERNAL_LOGGING = "ENABLE_INTERNAL_LOGGING";
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends PoolConfiguration
     {
@@ -30,6 +33,7 @@ public abstract class PoolConfiguration {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

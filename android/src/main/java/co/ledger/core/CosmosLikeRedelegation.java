@@ -15,6 +15,9 @@ public abstract class CosmosLikeRedelegation {
     public abstract String getDstValidatorAddress();
 
     public abstract ArrayList<CosmosLikeRedelegationEntry> getEntries();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends CosmosLikeRedelegation
     {
@@ -28,6 +31,7 @@ public abstract class CosmosLikeRedelegation {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -42,7 +46,10 @@ public abstract class CosmosLikeRedelegation {
         @Override
         public String getDelegatorAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeRedelegation)");
+            }
             return native_getDelegatorAddress(this.nativeRef);
         }
         private native String native_getDelegatorAddress(long _nativeRef);
@@ -50,7 +57,10 @@ public abstract class CosmosLikeRedelegation {
         @Override
         public String getSrcValidatorAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeRedelegation)");
+            }
             return native_getSrcValidatorAddress(this.nativeRef);
         }
         private native String native_getSrcValidatorAddress(long _nativeRef);
@@ -58,7 +68,10 @@ public abstract class CosmosLikeRedelegation {
         @Override
         public String getDstValidatorAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeRedelegation)");
+            }
             return native_getDstValidatorAddress(this.nativeRef);
         }
         private native String native_getDstValidatorAddress(long _nativeRef);
@@ -66,7 +79,10 @@ public abstract class CosmosLikeRedelegation {
         @Override
         public ArrayList<CosmosLikeRedelegationEntry> getEntries()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeRedelegation)");
+            }
             return native_getEntries(this.nativeRef);
         }
         private native ArrayList<CosmosLikeRedelegationEntry> native_getEntries(long _nativeRef);

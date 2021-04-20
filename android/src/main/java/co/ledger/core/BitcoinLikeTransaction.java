@@ -54,6 +54,9 @@ public abstract class BitcoinLikeTransaction {
      */
     public abstract EstimatedSize getEstimatedSize();
 
+    /** Get the dust amount based on the maximum estimated size of the transaction */
+    public abstract long getDustAmount();
+
     /**
      * Sign all inputs for given transaction. 
      * Build DER encoded signature from RSV data.
@@ -66,6 +69,9 @@ public abstract class BitcoinLikeTransaction {
      * @return SIGNING_SUCCEED if succeed case else refers to BitcoinLikeSignatureState enumeration
      */
     public abstract BitcoinLikeSignatureState setDERSignatures(ArrayList<byte[]> signatures, boolean override);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends BitcoinLikeTransaction
     {
@@ -79,6 +85,7 @@ public abstract class BitcoinLikeTransaction {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -93,7 +100,10 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public String getHash()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_getHash(this.nativeRef);
         }
         private native String native_getHash(long _nativeRef);
@@ -101,7 +111,10 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public ArrayList<BitcoinLikeInput> getInputs()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_getInputs(this.nativeRef);
         }
         private native ArrayList<BitcoinLikeInput> native_getInputs(long _nativeRef);
@@ -109,7 +122,10 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public ArrayList<BitcoinLikeOutput> getOutputs()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_getOutputs(this.nativeRef);
         }
         private native ArrayList<BitcoinLikeOutput> native_getOutputs(long _nativeRef);
@@ -117,7 +133,10 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public BitcoinLikeBlock getBlock()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_getBlock(this.nativeRef);
         }
         private native BitcoinLikeBlock native_getBlock(long _nativeRef);
@@ -125,7 +144,10 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public long getLockTime()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_getLockTime(this.nativeRef);
         }
         private native long native_getLockTime(long _nativeRef);
@@ -133,7 +155,10 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public Amount getFees()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_getFees(this.nativeRef);
         }
         private native Amount native_getFees(long _nativeRef);
@@ -141,7 +166,10 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public Date getTime()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_getTime(this.nativeRef);
         }
         private native Date native_getTime(long _nativeRef);
@@ -149,7 +177,10 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public Integer getTimestamp()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_getTimestamp(this.nativeRef);
         }
         private native Integer native_getTimestamp(long _nativeRef);
@@ -157,7 +188,10 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public int getVersion()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_getVersion(this.nativeRef);
         }
         private native int native_getVersion(long _nativeRef);
@@ -165,7 +199,10 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public byte[] serialize()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_serialize(this.nativeRef);
         }
         private native byte[] native_serialize(long _nativeRef);
@@ -173,7 +210,10 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public byte[] serializeOutputs()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_serializeOutputs(this.nativeRef);
         }
         private native byte[] native_serializeOutputs(long _nativeRef);
@@ -181,7 +221,10 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public byte[] getWitness()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_getWitness(this.nativeRef);
         }
         private native byte[] native_getWitness(long _nativeRef);
@@ -189,15 +232,32 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public EstimatedSize getEstimatedSize()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_getEstimatedSize(this.nativeRef);
         }
         private native EstimatedSize native_getEstimatedSize(long _nativeRef);
 
         @Override
+        public long getDustAmount()
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
+            return native_getDustAmount(this.nativeRef);
+        }
+        private native long native_getDustAmount(long _nativeRef);
+
+        @Override
         public BitcoinLikeSignatureState setSignatures(ArrayList<BitcoinLikeSignature> signatures, boolean override)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_setSignatures(this.nativeRef, signatures, override);
         }
         private native BitcoinLikeSignatureState native_setSignatures(long _nativeRef, ArrayList<BitcoinLikeSignature> signatures, boolean override);
@@ -205,7 +265,10 @@ public abstract class BitcoinLikeTransaction {
         @Override
         public BitcoinLikeSignatureState setDERSignatures(ArrayList<byte[]> signatures, boolean override)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransaction)");
+            }
             return native_setDERSignatures(this.nativeRef, signatures, override);
         }
         private native BitcoinLikeSignatureState native_setDERSignatures(long _nativeRef, ArrayList<byte[]> signatures, boolean override);

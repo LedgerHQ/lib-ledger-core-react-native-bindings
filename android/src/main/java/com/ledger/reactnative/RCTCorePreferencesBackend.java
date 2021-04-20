@@ -34,8 +34,8 @@ import java.util.UUID;
 public class RCTCorePreferencesBackend extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
-    private Map<String, PreferencesBackend> javaObjects;
-    public Map<String, PreferencesBackend> getJavaObjects()
+    private Map<String, PreferencesBackendImpl> javaObjects;
+    public Map<String, PreferencesBackendImpl> getJavaObjects()
     {
         return javaObjects;
     }
@@ -44,13 +44,24 @@ public class RCTCorePreferencesBackend extends ReactContextBaseJavaModule {
     {
         super(reactContext);
         this.reactContext = reactContext;
-        this.javaObjects = new HashMap<String, PreferencesBackend>();
+        this.javaObjects = new HashMap<String, PreferencesBackendImpl>();
     }
 
     @Override
     public String getName()
     {
         return "RCTCorePreferencesBackend";
+    }
+    @ReactMethod
+    public void newInstance(Promise promise)
+    {
+        PreferencesBackendImpl newInstance = new PreferencesBackendImpl(this.reactContext);
+        String uuid = UUID.randomUUID().toString();
+        this.javaObjects.put(uuid, newInstance);
+        WritableNativeMap finalResult = new WritableNativeMap();
+        finalResult.putString("type","RCTCorePreferencesBackend");
+        finalResult.putString("uid",uuid);
+        promise.resolve(finalResult);
     }
     @ReactMethod
     public void release(ReadableMap currentInstance, Promise promise)
@@ -70,7 +81,7 @@ public class RCTCorePreferencesBackend extends ReactContextBaseJavaModule {
     public void log(Promise promise)
     {
         WritableNativeArray result = new WritableNativeArray();
-        for (Map.Entry<String, PreferencesBackend> elem : this.javaObjects.entrySet())
+        for (Map.Entry<String, PreferencesBackendImpl> elem : this.javaObjects.entrySet())
         {
             result.pushString(elem.getKey());
         }
@@ -137,7 +148,7 @@ public class RCTCorePreferencesBackend extends ReactContextBaseJavaModule {
         {
             String sUid = currentInstance.getString("uid");
 
-            PreferencesBackend currentInstanceObj = this.javaObjects.get(sUid);
+            PreferencesBackendImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             byte [] javaParam_0 = hexStringToByteArray(key);
 
@@ -164,7 +175,7 @@ public class RCTCorePreferencesBackend extends ReactContextBaseJavaModule {
         {
             String sUid = currentInstance.getString("uid");
 
-            PreferencesBackend currentInstanceObj = this.javaObjects.get(sUid);
+            PreferencesBackendImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             ArrayList<PreferencesChange> javaParam_0 = new ArrayList<PreferencesChange>();
             for (int i = 0; i <  changes.size(); i++)
@@ -199,7 +210,7 @@ public class RCTCorePreferencesBackend extends ReactContextBaseJavaModule {
         {
             String sUid = currentInstance.getString("uid");
 
-            PreferencesBackend currentInstanceObj = this.javaObjects.get(sUid);
+            PreferencesBackendImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             RCTCoreRandomNumberGenerator rctParam_rng = this.reactContext.getNativeModule(RCTCoreRandomNumberGenerator.class);
             RandomNumberGenerator javaParam_0 = rctParam_rng.getJavaObjects().get(rng.getString("uid"));
@@ -225,7 +236,7 @@ public class RCTCorePreferencesBackend extends ReactContextBaseJavaModule {
         {
             String sUid = currentInstance.getString("uid");
 
-            PreferencesBackend currentInstanceObj = this.javaObjects.get(sUid);
+            PreferencesBackendImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.unsetEncryption();
             promise.resolve(0);
@@ -249,7 +260,7 @@ public class RCTCorePreferencesBackend extends ReactContextBaseJavaModule {
         {
             String sUid = currentInstance.getString("uid");
 
-            PreferencesBackend currentInstanceObj = this.javaObjects.get(sUid);
+            PreferencesBackendImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             RCTCoreRandomNumberGenerator rctParam_rng = this.reactContext.getNativeModule(RCTCoreRandomNumberGenerator.class);
             RandomNumberGenerator javaParam_0 = rctParam_rng.getJavaObjects().get(rng.getString("uid"));
@@ -274,7 +285,7 @@ public class RCTCorePreferencesBackend extends ReactContextBaseJavaModule {
         {
             String sUid = currentInstance.getString("uid");
 
-            PreferencesBackend currentInstanceObj = this.javaObjects.get(sUid);
+            PreferencesBackendImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             String javaResult = currentInstanceObj.getEncryptionSalt();
             WritableNativeMap result = new WritableNativeMap();
@@ -294,7 +305,7 @@ public class RCTCorePreferencesBackend extends ReactContextBaseJavaModule {
         {
             String sUid = currentInstance.getString("uid");
 
-            PreferencesBackend currentInstanceObj = this.javaObjects.get(sUid);
+            PreferencesBackendImpl currentInstanceObj = this.javaObjects.get(sUid);
 
             currentInstanceObj.clear();
             promise.resolve(0);

@@ -59,6 +59,16 @@ public abstract class EthereumLikeAccount {
      */
     public abstract void getERC20Balances(ArrayList<String> erc20Addresses, BigIntListCallback callback);
 
+    /**
+     * Add ERC20 accounts
+     * The passed addresses are ERC20 accounts
+     * Note: same note as above
+     */
+    public abstract void addERC20Accounts(ArrayList<String> erc20Addresses);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
+
     private static final class CppProxy extends EthereumLikeAccount
     {
         private final long nativeRef;
@@ -71,6 +81,7 @@ public abstract class EthereumLikeAccount {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -85,7 +96,10 @@ public abstract class EthereumLikeAccount {
         @Override
         public void broadcastRawTransaction(byte[] transaction, StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAccount)");
+            }
             native_broadcastRawTransaction(this.nativeRef, transaction, callback);
         }
         private native void native_broadcastRawTransaction(long _nativeRef, byte[] transaction, StringCallback callback);
@@ -93,7 +107,10 @@ public abstract class EthereumLikeAccount {
         @Override
         public void broadcastTransaction(EthereumLikeTransaction transaction, StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAccount)");
+            }
             native_broadcastTransaction(this.nativeRef, transaction, callback);
         }
         private native void native_broadcastTransaction(long _nativeRef, EthereumLikeTransaction transaction, StringCallback callback);
@@ -101,7 +118,10 @@ public abstract class EthereumLikeAccount {
         @Override
         public EthereumLikeTransactionBuilder buildTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAccount)");
+            }
             return native_buildTransaction(this.nativeRef);
         }
         private native EthereumLikeTransactionBuilder native_buildTransaction(long _nativeRef);
@@ -109,7 +129,10 @@ public abstract class EthereumLikeAccount {
         @Override
         public ArrayList<ERC20LikeAccount> getERC20Accounts()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAccount)");
+            }
             return native_getERC20Accounts(this.nativeRef);
         }
         private native ArrayList<ERC20LikeAccount> native_getERC20Accounts(long _nativeRef);
@@ -117,7 +140,10 @@ public abstract class EthereumLikeAccount {
         @Override
         public void getGasPrice(BigIntCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAccount)");
+            }
             native_getGasPrice(this.nativeRef, callback);
         }
         private native void native_getGasPrice(long _nativeRef, BigIntCallback callback);
@@ -125,7 +151,10 @@ public abstract class EthereumLikeAccount {
         @Override
         public void getEstimatedGasLimit(String address, BigIntCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAccount)");
+            }
             native_getEstimatedGasLimit(this.nativeRef, address, callback);
         }
         private native void native_getEstimatedGasLimit(long _nativeRef, String address, BigIntCallback callback);
@@ -133,7 +162,10 @@ public abstract class EthereumLikeAccount {
         @Override
         public void getDryRunGasLimit(String address, EthereumGasLimitRequest request, BigIntCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAccount)");
+            }
             native_getDryRunGasLimit(this.nativeRef, address, request, callback);
         }
         private native void native_getDryRunGasLimit(long _nativeRef, String address, EthereumGasLimitRequest request, BigIntCallback callback);
@@ -141,7 +173,10 @@ public abstract class EthereumLikeAccount {
         @Override
         public void getERC20Balance(String erc20Address, BigIntCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAccount)");
+            }
             native_getERC20Balance(this.nativeRef, erc20Address, callback);
         }
         private native void native_getERC20Balance(long _nativeRef, String erc20Address, BigIntCallback callback);
@@ -149,9 +184,23 @@ public abstract class EthereumLikeAccount {
         @Override
         public void getERC20Balances(ArrayList<String> erc20Addresses, BigIntListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAccount)");
+            }
             native_getERC20Balances(this.nativeRef, erc20Addresses, callback);
         }
         private native void native_getERC20Balances(long _nativeRef, ArrayList<String> erc20Addresses, BigIntListCallback callback);
+
+        @Override
+        public void addERC20Accounts(ArrayList<String> erc20Addresses)
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAccount)");
+            }
+            native_addERC20Accounts(this.nativeRef, erc20Addresses);
+        }
+        private native void native_addERC20Accounts(long _nativeRef, ArrayList<String> erc20Addresses);
     }
 }

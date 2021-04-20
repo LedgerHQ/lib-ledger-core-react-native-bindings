@@ -38,6 +38,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (int32_t)getReadonlyConnectionPoolSize {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getReadonlyConnectionPoolSize();
+        return ::djinni::I32::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (nullable LGDatabaseBackend *)enableQueryLogging:(BOOL)enable {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->enableQueryLogging(::djinni::Bool::toCpp(enable));
@@ -59,9 +66,11 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (nullable LGDatabaseBackend *)getPostgreSQLBackend:(int32_t)connectionPoolSize {
++ (nullable LGDatabaseBackend *)getPostgreSQLBackend:(int32_t)connectionPoolSize
+                          readonlyConnectionPoolSize:(int32_t)readonlyConnectionPoolSize {
     try {
-        auto objcpp_result_ = ::ledger::core::api::DatabaseBackend::getPostgreSQLBackend(::djinni::I32::toCpp(connectionPoolSize));
+        auto objcpp_result_ = ::ledger::core::api::DatabaseBackend::getPostgreSQLBackend(::djinni::I32::toCpp(connectionPoolSize),
+                                                                                         ::djinni::I32::toCpp(readonlyConnectionPoolSize));
         return ::djinni_generated::DatabaseBackend::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

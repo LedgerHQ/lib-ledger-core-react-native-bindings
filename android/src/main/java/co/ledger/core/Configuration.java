@@ -52,6 +52,9 @@ public abstract class Configuration {
     /** Syncronization token deactivation */
     public static final String DEACTIVATE_SYNC_TOKEN = "DEACTIVATE_SYNC_TOKEN";
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends Configuration
     {
@@ -65,6 +68,7 @@ public abstract class Configuration {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

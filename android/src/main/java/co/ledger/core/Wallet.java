@@ -184,6 +184,9 @@ public abstract class Wallet {
 
     /** Return wallet's configuration */
     public abstract DynamicObject getConfiguration();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends Wallet
     {
@@ -197,6 +200,7 @@ public abstract class Wallet {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -211,7 +215,10 @@ public abstract class Wallet {
         @Override
         public String getName()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_getName(this.nativeRef);
         }
         private native String native_getName(long _nativeRef);
@@ -219,7 +226,10 @@ public abstract class Wallet {
         @Override
         public void getAccount(int index, AccountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             native_getAccount(this.nativeRef, index, callback);
         }
         private native void native_getAccount(long _nativeRef, int index, AccountCallback callback);
@@ -227,7 +237,10 @@ public abstract class Wallet {
         @Override
         public void getAccountCount(I32Callback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             native_getAccountCount(this.nativeRef, callback);
         }
         private native void native_getAccountCount(long _nativeRef, I32Callback callback);
@@ -235,7 +248,10 @@ public abstract class Wallet {
         @Override
         public void getAccounts(int offset, int count, AccountListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             native_getAccounts(this.nativeRef, offset, count, callback);
         }
         private native void native_getAccounts(long _nativeRef, int offset, int count, AccountListCallback callback);
@@ -243,7 +259,10 @@ public abstract class Wallet {
         @Override
         public void getNextAccountIndex(I32Callback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             native_getNextAccountIndex(this.nativeRef, callback);
         }
         private native void native_getNextAccountIndex(long _nativeRef, I32Callback callback);
@@ -251,7 +270,10 @@ public abstract class Wallet {
         @Override
         public EventBus getEventBus()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_getEventBus(this.nativeRef);
         }
         private native EventBus native_getEventBus(long _nativeRef);
@@ -259,7 +281,10 @@ public abstract class Wallet {
         @Override
         public boolean isSynchronizing()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_isSynchronizing(this.nativeRef);
         }
         private native boolean native_isSynchronizing(long _nativeRef);
@@ -267,7 +292,10 @@ public abstract class Wallet {
         @Override
         public EventBus synchronize()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_synchronize(this.nativeRef);
         }
         private native EventBus native_synchronize(long _nativeRef);
@@ -275,7 +303,10 @@ public abstract class Wallet {
         @Override
         public Preferences getPreferences()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_getPreferences(this.nativeRef);
         }
         private native Preferences native_getPreferences(long _nativeRef);
@@ -283,7 +314,10 @@ public abstract class Wallet {
         @Override
         public Logger getLogger()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_getLogger(this.nativeRef);
         }
         private native Logger native_getLogger(long _nativeRef);
@@ -291,7 +325,10 @@ public abstract class Wallet {
         @Override
         public Preferences getAccountPreferences(int index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_getAccountPreferences(this.nativeRef, index);
         }
         private native Preferences native_getAccountPreferences(long _nativeRef, int index);
@@ -299,7 +336,10 @@ public abstract class Wallet {
         @Override
         public BitcoinLikeWallet asBitcoinLikeWallet()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_asBitcoinLikeWallet(this.nativeRef);
         }
         private native BitcoinLikeWallet native_asBitcoinLikeWallet(long _nativeRef);
@@ -307,7 +347,10 @@ public abstract class Wallet {
         @Override
         public CosmosLikeWallet asCosmosLikeWallet()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_asCosmosLikeWallet(this.nativeRef);
         }
         private native CosmosLikeWallet native_asCosmosLikeWallet(long _nativeRef);
@@ -315,7 +358,10 @@ public abstract class Wallet {
         @Override
         public Currency getCurrency()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_getCurrency(this.nativeRef);
         }
         private native Currency native_getCurrency(long _nativeRef);
@@ -323,7 +369,10 @@ public abstract class Wallet {
         @Override
         public boolean isInstanceOfBitcoinLikeWallet()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_isInstanceOfBitcoinLikeWallet(this.nativeRef);
         }
         private native boolean native_isInstanceOfBitcoinLikeWallet(long _nativeRef);
@@ -331,7 +380,10 @@ public abstract class Wallet {
         @Override
         public boolean isInstanceOfAlgorandLikeWallet()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_isInstanceOfAlgorandLikeWallet(this.nativeRef);
         }
         private native boolean native_isInstanceOfAlgorandLikeWallet(long _nativeRef);
@@ -339,7 +391,10 @@ public abstract class Wallet {
         @Override
         public boolean isInstanceOfCosmosLikeWallet()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_isInstanceOfCosmosLikeWallet(this.nativeRef);
         }
         private native boolean native_isInstanceOfCosmosLikeWallet(long _nativeRef);
@@ -347,7 +402,10 @@ public abstract class Wallet {
         @Override
         public boolean isInstanceOfEthereumLikeWallet()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_isInstanceOfEthereumLikeWallet(this.nativeRef);
         }
         private native boolean native_isInstanceOfEthereumLikeWallet(long _nativeRef);
@@ -355,7 +413,10 @@ public abstract class Wallet {
         @Override
         public boolean isInstanceOfRippleLikeWallet()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_isInstanceOfRippleLikeWallet(this.nativeRef);
         }
         private native boolean native_isInstanceOfRippleLikeWallet(long _nativeRef);
@@ -363,7 +424,10 @@ public abstract class Wallet {
         @Override
         public boolean isInstanceOfStellarLikeWallet()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_isInstanceOfStellarLikeWallet(this.nativeRef);
         }
         private native boolean native_isInstanceOfStellarLikeWallet(long _nativeRef);
@@ -371,7 +435,10 @@ public abstract class Wallet {
         @Override
         public StellarLikeWallet asStellarLikeWallet()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_asStellarLikeWallet(this.nativeRef);
         }
         private native StellarLikeWallet native_asStellarLikeWallet(long _nativeRef);
@@ -379,7 +446,10 @@ public abstract class Wallet {
         @Override
         public WalletType getWalletType()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_getWalletType(this.nativeRef);
         }
         private native WalletType native_getWalletType(long _nativeRef);
@@ -387,7 +457,10 @@ public abstract class Wallet {
         @Override
         public void getLastBlock(BlockCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             native_getLastBlock(this.nativeRef, callback);
         }
         private native void native_getLastBlock(long _nativeRef, BlockCallback callback);
@@ -395,7 +468,10 @@ public abstract class Wallet {
         @Override
         public void getAccountCreationInfo(int accountIndex, AccountCreationInfoCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             native_getAccountCreationInfo(this.nativeRef, accountIndex, callback);
         }
         private native void native_getAccountCreationInfo(long _nativeRef, int accountIndex, AccountCreationInfoCallback callback);
@@ -403,7 +479,10 @@ public abstract class Wallet {
         @Override
         public void getExtendedKeyAccountCreationInfo(int accountIndex, ExtendedKeyAccountCreationInfoCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             native_getExtendedKeyAccountCreationInfo(this.nativeRef, accountIndex, callback);
         }
         private native void native_getExtendedKeyAccountCreationInfo(long _nativeRef, int accountIndex, ExtendedKeyAccountCreationInfoCallback callback);
@@ -411,7 +490,10 @@ public abstract class Wallet {
         @Override
         public void getNextAccountCreationInfo(AccountCreationInfoCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             native_getNextAccountCreationInfo(this.nativeRef, callback);
         }
         private native void native_getNextAccountCreationInfo(long _nativeRef, AccountCreationInfoCallback callback);
@@ -419,7 +501,10 @@ public abstract class Wallet {
         @Override
         public void getNextExtendedKeyAccountCreationInfo(ExtendedKeyAccountCreationInfoCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             native_getNextExtendedKeyAccountCreationInfo(this.nativeRef, callback);
         }
         private native void native_getNextExtendedKeyAccountCreationInfo(long _nativeRef, ExtendedKeyAccountCreationInfoCallback callback);
@@ -427,7 +512,10 @@ public abstract class Wallet {
         @Override
         public void newAccountWithInfo(AccountCreationInfo accountCreationInfo, AccountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             native_newAccountWithInfo(this.nativeRef, accountCreationInfo, callback);
         }
         private native void native_newAccountWithInfo(long _nativeRef, AccountCreationInfo accountCreationInfo, AccountCallback callback);
@@ -435,7 +523,10 @@ public abstract class Wallet {
         @Override
         public void newAccountWithExtendedKeyInfo(ExtendedKeyAccountCreationInfo extendedKeyAccountCreationInfo, AccountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             native_newAccountWithExtendedKeyInfo(this.nativeRef, extendedKeyAccountCreationInfo, callback);
         }
         private native void native_newAccountWithExtendedKeyInfo(long _nativeRef, ExtendedKeyAccountCreationInfo extendedKeyAccountCreationInfo, AccountCallback callback);
@@ -443,7 +534,10 @@ public abstract class Wallet {
         @Override
         public void eraseDataSince(Date date, ErrorCodeCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             native_eraseDataSince(this.nativeRef, date, callback);
         }
         private native void native_eraseDataSince(long _nativeRef, Date date, ErrorCodeCallback callback);
@@ -451,7 +545,10 @@ public abstract class Wallet {
         @Override
         public DynamicObject getConfiguration()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Wallet)");
+            }
             return native_getConfiguration(this.nativeRef);
         }
         private native DynamicObject native_getConfiguration(long _nativeRef);

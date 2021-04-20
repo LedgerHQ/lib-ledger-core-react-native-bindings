@@ -112,6 +112,9 @@ public abstract class AlgorandAccount {
      * @param callback, The new transaction
      */
     public abstract void createTransaction(AlgorandTransactionCallback callback);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends AlgorandAccount
     {
@@ -125,6 +128,7 @@ public abstract class AlgorandAccount {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -139,7 +143,10 @@ public abstract class AlgorandAccount {
         @Override
         public void getSpendableBalance(AlgorandOperationType operationType, AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_getSpendableBalance(this.nativeRef, operationType, callback);
         }
         private native void native_getSpendableBalance(long _nativeRef, AlgorandOperationType operationType, AmountCallback callback);
@@ -147,7 +154,10 @@ public abstract class AlgorandAccount {
         @Override
         public void getAsset(String assetId, AlgorandAssetParamsCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_getAsset(this.nativeRef, assetId, callback);
         }
         private native void native_getAsset(long _nativeRef, String assetId, AlgorandAssetParamsCallback callback);
@@ -155,7 +165,10 @@ public abstract class AlgorandAccount {
         @Override
         public void hasAsset(String address, String assetId, BoolCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_hasAsset(this.nativeRef, address, assetId, callback);
         }
         private native void native_hasAsset(long _nativeRef, String address, String assetId, BoolCallback callback);
@@ -163,7 +176,10 @@ public abstract class AlgorandAccount {
         @Override
         public void isAmountValid(String address, String amount, BoolCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_isAmountValid(this.nativeRef, address, amount, callback);
         }
         private native void native_isAmountValid(long _nativeRef, String address, String amount, BoolCallback callback);
@@ -171,7 +187,10 @@ public abstract class AlgorandAccount {
         @Override
         public void getAssetBalance(String assetId, AlgorandAssetAmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_getAssetBalance(this.nativeRef, assetId, callback);
         }
         private native void native_getAssetBalance(long _nativeRef, String assetId, AlgorandAssetAmountCallback callback);
@@ -179,7 +198,10 @@ public abstract class AlgorandAccount {
         @Override
         public void getAssetBalanceHistory(String assetId, String start, String end, TimePeriod period, AlgorandAssetAmountListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_getAssetBalanceHistory(this.nativeRef, assetId, start, end, period, callback);
         }
         private native void native_getAssetBalanceHistory(long _nativeRef, String assetId, String start, String end, TimePeriod period, AlgorandAssetAmountListCallback callback);
@@ -187,7 +209,10 @@ public abstract class AlgorandAccount {
         @Override
         public void getAssetsBalances(AlgorandAssetAmountListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_getAssetsBalances(this.nativeRef, callback);
         }
         private native void native_getAssetsBalances(long _nativeRef, AlgorandAssetAmountListCallback callback);
@@ -195,7 +220,10 @@ public abstract class AlgorandAccount {
         @Override
         public void getCreatedAssets(AlgorandAssetParamsListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_getCreatedAssets(this.nativeRef, callback);
         }
         private native void native_getCreatedAssets(long _nativeRef, AlgorandAssetParamsListCallback callback);
@@ -203,7 +231,10 @@ public abstract class AlgorandAccount {
         @Override
         public void getPendingRewards(AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_getPendingRewards(this.nativeRef, callback);
         }
         private native void native_getPendingRewards(long _nativeRef, AmountCallback callback);
@@ -211,7 +242,10 @@ public abstract class AlgorandAccount {
         @Override
         public void getTotalRewards(AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_getTotalRewards(this.nativeRef, callback);
         }
         private native void native_getTotalRewards(long _nativeRef, AmountCallback callback);
@@ -219,7 +253,10 @@ public abstract class AlgorandAccount {
         @Override
         public void getFeeEstimate(AlgorandTransaction transaction, AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_getFeeEstimate(this.nativeRef, transaction, callback);
         }
         private native void native_getFeeEstimate(long _nativeRef, AlgorandTransaction transaction, AmountCallback callback);
@@ -227,7 +264,10 @@ public abstract class AlgorandAccount {
         @Override
         public byte[] buildRawSignedTransaction(byte[] rawUnsignedTransaction, byte[] signature)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             return native_buildRawSignedTransaction(this.nativeRef, rawUnsignedTransaction, signature);
         }
         private native byte[] native_buildRawSignedTransaction(long _nativeRef, byte[] rawUnsignedTransaction, byte[] signature);
@@ -235,7 +275,10 @@ public abstract class AlgorandAccount {
         @Override
         public void broadcastRawTransaction(byte[] transaction, StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_broadcastRawTransaction(this.nativeRef, transaction, callback);
         }
         private native void native_broadcastRawTransaction(long _nativeRef, byte[] transaction, StringCallback callback);
@@ -243,7 +286,10 @@ public abstract class AlgorandAccount {
         @Override
         public void broadcastTransaction(AlgorandTransaction transaction, StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_broadcastTransaction(this.nativeRef, transaction, callback);
         }
         private native void native_broadcastTransaction(long _nativeRef, AlgorandTransaction transaction, StringCallback callback);
@@ -251,7 +297,10 @@ public abstract class AlgorandAccount {
         @Override
         public void createTransaction(AlgorandTransactionCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandAccount)");
+            }
             native_createTransaction(this.nativeRef, callback);
         }
         private native void native_createTransaction(long _nativeRef, AlgorandTransactionCallback callback);

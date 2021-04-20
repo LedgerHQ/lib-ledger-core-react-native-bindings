@@ -366,10 +366,12 @@ RCT_REMAP_METHOD(setMinAmountOnChange,setMinAmountOnChange:(NSDictionary *)curre
  * @param strategy The strategy to adopt in order to select which input to use in the transaction.
  * @param sequence The sequence value serialized at the end of the raw transaction. If you don't know what to put here
  * just use 0xFFFFFF
+ * @param maxUtxo The maximum number of utxos to pick (It applies only for HIGHEST_FIRST_LIMIT_UTXO and LIMIT_UTXO)
  * @return A reference on the same builder in order to chain calls.
  */
 RCT_REMAP_METHOD(pickInputs,pickInputs:(NSDictionary *)currentInstance withParams:(int)strategy
-                                                                         sequence:(int)sequence withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                                                                         sequence:(int)sequence
+                                                                          maxUtxo:(nullable NSNumber *)maxUtxo withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
         reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransactionBuilder::pickInputs, first argument should be an instance of LGBitcoinLikeTransactionBuilder", nil);
@@ -386,7 +388,7 @@ RCT_REMAP_METHOD(pickInputs,pickInputs:(NSDictionary *)currentInstance withParam
         reject(@"impl_call_error", error, nil);
         return;
     }
-    LGBitcoinLikeTransactionBuilder * objcResult = [currentInstanceObj pickInputs:(LGBitcoinLikePickingStrategy)strategy sequence:sequence];
+    LGBitcoinLikeTransactionBuilder * objcResult = [currentInstanceObj pickInputs:(LGBitcoinLikePickingStrategy)strategy sequence:sequence maxUtxo:maxUtxo];
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeTransactionBuilder *rctImpl_objcResult = (RCTCoreLGBitcoinLikeTransactionBuilder *)[self.bridge moduleForName:@"CoreLGBitcoinLikeTransactionBuilder"];

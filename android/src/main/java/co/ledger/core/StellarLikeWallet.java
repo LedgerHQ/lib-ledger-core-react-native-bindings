@@ -7,6 +7,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class StellarLikeWallet {
     public abstract void exists(String address, BoolCallback callback);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends StellarLikeWallet
     {
@@ -20,6 +23,7 @@ public abstract class StellarLikeWallet {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -34,7 +38,10 @@ public abstract class StellarLikeWallet {
         @Override
         public void exists(String address, BoolCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeWallet)");
+            }
             native_exists(this.nativeRef, address, callback);
         }
         private native void native_exists(long _nativeRef, String address, BoolCallback callback);

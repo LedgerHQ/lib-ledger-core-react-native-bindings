@@ -92,5 +92,7 @@ public enum ErrorCode {
     /** Stellar errors */
     INVALID_STELLAR_ADDRESS_FORMAT,
     INVALID_STELLAR_MEMO_TYPE,
+    /** Tezos errors */
+    INVALID_SELF_TX,
     ;
 }

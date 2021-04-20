@@ -128,6 +128,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (int64_t)getDustAmount {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getDustAmount();
+        return ::djinni::I64::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (LGBitcoinLikeSignatureState)setSignatures:(nonnull NSArray<LGBitcoinLikeSignature *> *)signatures
                                     override:(BOOL)override {
     try {

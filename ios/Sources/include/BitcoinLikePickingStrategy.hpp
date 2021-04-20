@@ -14,6 +14,8 @@ enum class BitcoinLikePickingStrategy : int {
     DEEP_OUTPUTS_FIRST,
     OPTIMIZE_SIZE,
     MERGE_OUTPUTS,
+    HIGHEST_FIRST_LIMIT_UTXO,
+    LIMIT_UTXO,
 };
  std::string to_string(const BitcoinLikePickingStrategy& bitcoinLikePickingStrategy);
  std::ostream &operator<<(std::ostream &os, const BitcoinLikePickingStrategy &o);

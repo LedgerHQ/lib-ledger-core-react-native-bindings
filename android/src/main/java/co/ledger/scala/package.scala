@@ -70,6 +70,7 @@ package object implicits {
     class InvalidBech32FormatException(message: String) extends LedgerCoreWrappedException(ErrorCode.INVALID_BECH32_FORMAT, message)
     class InvalidStellarAddressFormatException(message: String) extends LedgerCoreWrappedException(ErrorCode.INVALID_STELLAR_ADDRESS_FORMAT, message)
     class InvalidStellarMemoTypeException(message: String) extends LedgerCoreWrappedException(ErrorCode.INVALID_STELLAR_MEMO_TYPE, message)
+    class InvalidSelfTxException(message: String) extends LedgerCoreWrappedException(ErrorCode.INVALID_SELF_TX, message)
     private def wrapLedgerCoreError(error: co.ledger.core.Error): LedgerCoreWrappedException = {
         error.getCode match {
             case ErrorCode.EC_PRIV_KEY_INVALID_FORMAT => new EcPrivKeyInvalidFormatException(error.getMessage)
@@ -132,6 +133,7 @@ package object implicits {
             case ErrorCode.INVALID_BECH32_FORMAT => new InvalidBech32FormatException(error.getMessage)
             case ErrorCode.INVALID_STELLAR_ADDRESS_FORMAT => new InvalidStellarAddressFormatException(error.getMessage)
             case ErrorCode.INVALID_STELLAR_MEMO_TYPE => new InvalidStellarMemoTypeException(error.getMessage)
+            case ErrorCode.INVALID_SELF_TX => new InvalidSelfTxException(error.getMessage)
         }
     }
     private def arrayList2Array[T](a: Array[T]): java.util.ArrayList[T] = new java.util.ArrayList[T](a.toList.asJava.asInstanceOf[java.util.Collection[T]])
@@ -230,6 +232,48 @@ package object implicits {
             })
             promise.future
         }
+        def getGasPrice(): Future[BigInt] = {
+            val promise = Promise[BigInt]()
+            self.getGasPrice(new BigIntCallback() {
+                override def onCallback(result: BigInt, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getCurrentDelegate(): Future[String] = {
+            val promise = Promise[String]()
+            self.getCurrentDelegate(new StringCallback() {
+                override def onCallback(result: String, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getTokenBalance(tokenAddress: String): Future[BigInt] = {
+            val promise = Promise[BigInt]()
+            self.getTokenBalance(tokenAddress, new BigIntCallback() {
+                override def onCallback(result: BigInt, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
     }
     implicit class RichStringCallback(val self: StringCallback) {
     }
@@ -272,6 +316,24 @@ package object implicits {
     implicit class RichTezosConfiguration(val self: TezosConfiguration) {
     }
     implicit class RichTezosConfigurationDefaults(val self: TezosConfigurationDefaults) {
+    }
+    implicit class RichTezosLikeWallet(val self: TezosLikeWallet) {
+        def isDelegate(address: String): Future[Boolean] = {
+            val promise = Promise[Boolean]()
+            self.isDelegate(address, new BoolCallback() {
+                override def onCallback(result: java.lang.Boolean, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+    }
+    implicit class RichBoolCallback(val self: BoolCallback) {
     }
     implicit class RichRippleLikeTransaction(val self: RippleLikeTransaction) {
     }
@@ -368,8 +430,6 @@ package object implicits {
             })
             promise.future
         }
-    }
-    implicit class RichBoolCallback(val self: BoolCallback) {
     }
     implicit class RichRippleConfiguration(val self: RippleConfiguration) {
     }
@@ -1398,6 +1458,48 @@ package object implicits {
             })
             promise.future
         }
+        def getOperation(uid: String): Future[ERC20LikeOperation] = {
+            val promise = Promise[ERC20LikeOperation]()
+            self.getOperation(uid, new ERC20LikeOperationCallback() {
+                override def onCallback(result: ERC20LikeOperation, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getAllOperations(from: Int, to: Int, ascending: Boolean): Future[ArrayList[ERC20LikeOperation]] = {
+            val promise = Promise[ArrayList[ERC20LikeOperation]]()
+            self.getAllOperations(from, to, ascending, new ERC20LikeOperationListCallback() {
+                override def onCallback(result: ArrayList[ERC20LikeOperation], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
+        def getOperationsFromBlockHeight(from: Int, to: Int, fromBlockHeight: Long): Future[ArrayList[ERC20LikeOperation]] = {
+            val promise = Promise[ArrayList[ERC20LikeOperation]]()
+            self.getOperationsFromBlockHeight(from, to, fromBlockHeight, new ERC20LikeOperationListCallback() {
+                override def onCallback(result: ArrayList[ERC20LikeOperation], error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
         def getTransferToAddressData(amount: BigInt, address: String): Future[Array[Byte]] = {
             val promise = Promise[Array[Byte]]()
             self.getTransferToAddressData(amount, address, new BinaryCallback() {
@@ -1412,6 +1514,10 @@ package object implicits {
             })
             promise.future
         }
+    }
+    implicit class RichERC20LikeOperationCallback(val self: ERC20LikeOperationCallback) {
+    }
+    implicit class RichERC20LikeOperationListCallback(val self: ERC20LikeOperationListCallback) {
     }
     implicit class RichBinaryCallback(val self: BinaryCallback) {
     }
@@ -1712,6 +1818,20 @@ package object implicits {
             })
             promise.future
         }
+        def getMaxSpendable(strategy: BitcoinLikePickingStrategy, maxUtxos: Integer): Future[Amount] = {
+            val promise = Promise[Amount]()
+            self.getMaxSpendable(strategy, maxUtxos, new AmountCallback() {
+                override def onCallback(result: Amount, error: co.ledger.core.Error): Unit =  {
+                    if (error != null) {
+                        promise.failure(wrapLedgerCoreError(error))
+                    }
+                    else {
+                        promise.success(result)
+                    }
+                }
+            })
+            promise.future
+        }
     }
     implicit class RichBitcoinLikeOutputListCallback(val self: BitcoinLikeOutputListCallback) {
     }
@@ -1926,5 +2046,9 @@ package object implicits {
     implicit class RichLogger(val self: Logger) {
     }
     implicit class RichLedgerCore(val self: LedgerCore) {
+    }
+    implicit class RichAllocationMetrics(val self: AllocationMetrics) {
+    }
+    implicit class RichDurationMetrics(val self: DurationMetrics) {
     }
 }

@@ -24,6 +24,7 @@ public class RCTCoreBindingPackage implements ReactPackage
         new RCTCoreTezosLikeOriginatedAccount(reactContext),
         new RCTCoreTezosConfiguration(reactContext),
         new RCTCoreTezosConfigurationDefaults(reactContext),
+        new RCTCoreTezosLikeWallet(reactContext),
         new RCTCoreRippleLikeMemo(reactContext),
         new RCTCoreRippleLikeTransaction(reactContext),
         new RCTCoreRippleLikeOperation(reactContext),
@@ -210,7 +211,10 @@ public class RCTCoreBindingPackage implements ReactPackage
         new RCTCoreThreadDispatcher(reactContext),
         new RCTCoreLogPrinter(reactContext),
         new RCTCoreLogger(reactContext),
-        new RCTCoreLedgerCore(reactContext));}
+        new RCTCoreLedgerCore(reactContext),
+        new RCTCoreAllocationMetrics(reactContext),
+        new RCTCoreDurationMetric(reactContext),
+        new RCTCoreDurationMetrics(reactContext));}
 
     public List<Class<? extends JavaScriptModule>> createJSModules()
     {

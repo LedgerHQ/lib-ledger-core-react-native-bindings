@@ -13,6 +13,9 @@ public abstract class SynchronizationStatus {
 
     public static final int STATUS_DONE_SYNCHRONIZE_NEXT_ACCOUNT = 3;
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends SynchronizationStatus
     {
@@ -26,6 +29,7 @@ public abstract class SynchronizationStatus {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

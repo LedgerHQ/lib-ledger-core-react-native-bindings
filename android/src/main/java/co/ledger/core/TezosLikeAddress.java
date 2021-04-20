@@ -30,6 +30,9 @@ public abstract class TezosLikeAddress {
      * @return The Base58 encoding
      */
     public abstract String toBase58();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends TezosLikeAddress
     {
@@ -43,6 +46,7 @@ public abstract class TezosLikeAddress {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -57,7 +61,10 @@ public abstract class TezosLikeAddress {
         @Override
         public byte[] getVersion()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAddress)");
+            }
             return native_getVersion(this.nativeRef);
         }
         private native byte[] native_getVersion(long _nativeRef);
@@ -65,7 +72,10 @@ public abstract class TezosLikeAddress {
         @Override
         public byte[] getHash160()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAddress)");
+            }
             return native_getHash160(this.nativeRef);
         }
         private native byte[] native_getHash160(long _nativeRef);
@@ -73,7 +83,10 @@ public abstract class TezosLikeAddress {
         @Override
         public TezosLikeNetworkParameters getNetworkParameters()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAddress)");
+            }
             return native_getNetworkParameters(this.nativeRef);
         }
         private native TezosLikeNetworkParameters native_getNetworkParameters(long _nativeRef);
@@ -81,7 +94,10 @@ public abstract class TezosLikeAddress {
         @Override
         public String toBase58()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAddress)");
+            }
             return native_toBase58(this.nativeRef);
         }
         private native String native_toBase58(long _nativeRef);

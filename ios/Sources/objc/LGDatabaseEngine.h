@@ -21,4 +21,10 @@
  */
 - (int32_t)getPoolSize;
 
+/**
+ * Get the maximum number of concurrent readonly connection on a single database.
+ * @return the maximum number of concurrent readonly connection that the engine is able to open on a single database.
+ */
+- (int32_t)getReadonlyPoolSize;
+
 @end

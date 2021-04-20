@@ -3,6 +3,7 @@
 
 #import "LGBitcoinLikeNetworkParameters+Private.h"
 #import "DJIMarshal+Private.h"
+#import "LGBitcoinLikeDustPolicy+Private.h"
 #import "LGBitcoinLikeFeePolicy+Private.h"
 #include <cassert>
 
@@ -16,7 +17,8 @@ auto BitcoinLikeNetworkParameters::toCpp(ObjcType obj) -> CppType
             ::djinni::Binary::toCpp(obj.P2SHVersion),
             ::djinni::Binary::toCpp(obj.XPUBVersion),
             ::djinni::Enum<::ledger::core::api::BitcoinLikeFeePolicy, LGBitcoinLikeFeePolicy>::toCpp(obj.FeePolicy),
-            ::djinni::I64::toCpp(obj.DustAmount),
+            ::djinni::I64::toCpp(obj.Dust),
+            ::djinni::Enum<::ledger::core::api::BitcoinLikeDustPolicy, LGBitcoinLikeDustPolicy>::toCpp(obj.DustPolicy),
             ::djinni::String::toCpp(obj.MessagePrefix),
             ::djinni::Bool::toCpp(obj.UsesTimestampedTransaction),
             ::djinni::I64::toCpp(obj.TimestampDelay),
@@ -31,7 +33,8 @@ auto BitcoinLikeNetworkParameters::fromCpp(const CppType& cpp) -> ObjcType
                                                           P2SHVersion:(::djinni::Binary::fromCpp(cpp.P2SHVersion))
                                                           XPUBVersion:(::djinni::Binary::fromCpp(cpp.XPUBVersion))
                                                             FeePolicy:(::djinni::Enum<::ledger::core::api::BitcoinLikeFeePolicy, LGBitcoinLikeFeePolicy>::fromCpp(cpp.FeePolicy))
-                                                           DustAmount:(::djinni::I64::fromCpp(cpp.DustAmount))
+                                                                 Dust:(::djinni::I64::fromCpp(cpp.Dust))
+                                                           DustPolicy:(::djinni::Enum<::ledger::core::api::BitcoinLikeDustPolicy, LGBitcoinLikeDustPolicy>::fromCpp(cpp.DustPolicy))
                                                         MessagePrefix:(::djinni::String::fromCpp(cpp.MessagePrefix))
                                            UsesTimestampedTransaction:(::djinni::Bool::fromCpp(cpp.UsesTimestampedTransaction))
                                                        TimestampDelay:(::djinni::I64::fromCpp(cpp.TimestampDelay))

@@ -60,6 +60,9 @@ public abstract class Preferences {
      * @return An interface for editting preferences.
      */
     public abstract PreferencesEditor edit();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends Preferences
     {
@@ -73,6 +76,7 @@ public abstract class Preferences {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -87,7 +91,10 @@ public abstract class Preferences {
         @Override
         public String getString(String key, String fallbackValue)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Preferences)");
+            }
             return native_getString(this.nativeRef, key, fallbackValue);
         }
         private native String native_getString(long _nativeRef, String key, String fallbackValue);
@@ -95,7 +102,10 @@ public abstract class Preferences {
         @Override
         public int getInt(String key, int fallbackValue)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Preferences)");
+            }
             return native_getInt(this.nativeRef, key, fallbackValue);
         }
         private native int native_getInt(long _nativeRef, String key, int fallbackValue);
@@ -103,7 +113,10 @@ public abstract class Preferences {
         @Override
         public long getLong(String key, long fallbackValue)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Preferences)");
+            }
             return native_getLong(this.nativeRef, key, fallbackValue);
         }
         private native long native_getLong(long _nativeRef, String key, long fallbackValue);
@@ -111,7 +124,10 @@ public abstract class Preferences {
         @Override
         public boolean getBoolean(String key, boolean fallbackValue)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Preferences)");
+            }
             return native_getBoolean(this.nativeRef, key, fallbackValue);
         }
         private native boolean native_getBoolean(long _nativeRef, String key, boolean fallbackValue);
@@ -119,7 +135,10 @@ public abstract class Preferences {
         @Override
         public ArrayList<String> getStringArray(String key, ArrayList<String> fallbackValue)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Preferences)");
+            }
             return native_getStringArray(this.nativeRef, key, fallbackValue);
         }
         private native ArrayList<String> native_getStringArray(long _nativeRef, String key, ArrayList<String> fallbackValue);
@@ -127,7 +146,10 @@ public abstract class Preferences {
         @Override
         public byte[] getData(String key, byte[] fallbackValue)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Preferences)");
+            }
             return native_getData(this.nativeRef, key, fallbackValue);
         }
         private native byte[] native_getData(long _nativeRef, String key, byte[] fallbackValue);
@@ -135,7 +157,10 @@ public abstract class Preferences {
         @Override
         public boolean contains(String key)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Preferences)");
+            }
             return native_contains(this.nativeRef, key);
         }
         private native boolean native_contains(long _nativeRef, String key);
@@ -143,7 +168,10 @@ public abstract class Preferences {
         @Override
         public PreferencesEditor edit()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Preferences)");
+            }
             return native_edit(this.nativeRef);
         }
         private native PreferencesEditor native_edit(long _nativeRef);

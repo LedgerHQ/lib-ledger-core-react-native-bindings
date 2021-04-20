@@ -220,6 +220,29 @@ RCT_REMAP_METHOD(getFees,getFees:(NSDictionary *)currentInstance WithResolver:(R
 
 }
 
+/** Get gas price from network */
+RCT_REMAP_METHOD(getGasPrice,getGasPrice:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeAccount::getGasPrice, first argument should be an instance of LGTezosLikeAccount", nil);
+        return;
+    }
+    LGTezosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeAccount::getGasPrice, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGBigIntCallback *objcParam_0 = [[RCTCoreLGBigIntCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getGasPrice:objcParam_0];
+
+}
+
 /** Get originated accounts by current account */
 RCT_REMAP_METHOD(getOriginatedAccounts,getOriginatedAccounts:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -260,6 +283,55 @@ RCT_REMAP_METHOD(getOriginatedAccounts,getOriginatedAccounts:(NSDictionary *)cur
         reject(@"impl_call_error", @"Error while calling LGTezosLikeAccount::getOriginatedAccounts", nil);
         return;
     }
+
+}
+
+/** Get current delegate */
+RCT_REMAP_METHOD(getCurrentDelegate,getCurrentDelegate:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeAccount::getCurrentDelegate, first argument should be an instance of LGTezosLikeAccount", nil);
+        return;
+    }
+    LGTezosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeAccount::getCurrentDelegate, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGStringCallback *objcParam_0 = [[RCTCoreLGStringCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getCurrentDelegate:objcParam_0];
+
+}
+
+/**
+ * Get the balance of the account for a given token
+ * @param tokenAddress Address of the contract
+ */
+RCT_REMAP_METHOD(getTokenBalance,getTokenBalance:(NSDictionary *)currentInstance withParams:(nonnull NSString *)tokenAddress withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeAccount::getTokenBalance, first argument should be an instance of LGTezosLikeAccount", nil);
+        return;
+    }
+    LGTezosLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeAccount::getTokenBalance, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGBigIntCallback *objcParam_1 = [[RCTCoreLGBigIntCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getTokenBalance:tokenAddress callback:objcParam_1];
 
 }
 @end

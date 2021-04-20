@@ -29,9 +29,23 @@ public abstract class TezosLikeTransactionBuilder {
 
     /**
      * Set fees (in drop) the originator is willing to pay
+     * Set transaction and (if needed) reveal fees with 'fees'
+     * equivalent to call both functions setTransactionFees(fees) and setRevealFees(fees)
      * @return A reference on the same builder in order to chain calls.
      */
     public abstract TezosLikeTransactionBuilder setFees(Amount fees);
+
+    /**
+     * Set transaction fees (in drop) the originator is willing to pay (reveal is not included)
+     * @return A reference on the same builder in order to chain calls.
+     */
+    public abstract TezosLikeTransactionBuilder setTransactionFees(Amount transactionFees);
+
+    /**
+     * Set reveal fees (in drop) the originator is willing to pay 
+     * @return A reference on the same builder in order to chain calls.
+     */
+    public abstract TezosLikeTransactionBuilder setRevealFees(Amount revealFees);
 
     /**
      * Set gas limit the originator is not willing to exceed.
@@ -57,10 +71,13 @@ public abstract class TezosLikeTransactionBuilder {
 
     /** Reset the current instance to its initial state */
     public abstract void reset();
+    /** Release the underlying native object */
+    public abstract void destroy();
 
-    public static native TezosLikeTransaction parseRawUnsignedTransaction(Currency currency, byte[] rawTransaction);
 
-    public static native TezosLikeTransaction parseRawSignedTransaction(Currency currency, byte[] rawTransaction);
+    public static native TezosLikeTransaction parseRawUnsignedTransaction(Currency currency, byte[] rawTransaction, String protocolUpdate);
+
+    public static native TezosLikeTransaction parseRawSignedTransaction(Currency currency, byte[] rawTransaction, String protocolUpdate);
 
     private static final class CppProxy extends TezosLikeTransactionBuilder
     {
@@ -74,6 +91,7 @@ public abstract class TezosLikeTransactionBuilder {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -88,7 +106,10 @@ public abstract class TezosLikeTransactionBuilder {
         @Override
         public TezosLikeTransactionBuilder setType(TezosOperationTag type)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransactionBuilder)");
+            }
             return native_setType(this.nativeRef, type);
         }
         private native TezosLikeTransactionBuilder native_setType(long _nativeRef, TezosOperationTag type);
@@ -96,7 +117,10 @@ public abstract class TezosLikeTransactionBuilder {
         @Override
         public TezosLikeTransactionBuilder sendToAddress(Amount amount, String address)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransactionBuilder)");
+            }
             return native_sendToAddress(this.nativeRef, amount, address);
         }
         private native TezosLikeTransactionBuilder native_sendToAddress(long _nativeRef, Amount amount, String address);
@@ -104,7 +128,10 @@ public abstract class TezosLikeTransactionBuilder {
         @Override
         public TezosLikeTransactionBuilder wipeToAddress(String address)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransactionBuilder)");
+            }
             return native_wipeToAddress(this.nativeRef, address);
         }
         private native TezosLikeTransactionBuilder native_wipeToAddress(long _nativeRef, String address);
@@ -112,15 +139,43 @@ public abstract class TezosLikeTransactionBuilder {
         @Override
         public TezosLikeTransactionBuilder setFees(Amount fees)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransactionBuilder)");
+            }
             return native_setFees(this.nativeRef, fees);
         }
         private native TezosLikeTransactionBuilder native_setFees(long _nativeRef, Amount fees);
 
         @Override
+        public TezosLikeTransactionBuilder setTransactionFees(Amount transactionFees)
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransactionBuilder)");
+            }
+            return native_setTransactionFees(this.nativeRef, transactionFees);
+        }
+        private native TezosLikeTransactionBuilder native_setTransactionFees(long _nativeRef, Amount transactionFees);
+
+        @Override
+        public TezosLikeTransactionBuilder setRevealFees(Amount revealFees)
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransactionBuilder)");
+            }
+            return native_setRevealFees(this.nativeRef, revealFees);
+        }
+        private native TezosLikeTransactionBuilder native_setRevealFees(long _nativeRef, Amount revealFees);
+
+        @Override
         public TezosLikeTransactionBuilder setGasLimit(Amount gasLimit)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransactionBuilder)");
+            }
             return native_setGasLimit(this.nativeRef, gasLimit);
         }
         private native TezosLikeTransactionBuilder native_setGasLimit(long _nativeRef, Amount gasLimit);
@@ -128,7 +183,10 @@ public abstract class TezosLikeTransactionBuilder {
         @Override
         public TezosLikeTransactionBuilder setStorageLimit(BigInt storageLimit)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransactionBuilder)");
+            }
             return native_setStorageLimit(this.nativeRef, storageLimit);
         }
         private native TezosLikeTransactionBuilder native_setStorageLimit(long _nativeRef, BigInt storageLimit);
@@ -136,7 +194,10 @@ public abstract class TezosLikeTransactionBuilder {
         @Override
         public void build(TezosLikeTransactionCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransactionBuilder)");
+            }
             native_build(this.nativeRef, callback);
         }
         private native void native_build(long _nativeRef, TezosLikeTransactionCallback callback);
@@ -144,7 +205,10 @@ public abstract class TezosLikeTransactionBuilder {
         @Override
         public TezosLikeTransactionBuilder clone()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransactionBuilder)");
+            }
             return native_clone(this.nativeRef);
         }
         private native TezosLikeTransactionBuilder native_clone(long _nativeRef);
@@ -152,7 +216,10 @@ public abstract class TezosLikeTransactionBuilder {
         @Override
         public void reset()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransactionBuilder)");
+            }
             native_reset(this.nativeRef);
         }
         private native void native_reset(long _nativeRef);

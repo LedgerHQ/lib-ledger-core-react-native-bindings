@@ -226,6 +226,8 @@ public class RCTCoreTezosLikeTransactionBuilder extends ReactContextBaseJavaModu
     }
     /**
      * Set fees (in drop) the originator is willing to pay
+     * Set transaction and (if needed) reveal fees with 'fees'
+     * equivalent to call both functions setTransactionFees(fees) and setRevealFees(fees)
      * @return A reference on the same builder in order to chain calls.
      */
     @ReactMethod
@@ -239,6 +241,66 @@ public class RCTCoreTezosLikeTransactionBuilder extends ReactContextBaseJavaModu
             RCTCoreAmount rctParam_fees = this.reactContext.getNativeModule(RCTCoreAmount.class);
             Amount javaParam_0 = rctParam_fees.getJavaObjects().get(fees.getString("uid"));
             TezosLikeTransactionBuilder javaResult = currentInstanceObj.setFees(javaParam_0);
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreTezosLikeTransactionBuilder rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreTezosLikeTransactionBuilder.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreTezosLikeTransactionBuilder");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Set transaction fees (in drop) the originator is willing to pay (reveal is not included)
+     * @return A reference on the same builder in order to chain calls.
+     */
+    @ReactMethod
+    public void setTransactionFees(ReadableMap currentInstance, ReadableMap transactionFees, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            TezosLikeTransactionBuilder currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreAmount rctParam_transactionFees = this.reactContext.getNativeModule(RCTCoreAmount.class);
+            Amount javaParam_0 = rctParam_transactionFees.getJavaObjects().get(transactionFees.getString("uid"));
+            TezosLikeTransactionBuilder javaResult = currentInstanceObj.setTransactionFees(javaParam_0);
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreTezosLikeTransactionBuilder rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreTezosLikeTransactionBuilder.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreTezosLikeTransactionBuilder");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Set reveal fees (in drop) the originator is willing to pay 
+     * @return A reference on the same builder in order to chain calls.
+     */
+    @ReactMethod
+    public void setRevealFees(ReadableMap currentInstance, ReadableMap revealFees, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            TezosLikeTransactionBuilder currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreAmount rctParam_revealFees = this.reactContext.getNativeModule(RCTCoreAmount.class);
+            Amount javaParam_0 = rctParam_revealFees.getJavaObjects().get(revealFees.getString("uid"));
+            TezosLikeTransactionBuilder javaResult = currentInstanceObj.setRevealFees(javaParam_0);
 
             String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreTezosLikeTransactionBuilder rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreTezosLikeTransactionBuilder.class);
@@ -378,14 +440,14 @@ public class RCTCoreTezosLikeTransactionBuilder extends ReactContextBaseJavaModu
         }
     }
     @ReactMethod
-    public void parseRawUnsignedTransaction(ReadableMap currency, String rawTransaction, Promise promise) {
+    public void parseRawUnsignedTransaction(ReadableMap currency, String rawTransaction, String protocolUpdate, Promise promise) {
         try
         {
             RCTCoreCurrency rctParam_currency = this.reactContext.getNativeModule(RCTCoreCurrency.class);
             Currency javaParam_0 = rctParam_currency.getJavaObjects().get(currency.getString("uid"));
             byte [] javaParam_1 = hexStringToByteArray(rawTransaction);
 
-            TezosLikeTransaction javaResult = TezosLikeTransactionBuilder.parseRawUnsignedTransaction(javaParam_0, javaParam_1);
+            TezosLikeTransaction javaResult = TezosLikeTransactionBuilder.parseRawUnsignedTransaction(javaParam_0, javaParam_1, protocolUpdate);
 
             String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreTezosLikeTransaction rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreTezosLikeTransaction.class);
@@ -402,14 +464,14 @@ public class RCTCoreTezosLikeTransactionBuilder extends ReactContextBaseJavaModu
         }
     }
     @ReactMethod
-    public void parseRawSignedTransaction(ReadableMap currency, String rawTransaction, Promise promise) {
+    public void parseRawSignedTransaction(ReadableMap currency, String rawTransaction, String protocolUpdate, Promise promise) {
         try
         {
             RCTCoreCurrency rctParam_currency = this.reactContext.getNativeModule(RCTCoreCurrency.class);
             Currency javaParam_0 = rctParam_currency.getJavaObjects().get(currency.getString("uid"));
             byte [] javaParam_1 = hexStringToByteArray(rawTransaction);
 
-            TezosLikeTransaction javaResult = TezosLikeTransactionBuilder.parseRawSignedTransaction(javaParam_0, javaParam_1);
+            TezosLikeTransaction javaResult = TezosLikeTransactionBuilder.parseRawSignedTransaction(javaParam_0, javaParam_1, protocolUpdate);
 
             String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreTezosLikeTransaction rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreTezosLikeTransaction.class);

@@ -19,6 +19,9 @@ public abstract class EventBus {
      * @param receiver, EventReceiver object, receiver to unsubscribe
      */
     public abstract void unsubscribe(EventReceiver receiver);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends EventBus
     {
@@ -32,6 +35,7 @@ public abstract class EventBus {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -46,7 +50,10 @@ public abstract class EventBus {
         @Override
         public void subscribe(ExecutionContext context, EventReceiver receiver)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EventBus)");
+            }
             native_subscribe(this.nativeRef, context, receiver);
         }
         private native void native_subscribe(long _nativeRef, ExecutionContext context, EventReceiver receiver);
@@ -54,7 +61,10 @@ public abstract class EventBus {
         @Override
         public void unsubscribe(EventReceiver receiver)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EventBus)");
+            }
             native_unsubscribe(this.nativeRef, receiver);
         }
         private native void native_unsubscribe(long _nativeRef, EventReceiver receiver);

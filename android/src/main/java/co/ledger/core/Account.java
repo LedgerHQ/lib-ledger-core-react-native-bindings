@@ -10,9 +10,27 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class Account {
     /**
      * Key of the synchronization duration time in the synchronize event payload.
-     * The value is stored in a int 64 time expressed in miliseconds.
+     * The value is stored in a int64 time expressed in miliseconds.
      */
     public static final String EV_SYNC_DURATION_MS = "EV_SYNC_DURATION_MS";
+
+    /**
+     * Indicates the last block height fetch during synchronization
+     * The value is stored as a int32
+     */
+    public static final String EV_SYNC_LAST_BLOCK_HEIGHT = "EV_SYNC_LAST_BLOCK_HEIGHT";
+
+    /**
+     * Indicates the number of new operations during the synchronization
+     * The value is stored as a int32
+     */
+    public static final String EV_SYNC_NEW_OPERATIONS = "EV_SYNC_NEW_OPERATIONS";
+
+    /**
+     * Indicates the first valid block height before the reorganization during the synchronization
+     * The value is stored as a int32
+     */
+    public static final String EV_SYNC_REORG_BLOCK_HEIGHT = "EV_SYNC_REORG_BLOCK_HEIGHT";
 
     /** Key of the synchronization error code. The code is a stringified version of the value in the ErrorCode enum. */
     public static final String EV_SYNC_ERROR_CODE = "EV_SYNC_ERROR_CODE";
@@ -35,6 +53,30 @@ public abstract class Account {
     public static final String EV_NEW_OP_ACCOUNT_INDEX = "EV_NEW_OP_ACCOUNT_INDEX";
 
     public static final String EV_NEW_OP_UID = "EV_NEW_OP_UID";
+
+    public static final String EV_DELETED_OP_UID = "EV_DELETED_OP_UID";
+
+    /**
+     * Returned flag when a transaction is put in DB
+     * Some of those are unrelevant for specific coins
+     * but for the sake of generic mechanism we put all those
+     * flags together
+     */
+    public static final int FLAG_TRANSACTION_IGNORED = 0;
+
+    public static final int FLAG_NEW_TRANSACTION = 1;
+
+    public static final int FLAG_TRANSACTION_UPDATED = 2;
+
+    public static final int FLAG_TRANSACTION_ON_PREVIOUSLY_EMPTY_ADDRESS = 4;
+
+    public static final int FLAG_TRANSACTION_ON_USED_ADDRESS = 8;
+
+    public static final int FLAG_TRANSACTION_CREATED_SENDING_OPERATION = 16;
+
+    public static final int FLAG_TRANSACTION_CREATED_RECEPTION_OPERATION = 32;
+
+    public static final int FLAG_TRANSACTION_CREATED_EXTERNAL_OPERATION = 64;
 
     /**
      * Get index of account in user's wallet
@@ -168,18 +210,6 @@ public abstract class Account {
      */
     public abstract EventBus getEventBus();
 
-    /** Start observing blockchain on which account synchronizes and send/receive transactions. */
-    public abstract void startBlockchainObservation();
-
-    /** Stop observing blockchain. */
-    public abstract void stopBlockchainObservation();
-
-    /**
-     * Get account's observation status.
-     * @return boolean
-     */
-    public abstract boolean isObservingBlockchain();
-
     /**
      * Get Last block of blockchain on which account operates.
      * @param callback, Callback returning, if getLastBlock succeeds, a Block object
@@ -197,6 +227,9 @@ public abstract class Account {
 
     /** Access to underlying keychain. */
     public abstract Keychain getAccountKeychain();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends Account
     {
@@ -210,6 +243,7 @@ public abstract class Account {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -224,7 +258,10 @@ public abstract class Account {
         @Override
         public int getIndex()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_getIndex(this.nativeRef);
         }
         private native int native_getIndex(long _nativeRef);
@@ -232,7 +269,10 @@ public abstract class Account {
         @Override
         public OperationQuery queryOperations()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_queryOperations(this.nativeRef);
         }
         private native OperationQuery native_queryOperations(long _nativeRef);
@@ -240,7 +280,10 @@ public abstract class Account {
         @Override
         public void getBalance(AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             native_getBalance(this.nativeRef, callback);
         }
         private native void native_getBalance(long _nativeRef, AmountCallback callback);
@@ -248,7 +291,10 @@ public abstract class Account {
         @Override
         public void getBalanceHistory(String start, String end, TimePeriod period, AmountListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             native_getBalanceHistory(this.nativeRef, start, end, period, callback);
         }
         private native void native_getBalanceHistory(long _nativeRef, String start, String end, TimePeriod period, AmountListCallback callback);
@@ -256,7 +302,10 @@ public abstract class Account {
         @Override
         public boolean isSynchronizing()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_isSynchronizing(this.nativeRef);
         }
         private native boolean native_isSynchronizing(long _nativeRef);
@@ -264,7 +313,10 @@ public abstract class Account {
         @Override
         public EventBus synchronize()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_synchronize(this.nativeRef);
         }
         private native EventBus native_synchronize(long _nativeRef);
@@ -272,7 +324,10 @@ public abstract class Account {
         @Override
         public Preferences getPreferences()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_getPreferences(this.nativeRef);
         }
         private native Preferences native_getPreferences(long _nativeRef);
@@ -280,7 +335,10 @@ public abstract class Account {
         @Override
         public Logger getLogger()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_getLogger(this.nativeRef);
         }
         private native Logger native_getLogger(long _nativeRef);
@@ -288,7 +346,10 @@ public abstract class Account {
         @Override
         public Preferences getOperationPreferences(String uid)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_getOperationPreferences(this.nativeRef, uid);
         }
         private native Preferences native_getOperationPreferences(long _nativeRef, String uid);
@@ -296,7 +357,10 @@ public abstract class Account {
         @Override
         public BitcoinLikeAccount asBitcoinLikeAccount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_asBitcoinLikeAccount(this.nativeRef);
         }
         private native BitcoinLikeAccount native_asBitcoinLikeAccount(long _nativeRef);
@@ -304,7 +368,10 @@ public abstract class Account {
         @Override
         public CosmosLikeAccount asCosmosLikeAccount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_asCosmosLikeAccount(this.nativeRef);
         }
         private native CosmosLikeAccount native_asCosmosLikeAccount(long _nativeRef);
@@ -312,7 +379,10 @@ public abstract class Account {
         @Override
         public EthereumLikeAccount asEthereumLikeAccount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_asEthereumLikeAccount(this.nativeRef);
         }
         private native EthereumLikeAccount native_asEthereumLikeAccount(long _nativeRef);
@@ -320,7 +390,10 @@ public abstract class Account {
         @Override
         public RippleLikeAccount asRippleLikeAccount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_asRippleLikeAccount(this.nativeRef);
         }
         private native RippleLikeAccount native_asRippleLikeAccount(long _nativeRef);
@@ -328,7 +401,10 @@ public abstract class Account {
         @Override
         public TezosLikeAccount asTezosLikeAccount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_asTezosLikeAccount(this.nativeRef);
         }
         private native TezosLikeAccount native_asTezosLikeAccount(long _nativeRef);
@@ -336,7 +412,10 @@ public abstract class Account {
         @Override
         public AlgorandAccount asAlgorandAccount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_asAlgorandAccount(this.nativeRef);
         }
         private native AlgorandAccount native_asAlgorandAccount(long _nativeRef);
@@ -344,7 +423,10 @@ public abstract class Account {
         @Override
         public StellarLikeAccount asStellarLikeAccount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_asStellarLikeAccount(this.nativeRef);
         }
         private native StellarLikeAccount native_asStellarLikeAccount(long _nativeRef);
@@ -352,7 +434,10 @@ public abstract class Account {
         @Override
         public boolean isInstanceOfBitcoinLikeAccount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_isInstanceOfBitcoinLikeAccount(this.nativeRef);
         }
         private native boolean native_isInstanceOfBitcoinLikeAccount(long _nativeRef);
@@ -360,7 +445,10 @@ public abstract class Account {
         @Override
         public boolean isInstanceOfCosmosLikeAccount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_isInstanceOfCosmosLikeAccount(this.nativeRef);
         }
         private native boolean native_isInstanceOfCosmosLikeAccount(long _nativeRef);
@@ -368,7 +456,10 @@ public abstract class Account {
         @Override
         public boolean isInstanceOfEthereumLikeAccount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_isInstanceOfEthereumLikeAccount(this.nativeRef);
         }
         private native boolean native_isInstanceOfEthereumLikeAccount(long _nativeRef);
@@ -376,7 +467,10 @@ public abstract class Account {
         @Override
         public boolean isInstanceOfStellarLikeAccount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_isInstanceOfStellarLikeAccount(this.nativeRef);
         }
         private native boolean native_isInstanceOfStellarLikeAccount(long _nativeRef);
@@ -384,7 +478,10 @@ public abstract class Account {
         @Override
         public boolean isInstanceOfRippleLikeAccount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_isInstanceOfRippleLikeAccount(this.nativeRef);
         }
         private native boolean native_isInstanceOfRippleLikeAccount(long _nativeRef);
@@ -392,7 +489,10 @@ public abstract class Account {
         @Override
         public void getFreshPublicAddresses(AddressListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             native_getFreshPublicAddresses(this.nativeRef, callback);
         }
         private native void native_getFreshPublicAddresses(long _nativeRef, AddressListCallback callback);
@@ -400,7 +500,10 @@ public abstract class Account {
         @Override
         public WalletType getWalletType()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_getWalletType(this.nativeRef);
         }
         private native WalletType native_getWalletType(long _nativeRef);
@@ -408,39 +511,21 @@ public abstract class Account {
         @Override
         public EventBus getEventBus()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_getEventBus(this.nativeRef);
         }
         private native EventBus native_getEventBus(long _nativeRef);
 
         @Override
-        public void startBlockchainObservation()
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_startBlockchainObservation(this.nativeRef);
-        }
-        private native void native_startBlockchainObservation(long _nativeRef);
-
-        @Override
-        public void stopBlockchainObservation()
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_stopBlockchainObservation(this.nativeRef);
-        }
-        private native void native_stopBlockchainObservation(long _nativeRef);
-
-        @Override
-        public boolean isObservingBlockchain()
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_isObservingBlockchain(this.nativeRef);
-        }
-        private native boolean native_isObservingBlockchain(long _nativeRef);
-
-        @Override
         public void getLastBlock(BlockCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             native_getLastBlock(this.nativeRef, callback);
         }
         private native void native_getLastBlock(long _nativeRef, BlockCallback callback);
@@ -448,7 +533,10 @@ public abstract class Account {
         @Override
         public String getRestoreKey()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_getRestoreKey(this.nativeRef);
         }
         private native String native_getRestoreKey(long _nativeRef);
@@ -456,7 +544,10 @@ public abstract class Account {
         @Override
         public void eraseDataSince(Date date, ErrorCodeCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             native_eraseDataSince(this.nativeRef, date, callback);
         }
         private native void native_eraseDataSince(long _nativeRef, Date date, ErrorCodeCallback callback);
@@ -464,7 +555,10 @@ public abstract class Account {
         @Override
         public Keychain getAccountKeychain()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Account)");
+            }
             return native_getAccountKeychain(this.nativeRef);
         }
         private native Keychain native_getAccountKeychain(long _nativeRef);

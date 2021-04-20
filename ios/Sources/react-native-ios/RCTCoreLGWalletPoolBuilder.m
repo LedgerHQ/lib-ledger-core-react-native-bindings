@@ -491,7 +491,7 @@ RCT_REMAP_METHOD(setExternalPreferencesBackend,setExternalPreferencesBackend:(NS
         return;
     }
     RCTCoreLGPreferencesBackend *rctParam_backend = (RCTCoreLGPreferencesBackend *)[self.bridge moduleForName:@"CoreLGPreferencesBackend"];
-    LGPreferencesBackend *objcParam_0 = (LGPreferencesBackend *)[rctParam_backend.objcImplementations objectForKey:backend[@"uid"]];
+    id<LGPreferencesBackend>objcParam_0 = (id<LGPreferencesBackend>)[rctParam_backend.objcImplementations objectForKey:backend[@"uid"]];
     LGWalletPoolBuilder * objcResult = [currentInstanceObj setExternalPreferencesBackend:objcParam_0];
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
@@ -535,7 +535,7 @@ RCT_REMAP_METHOD(setInternalPreferencesBackend,setInternalPreferencesBackend:(NS
         return;
     }
     RCTCoreLGPreferencesBackend *rctParam_backend = (RCTCoreLGPreferencesBackend *)[self.bridge moduleForName:@"CoreLGPreferencesBackend"];
-    LGPreferencesBackend *objcParam_0 = (LGPreferencesBackend *)[rctParam_backend.objcImplementations objectForKey:backend[@"uid"]];
+    id<LGPreferencesBackend>objcParam_0 = (id<LGPreferencesBackend>)[rctParam_backend.objcImplementations objectForKey:backend[@"uid"]];
     LGWalletPoolBuilder * objcResult = [currentInstanceObj setInternalPreferencesBackend:objcParam_0];
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];

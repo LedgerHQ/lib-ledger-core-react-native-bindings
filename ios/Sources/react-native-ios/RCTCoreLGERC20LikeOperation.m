@@ -510,4 +510,68 @@ RCT_REMAP_METHOD(getBlockHeight,getBlockHeight:(NSDictionary *)currentInstance W
     }
 
 }
+
+/** Get parent ETH operation uid */
+RCT_REMAP_METHOD(getETHOperationUid,getETHOperationUid:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getETHOperationUid, first argument should be an instance of LGERC20LikeOperation", nil);
+        return;
+    }
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getETHOperationUid, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSString * objcResult = [currentInstanceObj getETHOperationUid];
+    NSDictionary *result = @{@"value" : objcResult};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGERC20LikeOperation::getETHOperationUid", nil);
+        return;
+    }
+
+}
+
+/** Get ERC20 operation uid */
+RCT_REMAP_METHOD(getOperationUid,getOperationUid:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeOperation::getOperationUid, first argument should be an instance of LGERC20LikeOperation", nil);
+        return;
+    }
+    LGERC20LikeOperation *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeOperation::getOperationUid, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSString * objcResult = [currentInstanceObj getOperationUid];
+    NSDictionary *result = @{@"value" : objcResult};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGERC20LikeOperation::getOperationUid", nil);
+        return;
+    }
+
+}
 @end

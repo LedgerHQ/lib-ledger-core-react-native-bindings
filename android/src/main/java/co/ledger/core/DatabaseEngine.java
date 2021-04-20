@@ -17,4 +17,10 @@ public abstract class DatabaseEngine {
      * @return the maximum number of concurrent connection that the engine is able to open on a single database.
      */
     public abstract int getPoolSize();
+
+    /**
+     * Get the maximum number of concurrent readonly connection on a single database.
+     * @return the maximum number of concurrent readonly connection that the engine is able to open on a single database.
+     */
+    public abstract int getReadonlyPoolSize();
 }

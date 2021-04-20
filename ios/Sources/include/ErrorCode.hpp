@@ -98,6 +98,8 @@ enum class ErrorCode : int {
     /** Stellar errors */
     INVALID_STELLAR_ADDRESS_FORMAT,
     INVALID_STELLAR_MEMO_TYPE,
+    /** Tezos errors */
+    INVALID_SELF_TX,
 };
  std::string to_string(const ErrorCode& errorCode);
  std::ostream &operator<<(std::ostream &os, const ErrorCode &o);

@@ -52,6 +52,9 @@ public abstract class EthereumLikeTransactionBuilder {
 
     /** Reset the current instance to its initial state */
     public abstract void reset();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /** Create an unsigned transaction for the Ethereum blockchain out of a raw binary. */
     public static native EthereumLikeTransaction parseRawUnsignedTransaction(Currency currency, byte[] rawTransaction);
@@ -71,6 +74,7 @@ public abstract class EthereumLikeTransactionBuilder {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -85,7 +89,10 @@ public abstract class EthereumLikeTransactionBuilder {
         @Override
         public EthereumLikeTransactionBuilder sendToAddress(Amount amount, String address)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransactionBuilder)");
+            }
             return native_sendToAddress(this.nativeRef, amount, address);
         }
         private native EthereumLikeTransactionBuilder native_sendToAddress(long _nativeRef, Amount amount, String address);
@@ -93,7 +100,10 @@ public abstract class EthereumLikeTransactionBuilder {
         @Override
         public EthereumLikeTransactionBuilder wipeToAddress(String address)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransactionBuilder)");
+            }
             return native_wipeToAddress(this.nativeRef, address);
         }
         private native EthereumLikeTransactionBuilder native_wipeToAddress(long _nativeRef, String address);
@@ -101,7 +111,10 @@ public abstract class EthereumLikeTransactionBuilder {
         @Override
         public EthereumLikeTransactionBuilder setGasPrice(Amount gasPrice)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransactionBuilder)");
+            }
             return native_setGasPrice(this.nativeRef, gasPrice);
         }
         private native EthereumLikeTransactionBuilder native_setGasPrice(long _nativeRef, Amount gasPrice);
@@ -109,7 +122,10 @@ public abstract class EthereumLikeTransactionBuilder {
         @Override
         public EthereumLikeTransactionBuilder setGasLimit(Amount gasLimit)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransactionBuilder)");
+            }
             return native_setGasLimit(this.nativeRef, gasLimit);
         }
         private native EthereumLikeTransactionBuilder native_setGasLimit(long _nativeRef, Amount gasLimit);
@@ -117,7 +133,10 @@ public abstract class EthereumLikeTransactionBuilder {
         @Override
         public EthereumLikeTransactionBuilder setInputData(byte[] data)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransactionBuilder)");
+            }
             return native_setInputData(this.nativeRef, data);
         }
         private native EthereumLikeTransactionBuilder native_setInputData(long _nativeRef, byte[] data);
@@ -125,7 +144,10 @@ public abstract class EthereumLikeTransactionBuilder {
         @Override
         public void build(EthereumLikeTransactionCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransactionBuilder)");
+            }
             native_build(this.nativeRef, callback);
         }
         private native void native_build(long _nativeRef, EthereumLikeTransactionCallback callback);
@@ -133,7 +155,10 @@ public abstract class EthereumLikeTransactionBuilder {
         @Override
         public EthereumLikeTransactionBuilder clone()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransactionBuilder)");
+            }
             return native_clone(this.nativeRef);
         }
         private native EthereumLikeTransactionBuilder native_clone(long _nativeRef);
@@ -141,7 +166,10 @@ public abstract class EthereumLikeTransactionBuilder {
         @Override
         public void reset()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransactionBuilder)");
+            }
             native_reset(this.nativeRef);
         }
         private native void native_reset(long _nativeRef);

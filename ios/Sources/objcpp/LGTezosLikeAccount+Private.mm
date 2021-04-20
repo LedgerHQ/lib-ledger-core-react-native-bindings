@@ -80,10 +80,30 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (void)getGasPrice:(nullable id<LGBigIntCallback>)callback {
+    try {
+        _cppRefHandle.get()->getGasPrice(::djinni_generated::BigIntCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (nonnull NSArray<LGTezosLikeOriginatedAccount *> *)getOriginatedAccounts {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->getOriginatedAccounts();
         return ::djinni::List<::djinni_generated::TezosLikeOriginatedAccount>::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)getCurrentDelegate:(nullable id<LGStringCallback>)callback {
+    try {
+        _cppRefHandle.get()->getCurrentDelegate(::djinni_generated::StringCallback::toCpp(callback));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)getTokenBalance:(nonnull NSString *)tokenAddress
+               callback:(nullable id<LGBigIntCallback>)callback {
+    try {
+        _cppRefHandle.get()->getTokenBalance(::djinni::String::toCpp(tokenAddress),
+                                             ::djinni_generated::BigIntCallback::toCpp(callback));
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

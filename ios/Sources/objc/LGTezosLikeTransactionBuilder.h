@@ -37,9 +37,23 @@
 
 /**
  * Set fees (in drop) the originator is willing to pay
+ * Set transaction and (if needed) reveal fees with 'fees'
+ * equivalent to call both functions setTransactionFees(fees) and setRevealFees(fees)
  * @return A reference on the same builder in order to chain calls.
  */
 - (nullable LGTezosLikeTransactionBuilder *)setFees:(nullable LGAmount *)fees;
+
+/**
+ * Set transaction fees (in drop) the originator is willing to pay (reveal is not included)
+ * @return A reference on the same builder in order to chain calls.
+ */
+- (nullable LGTezosLikeTransactionBuilder *)setTransactionFees:(nullable LGAmount *)transactionFees;
+
+/**
+ * Set reveal fees (in drop) the originator is willing to pay 
+ * @return A reference on the same builder in order to chain calls.
+ */
+- (nullable LGTezosLikeTransactionBuilder *)setRevealFees:(nullable LGAmount *)revealFees;
 
 /**
  * Set gas limit the originator is not willing to exceed.
@@ -67,9 +81,11 @@
 - (void)reset;
 
 + (nullable LGTezosLikeTransaction *)parseRawUnsignedTransaction:(nonnull LGCurrency *)currency
-                                                  rawTransaction:(nonnull NSData *)rawTransaction;
+                                                  rawTransaction:(nonnull NSData *)rawTransaction
+                                                  protocolUpdate:(nonnull NSString *)protocolUpdate;
 
 + (nullable LGTezosLikeTransaction *)parseRawSignedTransaction:(nonnull LGCurrency *)currency
-                                                rawTransaction:(nonnull NSData *)rawTransaction;
+                                                rawTransaction:(nonnull NSData *)rawTransaction
+                                                protocolUpdate:(nonnull NSString *)protocolUpdate;
 
 @end

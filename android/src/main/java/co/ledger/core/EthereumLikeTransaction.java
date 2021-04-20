@@ -56,6 +56,9 @@ public abstract class EthereumLikeTransaction {
 
     /** Get block to which transaction belongs (was mined in). */
     public abstract EthereumLikeBlock getBlock();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends EthereumLikeTransaction
     {
@@ -69,6 +72,7 @@ public abstract class EthereumLikeTransaction {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -83,7 +87,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public String getHash()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             return native_getHash(this.nativeRef);
         }
         private native String native_getHash(long _nativeRef);
@@ -91,7 +98,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public int getNonce()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             return native_getNonce(this.nativeRef);
         }
         private native int native_getNonce(long _nativeRef);
@@ -99,7 +109,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public Amount getGasPrice()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             return native_getGasPrice(this.nativeRef);
         }
         private native Amount native_getGasPrice(long _nativeRef);
@@ -107,7 +120,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public Amount getGasLimit()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             return native_getGasLimit(this.nativeRef);
         }
         private native Amount native_getGasLimit(long _nativeRef);
@@ -115,7 +131,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public Amount getGasUsed()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             return native_getGasUsed(this.nativeRef);
         }
         private native Amount native_getGasUsed(long _nativeRef);
@@ -123,7 +142,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public EthereumLikeAddress getReceiver()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             return native_getReceiver(this.nativeRef);
         }
         private native EthereumLikeAddress native_getReceiver(long _nativeRef);
@@ -131,7 +153,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public EthereumLikeAddress getSender()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             return native_getSender(this.nativeRef);
         }
         private native EthereumLikeAddress native_getSender(long _nativeRef);
@@ -139,7 +164,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public Amount getValue()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             return native_getValue(this.nativeRef);
         }
         private native Amount native_getValue(long _nativeRef);
@@ -147,7 +175,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public byte[] getData()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             return native_getData(this.nativeRef);
         }
         private native byte[] native_getData(long _nativeRef);
@@ -155,7 +186,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public int getStatus()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             return native_getStatus(this.nativeRef);
         }
         private native int native_getStatus(long _nativeRef);
@@ -163,7 +197,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public byte[] serialize()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             return native_serialize(this.nativeRef);
         }
         private native byte[] native_serialize(long _nativeRef);
@@ -171,7 +208,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public void setSignature(byte[] vSignature, byte[] rSignature, byte[] sSignature)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             native_setSignature(this.nativeRef, vSignature, rSignature, sSignature);
         }
         private native void native_setSignature(long _nativeRef, byte[] vSignature, byte[] rSignature, byte[] sSignature);
@@ -179,7 +219,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public void setDERSignature(byte[] signature)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             native_setDERSignature(this.nativeRef, signature);
         }
         private native void native_setDERSignature(long _nativeRef, byte[] signature);
@@ -187,7 +230,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public void setVSignature(byte[] vSignature)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             native_setVSignature(this.nativeRef, vSignature);
         }
         private native void native_setVSignature(long _nativeRef, byte[] vSignature);
@@ -195,7 +241,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public Date getDate()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             return native_getDate(this.nativeRef);
         }
         private native Date native_getDate(long _nativeRef);
@@ -203,7 +252,10 @@ public abstract class EthereumLikeTransaction {
         @Override
         public EthereumLikeBlock getBlock()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeTransaction)");
+            }
             return native_getBlock(this.nativeRef);
         }
         private native EthereumLikeBlock native_getBlock(long _nativeRef);

@@ -30,6 +30,9 @@ public abstract class WebSocketConnection {
     public abstract void onError(ErrorCode code, String message);
 
     public abstract int getConnectionId();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends WebSocketConnection
     {
@@ -43,6 +46,7 @@ public abstract class WebSocketConnection {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -57,7 +61,10 @@ public abstract class WebSocketConnection {
         @Override
         public void onConnect(int connectionId)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WebSocketConnection)");
+            }
             native_onConnect(this.nativeRef, connectionId);
         }
         private native void native_onConnect(long _nativeRef, int connectionId);
@@ -65,7 +72,10 @@ public abstract class WebSocketConnection {
         @Override
         public void onClose()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WebSocketConnection)");
+            }
             native_onClose(this.nativeRef);
         }
         private native void native_onClose(long _nativeRef);
@@ -73,7 +83,10 @@ public abstract class WebSocketConnection {
         @Override
         public void onMessage(String data)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WebSocketConnection)");
+            }
             native_onMessage(this.nativeRef, data);
         }
         private native void native_onMessage(long _nativeRef, String data);
@@ -81,7 +94,10 @@ public abstract class WebSocketConnection {
         @Override
         public void onError(ErrorCode code, String message)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WebSocketConnection)");
+            }
             native_onError(this.nativeRef, code, message);
         }
         private native void native_onError(long _nativeRef, ErrorCode code, String message);
@@ -89,7 +105,10 @@ public abstract class WebSocketConnection {
         @Override
         public int getConnectionId()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WebSocketConnection)");
+            }
             return native_getConnectionId(this.nativeRef);
         }
         private native int native_getConnectionId(long _nativeRef);

@@ -19,7 +19,9 @@ public final class BitcoinLikeNetworkParameters {
 
     /*package*/ final BitcoinLikeFeePolicy FeePolicy;
 
-    /*package*/ final long DustAmount;
+    /*package*/ final long Dust;
+
+    /*package*/ final BitcoinLikeDustPolicy DustPolicy;
 
     /*package*/ final String MessagePrefix;
 
@@ -37,7 +39,8 @@ public final class BitcoinLikeNetworkParameters {
             byte[] P2SHVersion,
             byte[] XPUBVersion,
             BitcoinLikeFeePolicy FeePolicy,
-            long DustAmount,
+            long Dust,
+            BitcoinLikeDustPolicy DustPolicy,
             String MessagePrefix,
             boolean UsesTimestampedTransaction,
             long TimestampDelay,
@@ -48,7 +51,8 @@ public final class BitcoinLikeNetworkParameters {
         this.P2SHVersion = P2SHVersion;
         this.XPUBVersion = XPUBVersion;
         this.FeePolicy = FeePolicy;
-        this.DustAmount = DustAmount;
+        this.Dust = Dust;
+        this.DustPolicy = DustPolicy;
         this.MessagePrefix = MessagePrefix;
         this.UsesTimestampedTransaction = UsesTimestampedTransaction;
         this.TimestampDelay = TimestampDelay;
@@ -82,8 +86,13 @@ public final class BitcoinLikeNetworkParameters {
     }
 
     /** Minimal amount a UTXO should have before being considered BTC dust. */
-    public long getDustAmount() {
-        return DustAmount;
+    public long getDust() {
+        return Dust;
+    }
+
+    /** Policy to use when expressing dust */
+    public BitcoinLikeDustPolicy getDustPolicy() {
+        return DustPolicy;
     }
 
     /** Constant prefix to prepend all signature messages. */
@@ -119,7 +128,8 @@ public final class BitcoinLikeNetworkParameters {
                 "," + "P2SHVersion=" + P2SHVersion +
                 "," + "XPUBVersion=" + XPUBVersion +
                 "," + "FeePolicy=" + FeePolicy +
-                "," + "DustAmount=" + DustAmount +
+                "," + "Dust=" + Dust +
+                "," + "DustPolicy=" + DustPolicy +
                 "," + "MessagePrefix=" + MessagePrefix +
                 "," + "UsesTimestampedTransaction=" + UsesTimestampedTransaction +
                 "," + "TimestampDelay=" + TimestampDelay +

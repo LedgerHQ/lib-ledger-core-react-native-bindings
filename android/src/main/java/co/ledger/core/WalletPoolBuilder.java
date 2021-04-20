@@ -96,6 +96,9 @@ public abstract class WalletPoolBuilder {
      * @param callback, Callback object returning a WalletPool instance
      */
     public abstract void build(WalletPoolCallback listener);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /**
      * Create an instance of the wallet pool builder.
@@ -115,6 +118,7 @@ public abstract class WalletPoolBuilder {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -129,7 +133,10 @@ public abstract class WalletPoolBuilder {
         @Override
         public WalletPoolBuilder setHttpClient(HttpClient client)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPoolBuilder)");
+            }
             return native_setHttpClient(this.nativeRef, client);
         }
         private native WalletPoolBuilder native_setHttpClient(long _nativeRef, HttpClient client);
@@ -137,7 +144,10 @@ public abstract class WalletPoolBuilder {
         @Override
         public WalletPoolBuilder setWebsocketClient(WebSocketClient client)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPoolBuilder)");
+            }
             return native_setWebsocketClient(this.nativeRef, client);
         }
         private native WalletPoolBuilder native_setWebsocketClient(long _nativeRef, WebSocketClient client);
@@ -145,7 +155,10 @@ public abstract class WalletPoolBuilder {
         @Override
         public WalletPoolBuilder setPathResolver(PathResolver pathResolver)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPoolBuilder)");
+            }
             return native_setPathResolver(this.nativeRef, pathResolver);
         }
         private native WalletPoolBuilder native_setPathResolver(long _nativeRef, PathResolver pathResolver);
@@ -153,7 +166,10 @@ public abstract class WalletPoolBuilder {
         @Override
         public WalletPoolBuilder setLogPrinter(LogPrinter printer)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPoolBuilder)");
+            }
             return native_setLogPrinter(this.nativeRef, printer);
         }
         private native WalletPoolBuilder native_setLogPrinter(long _nativeRef, LogPrinter printer);
@@ -161,7 +177,10 @@ public abstract class WalletPoolBuilder {
         @Override
         public WalletPoolBuilder setThreadDispatcher(ThreadDispatcher dispatcher)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPoolBuilder)");
+            }
             return native_setThreadDispatcher(this.nativeRef, dispatcher);
         }
         private native WalletPoolBuilder native_setThreadDispatcher(long _nativeRef, ThreadDispatcher dispatcher);
@@ -169,7 +188,10 @@ public abstract class WalletPoolBuilder {
         @Override
         public WalletPoolBuilder setName(String name)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPoolBuilder)");
+            }
             return native_setName(this.nativeRef, name);
         }
         private native WalletPoolBuilder native_setName(long _nativeRef, String name);
@@ -177,7 +199,10 @@ public abstract class WalletPoolBuilder {
         @Override
         public WalletPoolBuilder setPassword(String password)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPoolBuilder)");
+            }
             return native_setPassword(this.nativeRef, password);
         }
         private native WalletPoolBuilder native_setPassword(long _nativeRef, String password);
@@ -185,7 +210,10 @@ public abstract class WalletPoolBuilder {
         @Override
         public WalletPoolBuilder setRandomNumberGenerator(RandomNumberGenerator rng)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPoolBuilder)");
+            }
             return native_setRandomNumberGenerator(this.nativeRef, rng);
         }
         private native WalletPoolBuilder native_setRandomNumberGenerator(long _nativeRef, RandomNumberGenerator rng);
@@ -193,7 +221,10 @@ public abstract class WalletPoolBuilder {
         @Override
         public WalletPoolBuilder setDatabaseBackend(DatabaseBackend backend)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPoolBuilder)");
+            }
             return native_setDatabaseBackend(this.nativeRef, backend);
         }
         private native WalletPoolBuilder native_setDatabaseBackend(long _nativeRef, DatabaseBackend backend);
@@ -201,7 +232,10 @@ public abstract class WalletPoolBuilder {
         @Override
         public WalletPoolBuilder setConfiguration(DynamicObject configuration)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPoolBuilder)");
+            }
             return native_setConfiguration(this.nativeRef, configuration);
         }
         private native WalletPoolBuilder native_setConfiguration(long _nativeRef, DynamicObject configuration);
@@ -209,7 +243,10 @@ public abstract class WalletPoolBuilder {
         @Override
         public WalletPoolBuilder setExternalPreferencesBackend(PreferencesBackend backend)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPoolBuilder)");
+            }
             return native_setExternalPreferencesBackend(this.nativeRef, backend);
         }
         private native WalletPoolBuilder native_setExternalPreferencesBackend(long _nativeRef, PreferencesBackend backend);
@@ -217,7 +254,10 @@ public abstract class WalletPoolBuilder {
         @Override
         public WalletPoolBuilder setInternalPreferencesBackend(PreferencesBackend backend)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPoolBuilder)");
+            }
             return native_setInternalPreferencesBackend(this.nativeRef, backend);
         }
         private native WalletPoolBuilder native_setInternalPreferencesBackend(long _nativeRef, PreferencesBackend backend);
@@ -225,7 +265,10 @@ public abstract class WalletPoolBuilder {
         @Override
         public void build(WalletPoolCallback listener)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPoolBuilder)");
+            }
             native_build(this.nativeRef, listener);
         }
         private native void native_build(long _nativeRef, WalletPoolCallback listener);

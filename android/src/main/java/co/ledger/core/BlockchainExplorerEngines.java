@@ -21,6 +21,9 @@ public abstract class BlockchainExplorerEngines {
 
     public static final String TZSTATS_API = "TZSTATS_API";
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends BlockchainExplorerEngines
     {
@@ -34,6 +37,7 @@ public abstract class BlockchainExplorerEngines {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

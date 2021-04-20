@@ -24,9 +24,24 @@
 
 /**
  * Key of the synchronization duration time in the synchronize event payload.
- * The value is stored in a int 64 time expressed in miliseconds.
+ * The value is stored in a int64 time expressed in miliseconds.
  */
 extern NSString * __nonnull const LGAccountEVSYNCDURATIONMS;
+/**
+ * Indicates the last block height fetch during synchronization
+ * The value is stored as a int32
+ */
+extern NSString * __nonnull const LGAccountEVSYNCLASTBLOCKHEIGHT;
+/**
+ * Indicates the number of new operations during the synchronization
+ * The value is stored as a int32
+ */
+extern NSString * __nonnull const LGAccountEVSYNCNEWOPERATIONS;
+/**
+ * Indicates the first valid block height before the reorganization during the synchronization
+ * The value is stored as a int32
+ */
+extern NSString * __nonnull const LGAccountEVSYNCREORGBLOCKHEIGHT;
 /** Key of the synchronization error code. The code is a stringified version of the value in the ErrorCode enum. */
 extern NSString * __nonnull const LGAccountEVSYNCERRORCODE;
 extern NSString * __nonnull const LGAccountEVSYNCERRORCODEINT;
@@ -40,6 +55,21 @@ extern NSString * __nonnull const LGAccountEVNEWBLOCKHEIGHT;
 extern NSString * __nonnull const LGAccountEVNEWOPWALLETNAME;
 extern NSString * __nonnull const LGAccountEVNEWOPACCOUNTINDEX;
 extern NSString * __nonnull const LGAccountEVNEWOPUID;
+extern NSString * __nonnull const LGAccountEVDELETEDOPUID;
+/**
+ * Returned flag when a transaction is put in DB
+ * Some of those are unrelevant for specific coins
+ * but for the sake of generic mechanism we put all those
+ * flags together
+ */
+extern int32_t const LGAccountFLAGTRANSACTIONIGNORED;
+extern int32_t const LGAccountFLAGNEWTRANSACTION;
+extern int32_t const LGAccountFLAGTRANSACTIONUPDATED;
+extern int32_t const LGAccountFLAGTRANSACTIONONPREVIOUSLYEMPTYADDRESS;
+extern int32_t const LGAccountFLAGTRANSACTIONONUSEDADDRESS;
+extern int32_t const LGAccountFLAGTRANSACTIONCREATEDSENDINGOPERATION;
+extern int32_t const LGAccountFLAGTRANSACTIONCREATEDRECEPTIONOPERATION;
+extern int32_t const LGAccountFLAGTRANSACTIONCREATEDEXTERNALOPERATION;
 
 /** Class representing an account. */
 @interface LGAccount : NSObject
@@ -178,18 +208,6 @@ extern NSString * __nonnull const LGAccountEVNEWOPUID;
  * @return EventBus object
  */
 - (nullable LGEventBus *)getEventBus;
-
-/** Start observing blockchain on which account synchronizes and send/receive transactions. */
-- (void)startBlockchainObservation;
-
-/** Stop observing blockchain. */
-- (void)stopBlockchainObservation;
-
-/**
- * Get account's observation status.
- * @return boolean
- */
-- (BOOL)isObservingBlockchain;
 
 /**
  * Get Last block of blockchain on which account operates.

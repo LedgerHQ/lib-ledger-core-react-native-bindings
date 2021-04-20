@@ -16,6 +16,9 @@ public abstract class EthereumLikeOperation {
 
     /** Get all actions triggered by this transaction */
     public abstract ArrayList<InternalTransaction> getInternalTransactions();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends EthereumLikeOperation
     {
@@ -29,6 +32,7 @@ public abstract class EthereumLikeOperation {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -43,7 +47,10 @@ public abstract class EthereumLikeOperation {
         @Override
         public EthereumLikeTransaction getTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeOperation)");
+            }
             return native_getTransaction(this.nativeRef);
         }
         private native EthereumLikeTransaction native_getTransaction(long _nativeRef);
@@ -51,7 +58,10 @@ public abstract class EthereumLikeOperation {
         @Override
         public ArrayList<InternalTransaction> getInternalTransactions()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeOperation)");
+            }
             return native_getInternalTransactions(this.nativeRef);
         }
         private native ArrayList<InternalTransaction> native_getInternalTransactions(long _nativeRef);

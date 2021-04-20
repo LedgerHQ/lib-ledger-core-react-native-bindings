@@ -180,6 +180,9 @@ public abstract class DynamicObject {
      * @return 64 bits integer
      */
     public abstract long size();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /**
      * Create a new instance of DynamicObject class.
@@ -206,6 +209,7 @@ public abstract class DynamicObject {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -220,7 +224,10 @@ public abstract class DynamicObject {
         @Override
         public DynamicObject putString(String key, String value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_putString(this.nativeRef, key, value);
         }
         private native DynamicObject native_putString(long _nativeRef, String key, String value);
@@ -228,7 +235,10 @@ public abstract class DynamicObject {
         @Override
         public DynamicObject putInt(String key, int value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_putInt(this.nativeRef, key, value);
         }
         private native DynamicObject native_putInt(long _nativeRef, String key, int value);
@@ -236,7 +246,10 @@ public abstract class DynamicObject {
         @Override
         public DynamicObject putLong(String key, long value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_putLong(this.nativeRef, key, value);
         }
         private native DynamicObject native_putLong(long _nativeRef, String key, long value);
@@ -244,7 +257,10 @@ public abstract class DynamicObject {
         @Override
         public DynamicObject putDouble(String key, double value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_putDouble(this.nativeRef, key, value);
         }
         private native DynamicObject native_putDouble(long _nativeRef, String key, double value);
@@ -252,7 +268,10 @@ public abstract class DynamicObject {
         @Override
         public DynamicObject putData(String key, byte[] value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_putData(this.nativeRef, key, value);
         }
         private native DynamicObject native_putData(long _nativeRef, String key, byte[] value);
@@ -260,7 +279,10 @@ public abstract class DynamicObject {
         @Override
         public DynamicObject putBoolean(String key, boolean value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_putBoolean(this.nativeRef, key, value);
         }
         private native DynamicObject native_putBoolean(long _nativeRef, String key, boolean value);
@@ -268,7 +290,10 @@ public abstract class DynamicObject {
         @Override
         public DynamicObject putObject(String key, DynamicObject value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_putObject(this.nativeRef, key, value);
         }
         private native DynamicObject native_putObject(long _nativeRef, String key, DynamicObject value);
@@ -276,7 +301,10 @@ public abstract class DynamicObject {
         @Override
         public DynamicObject putArray(String key, DynamicArray value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_putArray(this.nativeRef, key, value);
         }
         private native DynamicObject native_putArray(long _nativeRef, String key, DynamicArray value);
@@ -284,7 +312,10 @@ public abstract class DynamicObject {
         @Override
         public String getString(String key)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_getString(this.nativeRef, key);
         }
         private native String native_getString(long _nativeRef, String key);
@@ -292,7 +323,10 @@ public abstract class DynamicObject {
         @Override
         public Integer getInt(String key)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_getInt(this.nativeRef, key);
         }
         private native Integer native_getInt(long _nativeRef, String key);
@@ -300,7 +334,10 @@ public abstract class DynamicObject {
         @Override
         public Long getLong(String key)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_getLong(this.nativeRef, key);
         }
         private native Long native_getLong(long _nativeRef, String key);
@@ -308,7 +345,10 @@ public abstract class DynamicObject {
         @Override
         public Double getDouble(String key)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_getDouble(this.nativeRef, key);
         }
         private native Double native_getDouble(long _nativeRef, String key);
@@ -316,7 +356,10 @@ public abstract class DynamicObject {
         @Override
         public byte[] getData(String key)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_getData(this.nativeRef, key);
         }
         private native byte[] native_getData(long _nativeRef, String key);
@@ -324,7 +367,10 @@ public abstract class DynamicObject {
         @Override
         public Boolean getBoolean(String key)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_getBoolean(this.nativeRef, key);
         }
         private native Boolean native_getBoolean(long _nativeRef, String key);
@@ -332,7 +378,10 @@ public abstract class DynamicObject {
         @Override
         public DynamicObject getObject(String key)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_getObject(this.nativeRef, key);
         }
         private native DynamicObject native_getObject(long _nativeRef, String key);
@@ -340,7 +389,10 @@ public abstract class DynamicObject {
         @Override
         public DynamicArray getArray(String key)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_getArray(this.nativeRef, key);
         }
         private native DynamicArray native_getArray(long _nativeRef, String key);
@@ -348,7 +400,10 @@ public abstract class DynamicObject {
         @Override
         public boolean contains(String key)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_contains(this.nativeRef, key);
         }
         private native boolean native_contains(long _nativeRef, String key);
@@ -356,7 +411,10 @@ public abstract class DynamicObject {
         @Override
         public boolean remove(String key)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_remove(this.nativeRef, key);
         }
         private native boolean native_remove(long _nativeRef, String key);
@@ -364,7 +422,10 @@ public abstract class DynamicObject {
         @Override
         public ArrayList<String> getKeys()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_getKeys(this.nativeRef);
         }
         private native ArrayList<String> native_getKeys(long _nativeRef);
@@ -372,7 +433,10 @@ public abstract class DynamicObject {
         @Override
         public DynamicType getType(String key)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_getType(this.nativeRef, key);
         }
         private native DynamicType native_getType(long _nativeRef, String key);
@@ -380,7 +444,10 @@ public abstract class DynamicObject {
         @Override
         public String dump()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_dump(this.nativeRef);
         }
         private native String native_dump(long _nativeRef);
@@ -388,7 +455,10 @@ public abstract class DynamicObject {
         @Override
         public byte[] serialize()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_serialize(this.nativeRef);
         }
         private native byte[] native_serialize(long _nativeRef);
@@ -396,7 +466,10 @@ public abstract class DynamicObject {
         @Override
         public boolean isReadOnly()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_isReadOnly(this.nativeRef);
         }
         private native boolean native_isReadOnly(long _nativeRef);
@@ -404,7 +477,10 @@ public abstract class DynamicObject {
         @Override
         public long size()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicObject)");
+            }
             return native_size(this.nativeRef);
         }
         private native long native_size(long _nativeRef);

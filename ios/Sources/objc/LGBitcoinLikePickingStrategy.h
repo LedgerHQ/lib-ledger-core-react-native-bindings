@@ -9,4 +9,6 @@ typedef NS_ENUM(NSInteger, LGBitcoinLikePickingStrategy)
     LGBitcoinLikePickingStrategyDeepOutputsFirst,
     LGBitcoinLikePickingStrategyOptimizeSize,
     LGBitcoinLikePickingStrategyMergeOutputs,
+    LGBitcoinLikePickingStrategyHighestFirstLimitUtxo,
+    LGBitcoinLikePickingStrategyLimitUtxo,
 };

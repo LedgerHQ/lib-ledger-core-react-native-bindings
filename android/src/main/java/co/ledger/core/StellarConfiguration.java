@@ -13,6 +13,9 @@ public abstract class StellarConfiguration {
 
     public static final String HORIZON_TESTNET_BLOCKCHAIN_EXPLORER_URL = "https://horizon-testnet.stellar.org";
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends StellarConfiguration
     {
@@ -26,6 +29,7 @@ public abstract class StellarConfiguration {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

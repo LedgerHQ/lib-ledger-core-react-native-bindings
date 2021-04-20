@@ -31,6 +31,9 @@ public abstract class ConfigurationDefaults {
     /** Default connection pool size for PostgreSQL */
     public static final int DEFAULT_PG_CONNECTION_POOL_SIZE = 25;
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends ConfigurationDefaults
     {
@@ -44,6 +47,7 @@ public abstract class ConfigurationDefaults {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

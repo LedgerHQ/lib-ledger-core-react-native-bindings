@@ -220,25 +220,6 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (void)startBlockchainObservation {
-    try {
-        _cppRefHandle.get()->startBlockchainObservation();
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (void)stopBlockchainObservation {
-    try {
-        _cppRefHandle.get()->stopBlockchainObservation();
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (BOOL)isObservingBlockchain {
-    try {
-        auto objcpp_result_ = _cppRefHandle.get()->isObservingBlockchain();
-        return ::djinni::Bool::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
 - (void)getLastBlock:(nullable id<LGBlockCallback>)callback {
     try {
         _cppRefHandle.get()->getLastBlock(::djinni_generated::BlockCallback::toCpp(callback));

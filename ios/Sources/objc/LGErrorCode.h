@@ -93,4 +93,6 @@ typedef NS_ENUM(NSInteger, LGErrorCode)
     /** Stellar errors */
     LGErrorCodeInvalidStellarAddressFormat,
     LGErrorCodeInvalidStellarMemoType,
+    /** Tezos errors */
+    LGErrorCodeInvalidSelfTx,
 };

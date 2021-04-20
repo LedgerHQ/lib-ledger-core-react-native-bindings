@@ -427,4 +427,44 @@ public class RCTCoreERC20LikeOperation extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Get parent ETH operation uid */
+    @ReactMethod
+    public void getETHOperationUid(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            ERC20LikeOperation currentInstanceObj = this.javaObjects.get(sUid);
+
+            String javaResult = currentInstanceObj.getETHOperationUid();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Get ERC20 operation uid */
+    @ReactMethod
+    public void getOperationUid(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            ERC20LikeOperation currentInstanceObj = this.javaObjects.get(sUid);
+
+            String javaResult = currentInstanceObj.getOperationUid();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
 }

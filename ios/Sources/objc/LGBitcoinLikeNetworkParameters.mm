@@ -11,7 +11,8 @@
                                P2SHVersion:(nonnull NSData *)P2SHVersion
                                XPUBVersion:(nonnull NSData *)XPUBVersion
                                  FeePolicy:(LGBitcoinLikeFeePolicy)FeePolicy
-                                DustAmount:(int64_t)DustAmount
+                                      Dust:(int64_t)Dust
+                                DustPolicy:(LGBitcoinLikeDustPolicy)DustPolicy
                              MessagePrefix:(nonnull NSString *)MessagePrefix
                 UsesTimestampedTransaction:(BOOL)UsesTimestampedTransaction
                             TimestampDelay:(int64_t)TimestampDelay
@@ -24,7 +25,8 @@
         _P2SHVersion = [P2SHVersion copy];
         _XPUBVersion = [XPUBVersion copy];
         _FeePolicy = FeePolicy;
-        _DustAmount = DustAmount;
+        _Dust = Dust;
+        _DustPolicy = DustPolicy;
         _MessagePrefix = [MessagePrefix copy];
         _UsesTimestampedTransaction = UsesTimestampedTransaction;
         _TimestampDelay = TimestampDelay;
@@ -39,7 +41,8 @@
                                                        P2SHVersion:(nonnull NSData *)P2SHVersion
                                                        XPUBVersion:(nonnull NSData *)XPUBVersion
                                                          FeePolicy:(LGBitcoinLikeFeePolicy)FeePolicy
-                                                        DustAmount:(int64_t)DustAmount
+                                                              Dust:(int64_t)Dust
+                                                        DustPolicy:(LGBitcoinLikeDustPolicy)DustPolicy
                                                      MessagePrefix:(nonnull NSString *)MessagePrefix
                                         UsesTimestampedTransaction:(BOOL)UsesTimestampedTransaction
                                                     TimestampDelay:(int64_t)TimestampDelay
@@ -51,7 +54,8 @@
                                 P2SHVersion:P2SHVersion
                                 XPUBVersion:XPUBVersion
                                   FeePolicy:FeePolicy
-                                 DustAmount:DustAmount
+                                       Dust:Dust
+                                 DustPolicy:DustPolicy
                               MessagePrefix:MessagePrefix
                  UsesTimestampedTransaction:UsesTimestampedTransaction
                              TimestampDelay:TimestampDelay
@@ -61,7 +65,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ %p Identifier:%@ P2PKHVersion:%@ P2SHVersion:%@ XPUBVersion:%@ FeePolicy:%@ DustAmount:%@ MessagePrefix:%@ UsesTimestampedTransaction:%@ TimestampDelay:%@ SigHash:%@ AdditionalBIPs:%@>", self.class, (void *)self, self.Identifier, self.P2PKHVersion, self.P2SHVersion, self.XPUBVersion, @(self.FeePolicy), @(self.DustAmount), self.MessagePrefix, @(self.UsesTimestampedTransaction), @(self.TimestampDelay), self.SigHash, self.AdditionalBIPs];
+    return [NSString stringWithFormat:@"<%@ %p Identifier:%@ P2PKHVersion:%@ P2SHVersion:%@ XPUBVersion:%@ FeePolicy:%@ Dust:%@ DustPolicy:%@ MessagePrefix:%@ UsesTimestampedTransaction:%@ TimestampDelay:%@ SigHash:%@ AdditionalBIPs:%@>", self.class, (void *)self, self.Identifier, self.P2PKHVersion, self.P2SHVersion, self.XPUBVersion, @(self.FeePolicy), @(self.Dust), @(self.DustPolicy), self.MessagePrefix, @(self.UsesTimestampedTransaction), @(self.TimestampDelay), self.SigHash, self.AdditionalBIPs];
 }
 
 @end

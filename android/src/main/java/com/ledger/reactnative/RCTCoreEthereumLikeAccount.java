@@ -341,4 +341,31 @@ public class RCTCoreEthereumLikeAccount extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /**
+     * Add ERC20 accounts
+     * The passed addresses are ERC20 accounts
+     * Note: same note as above
+     */
+    @ReactMethod
+    public void addERC20Accounts(ReadableMap currentInstance, ReadableArray erc20Addresses, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            EthereumLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            ArrayList<String> javaParam_0 = new ArrayList<String>();
+            for (int i = 0; i <  erc20Addresses.size(); i++)
+            {
+                String erc20Addresses_elem = erc20Addresses.getString(i);
+                javaParam_0.add(erc20Addresses_elem);
+            }
+            currentInstanceObj.addERC20Accounts(javaParam_0);
+            promise.resolve(0);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
 }

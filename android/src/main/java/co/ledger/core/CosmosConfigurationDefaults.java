@@ -10,6 +10,9 @@ public abstract class CosmosConfigurationDefaults {
 
     public static final String COSMOS_OBSERVER_WS_ENDPOINT = "";
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends CosmosConfigurationDefaults
     {
@@ -23,6 +26,7 @@ public abstract class CosmosConfigurationDefaults {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

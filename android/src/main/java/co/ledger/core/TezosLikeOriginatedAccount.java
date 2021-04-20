@@ -40,6 +40,9 @@ public abstract class TezosLikeOriginatedAccount {
 
     /** Get builder to construct transaction on originated account */
     public abstract TezosLikeTransactionBuilder buildTransaction();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends TezosLikeOriginatedAccount
     {
@@ -53,6 +56,7 @@ public abstract class TezosLikeOriginatedAccount {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -67,7 +71,10 @@ public abstract class TezosLikeOriginatedAccount {
         @Override
         public String getAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeOriginatedAccount)");
+            }
             return native_getAddress(this.nativeRef);
         }
         private native String native_getAddress(long _nativeRef);
@@ -75,7 +82,10 @@ public abstract class TezosLikeOriginatedAccount {
         @Override
         public String getPublicKey()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeOriginatedAccount)");
+            }
             return native_getPublicKey(this.nativeRef);
         }
         private native String native_getPublicKey(long _nativeRef);
@@ -83,7 +93,10 @@ public abstract class TezosLikeOriginatedAccount {
         @Override
         public void getBalance(AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeOriginatedAccount)");
+            }
             native_getBalance(this.nativeRef, callback);
         }
         private native void native_getBalance(long _nativeRef, AmountCallback callback);
@@ -91,7 +104,10 @@ public abstract class TezosLikeOriginatedAccount {
         @Override
         public void getBalanceHistory(Date start, Date end, TimePeriod period, AmountListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeOriginatedAccount)");
+            }
             native_getBalanceHistory(this.nativeRef, start, end, period, callback);
         }
         private native void native_getBalanceHistory(long _nativeRef, Date start, Date end, TimePeriod period, AmountListCallback callback);
@@ -99,7 +115,10 @@ public abstract class TezosLikeOriginatedAccount {
         @Override
         public boolean isSpendable()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeOriginatedAccount)");
+            }
             return native_isSpendable(this.nativeRef);
         }
         private native boolean native_isSpendable(long _nativeRef);
@@ -107,7 +126,10 @@ public abstract class TezosLikeOriginatedAccount {
         @Override
         public boolean isDelegatable()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeOriginatedAccount)");
+            }
             return native_isDelegatable(this.nativeRef);
         }
         private native boolean native_isDelegatable(long _nativeRef);
@@ -115,7 +137,10 @@ public abstract class TezosLikeOriginatedAccount {
         @Override
         public OperationQuery queryOperations()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeOriginatedAccount)");
+            }
             return native_queryOperations(this.nativeRef);
         }
         private native OperationQuery native_queryOperations(long _nativeRef);
@@ -123,7 +148,10 @@ public abstract class TezosLikeOriginatedAccount {
         @Override
         public TezosLikeTransactionBuilder buildTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeOriginatedAccount)");
+            }
             return native_buildTransaction(this.nativeRef);
         }
         private native TezosLikeTransactionBuilder native_buildTransaction(long _nativeRef);

@@ -68,6 +68,9 @@ public abstract class PreferencesEditor {
 
     /** Clear all preferences. */
     public abstract void clear();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends PreferencesEditor
     {
@@ -81,6 +84,7 @@ public abstract class PreferencesEditor {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -95,7 +99,10 @@ public abstract class PreferencesEditor {
         @Override
         public PreferencesEditor putString(String key, String value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (PreferencesEditor)");
+            }
             return native_putString(this.nativeRef, key, value);
         }
         private native PreferencesEditor native_putString(long _nativeRef, String key, String value);
@@ -103,7 +110,10 @@ public abstract class PreferencesEditor {
         @Override
         public PreferencesEditor putInt(String key, int value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (PreferencesEditor)");
+            }
             return native_putInt(this.nativeRef, key, value);
         }
         private native PreferencesEditor native_putInt(long _nativeRef, String key, int value);
@@ -111,7 +121,10 @@ public abstract class PreferencesEditor {
         @Override
         public PreferencesEditor putLong(String key, long value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (PreferencesEditor)");
+            }
             return native_putLong(this.nativeRef, key, value);
         }
         private native PreferencesEditor native_putLong(long _nativeRef, String key, long value);
@@ -119,7 +132,10 @@ public abstract class PreferencesEditor {
         @Override
         public PreferencesEditor putBoolean(String key, boolean value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (PreferencesEditor)");
+            }
             return native_putBoolean(this.nativeRef, key, value);
         }
         private native PreferencesEditor native_putBoolean(long _nativeRef, String key, boolean value);
@@ -127,7 +143,10 @@ public abstract class PreferencesEditor {
         @Override
         public PreferencesEditor putStringArray(String key, ArrayList<String> value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (PreferencesEditor)");
+            }
             return native_putStringArray(this.nativeRef, key, value);
         }
         private native PreferencesEditor native_putStringArray(long _nativeRef, String key, ArrayList<String> value);
@@ -135,7 +154,10 @@ public abstract class PreferencesEditor {
         @Override
         public PreferencesEditor putData(String key, byte[] value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (PreferencesEditor)");
+            }
             return native_putData(this.nativeRef, key, value);
         }
         private native PreferencesEditor native_putData(long _nativeRef, String key, byte[] value);
@@ -143,7 +165,10 @@ public abstract class PreferencesEditor {
         @Override
         public PreferencesEditor remove(String key)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (PreferencesEditor)");
+            }
             return native_remove(this.nativeRef, key);
         }
         private native PreferencesEditor native_remove(long _nativeRef, String key);
@@ -151,7 +176,10 @@ public abstract class PreferencesEditor {
         @Override
         public void commit()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (PreferencesEditor)");
+            }
             native_commit(this.nativeRef);
         }
         private native void native_commit(long _nativeRef);
@@ -159,7 +187,10 @@ public abstract class PreferencesEditor {
         @Override
         public void clear()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (PreferencesEditor)");
+            }
             native_clear(this.nativeRef);
         }
         private native void native_clear(long _nativeRef);

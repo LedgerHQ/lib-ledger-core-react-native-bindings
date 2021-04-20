@@ -14,6 +14,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class Keychain {
     /** Check whether an address is contained. */
     public abstract boolean contains(String address);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends Keychain
     {
@@ -27,6 +30,7 @@ public abstract class Keychain {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -41,7 +45,10 @@ public abstract class Keychain {
         @Override
         public boolean contains(String address)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Keychain)");
+            }
             return native_contains(this.nativeRef, address);
         }
         private native boolean native_contains(long _nativeRef, String address);

@@ -7,6 +7,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /** An Ethereum-like wallet. */
 public abstract class EthereumLikeWallet {
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends EthereumLikeWallet
     {
@@ -20,6 +23,7 @@ public abstract class EthereumLikeWallet {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

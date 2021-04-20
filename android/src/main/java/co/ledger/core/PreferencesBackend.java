@@ -4,7 +4,6 @@
 package co.ledger.core;
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /** Interface describing the behaviour of the backend used by Preferences. */
 public abstract class PreferencesBackend {
@@ -59,84 +58,4 @@ public abstract class PreferencesBackend {
 
     /** Clear all preferences. */
     public abstract void clear();
-
-    private static final class CppProxy extends PreferencesBackend
-    {
-        private final long nativeRef;
-        private final AtomicBoolean destroyed = new AtomicBoolean(false);
-
-        private CppProxy(long nativeRef)
-        {
-            if (nativeRef == 0) throw new RuntimeException("nativeRef is zero");
-            this.nativeRef = nativeRef;
-        }
-
-        private native void nativeDestroy(long nativeRef);
-        public void destroy()
-        {
-            boolean destroyed = this.destroyed.getAndSet(true);
-            if (!destroyed) nativeDestroy(this.nativeRef);
-        }
-        protected void finalize() throws java.lang.Throwable
-        {
-            destroy();
-            super.finalize();
-        }
-
-        @Override
-        public byte[] get(byte[] key)
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_get(this.nativeRef, key);
-        }
-        private native byte[] native_get(long _nativeRef, byte[] key);
-
-        @Override
-        public boolean commit(ArrayList<PreferencesChange> changes)
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_commit(this.nativeRef, changes);
-        }
-        private native boolean native_commit(long _nativeRef, ArrayList<PreferencesChange> changes);
-
-        @Override
-        public void setEncryption(RandomNumberGenerator rng, String password)
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_setEncryption(this.nativeRef, rng, password);
-        }
-        private native void native_setEncryption(long _nativeRef, RandomNumberGenerator rng, String password);
-
-        @Override
-        public void unsetEncryption()
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_unsetEncryption(this.nativeRef);
-        }
-        private native void native_unsetEncryption(long _nativeRef);
-
-        @Override
-        public boolean resetEncryption(RandomNumberGenerator rng, String oldPassword, String newPassword)
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_resetEncryption(this.nativeRef, rng, oldPassword, newPassword);
-        }
-        private native boolean native_resetEncryption(long _nativeRef, RandomNumberGenerator rng, String oldPassword, String newPassword);
-
-        @Override
-        public String getEncryptionSalt()
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_getEncryptionSalt(this.nativeRef);
-        }
-        private native String native_getEncryptionSalt(long _nativeRef);
-
-        @Override
-        public void clear()
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_clear(this.nativeRef);
-        }
-        private native void native_clear(long _nativeRef);
-    }
 }

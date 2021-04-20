@@ -163,6 +163,9 @@ public abstract class DynamicArray {
      * @return bool, whether the array is in read-only mode
      */
     public abstract boolean isReadOnly();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /**
      * Create a new instance of DynamicArray class.
@@ -189,6 +192,7 @@ public abstract class DynamicArray {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -203,7 +207,10 @@ public abstract class DynamicArray {
         @Override
         public long size()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_size(this.nativeRef);
         }
         private native long native_size(long _nativeRef);
@@ -211,7 +218,10 @@ public abstract class DynamicArray {
         @Override
         public DynamicArray pushInt(int value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_pushInt(this.nativeRef, value);
         }
         private native DynamicArray native_pushInt(long _nativeRef, int value);
@@ -219,7 +229,10 @@ public abstract class DynamicArray {
         @Override
         public DynamicArray pushLong(long value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_pushLong(this.nativeRef, value);
         }
         private native DynamicArray native_pushLong(long _nativeRef, long value);
@@ -227,7 +240,10 @@ public abstract class DynamicArray {
         @Override
         public DynamicArray pushString(String value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_pushString(this.nativeRef, value);
         }
         private native DynamicArray native_pushString(long _nativeRef, String value);
@@ -235,7 +251,10 @@ public abstract class DynamicArray {
         @Override
         public DynamicArray pushDouble(double value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_pushDouble(this.nativeRef, value);
         }
         private native DynamicArray native_pushDouble(long _nativeRef, double value);
@@ -243,7 +262,10 @@ public abstract class DynamicArray {
         @Override
         public DynamicArray pushData(byte[] value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_pushData(this.nativeRef, value);
         }
         private native DynamicArray native_pushData(long _nativeRef, byte[] value);
@@ -251,7 +273,10 @@ public abstract class DynamicArray {
         @Override
         public DynamicArray pushBoolean(boolean value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_pushBoolean(this.nativeRef, value);
         }
         private native DynamicArray native_pushBoolean(long _nativeRef, boolean value);
@@ -259,7 +284,10 @@ public abstract class DynamicArray {
         @Override
         public DynamicArray pushObject(DynamicObject value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_pushObject(this.nativeRef, value);
         }
         private native DynamicArray native_pushObject(long _nativeRef, DynamicObject value);
@@ -267,7 +295,10 @@ public abstract class DynamicArray {
         @Override
         public DynamicArray pushArray(DynamicArray value)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_pushArray(this.nativeRef, value);
         }
         private native DynamicArray native_pushArray(long _nativeRef, DynamicArray value);
@@ -275,7 +306,10 @@ public abstract class DynamicArray {
         @Override
         public String getString(long index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_getString(this.nativeRef, index);
         }
         private native String native_getString(long _nativeRef, long index);
@@ -283,7 +317,10 @@ public abstract class DynamicArray {
         @Override
         public Integer getInt(long index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_getInt(this.nativeRef, index);
         }
         private native Integer native_getInt(long _nativeRef, long index);
@@ -291,7 +328,10 @@ public abstract class DynamicArray {
         @Override
         public Long getLong(long index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_getLong(this.nativeRef, index);
         }
         private native Long native_getLong(long _nativeRef, long index);
@@ -299,7 +339,10 @@ public abstract class DynamicArray {
         @Override
         public Double getDouble(long index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_getDouble(this.nativeRef, index);
         }
         private native Double native_getDouble(long _nativeRef, long index);
@@ -307,7 +350,10 @@ public abstract class DynamicArray {
         @Override
         public byte[] getData(long index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_getData(this.nativeRef, index);
         }
         private native byte[] native_getData(long _nativeRef, long index);
@@ -315,7 +361,10 @@ public abstract class DynamicArray {
         @Override
         public Boolean getBoolean(long index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_getBoolean(this.nativeRef, index);
         }
         private native Boolean native_getBoolean(long _nativeRef, long index);
@@ -323,7 +372,10 @@ public abstract class DynamicArray {
         @Override
         public DynamicObject getObject(long index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_getObject(this.nativeRef, index);
         }
         private native DynamicObject native_getObject(long _nativeRef, long index);
@@ -331,7 +383,10 @@ public abstract class DynamicArray {
         @Override
         public DynamicArray getArray(long index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_getArray(this.nativeRef, index);
         }
         private native DynamicArray native_getArray(long _nativeRef, long index);
@@ -339,7 +394,10 @@ public abstract class DynamicArray {
         @Override
         public DynamicArray concat(DynamicArray array)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_concat(this.nativeRef, array);
         }
         private native DynamicArray native_concat(long _nativeRef, DynamicArray array);
@@ -347,7 +405,10 @@ public abstract class DynamicArray {
         @Override
         public DynamicType getType(long index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_getType(this.nativeRef, index);
         }
         private native DynamicType native_getType(long _nativeRef, long index);
@@ -355,7 +416,10 @@ public abstract class DynamicArray {
         @Override
         public boolean remove(long index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_remove(this.nativeRef, index);
         }
         private native boolean native_remove(long _nativeRef, long index);
@@ -363,7 +427,10 @@ public abstract class DynamicArray {
         @Override
         public String dump()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_dump(this.nativeRef);
         }
         private native String native_dump(long _nativeRef);
@@ -371,7 +438,10 @@ public abstract class DynamicArray {
         @Override
         public byte[] serialize()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_serialize(this.nativeRef);
         }
         private native byte[] native_serialize(long _nativeRef);
@@ -379,7 +449,10 @@ public abstract class DynamicArray {
         @Override
         public boolean isReadOnly()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DynamicArray)");
+            }
             return native_isReadOnly(this.nativeRef);
         }
         private native boolean native_isReadOnly(long _nativeRef);

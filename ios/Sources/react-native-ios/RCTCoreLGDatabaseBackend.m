@@ -68,6 +68,41 @@ RCT_REMAP_METHOD(getConnectionPoolSize,getConnectionPoolSize:(NSDictionary *)cur
 }
 
 /**
+ * Get the maximum number of concurrent readonly connection that the backend is able to open on a single database.
+ * @return the size of the readonly connection pool.
+ */
+RCT_REMAP_METHOD(getReadonlyConnectionPoolSize,getReadonlyConnectionPoolSize:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseBackend::getReadonlyConnectionPoolSize, first argument should be an instance of LGDatabaseBackend", nil);
+        return;
+    }
+    LGDatabaseBackend *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseBackend::getReadonlyConnectionPoolSize, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSInteger objcResult = [currentInstanceObj getReadonlyConnectionPoolSize];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGDatabaseBackend::getReadonlyConnectionPoolSize", nil);
+        return;
+    }
+
+}
+
+/**
  * Enable or disable query logging. By default logging is disabled. Query logging will record every SQL query in log streams.
  * @return this database backend (to chain configuration calls)
  */
@@ -172,8 +207,9 @@ RCT_REMAP_METHOD(getSqlite3Backend,getSqlite3BackendWithResolver:(RCTPromiseReso
  * Create an instance of PostgreSQL database.
  * @return DatabaseBackend object
  */
-RCT_REMAP_METHOD(getPostgreSQLBackend,getPostgreSQLBackendwithParams:(int)connectionPoolSize withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    LGDatabaseBackend * objcResult = [LGDatabaseBackend getPostgreSQLBackend:connectionPoolSize];
+RCT_REMAP_METHOD(getPostgreSQLBackend,getPostgreSQLBackendwithParams:(int)connectionPoolSize
+                                          readonlyConnectionPoolSize:(int)readonlyConnectionPoolSize withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    LGDatabaseBackend * objcResult = [LGDatabaseBackend getPostgreSQLBackend:connectionPoolSize readonlyConnectionPoolSize:readonlyConnectionPoolSize];
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGDatabaseBackend *rctImpl_objcResult = (RCTCoreLGDatabaseBackend *)[self.bridge moduleForName:@"CoreLGDatabaseBackend"];

@@ -27,6 +27,9 @@ public abstract class InternalTransaction {
 
     /** Get operation type : whether it is a SEND or RECEIVE. */
     public abstract OperationType getOperationType();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends InternalTransaction
     {
@@ -40,6 +43,7 @@ public abstract class InternalTransaction {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -54,7 +58,10 @@ public abstract class InternalTransaction {
         @Override
         public BigInt getGasLimit()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (InternalTransaction)");
+            }
             return native_getGasLimit(this.nativeRef);
         }
         private native BigInt native_getGasLimit(long _nativeRef);
@@ -62,7 +69,10 @@ public abstract class InternalTransaction {
         @Override
         public BigInt getUsedGas()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (InternalTransaction)");
+            }
             return native_getUsedGas(this.nativeRef);
         }
         private native BigInt native_getUsedGas(long _nativeRef);
@@ -70,7 +80,10 @@ public abstract class InternalTransaction {
         @Override
         public String getSender()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (InternalTransaction)");
+            }
             return native_getSender(this.nativeRef);
         }
         private native String native_getSender(long _nativeRef);
@@ -78,7 +91,10 @@ public abstract class InternalTransaction {
         @Override
         public String getReceiver()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (InternalTransaction)");
+            }
             return native_getReceiver(this.nativeRef);
         }
         private native String native_getReceiver(long _nativeRef);
@@ -86,7 +102,10 @@ public abstract class InternalTransaction {
         @Override
         public BigInt getValue()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (InternalTransaction)");
+            }
             return native_getValue(this.nativeRef);
         }
         private native BigInt native_getValue(long _nativeRef);
@@ -94,7 +113,10 @@ public abstract class InternalTransaction {
         @Override
         public byte[] getData()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (InternalTransaction)");
+            }
             return native_getData(this.nativeRef);
         }
         private native byte[] native_getData(long _nativeRef);
@@ -102,7 +124,10 @@ public abstract class InternalTransaction {
         @Override
         public OperationType getOperationType()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (InternalTransaction)");
+            }
             return native_getOperationType(this.nativeRef);
         }
         private native OperationType native_getOperationType(long _nativeRef);

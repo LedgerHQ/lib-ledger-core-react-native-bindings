@@ -20,6 +20,9 @@ public abstract class RippleConfigurationDefaults {
 
     public static final int RIPPLE_DEFAULT_LAST_LEDGER_SEQUENCE_OFFSET = 4;
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends RippleConfigurationDefaults
     {
@@ -33,6 +36,7 @@ public abstract class RippleConfigurationDefaults {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

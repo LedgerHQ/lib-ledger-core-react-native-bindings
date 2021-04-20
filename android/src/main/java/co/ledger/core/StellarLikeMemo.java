@@ -28,6 +28,9 @@ public abstract class StellarLikeMemo {
      * For MEMO_NONE, returns an empty string
      */
     public abstract String memoValuetoString();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends StellarLikeMemo
     {
@@ -41,6 +44,7 @@ public abstract class StellarLikeMemo {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -55,7 +59,10 @@ public abstract class StellarLikeMemo {
         @Override
         public StellarLikeMemoType getMemoType()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeMemo)");
+            }
             return native_getMemoType(this.nativeRef);
         }
         private native StellarLikeMemoType native_getMemoType(long _nativeRef);
@@ -63,7 +70,10 @@ public abstract class StellarLikeMemo {
         @Override
         public String getMemoText()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeMemo)");
+            }
             return native_getMemoText(this.nativeRef);
         }
         private native String native_getMemoText(long _nativeRef);
@@ -71,7 +81,10 @@ public abstract class StellarLikeMemo {
         @Override
         public BigInt getMemoId()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeMemo)");
+            }
             return native_getMemoId(this.nativeRef);
         }
         private native BigInt native_getMemoId(long _nativeRef);
@@ -79,7 +92,10 @@ public abstract class StellarLikeMemo {
         @Override
         public byte[] getMemoHash()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeMemo)");
+            }
             return native_getMemoHash(this.nativeRef);
         }
         private native byte[] native_getMemoHash(long _nativeRef);
@@ -87,7 +103,10 @@ public abstract class StellarLikeMemo {
         @Override
         public byte[] getMemoReturn()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeMemo)");
+            }
             return native_getMemoReturn(this.nativeRef);
         }
         private native byte[] native_getMemoReturn(long _nativeRef);
@@ -95,7 +114,10 @@ public abstract class StellarLikeMemo {
         @Override
         public String memoValuetoString()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeMemo)");
+            }
             return native_memoValuetoString(this.nativeRef);
         }
         private native String native_memoValuetoString(long _nativeRef);

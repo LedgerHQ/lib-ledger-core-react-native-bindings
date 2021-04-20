@@ -72,4 +72,11 @@
 - (void)getERC20Balances:(nonnull NSArray<NSString *> *)erc20Addresses
                 callback:(nullable id<LGBigIntListCallback>)callback;
 
+/**
+ * Add ERC20 accounts
+ * The passed addresses are ERC20 accounts
+ * Note: same note as above
+ */
+- (void)addERC20Accounts:(nonnull NSArray<NSString *> *)erc20Addresses;
+
 @end

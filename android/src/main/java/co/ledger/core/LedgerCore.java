@@ -6,6 +6,9 @@ package co.ledger.core;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class LedgerCore {
+    /** Release the underlying native object */
+    public abstract void destroy();
+
     /**
      * Gets the version of the library as a human readable string.
      * @return The version of the library (e.g. '1.0.1')
@@ -30,6 +33,7 @@ public abstract class LedgerCore {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

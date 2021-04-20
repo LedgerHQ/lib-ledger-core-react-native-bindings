@@ -15,6 +15,9 @@ public abstract class CosmosLikeUnbonding {
     public abstract String getValidatorAddress();
 
     public abstract ArrayList<CosmosLikeUnbondingEntry> getEntries();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends CosmosLikeUnbonding
     {
@@ -28,6 +31,7 @@ public abstract class CosmosLikeUnbonding {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -42,7 +46,10 @@ public abstract class CosmosLikeUnbonding {
         @Override
         public String getDelegatorAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeUnbonding)");
+            }
             return native_getDelegatorAddress(this.nativeRef);
         }
         private native String native_getDelegatorAddress(long _nativeRef);
@@ -50,7 +57,10 @@ public abstract class CosmosLikeUnbonding {
         @Override
         public String getValidatorAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeUnbonding)");
+            }
             return native_getValidatorAddress(this.nativeRef);
         }
         private native String native_getValidatorAddress(long _nativeRef);
@@ -58,7 +68,10 @@ public abstract class CosmosLikeUnbonding {
         @Override
         public ArrayList<CosmosLikeUnbondingEntry> getEntries()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeUnbonding)");
+            }
             return native_getEntries(this.nativeRef);
         }
         private native ArrayList<CosmosLikeUnbondingEntry> native_getEntries(long _nativeRef);

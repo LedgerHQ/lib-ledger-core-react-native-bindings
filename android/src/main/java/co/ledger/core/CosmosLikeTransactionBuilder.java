@@ -60,6 +60,9 @@ public abstract class CosmosLikeTransactionBuilder {
 
     /** Reset the current instance to its initial state */
     public abstract void reset();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     public static native CosmosLikeTransaction parseRawUnsignedTransaction(Currency currency, String rawTransaction);
 
@@ -77,6 +80,7 @@ public abstract class CosmosLikeTransactionBuilder {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -91,7 +95,10 @@ public abstract class CosmosLikeTransactionBuilder {
         @Override
         public CosmosLikeTransactionBuilder setMemo(String memo)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransactionBuilder)");
+            }
             return native_setMemo(this.nativeRef, memo);
         }
         private native CosmosLikeTransactionBuilder native_setMemo(long _nativeRef, String memo);
@@ -99,7 +106,10 @@ public abstract class CosmosLikeTransactionBuilder {
         @Override
         public CosmosLikeTransactionBuilder setSequence(String sequence)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransactionBuilder)");
+            }
             return native_setSequence(this.nativeRef, sequence);
         }
         private native CosmosLikeTransactionBuilder native_setSequence(long _nativeRef, String sequence);
@@ -107,7 +117,10 @@ public abstract class CosmosLikeTransactionBuilder {
         @Override
         public CosmosLikeTransactionBuilder setAccountNumber(String accountNumber)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransactionBuilder)");
+            }
             return native_setAccountNumber(this.nativeRef, accountNumber);
         }
         private native CosmosLikeTransactionBuilder native_setAccountNumber(long _nativeRef, String accountNumber);
@@ -115,7 +128,10 @@ public abstract class CosmosLikeTransactionBuilder {
         @Override
         public CosmosLikeTransactionBuilder addMessage(CosmosLikeMessage msg)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransactionBuilder)");
+            }
             return native_addMessage(this.nativeRef, msg);
         }
         private native CosmosLikeTransactionBuilder native_addMessage(long _nativeRef, CosmosLikeMessage msg);
@@ -123,7 +139,10 @@ public abstract class CosmosLikeTransactionBuilder {
         @Override
         public CosmosLikeTransactionBuilder setGas(Amount gas)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransactionBuilder)");
+            }
             return native_setGas(this.nativeRef, gas);
         }
         private native CosmosLikeTransactionBuilder native_setGas(long _nativeRef, Amount gas);
@@ -131,7 +150,10 @@ public abstract class CosmosLikeTransactionBuilder {
         @Override
         public CosmosLikeTransactionBuilder setGasAdjustment(double gasAdjustment)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransactionBuilder)");
+            }
             return native_setGasAdjustment(this.nativeRef, gasAdjustment);
         }
         private native CosmosLikeTransactionBuilder native_setGasAdjustment(long _nativeRef, double gasAdjustment);
@@ -139,7 +161,10 @@ public abstract class CosmosLikeTransactionBuilder {
         @Override
         public CosmosLikeTransactionBuilder setFee(Amount fee)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransactionBuilder)");
+            }
             return native_setFee(this.nativeRef, fee);
         }
         private native CosmosLikeTransactionBuilder native_setFee(long _nativeRef, Amount fee);
@@ -147,7 +172,10 @@ public abstract class CosmosLikeTransactionBuilder {
         @Override
         public void build(CosmosLikeTransactionCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransactionBuilder)");
+            }
             native_build(this.nativeRef, callback);
         }
         private native void native_build(long _nativeRef, CosmosLikeTransactionCallback callback);
@@ -155,7 +183,10 @@ public abstract class CosmosLikeTransactionBuilder {
         @Override
         public CosmosLikeTransactionBuilder clone()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransactionBuilder)");
+            }
             return native_clone(this.nativeRef);
         }
         private native CosmosLikeTransactionBuilder native_clone(long _nativeRef);
@@ -163,7 +194,10 @@ public abstract class CosmosLikeTransactionBuilder {
         @Override
         public void reset()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransactionBuilder)");
+            }
             native_reset(this.nativeRef);
         }
         private native void native_reset(long _nativeRef);

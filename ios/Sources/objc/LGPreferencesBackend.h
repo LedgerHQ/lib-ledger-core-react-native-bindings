@@ -7,7 +7,7 @@
 
 
 /** Interface describing the behaviour of the backend used by Preferences. */
-@interface LGPreferencesBackend : NSObject
+@protocol LGPreferencesBackend
 
 /**
  * Gets the value associated to the given key.

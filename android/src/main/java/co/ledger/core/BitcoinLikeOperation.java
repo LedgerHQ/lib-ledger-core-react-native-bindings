@@ -12,6 +12,9 @@ public abstract class BitcoinLikeOperation {
      * @return BitcoinLikeTransaction object
      */
     public abstract BitcoinLikeTransaction getTransaction();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends BitcoinLikeOperation
     {
@@ -25,6 +28,7 @@ public abstract class BitcoinLikeOperation {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -39,7 +43,10 @@ public abstract class BitcoinLikeOperation {
         @Override
         public BitcoinLikeTransaction getTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeOperation)");
+            }
             return native_getTransaction(this.nativeRef);
         }
         private native BitcoinLikeTransaction native_getTransaction(long _nativeRef);

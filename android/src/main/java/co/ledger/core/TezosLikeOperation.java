@@ -12,6 +12,9 @@ public abstract class TezosLikeOperation {
      *@return TezosLikeTransaction object
      */
     public abstract TezosLikeTransaction getTransaction();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends TezosLikeOperation
     {
@@ -25,6 +28,7 @@ public abstract class TezosLikeOperation {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -39,7 +43,10 @@ public abstract class TezosLikeOperation {
         @Override
         public TezosLikeTransaction getTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeOperation)");
+            }
             return native_getTransaction(this.nativeRef);
         }
         private native TezosLikeTransaction native_getTransaction(long _nativeRef);

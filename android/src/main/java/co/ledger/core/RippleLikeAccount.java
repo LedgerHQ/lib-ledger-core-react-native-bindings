@@ -36,6 +36,9 @@ public abstract class RippleLikeAccount {
      * @return: true if valid address and has been activated, false otherwise
      */
     public abstract void isAddressActivated(String address, BoolCallback isActivated);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends RippleLikeAccount
     {
@@ -49,6 +52,7 @@ public abstract class RippleLikeAccount {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -63,7 +67,10 @@ public abstract class RippleLikeAccount {
         @Override
         public void broadcastRawTransaction(byte[] transaction, StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeAccount)");
+            }
             native_broadcastRawTransaction(this.nativeRef, transaction, callback);
         }
         private native void native_broadcastRawTransaction(long _nativeRef, byte[] transaction, StringCallback callback);
@@ -71,7 +78,10 @@ public abstract class RippleLikeAccount {
         @Override
         public void broadcastTransaction(RippleLikeTransaction transaction, StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeAccount)");
+            }
             native_broadcastTransaction(this.nativeRef, transaction, callback);
         }
         private native void native_broadcastTransaction(long _nativeRef, RippleLikeTransaction transaction, StringCallback callback);
@@ -79,7 +89,10 @@ public abstract class RippleLikeAccount {
         @Override
         public RippleLikeTransactionBuilder buildTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeAccount)");
+            }
             return native_buildTransaction(this.nativeRef);
         }
         private native RippleLikeTransactionBuilder native_buildTransaction(long _nativeRef);
@@ -87,7 +100,10 @@ public abstract class RippleLikeAccount {
         @Override
         public void getFees(AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeAccount)");
+            }
             native_getFees(this.nativeRef, callback);
         }
         private native void native_getFees(long _nativeRef, AmountCallback callback);
@@ -95,7 +111,10 @@ public abstract class RippleLikeAccount {
         @Override
         public void getBaseReserve(AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeAccount)");
+            }
             native_getBaseReserve(this.nativeRef, callback);
         }
         private native void native_getBaseReserve(long _nativeRef, AmountCallback callback);
@@ -103,7 +122,10 @@ public abstract class RippleLikeAccount {
         @Override
         public void isAddressActivated(String address, BoolCallback isActivated)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeAccount)");
+            }
             native_isAddressActivated(this.nativeRef, address, isActivated);
         }
         private native void native_isAddressActivated(long _nativeRef, String address, BoolCallback isActivated);

@@ -6,6 +6,8 @@ package co.ledger.core;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class TezosConfigurationDefaults {
+    public static final String BCD_API_ENDPOINT = "https://api.better-call.dev/v1";
+
     public static final String TEZOS_DEFAULT_API_ENDPOINT = "https://explorers.api.live.ledger.com";
 
     public static final String TEZOS_DEFAULT_API_VERSION = "v3";
@@ -40,6 +42,9 @@ public abstract class TezosConfigurationDefaults {
 
     public static final String TEZOS_PROTOCOL_UPDATE_BABYLON = "TEZOS_PROTOCOL_UPDATE_BABYLON";
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends TezosConfigurationDefaults
     {
@@ -53,6 +58,7 @@ public abstract class TezosConfigurationDefaults {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

@@ -12,6 +12,9 @@ public abstract class CosmosLikeReward {
     public abstract String getValidatorAddress();
 
     public abstract Amount getRewardAmount();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends CosmosLikeReward
     {
@@ -25,6 +28,7 @@ public abstract class CosmosLikeReward {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -39,7 +43,10 @@ public abstract class CosmosLikeReward {
         @Override
         public String getDelegatorAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeReward)");
+            }
             return native_getDelegatorAddress(this.nativeRef);
         }
         private native String native_getDelegatorAddress(long _nativeRef);
@@ -47,7 +54,10 @@ public abstract class CosmosLikeReward {
         @Override
         public String getValidatorAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeReward)");
+            }
             return native_getValidatorAddress(this.nativeRef);
         }
         private native String native_getValidatorAddress(long _nativeRef);
@@ -55,7 +65,10 @@ public abstract class CosmosLikeReward {
         @Override
         public Amount getRewardAmount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeReward)");
+            }
             return native_getRewardAmount(this.nativeRef);
         }
         private native Amount native_getRewardAmount(long _nativeRef);

@@ -17,8 +17,17 @@
 /** Get the hash of the transaction. */
 - (nonnull NSString *)getHash;
 
-/** Get Fees (in drop) */
+/**
+ * Get Fees (in drop) 
+ * It returns the sum of transaction fees and reveal fees (if it exists)
+ */
 - (nullable LGAmount *)getFees;
+
+/** get transaction fees (without reveal cost) */
+- (nullable LGAmount *)getTransactionFees;
+
+/** get reveal fees if the sender envolved is not revealed, else 0 */
+- (nullable LGAmount *)getRevealFees;
 
 /** Get destination XTZ. address */
 - (nullable LGTezosLikeAddress *)getReceiver;

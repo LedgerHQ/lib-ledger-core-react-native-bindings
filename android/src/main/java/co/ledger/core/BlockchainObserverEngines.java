@@ -17,6 +17,9 @@ public abstract class BlockchainObserverEngines {
 
     public static final String TEZOS_NODE = "TEZOS_NODE";
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends BlockchainObserverEngines
     {
@@ -30,6 +33,7 @@ public abstract class BlockchainObserverEngines {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

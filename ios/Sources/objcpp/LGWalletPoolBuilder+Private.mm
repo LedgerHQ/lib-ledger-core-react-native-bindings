@@ -110,14 +110,14 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (nullable LGWalletPoolBuilder *)setExternalPreferencesBackend:(nullable LGPreferencesBackend *)backend {
+- (nullable LGWalletPoolBuilder *)setExternalPreferencesBackend:(nullable id<LGPreferencesBackend>)backend {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->setExternalPreferencesBackend(::djinni_generated::PreferencesBackend::toCpp(backend));
         return ::djinni_generated::WalletPoolBuilder::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (nullable LGWalletPoolBuilder *)setInternalPreferencesBackend:(nullable LGPreferencesBackend *)backend {
+- (nullable LGWalletPoolBuilder *)setInternalPreferencesBackend:(nullable id<LGPreferencesBackend>)backend {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->setInternalPreferencesBackend(::djinni_generated::PreferencesBackend::toCpp(backend));
         return ::djinni_generated::WalletPoolBuilder::fromCpp(objcpp_result_);

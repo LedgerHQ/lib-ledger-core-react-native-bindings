@@ -5,9 +5,11 @@ package com.ledger.reactnative;
 
 import co.ledger.core.Address;
 import co.ledger.core.AddressListCallback;
+import co.ledger.core.AmountCallback;
 import co.ledger.core.BigIntListCallback;
 import co.ledger.core.BitcoinLikeAccount;
 import co.ledger.core.BitcoinLikeOutputListCallback;
+import co.ledger.core.BitcoinLikePickingStrategy;
 import co.ledger.core.BitcoinLikeTransaction;
 import co.ledger.core.BitcoinLikeTransactionBuilder;
 import co.ledger.core.I32Callback;
@@ -301,6 +303,29 @@ public class RCTCoreBitcoinLikeAccount extends ReactContextBaseJavaModule {
             }
 
             promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** get max spendable balance for a given strategy */
+    @ReactMethod
+    public void getMaxSpendable(ReadableMap currentInstance, int strategy, Integer maxUtxos, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            BitcoinLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            if (strategy < 0 || BitcoinLikePickingStrategy.values().length <= strategy)
+            {
+                promise.reject("Enum error", "Failed to get enum BitcoinLikePickingStrategy");
+                return;
+            }
+            BitcoinLikePickingStrategy javaParam_0 = BitcoinLikePickingStrategy.values()[strategy];
+            RCTCoreAmountCallback javaParam_2 = RCTCoreAmountCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getMaxSpendable(javaParam_0, maxUtxos, javaParam_2);
         }
         catch(Exception e)
         {

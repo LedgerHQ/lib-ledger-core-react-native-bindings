@@ -41,7 +41,20 @@
 /** Get fees from network */
 - (void)getFees:(nullable id<LGBigIntCallback>)callback;
 
+/** Get gas price from network */
+- (void)getGasPrice:(nullable id<LGBigIntCallback>)callback;
+
 /** Get originated accounts by current account */
 - (nonnull NSArray<LGTezosLikeOriginatedAccount *> *)getOriginatedAccounts;
+
+/** Get current delegate */
+- (void)getCurrentDelegate:(nullable id<LGStringCallback>)callback;
+
+/**
+ * Get the balance of the account for a given token
+ * @param tokenAddress Address of the contract
+ */
+- (void)getTokenBalance:(nonnull NSString *)tokenAddress
+               callback:(nullable id<LGBigIntCallback>)callback;
 
 @end

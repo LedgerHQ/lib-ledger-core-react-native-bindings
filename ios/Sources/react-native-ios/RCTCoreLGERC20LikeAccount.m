@@ -32,6 +32,38 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
 
+/** Get uid */
+RCT_REMAP_METHOD(getUid,getUid:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeAccount::getUid, first argument should be an instance of LGERC20LikeAccount", nil);
+        return;
+    }
+    LGERC20LikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeAccount::getUid, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSString * objcResult = [currentInstanceObj getUid];
+    NSDictionary *result = @{@"value" : objcResult};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGERC20LikeAccount::getUid", nil);
+        return;
+    }
+
+}
+
 /** Get an ERC20 token. */
 RCT_REMAP_METHOD(getToken,getToken:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
@@ -213,6 +245,79 @@ RCT_REMAP_METHOD(getOperations,getOperations:(NSDictionary *)currentInstance Wit
         reject(@"impl_call_error", @"Error while calling LGERC20LikeAccount::getOperations", nil);
         return;
     }
+
+}
+
+/** Get ERC20 operation by uid */
+RCT_REMAP_METHOD(getOperation,getOperation:(NSDictionary *)currentInstance withParams:(nonnull NSString *)uid withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeAccount::getOperation, first argument should be an instance of LGERC20LikeAccount", nil);
+        return;
+    }
+    LGERC20LikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeAccount::getOperation, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGERC20LikeOperationCallback *objcParam_1 = [[RCTCoreLGERC20LikeOperationCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getOperation:uid callback:objcParam_1];
+
+}
+
+/** Get all ERC20 operations */
+RCT_REMAP_METHOD(getAllOperations,getAllOperations:(NSDictionary *)currentInstance withParams:(int)from
+                                                                                           to:(int)to
+                                                                                    ascending:(BOOL)ascending withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeAccount::getAllOperations, first argument should be an instance of LGERC20LikeAccount", nil);
+        return;
+    }
+    LGERC20LikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeAccount::getAllOperations, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGERC20LikeOperationListCallback *objcParam_3 = [[RCTCoreLGERC20LikeOperationListCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getAllOperations:from to:to ascending:ascending callback:objcParam_3];
+
+}
+
+/** Get ERC20 operations from a given block height (included), it also returns mempool operations */
+RCT_REMAP_METHOD(getOperationsFromBlockHeight,getOperationsFromBlockHeight:(NSDictionary *)currentInstance withParams:(int)from
+                                                                                                                   to:(int)to
+                                                                                                      fromBlockHeight:(int)fromBlockHeight withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGERC20LikeAccount::getOperationsFromBlockHeight, first argument should be an instance of LGERC20LikeAccount", nil);
+        return;
+    }
+    LGERC20LikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGERC20LikeAccount::getOperationsFromBlockHeight, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGERC20LikeOperationListCallback *objcParam_3 = [[RCTCoreLGERC20LikeOperationListCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getOperationsFromBlockHeight:from to:to fromBlockHeight:fromBlockHeight callback:objcParam_3];
 
 }
 

@@ -14,8 +14,17 @@ public abstract class TezosLikeTransaction {
     /** Get the hash of the transaction. */
     public abstract String getHash();
 
-    /** Get Fees (in drop) */
+    /**
+     * Get Fees (in drop) 
+     * It returns the sum of transaction fees and reveal fees (if it exists)
+     */
     public abstract Amount getFees();
+
+    /** get transaction fees (without reveal cost) */
+    public abstract Amount getTransactionFees();
+
+    /** get reveal fees if the sender envolved is not revealed, else 0 */
+    public abstract Amount getRevealFees();
 
     /** Get destination XTZ. address */
     public abstract TezosLikeAddress getReceiver();
@@ -52,6 +61,9 @@ public abstract class TezosLikeTransaction {
 
     /** Get status of transaction: equals to 1 if succeeded, 0 otherwise */
     public abstract int getStatus();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends TezosLikeTransaction
     {
@@ -65,6 +77,7 @@ public abstract class TezosLikeTransaction {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -79,7 +92,10 @@ public abstract class TezosLikeTransaction {
         @Override
         public TezosOperationTag getType()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_getType(this.nativeRef);
         }
         private native TezosOperationTag native_getType(long _nativeRef);
@@ -87,7 +103,10 @@ public abstract class TezosLikeTransaction {
         @Override
         public String getHash()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_getHash(this.nativeRef);
         }
         private native String native_getHash(long _nativeRef);
@@ -95,15 +114,43 @@ public abstract class TezosLikeTransaction {
         @Override
         public Amount getFees()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_getFees(this.nativeRef);
         }
         private native Amount native_getFees(long _nativeRef);
 
         @Override
+        public Amount getTransactionFees()
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
+            return native_getTransactionFees(this.nativeRef);
+        }
+        private native Amount native_getTransactionFees(long _nativeRef);
+
+        @Override
+        public Amount getRevealFees()
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
+            return native_getRevealFees(this.nativeRef);
+        }
+        private native Amount native_getRevealFees(long _nativeRef);
+
+        @Override
         public TezosLikeAddress getReceiver()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_getReceiver(this.nativeRef);
         }
         private native TezosLikeAddress native_getReceiver(long _nativeRef);
@@ -111,7 +158,10 @@ public abstract class TezosLikeTransaction {
         @Override
         public TezosLikeAddress getSender()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_getSender(this.nativeRef);
         }
         private native TezosLikeAddress native_getSender(long _nativeRef);
@@ -119,7 +169,10 @@ public abstract class TezosLikeTransaction {
         @Override
         public Amount getValue()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_getValue(this.nativeRef);
         }
         private native Amount native_getValue(long _nativeRef);
@@ -127,7 +180,10 @@ public abstract class TezosLikeTransaction {
         @Override
         public byte[] serialize()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_serialize(this.nativeRef);
         }
         private native byte[] native_serialize(long _nativeRef);
@@ -135,7 +191,10 @@ public abstract class TezosLikeTransaction {
         @Override
         public void setSignature(byte[] signature)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             native_setSignature(this.nativeRef, signature);
         }
         private native void native_setSignature(long _nativeRef, byte[] signature);
@@ -143,7 +202,10 @@ public abstract class TezosLikeTransaction {
         @Override
         public Date getDate()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_getDate(this.nativeRef);
         }
         private native Date native_getDate(long _nativeRef);
@@ -151,7 +213,10 @@ public abstract class TezosLikeTransaction {
         @Override
         public byte[] getSigningPubKey()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_getSigningPubKey(this.nativeRef);
         }
         private native byte[] native_getSigningPubKey(long _nativeRef);
@@ -159,7 +224,10 @@ public abstract class TezosLikeTransaction {
         @Override
         public BigInt getCounter()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_getCounter(this.nativeRef);
         }
         private native BigInt native_getCounter(long _nativeRef);
@@ -167,7 +235,10 @@ public abstract class TezosLikeTransaction {
         @Override
         public Amount getGasLimit()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_getGasLimit(this.nativeRef);
         }
         private native Amount native_getGasLimit(long _nativeRef);
@@ -175,7 +246,10 @@ public abstract class TezosLikeTransaction {
         @Override
         public BigInt getStorageLimit()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_getStorageLimit(this.nativeRef);
         }
         private native BigInt native_getStorageLimit(long _nativeRef);
@@ -183,7 +257,10 @@ public abstract class TezosLikeTransaction {
         @Override
         public String getBlockHash()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_getBlockHash(this.nativeRef);
         }
         private native String native_getBlockHash(long _nativeRef);
@@ -191,7 +268,10 @@ public abstract class TezosLikeTransaction {
         @Override
         public int getStatus()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeTransaction)");
+            }
             return native_getStatus(this.nativeRef);
         }
         private native int native_getStatus(long _nativeRef);

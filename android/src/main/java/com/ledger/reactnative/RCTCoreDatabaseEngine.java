@@ -164,4 +164,27 @@ public class RCTCoreDatabaseEngine extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /**
+     * Get the maximum number of concurrent readonly connection on a single database.
+     * @return the maximum number of concurrent readonly connection that the engine is able to open on a single database.
+     */
+    @ReactMethod
+    public void getReadonlyPoolSize(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            DatabaseEngineImpl currentInstanceObj = this.javaObjects.get(sUid);
+
+            int javaResult = currentInstanceObj.getReadonlyPoolSize();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putInt("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
 }

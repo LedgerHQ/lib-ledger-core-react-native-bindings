@@ -8,6 +8,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class AlgorandBlockchainExplorerEngines {
     public static final String ALGORAND_NODE = "ALGORAND_NODE";
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends AlgorandBlockchainExplorerEngines
     {
@@ -21,6 +24,7 @@ public abstract class AlgorandBlockchainExplorerEngines {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

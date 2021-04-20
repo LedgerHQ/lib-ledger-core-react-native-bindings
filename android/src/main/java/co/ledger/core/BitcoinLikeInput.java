@@ -84,6 +84,9 @@ public abstract class BitcoinLikeInput {
 
     /** Easy way to set the P2PKH script signature. Shorthand for input.pushToScriptSig(input.getPublicKeys()[0], signature). */
     public abstract void setP2PKHSigScript(byte[] signature);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends BitcoinLikeInput
     {
@@ -97,6 +100,7 @@ public abstract class BitcoinLikeInput {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -111,7 +115,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public String getAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             return native_getAddress(this.nativeRef);
         }
         private native String native_getAddress(long _nativeRef);
@@ -119,7 +126,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public ArrayList<byte[]> getPublicKeys()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             return native_getPublicKeys(this.nativeRef);
         }
         private native ArrayList<byte[]> native_getPublicKeys(long _nativeRef);
@@ -127,7 +137,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public ArrayList<DerivationPath> getDerivationPath()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             return native_getDerivationPath(this.nativeRef);
         }
         private native ArrayList<DerivationPath> native_getDerivationPath(long _nativeRef);
@@ -135,7 +148,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public Amount getValue()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             return native_getValue(this.nativeRef);
         }
         private native Amount native_getValue(long _nativeRef);
@@ -143,7 +159,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public String getPreviousTxHash()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             return native_getPreviousTxHash(this.nativeRef);
         }
         private native String native_getPreviousTxHash(long _nativeRef);
@@ -151,7 +170,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public boolean isCoinbase()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             return native_isCoinbase(this.nativeRef);
         }
         private native boolean native_isCoinbase(long _nativeRef);
@@ -159,7 +181,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public String getCoinbase()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             return native_getCoinbase(this.nativeRef);
         }
         private native String native_getCoinbase(long _nativeRef);
@@ -167,7 +192,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public Integer getPreviousOutputIndex()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             return native_getPreviousOutputIndex(this.nativeRef);
         }
         private native Integer native_getPreviousOutputIndex(long _nativeRef);
@@ -175,7 +203,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public BitcoinLikeOutput getPreviousOuput()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             return native_getPreviousOuput(this.nativeRef);
         }
         private native BitcoinLikeOutput native_getPreviousOuput(long _nativeRef);
@@ -183,7 +214,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public byte[] getScriptSig()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             return native_getScriptSig(this.nativeRef);
         }
         private native byte[] native_getScriptSig(long _nativeRef);
@@ -191,7 +225,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public BitcoinLikeScript parseScriptSig()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             return native_parseScriptSig(this.nativeRef);
         }
         private native BitcoinLikeScript native_parseScriptSig(long _nativeRef);
@@ -199,7 +236,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public void setScriptSig(byte[] scriptSig)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             native_setScriptSig(this.nativeRef, scriptSig);
         }
         private native void native_setScriptSig(long _nativeRef, byte[] scriptSig);
@@ -207,7 +247,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public void pushToScriptSig(byte[] data)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             native_pushToScriptSig(this.nativeRef, data);
         }
         private native void native_pushToScriptSig(long _nativeRef, byte[] data);
@@ -215,7 +258,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public void setSequence(int sequence)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             native_setSequence(this.nativeRef, sequence);
         }
         private native void native_setSequence(long _nativeRef, int sequence);
@@ -223,7 +269,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public long getSequence()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             return native_getSequence(this.nativeRef);
         }
         private native long native_getSequence(long _nativeRef);
@@ -231,7 +280,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public void getPreviousTransaction(BinaryCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             native_getPreviousTransaction(this.nativeRef, callback);
         }
         private native void native_getPreviousTransaction(long _nativeRef, BinaryCallback callback);
@@ -239,7 +291,10 @@ public abstract class BitcoinLikeInput {
         @Override
         public void setP2PKHSigScript(byte[] signature)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeInput)");
+            }
             native_setP2PKHSigScript(this.nativeRef, signature);
         }
         private native void native_setP2PKHSigScript(long _nativeRef, byte[] signature);

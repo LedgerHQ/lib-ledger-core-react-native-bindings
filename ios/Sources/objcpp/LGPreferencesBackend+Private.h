@@ -6,7 +6,7 @@
 
 static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for this file");
 
-@class LGPreferencesBackend;
+@protocol LGPreferencesBackend;
 
 namespace djinni_generated {
 
@@ -15,7 +15,7 @@ class PreferencesBackend
 public:
     using CppType = std::shared_ptr<::ledger::core::api::PreferencesBackend>;
     using CppOptType = std::shared_ptr<::ledger::core::api::PreferencesBackend>;
-    using ObjcType = LGPreferencesBackend*;
+    using ObjcType = id<LGPreferencesBackend>;
 
     using Boxed = PreferencesBackend;
 

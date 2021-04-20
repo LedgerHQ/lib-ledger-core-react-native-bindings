@@ -12,6 +12,9 @@ public abstract class CosmosLikeDelegation {
     public abstract String getValidatorAddress();
 
     public abstract Amount getDelegatedAmount();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends CosmosLikeDelegation
     {
@@ -25,6 +28,7 @@ public abstract class CosmosLikeDelegation {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -39,7 +43,10 @@ public abstract class CosmosLikeDelegation {
         @Override
         public String getDelegatorAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeDelegation)");
+            }
             return native_getDelegatorAddress(this.nativeRef);
         }
         private native String native_getDelegatorAddress(long _nativeRef);
@@ -47,7 +54,10 @@ public abstract class CosmosLikeDelegation {
         @Override
         public String getValidatorAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeDelegation)");
+            }
             return native_getValidatorAddress(this.nativeRef);
         }
         private native String native_getValidatorAddress(long _nativeRef);
@@ -55,7 +65,10 @@ public abstract class CosmosLikeDelegation {
         @Override
         public Amount getDelegatedAmount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeDelegation)");
+            }
             return native_getDelegatedAmount(this.nativeRef);
         }
         private native Amount native_getDelegatedAmount(long _nativeRef);

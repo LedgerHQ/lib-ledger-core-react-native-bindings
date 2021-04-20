@@ -20,6 +20,9 @@ public abstract class SynchronizerEngines {
      */
     public static final String SPV = "SPV";
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends SynchronizerEngines
     {
@@ -33,6 +36,7 @@ public abstract class SynchronizerEngines {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

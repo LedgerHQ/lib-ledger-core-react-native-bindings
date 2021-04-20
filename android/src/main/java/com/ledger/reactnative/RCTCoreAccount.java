@@ -722,63 +722,6 @@ public class RCTCoreAccount extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Start observing blockchain on which account synchronizes and send/receive transactions. */
-    @ReactMethod
-    public void startBlockchainObservation(ReadableMap currentInstance, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            Account currentInstanceObj = this.javaObjects.get(sUid);
-
-            currentInstanceObj.startBlockchainObservation();
-            promise.resolve(0);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /** Stop observing blockchain. */
-    @ReactMethod
-    public void stopBlockchainObservation(ReadableMap currentInstance, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            Account currentInstanceObj = this.javaObjects.get(sUid);
-
-            currentInstanceObj.stopBlockchainObservation();
-            promise.resolve(0);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /**
-     * Get account's observation status.
-     * @return boolean
-     */
-    @ReactMethod
-    public void isObservingBlockchain(ReadableMap currentInstance, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            Account currentInstanceObj = this.javaObjects.get(sUid);
-
-            boolean javaResult = currentInstanceObj.isObservingBlockchain();
-            WritableNativeMap result = new WritableNativeMap();
-            result.putBoolean("value", javaResult);
-
-            promise.resolve(result);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
     /**
      * Get Last block of blockchain on which account operates.
      * @param callback, Callback returning, if getLastBlock succeeds, a Block object

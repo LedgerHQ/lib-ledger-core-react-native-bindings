@@ -25,6 +25,9 @@ public abstract class BitcoinLikeBlock {
      * @return Date object, date when block was appended to blockchain
      */
     public abstract Date getTime();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends BitcoinLikeBlock
     {
@@ -38,6 +41,7 @@ public abstract class BitcoinLikeBlock {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -52,7 +56,10 @@ public abstract class BitcoinLikeBlock {
         @Override
         public String getHash()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeBlock)");
+            }
             return native_getHash(this.nativeRef);
         }
         private native String native_getHash(long _nativeRef);
@@ -60,7 +67,10 @@ public abstract class BitcoinLikeBlock {
         @Override
         public long getHeight()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeBlock)");
+            }
             return native_getHeight(this.nativeRef);
         }
         private native long native_getHeight(long _nativeRef);
@@ -68,7 +78,10 @@ public abstract class BitcoinLikeBlock {
         @Override
         public Date getTime()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeBlock)");
+            }
             return native_getTime(this.nativeRef);
         }
         private native Date native_getTime(long _nativeRef);

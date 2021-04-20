@@ -66,6 +66,20 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (nullable LGTezosLikeTransactionBuilder *)setTransactionFees:(nullable LGAmount *)transactionFees {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->setTransactionFees(::djinni_generated::Amount::toCpp(transactionFees));
+        return ::djinni_generated::TezosLikeTransactionBuilder::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGTezosLikeTransactionBuilder *)setRevealFees:(nullable LGAmount *)revealFees {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->setRevealFees(::djinni_generated::Amount::toCpp(revealFees));
+        return ::djinni_generated::TezosLikeTransactionBuilder::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (nullable LGTezosLikeTransactionBuilder *)setGasLimit:(nullable LGAmount *)gasLimit {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->setGasLimit(::djinni_generated::Amount::toCpp(gasLimit));
@@ -100,19 +114,23 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 }
 
 + (nullable LGTezosLikeTransaction *)parseRawUnsignedTransaction:(nonnull LGCurrency *)currency
-                                                  rawTransaction:(nonnull NSData *)rawTransaction {
+                                                  rawTransaction:(nonnull NSData *)rawTransaction
+                                                  protocolUpdate:(nonnull NSString *)protocolUpdate {
     try {
         auto objcpp_result_ = ::ledger::core::api::TezosLikeTransactionBuilder::parseRawUnsignedTransaction(::djinni_generated::Currency::toCpp(currency),
-                                                                                                            ::djinni::Binary::toCpp(rawTransaction));
+                                                                                                            ::djinni::Binary::toCpp(rawTransaction),
+                                                                                                            ::djinni::String::toCpp(protocolUpdate));
         return ::djinni_generated::TezosLikeTransaction::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
 + (nullable LGTezosLikeTransaction *)parseRawSignedTransaction:(nonnull LGCurrency *)currency
-                                                rawTransaction:(nonnull NSData *)rawTransaction {
+                                                rawTransaction:(nonnull NSData *)rawTransaction
+                                                protocolUpdate:(nonnull NSString *)protocolUpdate {
     try {
         auto objcpp_result_ = ::ledger::core::api::TezosLikeTransactionBuilder::parseRawSignedTransaction(::djinni_generated::Currency::toCpp(currency),
-                                                                                                          ::djinni::Binary::toCpp(rawTransaction));
+                                                                                                          ::djinni::Binary::toCpp(rawTransaction),
+                                                                                                          ::djinni::String::toCpp(protocolUpdate));
         return ::djinni_generated::TezosLikeTransaction::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

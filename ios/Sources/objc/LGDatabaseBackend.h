@@ -16,6 +16,12 @@
 - (int32_t)getConnectionPoolSize;
 
 /**
+ * Get the maximum number of concurrent readonly connection that the backend is able to open on a single database.
+ * @return the size of the readonly connection pool.
+ */
+- (int32_t)getReadonlyConnectionPoolSize;
+
+/**
  * Enable or disable query logging. By default logging is disabled. Query logging will record every SQL query in log streams.
  * @return this database backend (to chain configuration calls)
  */
@@ -37,7 +43,8 @@
  * Create an instance of PostgreSQL database.
  * @return DatabaseBackend object
  */
-+ (nullable LGDatabaseBackend *)getPostgreSQLBackend:(int32_t)connectionPoolSize;
++ (nullable LGDatabaseBackend *)getPostgreSQLBackend:(int32_t)connectionPoolSize
+                          readonlyConnectionPoolSize:(int32_t)readonlyConnectionPoolSize;
 
 /** Create a database backend instance from the given DatabaseEngine implementation. */
 + (nullable LGDatabaseBackend *)createBackendFromEngine:(nullable id<LGDatabaseEngine>)engine;
