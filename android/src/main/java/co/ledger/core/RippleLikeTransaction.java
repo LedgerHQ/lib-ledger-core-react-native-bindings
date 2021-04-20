@@ -66,6 +66,9 @@ public abstract class RippleLikeTransaction {
 
     /** Status of the transaction. */
     public abstract int getStatus();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends RippleLikeTransaction
     {
@@ -79,6 +82,7 @@ public abstract class RippleLikeTransaction {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -93,7 +97,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public String getHash()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             return native_getHash(this.nativeRef);
         }
         private native String native_getHash(long _nativeRef);
@@ -101,7 +108,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public Amount getFees()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             return native_getFees(this.nativeRef);
         }
         private native Amount native_getFees(long _nativeRef);
@@ -109,7 +119,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public RippleLikeAddress getReceiver()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             return native_getReceiver(this.nativeRef);
         }
         private native RippleLikeAddress native_getReceiver(long _nativeRef);
@@ -117,7 +130,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public RippleLikeAddress getSender()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             return native_getSender(this.nativeRef);
         }
         private native RippleLikeAddress native_getSender(long _nativeRef);
@@ -125,7 +141,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public Amount getValue()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             return native_getValue(this.nativeRef);
         }
         private native Amount native_getValue(long _nativeRef);
@@ -133,7 +152,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public byte[] serialize()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             return native_serialize(this.nativeRef);
         }
         private native byte[] native_serialize(long _nativeRef);
@@ -141,7 +163,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public void setSignature(byte[] rSignature, byte[] sSignature)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             native_setSignature(this.nativeRef, rSignature, sSignature);
         }
         private native void native_setSignature(long _nativeRef, byte[] rSignature, byte[] sSignature);
@@ -149,7 +174,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public void setDERSignature(byte[] signature)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             native_setDERSignature(this.nativeRef, signature);
         }
         private native void native_setDERSignature(long _nativeRef, byte[] signature);
@@ -157,7 +185,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public Date getDate()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             return native_getDate(this.nativeRef);
         }
         private native Date native_getDate(long _nativeRef);
@@ -165,7 +196,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public BigInt getSequence()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             return native_getSequence(this.nativeRef);
         }
         private native BigInt native_getSequence(long _nativeRef);
@@ -173,7 +207,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public BigInt getLedgerSequence()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             return native_getLedgerSequence(this.nativeRef);
         }
         private native BigInt native_getLedgerSequence(long _nativeRef);
@@ -181,7 +218,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public byte[] getSigningPubKey()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             return native_getSigningPubKey(this.nativeRef);
         }
         private native byte[] native_getSigningPubKey(long _nativeRef);
@@ -189,7 +229,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public ArrayList<RippleLikeMemo> getMemos()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             return native_getMemos(this.nativeRef);
         }
         private native ArrayList<RippleLikeMemo> native_getMemos(long _nativeRef);
@@ -197,7 +240,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public void addMemo(RippleLikeMemo memo)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             native_addMemo(this.nativeRef, memo);
         }
         private native void native_addMemo(long _nativeRef, RippleLikeMemo memo);
@@ -205,7 +251,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public Long getDestinationTag()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             return native_getDestinationTag(this.nativeRef);
         }
         private native Long native_getDestinationTag(long _nativeRef);
@@ -213,7 +262,10 @@ public abstract class RippleLikeTransaction {
         @Override
         public int getStatus()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransaction)");
+            }
             return native_getStatus(this.nativeRef);
         }
         private native int native_getStatus(long _nativeRef);

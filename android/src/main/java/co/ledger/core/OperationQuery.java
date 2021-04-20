@@ -47,6 +47,9 @@ public abstract class OperationQuery {
      * @param callback, if execute method succeed, ListCallback object returning a List of Operation objects
      */
     public abstract void execute(OperationListCallback callback);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends OperationQuery
     {
@@ -60,6 +63,7 @@ public abstract class OperationQuery {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -74,7 +78,10 @@ public abstract class OperationQuery {
         @Override
         public OperationQuery addOrder(OperationOrderKey key, boolean descending)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (OperationQuery)");
+            }
             return native_addOrder(this.nativeRef, key, descending);
         }
         private native OperationQuery native_addOrder(long _nativeRef, OperationOrderKey key, boolean descending);
@@ -82,7 +89,10 @@ public abstract class OperationQuery {
         @Override
         public QueryFilter filter()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (OperationQuery)");
+            }
             return native_filter(this.nativeRef);
         }
         private native QueryFilter native_filter(long _nativeRef);
@@ -90,7 +100,10 @@ public abstract class OperationQuery {
         @Override
         public OperationQuery offset(int from)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (OperationQuery)");
+            }
             return native_offset(this.nativeRef, from);
         }
         private native OperationQuery native_offset(long _nativeRef, int from);
@@ -98,7 +111,10 @@ public abstract class OperationQuery {
         @Override
         public OperationQuery limit(int count)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (OperationQuery)");
+            }
             return native_limit(this.nativeRef, count);
         }
         private native OperationQuery native_limit(long _nativeRef, int count);
@@ -106,7 +122,10 @@ public abstract class OperationQuery {
         @Override
         public OperationQuery complete()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (OperationQuery)");
+            }
             return native_complete(this.nativeRef);
         }
         private native OperationQuery native_complete(long _nativeRef);
@@ -114,7 +133,10 @@ public abstract class OperationQuery {
         @Override
         public OperationQuery partial()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (OperationQuery)");
+            }
             return native_partial(this.nativeRef);
         }
         private native OperationQuery native_partial(long _nativeRef);
@@ -122,7 +144,10 @@ public abstract class OperationQuery {
         @Override
         public void execute(OperationListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (OperationQuery)");
+            }
             native_execute(this.nativeRef, callback);
         }
         private native void native_execute(long _nativeRef, OperationListCallback callback);

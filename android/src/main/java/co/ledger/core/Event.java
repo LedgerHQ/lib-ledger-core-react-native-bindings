@@ -30,6 +30,9 @@ public abstract class Event {
      * @return 32 bits integer
      */
     public abstract int getStickyTag();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /**
      * Create a new instance of Event class.
@@ -51,6 +54,7 @@ public abstract class Event {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -65,7 +69,10 @@ public abstract class Event {
         @Override
         public EventCode getCode()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Event)");
+            }
             return native_getCode(this.nativeRef);
         }
         private native EventCode native_getCode(long _nativeRef);
@@ -73,7 +80,10 @@ public abstract class Event {
         @Override
         public DynamicObject getPayload()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Event)");
+            }
             return native_getPayload(this.nativeRef);
         }
         private native DynamicObject native_getPayload(long _nativeRef);
@@ -81,7 +91,10 @@ public abstract class Event {
         @Override
         public boolean isSticky()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Event)");
+            }
             return native_isSticky(this.nativeRef);
         }
         private native boolean native_isSticky(long _nativeRef);
@@ -89,7 +102,10 @@ public abstract class Event {
         @Override
         public int getStickyTag()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Event)");
+            }
             return native_getStickyTag(this.nativeRef);
         }
         private native int native_getStickyTag(long _nativeRef);

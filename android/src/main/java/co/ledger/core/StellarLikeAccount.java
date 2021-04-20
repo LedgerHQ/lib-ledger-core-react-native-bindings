@@ -33,6 +33,9 @@ public abstract class StellarLikeAccount {
 
     /** Get signers for this account */
     public abstract void getSigners(StellarLikeAccountSignerListCallback callback);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends StellarLikeAccount
     {
@@ -46,6 +49,7 @@ public abstract class StellarLikeAccount {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -60,7 +64,10 @@ public abstract class StellarLikeAccount {
         @Override
         public void exists(BoolCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeAccount)");
+            }
             native_exists(this.nativeRef, callback);
         }
         private native void native_exists(long _nativeRef, BoolCallback callback);
@@ -68,7 +75,10 @@ public abstract class StellarLikeAccount {
         @Override
         public StellarLikeTransactionBuilder buildTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeAccount)");
+            }
             return native_buildTransaction(this.nativeRef);
         }
         private native StellarLikeTransactionBuilder native_buildTransaction(long _nativeRef);
@@ -76,7 +86,10 @@ public abstract class StellarLikeAccount {
         @Override
         public void broadcastRawTransaction(byte[] tx, StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeAccount)");
+            }
             native_broadcastRawTransaction(this.nativeRef, tx, callback);
         }
         private native void native_broadcastRawTransaction(long _nativeRef, byte[] tx, StringCallback callback);
@@ -84,7 +97,10 @@ public abstract class StellarLikeAccount {
         @Override
         public void getBaseReserve(AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeAccount)");
+            }
             native_getBaseReserve(this.nativeRef, callback);
         }
         private native void native_getBaseReserve(long _nativeRef, AmountCallback callback);
@@ -92,7 +108,10 @@ public abstract class StellarLikeAccount {
         @Override
         public void getSequence(BigIntCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeAccount)");
+            }
             native_getSequence(this.nativeRef, callback);
         }
         private native void native_getSequence(long _nativeRef, BigIntCallback callback);
@@ -100,7 +119,10 @@ public abstract class StellarLikeAccount {
         @Override
         public void getFeeStats(StellarLikeFeeStatsCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeAccount)");
+            }
             native_getFeeStats(this.nativeRef, callback);
         }
         private native void native_getFeeStats(long _nativeRef, StellarLikeFeeStatsCallback callback);
@@ -108,7 +130,10 @@ public abstract class StellarLikeAccount {
         @Override
         public void getSigners(StellarLikeAccountSignerListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeAccount)");
+            }
             native_getSigners(this.nativeRef, callback);
         }
         private native void native_getSigners(long _nativeRef, StellarLikeAccountSignerListCallback callback);

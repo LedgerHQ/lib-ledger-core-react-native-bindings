@@ -28,6 +28,9 @@ public abstract class Address {
     public abstract boolean isInstanceOfStellarLikeAddress();
 
     public abstract Currency getCurrency();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /**
      * Attempt to parse a string address. If the address can be parse return it otherwise return a NONE
@@ -58,6 +61,7 @@ public abstract class Address {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -72,7 +76,10 @@ public abstract class Address {
         @Override
         public String getDerivationPath()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Address)");
+            }
             return native_getDerivationPath(this.nativeRef);
         }
         private native String native_getDerivationPath(long _nativeRef);
@@ -80,7 +87,10 @@ public abstract class Address {
         @Override
         public String toString()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Address)");
+            }
             return native_toString(this.nativeRef);
         }
         private native String native_toString(long _nativeRef);
@@ -88,7 +98,10 @@ public abstract class Address {
         @Override
         public BitcoinLikeAddress asBitcoinLikeAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Address)");
+            }
             return native_asBitcoinLikeAddress(this.nativeRef);
         }
         private native BitcoinLikeAddress native_asBitcoinLikeAddress(long _nativeRef);
@@ -96,7 +109,10 @@ public abstract class Address {
         @Override
         public boolean isInstanceOfBitcoinLikeAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Address)");
+            }
             return native_isInstanceOfBitcoinLikeAddress(this.nativeRef);
         }
         private native boolean native_isInstanceOfBitcoinLikeAddress(long _nativeRef);
@@ -104,7 +120,10 @@ public abstract class Address {
         @Override
         public StellarLikeAddress asStellarLikeAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Address)");
+            }
             return native_asStellarLikeAddress(this.nativeRef);
         }
         private native StellarLikeAddress native_asStellarLikeAddress(long _nativeRef);
@@ -112,7 +131,10 @@ public abstract class Address {
         @Override
         public boolean isInstanceOfStellarLikeAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Address)");
+            }
             return native_isInstanceOfStellarLikeAddress(this.nativeRef);
         }
         private native boolean native_isInstanceOfStellarLikeAddress(long _nativeRef);
@@ -120,7 +142,10 @@ public abstract class Address {
         @Override
         public Currency getCurrency()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Address)");
+            }
             return native_getCurrency(this.nativeRef);
         }
         private native Currency native_getCurrency(long _nativeRef);

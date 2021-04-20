@@ -8,6 +8,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class RippleConfiguration {
     public static final String RIPPLE_LAST_LEDGER_SEQUENCE_OFFSET = "RIPPLE_LAST_LEDGER_SEQUENCE_OFFSET";
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends RippleConfiguration
     {
@@ -21,6 +24,7 @@ public abstract class RippleConfiguration {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

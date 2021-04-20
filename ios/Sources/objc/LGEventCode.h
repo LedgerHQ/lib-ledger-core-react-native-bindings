@@ -8,10 +8,14 @@ typedef NS_ENUM(NSInteger, LGEventCode)
 {
     /** An unknown event code. */
     LGEventCodeUndefined,
-    /** A new operation event. */
+    /** [DEPRECATED] A new operation event. (this event is deprecated since 4.0) */
     LGEventCodeNewOperation,
-    /** A new block event. */
+    /** Emitted once a batch of operation has been inserted/updated in database */
+    LGEventCodeUpdateOperations,
+    /** A new block event. (this event is deprecated since 4.0) */
     LGEventCodeNewBlock,
+    /** A deleted operation event. */
+    LGEventCodeDeletedOperation,
     /** Event emitted when a wallet synchronization started. */
     LGEventCodeSynchronizationStarted,
     /** Event emitted when a wallet synchronization failed. */
@@ -20,4 +24,8 @@ typedef NS_ENUM(NSInteger, LGEventCode)
     LGEventCodeSynchronizationSucceed,
     /** Event emitted when a wallet synchronization succeeded on the previously empty account. */
     LGEventCodeSynchronizationSucceedOnPreviouslyEmptyAccount,
+    /** [DEPRECATED] A new er20 operation is available. (this event is deprecated since 4.0) */
+    LGEventCodeNewErc20Operation,
+    /** Emitted each time a batch of ERC20 is inserted in database */
+    LGEventCodeUpdateErc20Operations,
 };

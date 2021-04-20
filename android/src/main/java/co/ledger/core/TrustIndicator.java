@@ -15,6 +15,9 @@ public abstract class TrustIndicator {
     public abstract ArrayList<String> getConflictingOperationUids();
 
     public abstract String getOrigin();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends TrustIndicator
     {
@@ -28,6 +31,7 @@ public abstract class TrustIndicator {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -42,7 +46,10 @@ public abstract class TrustIndicator {
         @Override
         public int getTrustWeight()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TrustIndicator)");
+            }
             return native_getTrustWeight(this.nativeRef);
         }
         private native int native_getTrustWeight(long _nativeRef);
@@ -50,7 +57,10 @@ public abstract class TrustIndicator {
         @Override
         public TrustLevel getTrustLevel()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TrustIndicator)");
+            }
             return native_getTrustLevel(this.nativeRef);
         }
         private native TrustLevel native_getTrustLevel(long _nativeRef);
@@ -58,7 +68,10 @@ public abstract class TrustIndicator {
         @Override
         public ArrayList<String> getConflictingOperationUids()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TrustIndicator)");
+            }
             return native_getConflictingOperationUids(this.nativeRef);
         }
         private native ArrayList<String> native_getConflictingOperationUids(long _nativeRef);
@@ -66,7 +79,10 @@ public abstract class TrustIndicator {
         @Override
         public String getOrigin()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TrustIndicator)");
+            }
             return native_getOrigin(this.nativeRef);
         }
         private native String native_getOrigin(long _nativeRef);

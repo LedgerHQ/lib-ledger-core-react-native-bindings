@@ -70,6 +70,9 @@ public abstract class CosmosLikeAccount {
      * String Bech32 encoded string
      */
     public abstract void getWithdrawAddress(StringCallback callback);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends CosmosLikeAccount
     {
@@ -83,6 +86,7 @@ public abstract class CosmosLikeAccount {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -97,7 +101,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void broadcastRawTransaction(String transaction, StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_broadcastRawTransaction(this.nativeRef, transaction, callback);
         }
         private native void native_broadcastRawTransaction(long _nativeRef, String transaction, StringCallback callback);
@@ -105,7 +112,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void broadcastTransaction(CosmosLikeTransaction transaction, StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_broadcastTransaction(this.nativeRef, transaction, callback);
         }
         private native void native_broadcastTransaction(long _nativeRef, CosmosLikeTransaction transaction, StringCallback callback);
@@ -113,7 +123,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public CosmosLikeTransactionBuilder buildTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             return native_buildTransaction(this.nativeRef);
         }
         private native CosmosLikeTransactionBuilder native_buildTransaction(long _nativeRef);
@@ -121,7 +134,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getEstimatedGasLimit(CosmosLikeTransaction transaction, BigIntCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getEstimatedGasLimit(this.nativeRef, transaction, callback);
         }
         private native void native_getEstimatedGasLimit(long _nativeRef, CosmosLikeTransaction transaction, BigIntCallback callback);
@@ -129,7 +145,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void estimateGas(CosmosGasLimitRequest buildingTx, BigIntCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_estimateGas(this.nativeRef, buildingTx, callback);
         }
         private native void native_estimateGas(long _nativeRef, CosmosGasLimitRequest buildingTx, BigIntCallback callback);
@@ -137,7 +156,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getLatestValidatorSet(CosmosLikeValidatorListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getLatestValidatorSet(this.nativeRef, callback);
         }
         private native void native_getLatestValidatorSet(long _nativeRef, CosmosLikeValidatorListCallback callback);
@@ -145,7 +167,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getValidatorInfo(String validatorAddress, CosmosLikeValidatorCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getValidatorInfo(this.nativeRef, validatorAddress, callback);
         }
         private native void native_getValidatorInfo(long _nativeRef, String validatorAddress, CosmosLikeValidatorCallback callback);
@@ -153,7 +178,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getTotalBalance(AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getTotalBalance(this.nativeRef, callback);
         }
         private native void native_getTotalBalance(long _nativeRef, AmountCallback callback);
@@ -161,7 +189,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getDelegatedBalance(AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getDelegatedBalance(this.nativeRef, callback);
         }
         private native void native_getDelegatedBalance(long _nativeRef, AmountCallback callback);
@@ -169,7 +200,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getPendingRewardsBalance(AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getPendingRewardsBalance(this.nativeRef, callback);
         }
         private native void native_getPendingRewardsBalance(long _nativeRef, AmountCallback callback);
@@ -177,7 +211,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getUnbondingBalance(AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getUnbondingBalance(this.nativeRef, callback);
         }
         private native void native_getUnbondingBalance(long _nativeRef, AmountCallback callback);
@@ -185,7 +222,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getSpendableBalance(AmountCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getSpendableBalance(this.nativeRef, callback);
         }
         private native void native_getSpendableBalance(long _nativeRef, AmountCallback callback);
@@ -193,7 +233,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getDelegations(CosmosLikeDelegationListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getDelegations(this.nativeRef, callback);
         }
         private native void native_getDelegations(long _nativeRef, CosmosLikeDelegationListCallback callback);
@@ -201,7 +244,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getPendingRewards(CosmosLikeRewardListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getPendingRewards(this.nativeRef, callback);
         }
         private native void native_getPendingRewards(long _nativeRef, CosmosLikeRewardListCallback callback);
@@ -209,7 +255,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getUnbondings(CosmosLikeUnbondingListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getUnbondings(this.nativeRef, callback);
         }
         private native void native_getUnbondings(long _nativeRef, CosmosLikeUnbondingListCallback callback);
@@ -217,7 +266,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getRedelegations(CosmosLikeRedelegationListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getRedelegations(this.nativeRef, callback);
         }
         private native void native_getRedelegations(long _nativeRef, CosmosLikeRedelegationListCallback callback);
@@ -225,7 +277,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getSequence(StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getSequence(this.nativeRef, callback);
         }
         private native void native_getSequence(long _nativeRef, StringCallback callback);
@@ -233,7 +288,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getAccountNumber(StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getAccountNumber(this.nativeRef, callback);
         }
         private native void native_getAccountNumber(long _nativeRef, StringCallback callback);
@@ -241,7 +299,10 @@ public abstract class CosmosLikeAccount {
         @Override
         public void getWithdrawAddress(StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeAccount)");
+            }
             native_getWithdrawAddress(this.nativeRef, callback);
         }
         private native void native_getWithdrawAddress(long _nativeRef, StringCallback callback);

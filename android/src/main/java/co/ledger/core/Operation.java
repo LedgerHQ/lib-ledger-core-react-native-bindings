@@ -159,6 +159,9 @@ public abstract class Operation {
 
     /** Get the currency this operation is about. */
     public abstract Currency getCurrency();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends Operation
     {
@@ -172,6 +175,7 @@ public abstract class Operation {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -186,7 +190,10 @@ public abstract class Operation {
         @Override
         public String getUid()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getUid(this.nativeRef);
         }
         private native String native_getUid(long _nativeRef);
@@ -194,7 +201,10 @@ public abstract class Operation {
         @Override
         public int getAccountIndex()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getAccountIndex(this.nativeRef);
         }
         private native int native_getAccountIndex(long _nativeRef);
@@ -202,7 +212,10 @@ public abstract class Operation {
         @Override
         public OperationType getOperationType()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getOperationType(this.nativeRef);
         }
         private native OperationType native_getOperationType(long _nativeRef);
@@ -210,7 +223,10 @@ public abstract class Operation {
         @Override
         public Date getDate()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getDate(this.nativeRef);
         }
         private native Date native_getDate(long _nativeRef);
@@ -218,7 +234,10 @@ public abstract class Operation {
         @Override
         public ArrayList<String> getSenders()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getSenders(this.nativeRef);
         }
         private native ArrayList<String> native_getSenders(long _nativeRef);
@@ -226,7 +245,10 @@ public abstract class Operation {
         @Override
         public ArrayList<String> getRecipients()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getRecipients(this.nativeRef);
         }
         private native ArrayList<String> native_getRecipients(long _nativeRef);
@@ -234,7 +256,10 @@ public abstract class Operation {
         @Override
         public ArrayList<String> getSelfRecipients()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getSelfRecipients(this.nativeRef);
         }
         private native ArrayList<String> native_getSelfRecipients(long _nativeRef);
@@ -242,7 +267,10 @@ public abstract class Operation {
         @Override
         public Amount getAmount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getAmount(this.nativeRef);
         }
         private native Amount native_getAmount(long _nativeRef);
@@ -250,7 +278,10 @@ public abstract class Operation {
         @Override
         public Amount getFees()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getFees(this.nativeRef);
         }
         private native Amount native_getFees(long _nativeRef);
@@ -258,7 +289,10 @@ public abstract class Operation {
         @Override
         public Preferences getPreferences()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getPreferences(this.nativeRef);
         }
         private native Preferences native_getPreferences(long _nativeRef);
@@ -266,7 +300,10 @@ public abstract class Operation {
         @Override
         public TrustIndicator getTrust()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getTrust(this.nativeRef);
         }
         private native TrustIndicator native_getTrust(long _nativeRef);
@@ -274,7 +311,10 @@ public abstract class Operation {
         @Override
         public Long getBlockHeight()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getBlockHeight(this.nativeRef);
         }
         private native Long native_getBlockHeight(long _nativeRef);
@@ -282,7 +322,10 @@ public abstract class Operation {
         @Override
         public BitcoinLikeOperation asBitcoinLikeOperation()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_asBitcoinLikeOperation(this.nativeRef);
         }
         private native BitcoinLikeOperation native_asBitcoinLikeOperation(long _nativeRef);
@@ -290,7 +333,10 @@ public abstract class Operation {
         @Override
         public CosmosLikeOperation asCosmosLikeOperation()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_asCosmosLikeOperation(this.nativeRef);
         }
         private native CosmosLikeOperation native_asCosmosLikeOperation(long _nativeRef);
@@ -298,7 +344,10 @@ public abstract class Operation {
         @Override
         public EthereumLikeOperation asEthereumLikeOperation()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_asEthereumLikeOperation(this.nativeRef);
         }
         private native EthereumLikeOperation native_asEthereumLikeOperation(long _nativeRef);
@@ -306,7 +355,10 @@ public abstract class Operation {
         @Override
         public RippleLikeOperation asRippleLikeOperation()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_asRippleLikeOperation(this.nativeRef);
         }
         private native RippleLikeOperation native_asRippleLikeOperation(long _nativeRef);
@@ -314,7 +366,10 @@ public abstract class Operation {
         @Override
         public TezosLikeOperation asTezosLikeOperation()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_asTezosLikeOperation(this.nativeRef);
         }
         private native TezosLikeOperation native_asTezosLikeOperation(long _nativeRef);
@@ -322,7 +377,10 @@ public abstract class Operation {
         @Override
         public StellarLikeOperation asStellarLikeOperation()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_asStellarLikeOperation(this.nativeRef);
         }
         private native StellarLikeOperation native_asStellarLikeOperation(long _nativeRef);
@@ -330,7 +388,10 @@ public abstract class Operation {
         @Override
         public AlgorandOperation asAlgorandOperation()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_asAlgorandOperation(this.nativeRef);
         }
         private native AlgorandOperation native_asAlgorandOperation(long _nativeRef);
@@ -338,7 +399,10 @@ public abstract class Operation {
         @Override
         public boolean isInstanceOfBitcoinLikeOperation()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_isInstanceOfBitcoinLikeOperation(this.nativeRef);
         }
         private native boolean native_isInstanceOfBitcoinLikeOperation(long _nativeRef);
@@ -346,7 +410,10 @@ public abstract class Operation {
         @Override
         public boolean isInstanceOfCosmosLikeOperation()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_isInstanceOfCosmosLikeOperation(this.nativeRef);
         }
         private native boolean native_isInstanceOfCosmosLikeOperation(long _nativeRef);
@@ -354,7 +421,10 @@ public abstract class Operation {
         @Override
         public boolean isInstanceOfEthereumLikeOperation()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_isInstanceOfEthereumLikeOperation(this.nativeRef);
         }
         private native boolean native_isInstanceOfEthereumLikeOperation(long _nativeRef);
@@ -362,7 +432,10 @@ public abstract class Operation {
         @Override
         public boolean isInstanceOfRippleLikeOperation()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_isInstanceOfRippleLikeOperation(this.nativeRef);
         }
         private native boolean native_isInstanceOfRippleLikeOperation(long _nativeRef);
@@ -370,7 +443,10 @@ public abstract class Operation {
         @Override
         public boolean isInstanceOfTezosLikeOperation()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_isInstanceOfTezosLikeOperation(this.nativeRef);
         }
         private native boolean native_isInstanceOfTezosLikeOperation(long _nativeRef);
@@ -378,7 +454,10 @@ public abstract class Operation {
         @Override
         public boolean isInstanceOfStellarLikeOperation()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_isInstanceOfStellarLikeOperation(this.nativeRef);
         }
         private native boolean native_isInstanceOfStellarLikeOperation(long _nativeRef);
@@ -386,7 +465,10 @@ public abstract class Operation {
         @Override
         public boolean isComplete()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_isComplete(this.nativeRef);
         }
         private native boolean native_isComplete(long _nativeRef);
@@ -394,7 +476,10 @@ public abstract class Operation {
         @Override
         public WalletType getWalletType()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getWalletType(this.nativeRef);
         }
         private native WalletType native_getWalletType(long _nativeRef);
@@ -402,7 +487,10 @@ public abstract class Operation {
         @Override
         public Currency getCurrency()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Operation)");
+            }
             return native_getCurrency(this.nativeRef);
         }
         private native Currency native_getCurrency(long _nativeRef);

@@ -25,6 +25,9 @@ public abstract class StellarLikeTransaction {
 
     /** Returns the transaction memo */
     public abstract StellarLikeMemo getMemo();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends StellarLikeTransaction
     {
@@ -38,6 +41,7 @@ public abstract class StellarLikeTransaction {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -52,7 +56,10 @@ public abstract class StellarLikeTransaction {
         @Override
         public byte[] toRawTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeTransaction)");
+            }
             return native_toRawTransaction(this.nativeRef);
         }
         private native byte[] native_toRawTransaction(long _nativeRef);
@@ -60,7 +67,10 @@ public abstract class StellarLikeTransaction {
         @Override
         public byte[] toSignatureBase()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeTransaction)");
+            }
             return native_toSignatureBase(this.nativeRef);
         }
         private native byte[] native_toSignatureBase(long _nativeRef);
@@ -68,7 +78,10 @@ public abstract class StellarLikeTransaction {
         @Override
         public void putSignature(byte[] signature, Address address)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeTransaction)");
+            }
             native_putSignature(this.nativeRef, signature, address);
         }
         private native void native_putSignature(long _nativeRef, byte[] signature, Address address);
@@ -76,7 +89,10 @@ public abstract class StellarLikeTransaction {
         @Override
         public Address getSourceAccount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeTransaction)");
+            }
             return native_getSourceAccount(this.nativeRef);
         }
         private native Address native_getSourceAccount(long _nativeRef);
@@ -84,7 +100,10 @@ public abstract class StellarLikeTransaction {
         @Override
         public BigInt getSourceAccountSequence()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeTransaction)");
+            }
             return native_getSourceAccountSequence(this.nativeRef);
         }
         private native BigInt native_getSourceAccountSequence(long _nativeRef);
@@ -92,7 +111,10 @@ public abstract class StellarLikeTransaction {
         @Override
         public Amount getFee()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeTransaction)");
+            }
             return native_getFee(this.nativeRef);
         }
         private native Amount native_getFee(long _nativeRef);
@@ -100,7 +122,10 @@ public abstract class StellarLikeTransaction {
         @Override
         public StellarLikeMemo getMemo()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeTransaction)");
+            }
             return native_getMemo(this.nativeRef);
         }
         private native StellarLikeMemo native_getMemo(long _nativeRef);

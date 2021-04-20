@@ -3,6 +3,7 @@
 
 package com.ledger.reactnative;
 
+import co.ledger.core.BitcoinLikeDustPolicy;
 import co.ledger.core.BitcoinLikeFeePolicy;
 import co.ledger.core.BitcoinLikeNetworkParameters;
 import com.facebook.react.bridge.Promise;
@@ -125,7 +126,7 @@ public class RCTCoreBitcoinLikeNetworkParameters extends ReactContextBaseJavaMod
     }
 
     @ReactMethod
-    public void init(String Identifier, String P2PKHVersion, String P2SHVersion, String XPUBVersion, int FeePolicy, long DustAmount, String MessagePrefix, boolean UsesTimestampedTransaction, long TimestampDelay, String SigHash, ReadableArray AdditionalBIPs, Promise promise) {
+    public void init(String Identifier, String P2PKHVersion, String P2SHVersion, String XPUBVersion, int FeePolicy, long Dust, int DustPolicy, String MessagePrefix, boolean UsesTimestampedTransaction, long TimestampDelay, String SigHash, ReadableArray AdditionalBIPs, Promise promise) {
         byte [] javaParam_1 = hexStringToByteArray(P2PKHVersion);
 
         byte [] javaParam_2 = hexStringToByteArray(P2SHVersion);
@@ -138,15 +139,21 @@ public class RCTCoreBitcoinLikeNetworkParameters extends ReactContextBaseJavaMod
             return;
         }
         BitcoinLikeFeePolicy javaParam_4 = BitcoinLikeFeePolicy.values()[FeePolicy];
-        byte [] javaParam_9 = hexStringToByteArray(SigHash);
+        if (DustPolicy < 0 || BitcoinLikeDustPolicy.values().length <= DustPolicy)
+        {
+            promise.reject("Enum error", "Failed to get enum BitcoinLikeDustPolicy");
+            return;
+        }
+        BitcoinLikeDustPolicy javaParam_6 = BitcoinLikeDustPolicy.values()[DustPolicy];
+        byte [] javaParam_10 = hexStringToByteArray(SigHash);
 
-        ArrayList<String> javaParam_10 = new ArrayList<String>();
+        ArrayList<String> javaParam_11 = new ArrayList<String>();
         for (int i = 0; i <  AdditionalBIPs.size(); i++)
         {
             String AdditionalBIPs_elem = AdditionalBIPs.getString(i);
-            javaParam_10.add(AdditionalBIPs_elem);
+            javaParam_11.add(AdditionalBIPs_elem);
         }
-        BitcoinLikeNetworkParameters javaResult = new BitcoinLikeNetworkParameters(Identifier, javaParam_1, javaParam_2, javaParam_3, javaParam_4, DustAmount, MessagePrefix, UsesTimestampedTransaction, TimestampDelay, javaParam_9, javaParam_10);
+        BitcoinLikeNetworkParameters javaResult = new BitcoinLikeNetworkParameters(Identifier, javaParam_1, javaParam_2, javaParam_3, javaParam_4, Dust, javaParam_6, MessagePrefix, UsesTimestampedTransaction, TimestampDelay, javaParam_10, javaParam_11);
 
         String uuid = UUID.randomUUID().toString();
         this.javaObjects.put(uuid, javaResult);
@@ -249,20 +256,38 @@ public class RCTCoreBitcoinLikeNetworkParameters extends ReactContextBaseJavaMod
     }
 
     @ReactMethod
-    public void getDustAmount(ReadableMap currentInstance, Promise promise)
+    public void getDust(ReadableMap currentInstance, Promise promise)
     {
         String uid = currentInstance.getString("uid");
         if (uid.length() > 0)
         {
             BitcoinLikeNetworkParameters javaObj = this.javaObjects.get(uid);
-            double result = javaObj.getDustAmount();
+            double result = javaObj.getDust();
             WritableNativeMap resultMap = new WritableNativeMap();
             resultMap.putDouble("value", result);
             promise.resolve(resultMap);
         }
         else
         {
-            promise.reject("Failed to call RCTCoreBitcoinLikeNetworkParameters::getDustAmount", "First parameter of RCTCoreBitcoinLikeNetworkParameters::getDustAmount should be an instance of RCTCoreBitcoinLikeNetworkParameters");
+            promise.reject("Failed to call RCTCoreBitcoinLikeNetworkParameters::getDust", "First parameter of RCTCoreBitcoinLikeNetworkParameters::getDust should be an instance of RCTCoreBitcoinLikeNetworkParameters");
+        }
+    }
+
+    @ReactMethod
+    public void getDustPolicy(ReadableMap currentInstance, Promise promise)
+    {
+        String uid = currentInstance.getString("uid");
+        if (uid.length() > 0)
+        {
+            BitcoinLikeNetworkParameters javaObj = this.javaObjects.get(uid);
+            BitcoinLikeDustPolicy result = javaObj.getDustPolicy();
+            WritableNativeMap resultMap = new WritableNativeMap();
+            resultMap.putInt("value", result.ordinal());
+            promise.resolve(resultMap);
+        }
+        else
+        {
+            promise.reject("Failed to call RCTCoreBitcoinLikeNetworkParameters::getDustPolicy", "First parameter of RCTCoreBitcoinLikeNetworkParameters::getDustPolicy should be an instance of RCTCoreBitcoinLikeNetworkParameters");
         }
     }
 

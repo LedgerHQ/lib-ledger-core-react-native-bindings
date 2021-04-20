@@ -526,6 +526,38 @@ RCT_REMAP_METHOD(getEstimatedSize,getEstimatedSize:(NSDictionary *)currentInstan
 
 }
 
+/** Get the dust amount based on the maximum estimated size of the transaction */
+RCT_REMAP_METHOD(getDustAmount,getDustAmount:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeTransaction::getDustAmount, first argument should be an instance of LGBitcoinLikeTransaction", nil);
+        return;
+    }
+    LGBitcoinLikeTransaction *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeTransaction::getDustAmount, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSInteger objcResult = [currentInstanceObj getDustAmount];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGBitcoinLikeTransaction::getDustAmount", nil);
+        return;
+    }
+
+}
+
 /**
  * Sign all inputs for given transaction. 
  * Build DER encoded signature from RSV data.

@@ -24,6 +24,9 @@ public abstract class CosmosLikeExtendedPublicKey {
 
     /** Get the root path of the xPUB. */
     public abstract String getRootPath();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends CosmosLikeExtendedPublicKey
     {
@@ -37,6 +40,7 @@ public abstract class CosmosLikeExtendedPublicKey {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -51,7 +55,10 @@ public abstract class CosmosLikeExtendedPublicKey {
         @Override
         public CosmosLikeAddress derive(String path)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeExtendedPublicKey)");
+            }
             return native_derive(this.nativeRef, path);
         }
         private native CosmosLikeAddress native_derive(long _nativeRef, String path);
@@ -59,7 +66,10 @@ public abstract class CosmosLikeExtendedPublicKey {
         @Override
         public byte[] derivePublicKey(String path)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeExtendedPublicKey)");
+            }
             return native_derivePublicKey(this.nativeRef, path);
         }
         private native byte[] native_derivePublicKey(long _nativeRef, String path);
@@ -67,7 +77,10 @@ public abstract class CosmosLikeExtendedPublicKey {
         @Override
         public byte[] deriveHash160(String path)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeExtendedPublicKey)");
+            }
             return native_deriveHash160(this.nativeRef, path);
         }
         private native byte[] native_deriveHash160(long _nativeRef, String path);
@@ -75,7 +88,10 @@ public abstract class CosmosLikeExtendedPublicKey {
         @Override
         public String toBech32()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeExtendedPublicKey)");
+            }
             return native_toBech32(this.nativeRef);
         }
         private native String native_toBech32(long _nativeRef);
@@ -83,7 +99,10 @@ public abstract class CosmosLikeExtendedPublicKey {
         @Override
         public String toBase58()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeExtendedPublicKey)");
+            }
             return native_toBase58(this.nativeRef);
         }
         private native String native_toBase58(long _nativeRef);
@@ -91,7 +110,10 @@ public abstract class CosmosLikeExtendedPublicKey {
         @Override
         public String getRootPath()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeExtendedPublicKey)");
+            }
             return native_getRootPath(this.nativeRef);
         }
         private native String native_getRootPath(long _nativeRef);

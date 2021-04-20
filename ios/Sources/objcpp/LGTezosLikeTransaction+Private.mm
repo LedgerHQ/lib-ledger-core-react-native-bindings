@@ -55,6 +55,20 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (nullable LGAmount *)getTransactionFees {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getTransactionFees();
+        return ::djinni_generated::Amount::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nullable LGAmount *)getRevealFees {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getRevealFees();
+        return ::djinni_generated::Amount::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 - (nullable LGTezosLikeAddress *)getReceiver {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->getReceiver();

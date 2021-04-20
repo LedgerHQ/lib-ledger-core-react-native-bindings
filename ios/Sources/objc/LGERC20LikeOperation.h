@@ -54,4 +54,10 @@
  */
 - (nullable NSNumber *)getBlockHeight;
 
+/** Get parent ETH operation uid */
+- (nonnull NSString *)getETHOperationUid;
+
+/** Get ERC20 operation uid */
+- (nonnull NSString *)getOperationUid;
+
 @end

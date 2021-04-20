@@ -63,6 +63,9 @@ public abstract class BitcoinLikeAddress {
      * @return True if the keychain engine is P2WPKH
      */
     public abstract boolean isP2WPKH();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends BitcoinLikeAddress
     {
@@ -76,6 +79,7 @@ public abstract class BitcoinLikeAddress {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -90,7 +94,10 @@ public abstract class BitcoinLikeAddress {
         @Override
         public byte[] getVersion()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAddress)");
+            }
             return native_getVersion(this.nativeRef);
         }
         private native byte[] native_getVersion(long _nativeRef);
@@ -98,7 +105,10 @@ public abstract class BitcoinLikeAddress {
         @Override
         public byte[] getHash160()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAddress)");
+            }
             return native_getHash160(this.nativeRef);
         }
         private native byte[] native_getHash160(long _nativeRef);
@@ -106,7 +116,10 @@ public abstract class BitcoinLikeAddress {
         @Override
         public BitcoinLikeNetworkParameters getNetworkParameters()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAddress)");
+            }
             return native_getNetworkParameters(this.nativeRef);
         }
         private native BitcoinLikeNetworkParameters native_getNetworkParameters(long _nativeRef);
@@ -114,7 +127,10 @@ public abstract class BitcoinLikeAddress {
         @Override
         public String toBase58()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAddress)");
+            }
             return native_toBase58(this.nativeRef);
         }
         private native String native_toBase58(long _nativeRef);
@@ -122,7 +138,10 @@ public abstract class BitcoinLikeAddress {
         @Override
         public String toBech32()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAddress)");
+            }
             return native_toBech32(this.nativeRef);
         }
         private native String native_toBech32(long _nativeRef);
@@ -130,7 +149,10 @@ public abstract class BitcoinLikeAddress {
         @Override
         public boolean isP2SH()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAddress)");
+            }
             return native_isP2SH(this.nativeRef);
         }
         private native boolean native_isP2SH(long _nativeRef);
@@ -138,7 +160,10 @@ public abstract class BitcoinLikeAddress {
         @Override
         public boolean isP2PKH()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAddress)");
+            }
             return native_isP2PKH(this.nativeRef);
         }
         private native boolean native_isP2PKH(long _nativeRef);
@@ -146,7 +171,10 @@ public abstract class BitcoinLikeAddress {
         @Override
         public boolean isP2WSH()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAddress)");
+            }
             return native_isP2WSH(this.nativeRef);
         }
         private native boolean native_isP2WSH(long _nativeRef);
@@ -154,7 +182,10 @@ public abstract class BitcoinLikeAddress {
         @Override
         public boolean isP2WPKH()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAddress)");
+            }
             return native_isP2WPKH(this.nativeRef);
         }
         private native boolean native_isP2WPKH(long _nativeRef);

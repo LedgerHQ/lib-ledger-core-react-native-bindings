@@ -15,6 +15,9 @@ public abstract class QueryFilter {
     public abstract QueryFilter opAndNot(QueryFilter filter);
 
     public abstract QueryFilter opOrNot(QueryFilter filter);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     public static native QueryFilter accountEq(String accountUid);
 
@@ -100,6 +103,7 @@ public abstract class QueryFilter {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -114,7 +118,10 @@ public abstract class QueryFilter {
         @Override
         public QueryFilter opAnd(QueryFilter filter)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (QueryFilter)");
+            }
             return native_opAnd(this.nativeRef, filter);
         }
         private native QueryFilter native_opAnd(long _nativeRef, QueryFilter filter);
@@ -122,7 +129,10 @@ public abstract class QueryFilter {
         @Override
         public QueryFilter opOr(QueryFilter filter)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (QueryFilter)");
+            }
             return native_opOr(this.nativeRef, filter);
         }
         private native QueryFilter native_opOr(long _nativeRef, QueryFilter filter);
@@ -130,7 +140,10 @@ public abstract class QueryFilter {
         @Override
         public QueryFilter opAndNot(QueryFilter filter)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (QueryFilter)");
+            }
             return native_opAndNot(this.nativeRef, filter);
         }
         private native QueryFilter native_opAndNot(long _nativeRef, QueryFilter filter);
@@ -138,7 +151,10 @@ public abstract class QueryFilter {
         @Override
         public QueryFilter opOrNot(QueryFilter filter)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (QueryFilter)");
+            }
             return native_opOrNot(this.nativeRef, filter);
         }
         private native QueryFilter native_opOrNot(long _nativeRef, QueryFilter filter);

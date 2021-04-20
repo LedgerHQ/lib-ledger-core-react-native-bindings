@@ -60,7 +60,8 @@ RCT_REMAP_METHOD(init, initWithIdentifier:(nonnull NSString *)Identifier
                               P2SHVersion:(NSString *)P2SHVersion
                               XPUBVersion:(NSString *)XPUBVersion
                                 FeePolicy:(int)FeePolicy
-                               DustAmount:(int)DustAmount
+                                     Dust:(int)Dust
+                               DustPolicy:(int)DustPolicy
                             MessagePrefix:(nonnull NSString *)MessagePrefix
                UsesTimestampedTransaction:(BOOL)UsesTimestampedTransaction
                            TimestampDelay:(int)TimestampDelay
@@ -72,11 +73,11 @@ RCT_REMAP_METHOD(init, initWithIdentifier:(nonnull NSString *)Identifier
 
     NSData *field_3 = [self hexStringToData:XPUBVersion];
 
-    NSData *field_9 = [self hexStringToData:SigHash];
+    NSData *field_10 = [self hexStringToData:SigHash];
 
 
 
-    LGBitcoinLikeNetworkParameters * finalResult = [[LGBitcoinLikeNetworkParameters alloc] initWithIdentifier:Identifier P2PKHVersion:field_1 P2SHVersion:field_2 XPUBVersion:field_3 FeePolicy:(LGBitcoinLikeFeePolicy)FeePolicy DustAmount:DustAmount MessagePrefix:MessagePrefix UsesTimestampedTransaction:UsesTimestampedTransaction TimestampDelay:TimestampDelay SigHash:field_9 AdditionalBIPs:AdditionalBIPs];
+    LGBitcoinLikeNetworkParameters * finalResult = [[LGBitcoinLikeNetworkParameters alloc] initWithIdentifier:Identifier P2PKHVersion:field_1 P2SHVersion:field_2 XPUBVersion:field_3 FeePolicy:(LGBitcoinLikeFeePolicy)FeePolicy Dust:Dust DustPolicy:(LGBitcoinLikeDustPolicy)DustPolicy MessagePrefix:MessagePrefix UsesTimestampedTransaction:UsesTimestampedTransaction TimestampDelay:TimestampDelay SigHash:field_10 AdditionalBIPs:AdditionalBIPs];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGBitcoinLikeNetworkParameters *rctImpl = (RCTCoreLGBitcoinLikeNetworkParameters *)[self.bridge moduleForName:@"CoreLGBitcoinLikeNetworkParameters"];
     NSArray *finalResultArray = [[NSArray alloc] initWithObjects:finalResult, uuid, nil];
@@ -126,10 +127,17 @@ RCT_REMAP_METHOD(getFeePolicy, getFeePolicy:(NSDictionary *)currentInstance with
     resolve(result);
 }
 
-RCT_REMAP_METHOD(getDustAmount, getDustAmount:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
+RCT_REMAP_METHOD(getDust, getDust:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
 {
     LGBitcoinLikeNetworkParameters *objcImpl = (LGBitcoinLikeNetworkParameters *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
-    NSDictionary *result = @{@"value" : @((int)objcImpl.DustAmount)};
+    NSDictionary *result = @{@"value" : @((int)objcImpl.Dust)};
+    resolve(result);
+}
+
+RCT_REMAP_METHOD(getDustPolicy, getDustPolicy:(NSDictionary *)currentInstance withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)rejecter)
+{
+    LGBitcoinLikeNetworkParameters *objcImpl = (LGBitcoinLikeNetworkParameters *)[self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    NSDictionary *result = @{@"value" : @((int)objcImpl.DustPolicy)};
     resolve(result);
 }
 

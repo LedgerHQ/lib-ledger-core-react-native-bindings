@@ -9,6 +9,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /** ERC20-like accounts class. */
 public abstract class ERC20LikeAccount {
+    /**
+     * Key of the ERC20LikeAccount UID in the new erc20 operation event payload.
+     * The value is stored in a string.
+     */
+    public static final String EV_NEW_OP_ERC20_ACCOUNT_UID = "EV_NEW_OP_ERC20_ACCOUNT_UID";
+
+    /** Get uid */
+    public abstract String getUid();
+
     /** Get an ERC20 token. */
     public abstract ERC20Token getToken();
 
@@ -27,10 +36,22 @@ public abstract class ERC20LikeAccount {
     /** Get the list of operations performed on this ERC20 account. */
     public abstract ArrayList<ERC20LikeOperation> getOperations();
 
+    /** Get ERC20 operation by uid */
+    public abstract void getOperation(String uid, ERC20LikeOperationCallback callback);
+
+    /** Get all ERC20 operations */
+    public abstract void getAllOperations(int from, int to, boolean ascending, ERC20LikeOperationListCallback callback);
+
+    /** Get ERC20 operations from a given block height (included), it also returns mempool operations */
+    public abstract void getOperationsFromBlockHeight(int from, int to, long fromBlockHeight, ERC20LikeOperationListCallback callback);
+
     /** Retrieve raw data concerning a transaction of a given amount to a given address. */
     public abstract void getTransferToAddressData(BigInt amount, String address, BinaryCallback data);
 
     public abstract OperationQuery queryOperations();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends ERC20LikeAccount
     {
@@ -44,6 +65,7 @@ public abstract class ERC20LikeAccount {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -56,9 +78,23 @@ public abstract class ERC20LikeAccount {
         }
 
         @Override
+        public String getUid()
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
+            }
+            return native_getUid(this.nativeRef);
+        }
+        private native String native_getUid(long _nativeRef);
+
+        @Override
         public ERC20Token getToken()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
+            }
             return native_getToken(this.nativeRef);
         }
         private native ERC20Token native_getToken(long _nativeRef);
@@ -66,7 +102,10 @@ public abstract class ERC20LikeAccount {
         @Override
         public String getAddress()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
+            }
             return native_getAddress(this.nativeRef);
         }
         private native String native_getAddress(long _nativeRef);
@@ -74,7 +113,10 @@ public abstract class ERC20LikeAccount {
         @Override
         public void getBalance(BigIntCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
+            }
             native_getBalance(this.nativeRef, callback);
         }
         private native void native_getBalance(long _nativeRef, BigIntCallback callback);
@@ -82,7 +124,10 @@ public abstract class ERC20LikeAccount {
         @Override
         public ArrayList<BigInt> getBalanceHistoryFor(Date start, Date end, TimePeriod period)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
+            }
             return native_getBalanceHistoryFor(this.nativeRef, start, end, period);
         }
         private native ArrayList<BigInt> native_getBalanceHistoryFor(long _nativeRef, Date start, Date end, TimePeriod period);
@@ -90,15 +135,54 @@ public abstract class ERC20LikeAccount {
         @Override
         public ArrayList<ERC20LikeOperation> getOperations()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
+            }
             return native_getOperations(this.nativeRef);
         }
         private native ArrayList<ERC20LikeOperation> native_getOperations(long _nativeRef);
 
         @Override
+        public void getOperation(String uid, ERC20LikeOperationCallback callback)
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
+            }
+            native_getOperation(this.nativeRef, uid, callback);
+        }
+        private native void native_getOperation(long _nativeRef, String uid, ERC20LikeOperationCallback callback);
+
+        @Override
+        public void getAllOperations(int from, int to, boolean ascending, ERC20LikeOperationListCallback callback)
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
+            }
+            native_getAllOperations(this.nativeRef, from, to, ascending, callback);
+        }
+        private native void native_getAllOperations(long _nativeRef, int from, int to, boolean ascending, ERC20LikeOperationListCallback callback);
+
+        @Override
+        public void getOperationsFromBlockHeight(int from, int to, long fromBlockHeight, ERC20LikeOperationListCallback callback)
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
+            }
+            native_getOperationsFromBlockHeight(this.nativeRef, from, to, fromBlockHeight, callback);
+        }
+        private native void native_getOperationsFromBlockHeight(long _nativeRef, int from, int to, long fromBlockHeight, ERC20LikeOperationListCallback callback);
+
+        @Override
         public void getTransferToAddressData(BigInt amount, String address, BinaryCallback data)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
+            }
             native_getTransferToAddressData(this.nativeRef, amount, address, data);
         }
         private native void native_getTransferToAddressData(long _nativeRef, BigInt amount, String address, BinaryCallback data);
@@ -106,7 +190,10 @@ public abstract class ERC20LikeAccount {
         @Override
         public OperationQuery queryOperations()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
+            }
             return native_queryOperations(this.nativeRef);
         }
         private native OperationQuery native_queryOperations(long _nativeRef);

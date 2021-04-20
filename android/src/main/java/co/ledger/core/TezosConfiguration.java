@@ -6,11 +6,20 @@ package co.ledger.core;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class TezosConfiguration {
+    public static final String BCD_API = "BCD_API";
+
     public static final String TEZOS_XPUB_CURVE = "TEZOS_XPUB_CURVE";
 
     public static final String TEZOS_PROTOCOL_UPDATE = "TEZOS_PROTOCOL_UPDATE";
 
     public static final String TEZOS_NODE = "TEZOS_NODE";
+
+    public static final String TEZOS_COUNTER_STRATEGY = "TEZOS_COUNTER_STRATEGY";
+
+    public static final String TEZOS_OPTIMISTIC_COUNTER_TIMEOUT = "TEZOS_OPTIMISTIC_COUNTER_TIMEOUT";
+
+    /** Release the underlying native object */
+    public abstract void destroy();
 
 
     private static final class CppProxy extends TezosConfiguration
@@ -25,6 +34,7 @@ public abstract class TezosConfiguration {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

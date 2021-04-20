@@ -108,6 +108,41 @@ RCT_REMAP_METHOD(getPoolSize,getPoolSize:(NSDictionary *)currentInstance WithRes
     }
 
 }
+
+/**
+ * Get the maximum number of concurrent readonly connection on a single database.
+ * @return the maximum number of concurrent readonly connection that the engine is able to open on a single database.
+ */
+RCT_REMAP_METHOD(getReadonlyPoolSize,getReadonlyPoolSize:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGDatabaseEngine::getReadonlyPoolSize, first argument should be an instance of LGDatabaseEngineImpl", nil);
+        return;
+    }
+    LGDatabaseEngineImpl *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGDatabaseEngineImpl::getReadonlyPoolSize, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    NSInteger objcResult = [currentInstanceObj getReadonlyPoolSize];
+    NSDictionary *result = @{@"value" : @(objcResult)};
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGDatabaseEngineImpl::getReadonlyPoolSize", nil);
+        return;
+    }
+
+}
 RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     LGDatabaseEngineImpl *objcResult = [[LGDatabaseEngineImpl alloc] init];
     NSString *uuid = [[NSUUID UUID] UUIDString];

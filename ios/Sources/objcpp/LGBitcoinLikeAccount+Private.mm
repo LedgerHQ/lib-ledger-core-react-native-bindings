@@ -8,8 +8,10 @@
 #import "DJIMarshal+Private.h"
 #import "LGAddress+Private.h"
 #import "LGAddressListCallback+Private.h"
+#import "LGAmountCallback+Private.h"
 #import "LGBigIntListCallback+Private.h"
 #import "LGBitcoinLikeOutputListCallback+Private.h"
+#import "LGBitcoinLikePickingStrategy+Private.h"
 #import "LGBitcoinLikeTransaction+Private.h"
 #import "LGBitcoinLikeTransactionBuilder+Private.h"
 #import "LGI32Callback+Private.h"
@@ -97,6 +99,16 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->getAllAddresses();
         return ::djinni::List<::djinni_generated::Address>::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)getMaxSpendable:(LGBitcoinLikePickingStrategy)strategy
+               maxUtxos:(nullable NSNumber *)maxUtxos
+               callback:(nullable id<LGAmountCallback>)callback {
+    try {
+        _cppRefHandle.get()->getMaxSpendable(::djinni::Enum<::ledger::core::api::BitcoinLikePickingStrategy, LGBitcoinLikePickingStrategy>::toCpp(strategy),
+                                             ::djinni::Optional<std::experimental::optional, ::djinni::I32>::toCpp(maxUtxos),
+                                             ::djinni_generated::AmountCallback::toCpp(callback));
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

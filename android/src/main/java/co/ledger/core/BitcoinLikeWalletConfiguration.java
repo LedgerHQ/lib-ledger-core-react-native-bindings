@@ -31,6 +31,9 @@ public abstract class BitcoinLikeWalletConfiguration {
     /** String synchronizer by default. */
     public static final String SYNCHRONIZER_DEFAULT = "default";
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends BitcoinLikeWalletConfiguration
     {
@@ -44,6 +47,7 @@ public abstract class BitcoinLikeWalletConfiguration {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

@@ -70,10 +70,12 @@
  * @param strategy The strategy to adopt in order to select which input to use in the transaction.
  * @param sequence The sequence value serialized at the end of the raw transaction. If you don't know what to put here
  * just use 0xFFFFFF
+ * @param maxUtxo The maximum number of utxos to pick (It applies only for HIGHEST_FIRST_LIMIT_UTXO and LIMIT_UTXO)
  * @return A reference on the same builder in order to chain calls.
  */
 - (nullable LGBitcoinLikeTransactionBuilder *)pickInputs:(LGBitcoinLikePickingStrategy)strategy
-                                                sequence:(int32_t)sequence;
+                                                sequence:(int32_t)sequence
+                                                 maxUtxo:(nullable NSNumber *)maxUtxo;
 
 /**
  * Send funds to the given address. This method can be called multiple times to send to multiple addresses.

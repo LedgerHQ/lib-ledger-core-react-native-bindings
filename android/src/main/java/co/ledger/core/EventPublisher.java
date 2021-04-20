@@ -31,6 +31,9 @@ public abstract class EventPublisher {
      * @param bus, EventBus object, through which we want to broadcast EventPublisher's event to EventPublisher's receiver
      */
     public abstract void relay(EventBus bus);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /**
      * Create a new instance of EventPublisher class.
@@ -50,6 +53,7 @@ public abstract class EventPublisher {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -64,7 +68,10 @@ public abstract class EventPublisher {
         @Override
         public EventBus getEventBus()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EventPublisher)");
+            }
             return native_getEventBus(this.nativeRef);
         }
         private native EventBus native_getEventBus(long _nativeRef);
@@ -72,7 +79,10 @@ public abstract class EventPublisher {
         @Override
         public void post(Event event)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EventPublisher)");
+            }
             native_post(this.nativeRef, event);
         }
         private native void native_post(long _nativeRef, Event event);
@@ -80,7 +90,10 @@ public abstract class EventPublisher {
         @Override
         public void postSticky(Event event, int tag)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EventPublisher)");
+            }
             native_postSticky(this.nativeRef, event, tag);
         }
         private native void native_postSticky(long _nativeRef, Event event, int tag);
@@ -88,7 +101,10 @@ public abstract class EventPublisher {
         @Override
         public void relay(EventBus bus)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EventPublisher)");
+            }
             native_relay(this.nativeRef, bus);
         }
         private native void native_relay(long _nativeRef, EventBus bus);

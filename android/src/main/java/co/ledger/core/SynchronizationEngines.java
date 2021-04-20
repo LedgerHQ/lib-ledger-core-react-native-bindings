@@ -10,6 +10,9 @@ public abstract class SynchronizationEngines {
     /** Synchronize via blockchain explorers. */
     public static final String BLOCKCHAIN_EXPLORER_SYNCHRONIZATION = "BLOCKCHAIN_EXPLORER_SYNCHRONIZATION";
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends SynchronizationEngines
     {
@@ -23,6 +26,7 @@ public abstract class SynchronizationEngines {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

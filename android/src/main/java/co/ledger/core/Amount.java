@@ -55,6 +55,9 @@ public abstract class Amount {
 
     /** Format an amount with a locale and some formatting rules. */
     public abstract String format(Locale locale, FormatRules rules);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /** Transform an hexadecimal string into an amount (expressed in the given currency). */
     public static native Amount fromHex(Currency currency, String hex);
@@ -74,6 +77,7 @@ public abstract class Amount {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -88,7 +92,10 @@ public abstract class Amount {
         @Override
         public BigInt toBigInt()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Amount)");
+            }
             return native_toBigInt(this.nativeRef);
         }
         private native BigInt native_toBigInt(long _nativeRef);
@@ -96,7 +103,10 @@ public abstract class Amount {
         @Override
         public Currency getCurrency()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Amount)");
+            }
             return native_getCurrency(this.nativeRef);
         }
         private native Currency native_getCurrency(long _nativeRef);
@@ -104,7 +114,10 @@ public abstract class Amount {
         @Override
         public CurrencyUnit getUnit()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Amount)");
+            }
             return native_getUnit(this.nativeRef);
         }
         private native CurrencyUnit native_getUnit(long _nativeRef);
@@ -112,7 +125,10 @@ public abstract class Amount {
         @Override
         public Amount toUnit(CurrencyUnit unit)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Amount)");
+            }
             return native_toUnit(this.nativeRef, unit);
         }
         private native Amount native_toUnit(long _nativeRef, CurrencyUnit unit);
@@ -120,7 +136,10 @@ public abstract class Amount {
         @Override
         public Amount toMagnitude(int magnitude)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Amount)");
+            }
             return native_toMagnitude(this.nativeRef, magnitude);
         }
         private native Amount native_toMagnitude(long _nativeRef, int magnitude);
@@ -128,7 +147,10 @@ public abstract class Amount {
         @Override
         public String toString()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Amount)");
+            }
             return native_toString(this.nativeRef);
         }
         private native String native_toString(long _nativeRef);
@@ -136,7 +158,10 @@ public abstract class Amount {
         @Override
         public long toLong()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Amount)");
+            }
             return native_toLong(this.nativeRef);
         }
         private native long native_toLong(long _nativeRef);
@@ -144,7 +169,10 @@ public abstract class Amount {
         @Override
         public double toDouble()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Amount)");
+            }
             return native_toDouble(this.nativeRef);
         }
         private native double native_toDouble(long _nativeRef);
@@ -152,7 +180,10 @@ public abstract class Amount {
         @Override
         public String format(Locale locale, FormatRules rules)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Amount)");
+            }
             return native_format(this.nativeRef, locale, rules);
         }
         private native String native_format(long _nativeRef, Locale locale, FormatRules rules);

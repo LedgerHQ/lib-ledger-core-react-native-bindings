@@ -33,8 +33,23 @@ public abstract class TezosLikeAccount {
     /** Get fees from network */
     public abstract void getFees(BigIntCallback callback);
 
+    /** Get gas price from network */
+    public abstract void getGasPrice(BigIntCallback callback);
+
     /** Get originated accounts by current account */
     public abstract ArrayList<TezosLikeOriginatedAccount> getOriginatedAccounts();
+
+    /** Get current delegate */
+    public abstract void getCurrentDelegate(StringCallback callback);
+
+    /**
+     * Get the balance of the account for a given token
+     * @param tokenAddress Address of the contract
+     */
+    public abstract void getTokenBalance(String tokenAddress, BigIntCallback callback);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends TezosLikeAccount
     {
@@ -48,6 +63,7 @@ public abstract class TezosLikeAccount {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -62,7 +78,10 @@ public abstract class TezosLikeAccount {
         @Override
         public void broadcastRawTransaction(byte[] transaction, StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAccount)");
+            }
             native_broadcastRawTransaction(this.nativeRef, transaction, callback);
         }
         private native void native_broadcastRawTransaction(long _nativeRef, byte[] transaction, StringCallback callback);
@@ -70,7 +89,10 @@ public abstract class TezosLikeAccount {
         @Override
         public void broadcastTransaction(TezosLikeTransaction transaction, StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAccount)");
+            }
             native_broadcastTransaction(this.nativeRef, transaction, callback);
         }
         private native void native_broadcastTransaction(long _nativeRef, TezosLikeTransaction transaction, StringCallback callback);
@@ -78,7 +100,10 @@ public abstract class TezosLikeAccount {
         @Override
         public TezosLikeTransactionBuilder buildTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAccount)");
+            }
             return native_buildTransaction(this.nativeRef);
         }
         private native TezosLikeTransactionBuilder native_buildTransaction(long _nativeRef);
@@ -86,7 +111,10 @@ public abstract class TezosLikeAccount {
         @Override
         public void getStorage(String address, BigIntCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAccount)");
+            }
             native_getStorage(this.nativeRef, address, callback);
         }
         private native void native_getStorage(long _nativeRef, String address, BigIntCallback callback);
@@ -94,7 +122,10 @@ public abstract class TezosLikeAccount {
         @Override
         public void getEstimatedGasLimit(String address, BigIntCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAccount)");
+            }
             native_getEstimatedGasLimit(this.nativeRef, address, callback);
         }
         private native void native_getEstimatedGasLimit(long _nativeRef, String address, BigIntCallback callback);
@@ -102,17 +133,56 @@ public abstract class TezosLikeAccount {
         @Override
         public void getFees(BigIntCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAccount)");
+            }
             native_getFees(this.nativeRef, callback);
         }
         private native void native_getFees(long _nativeRef, BigIntCallback callback);
 
         @Override
+        public void getGasPrice(BigIntCallback callback)
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAccount)");
+            }
+            native_getGasPrice(this.nativeRef, callback);
+        }
+        private native void native_getGasPrice(long _nativeRef, BigIntCallback callback);
+
+        @Override
         public ArrayList<TezosLikeOriginatedAccount> getOriginatedAccounts()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAccount)");
+            }
             return native_getOriginatedAccounts(this.nativeRef);
         }
         private native ArrayList<TezosLikeOriginatedAccount> native_getOriginatedAccounts(long _nativeRef);
+
+        @Override
+        public void getCurrentDelegate(StringCallback callback)
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAccount)");
+            }
+            native_getCurrentDelegate(this.nativeRef, callback);
+        }
+        private native void native_getCurrentDelegate(long _nativeRef, StringCallback callback);
+
+        @Override
+        public void getTokenBalance(String tokenAddress, BigIntCallback callback)
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (TezosLikeAccount)");
+            }
+            native_getTokenBalance(this.nativeRef, tokenAddress, callback);
+        }
+        private native void native_getTokenBalance(long _nativeRef, String tokenAddress, BigIntCallback callback);
     }
 }

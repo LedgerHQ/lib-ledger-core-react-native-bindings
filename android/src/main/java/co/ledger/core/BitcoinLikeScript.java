@@ -15,6 +15,9 @@ public abstract class BitcoinLikeScript {
 
     /** Turn the script into a string representation. */
     public abstract String toString();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /** Parse data into a script. */
     public static native BitcoinLikeScript parse(byte[] data);
@@ -31,6 +34,7 @@ public abstract class BitcoinLikeScript {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -45,7 +49,10 @@ public abstract class BitcoinLikeScript {
         @Override
         public BitcoinLikeScriptChunk head()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeScript)");
+            }
             return native_head(this.nativeRef);
         }
         private native BitcoinLikeScriptChunk native_head(long _nativeRef);
@@ -53,7 +60,10 @@ public abstract class BitcoinLikeScript {
         @Override
         public String toString()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeScript)");
+            }
             return native_toString(this.nativeRef);
         }
         private native String native_toString(long _nativeRef);

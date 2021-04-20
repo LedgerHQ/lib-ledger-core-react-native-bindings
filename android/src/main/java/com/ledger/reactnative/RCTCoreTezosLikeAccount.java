@@ -250,6 +250,23 @@ public class RCTCoreTezosLikeAccount extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Get gas price from network */
+    @ReactMethod
+    public void getGasPrice(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            TezosLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreBigIntCallback javaParam_0 = RCTCoreBigIntCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getGasPrice(javaParam_0);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
     /** Get originated accounts by current account */
     @ReactMethod
     public void getOriginatedAccounts(ReadableMap currentInstance, Promise promise) {
@@ -274,6 +291,43 @@ public class RCTCoreTezosLikeAccount extends ReactContextBaseJavaModule {
             }
 
             promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** Get current delegate */
+    @ReactMethod
+    public void getCurrentDelegate(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            TezosLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreStringCallback javaParam_0 = RCTCoreStringCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getCurrentDelegate(javaParam_0);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
+     * Get the balance of the account for a given token
+     * @param tokenAddress Address of the contract
+     */
+    @ReactMethod
+    public void getTokenBalance(ReadableMap currentInstance, String tokenAddress, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            TezosLikeAccount currentInstanceObj = this.javaObjects.get(sUid);
+
+            RCTCoreBigIntCallback javaParam_1 = RCTCoreBigIntCallback.initWithPromise(promise, this.reactContext);
+            currentInstanceObj.getTokenBalance(tokenAddress, javaParam_1);
         }
         catch(Exception e)
         {

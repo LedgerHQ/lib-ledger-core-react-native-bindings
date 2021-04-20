@@ -38,6 +38,9 @@ public abstract class HttpRequest {
      * @param error, optional Error structure, error returned in case of request failure
      */
     public abstract void complete(HttpUrlConnection response, Error error);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends HttpRequest
     {
@@ -51,6 +54,7 @@ public abstract class HttpRequest {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -65,7 +69,10 @@ public abstract class HttpRequest {
         @Override
         public HttpMethod getMethod()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (HttpRequest)");
+            }
             return native_getMethod(this.nativeRef);
         }
         private native HttpMethod native_getMethod(long _nativeRef);
@@ -73,7 +80,10 @@ public abstract class HttpRequest {
         @Override
         public HashMap<String, String> getHeaders()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (HttpRequest)");
+            }
             return native_getHeaders(this.nativeRef);
         }
         private native HashMap<String, String> native_getHeaders(long _nativeRef);
@@ -81,7 +91,10 @@ public abstract class HttpRequest {
         @Override
         public byte[] getBody()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (HttpRequest)");
+            }
             return native_getBody(this.nativeRef);
         }
         private native byte[] native_getBody(long _nativeRef);
@@ -89,7 +102,10 @@ public abstract class HttpRequest {
         @Override
         public String getUrl()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (HttpRequest)");
+            }
             return native_getUrl(this.nativeRef);
         }
         private native String native_getUrl(long _nativeRef);
@@ -97,7 +113,10 @@ public abstract class HttpRequest {
         @Override
         public void complete(HttpUrlConnection response, Error error)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (HttpRequest)");
+            }
             native_complete(this.nativeRef, response, error);
         }
         private native void native_complete(long _nativeRef, HttpUrlConnection response, Error error);

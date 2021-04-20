@@ -9,10 +9,20 @@
 @class LGOperationQuery;
 @protocol LGBigIntCallback;
 @protocol LGBinaryCallback;
+@protocol LGERC20LikeOperationCallback;
+@protocol LGERC20LikeOperationListCallback;
 
+/**
+ * Key of the ERC20LikeAccount UID in the new erc20 operation event payload.
+ * The value is stored in a string.
+ */
+extern NSString * __nonnull const LGERC20LikeAccountEVNEWOPERC20ACCOUNTUID;
 
 /** ERC20-like accounts class. */
 @interface LGERC20LikeAccount : NSObject
+
+/** Get uid */
+- (nonnull NSString *)getUid;
 
 /** Get an ERC20 token. */
 - (nonnull LGERC20Token *)getToken;
@@ -33,6 +43,22 @@
 
 /** Get the list of operations performed on this ERC20 account. */
 - (nonnull NSArray<LGERC20LikeOperation *> *)getOperations;
+
+/** Get ERC20 operation by uid */
+- (void)getOperation:(nonnull NSString *)uid
+            callback:(nullable id<LGERC20LikeOperationCallback>)callback;
+
+/** Get all ERC20 operations */
+- (void)getAllOperations:(int32_t)from
+                      to:(int32_t)to
+               ascending:(BOOL)ascending
+                callback:(nullable id<LGERC20LikeOperationListCallback>)callback;
+
+/** Get ERC20 operations from a given block height (included), it also returns mempool operations */
+- (void)getOperationsFromBlockHeight:(int32_t)from
+                                  to:(int32_t)to
+                     fromBlockHeight:(int64_t)fromBlockHeight
+                            callback:(nullable id<LGERC20LikeOperationListCallback>)callback;
 
 /** Retrieve raw data concerning a transaction of a given amount to a given address. */
 - (void)getTransferToAddressData:(nullable LGBigInt *)amount

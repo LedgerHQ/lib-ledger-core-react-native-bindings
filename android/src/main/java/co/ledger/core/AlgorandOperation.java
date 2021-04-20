@@ -13,6 +13,9 @@ public abstract class AlgorandOperation {
     public abstract String getRewards();
 
     public abstract String getAssetAmount();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends AlgorandOperation
     {
@@ -26,6 +29,7 @@ public abstract class AlgorandOperation {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -40,7 +44,10 @@ public abstract class AlgorandOperation {
         @Override
         public AlgorandTransaction getTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandOperation)");
+            }
             return native_getTransaction(this.nativeRef);
         }
         private native AlgorandTransaction native_getTransaction(long _nativeRef);
@@ -48,7 +55,10 @@ public abstract class AlgorandOperation {
         @Override
         public AlgorandOperationType getAlgorandOperationType()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandOperation)");
+            }
             return native_getAlgorandOperationType(this.nativeRef);
         }
         private native AlgorandOperationType native_getAlgorandOperationType(long _nativeRef);
@@ -56,7 +66,10 @@ public abstract class AlgorandOperation {
         @Override
         public String getRewards()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandOperation)");
+            }
             return native_getRewards(this.nativeRef);
         }
         private native String native_getRewards(long _nativeRef);
@@ -64,7 +77,10 @@ public abstract class AlgorandOperation {
         @Override
         public String getAssetAmount()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandOperation)");
+            }
             return native_getAssetAmount(this.nativeRef);
         }
         private native String native_getAssetAmount(long _nativeRef);

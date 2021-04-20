@@ -33,6 +33,9 @@ public abstract class DerivationPath {
 
     /** Return an array where which item is a child num of the path. */
     public abstract ArrayList<Integer> toArray();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     public static native DerivationPath parse(String path);
 
@@ -48,6 +51,7 @@ public abstract class DerivationPath {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -62,7 +66,10 @@ public abstract class DerivationPath {
         @Override
         public int getDepth()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DerivationPath)");
+            }
             return native_getDepth(this.nativeRef);
         }
         private native int native_getDepth(long _nativeRef);
@@ -70,7 +77,10 @@ public abstract class DerivationPath {
         @Override
         public int getChildNum(int index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DerivationPath)");
+            }
             return native_getChildNum(this.nativeRef, index);
         }
         private native int native_getChildNum(long _nativeRef, int index);
@@ -78,7 +88,10 @@ public abstract class DerivationPath {
         @Override
         public int getUnhardenedChildNum(int index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DerivationPath)");
+            }
             return native_getUnhardenedChildNum(this.nativeRef, index);
         }
         private native int native_getUnhardenedChildNum(long _nativeRef, int index);
@@ -86,7 +99,10 @@ public abstract class DerivationPath {
         @Override
         public boolean isHardened(int index)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DerivationPath)");
+            }
             return native_isHardened(this.nativeRef, index);
         }
         private native boolean native_isHardened(long _nativeRef, int index);
@@ -94,7 +110,10 @@ public abstract class DerivationPath {
         @Override
         public String toString()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DerivationPath)");
+            }
             return native_toString(this.nativeRef);
         }
         private native String native_toString(long _nativeRef);
@@ -102,7 +121,10 @@ public abstract class DerivationPath {
         @Override
         public DerivationPath getParent()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DerivationPath)");
+            }
             return native_getParent(this.nativeRef);
         }
         private native DerivationPath native_getParent(long _nativeRef);
@@ -110,7 +132,10 @@ public abstract class DerivationPath {
         @Override
         public ArrayList<Integer> toArray()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DerivationPath)");
+            }
             return native_toArray(this.nativeRef);
         }
         private native ArrayList<Integer> native_toArray(long _nativeRef);

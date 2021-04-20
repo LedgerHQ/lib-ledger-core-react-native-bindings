@@ -294,4 +294,28 @@ RCT_REMAP_METHOD(getAllAddresses,getAllAddresses:(NSDictionary *)currentInstance
     }
 
 }
+
+/** get max spendable balance for a given strategy */
+RCT_REMAP_METHOD(getMaxSpendable,getMaxSpendable:(NSDictionary *)currentInstance withParams:(int)strategy
+                                                                                   maxUtxos:(nullable NSNumber *)maxUtxos withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGBitcoinLikeAccount::getMaxSpendable, first argument should be an instance of LGBitcoinLikeAccount", nil);
+        return;
+    }
+    LGBitcoinLikeAccount *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGBitcoinLikeAccount::getMaxSpendable, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGAmountCallback *objcParam_2 = [[RCTCoreLGAmountCallback alloc] initWithResolver:resolve rejecter:reject andBridge:self.bridge];
+    [currentInstanceObj getMaxSpendable:(LGBitcoinLikePickingStrategy)strategy maxUtxos:maxUtxos callback:objcParam_2];
+
+}
 @end

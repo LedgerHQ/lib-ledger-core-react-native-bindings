@@ -12,6 +12,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class Runnable {
     /**Trigger runnable execution */
     public abstract void run();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends Runnable
     {
@@ -25,6 +28,7 @@ public abstract class Runnable {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -39,7 +43,10 @@ public abstract class Runnable {
         @Override
         public void run()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Runnable)");
+            }
             native_run(this.nativeRef);
         }
         private native void native_run(long _nativeRef);

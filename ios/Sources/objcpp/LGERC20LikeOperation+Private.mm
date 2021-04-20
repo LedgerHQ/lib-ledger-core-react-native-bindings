@@ -123,6 +123,20 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
+- (nonnull NSString *)getETHOperationUid {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getETHOperationUid();
+        return ::djinni::String::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nonnull NSString *)getOperationUid {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getOperationUid();
+        return ::djinni::String::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 namespace djinni_generated {
 
 auto ERC20LikeOperation::toCpp(ObjcType objc) -> CppType

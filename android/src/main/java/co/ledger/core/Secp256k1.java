@@ -38,6 +38,9 @@ public abstract class Secp256k1 {
      * @return true if message was signed with signature and public key (both issued from same private key)
      */
     public abstract boolean verify(byte[] data, byte[] signature, byte[] pubKey);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /**
      * Create an instance of Secp256k1.
@@ -59,6 +62,7 @@ public abstract class Secp256k1 {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -73,7 +77,10 @@ public abstract class Secp256k1 {
         @Override
         public byte[] computePubKey(byte[] privKey, boolean compress)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Secp256k1)");
+            }
             return native_computePubKey(this.nativeRef, privKey, compress);
         }
         private native byte[] native_computePubKey(long _nativeRef, byte[] privKey, boolean compress);
@@ -81,7 +88,10 @@ public abstract class Secp256k1 {
         @Override
         public byte[] computeUncompressedPubKey(byte[] pubKey)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Secp256k1)");
+            }
             return native_computeUncompressedPubKey(this.nativeRef, pubKey);
         }
         private native byte[] native_computeUncompressedPubKey(long _nativeRef, byte[] pubKey);
@@ -89,7 +99,10 @@ public abstract class Secp256k1 {
         @Override
         public byte[] sign(byte[] privKey, byte[] data)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Secp256k1)");
+            }
             return native_sign(this.nativeRef, privKey, data);
         }
         private native byte[] native_sign(long _nativeRef, byte[] privKey, byte[] data);
@@ -97,7 +110,10 @@ public abstract class Secp256k1 {
         @Override
         public boolean verify(byte[] data, byte[] signature, byte[] pubKey)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Secp256k1)");
+            }
             return native_verify(this.nativeRef, data, signature, pubKey);
         }
         private native boolean native_verify(long _nativeRef, byte[] data, byte[] signature, byte[] pubKey);

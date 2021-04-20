@@ -46,6 +46,12 @@ public abstract class BitcoinLikeAccount {
     /** get all contained adresses. */
     public abstract ArrayList<Address> getAllAddresses();
 
+    /** get max spendable balance for a given strategy */
+    public abstract void getMaxSpendable(BitcoinLikePickingStrategy strategy, Integer maxUtxos, AmountCallback callback);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
+
     private static final class CppProxy extends BitcoinLikeAccount
     {
         private final long nativeRef;
@@ -58,6 +64,7 @@ public abstract class BitcoinLikeAccount {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -72,7 +79,10 @@ public abstract class BitcoinLikeAccount {
         @Override
         public void getUTXO(int from, int to, BitcoinLikeOutputListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAccount)");
+            }
             native_getUTXO(this.nativeRef, from, to, callback);
         }
         private native void native_getUTXO(long _nativeRef, int from, int to, BitcoinLikeOutputListCallback callback);
@@ -80,7 +90,10 @@ public abstract class BitcoinLikeAccount {
         @Override
         public void getUTXOCount(I32Callback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAccount)");
+            }
             native_getUTXOCount(this.nativeRef, callback);
         }
         private native void native_getUTXOCount(long _nativeRef, I32Callback callback);
@@ -88,7 +101,10 @@ public abstract class BitcoinLikeAccount {
         @Override
         public void broadcastRawTransaction(byte[] transaction, StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAccount)");
+            }
             native_broadcastRawTransaction(this.nativeRef, transaction, callback);
         }
         private native void native_broadcastRawTransaction(long _nativeRef, byte[] transaction, StringCallback callback);
@@ -96,7 +112,10 @@ public abstract class BitcoinLikeAccount {
         @Override
         public void broadcastTransaction(BitcoinLikeTransaction transaction, StringCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAccount)");
+            }
             native_broadcastTransaction(this.nativeRef, transaction, callback);
         }
         private native void native_broadcastTransaction(long _nativeRef, BitcoinLikeTransaction transaction, StringCallback callback);
@@ -104,7 +123,10 @@ public abstract class BitcoinLikeAccount {
         @Override
         public BitcoinLikeTransactionBuilder buildTransaction(boolean partial)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAccount)");
+            }
             return native_buildTransaction(this.nativeRef, partial);
         }
         private native BitcoinLikeTransactionBuilder native_buildTransaction(long _nativeRef, boolean partial);
@@ -112,7 +134,10 @@ public abstract class BitcoinLikeAccount {
         @Override
         public void getFees(BigIntListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAccount)");
+            }
             native_getFees(this.nativeRef, callback);
         }
         private native void native_getFees(long _nativeRef, BigIntListCallback callback);
@@ -120,7 +145,10 @@ public abstract class BitcoinLikeAccount {
         @Override
         public void getAddresses(long from, long to, AddressListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAccount)");
+            }
             native_getAddresses(this.nativeRef, from, to, callback);
         }
         private native void native_getAddresses(long _nativeRef, long from, long to, AddressListCallback callback);
@@ -128,9 +156,23 @@ public abstract class BitcoinLikeAccount {
         @Override
         public ArrayList<Address> getAllAddresses()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAccount)");
+            }
             return native_getAllAddresses(this.nativeRef);
         }
         private native ArrayList<Address> native_getAllAddresses(long _nativeRef);
+
+        @Override
+        public void getMaxSpendable(BitcoinLikePickingStrategy strategy, Integer maxUtxos, AmountCallback callback)
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeAccount)");
+            }
+            native_getMaxSpendable(this.nativeRef, strategy, maxUtxos, callback);
+        }
+        private native void native_getMaxSpendable(long _nativeRef, BitcoinLikePickingStrategy strategy, Integer maxUtxos, AmountCallback callback);
     }
 }

@@ -4,11 +4,11 @@
 #import <Foundation/Foundation.h>
 @class LGDatabaseBackend;
 @class LGDynamicObject;
-@class LGPreferencesBackend;
 @class LGWalletPoolBuilder;
 @protocol LGHttpClient;
 @protocol LGLogPrinter;
 @protocol LGPathResolver;
+@protocol LGPreferencesBackend;
 @protocol LGRandomNumberGenerator;
 @protocol LGThreadDispatcher;
 @protocol LGWalletPoolCallback;
@@ -93,14 +93,14 @@
  * @param backend, PreferencesBackend object
  * @return WalletPoolBuilder object, with wallet pool externalPreferencesBackend set
  */
-- (nullable LGWalletPoolBuilder *)setExternalPreferencesBackend:(nullable LGPreferencesBackend *)backend;
+- (nullable LGWalletPoolBuilder *)setExternalPreferencesBackend:(nullable id<LGPreferencesBackend>)backend;
 
 /**
  * Set the internal PreferencesBackend
  * @param backend, PreferencesBackend object
  * @return WalletPoolBuilder object, with wallet pool internalPreferencesBackend set
  */
-- (nullable LGWalletPoolBuilder *)setInternalPreferencesBackend:(nullable LGPreferencesBackend *)backend;
+- (nullable LGWalletPoolBuilder *)setInternalPreferencesBackend:(nullable id<LGPreferencesBackend>)backend;
 
 /**
  * Create wallet pool.

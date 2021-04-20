@@ -443,6 +443,26 @@ public class RCTCoreBitcoinLikeTransaction extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
+    /** Get the dust amount based on the maximum estimated size of the transaction */
+    @ReactMethod
+    public void getDustAmount(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            BitcoinLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+
+            long javaResult = currentInstanceObj.getDustAmount();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putDouble("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
     /**
      * Sign all inputs for given transaction. 
      * Build DER encoded signature from RSV data.

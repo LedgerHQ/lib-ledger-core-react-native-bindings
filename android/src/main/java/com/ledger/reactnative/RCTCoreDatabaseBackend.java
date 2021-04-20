@@ -125,6 +125,29 @@ public class RCTCoreDatabaseBackend extends ReactContextBaseJavaModule {
         }
     }
     /**
+     * Get the maximum number of concurrent readonly connection that the backend is able to open on a single database.
+     * @return the size of the readonly connection pool.
+     */
+    @ReactMethod
+    public void getReadonlyConnectionPoolSize(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            DatabaseBackend currentInstanceObj = this.javaObjects.get(sUid);
+
+            int javaResult = currentInstanceObj.getReadonlyConnectionPoolSize();
+            WritableNativeMap result = new WritableNativeMap();
+            result.putInt("value", javaResult);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /**
      * Enable or disable query logging. By default logging is disabled. Query logging will record every SQL query in log streams.
      * @return this database backend (to chain configuration calls)
      */
@@ -204,10 +227,10 @@ public class RCTCoreDatabaseBackend extends ReactContextBaseJavaModule {
      * @return DatabaseBackend object
      */
     @ReactMethod
-    public void getPostgreSQLBackend(int connectionPoolSize, Promise promise) {
+    public void getPostgreSQLBackend(int connectionPoolSize, int readonlyConnectionPoolSize, Promise promise) {
         try
         {
-            DatabaseBackend javaResult = DatabaseBackend.getPostgreSQLBackend(connectionPoolSize);
+            DatabaseBackend javaResult = DatabaseBackend.getPostgreSQLBackend(connectionPoolSize, readonlyConnectionPoolSize);
 
             String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreDatabaseBackend rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreDatabaseBackend.class);

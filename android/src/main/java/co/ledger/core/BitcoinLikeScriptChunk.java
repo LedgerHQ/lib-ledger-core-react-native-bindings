@@ -17,6 +17,9 @@ public abstract class BitcoinLikeScriptChunk {
     public abstract BitcoinLikeScriptChunk next();
 
     public abstract boolean hasNext();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends BitcoinLikeScriptChunk
     {
@@ -30,6 +33,7 @@ public abstract class BitcoinLikeScriptChunk {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -44,7 +48,10 @@ public abstract class BitcoinLikeScriptChunk {
         @Override
         public boolean isOperator()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeScriptChunk)");
+            }
             return native_isOperator(this.nativeRef);
         }
         private native boolean native_isOperator(long _nativeRef);
@@ -52,7 +59,10 @@ public abstract class BitcoinLikeScriptChunk {
         @Override
         public boolean isPushedData()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeScriptChunk)");
+            }
             return native_isPushedData(this.nativeRef);
         }
         private native boolean native_isPushedData(long _nativeRef);
@@ -60,7 +70,10 @@ public abstract class BitcoinLikeScriptChunk {
         @Override
         public BitcoinLikeOperator getOperator()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeScriptChunk)");
+            }
             return native_getOperator(this.nativeRef);
         }
         private native BitcoinLikeOperator native_getOperator(long _nativeRef);
@@ -68,7 +81,10 @@ public abstract class BitcoinLikeScriptChunk {
         @Override
         public byte[] getPushedData()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeScriptChunk)");
+            }
             return native_getPushedData(this.nativeRef);
         }
         private native byte[] native_getPushedData(long _nativeRef);
@@ -76,7 +92,10 @@ public abstract class BitcoinLikeScriptChunk {
         @Override
         public BitcoinLikeScriptChunk next()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeScriptChunk)");
+            }
             return native_next(this.nativeRef);
         }
         private native BitcoinLikeScriptChunk native_next(long _nativeRef);
@@ -84,7 +103,10 @@ public abstract class BitcoinLikeScriptChunk {
         @Override
         public boolean hasNext()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeScriptChunk)");
+            }
             return native_hasNext(this.nativeRef);
         }
         private native boolean native_hasNext(long _nativeRef);

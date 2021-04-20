@@ -4,6 +4,8 @@
 #import "LGTezosConfigurationDefaults.h"
 
 
+NSString * __nonnull const LGTezosConfigurationDefaultsBCDAPIENDPOINT = @"https://api.better-call.dev/v1";
+
 NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIENDPOINT = @"https://explorers.api.live.ledger.com";
 
 NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIVERSION = @"v3";

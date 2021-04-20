@@ -15,6 +15,9 @@ public abstract class KeychainEngines {
 
     public static final String BIP173_P2WSH = "BIP173_P2WSH";
 
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends KeychainEngines
     {
@@ -28,6 +31,7 @@ public abstract class KeychainEngines {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

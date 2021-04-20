@@ -4,8 +4,14 @@
 #import "LGTezosConfiguration.h"
 
 
+NSString * __nonnull const LGTezosConfigurationBCDAPI = @"BCD_API";
+
 NSString * __nonnull const LGTezosConfigurationTEZOSXPUBCURVE = @"TEZOS_XPUB_CURVE";
 
 NSString * __nonnull const LGTezosConfigurationTEZOSPROTOCOLUPDATE = @"TEZOS_PROTOCOL_UPDATE";
 
 NSString * __nonnull const LGTezosConfigurationTEZOSNODE = @"TEZOS_NODE";
+
+NSString * __nonnull const LGTezosConfigurationTEZOSCOUNTERSTRATEGY = @"TEZOS_COUNTER_STRATEGY";
+
+NSString * __nonnull const LGTezosConfigurationTEZOSOPTIMISTICCOUNTERTIMEOUT = @"TEZOS_OPTIMISTIC_COUNTER_TIMEOUT";

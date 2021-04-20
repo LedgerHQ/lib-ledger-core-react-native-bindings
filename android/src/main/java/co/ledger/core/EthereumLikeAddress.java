@@ -30,6 +30,9 @@ public abstract class EthereumLikeAddress {
      * @return The EIP55 encoding
      */
     public abstract String toEIP55();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends EthereumLikeAddress
     {
@@ -43,6 +46,7 @@ public abstract class EthereumLikeAddress {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -57,7 +61,10 @@ public abstract class EthereumLikeAddress {
         @Override
         public byte[] getVersion()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAddress)");
+            }
             return native_getVersion(this.nativeRef);
         }
         private native byte[] native_getVersion(long _nativeRef);
@@ -65,7 +72,10 @@ public abstract class EthereumLikeAddress {
         @Override
         public byte[] getKeccakHash()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAddress)");
+            }
             return native_getKeccakHash(this.nativeRef);
         }
         private native byte[] native_getKeccakHash(long _nativeRef);
@@ -73,7 +83,10 @@ public abstract class EthereumLikeAddress {
         @Override
         public EthereumLikeNetworkParameters getNetworkParameters()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAddress)");
+            }
             return native_getNetworkParameters(this.nativeRef);
         }
         private native EthereumLikeNetworkParameters native_getNetworkParameters(long _nativeRef);
@@ -81,7 +94,10 @@ public abstract class EthereumLikeAddress {
         @Override
         public String toEIP55()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (EthereumLikeAddress)");
+            }
             return native_toEIP55(this.nativeRef);
         }
         private native String native_toEIP55(long _nativeRef);

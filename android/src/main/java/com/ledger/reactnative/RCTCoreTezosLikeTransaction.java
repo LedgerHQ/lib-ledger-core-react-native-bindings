@@ -169,7 +169,10 @@ public class RCTCoreTezosLikeTransaction extends ReactContextBaseJavaModule {
             promise.reject(e.toString(), e.getMessage());
         }
     }
-    /** Get Fees (in drop) */
+    /**
+     * Get Fees (in drop) 
+     * It returns the sum of transaction fees and reveal fees (if it exists)
+     */
     @ReactMethod
     public void getFees(ReadableMap currentInstance, Promise promise) {
         try
@@ -179,6 +182,56 @@ public class RCTCoreTezosLikeTransaction extends ReactContextBaseJavaModule {
             TezosLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
 
             Amount javaResult = currentInstanceObj.getFees();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreAmount rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreAmount.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreAmount");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** get transaction fees (without reveal cost) */
+    @ReactMethod
+    public void getTransactionFees(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            TezosLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+
+            Amount javaResult = currentInstanceObj.getTransactionFees();
+
+            String javaResult_uuid = UUID.randomUUID().toString();
+            RCTCoreAmount rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreAmount.class);
+            rctImpl_javaResult.getJavaObjects().put(javaResult_uuid, javaResult);
+            WritableNativeMap result = new WritableNativeMap();
+            result.putString("type","RCTCoreAmount");
+            result.putString("uid",javaResult_uuid);
+
+            promise.resolve(result);
+        }
+        catch(Exception e)
+        {
+            promise.reject(e.toString(), e.getMessage());
+        }
+    }
+    /** get reveal fees if the sender envolved is not revealed, else 0 */
+    @ReactMethod
+    public void getRevealFees(ReadableMap currentInstance, Promise promise) {
+        try
+        {
+            String sUid = currentInstance.getString("uid");
+
+            TezosLikeTransaction currentInstanceObj = this.javaObjects.get(sUid);
+
+            Amount javaResult = currentInstanceObj.getRevealFees();
 
             String javaResult_uuid = UUID.randomUUID().toString();
             RCTCoreAmount rctImpl_javaResult = this.reactContext.getNativeModule(RCTCoreAmount.class);

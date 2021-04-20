@@ -47,6 +47,9 @@ public abstract class RippleLikeTransactionBuilder {
 
     /** Reset the current instance to its initial state */
     public abstract void reset();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     public static native RippleLikeTransaction parseRawUnsignedTransaction(Currency currency, byte[] rawTransaction);
 
@@ -64,6 +67,7 @@ public abstract class RippleLikeTransactionBuilder {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -78,7 +82,10 @@ public abstract class RippleLikeTransactionBuilder {
         @Override
         public RippleLikeTransactionBuilder sendToAddress(Amount amount, String address)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransactionBuilder)");
+            }
             return native_sendToAddress(this.nativeRef, amount, address);
         }
         private native RippleLikeTransactionBuilder native_sendToAddress(long _nativeRef, Amount amount, String address);
@@ -86,7 +93,10 @@ public abstract class RippleLikeTransactionBuilder {
         @Override
         public RippleLikeTransactionBuilder wipeToAddress(String address)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransactionBuilder)");
+            }
             return native_wipeToAddress(this.nativeRef, address);
         }
         private native RippleLikeTransactionBuilder native_wipeToAddress(long _nativeRef, String address);
@@ -94,7 +104,10 @@ public abstract class RippleLikeTransactionBuilder {
         @Override
         public RippleLikeTransactionBuilder setFees(Amount fees)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransactionBuilder)");
+            }
             return native_setFees(this.nativeRef, fees);
         }
         private native RippleLikeTransactionBuilder native_setFees(long _nativeRef, Amount fees);
@@ -102,7 +115,10 @@ public abstract class RippleLikeTransactionBuilder {
         @Override
         public RippleLikeTransactionBuilder addMemo(RippleLikeMemo memo)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransactionBuilder)");
+            }
             return native_addMemo(this.nativeRef, memo);
         }
         private native RippleLikeTransactionBuilder native_addMemo(long _nativeRef, RippleLikeMemo memo);
@@ -110,7 +126,10 @@ public abstract class RippleLikeTransactionBuilder {
         @Override
         public RippleLikeTransactionBuilder setDestinationTag(long tag)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransactionBuilder)");
+            }
             return native_setDestinationTag(this.nativeRef, tag);
         }
         private native RippleLikeTransactionBuilder native_setDestinationTag(long _nativeRef, long tag);
@@ -118,7 +137,10 @@ public abstract class RippleLikeTransactionBuilder {
         @Override
         public void build(RippleLikeTransactionCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransactionBuilder)");
+            }
             native_build(this.nativeRef, callback);
         }
         private native void native_build(long _nativeRef, RippleLikeTransactionCallback callback);
@@ -126,7 +148,10 @@ public abstract class RippleLikeTransactionBuilder {
         @Override
         public RippleLikeTransactionBuilder clone()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransactionBuilder)");
+            }
             return native_clone(this.nativeRef);
         }
         private native RippleLikeTransactionBuilder native_clone(long _nativeRef);
@@ -134,7 +159,10 @@ public abstract class RippleLikeTransactionBuilder {
         @Override
         public void reset()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeTransactionBuilder)");
+            }
             native_reset(this.nativeRef);
         }
         private native void native_reset(long _nativeRef);

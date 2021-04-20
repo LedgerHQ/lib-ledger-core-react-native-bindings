@@ -15,6 +15,9 @@ public abstract class RippleLikeExtendedPublicKey {
     public abstract String toBase58();
 
     public abstract String getRootPath();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends RippleLikeExtendedPublicKey
     {
@@ -28,6 +31,7 @@ public abstract class RippleLikeExtendedPublicKey {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -42,7 +46,10 @@ public abstract class RippleLikeExtendedPublicKey {
         @Override
         public RippleLikeAddress derive(String path)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeExtendedPublicKey)");
+            }
             return native_derive(this.nativeRef, path);
         }
         private native RippleLikeAddress native_derive(long _nativeRef, String path);
@@ -50,7 +57,10 @@ public abstract class RippleLikeExtendedPublicKey {
         @Override
         public byte[] derivePublicKey(String path)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeExtendedPublicKey)");
+            }
             return native_derivePublicKey(this.nativeRef, path);
         }
         private native byte[] native_derivePublicKey(long _nativeRef, String path);
@@ -58,7 +68,10 @@ public abstract class RippleLikeExtendedPublicKey {
         @Override
         public byte[] deriveHash160(String path)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeExtendedPublicKey)");
+            }
             return native_deriveHash160(this.nativeRef, path);
         }
         private native byte[] native_deriveHash160(long _nativeRef, String path);
@@ -66,7 +79,10 @@ public abstract class RippleLikeExtendedPublicKey {
         @Override
         public String toBase58()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeExtendedPublicKey)");
+            }
             return native_toBase58(this.nativeRef);
         }
         private native String native_toBase58(long _nativeRef);
@@ -74,7 +90,10 @@ public abstract class RippleLikeExtendedPublicKey {
         @Override
         public String getRootPath()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeExtendedPublicKey)");
+            }
             return native_getRootPath(this.nativeRef);
         }
         private native String native_getRootPath(long _nativeRef);

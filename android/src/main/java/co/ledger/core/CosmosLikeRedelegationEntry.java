@@ -18,6 +18,9 @@ public abstract class CosmosLikeRedelegationEntry {
 
     /** Current amount being redelegated (i.e. less than initialBalance if slashed) */
     public abstract BigInt getBalance();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends CosmosLikeRedelegationEntry
     {
@@ -31,6 +34,7 @@ public abstract class CosmosLikeRedelegationEntry {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -45,7 +49,10 @@ public abstract class CosmosLikeRedelegationEntry {
         @Override
         public BigInt getCreationHeight()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeRedelegationEntry)");
+            }
             return native_getCreationHeight(this.nativeRef);
         }
         private native BigInt native_getCreationHeight(long _nativeRef);
@@ -53,7 +60,10 @@ public abstract class CosmosLikeRedelegationEntry {
         @Override
         public Date getCompletionTime()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeRedelegationEntry)");
+            }
             return native_getCompletionTime(this.nativeRef);
         }
         private native Date native_getCompletionTime(long _nativeRef);
@@ -61,7 +71,10 @@ public abstract class CosmosLikeRedelegationEntry {
         @Override
         public BigInt getInitialBalance()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeRedelegationEntry)");
+            }
             return native_getInitialBalance(this.nativeRef);
         }
         private native BigInt native_getInitialBalance(long _nativeRef);
@@ -69,7 +82,10 @@ public abstract class CosmosLikeRedelegationEntry {
         @Override
         public BigInt getBalance()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeRedelegationEntry)");
+            }
             return native_getBalance(this.nativeRef);
         }
         private native BigInt native_getBalance(long _nativeRef);

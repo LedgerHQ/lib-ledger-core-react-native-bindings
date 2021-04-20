@@ -128,6 +128,9 @@ public abstract class WalletPool {
      * same database / preferences.
      */
     public abstract void changePassword(String oldPassword, String newPassword, ErrorCodeCallback callback);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /**
      * Create a new instance of WalletPool object.
@@ -157,6 +160,7 @@ public abstract class WalletPool {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -171,7 +175,10 @@ public abstract class WalletPool {
         @Override
         public Logger getLogger()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             return native_getLogger(this.nativeRef);
         }
         private native Logger native_getLogger(long _nativeRef);
@@ -179,7 +186,10 @@ public abstract class WalletPool {
         @Override
         public String getName()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             return native_getName(this.nativeRef);
         }
         private native String native_getName(long _nativeRef);
@@ -187,7 +197,10 @@ public abstract class WalletPool {
         @Override
         public Preferences getPreferences()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             return native_getPreferences(this.nativeRef);
         }
         private native Preferences native_getPreferences(long _nativeRef);
@@ -195,7 +208,10 @@ public abstract class WalletPool {
         @Override
         public void getWalletCount(I32Callback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             native_getWalletCount(this.nativeRef, callback);
         }
         private native void native_getWalletCount(long _nativeRef, I32Callback callback);
@@ -203,7 +219,10 @@ public abstract class WalletPool {
         @Override
         public void getWallets(int from, int size, WalletListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             native_getWallets(this.nativeRef, from, size, callback);
         }
         private native void native_getWallets(long _nativeRef, int from, int size, WalletListCallback callback);
@@ -211,7 +230,10 @@ public abstract class WalletPool {
         @Override
         public void getWallet(String name, WalletCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             native_getWallet(this.nativeRef, name, callback);
         }
         private native void native_getWallet(long _nativeRef, String name, WalletCallback callback);
@@ -219,7 +241,10 @@ public abstract class WalletPool {
         @Override
         public void updateWalletConfig(String name, DynamicObject configuration, ErrorCodeCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             native_updateWalletConfig(this.nativeRef, name, configuration, callback);
         }
         private native void native_updateWalletConfig(long _nativeRef, String name, DynamicObject configuration, ErrorCodeCallback callback);
@@ -227,7 +252,10 @@ public abstract class WalletPool {
         @Override
         public void createWallet(String name, Currency currency, DynamicObject configuration, WalletCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             native_createWallet(this.nativeRef, name, currency, configuration, callback);
         }
         private native void native_createWallet(long _nativeRef, String name, Currency currency, DynamicObject configuration, WalletCallback callback);
@@ -235,7 +263,10 @@ public abstract class WalletPool {
         @Override
         public void getCurrencies(CurrencyListCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             native_getCurrencies(this.nativeRef, callback);
         }
         private native void native_getCurrencies(long _nativeRef, CurrencyListCallback callback);
@@ -243,7 +274,10 @@ public abstract class WalletPool {
         @Override
         public void getCurrency(String name, CurrencyCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             native_getCurrency(this.nativeRef, name, callback);
         }
         private native void native_getCurrency(long _nativeRef, String name, CurrencyCallback callback);
@@ -251,7 +285,10 @@ public abstract class WalletPool {
         @Override
         public void getLastBlock(String currencyName, BlockCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             native_getLastBlock(this.nativeRef, currencyName, callback);
         }
         private native void native_getLastBlock(long _nativeRef, String currencyName, BlockCallback callback);
@@ -259,7 +296,10 @@ public abstract class WalletPool {
         @Override
         public EventBus getEventBus()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             return native_getEventBus(this.nativeRef);
         }
         private native EventBus native_getEventBus(long _nativeRef);
@@ -267,7 +307,10 @@ public abstract class WalletPool {
         @Override
         public void eraseDataSince(Date date, ErrorCodeCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             native_eraseDataSince(this.nativeRef, date, callback);
         }
         private native void native_eraseDataSince(long _nativeRef, Date date, ErrorCodeCallback callback);
@@ -275,7 +318,10 @@ public abstract class WalletPool {
         @Override
         public void freshResetAll(ErrorCodeCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             native_freshResetAll(this.nativeRef, callback);
         }
         private native void native_freshResetAll(long _nativeRef, ErrorCodeCallback callback);
@@ -283,7 +329,10 @@ public abstract class WalletPool {
         @Override
         public void changePassword(String oldPassword, String newPassword, ErrorCodeCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (WalletPool)");
+            }
             native_changePassword(this.nativeRef, oldPassword, newPassword, callback);
         }
         private native void native_changePassword(long _nativeRef, String oldPassword, String newPassword, ErrorCodeCallback callback);

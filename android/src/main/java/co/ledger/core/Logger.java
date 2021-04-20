@@ -41,6 +41,9 @@ public abstract class Logger {
      * @param message, string
      */
     public abstract void c(String tag, String message);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends Logger
     {
@@ -54,6 +57,7 @@ public abstract class Logger {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -68,7 +72,10 @@ public abstract class Logger {
         @Override
         public void d(String tag, String message)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Logger)");
+            }
             native_d(this.nativeRef, tag, message);
         }
         private native void native_d(long _nativeRef, String tag, String message);
@@ -76,7 +83,10 @@ public abstract class Logger {
         @Override
         public void i(String tag, String message)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Logger)");
+            }
             native_i(this.nativeRef, tag, message);
         }
         private native void native_i(long _nativeRef, String tag, String message);
@@ -84,7 +94,10 @@ public abstract class Logger {
         @Override
         public void e(String tag, String message)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Logger)");
+            }
             native_e(this.nativeRef, tag, message);
         }
         private native void native_e(long _nativeRef, String tag, String message);
@@ -92,7 +105,10 @@ public abstract class Logger {
         @Override
         public void w(String tag, String message)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Logger)");
+            }
             native_w(this.nativeRef, tag, message);
         }
         private native void native_w(long _nativeRef, String tag, String message);
@@ -100,7 +116,10 @@ public abstract class Logger {
         @Override
         public void c(String tag, String message)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (Logger)");
+            }
             native_c(this.nativeRef, tag, message);
         }
         private native void native_c(long _nativeRef, String tag, String message);

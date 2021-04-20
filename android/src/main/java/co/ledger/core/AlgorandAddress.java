@@ -6,6 +6,9 @@ package co.ledger.core;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class AlgorandAddress {
+    /** Release the underlying native object */
+    public abstract void destroy();
+
     public static native String fromPublicKey(byte[] pubkey);
 
     public static native byte[] toPublicKey(String address);
@@ -22,6 +25,7 @@ public abstract class AlgorandAddress {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

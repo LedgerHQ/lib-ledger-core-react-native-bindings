@@ -31,7 +31,7 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 {
     [self baseIsNull:currentInstance withResolver:resolve rejecter:reject];
 }
--(NSData *) hexStringToData: (NSString *)hexString
+-(NSData *) hexStringToData: (NSString *)hexString 
 {
     NSMutableData *data= [[NSMutableData alloc] init];
     unsigned char byte;
@@ -45,7 +45,7 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
     }
     return data;
 }
--(NSString *) dataToHexString: (NSData *)data
+-(NSString *) dataToHexString: (NSData *)data 
 {
     const unsigned char *bytes = (const unsigned char *)data.bytes;
     NSMutableString *hex = [NSMutableString new];
@@ -64,17 +64,17 @@ RCT_REMAP_METHOD(isNull, isNull:(NSDictionary *)currentInstance withResolver:(RC
 RCT_REMAP_METHOD(get,get:(NSDictionary *)currentInstance withParams:(NSString *)key withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::get, first argument should be an instance of LGPreferencesBackend", nil);
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::get, first argument should be an instance of LGPreferencesBackendImpl", nil);
         return;
     }
-    LGPreferencesBackend *currentInstanceObj = nil;
+    LGPreferencesBackendImpl *currentInstanceObj = nil;
     @synchronized(self)
     {
         currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     }
     if (!currentInstanceObj)
     {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackend::get, instance of uid %@ not found", currentInstance[@"uid"]];
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackendImpl::get, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
         return;
     }
@@ -89,7 +89,7 @@ RCT_REMAP_METHOD(get,get:(NSDictionary *)currentInstance withParams:(NSString *)
     }
     else
     {
-        reject(@"impl_call_error", @"Error while calling LGPreferencesBackend::get", nil);
+        reject(@"impl_call_error", @"Error while calling LGPreferencesBackendImpl::get", nil);
         return;
     }
 
@@ -103,17 +103,17 @@ RCT_REMAP_METHOD(get,get:(NSDictionary *)currentInstance withParams:(NSString *)
 RCT_REMAP_METHOD(commit,commit:(NSDictionary *)currentInstance withParams:(NSArray <NSDictionary *> *)changes withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::commit, first argument should be an instance of LGPreferencesBackend", nil);
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::commit, first argument should be an instance of LGPreferencesBackendImpl", nil);
         return;
     }
-    LGPreferencesBackend *currentInstanceObj = nil;
+    LGPreferencesBackendImpl *currentInstanceObj = nil;
     @synchronized(self)
     {
         currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     }
     if (!currentInstanceObj)
     {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackend::commit, instance of uid %@ not found", currentInstance[@"uid"]];
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackendImpl::commit, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
         return;
     }
@@ -134,7 +134,7 @@ RCT_REMAP_METHOD(commit,commit:(NSDictionary *)currentInstance withParams:(NSArr
     }
     else
     {
-        reject(@"impl_call_error", @"Error while calling LGPreferencesBackend::commit", nil);
+        reject(@"impl_call_error", @"Error while calling LGPreferencesBackendImpl::commit", nil);
         return;
     }
 
@@ -152,24 +152,23 @@ RCT_REMAP_METHOD(setEncryption,setEncryption:(NSDictionary *)currentInstance wit
                                                                                password:(nonnull NSString *)password withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::setEncryption, first argument should be an instance of LGPreferencesBackend", nil);
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::setEncryption, first argument should be an instance of LGPreferencesBackendImpl", nil);
         return;
     }
-    LGPreferencesBackend *currentInstanceObj = nil;
+    LGPreferencesBackendImpl *currentInstanceObj = nil;
     @synchronized(self)
     {
         currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     }
     if (!currentInstanceObj)
     {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackend::setEncryption, instance of uid %@ not found", currentInstance[@"uid"]];
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackendImpl::setEncryption, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
         return;
     }
     RCTCoreLGRandomNumberGenerator *rctParam_rng = (RCTCoreLGRandomNumberGenerator *)[self.bridge moduleForName:@"CoreLGRandomNumberGenerator"];
     id<LGRandomNumberGenerator>objcParam_0 = (id<LGRandomNumberGenerator>)[rctParam_rng.objcImplementations objectForKey:rng[@"uid"]];
     LGRandomNumberGeneratorImpl *objcParam_0_objc = (LGRandomNumberGeneratorImpl *)objcParam_0;
-
     @try {
       [currentInstanceObj setEncryption:objcParam_0 password:password];
       resolve(@YES);
@@ -189,17 +188,17 @@ RCT_REMAP_METHOD(setEncryption,setEncryption:(NSDictionary *)currentInstance wit
 RCT_REMAP_METHOD(unsetEncryption,unsetEncryption:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::unsetEncryption, first argument should be an instance of LGPreferencesBackend", nil);
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::unsetEncryption, first argument should be an instance of LGPreferencesBackendImpl", nil);
         return;
     }
-    LGPreferencesBackend *currentInstanceObj = nil;
+    LGPreferencesBackendImpl *currentInstanceObj = nil;
     @synchronized(self)
     {
         currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     }
     if (!currentInstanceObj)
     {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackend::unsetEncryption, instance of uid %@ not found", currentInstance[@"uid"]];
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackendImpl::unsetEncryption, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
         return;
     }
@@ -221,17 +220,17 @@ RCT_REMAP_METHOD(resetEncryption,resetEncryption:(NSDictionary *)currentInstance
                                                                                 newPassword:(nonnull NSString *)newPassword withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::resetEncryption, first argument should be an instance of LGPreferencesBackend", nil);
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::resetEncryption, first argument should be an instance of LGPreferencesBackendImpl", nil);
         return;
     }
-    LGPreferencesBackend *currentInstanceObj = nil;
+    LGPreferencesBackendImpl *currentInstanceObj = nil;
     @synchronized(self)
     {
         currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     }
     if (!currentInstanceObj)
     {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackend::resetEncryption, instance of uid %@ not found", currentInstance[@"uid"]];
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackendImpl::resetEncryption, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
         return;
     }
@@ -245,7 +244,7 @@ RCT_REMAP_METHOD(resetEncryption,resetEncryption:(NSDictionary *)currentInstance
     }
     else
     {
-        reject(@"impl_call_error", @"Error while calling LGPreferencesBackend::resetEncryption", nil);
+        reject(@"impl_call_error", @"Error while calling LGPreferencesBackendImpl::resetEncryption", nil);
         return;
     }
 
@@ -258,17 +257,17 @@ RCT_REMAP_METHOD(resetEncryption,resetEncryption:(NSDictionary *)currentInstance
 RCT_REMAP_METHOD(getEncryptionSalt,getEncryptionSalt:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::getEncryptionSalt, first argument should be an instance of LGPreferencesBackend", nil);
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::getEncryptionSalt, first argument should be an instance of LGPreferencesBackendImpl", nil);
         return;
     }
-    LGPreferencesBackend *currentInstanceObj = nil;
+    LGPreferencesBackendImpl *currentInstanceObj = nil;
     @synchronized(self)
     {
         currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     }
     if (!currentInstanceObj)
     {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackend::getEncryptionSalt, instance of uid %@ not found", currentInstance[@"uid"]];
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackendImpl::getEncryptionSalt, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
         return;
     }
@@ -280,7 +279,7 @@ RCT_REMAP_METHOD(getEncryptionSalt,getEncryptionSalt:(NSDictionary *)currentInst
     }
     else
     {
-        reject(@"impl_call_error", @"Error while calling LGPreferencesBackend::getEncryptionSalt", nil);
+        reject(@"impl_call_error", @"Error while calling LGPreferencesBackendImpl::getEncryptionSalt", nil);
         return;
     }
 
@@ -290,22 +289,35 @@ RCT_REMAP_METHOD(getEncryptionSalt,getEncryptionSalt:(NSDictionary *)currentInst
 RCT_REMAP_METHOD(clear,clear:(NSDictionary *)currentInstance WithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!currentInstance[@"uid"] || !currentInstance[@"type"])
     {
-        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::clear, first argument should be an instance of LGPreferencesBackend", nil);
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackend::clear, first argument should be an instance of LGPreferencesBackendImpl", nil);
         return;
     }
-    LGPreferencesBackend *currentInstanceObj = nil;
+    LGPreferencesBackendImpl *currentInstanceObj = nil;
     @synchronized(self)
     {
         currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
     }
     if (!currentInstanceObj)
     {
-        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackend::clear, instance of uid %@ not found", currentInstance[@"uid"]];
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGPreferencesBackendImpl::clear, instance of uid %@ not found", currentInstance[@"uid"]];
         reject(@"impl_call_error", error, nil);
         return;
     }
     [currentInstanceObj clear];
     resolve(@(YES));
 
+}
+RCT_REMAP_METHOD(newInstance, newInstanceWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    LGPreferencesBackendImpl *objcResult = [[LGPreferencesBackendImpl alloc] init];
+    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSArray *resultArray = [[NSArray alloc] initWithObjects:objcResult, uuid, nil];
+    [self baseSetObject:resultArray];
+    NSDictionary *result = @{@"type" : @"CoreLGPreferencesBackendImpl", @"uid" : uuid };
+    if (!objcResult || !result)
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGPreferencesBackendImpl::init", nil);
+        return;
+    }
+    resolve(result);
 }
 @end

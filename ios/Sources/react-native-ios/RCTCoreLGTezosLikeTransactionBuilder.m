@@ -187,6 +187,8 @@ RCT_REMAP_METHOD(wipeToAddress,wipeToAddress:(NSDictionary *)currentInstance wit
 
 /**
  * Set fees (in drop) the originator is willing to pay
+ * Set transaction and (if needed) reveal fees with 'fees'
+ * equivalent to call both functions setTransactionFees(fees) and setRevealFees(fees)
  * @return A reference on the same builder in order to chain calls.
  */
 RCT_REMAP_METHOD(setFees,setFees:(NSDictionary *)currentInstance withParams:(NSDictionary *)fees withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
@@ -223,6 +225,92 @@ RCT_REMAP_METHOD(setFees,setFees:(NSDictionary *)currentInstance withParams:(NSD
     else
     {
         reject(@"impl_call_error", @"Error while calling LGTezosLikeTransactionBuilder::setFees", nil);
+        return;
+    }
+
+}
+
+/**
+ * Set transaction fees (in drop) the originator is willing to pay (reveal is not included)
+ * @return A reference on the same builder in order to chain calls.
+ */
+RCT_REMAP_METHOD(setTransactionFees,setTransactionFees:(NSDictionary *)currentInstance withParams:(NSDictionary *)transactionFees withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransactionBuilder::setTransactionFees, first argument should be an instance of LGTezosLikeTransactionBuilder", nil);
+        return;
+    }
+    LGTezosLikeTransactionBuilder *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransactionBuilder::setTransactionFees, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGAmount *rctParam_transactionFees = (RCTCoreLGAmount *)[self.bridge moduleForName:@"CoreLGAmount"];
+    LGAmount *objcParam_0 = (LGAmount *)[rctParam_transactionFees.objcImplementations objectForKey:transactionFees[@"uid"]];
+    LGTezosLikeTransactionBuilder * objcResult = [currentInstanceObj setTransactionFees:objcParam_0];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGTezosLikeTransactionBuilder *rctImpl_objcResult = (RCTCoreLGTezosLikeTransactionBuilder *)[self.bridge moduleForName:@"CoreLGTezosLikeTransactionBuilder"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGTezosLikeTransactionBuilder", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGTezosLikeTransactionBuilder::setTransactionFees", nil);
+        return;
+    }
+
+}
+
+/**
+ * Set reveal fees (in drop) the originator is willing to pay 
+ * @return A reference on the same builder in order to chain calls.
+ */
+RCT_REMAP_METHOD(setRevealFees,setRevealFees:(NSDictionary *)currentInstance withParams:(NSDictionary *)revealFees withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if (!currentInstance[@"uid"] || !currentInstance[@"type"])
+    {
+        reject(@"impl_call_error", @"Error while calling RCTCoreLGTezosLikeTransactionBuilder::setRevealFees, first argument should be an instance of LGTezosLikeTransactionBuilder", nil);
+        return;
+    }
+    LGTezosLikeTransactionBuilder *currentInstanceObj = nil;
+    @synchronized(self)
+    {
+        currentInstanceObj = [self.objcImplementations objectForKey:currentInstance[@"uid"]];
+    }
+    if (!currentInstanceObj)
+    {
+        NSString *error = [NSString stringWithFormat:@"Error while calling LGTezosLikeTransactionBuilder::setRevealFees, instance of uid %@ not found", currentInstance[@"uid"]];
+        reject(@"impl_call_error", error, nil);
+        return;
+    }
+    RCTCoreLGAmount *rctParam_revealFees = (RCTCoreLGAmount *)[self.bridge moduleForName:@"CoreLGAmount"];
+    LGAmount *objcParam_0 = (LGAmount *)[rctParam_revealFees.objcImplementations objectForKey:revealFees[@"uid"]];
+    LGTezosLikeTransactionBuilder * objcResult = [currentInstanceObj setRevealFees:objcParam_0];
+
+    NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
+    RCTCoreLGTezosLikeTransactionBuilder *rctImpl_objcResult = (RCTCoreLGTezosLikeTransactionBuilder *)[self.bridge moduleForName:@"CoreLGTezosLikeTransactionBuilder"];
+    NSArray *objcResult_array = [[NSArray alloc] initWithObjects:objcResult, objcResult_uuid, nil];
+    [rctImpl_objcResult baseSetObject:objcResult_array];
+    NSDictionary *result = @{@"type" : @"CoreLGTezosLikeTransactionBuilder", @"uid" : objcResult_uuid };
+
+    if(result)
+    {
+        resolve(result);
+    }
+    else
+    {
+        reject(@"impl_call_error", @"Error while calling LGTezosLikeTransactionBuilder::setRevealFees", nil);
         return;
     }
 
@@ -403,12 +491,13 @@ RCT_REMAP_METHOD(reset,reset:(NSDictionary *)currentInstance WithResolver:(RCTPr
 }
 
 RCT_REMAP_METHOD(parseRawUnsignedTransaction,parseRawUnsignedTransactionwithParams:(NSDictionary *)currency
-                                                                    rawTransaction:(NSString *)rawTransaction withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                                                                    rawTransaction:(NSString *)rawTransaction
+                                                                    protocolUpdate:(nonnull NSString *)protocolUpdate withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     RCTCoreLGCurrency *rctParam_currency = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
     LGCurrency *objcParam_0 = (LGCurrency *)[rctParam_currency.objcImplementations objectForKey:currency[@"uid"]];
     NSData *objcParam_1 = [self hexStringToData:rawTransaction];
 
-    LGTezosLikeTransaction * objcResult = [LGTezosLikeTransactionBuilder parseRawUnsignedTransaction:objcParam_0 rawTransaction:objcParam_1];
+    LGTezosLikeTransaction * objcResult = [LGTezosLikeTransactionBuilder parseRawUnsignedTransaction:objcParam_0 rawTransaction:objcParam_1 protocolUpdate:protocolUpdate];
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGTezosLikeTransaction *rctImpl_objcResult = (RCTCoreLGTezosLikeTransaction *)[self.bridge moduleForName:@"CoreLGTezosLikeTransaction"];
@@ -429,12 +518,13 @@ RCT_REMAP_METHOD(parseRawUnsignedTransaction,parseRawUnsignedTransactionwithPara
 }
 
 RCT_REMAP_METHOD(parseRawSignedTransaction,parseRawSignedTransactionwithParams:(NSDictionary *)currency
-                                                                rawTransaction:(NSString *)rawTransaction withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+                                                                rawTransaction:(NSString *)rawTransaction
+                                                                protocolUpdate:(nonnull NSString *)protocolUpdate withResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     RCTCoreLGCurrency *rctParam_currency = (RCTCoreLGCurrency *)[self.bridge moduleForName:@"CoreLGCurrency"];
     LGCurrency *objcParam_0 = (LGCurrency *)[rctParam_currency.objcImplementations objectForKey:currency[@"uid"]];
     NSData *objcParam_1 = [self hexStringToData:rawTransaction];
 
-    LGTezosLikeTransaction * objcResult = [LGTezosLikeTransactionBuilder parseRawSignedTransaction:objcParam_0 rawTransaction:objcParam_1];
+    LGTezosLikeTransaction * objcResult = [LGTezosLikeTransactionBuilder parseRawSignedTransaction:objcParam_0 rawTransaction:objcParam_1 protocolUpdate:protocolUpdate];
 
     NSString *objcResult_uuid = [[NSUUID UUID] UUIDString];
     RCTCoreLGTezosLikeTransaction *rctImpl_objcResult = (RCTCoreLGTezosLikeTransaction *)[self.bridge moduleForName:@"CoreLGTezosLikeTransaction"];

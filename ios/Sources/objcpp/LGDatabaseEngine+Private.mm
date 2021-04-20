@@ -33,6 +33,13 @@ public:
             return ::djinni::I32::toCpp(objcpp_result_);
         }
     }
+    int32_t getReadonlyPoolSize() override
+    {
+        @autoreleasepool {
+            auto objcpp_result_ = [djinni_private_get_proxied_objc_object() getReadonlyPoolSize];
+            return ::djinni::I32::toCpp(objcpp_result_);
+        }
+    }
 };
 
 }  // namespace djinni_generated

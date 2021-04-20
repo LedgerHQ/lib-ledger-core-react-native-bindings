@@ -18,6 +18,9 @@ public abstract class CosmosLikeOperation {
      * @return CosmosLikeMessage object
      */
     public abstract CosmosLikeMessage getMessage();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends CosmosLikeOperation
     {
@@ -31,6 +34,7 @@ public abstract class CosmosLikeOperation {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -45,7 +49,10 @@ public abstract class CosmosLikeOperation {
         @Override
         public CosmosLikeTransaction getTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeOperation)");
+            }
             return native_getTransaction(this.nativeRef);
         }
         private native CosmosLikeTransaction native_getTransaction(long _nativeRef);
@@ -53,7 +60,10 @@ public abstract class CosmosLikeOperation {
         @Override
         public CosmosLikeMessage getMessage()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeOperation)");
+            }
             return native_getMessage(this.nativeRef);
         }
         private native CosmosLikeMessage native_getMessage(long _nativeRef);

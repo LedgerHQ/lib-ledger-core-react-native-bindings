@@ -78,6 +78,9 @@ public abstract class BigInt {
      * @return a positive value if this > i. A negative value if this < i. 0 if the two BigInts are equal
      */
     public abstract int compare(BigInt i);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /**
      * Creates a BigInt with a decimal string (e.g. "1.2000"). Note that every non numeric characters (except the decimal separator)
@@ -116,6 +119,7 @@ public abstract class BigInt {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -130,7 +134,10 @@ public abstract class BigInt {
         @Override
         public BigInt add(BigInt i)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BigInt)");
+            }
             return native_add(this.nativeRef, i);
         }
         private native BigInt native_add(long _nativeRef, BigInt i);
@@ -138,7 +145,10 @@ public abstract class BigInt {
         @Override
         public BigInt subtract(BigInt i)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BigInt)");
+            }
             return native_subtract(this.nativeRef, i);
         }
         private native BigInt native_subtract(long _nativeRef, BigInt i);
@@ -146,7 +156,10 @@ public abstract class BigInt {
         @Override
         public BigInt multiply(BigInt i)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BigInt)");
+            }
             return native_multiply(this.nativeRef, i);
         }
         private native BigInt native_multiply(long _nativeRef, BigInt i);
@@ -154,7 +167,10 @@ public abstract class BigInt {
         @Override
         public BigInt divide(BigInt i)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BigInt)");
+            }
             return native_divide(this.nativeRef, i);
         }
         private native BigInt native_divide(long _nativeRef, BigInt i);
@@ -162,7 +178,10 @@ public abstract class BigInt {
         @Override
         public ArrayList<BigInt> divideAndRemainder(BigInt i)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BigInt)");
+            }
             return native_divideAndRemainder(this.nativeRef, i);
         }
         private native ArrayList<BigInt> native_divideAndRemainder(long _nativeRef, BigInt i);
@@ -170,7 +189,10 @@ public abstract class BigInt {
         @Override
         public BigInt pow(int exponent)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BigInt)");
+            }
             return native_pow(this.nativeRef, exponent);
         }
         private native BigInt native_pow(long _nativeRef, int exponent);
@@ -178,7 +200,10 @@ public abstract class BigInt {
         @Override
         public String toDecimalString(int precision, String decimalSeparator, String thousandSeparator)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BigInt)");
+            }
             return native_toDecimalString(this.nativeRef, precision, decimalSeparator, thousandSeparator);
         }
         private native String native_toDecimalString(long _nativeRef, int precision, String decimalSeparator, String thousandSeparator);
@@ -186,7 +211,10 @@ public abstract class BigInt {
         @Override
         public String toString(int radix)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BigInt)");
+            }
             return native_toString(this.nativeRef, radix);
         }
         private native String native_toString(long _nativeRef, int radix);
@@ -194,7 +222,10 @@ public abstract class BigInt {
         @Override
         public int intValue()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BigInt)");
+            }
             return native_intValue(this.nativeRef);
         }
         private native int native_intValue(long _nativeRef);
@@ -202,7 +233,10 @@ public abstract class BigInt {
         @Override
         public int compare(BigInt i)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BigInt)");
+            }
             return native_compare(this.nativeRef, i);
         }
         private native int native_compare(long _nativeRef, BigInt i);

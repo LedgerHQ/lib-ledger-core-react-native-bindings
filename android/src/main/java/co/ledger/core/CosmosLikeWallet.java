@@ -7,6 +7,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /** A cosmos-like wallet. */
 public abstract class CosmosLikeWallet {
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends CosmosLikeWallet
     {
@@ -20,6 +23,7 @@ public abstract class CosmosLikeWallet {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);

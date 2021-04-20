@@ -11,6 +11,9 @@ public abstract class StellarLikeOperation {
 
     /** Get the underlying transaction in which this operation can be found. */
     public abstract StellarLikeTransaction getTransaction();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends StellarLikeOperation
     {
@@ -24,6 +27,7 @@ public abstract class StellarLikeOperation {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -38,7 +42,10 @@ public abstract class StellarLikeOperation {
         @Override
         public StellarLikeOperationRecord getRecord()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeOperation)");
+            }
             return native_getRecord(this.nativeRef);
         }
         private native StellarLikeOperationRecord native_getRecord(long _nativeRef);
@@ -46,7 +53,10 @@ public abstract class StellarLikeOperation {
         @Override
         public StellarLikeTransaction getTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (StellarLikeOperation)");
+            }
             return native_getTransaction(this.nativeRef);
         }
         private native StellarLikeTransaction native_getTransaction(long _nativeRef);

@@ -35,6 +35,9 @@ public abstract class CosmosLikeMessage {
      * @return string the 0-based index in the tx or "fees" for the fees in the tx
      */
     public abstract String getIndex();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /**
      * Wrap the given CosmosLikeMsgSend into a CosmosLikeMessage
@@ -258,6 +261,7 @@ public abstract class CosmosLikeMessage {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -272,7 +276,10 @@ public abstract class CosmosLikeMessage {
         @Override
         public CosmosLikeMsgType getMessageType()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeMessage)");
+            }
             return native_getMessageType(this.nativeRef);
         }
         private native CosmosLikeMsgType native_getMessageType(long _nativeRef);
@@ -280,7 +287,10 @@ public abstract class CosmosLikeMessage {
         @Override
         public String getRawMessageType()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeMessage)");
+            }
             return native_getRawMessageType(this.nativeRef);
         }
         private native String native_getRawMessageType(long _nativeRef);
@@ -288,7 +298,10 @@ public abstract class CosmosLikeMessage {
         @Override
         public boolean getSuccess()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeMessage)");
+            }
             return native_getSuccess(this.nativeRef);
         }
         private native boolean native_getSuccess(long _nativeRef);
@@ -296,7 +309,10 @@ public abstract class CosmosLikeMessage {
         @Override
         public String getLog()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeMessage)");
+            }
             return native_getLog(this.nativeRef);
         }
         private native String native_getLog(long _nativeRef);
@@ -304,7 +320,10 @@ public abstract class CosmosLikeMessage {
         @Override
         public String getIndex()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeMessage)");
+            }
             return native_getIndex(this.nativeRef);
         }
         private native String native_getIndex(long _nativeRef);

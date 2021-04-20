@@ -3,6 +3,7 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * __nonnull const LGTezosConfigurationDefaultsBCDAPIENDPOINT;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIENDPOINT;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTEZOSDEFAULTAPIVERSION;
 extern NSString * __nonnull const LGTezosConfigurationDefaultsTZSTATSAPIENDPOINT;

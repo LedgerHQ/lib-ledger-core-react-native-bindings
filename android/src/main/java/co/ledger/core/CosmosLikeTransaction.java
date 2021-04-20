@@ -53,6 +53,9 @@ public abstract class CosmosLikeTransaction {
      * @return string the json payload to broadcast on the network
      */
     public abstract String serializeForBroadcast(String mode);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends CosmosLikeTransaction
     {
@@ -66,6 +69,7 @@ public abstract class CosmosLikeTransaction {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -80,7 +84,10 @@ public abstract class CosmosLikeTransaction {
         @Override
         public Date getDate()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransaction)");
+            }
             return native_getDate(this.nativeRef);
         }
         private native Date native_getDate(long _nativeRef);
@@ -88,7 +95,10 @@ public abstract class CosmosLikeTransaction {
         @Override
         public Amount getFee()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransaction)");
+            }
             return native_getFee(this.nativeRef);
         }
         private native Amount native_getFee(long _nativeRef);
@@ -96,7 +106,10 @@ public abstract class CosmosLikeTransaction {
         @Override
         public Amount getGas()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransaction)");
+            }
             return native_getGas(this.nativeRef);
         }
         private native Amount native_getGas(long _nativeRef);
@@ -104,7 +117,10 @@ public abstract class CosmosLikeTransaction {
         @Override
         public BigInt getGasUsed()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransaction)");
+            }
             return native_getGasUsed(this.nativeRef);
         }
         private native BigInt native_getGasUsed(long _nativeRef);
@@ -112,7 +128,10 @@ public abstract class CosmosLikeTransaction {
         @Override
         public BigInt getGasWanted()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransaction)");
+            }
             return native_getGasWanted(this.nativeRef);
         }
         private native BigInt native_getGasWanted(long _nativeRef);
@@ -120,7 +139,10 @@ public abstract class CosmosLikeTransaction {
         @Override
         public String getHash()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransaction)");
+            }
             return native_getHash(this.nativeRef);
         }
         private native String native_getHash(long _nativeRef);
@@ -128,7 +150,10 @@ public abstract class CosmosLikeTransaction {
         @Override
         public String getMemo()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransaction)");
+            }
             return native_getMemo(this.nativeRef);
         }
         private native String native_getMemo(long _nativeRef);
@@ -136,7 +161,10 @@ public abstract class CosmosLikeTransaction {
         @Override
         public ArrayList<CosmosLikeMessage> getMessages()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransaction)");
+            }
             return native_getMessages(this.nativeRef);
         }
         private native ArrayList<CosmosLikeMessage> native_getMessages(long _nativeRef);
@@ -144,7 +172,10 @@ public abstract class CosmosLikeTransaction {
         @Override
         public byte[] getSigningPubKey()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransaction)");
+            }
             return native_getSigningPubKey(this.nativeRef);
         }
         private native byte[] native_getSigningPubKey(long _nativeRef);
@@ -152,7 +183,10 @@ public abstract class CosmosLikeTransaction {
         @Override
         public String serializeForSignature()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransaction)");
+            }
             return native_serializeForSignature(this.nativeRef);
         }
         private native String native_serializeForSignature(long _nativeRef);
@@ -160,7 +194,10 @@ public abstract class CosmosLikeTransaction {
         @Override
         public void setSignature(byte[] rSignature, byte[] sSignature)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransaction)");
+            }
             native_setSignature(this.nativeRef, rSignature, sSignature);
         }
         private native void native_setSignature(long _nativeRef, byte[] rSignature, byte[] sSignature);
@@ -168,7 +205,10 @@ public abstract class CosmosLikeTransaction {
         @Override
         public void setDERSignature(byte[] signature)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransaction)");
+            }
             native_setDERSignature(this.nativeRef, signature);
         }
         private native void native_setDERSignature(long _nativeRef, byte[] signature);
@@ -176,7 +216,10 @@ public abstract class CosmosLikeTransaction {
         @Override
         public String serializeForBroadcast(String mode)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (CosmosLikeTransaction)");
+            }
             return native_serializeForBroadcast(this.nativeRef, mode);
         }
         private native String native_serializeForBroadcast(long _nativeRef, String mode);

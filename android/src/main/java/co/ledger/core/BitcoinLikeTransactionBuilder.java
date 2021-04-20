@@ -59,9 +59,10 @@ public abstract class BitcoinLikeTransactionBuilder {
      * @param strategy The strategy to adopt in order to select which input to use in the transaction.
      * @param sequence The sequence value serialized at the end of the raw transaction. If you don't know what to put here
      * just use 0xFFFFFF
+     * @param maxUtxo The maximum number of utxos to pick (It applies only for HIGHEST_FIRST_LIMIT_UTXO and LIMIT_UTXO)
      * @return A reference on the same builder in order to chain calls.
      */
-    public abstract BitcoinLikeTransactionBuilder pickInputs(BitcoinLikePickingStrategy strategy, int sequence);
+    public abstract BitcoinLikeTransactionBuilder pickInputs(BitcoinLikePickingStrategy strategy, int sequence, Integer maxUtxo);
 
     /**
      * Send funds to the given address. This method can be called multiple times to send to multiple addresses.
@@ -95,6 +96,9 @@ public abstract class BitcoinLikeTransactionBuilder {
 
     /** Reset the current instance to its initial state. */
     public abstract void reset();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /**
      * Parsing unsigned transaction.
@@ -114,6 +118,7 @@ public abstract class BitcoinLikeTransactionBuilder {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -128,7 +133,10 @@ public abstract class BitcoinLikeTransactionBuilder {
         @Override
         public BitcoinLikeTransactionBuilder addInput(String transactionHash, int index, int sequence)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
             return native_addInput(this.nativeRef, transactionHash, index, sequence);
         }
         private native BitcoinLikeTransactionBuilder native_addInput(long _nativeRef, String transactionHash, int index, int sequence);
@@ -136,7 +144,10 @@ public abstract class BitcoinLikeTransactionBuilder {
         @Override
         public BitcoinLikeTransactionBuilder addOutput(Amount amount, BitcoinLikeScript script)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
             return native_addOutput(this.nativeRef, amount, script);
         }
         private native BitcoinLikeTransactionBuilder native_addOutput(long _nativeRef, Amount amount, BitcoinLikeScript script);
@@ -144,7 +155,10 @@ public abstract class BitcoinLikeTransactionBuilder {
         @Override
         public BitcoinLikeTransactionBuilder addChangePath(String path)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
             return native_addChangePath(this.nativeRef, path);
         }
         private native BitcoinLikeTransactionBuilder native_addChangePath(long _nativeRef, String path);
@@ -152,7 +166,10 @@ public abstract class BitcoinLikeTransactionBuilder {
         @Override
         public BitcoinLikeTransactionBuilder excludeUtxo(String transactionHash, int outputIndex)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
             return native_excludeUtxo(this.nativeRef, transactionHash, outputIndex);
         }
         private native BitcoinLikeTransactionBuilder native_excludeUtxo(long _nativeRef, String transactionHash, int outputIndex);
@@ -160,7 +177,10 @@ public abstract class BitcoinLikeTransactionBuilder {
         @Override
         public BitcoinLikeTransactionBuilder setNumberOfChangeAddresses(int count)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
             return native_setNumberOfChangeAddresses(this.nativeRef, count);
         }
         private native BitcoinLikeTransactionBuilder native_setNumberOfChangeAddresses(long _nativeRef, int count);
@@ -168,7 +188,10 @@ public abstract class BitcoinLikeTransactionBuilder {
         @Override
         public BitcoinLikeTransactionBuilder setMaxAmountOnChange(Amount amount)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
             return native_setMaxAmountOnChange(this.nativeRef, amount);
         }
         private native BitcoinLikeTransactionBuilder native_setMaxAmountOnChange(long _nativeRef, Amount amount);
@@ -176,23 +199,32 @@ public abstract class BitcoinLikeTransactionBuilder {
         @Override
         public BitcoinLikeTransactionBuilder setMinAmountOnChange(Amount amount)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
             return native_setMinAmountOnChange(this.nativeRef, amount);
         }
         private native BitcoinLikeTransactionBuilder native_setMinAmountOnChange(long _nativeRef, Amount amount);
 
         @Override
-        public BitcoinLikeTransactionBuilder pickInputs(BitcoinLikePickingStrategy strategy, int sequence)
+        public BitcoinLikeTransactionBuilder pickInputs(BitcoinLikePickingStrategy strategy, int sequence, Integer maxUtxo)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_pickInputs(this.nativeRef, strategy, sequence);
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
+            return native_pickInputs(this.nativeRef, strategy, sequence, maxUtxo);
         }
-        private native BitcoinLikeTransactionBuilder native_pickInputs(long _nativeRef, BitcoinLikePickingStrategy strategy, int sequence);
+        private native BitcoinLikeTransactionBuilder native_pickInputs(long _nativeRef, BitcoinLikePickingStrategy strategy, int sequence, Integer maxUtxo);
 
         @Override
         public BitcoinLikeTransactionBuilder sendToAddress(Amount amount, String address)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
             return native_sendToAddress(this.nativeRef, amount, address);
         }
         private native BitcoinLikeTransactionBuilder native_sendToAddress(long _nativeRef, Amount amount, String address);
@@ -200,7 +232,10 @@ public abstract class BitcoinLikeTransactionBuilder {
         @Override
         public BitcoinLikeTransactionBuilder wipeToAddress(String address)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
             return native_wipeToAddress(this.nativeRef, address);
         }
         private native BitcoinLikeTransactionBuilder native_wipeToAddress(long _nativeRef, String address);
@@ -208,7 +243,10 @@ public abstract class BitcoinLikeTransactionBuilder {
         @Override
         public BitcoinLikeTransactionBuilder setFeesPerByte(Amount fees)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
             return native_setFeesPerByte(this.nativeRef, fees);
         }
         private native BitcoinLikeTransactionBuilder native_setFeesPerByte(long _nativeRef, Amount fees);
@@ -216,7 +254,10 @@ public abstract class BitcoinLikeTransactionBuilder {
         @Override
         public void build(BitcoinLikeTransactionCallback callback)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
             native_build(this.nativeRef, callback);
         }
         private native void native_build(long _nativeRef, BitcoinLikeTransactionCallback callback);
@@ -224,7 +265,10 @@ public abstract class BitcoinLikeTransactionBuilder {
         @Override
         public BitcoinLikeTransactionBuilder clone()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
             return native_clone(this.nativeRef);
         }
         private native BitcoinLikeTransactionBuilder native_clone(long _nativeRef);
@@ -232,7 +276,10 @@ public abstract class BitcoinLikeTransactionBuilder {
         @Override
         public void reset()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (BitcoinLikeTransactionBuilder)");
+            }
             native_reset(this.nativeRef);
         }
         private native void native_reset(long _nativeRef);

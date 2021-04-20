@@ -54,6 +54,9 @@ public abstract class AlgorandTransaction {
     public abstract byte[] serialize();
 
     public abstract void setSignature(byte[] signature);
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends AlgorandTransaction
     {
@@ -67,6 +70,7 @@ public abstract class AlgorandTransaction {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -81,7 +85,10 @@ public abstract class AlgorandTransaction {
         @Override
         public String getId()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getId(this.nativeRef);
         }
         private native String native_getId(long _nativeRef);
@@ -89,7 +96,10 @@ public abstract class AlgorandTransaction {
         @Override
         public String getType()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getType(this.nativeRef);
         }
         private native String native_getType(long _nativeRef);
@@ -97,7 +107,10 @@ public abstract class AlgorandTransaction {
         @Override
         public String getSender()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getSender(this.nativeRef);
         }
         private native String native_getSender(long _nativeRef);
@@ -105,7 +118,10 @@ public abstract class AlgorandTransaction {
         @Override
         public String getFee()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getFee(this.nativeRef);
         }
         private native String native_getFee(long _nativeRef);
@@ -113,7 +129,10 @@ public abstract class AlgorandTransaction {
         @Override
         public String getNote()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getNote(this.nativeRef);
         }
         private native String native_getNote(long _nativeRef);
@@ -121,7 +140,10 @@ public abstract class AlgorandTransaction {
         @Override
         public String getRound()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getRound(this.nativeRef);
         }
         private native String native_getRound(long _nativeRef);
@@ -129,7 +151,10 @@ public abstract class AlgorandTransaction {
         @Override
         public String getSenderRewards()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getSenderRewards(this.nativeRef);
         }
         private native String native_getSenderRewards(long _nativeRef);
@@ -137,7 +162,10 @@ public abstract class AlgorandTransaction {
         @Override
         public String getReceiverRewards()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getReceiverRewards(this.nativeRef);
         }
         private native String native_getReceiverRewards(long _nativeRef);
@@ -145,7 +173,10 @@ public abstract class AlgorandTransaction {
         @Override
         public String getCloseRewards()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getCloseRewards(this.nativeRef);
         }
         private native String native_getCloseRewards(long _nativeRef);
@@ -153,7 +184,10 @@ public abstract class AlgorandTransaction {
         @Override
         public void setSender(String sender)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             native_setSender(this.nativeRef, sender);
         }
         private native void native_setSender(long _nativeRef, String sender);
@@ -161,7 +195,10 @@ public abstract class AlgorandTransaction {
         @Override
         public void setFee(String fee)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             native_setFee(this.nativeRef, fee);
         }
         private native void native_setFee(long _nativeRef, String fee);
@@ -169,7 +206,10 @@ public abstract class AlgorandTransaction {
         @Override
         public void setNote(String note)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             native_setNote(this.nativeRef, note);
         }
         private native void native_setNote(long _nativeRef, String note);
@@ -177,7 +217,10 @@ public abstract class AlgorandTransaction {
         @Override
         public void setPaymentInfo(AlgorandPaymentInfo info)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             native_setPaymentInfo(this.nativeRef, info);
         }
         private native void native_setPaymentInfo(long _nativeRef, AlgorandPaymentInfo info);
@@ -185,7 +228,10 @@ public abstract class AlgorandTransaction {
         @Override
         public AlgorandPaymentInfo getPaymentInfo()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getPaymentInfo(this.nativeRef);
         }
         private native AlgorandPaymentInfo native_getPaymentInfo(long _nativeRef);
@@ -193,7 +239,10 @@ public abstract class AlgorandTransaction {
         @Override
         public void setParticipationInfo(AlgorandParticipationInfo info)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             native_setParticipationInfo(this.nativeRef, info);
         }
         private native void native_setParticipationInfo(long _nativeRef, AlgorandParticipationInfo info);
@@ -201,7 +250,10 @@ public abstract class AlgorandTransaction {
         @Override
         public AlgorandParticipationInfo getParticipationInfo()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getParticipationInfo(this.nativeRef);
         }
         private native AlgorandParticipationInfo native_getParticipationInfo(long _nativeRef);
@@ -209,7 +261,10 @@ public abstract class AlgorandTransaction {
         @Override
         public void setAssetConfigurationInfo(AlgorandAssetConfigurationInfo info)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             native_setAssetConfigurationInfo(this.nativeRef, info);
         }
         private native void native_setAssetConfigurationInfo(long _nativeRef, AlgorandAssetConfigurationInfo info);
@@ -217,7 +272,10 @@ public abstract class AlgorandTransaction {
         @Override
         public AlgorandAssetConfigurationInfo getAssetConfigurationInfo()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getAssetConfigurationInfo(this.nativeRef);
         }
         private native AlgorandAssetConfigurationInfo native_getAssetConfigurationInfo(long _nativeRef);
@@ -225,7 +283,10 @@ public abstract class AlgorandTransaction {
         @Override
         public void setAssetTransferInfo(AlgorandAssetTransferInfo info)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             native_setAssetTransferInfo(this.nativeRef, info);
         }
         private native void native_setAssetTransferInfo(long _nativeRef, AlgorandAssetTransferInfo info);
@@ -233,7 +294,10 @@ public abstract class AlgorandTransaction {
         @Override
         public AlgorandAssetTransferInfo getAssetTransferInfo()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getAssetTransferInfo(this.nativeRef);
         }
         private native AlgorandAssetTransferInfo native_getAssetTransferInfo(long _nativeRef);
@@ -241,7 +305,10 @@ public abstract class AlgorandTransaction {
         @Override
         public void setAssetFreezeInfo(AlgorandAssetFreezeInfo info)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             native_setAssetFreezeInfo(this.nativeRef, info);
         }
         private native void native_setAssetFreezeInfo(long _nativeRef, AlgorandAssetFreezeInfo info);
@@ -249,7 +316,10 @@ public abstract class AlgorandTransaction {
         @Override
         public AlgorandAssetFreezeInfo getAssetFreezeInfo()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_getAssetFreezeInfo(this.nativeRef);
         }
         private native AlgorandAssetFreezeInfo native_getAssetFreezeInfo(long _nativeRef);
@@ -257,7 +327,10 @@ public abstract class AlgorandTransaction {
         @Override
         public byte[] serialize()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             return native_serialize(this.nativeRef);
         }
         private native byte[] native_serialize(long _nativeRef);
@@ -265,7 +338,10 @@ public abstract class AlgorandTransaction {
         @Override
         public void setSignature(byte[] signature)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (AlgorandTransaction)");
+            }
             native_setSignature(this.nativeRef, signature);
         }
         private native void native_setSignature(long _nativeRef, byte[] signature);

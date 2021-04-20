@@ -14,6 +14,12 @@ public abstract class DatabaseBackend {
     public abstract int getConnectionPoolSize();
 
     /**
+     * Get the maximum number of concurrent readonly connection that the backend is able to open on a single database.
+     * @return the size of the readonly connection pool.
+     */
+    public abstract int getReadonlyConnectionPoolSize();
+
+    /**
      * Enable or disable query logging. By default logging is disabled. Query logging will record every SQL query in log streams.
      * @return this database backend (to chain configuration calls)
      */
@@ -24,6 +30,9 @@ public abstract class DatabaseBackend {
      * @return trye if query logging is enabled, false otherwise.
      */
     public abstract boolean isLoggingEnabled();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     /**
      * Create an instance of SQLite3 database.
@@ -35,7 +44,7 @@ public abstract class DatabaseBackend {
      * Create an instance of PostgreSQL database.
      * @return DatabaseBackend object
      */
-    public static native DatabaseBackend getPostgreSQLBackend(int connectionPoolSize);
+    public static native DatabaseBackend getPostgreSQLBackend(int connectionPoolSize, int readonlyConnectionPoolSize);
 
     /** Create a database backend instance from the given DatabaseEngine implementation. */
     public static native DatabaseBackend createBackendFromEngine(DatabaseEngine engine);
@@ -52,6 +61,7 @@ public abstract class DatabaseBackend {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -66,15 +76,32 @@ public abstract class DatabaseBackend {
         @Override
         public int getConnectionPoolSize()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DatabaseBackend)");
+            }
             return native_getConnectionPoolSize(this.nativeRef);
         }
         private native int native_getConnectionPoolSize(long _nativeRef);
 
         @Override
+        public int getReadonlyConnectionPoolSize()
+        {
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DatabaseBackend)");
+            }
+            return native_getReadonlyConnectionPoolSize(this.nativeRef);
+        }
+        private native int native_getReadonlyConnectionPoolSize(long _nativeRef);
+
+        @Override
         public DatabaseBackend enableQueryLogging(boolean enable)
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DatabaseBackend)");
+            }
             return native_enableQueryLogging(this.nativeRef, enable);
         }
         private native DatabaseBackend native_enableQueryLogging(long _nativeRef, boolean enable);
@@ -82,7 +109,10 @@ public abstract class DatabaseBackend {
         @Override
         public boolean isLoggingEnabled()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (DatabaseBackend)");
+            }
             return native_isLoggingEnabled(this.nativeRef);
         }
         private native boolean native_isLoggingEnabled(long _nativeRef);

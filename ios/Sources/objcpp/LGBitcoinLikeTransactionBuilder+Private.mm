@@ -94,10 +94,12 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 }
 
 - (nullable LGBitcoinLikeTransactionBuilder *)pickInputs:(LGBitcoinLikePickingStrategy)strategy
-                                                sequence:(int32_t)sequence {
+                                                sequence:(int32_t)sequence
+                                                 maxUtxo:(nullable NSNumber *)maxUtxo {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->pickInputs(::djinni::Enum<::ledger::core::api::BitcoinLikePickingStrategy, LGBitcoinLikePickingStrategy>::toCpp(strategy),
-                                                              ::djinni::I32::toCpp(sequence));
+                                                              ::djinni::I32::toCpp(sequence),
+                                                              ::djinni::Optional<std::experimental::optional, ::djinni::I32>::toCpp(maxUtxo));
         return ::djinni_generated::BitcoinLikeTransactionBuilder::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

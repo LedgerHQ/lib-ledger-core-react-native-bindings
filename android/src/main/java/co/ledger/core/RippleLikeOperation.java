@@ -12,6 +12,9 @@ public abstract class RippleLikeOperation {
      *@return RippleLikeTransaction object
      */
     public abstract RippleLikeTransaction getTransaction();
+    /** Release the underlying native object */
+    public abstract void destroy();
+
 
     private static final class CppProxy extends RippleLikeOperation
     {
@@ -25,6 +28,7 @@ public abstract class RippleLikeOperation {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
@@ -39,7 +43,10 @@ public abstract class RippleLikeOperation {
         @Override
         public RippleLikeTransaction getTransaction()
         {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
+            if (this.destroyed.get())
+            {
+                throw new RuntimeException("trying to use a destroyed object (RippleLikeOperation)");
+            }
             return native_getTransaction(this.nativeRef);
         }
         private native RippleLikeTransaction native_getTransaction(long _nativeRef);

@@ -7,6 +7,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /** All available blockchain networks parameters. */
 public abstract class Networks {
+    /** Release the underlying native object */
+    public abstract void destroy();
+
     /** The Bitcoin network parameters. */
     public static native BitcoinLikeNetworkParameters bitcoin();
 
@@ -34,6 +37,7 @@ public abstract class Networks {
         }
 
         private native void nativeDestroy(long nativeRef);
+        @Override
         public void destroy()
         {
             boolean destroyed = this.destroyed.getAndSet(true);
