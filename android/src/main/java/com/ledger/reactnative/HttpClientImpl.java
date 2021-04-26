@@ -1,99 +1,93 @@
 package com.ledger.reactnative;
 
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.modules.network.OkHttpClientProvider;
 
 import co.ledger.core.HttpRequest;
 import co.ledger.core.Error;
-import co.ledger.core.HttpRequest;
-import java.io.BufferedInputStream;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.StringWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.Executors;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-/**Class representing the http client performing the http requests */
+/**
+ * Class representing the http client performing the http requests
+ */
 public class HttpClientImpl extends co.ledger.core.HttpClient {
-    private ReactApplicationContext reactContext;
-
-    private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2, 10,25, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(25), Executors.defaultThreadFactory(), new RejectedExecutionHandler() {
-        @Override
-        public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-            System.out.println(r.toString() + " is rejected");
-        }
-    });
+    final private ReactApplicationContext reactContext;
+    final private OkHttpClient mClient;
 
     public HttpClientImpl(ReactApplicationContext reactContext) {
         this.reactContext = reactContext;
+        this.mClient = OkHttpClientProvider.createClient();
     }
+
     /**
-     *Execute a giver Http request\
-     *@param request, HttpRequest object, requestr to execute
+     * Execute a given Http request\
+     *
+     * @param httpRequest, HttpRequest object, request to execute
      */
-    public void execute(final HttpRequest request) {
+    public void execute(final HttpRequest httpRequest) {
+        // essentially inspired from https://github.com/facebook/react-native/blob/master/ReactAndroid/src/main/java/com/facebook/react/modules/network/NetworkingModule.java#L263
+        String url = httpRequest.getUrl();
+        String method = "GET";
+        byte[] body = httpRequest.getBody();
+        HashMap < String, String > headers = httpRequest.getHeaders();
 
-        Thread thread = new Thread(new java.lang.Runnable() {
-            public void run() {
-                try {
-                    URL url = new URL(request.getUrl());
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    HashMap<String, String> headers = request.getHeaders();
-                    for (String hr : headers.keySet()) {
-                        connection.setRequestProperty(hr, headers.get(hr));
-                    }
-
-                    byte[] body = request.getBody();
-                    if (body.length > 0) {
-                        connection.setRequestMethod( "POST" );
-						if (!headers.containsKey("Content-Type")) {
-							connection.setRequestProperty( "Content-Type", "application/json");
-						}
-						if (!headers.containsKey("Content-Encoding") && !headers.containsValue("application/x-binary")) {
-							connection.setRequestProperty( "Content-Encoding", "UTF-8");
-						}
-                        connection.setRequestProperty( "Content-Length", Integer.toString(body.length));
-                        OutputStream os = connection.getOutputStream();
-                        os.write(body);
-                        os.flush();
-                        os.close();
-                    }
-
-                    int httpCode = connection.getResponseCode();
-                    String response = getString(httpCode<400 ? connection.getInputStream() : connection.getErrorStream(), "UTF-8");
-                    com.ledger.reactnative.HttpUrlConnectionImpl urlConnection = new com.ledger.reactnative.HttpUrlConnectionImpl(reactContext, response, httpCode, headers, null);
-                    request.complete(urlConnection, null);
-                    connection.disconnect();
-                } catch (Exception ex) {
-                    Error error = new Error(co.ledger.core.ErrorCode.HTTP_ERROR, ex.getMessage());
-                    com.ledger.reactnative.HttpUrlConnectionImpl urlConnection = new com.ledger.reactnative.HttpUrlConnectionImpl(reactContext, ex.toString(), ex.hashCode(), null, error);
-                    request.complete(urlConnection, error);
-                }
+        Request.Builder requestBuilder;
+        try {
+            OkHttpClient.Builder clientBuilder = mClient.newBuilder();
+            clientBuilder.connectTimeout(120, TimeUnit.SECONDS);
+            OkHttpClient client = clientBuilder.build();
+            requestBuilder = new Request.Builder().url(url);
+            // Set the headers for the request.
+            for (Map.Entry < String, String > header: headers.entrySet()) {
+                requestBuilder.addHeader(header.getKey(), header.getValue());
             }
-        });
 
-        threadPoolExecutor.execute(thread);
-    }
+            // Set the body if needed
+            if (body.length > 0) {
+                method = "POST";
+                requestBuilder.method(method, RequestBody.create(headers.containsKey("Content-Type") ? MediaType.parse(headers.get("Content-Type")) : null, body));
+            }
 
-    private static String getString(InputStream stream, String charsetName) throws IOException
-    {
-        int n = 0;
-        char[] buffer = new char[1024 * 4];
-        InputStreamReader reader = new InputStreamReader(stream, charsetName);
-        StringWriter writer = new StringWriter();
-        while (-1 != (n = reader.read(buffer))) {
-            writer.write(buffer, 0, n);
+            // Build the request
+            Request request = requestBuilder.build();
+
+            client
+                .newCall(request)
+                .enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException ex) {
+                        Error error = new Error(co.ledger.core.ErrorCode.HTTP_ERROR, ex.getMessage());
+                        HttpUrlConnectionImpl urlConnection = new com.ledger.reactnative.HttpUrlConnectionImpl(reactContext, ex.toString(), ex.hashCode(), null, error);
+                        httpRequest.complete(urlConnection, error);
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        int httpCode = response.code();
+                        // Account for unhappy HTTP responses
+                        ResponseBody responseBody = response.body();
+                        String data = response.isSuccessful() && responseBody != null ? responseBody.string() : response.toString();
+                        com.ledger.reactnative.HttpUrlConnectionImpl urlConnection = new com.ledger.reactnative.HttpUrlConnectionImpl(reactContext, data, httpCode, headers, null);
+                        httpRequest.complete(urlConnection, null);
+                    }
+                });
+        } catch (Exception ex) {
+            Error error = new Error(co.ledger.core.ErrorCode.HTTP_ERROR, ex.getMessage());
+            com.ledger.reactnative.HttpUrlConnectionImpl urlConnection = new com.ledger.reactnative.HttpUrlConnectionImpl(reactContext, ex.toString(), ex.hashCode(), null, error);
+            httpRequest.complete(urlConnection, error);
         }
-        reader.close();
-        return writer.toString();
     }
 }
