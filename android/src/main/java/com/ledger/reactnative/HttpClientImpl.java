@@ -20,6 +20,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 /**
  * Class representing the http client performing the http requests
  */
@@ -55,10 +57,23 @@ public class HttpClientImpl extends co.ledger.core.HttpClient {
                 requestBuilder.addHeader(header.getKey(), header.getValue());
             }
 
+            MediaType mediaType = headers.containsKey("Content-Type") ?
+                        MediaType.parse(headers.get("Content-Type")) :
+                        null;
+
             // Set the body if needed
             if (body.length > 0) {
                 method = "POST";
-                requestBuilder.method(method, RequestBody.create(headers.containsKey("Content-Type") ? MediaType.parse(headers.get("Content-Type")) : null, body));
+                try {
+                    String maybeJSONString = new String(body);
+                    new JSONObject(maybeJSONString);
+                    // In this case we know the content type, fixes some SEND errors.
+                    mediaType = MediaType.parse("application/json");
+                } catch (JSONException ex) {
+                    // Not a valid JSON, do nothing
+                }
+
+                requestBuilder.method(method, RequestBody.create(mediaType, body));
             }
 
             // Build the request
