@@ -36,15 +36,6 @@ public abstract class ERC20LikeAccount {
     /** Get the list of operations performed on this ERC20 account. */
     public abstract ArrayList<ERC20LikeOperation> getOperations();
 
-    /** Get ERC20 operation by uid */
-    public abstract void getOperation(String uid, ERC20LikeOperationCallback callback);
-
-    /** Get all ERC20 operations */
-    public abstract void getAllOperations(int from, int to, boolean ascending, ERC20LikeOperationListCallback callback);
-
-    /** Get ERC20 operations from a given block height (included), it also returns mempool operations */
-    public abstract void getOperationsFromBlockHeight(int from, int to, long fromBlockHeight, ERC20LikeOperationListCallback callback);
-
     /** Retrieve raw data concerning a transaction of a given amount to a given address. */
     public abstract void getTransferToAddressData(BigInt amount, String address, BinaryCallback data);
 
@@ -142,39 +133,6 @@ public abstract class ERC20LikeAccount {
             return native_getOperations(this.nativeRef);
         }
         private native ArrayList<ERC20LikeOperation> native_getOperations(long _nativeRef);
-
-        @Override
-        public void getOperation(String uid, ERC20LikeOperationCallback callback)
-        {
-            if (this.destroyed.get())
-            {
-                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
-            }
-            native_getOperation(this.nativeRef, uid, callback);
-        }
-        private native void native_getOperation(long _nativeRef, String uid, ERC20LikeOperationCallback callback);
-
-        @Override
-        public void getAllOperations(int from, int to, boolean ascending, ERC20LikeOperationListCallback callback)
-        {
-            if (this.destroyed.get())
-            {
-                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
-            }
-            native_getAllOperations(this.nativeRef, from, to, ascending, callback);
-        }
-        private native void native_getAllOperations(long _nativeRef, int from, int to, boolean ascending, ERC20LikeOperationListCallback callback);
-
-        @Override
-        public void getOperationsFromBlockHeight(int from, int to, long fromBlockHeight, ERC20LikeOperationListCallback callback)
-        {
-            if (this.destroyed.get())
-            {
-                throw new RuntimeException("trying to use a destroyed object (ERC20LikeAccount)");
-            }
-            native_getOperationsFromBlockHeight(this.nativeRef, from, to, fromBlockHeight, callback);
-        }
-        private native void native_getOperationsFromBlockHeight(long _nativeRef, int from, int to, long fromBlockHeight, ERC20LikeOperationListCallback callback);
 
         @Override
         public void getTransferToAddressData(BigInt amount, String address, BinaryCallback data)

@@ -6,8 +6,6 @@
 #import "LGBinaryCallback.h"
 #import "LGERC20LikeAccount.h"
 #import "LGERC20LikeOperation.h"
-#import "LGERC20LikeOperationCallback.h"
-#import "LGERC20LikeOperationListCallback.h"
 #import "LGERC20Token.h"
 #import "LGOperationQuery.h"
 #import "LGTimePeriod.h"
@@ -16,8 +14,6 @@
 #import "RCTCoreLGBigIntCallback.h"
 #import "RCTCoreLGBinaryCallback.h"
 #import "RCTCoreLGERC20LikeOperation.h"
-#import "RCTCoreLGERC20LikeOperationCallback.h"
-#import "RCTCoreLGERC20LikeOperationListCallback.h"
 #import "RCTCoreLGERC20Token.h"
 #import "RCTCoreLGOperationQuery.h"
 #import <Foundation/Foundation.h>

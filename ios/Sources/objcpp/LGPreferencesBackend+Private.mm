@@ -3,75 +3,86 @@
 
 #import "LGPreferencesBackend+Private.h"
 #import "LGPreferencesBackend.h"
+#import "DJICppWrapperCache+Private.h"
+#import "DJIError.h"
 #import "DJIMarshal+Private.h"
-#import "DJIObjcWrapperCache+Private.h"
 #import "LGPreferencesChange+Private.h"
 #import "LGRandomNumberGenerator+Private.h"
+#include <exception>
 #include <stdexcept>
+#include <utility>
 
 static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for this file");
 
-namespace djinni_generated {
+@interface LGPreferencesBackend ()
 
-class PreferencesBackend::ObjcProxy final
-: public ::ledger::core::api::PreferencesBackend
-, private ::djinni::ObjcProxyBase<ObjcType>
+- (id)initWithCpp:(const std::shared_ptr<::ledger::core::api::PreferencesBackend>&)cppRef;
+
+@end
+
+@implementation LGPreferencesBackend {
+    ::djinni::CppProxyCache::Handle<std::shared_ptr<::ledger::core::api::PreferencesBackend>> _cppRefHandle;
+}
+
+- (id)initWithCpp:(const std::shared_ptr<::ledger::core::api::PreferencesBackend>&)cppRef
 {
-    friend class ::djinni_generated::PreferencesBackend;
-public:
-    using ObjcProxyBase::ObjcProxyBase;
-    std::experimental::optional<std::vector<uint8_t>> get(const std::vector<uint8_t> & c_key) override
-    {
-        @autoreleasepool {
-            auto objcpp_result_ = [djinni_private_get_proxied_objc_object() get:(::djinni::Binary::fromCpp(c_key))];
-            return ::djinni::Optional<std::experimental::optional, ::djinni::Binary>::toCpp(objcpp_result_);
-        }
+    if (self = [super init]) {
+        _cppRefHandle.assign(cppRef);
     }
-    bool commit(const std::vector<::ledger::core::api::PreferencesChange> & c_changes) override
-    {
-        @autoreleasepool {
-            auto objcpp_result_ = [djinni_private_get_proxied_objc_object() commit:(::djinni::List<::djinni_generated::PreferencesChange>::fromCpp(c_changes))];
-            return ::djinni::Bool::toCpp(objcpp_result_);
-        }
-    }
-    void setEncryption(const std::shared_ptr<::ledger::core::api::RandomNumberGenerator> & c_rng, const std::string & c_password) override
-    {
-        @autoreleasepool {
-            [djinni_private_get_proxied_objc_object() setEncryption:(::djinni_generated::RandomNumberGenerator::fromCpp(c_rng))
-                                                           password:(::djinni::String::fromCpp(c_password))];
-        }
-    }
-    void unsetEncryption() override
-    {
-        @autoreleasepool {
-            [djinni_private_get_proxied_objc_object() unsetEncryption];
-        }
-    }
-    bool resetEncryption(const std::shared_ptr<::ledger::core::api::RandomNumberGenerator> & c_rng, const std::string & c_oldPassword, const std::string & c_newPassword) override
-    {
-        @autoreleasepool {
-            auto objcpp_result_ = [djinni_private_get_proxied_objc_object() resetEncryption:(::djinni_generated::RandomNumberGenerator::fromCpp(c_rng))
-                                                                                oldPassword:(::djinni::String::fromCpp(c_oldPassword))
-                                                                                newPassword:(::djinni::String::fromCpp(c_newPassword))];
-            return ::djinni::Bool::toCpp(objcpp_result_);
-        }
-    }
-    std::string getEncryptionSalt() override
-    {
-        @autoreleasepool {
-            auto objcpp_result_ = [djinni_private_get_proxied_objc_object() getEncryptionSalt];
-            return ::djinni::String::toCpp(objcpp_result_);
-        }
-    }
-    void clear() override
-    {
-        @autoreleasepool {
-            [djinni_private_get_proxied_objc_object() clear];
-        }
-    }
-};
+    return self;
+}
 
-}  // namespace djinni_generated
+- (nullable NSData *)get:(nonnull NSData *)key {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->get(::djinni::Binary::toCpp(key));
+        return ::djinni::Optional<std::experimental::optional, ::djinni::Binary>::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (BOOL)commit:(nonnull NSArray<LGPreferencesChange *> *)changes {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->commit(::djinni::List<::djinni_generated::PreferencesChange>::toCpp(changes));
+        return ::djinni::Bool::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)setEncryption:(nullable id<LGRandomNumberGenerator>)rng
+             password:(nonnull NSString *)password {
+    try {
+        _cppRefHandle.get()->setEncryption(::djinni_generated::RandomNumberGenerator::toCpp(rng),
+                                           ::djinni::String::toCpp(password));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)unsetEncryption {
+    try {
+        _cppRefHandle.get()->unsetEncryption();
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (BOOL)resetEncryption:(nullable id<LGRandomNumberGenerator>)rng
+            oldPassword:(nonnull NSString *)oldPassword
+            newPassword:(nonnull NSString *)newPassword {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->resetEncryption(::djinni_generated::RandomNumberGenerator::toCpp(rng),
+                                                                   ::djinni::String::toCpp(oldPassword),
+                                                                   ::djinni::String::toCpp(newPassword));
+        return ::djinni::Bool::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nonnull NSString *)getEncryptionSalt {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getEncryptionSalt();
+        return ::djinni::String::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)clear {
+    try {
+        _cppRefHandle.get()->clear();
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
 
 namespace djinni_generated {
 
@@ -80,7 +91,7 @@ auto PreferencesBackend::toCpp(ObjcType objc) -> CppType
     if (!objc) {
         return nullptr;
     }
-    return ::djinni::get_objc_proxy<ObjcProxy>(objc);
+    return objc->_cppRefHandle.get();
 }
 
 auto PreferencesBackend::fromCppOpt(const CppOptType& cpp) -> ObjcType
@@ -88,7 +99,9 @@ auto PreferencesBackend::fromCppOpt(const CppOptType& cpp) -> ObjcType
     if (!cpp) {
         return nil;
     }
-    return dynamic_cast<ObjcProxy&>(*cpp).djinni_private_get_proxied_objc_object();
+    return ::djinni::get_cpp_proxy<LGPreferencesBackend>(cpp);
 }
 
 }  // namespace djinni_generated
+
+@end

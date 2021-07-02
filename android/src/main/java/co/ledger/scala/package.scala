@@ -1458,48 +1458,6 @@ package object implicits {
             })
             promise.future
         }
-        def getOperation(uid: String): Future[ERC20LikeOperation] = {
-            val promise = Promise[ERC20LikeOperation]()
-            self.getOperation(uid, new ERC20LikeOperationCallback() {
-                override def onCallback(result: ERC20LikeOperation, error: co.ledger.core.Error): Unit =  {
-                    if (error != null) {
-                        promise.failure(wrapLedgerCoreError(error))
-                    }
-                    else {
-                        promise.success(result)
-                    }
-                }
-            })
-            promise.future
-        }
-        def getAllOperations(from: Int, to: Int, ascending: Boolean): Future[ArrayList[ERC20LikeOperation]] = {
-            val promise = Promise[ArrayList[ERC20LikeOperation]]()
-            self.getAllOperations(from, to, ascending, new ERC20LikeOperationListCallback() {
-                override def onCallback(result: ArrayList[ERC20LikeOperation], error: co.ledger.core.Error): Unit =  {
-                    if (error != null) {
-                        promise.failure(wrapLedgerCoreError(error))
-                    }
-                    else {
-                        promise.success(result)
-                    }
-                }
-            })
-            promise.future
-        }
-        def getOperationsFromBlockHeight(from: Int, to: Int, fromBlockHeight: Long): Future[ArrayList[ERC20LikeOperation]] = {
-            val promise = Promise[ArrayList[ERC20LikeOperation]]()
-            self.getOperationsFromBlockHeight(from, to, fromBlockHeight, new ERC20LikeOperationListCallback() {
-                override def onCallback(result: ArrayList[ERC20LikeOperation], error: co.ledger.core.Error): Unit =  {
-                    if (error != null) {
-                        promise.failure(wrapLedgerCoreError(error))
-                    }
-                    else {
-                        promise.success(result)
-                    }
-                }
-            })
-            promise.future
-        }
         def getTransferToAddressData(amount: BigInt, address: String): Future[Array[Byte]] = {
             val promise = Promise[Array[Byte]]()
             self.getTransferToAddressData(amount, address, new BinaryCallback() {
@@ -1514,10 +1472,6 @@ package object implicits {
             })
             promise.future
         }
-    }
-    implicit class RichERC20LikeOperationCallback(val self: ERC20LikeOperationCallback) {
-    }
-    implicit class RichERC20LikeOperationListCallback(val self: ERC20LikeOperationListCallback) {
     }
     implicit class RichBinaryCallback(val self: BinaryCallback) {
     }

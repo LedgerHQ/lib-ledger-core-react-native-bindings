@@ -8,8 +8,6 @@ import co.ledger.core.BigIntCallback;
 import co.ledger.core.BinaryCallback;
 import co.ledger.core.ERC20LikeAccount;
 import co.ledger.core.ERC20LikeOperation;
-import co.ledger.core.ERC20LikeOperationCallback;
-import co.ledger.core.ERC20LikeOperationListCallback;
 import co.ledger.core.ERC20Token;
 import co.ledger.core.OperationQuery;
 import co.ledger.core.TimePeriod;
@@ -254,57 +252,6 @@ public class RCTCoreERC20LikeAccount extends ReactContextBaseJavaModule {
             }
 
             promise.resolve(result);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /** Get ERC20 operation by uid */
-    @ReactMethod
-    public void getOperation(ReadableMap currentInstance, String uid, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            ERC20LikeAccount currentInstanceObj = this.javaObjects.get(sUid);
-
-            RCTCoreERC20LikeOperationCallback javaParam_1 = RCTCoreERC20LikeOperationCallback.initWithPromise(promise, this.reactContext);
-            currentInstanceObj.getOperation(uid, javaParam_1);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /** Get all ERC20 operations */
-    @ReactMethod
-    public void getAllOperations(ReadableMap currentInstance, int from, int to, boolean ascending, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            ERC20LikeAccount currentInstanceObj = this.javaObjects.get(sUid);
-
-            RCTCoreERC20LikeOperationListCallback javaParam_3 = RCTCoreERC20LikeOperationListCallback.initWithPromise(promise, this.reactContext);
-            currentInstanceObj.getAllOperations(from, to, ascending, javaParam_3);
-        }
-        catch(Exception e)
-        {
-            promise.reject(e.toString(), e.getMessage());
-        }
-    }
-    /** Get ERC20 operations from a given block height (included), it also returns mempool operations */
-    @ReactMethod
-    public void getOperationsFromBlockHeight(ReadableMap currentInstance, int from, int to, long fromBlockHeight, Promise promise) {
-        try
-        {
-            String sUid = currentInstance.getString("uid");
-
-            ERC20LikeAccount currentInstanceObj = this.javaObjects.get(sUid);
-
-            RCTCoreERC20LikeOperationListCallback javaParam_3 = RCTCoreERC20LikeOperationListCallback.initWithPromise(promise, this.reactContext);
-            currentInstanceObj.getOperationsFromBlockHeight(from, to, fromBlockHeight, javaParam_3);
         }
         catch(Exception e)
         {

@@ -10,8 +10,6 @@
 #import "LGBigIntCallback+Private.h"
 #import "LGBinaryCallback+Private.h"
 #import "LGERC20LikeOperation+Private.h"
-#import "LGERC20LikeOperationCallback+Private.h"
-#import "LGERC20LikeOperationListCallback+Private.h"
 #import "LGERC20Token+Private.h"
 #import "LGOperationQuery+Private.h"
 #import "LGTimePeriod+Private.h"
@@ -81,38 +79,6 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try {
         auto objcpp_result_ = _cppRefHandle.get()->getOperations();
         return ::djinni::List<::djinni_generated::ERC20LikeOperation>::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (void)getOperation:(nonnull NSString *)uid
-            callback:(nullable id<LGERC20LikeOperationCallback>)callback {
-    try {
-        _cppRefHandle.get()->getOperation(::djinni::String::toCpp(uid),
-                                          ::djinni_generated::ERC20LikeOperationCallback::toCpp(callback));
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (void)getAllOperations:(int32_t)from
-                      to:(int32_t)to
-               ascending:(BOOL)ascending
-                callback:(nullable id<LGERC20LikeOperationListCallback>)callback {
-    try {
-        _cppRefHandle.get()->getAllOperations(::djinni::I32::toCpp(from),
-                                              ::djinni::I32::toCpp(to),
-                                              ::djinni::Bool::toCpp(ascending),
-                                              ::djinni_generated::ERC20LikeOperationListCallback::toCpp(callback));
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
-- (void)getOperationsFromBlockHeight:(int32_t)from
-                                  to:(int32_t)to
-                     fromBlockHeight:(int64_t)fromBlockHeight
-                            callback:(nullable id<LGERC20LikeOperationListCallback>)callback {
-    try {
-        _cppRefHandle.get()->getOperationsFromBlockHeight(::djinni::I32::toCpp(from),
-                                                          ::djinni::I32::toCpp(to),
-                                                          ::djinni::I64::toCpp(fromBlockHeight),
-                                                          ::djinni_generated::ERC20LikeOperationListCallback::toCpp(callback));
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
