@@ -5,9 +5,9 @@ package co.ledger.core;
 
 public final class AlgorandConfigurationDefaults {
 
-    public static final String ALGORAND_API_ENDPOINT = "https://mainnet-algorand.api.purestake.io";
+    public static final String ALGORAND_API_ENDPOINT = "DISABLED";
 
-    public static final String ALGORAND_API_TOKEN = "51QbkNgumz6aMzgl7qL2FabvZsREiCyw6VLcuNCj";
+    public static final String ALGORAND_API_TOKEN = "DISABLED";
 
     /** TODO Find an observer endpoint?? */
     public static final String ALGORAND_OBSERVER_WS_ENDPOINT = "";
